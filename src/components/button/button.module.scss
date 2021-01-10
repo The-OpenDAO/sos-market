@@ -1,0 +1,88 @@
+@import 'styles/colors';
+
+.button {
+  cursor: pointer;
+  touch-action: manipulation;
+
+  margin: 0px;
+  padding: 16px 24px;
+
+  outline: none;
+  border-radius: 4px;
+
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+
+  transition: 220ms all ease-in-out;
+
+  &:disabled {
+    cursor: unset;
+    touch-action: unset;
+  }
+}
+
+.default {
+  @extend .button;
+  color: $gray-900;
+  background-color: $white;
+
+  border: 1px solid $gray-300;
+
+  &:hover {
+    background-color: $gray-300;
+  }
+
+  &:disabled {
+    color: $gray-500;
+    background-color: $white;
+
+    border: 1px solid $gray-500;
+  }
+}
+
+.primary {
+  @extend .button;
+  color: $white;
+  background-color: $primary-500;
+
+  border: 1px solid $primary-500;
+
+  &:hover {
+    background-color: $primary-900;
+
+    border: 1px solid $primary-900;
+  }
+
+  &:disabled {
+    background-color: $primary-400;
+
+    border: 1px solid $primary-400;
+  }
+}
+
+.secondary {
+  @extend .button;
+  color: $primary-500;
+  background-color: $primary-100;
+
+  border: 1px solid $primary-100;
+
+  &:hover {
+    color: $primary-500;
+    background-color: $primary-300;
+
+    border: 1px solid $primary-300;
+  }
+
+  &:disabled {
+    color: $primary-200;
+    background-color: $primary-100;
+
+    border: 1px solid $primary-100;
+  }
+}
