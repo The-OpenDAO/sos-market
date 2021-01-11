@@ -1,0 +1,66 @@
+@import 'styles/base/colors';
+
+.label {
+  display: inline-block;
+
+  margin: 0px;
+  padding: 4px 10px;
+
+  outline: none;
+  border-radius: 16px;
+
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+
+  &__icon {
+    &.left {
+      margin-right: 5px;
+      float: left;
+    }
+
+    &.right {
+      margin-left: 5px;
+      float: right;
+    }
+  }
+}
+
+.default {
+  @extend .label;
+
+  color: $gray-900;
+  background-color: $gray-100;
+}
+
+.primary {
+  @extend .label;
+
+  color: $primary-500;
+  background-color: $primary-100;
+}
+
+.success {
+  @extend .label;
+
+  color: $success-500;
+  background-color: $success-100;
+}
+
+.warning {
+  @extend .label;
+
+  color: $warning-500;
+  background-color: $warning-100;
+}
+
+.danger {
+  @extend .label;
+
+  color: $danger-500;
+  background-color: $danger-100;
+}
