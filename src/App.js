@@ -1,17 +1,11 @@
 import React from 'react';
 
-import Input from 'components/input';
+import Select from 'components/select';
 
 function App() {
   return (
     <div className="App">
-      <Input
-        variant="error"
-        name="Input de teste"
-        label="Label"
-        placeholder="placeholder"
-        description="description"
-      />
+      <Select name="Input de teste" label="Label" description="description" />
     </div>
   );
 }
