@@ -17,11 +17,14 @@
   letter-spacing: normal;
   text-align: left;
   transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+
+  &::placeholder {
+    color: $gray-500;
+  }
 }
 
 .default {
   @extend .input;
-  color: $gray-500;
   background-color: $white;
 
   border: 1.5px solid $gray-300;
@@ -68,4 +71,35 @@
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $success-300;
     outline: 0 none;
   }
+}
+
+.input__group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.input__label {
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+
+  color: $gray-900;
+}
+
+.input__description {
+  font-size: 11px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+
+  color: $gray-500;
 }

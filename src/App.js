@@ -5,7 +5,13 @@ import Input from 'components/input';
 function App() {
   return (
     <div className="App">
-      <Input />
+      <Input
+        variant="error"
+        name="Input de teste"
+        label="Label"
+        placeholder="placeholder"
+        description="description"
+      />
     </div>
   );
 }
