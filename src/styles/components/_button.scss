@@ -1,6 +1,8 @@
 @import 'styles/base/colors';
 
 .button {
+  display: inline-block;
+
   cursor: pointer;
   touch-action: manipulation;
 
@@ -23,6 +25,18 @@
   &:disabled {
     cursor: unset;
     touch-action: unset;
+  }
+
+  &__icon {
+    &.left {
+      margin-right: 5px;
+      float: left;
+    }
+
+    &.right {
+      margin-left: 5px;
+      float: right;
+    }
   }
 }
 
