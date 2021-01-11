@@ -12,12 +12,12 @@ const variants = {
   danger: 'danger'
 };
 
-const placement = {
+const positions = {
   left: 'left',
   right: 'right'
 };
 
-function Button({ children, variant, disabled, icon, iconPlacement }) {
+function Button({ children, variant, disabled, icon, iconPosition }) {
   return (
     <button
       type="button"
@@ -28,7 +28,7 @@ function Button({ children, variant, disabled, icon, iconPlacement }) {
       {icon ? (
         <div
           className={`button__icon ${
-            placement[iconPlacement] || placement.right
+            positions[iconPosition] || positions.right
           }`}
         >
           {{ icon }}
@@ -42,7 +42,7 @@ Button.defaultProps = {
   variant: variants.default,
   disabled: false,
   icon: undefined,
-  iconPlacement: 'right'
+  iconPosition: 'right'
 };
 
 Button.propTypes = {
@@ -51,7 +51,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(Object.values(variants)),
   disabled: PropTypes.bool,
   icon: PropTypes.element,
-  iconPlacement: PropTypes.oneOf(Object.values(placement))
+  iconPosition: PropTypes.oneOf(Object.values(positions))
 };
 
 export default Button;
