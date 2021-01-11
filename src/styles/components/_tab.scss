@@ -3,7 +3,7 @@
 .tab {
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 10px;
 
   flex-wrap: wrap;
 
@@ -38,5 +38,9 @@
 
   &__content {
     padding: 6px 12px;
+  }
+
+  &.vertical {
+    flex-direction: column;
   }
 }
