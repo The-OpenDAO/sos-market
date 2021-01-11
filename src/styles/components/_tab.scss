@@ -1,0 +1,42 @@
+@import 'styles/base/colors';
+
+.tab {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+
+  flex-wrap: wrap;
+
+  &__item {
+    cursor: pointer;
+    touch-action: manipulation;
+
+    height: 39px;
+    margin: 0 16px 0 0;
+    padding: 8px 0 0;
+
+    float: left;
+    border: none;
+    outline: none;
+
+    color: $primary-900;
+
+    transition: 220ms all ease-in-out;
+
+    &:hover,
+    :active {
+      color: $primary-500;
+    }
+
+    &:disabled {
+      cursor: unset;
+      touch-action: unset;
+
+      color: $gray-500;
+    }
+  }
+
+  &__content {
+    padding: 6px 12px;
+  }
+}
