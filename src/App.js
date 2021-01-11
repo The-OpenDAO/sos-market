@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Label from 'components/label';
+import Input from 'components/input';
 
 function App() {
   return (
     <div className="App">
-      <Label variant="danger">Text</Label>
+      <Input />
     </div>
   );
 }
