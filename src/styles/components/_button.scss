@@ -1,4 +1,4 @@
-@import 'styles/colors';
+@import 'styles/base/colors';
 
 .button {
   cursor: pointer;
@@ -84,5 +84,71 @@
     background-color: $primary-100;
 
     border: 1px solid $primary-100;
+  }
+}
+
+.success {
+  @extend .button;
+  color: $white;
+  background-color: $success-500;
+
+  border: 1px solid $success-500;
+
+  &:hover {
+    color: $white;
+    background-color: $success-900;
+
+    border: 1px solid $success-900;
+  }
+
+  &:disabled {
+    color: $success-200;
+    background-color: $success-300;
+
+    border: 1px solid $success-300;
+  }
+}
+
+.warning {
+  @extend .button;
+  color: $white;
+  background-color: $warning-500;
+
+  border: 1px solid $warning-500;
+
+  &:hover {
+    color: $white;
+    background-color: $warning-900;
+
+    border: 1px solid $warning-900;
+  }
+
+  &:disabled {
+    color: $warning-200;
+    background-color: $warning-300;
+
+    border: 1px solid $warning-300;
+  }
+}
+
+.danger {
+  @extend .button;
+  color: $white;
+  background-color: $danger-500;
+
+  border: 1px solid $danger-500;
+
+  &:hover {
+    color: $white;
+    background-color: $danger-900;
+
+    border: 1px solid $danger-900;
+  }
+
+  &:disabled {
+    color: $danger-200;
+    background-color: $danger-300;
+
+    border: 1px solid $danger-300;
   }
 }
