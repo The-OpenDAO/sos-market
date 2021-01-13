@@ -9,7 +9,7 @@ const variants = {
   success: 'success'
 };
 
-function Select({ children, variant, label, name, description, disabled }) {
+function Select({ variant, label, name, description, disabled, children }) {
   return (
     <div className="select__group">
       <label htmlFor={name} className="select__label">

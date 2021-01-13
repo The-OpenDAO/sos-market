@@ -17,7 +17,7 @@ const positions = {
   right: 'right'
 };
 
-function Button({ children, variant, disabled, icon, iconPosition }) {
+function Button({ variant, disabled, icon, iconPosition, children }) {
   return (
     <button
       type="button"
@@ -46,8 +46,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
-    .isRequired,
+  children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(Object.values(variants)),
   disabled: PropTypes.bool,
   icon: PropTypes.element,

@@ -16,7 +16,7 @@ const positions = {
   right: 'right'
 };
 
-function Label({ children, variant, icon, iconPosition }) {
+function Label({ variant, icon, iconPosition, children }) {
   return (
     <div className={variants[variant] || variants.default}>
       {children}
@@ -40,8 +40,7 @@ Label.defaultProps = {
 };
 
 Label.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
-    .isRequired,
+  children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(Object.values(variants)),
   icon: PropTypes.element,
   iconPosition: PropTypes.oneOf(Object.values(positions))
