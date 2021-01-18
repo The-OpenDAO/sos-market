@@ -60,7 +60,8 @@ const theme = {
     medium: 500,
     bold: 700
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48]
+  fontSizes: [12, 14, 16, 20, 24, 32, 48],
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512]
 };
 
 export default theme;

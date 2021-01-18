@@ -42,6 +42,10 @@ const GlobalStyle = createGlobalStyle`
   button {
     font-family: 'Gilroy Medium', sans-serif;
   }
+
+  h1, h2, h3, h4, h5, h6, p, label {
+    margin: 0;
+  }
 `;
 
 export default GlobalStyle;

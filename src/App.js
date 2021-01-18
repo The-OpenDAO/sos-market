@@ -1,3 +1,4 @@
+import Odd from 'components/Odd';
 import React from 'react';
 import { ThemeProvider } from 'styled-components/macro';
 
@@ -10,7 +11,9 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <div className="App" />
+        <div className="App">
+          <Odd title="Benfica" value={1.26} />
+        </div>
       </ThemeProvider>
     </>
   );
