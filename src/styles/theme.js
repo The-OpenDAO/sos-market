@@ -53,9 +53,7 @@ const theme = {
     white: '#ffffff'
   },
   fonts: {
-    heading: '"Gilroy-Regular", sans-serif',
-    paragraph: '"Gilroy-Regular", sans-serif',
-    label: '"Gilroy-Regular", sans-serif'
+    primary: '"Gilroy-Regular", sans-serif'
   },
   fontWeights: {
     regular: 400,
