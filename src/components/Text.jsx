@@ -44,6 +44,8 @@ const Text = styled.p`
   ${variants}
 `;
 
+Text.displayName = 'Text';
+
 Text.defaultProps = {
   variant: 'regular'
 };

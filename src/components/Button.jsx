@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import { variant } from 'styled-system';
 
+import ButtonBase from './ButtonBase';
+
 const variants = variant({
   variants: {
     default: {
@@ -93,40 +95,16 @@ const variants = variant({
   }
 });
 
-const Button = styled.button`
-  display: inline-block;
-
-  cursor: pointer;
-  touch-action: manipulation;
-
-  margin: 0px;
-  padding: 16px 24px;
-
-  outline: none;
-  border-radius: 4px;
-
-  font-size: 16px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: center;
-
+const Button = styled(ButtonBase)`
   color: ${props => props.color};
   background-color: ${props => props.backgroundColor};
   border: 1px solid ${props => props.borderColor};
-
-  transition: 220ms all ease-in-out;
 
   &:hover {
     background-color: ${props => props.backgroundColor};
   }
 
   &:disabled {
-    cursor: unset;
-    touch-action: unset;
-
     color: ${props => props.color};
     background-color: ${props => props.backgroundColor};
 
@@ -135,6 +113,8 @@ const Button = styled.button`
 
   ${variants}
 `;
+
+Button.displayName = 'Button';
 
 Button.defaultProps = {
   variant: 'default'
