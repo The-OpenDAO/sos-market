@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import 'styles/components/_input.scss';
+import styles from 'styles/components/input.module.scss';
 
 const variants = {
   default: 'default',
@@ -9,20 +9,29 @@ const variants = {
   success: 'success'
 };
 
-function Input({ variant, label, name, placeholder, description, disabled }) {
+function Input({
+  variant,
+  label,
+  name,
+  placeholder,
+  description,
+  disabled,
+  ...props
+}) {
   return (
-    <div className="input__group">
-      <label htmlFor={name} className="input__label">
+    <div className={styles.group}>
+      <label htmlFor={name} className={styles.label}>
         {label}
       </label>
       <input
-        className={variants[variant] || variants.default}
+        className={styles[variants[variant]] || styles.default}
         name={name}
         placeholder={placeholder}
         disabled={disabled}
+        {...props}
       />
       {description ? (
-        <span className="input__description">{description}</span>
+        <span className={styles.description}>{description}</span>
       ) : null}
     </div>
   );
