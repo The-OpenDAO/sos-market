@@ -1,4 +1,4 @@
 import Button from './Button';
-import Text from './Text';
+import Text from './text';
 
 export { Button, Text };
