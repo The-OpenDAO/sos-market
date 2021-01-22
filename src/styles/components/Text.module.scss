@@ -1,0 +1,31 @@
+.regular {
+  @include font-weight(regular);
+}
+
+.medium {
+  @include font-weight(medium);
+}
+
+.bold {
+  @include font-weight(bold);
+}
+
+.lg {
+  @include font-weight(regular);
+  font-size: large;
+}
+
+.lg-bold {
+  @extend .lg;
+  @include font-weight(bold);
+}
+
+.xs {
+  @include font-weight(regular);
+  font-size: x-small;
+}
+
+.xs-bold {
+  @extend .xs;
+  @include font-weight(bold);
+}

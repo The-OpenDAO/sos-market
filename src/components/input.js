@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from 'styles/components/input.module.scss';
+import styles from 'styles/components/Input.module.scss';
 
 const variants = {
   default: 'default',
