@@ -5,7 +5,10 @@ module.exports = {
     {
       plugin: sassResourcesLoader,
       options: {
-        resources: ['./src/styles/utils/_mixins.scss']
+        resources: [
+          './src/styles/base/_colors.scss',
+          './src/styles/utils/_mixins.scss'
+        ]
       }
     }
   ]
