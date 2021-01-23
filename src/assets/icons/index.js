@@ -1,3 +1,5 @@
 import PolkamarketsLogo from './PolkamarketsLogo';
 
-export default PolkamarketsLogo;
+import SearchIcon from './SearchIcon';
+
+export { PolkamarketsLogo, SearchIcon };

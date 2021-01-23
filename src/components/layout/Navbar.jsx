@@ -2,7 +2,9 @@ import React from 'react';
 
 import styles from 'styles/layout/Navbar.module.scss';
 
-import PolkamarketsLogo from 'assets/icons';
+import { PolkamarketsLogo } from 'assets/icons';
+
+import { SearchBar } from 'components/base';
 
 function Navbar() {
   return (
@@ -10,6 +12,7 @@ function Navbar() {
       <div className={styles.logo}>
         <PolkamarketsLogo />
       </div>
+      <SearchBar />
     </div>
   );
 }
