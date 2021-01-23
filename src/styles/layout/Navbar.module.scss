@@ -11,3 +11,41 @@
 .logo {
   margin-right: 24px;
 }
+
+.header {
+  padding: 0px 24px;
+}
+
+.menu {
+  display: inline;
+  padding: 0px;
+
+  > li {
+    display: inline;
+  }
+}
+
+.item {
+  padding: 0px 12px;
+  text-decoration: none;
+
+  color: $gray-500;
+  @include font-weight(bold);
+
+  transition: color 0.2s linear 0s;
+
+  &:hover {
+    color: $gray-900;
+  }
+}
+
+.separator {
+  display: inline;
+  flex: 0 0 0px;
+  height: 24px;
+
+  margin: 0px 12px;
+
+  align-self: center;
+  border-right: 1px solid $gray-300;
+}
