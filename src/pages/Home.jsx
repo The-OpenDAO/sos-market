@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Navbar from 'components/layout';
+import { Navbar } from 'components';
 
 function Home() {
   return (
