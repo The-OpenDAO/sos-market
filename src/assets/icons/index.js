@@ -1,5 +1,5 @@
 import PolkamarketsLogo from './PolkamarketsLogo';
-
 import SearchIcon from './SearchIcon';
+import MetaMaskIcon from './MetaMaskIcon';
 
-export { PolkamarketsLogo, SearchIcon };
+export { PolkamarketsLogo, SearchIcon, MetaMaskIcon };

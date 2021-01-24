@@ -1,134 +1,53 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/macro';
-import { variant } from 'styled-system';
+import cx from 'classnames';
 
-import ButtonBase from './ButtonBase';
+import styles from 'styles/components/Button.module.scss';
 
-const variants = variant({
-  variants: {
-    default: {
-      color: 'gray.900',
-      backgroundColor: 'white',
-      borderColor: 'gray.300',
-      '&:hover': {
-        backgroundColor: 'gray.300'
-      },
-      '&:disabled': {
-        color: 'gray.500',
-        backgroundColor: 'white',
-        borderColor: 'gray.500'
-      }
-    },
-    primary: {
-      color: 'white',
-      backgroundColor: 'primary.500',
-      borderColor: 'primary.500',
-      '&:hover': {
-        backgroundColor: 'primary.900',
-        borderColor: 'primary.900'
-      },
-      '&:disabled': {
-        backgroundColor: 'primary.400',
-        borderColor: 'primary.400'
-      }
-    },
-    secondary: {
-      color: 'primary.500',
-      backgroundColor: 'primary.100',
-      borderColor: 'primary.100',
-      '&:hover': {
-        color: 'primary.500',
-        backgroundColor: 'primary.300',
-        borderColor: 'primary.300'
-      },
-      '&:disabled': {
-        color: 'primary.200',
-        backgroundColor: 'primary.100',
-        borderColor: 'primary.100'
-      }
-    },
-    success: {
-      color: 'white',
-      backgroundColor: 'success.500',
-      borderColor: 'success.500',
-      '&:hover': {
-        color: 'white',
-        backgroundColor: 'success.900',
-        borderColor: 'success.900'
-      },
-      '&:disabled': {
-        color: 'success.200',
-        backgroundColor: 'success.300',
-        borderColor: 'success.300'
-      }
-    },
-    warning: {
-      color: 'white',
-      backgroundColor: 'warning.500',
-      borderColor: 'warning.500',
-      '&:hover': {
-        color: 'white',
-        backgroundColor: 'warning.900',
-        borderColor: 'warning.900'
-      },
-      '&:disabled': {
-        color: 'warning.200',
-        backgroundColor: 'warning.300',
-        borderColor: 'warning.300'
-      }
-    },
-    danger: {
-      color: 'white',
-      backgroundColor: 'danger.500',
-      borderColor: 'danger.500',
-      '&:hover': {
-        color: 'white',
-        backgroundColor: 'danger.900',
-        borderColor: 'danger.900'
-      },
-      '&:disabled': {
-        color: 'danger.200',
-        backgroundColor: 'danger.300',
-        borderColor: 'danger.300'
-      }
-    }
-  }
-});
+const variants = {
+  default: 'default',
+  primary: 'primary',
+  secondary: 'secondary',
+  success: 'success',
+  warning: 'warning',
+  danger: 'danger'
+};
 
-const Button = styled(ButtonBase)`
-  color: ${props => props.color};
-  background-color: ${props => props.backgroundColor};
-  border: 1px solid ${props => props.borderColor};
+const positions = {
+  left: 'left',
+  right: 'right'
+};
 
-  &:hover {
-    background-color: ${props => props.backgroundColor};
-  }
-
-  &:disabled {
-    color: ${props => props.color};
-    background-color: ${props => props.backgroundColor};
-
-    border: 1px solid ${props => props.borderColor};
-  }
-
-  ${variants}
-`;
-
-Button.displayName = 'Button';
+function Button({ variant, disabled, icon, iconPosition, children }) {
+  return (
+    <button
+      type="button"
+      className={styles[variants[variant]] || styles[variants.default]}
+      disabled={disabled}
+    >
+      {children}
+      {icon ? (
+        <div className={cx(styles.icon, styles[positions[iconPosition]])}>
+          {icon}
+        </div>
+      ) : null}
+    </button>
+  );
+}
 
 Button.defaultProps = {
-  variant: 'default'
+  variant: variants.default,
+  disabled: false,
+  icon: undefined,
+  iconPosition: 'right'
 };
 
 Button.propTypes = {
-  variant: PropTypes.oneOf([
-    'default',
-    'primary',
-    'secondary',
-    'success',
-    'warning',
-    'danger'
-  ])
+  children: PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(Object.values(variants)),
+  disabled: PropTypes.bool,
+  icon: PropTypes.element,
+  iconPosition: PropTypes.oneOf(Object.values(positions))
 };
 
 export default Button;

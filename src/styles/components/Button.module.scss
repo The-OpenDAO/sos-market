@@ -26,17 +26,19 @@
     cursor: unset;
     touch-action: unset;
   }
+}
 
-  &__icon {
-    &.left {
-      margin-right: 5px;
-      float: left;
-    }
+.icon {
+  max-height: 24px;
 
-    &.right {
-      margin-left: 5px;
-      float: right;
-    }
+  &.left {
+    margin-right: 12px;
+    float: left;
+  }
+
+  &.right {
+    margin-left: 12px;
+    float: right;
   }
 }
 

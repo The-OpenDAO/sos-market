@@ -1,11 +1,10 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import styles from 'styles/layout/Navbar.module.scss';
 
-import { PolkamarketsLogo } from 'assets/icons';
-
-import { SearchBar } from 'components/base';
-import { NavLink } from 'react-router-dom';
+import { Button, SearchBar } from 'components/base';
+import { PolkamarketsLogo, MetaMaskIcon } from 'assets/icons';
 
 function Navbar() {
   return (
@@ -41,6 +40,9 @@ function Navbar() {
           </ul>
         </ul>
       </div>
+      <Button variant="default" icon={<MetaMaskIcon />} iconPosition="left">
+        Connect Wallet
+      </Button>
     </div>
   );
 }
