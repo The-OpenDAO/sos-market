@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from 'styles/components/SearchBar.module.scss';
-
 import { SearchIcon } from 'assets/icons';
+
+import styles from './SearchBar.module.scss';
 
 function SearchBar() {
   return (

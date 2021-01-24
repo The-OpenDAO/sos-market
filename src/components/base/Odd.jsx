@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
-import Row from 'styles/mixins/Row';
 import Text from './Text';
 
 const Container = styled.button`

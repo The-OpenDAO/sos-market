@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import styles from 'styles/layout/Navbar.module.scss';
-
 import { Button, SearchBar } from 'components/base';
 import { PolkamarketsLogo, MetaMaskIcon, SettingsIcon } from 'assets/icons';
+
+import styles from './Navbar.module.scss';
 
 function Navbar() {
   return (

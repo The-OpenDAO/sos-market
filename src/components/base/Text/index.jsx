@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from 'styles/components/Text.module.scss';
+import styles from './Text.module.scss';
 
 const tags = Object.freeze({
   h1: 'h1',
