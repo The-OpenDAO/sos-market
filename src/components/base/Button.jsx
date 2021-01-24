@@ -14,6 +14,7 @@ const variants = {
 };
 
 const positions = {
+  center: 'center',
   left: 'left',
   right: 'right'
 };

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import styles from 'styles/layout/Navbar.module.scss';
 
 import { Button, SearchBar } from 'components/base';
-import { PolkamarketsLogo, MetaMaskIcon } from 'assets/icons';
+import { PolkamarketsLogo, MetaMaskIcon, SettingsIcon } from 'assets/icons';
 
 function Navbar() {
   return (
@@ -43,6 +43,11 @@ function Navbar() {
       <Button variant="default" icon={<MetaMaskIcon />} iconPosition="left">
         Connect Wallet
       </Button>
+      <Button
+        variant="secondary"
+        icon={<SettingsIcon />}
+        iconPosition="center"
+      />
     </div>
   );
 }

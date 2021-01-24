@@ -31,6 +31,14 @@
 .icon {
   max-height: 24px;
 
+  > svg {
+    fill: $primary-500;
+  }
+
+  &.center {
+    align-self: center;
+  }
+
   &.left {
     margin-right: 12px;
     float: left;
