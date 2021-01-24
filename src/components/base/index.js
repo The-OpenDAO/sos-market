@@ -1,5 +1,5 @@
 import Button from './Button';
-import Text from './text';
+import Text from './Text';
 import Input from './Input';
 import SearchBar from './SearchBar';
 

@@ -1,65 +1,32 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/macro';
-import { variant, compose, space, color, typography } from 'styled-system';
 
-const variants = variant({
-  variants: {
-    regular: {
-      fontFamily: 'primary',
-      fontWeight: 'regular'
-    },
-    medium: {
-      fontFamily: 'primary',
-      fontWeight: 'medium'
-    },
-    bold: {
-      fontFamily: 'primary',
-      fontWeight: 'bold'
-    },
-    lg: {
-      fontFamily: 'primary',
-      fontWeight: 'regular',
-      fontSize: 3
-    },
-    lgBold: {
-      fontFamily: 'primary',
-      fontWeight: 'bold',
-      fontSize: 3
-    },
-    xs: {
-      fontFamily: 'primary',
-      fontWeight: 'regular',
-      fontSize: 1
-    },
-    xsBold: {
-      fontFamily: 'primary',
-      fontWeight: 'bold',
-      fontSize: 1
-    }
-  }
+import styles from 'styles/components/Text.module.scss';
+
+const tags = Object.freeze({
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  p: 'p',
+  label: 'label'
 });
 
-const Text = styled.p`
-  ${compose(space, color, typography)}
-  ${variants}
-`;
+function Text({ children, as, variant }) {
+  const Tag = tags[as] || 'p';
 
-Text.displayName = 'Text';
+  return <Tag className={styles[variant] || styles.regular}>{children}</Tag>;
+}
 
 Text.defaultProps = {
   variant: 'regular'
 };
 
 Text.propTypes = {
-  variant: PropTypes.oneOf([
-    'regular',
-    'medium',
-    'bold',
-    'lg',
-    'lgBold',
-    'xs',
-    'xsBold'
-  ])
+  children: PropTypes.string.isRequired,
+  as: PropTypes.string.isRequired,
+  variant: PropTypes.string
 };
-
 export default Text;
