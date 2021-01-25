@@ -2,6 +2,7 @@ import React from 'react';
 
 import NavBar from 'components/NavBar';
 import SideBar from 'components/SideBar';
+import LandingHeader from 'components/LandingHeader';
 
 import styles from './Layout.module.scss';
 
@@ -11,6 +12,7 @@ function Layout({ children }) {
       <header className={styles.header}>
         <NavBar />
       </header>
+      <LandingHeader />
       <aside>
         <SideBar />
       </aside>

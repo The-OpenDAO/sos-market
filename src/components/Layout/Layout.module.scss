@@ -1,7 +1,7 @@
 .wrapper {
   height: 100%;
   display: grid;
-  grid-template-rows: 82px 1fr;
+  grid-template-rows: 82px 184px 1fr;
   grid-template-columns: 200px 1fr;
 }
 
@@ -12,6 +12,6 @@
 }
 
 .main {
-  grid-row: 2;
+  grid-row: 3;
   grid-column: 2;
 }

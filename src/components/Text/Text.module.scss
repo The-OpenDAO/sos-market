@@ -19,6 +19,11 @@
   font-size: large;
 }
 
+.lg-medium {
+  @extend .lg;
+  @include font-weight(medium);
+}
+
 .lg-bold {
   @extend .lg;
   @include font-weight(bold);

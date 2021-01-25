@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { PolkamarketsLogo, MetaMaskIcon, SettingsIcon } from 'assets/icons';
 
 import Button from '../Button';
-import SearchBar from '../SearchBar';
 
 import styles from './NavBar.module.scss';
 
@@ -14,7 +13,6 @@ function NavBar() {
       <div className={styles.logo}>
         <PolkamarketsLogo />
       </div>
-      <SearchBar />
       <div className={styles.header}>
         <ul className={styles.menu}>
           <li>

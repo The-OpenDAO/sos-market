@@ -7,6 +7,7 @@ import Layout from './Layout';
 import Categories from './Categories';
 import Label from './Label';
 import SideBar from './SideBar';
+import LandingHeader from './LandingHeader';
 
 export {
   Button,
@@ -17,5 +18,6 @@ export {
   Layout,
   Categories,
   Label,
-  SideBar
+  SideBar,
+  LandingHeader
 };
