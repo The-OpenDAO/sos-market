@@ -4,5 +4,6 @@ import Input from './Input';
 import Navbar from './Navbar';
 import SearchBar from './SearchBar';
 import Layout from './Layout';
+import Categories from './Categories';
 
-export { Button, Text, Input, Navbar, SearchBar, Layout };
+export { Button, Text, Input, Navbar, SearchBar, Layout, Categories };

@@ -29,3 +29,12 @@
   @extend .xs;
   @include font-weight(bold);
 }
+
+.xs-semibold {
+  @extend .xs;
+  @include font-weight(semibold);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

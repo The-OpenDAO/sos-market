@@ -11,7 +11,8 @@ const tags = Object.freeze({
   h5: 'h5',
   h6: 'h6',
   p: 'p',
-  label: 'label'
+  label: 'label',
+  strong: 'strong'
 });
 
 function Text({ children, as, variant }) {

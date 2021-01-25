@@ -10,7 +10,7 @@ import styles from './Navbar.module.scss';
 
 function Navbar() {
   return (
-    <div className={styles.container}>
+    <nav className={styles.container}>
       <div className={styles.logo}>
         <PolkamarketsLogo />
       </div>
@@ -50,7 +50,7 @@ function Navbar() {
         icon={<SettingsIcon />}
         iconPosition="center"
       />
-    </div>
+    </nav>
   );
 }
 
