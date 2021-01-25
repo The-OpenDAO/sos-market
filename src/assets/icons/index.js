@@ -8,6 +8,11 @@ import WhiteHouseIcon from './WhiteHouseIcon';
 import PopcornIcon from './PopcornIcon';
 import ChartGrowthIcon from './ChartGrowthIcon';
 import BitcoinIcon from './BitcoinIcon';
+import AlienIcon from './AlienIcon';
+import SunFogIcon from './SunFogIcon';
+import UsersIcon from './UsersIcon';
+import TwitterIcon from './TwitterIcon';
+import LaptopIcon from './LaptopIcon';
 
 export {
   PolkamarketsLogo,
@@ -19,5 +24,10 @@ export {
   WhiteHouseIcon,
   PopcornIcon,
   ChartGrowthIcon,
-  BitcoinIcon
+  BitcoinIcon,
+  AlienIcon,
+  SunFogIcon,
+  UsersIcon,
+  TwitterIcon,
+  LaptopIcon
 };

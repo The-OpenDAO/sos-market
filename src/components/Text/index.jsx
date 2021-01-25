@@ -27,7 +27,8 @@ Text.defaultProps = {
 };
 
 Text.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
   as: PropTypes.string.isRequired,
   variant: PropTypes.string
 };

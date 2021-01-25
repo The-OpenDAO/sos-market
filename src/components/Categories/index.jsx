@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import { NavLink } from 'react-router-dom';
 
-import Label from '../Label';
+import Label from 'components/Label';
 
 import styles from './Categories.module.scss';
 

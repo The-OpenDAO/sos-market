@@ -6,9 +6,9 @@ import { PolkamarketsLogo, MetaMaskIcon, SettingsIcon } from 'assets/icons';
 import Button from '../Button';
 import SearchBar from '../SearchBar';
 
-import styles from './Navbar.module.scss';
+import styles from './NavBar.module.scss';
 
-function Navbar() {
+function NavBar() {
   return (
     <nav className={styles.container}>
       <div className={styles.logo}>
@@ -54,4 +54,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavBar;
