@@ -1,0 +1,80 @@
+.content {
+  width: 100%;
+  max-width: 1600px;
+
+  padding: 33px;
+  margin: 0 auto;
+
+  background-color: $white;
+
+  > h1 {
+    font-size: 24px;
+    color: $gray-900;
+  }
+}
+
+.markets {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(175px, 1fr));
+  grid-gap: 24px;
+
+  margin: 16px 0px;
+
+  :nth-child(1):not(p) {
+    background: rgb(255, 223, 170);
+    background: linear-gradient(
+      42deg,
+      rgba(255, 223, 170, 1) 0%,
+      rgba(255, 156, 175, 1) 29%,
+      rgba(255, 192, 134, 1) 100%
+    );
+  }
+
+  :nth-child(2) {
+    background: rgb(255, 220, 242);
+    background: linear-gradient(
+      42deg,
+      rgba(255, 220, 242, 1) 0%,
+      rgba(247, 180, 255, 1) 29%,
+      rgba(134, 178, 255, 1) 100%
+    );
+  }
+
+  :nth-child(3) {
+    background: rgb(177, 236, 255);
+    background: linear-gradient(
+      42deg,
+      rgba(177, 236, 255, 1) 0%,
+      rgba(133, 182, 255, 1) 29%,
+      rgba(133, 147, 255, 1) 100%
+    );
+  }
+
+  :nth-child(4) {
+    background: rgb(255, 129, 234);
+    background: linear-gradient(
+      42deg,
+      rgba(255, 129, 234, 1) 0%,
+      rgba(248, 129, 183, 1) 29%,
+      rgba(181, 197, 255, 1) 100%
+    );
+  }
+}
+
+.market {
+  cursor: pointer;
+  touch-action: manipulation;
+
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+
+  height: 112px;
+  padding: 20px;
+
+  border-radius: 8px;
+
+  > p {
+    font-size: 20px;
+    color: $white;
+  }
+}
