@@ -1,6 +1,10 @@
 .container {
+  position: fixed;
+  z-index: 10;
+
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   width: 100%;
 
@@ -48,4 +52,11 @@
 
   align-self: center;
   border-right: 1px solid $gray-300;
+}
+
+.actions {
+  display: inline-flex;
+  gap: 16px;
+
+  padding: 0px 24px;
 }

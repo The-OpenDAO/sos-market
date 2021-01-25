@@ -39,15 +39,17 @@ function NavBar() {
             </li>
           </ul>
         </ul>
+        <div className={styles.actions}>
+          <Button variant="default" icon={<MetaMaskIcon />} iconPosition="left">
+            Connect Wallet
+          </Button>
+          <Button
+            variant="default"
+            icon={<SettingsIcon />}
+            iconPosition="center"
+          />
+        </div>
       </div>
-      <Button variant="default" icon={<MetaMaskIcon />} iconPosition="left">
-        Connect Wallet
-      </Button>
-      <Button
-        variant="secondary"
-        icon={<SettingsIcon />}
-        iconPosition="center"
-      />
     </nav>
   );
 }
