@@ -1,0 +1,86 @@
+@import 'styles/base/colors';
+
+.label {
+  display: inline-block;
+
+  margin: 0px;
+  padding: 4px 10px;
+
+  outline: none;
+  border-radius: 16px;
+
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+
+  &__icon {
+    &.left {
+      margin-right: 5px;
+      float: left;
+    }
+
+    &.right {
+      margin-left: 5px;
+      float: right;
+    }
+  }
+}
+
+.default {
+  @extend .label;
+
+  color: $gray-900;
+  background-color: $gray-100;
+
+  > label {
+    color: $gray-900;
+  }
+}
+
+.primary {
+  @extend .label;
+
+  color: $white;
+  background-color: $primary-500;
+
+  > label {
+    color: $white;
+  }
+}
+
+.success {
+  @extend .label;
+
+  color: $success-500;
+  background-color: $success-100;
+
+  > label {
+    color: $success-500;
+  }
+}
+
+.warning {
+  @extend .label;
+
+  color: $warning-500;
+  background-color: $warning-100;
+
+  > label {
+    color: $warning-500;
+  }
+}
+
+.danger {
+  @extend .label;
+
+  color: $danger-500;
+  background-color: $danger-100;
+
+  > label {
+    color: $danger-500;
+  }
+}

@@ -1,24 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+import cx from 'classnames';
 
-import Text from '../Text';
+import { NavLink } from 'react-router-dom';
+
+import Label from '../Label';
 
 import styles from './Categories.module.scss';
 
 function Categories({ title, items }) {
   return (
     <div className={styles.container}>
-      <h6 className={styles.title}>{title}</h6>
-      <ul className={styles.list}>
+      <label htmlFor={title} className={styles.title}>
+        {title}
+      </label>
+      <ul name={title} className={styles.list}>
         {!isEmpty(items) &&
           items.map(item => (
-            <li key={item.key} className={styles.item}>
-              {item.icon}
-              <Text as="p" variant="xs-semibold">
+            <li key={item.name} className={styles.item}>
+              <NavLink
+                className={cx(styles.item, item.active && styles.active)}
+                to={item.name.toLowerCase()}
+              >
+                {item.icon}
                 {item.name}
-              </Text>
-              {item.amount}
+              </NavLink>
+              <Label variant={item.active ? 'primary' : 'default'}>
+                {item.amount}
+              </Label>
             </li>
           ))}
       </ul>
