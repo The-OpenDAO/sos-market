@@ -52,7 +52,9 @@ function Home() {
       <br />
       <br />
 
-      <MarketCard items={markets} />
+      {markets.map(market => (
+        <MarketCard market={market} />
+      ))}
     </div>
   );
 }

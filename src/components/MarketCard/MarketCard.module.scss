@@ -1,19 +1,32 @@
 .container {
+  display: grid;
   grid-template-rows: auto 3.9rem;
   grid-template-columns: 1fr;
 }
 
 .content {
+  display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 8rem 1fr;
+  grid-template-columns: 5.6rem 1fr;
 
-  padding: 2.4rem 2.4rem 2.4rem 1.2rem;
+  padding: 2.4rem 2.4rem 1.2rem 2.4rem;
 
   background-color: $white;
 
   border: 0.1rem solid $gray-200;
   border-bottom: 0.05rem solid $gray-200;
   border-radius: 0.8rem 0.8rem 0rem 0rem;
+
+  > img {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .footer {
