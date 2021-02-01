@@ -1,33 +1,33 @@
-import PolkamarketsLogo from './PolkamarketsLogo';
-import SearchIcon from './SearchIcon';
+import AlienIcon from './AlienIcon';
+import BitcoinIcon from './BitcoinIcon';
+import ChartGrowthIcon from './ChartGrowthIcon';
+import GamingConsoleIcon from './GamingConsoleIcon';
+import LaptopIcon from './LaptopIcon';
 import MetaMaskIcon from './MetaMaskIcon';
+import PolkamarketsLogo from './PolkamarketsLogo';
+import PopcornIcon from './PopcornIcon';
+import SearchIcon from './SearchIcon';
 import SettingsIcon from './SettingsIcon';
 import SoccerBallIcon from './SoccerBallIcon';
-import GamingConsoleIcon from './GamingConsoleIcon';
-import WhiteHouseIcon from './WhiteHouseIcon';
-import PopcornIcon from './PopcornIcon';
-import ChartGrowthIcon from './ChartGrowthIcon';
-import BitcoinIcon from './BitcoinIcon';
-import AlienIcon from './AlienIcon';
 import SunFogIcon from './SunFogIcon';
-import UsersIcon from './UsersIcon';
 import TwitterIcon from './TwitterIcon';
-import LaptopIcon from './LaptopIcon';
+import UsersIcon from './UsersIcon';
+import WhiteHouseIcon from './WhiteHouseIcon';
 
 export {
-  PolkamarketsLogo,
-  SearchIcon,
+  AlienIcon,
+  BitcoinIcon,
+  ChartGrowthIcon,
+  GamingConsoleIcon,
+  LaptopIcon,
   MetaMaskIcon,
+  PolkamarketsLogo,
+  PopcornIcon,
+  SearchIcon,
   SettingsIcon,
   SoccerBallIcon,
-  GamingConsoleIcon,
-  WhiteHouseIcon,
-  PopcornIcon,
-  ChartGrowthIcon,
-  BitcoinIcon,
-  AlienIcon,
   SunFogIcon,
-  UsersIcon,
   TwitterIcon,
-  LaptopIcon
+  UsersIcon,
+  WhiteHouseIcon
 };
