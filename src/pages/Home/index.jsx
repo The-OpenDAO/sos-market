@@ -4,7 +4,7 @@ import { Text, Tabs, Select, MarketList } from 'components';
 
 import styles from './Home.module.scss';
 
-import { tabs, markets } from './data';
+import { tabs, markets } from './mock';
 
 function Home() {
   return (
