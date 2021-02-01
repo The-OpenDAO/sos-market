@@ -1,8 +1,14 @@
 import React from 'react';
 
-import { Text } from 'components';
+import { Text, Tabs } from 'components';
 
 import styles from './Home.module.scss';
+
+const items = [
+  { name: 'Open', content: <h1>Open</h1> },
+  { name: 'In-Reporting', content: <h1>In-reporting</h1> },
+  { name: 'Resolved', content: <h1>Resolved</h1> }
+];
 
 function Home() {
   return (
@@ -33,6 +39,8 @@ function Home() {
           </Text>
         </li>
       </ul>
+
+      <Tabs items={items} />
     </div>
   );
 }

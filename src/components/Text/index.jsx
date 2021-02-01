@@ -32,4 +32,5 @@ Text.propTypes = {
   as: PropTypes.string.isRequired,
   variant: PropTypes.string
 };
+
 export default Text;
