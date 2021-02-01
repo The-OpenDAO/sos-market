@@ -41,7 +41,7 @@ function NavBar() {
         </ul>
         <div className={styles.actions}>
           <Button
-            variant="default"
+            variant="secondary"
             icon={<MetaMaskIcon />}
             iconPosition="left"
             aria-label="Connect Wallet"
