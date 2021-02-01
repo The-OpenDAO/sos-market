@@ -1,0 +1,19 @@
+.container {
+  > a {
+    color: $primary-300;
+
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    @include font-weight(bold);
+  }
+
+  > span {
+    color: $gray-700;
+
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    @include font-weight(bold);
+  }
+}

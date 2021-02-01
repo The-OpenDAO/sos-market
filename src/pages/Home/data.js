@@ -12,7 +12,7 @@ const markets = [
     label: {
       enabled: true,
       title: 'Trending',
-      variant: 'danger'
+      variant: 'pink'
     },
     imageUrl: 'images/image01.png',
     description:

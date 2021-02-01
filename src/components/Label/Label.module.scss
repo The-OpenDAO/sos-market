@@ -85,3 +85,14 @@
     color: $danger-500;
   }
 }
+
+.pink {
+  @extend .label;
+
+  color: $pink-500;
+  background-color: $pink-100;
+
+  > label {
+    color: $pink-500;
+  }
+}

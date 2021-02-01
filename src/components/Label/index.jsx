@@ -10,7 +10,8 @@ const variants = {
   primary: 'primary',
   success: 'success',
   warning: 'warning',
-  danger: 'danger'
+  danger: 'danger',
+  pink: 'pink'
 };
 
 const positions = {

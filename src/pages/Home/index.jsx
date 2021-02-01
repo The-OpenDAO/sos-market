@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Text, Tabs, Select, MarketCard } from 'components';
+import { Text, Tabs, Select, MarketList } from 'components';
 
 import styles from './Home.module.scss';
 
@@ -49,12 +49,7 @@ function Home() {
         </div>
       </div>
 
-      <br />
-      <br />
-
-      {markets.map(market => (
-        <MarketCard market={market} />
-      ))}
+      <MarketList markets={markets} />
     </div>
   );
 }
