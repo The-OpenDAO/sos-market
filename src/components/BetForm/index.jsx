@@ -1,8 +1,12 @@
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
 
 import { CloseIcon } from 'assets/icons';
 
 import Text from '../Text';
+import Odd from '../Odd';
+
+import odds from './mock';
 
 import styles from './BetForm.module.scss';
 
@@ -40,13 +44,30 @@ function BetForm() {
           </li>
           <li className={styles.item}>
             <Text as="label" variant="xs-medium">
-              Market ends on
+              Liquidity
             </Text>
             <Text as="strong" variant="semibold">
-              Feb 1st, 2021
+              {23}{' '}
+              <Text as="span" variant="semibold">
+                DOT
+              </Text>
             </Text>
           </li>
         </ul>
+        <section className={styles.odds}>
+          <Text as="p" variant="lg-bold">
+            Who will be in 1st place in the Liga NOS by April 15th?
+          </Text>
+
+          <ul>
+            {!isEmpty(odds) &&
+              odds.map(odd => (
+                <li key={odd.id}>
+                  <Odd odd={odd} />
+                </li>
+              ))}
+          </ul>
+        </section>
       </section>
     </div>
   );

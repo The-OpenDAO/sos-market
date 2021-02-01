@@ -9,6 +9,7 @@ import Layout from './Layout';
 import MarketCard from './MarketCard';
 import MarketList from './MarketList';
 import NavBar from './NavBar';
+import Odd from './Odd';
 import SearchBar from './SearchBar';
 import Select from './Select';
 import SideBar from './SideBar';
@@ -27,6 +28,7 @@ export {
   MarketCard,
   MarketList,
   NavBar,
+  Odd,
   SearchBar,
   Select,
   SideBar,

@@ -22,6 +22,7 @@
 
   > h1 {
     font-size: 1.6rem;
+    color: $gray-900;
   }
 
   > button {
@@ -84,5 +85,13 @@
     > span {
       color: $gray-500;
     }
+  }
+}
+
+.odds {
+  > p {
+    font-family: 'Gilroy Bold', sans-serif;
+    font-size: 2rem;
+    margin: 0.8rem 0rem;
   }
 }
