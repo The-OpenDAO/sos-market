@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Text, Tabs } from 'components';
+import { Text, Tabs, Select } from 'components';
 
 import styles from './Home.module.scss';
 
 const items = [
-  { name: 'Open', content: <h1>Open</h1> },
-  { name: 'In-Reporting', content: <h1>In-reporting</h1> },
-  { name: 'Resolved', content: <h1>Resolved</h1> }
+  { name: 'Open', content: null },
+  { name: 'In-Reporting', content: null },
+  { name: 'Resolved', content: null }
 ];
 
 function Home() {
@@ -40,7 +40,18 @@ function Home() {
         </li>
       </ul>
 
-      <Tabs items={items} />
+      <div className={styles.navigation}>
+        <Tabs items={items} />
+
+        <div className={styles.filters}>
+          <Select label="Sub-Category:" name="Sub-Category" disabled>
+            <option value="USA">USA</option>
+          </Select>
+          <Select label="Sort by:" name="Sort by" disabled>
+            <option value="Most traded">Most traded</option>
+          </Select>
+        </div>
+      </div>
     </div>
   );
 }

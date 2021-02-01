@@ -9,6 +9,7 @@ import Label from './Label';
 import SideBar from './SideBar';
 import LandingHeader from './LandingHeader';
 import Tabs from './Tabs';
+import Select from './Select';
 
 export {
   Button,
@@ -21,5 +22,6 @@ export {
   Label,
   SideBar,
   LandingHeader,
-  Tabs
+  Tabs,
+  Select
 };

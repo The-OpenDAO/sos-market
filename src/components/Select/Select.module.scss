@@ -1,0 +1,66 @@
+@import 'styles/base/colors';
+
+.select {
+  width: fit-content;
+
+  margin: 0rem;
+
+  outline: none;
+  border: none;
+
+  font-size: 1.4rem;
+  @include font-weight(semibold);
+
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+
+  &::placeholder {
+    color: $gray-500;
+  }
+}
+
+.default {
+  @extend .select;
+  color: $primary-700;
+  background-color: unset;
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  gap: 0.1rem;
+
+  height: 3.8rem; //Modify this later
+  width: fit-content;
+  padding: 0.8rem 0rem;
+}
+
+.label {
+  font-size: 1.4rem;
+  @include font-weight(semibold);
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+
+  color: $gray-500;
+}
+
+.description {
+  font-size: 11px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+
+  color: $gray-500;
+}
