@@ -14,4 +14,4 @@ function BitcoinIcon() {
   );
 }
 
-export default BitcoinIcon;
+export default React.memo(BitcoinIcon);

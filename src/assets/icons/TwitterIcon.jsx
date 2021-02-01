@@ -14,4 +14,4 @@ function TwitterIcon() {
   );
 }
 
-export default TwitterIcon;
+export default React.memo(TwitterIcon);

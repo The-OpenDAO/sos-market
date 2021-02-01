@@ -21,4 +21,4 @@ function PopcornIcon() {
   );
 }
 
-export default PopcornIcon;
+export default React.memo(PopcornIcon);

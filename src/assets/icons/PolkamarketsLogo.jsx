@@ -25,4 +25,4 @@ function PolkamarketsLogo() {
   );
 }
 
-export default PolkamarketsLogo;
+export default React.memo(PolkamarketsLogo);

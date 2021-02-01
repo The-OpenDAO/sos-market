@@ -14,4 +14,4 @@ function WhiteHouseIcon() {
   );
 }
 
-export default WhiteHouseIcon;
+export default React.memo(WhiteHouseIcon);

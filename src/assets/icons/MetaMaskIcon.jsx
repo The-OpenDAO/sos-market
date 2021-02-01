@@ -97,4 +97,4 @@ function MetaMaskIcon() {
   );
 }
 
-export default MetaMaskIcon;
+export default React.memo(MetaMaskIcon);

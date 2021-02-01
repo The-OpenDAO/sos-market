@@ -14,4 +14,4 @@ function AlienIcon() {
   );
 }
 
-export default AlienIcon;
+export default React.memo(AlienIcon);

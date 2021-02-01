@@ -15,4 +15,4 @@ function ChartGrowthIcon() {
   );
 }
 
-export default ChartGrowthIcon;
+export default React.memo(ChartGrowthIcon);

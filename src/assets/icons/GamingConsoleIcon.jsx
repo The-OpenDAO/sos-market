@@ -22,4 +22,4 @@ function GamingConsole() {
   );
 }
 
-export default GamingConsole;
+export default React.memo(GamingConsole);

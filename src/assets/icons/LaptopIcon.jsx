@@ -21,4 +21,4 @@ function LaptopIcon() {
   );
 }
 
-export default LaptopIcon;
+export default React.memo(LaptopIcon);

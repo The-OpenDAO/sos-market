@@ -15,4 +15,4 @@ function SoccerBallIcon() {
   );
 }
 
-export default SoccerBallIcon;
+export default React.memo(SoccerBallIcon);

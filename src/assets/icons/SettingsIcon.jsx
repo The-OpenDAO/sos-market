@@ -14,4 +14,4 @@ function SettingsIcon() {
   );
 }
 
-export default SettingsIcon;
+export default React.memo(SettingsIcon);
