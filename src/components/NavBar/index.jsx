@@ -40,13 +40,19 @@ function NavBar() {
           </ul>
         </ul>
         <div className={styles.actions}>
-          <Button variant="default" icon={<MetaMaskIcon />} iconPosition="left">
+          <Button
+            variant="default"
+            icon={<MetaMaskIcon />}
+            iconPosition="left"
+            aria-label="Connect Wallet"
+          >
             Connect Wallet
           </Button>
           <Button
             variant="default"
             icon={<SettingsIcon />}
             iconPosition="center"
+            aria-label="Settings"
           />
         </div>
       </div>

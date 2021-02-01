@@ -19,12 +19,13 @@ const positions = {
   right: 'right'
 };
 
-function Button({ variant, disabled, icon, iconPosition, children }) {
+function Button({ variant, disabled, icon, iconPosition, children, ...props }) {
   return (
     <button
       type="button"
       className={styles[variants[variant]] || styles[variants.default]}
       disabled={disabled}
+      {...props}
     >
       {children}
       {icon ? (
