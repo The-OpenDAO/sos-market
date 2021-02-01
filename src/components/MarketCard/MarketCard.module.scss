@@ -1,0 +1,26 @@
+.container {
+  grid-template-rows: auto 3.9rem;
+  grid-template-columns: 1fr;
+}
+
+.content {
+  grid-template-rows: auto;
+  grid-template-columns: 8rem 1fr;
+
+  padding: 2.4rem 2.4rem 2.4rem 1.2rem;
+
+  background-color: $white;
+
+  border: 0.1rem solid $gray-200;
+  border-bottom: 0.05rem solid $gray-200;
+  border-radius: 0.8rem 0.8rem 0rem 0rem;
+}
+
+.footer {
+  padding: 2.4rem 1.2rem;
+  background-color: $gray-100;
+
+  border: 0.1rem solid $gray-200;
+  border-top: 0.05rem solid $gray-200;
+  border-radius: 0rem 0rem 0.8rem 0.8rem;
+}

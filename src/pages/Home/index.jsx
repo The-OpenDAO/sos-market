@@ -1,14 +1,10 @@
 import React from 'react';
 
-import { Text, Tabs, Select } from 'components';
+import { Text, Tabs, Select, MarketCard } from 'components';
 
 import styles from './Home.module.scss';
 
-const items = [
-  { name: 'Open', content: null },
-  { name: 'In-Reporting', content: null },
-  { name: 'Resolved', content: null }
-];
+import { tabs, markets } from './data';
 
 function Home() {
   return (
@@ -41,7 +37,7 @@ function Home() {
       </ul>
 
       <div className={styles.navigation}>
-        <Tabs items={items} />
+        <Tabs items={tabs} />
 
         <div className={styles.filters}>
           <Select label="Sub-Category:" name="Sub-Category" disabled>
@@ -52,6 +48,11 @@ function Home() {
           </Select>
         </div>
       </div>
+
+      <br />
+      <br />
+
+      <MarketCard items={markets} />
     </div>
   );
 }

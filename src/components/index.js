@@ -10,6 +10,7 @@ import SideBar from './SideBar';
 import LandingHeader from './LandingHeader';
 import Tabs from './Tabs';
 import Select from './Select';
+import MarketCard from './MarketCard';
 
 export {
   Button,
@@ -23,5 +24,6 @@ export {
   SideBar,
   LandingHeader,
   Tabs,
-  Select
+  Select,
+  MarketCard
 };
