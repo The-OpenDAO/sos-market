@@ -1,5 +1,6 @@
 import BetForm from './BetForm';
 import Breadcrumb from './Breadcrumb';
+import BetAmountInput from './BetAmountInput';
 import Button from './Button';
 import Categories from './Categories';
 import Input from './Input';
@@ -20,6 +21,7 @@ import ToggleButton from './ToggleButton';
 export {
   BetForm,
   Breadcrumb,
+  BetAmountInput,
   Button,
   Categories,
   Input,
