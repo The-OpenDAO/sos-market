@@ -12,6 +12,8 @@
   flex-direction: column;
 
   gap: 1.6rem;
+
+  margin-bottom: 3.2rem;
 }
 
 .header {
@@ -89,9 +91,42 @@
 }
 
 .odds {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   > p {
     font-family: 'Gilroy Bold', sans-serif;
     font-size: 2rem;
     margin: 0.8rem 0rem;
   }
+
+  > button {
+    display: inline-block;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    margin: 0rem;
+    padding: 0.3rem;
+
+    outline: none;
+    border: none;
+
+    background-color: unset;
+
+    > span {
+      font-size: 1.4rem;
+      color: $primary-500;
+    }
+  }
+}
+
+.bet {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.6rem;
+
+  margin-top: 3.2rem;
 }

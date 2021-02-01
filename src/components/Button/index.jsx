@@ -6,6 +6,7 @@ import styles from './Button.module.scss';
 
 const variants = {
   default: 'default',
+  noborder: 'noborder',
   primary: 'primary',
   secondary: 'secondary',
   success: 'success',

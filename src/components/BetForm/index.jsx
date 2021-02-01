@@ -5,6 +5,7 @@ import { CloseIcon } from 'assets/icons';
 
 import Text from '../Text';
 import Odd from '../Odd';
+import ToggleButton from '../ToggleButton';
 
 import odds from './mock';
 
@@ -67,7 +68,16 @@ function BetForm() {
                 </li>
               ))}
           </ul>
+
+          <button type="button">
+            <Text as="span" variant="xs-bold">
+              Add Liquidity
+            </Text>
+          </button>
         </section>
+      </section>
+      <section className={styles.bet}>
+        <ToggleButton />
       </section>
     </div>
   );

@@ -69,6 +69,23 @@
   }
 }
 
+.noborder {
+  @extend .button;
+  color: $gray-700;
+  background-color: $white;
+
+  border: none;
+
+  &:hover {
+    background-color: $gray-300;
+  }
+
+  &:disabled {
+    color: $gray-500;
+    background-color: $white;
+  }
+}
+
 .primary {
   @extend .button;
   color: $white;

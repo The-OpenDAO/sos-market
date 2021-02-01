@@ -15,6 +15,7 @@ import Select from './Select';
 import SideBar from './SideBar';
 import Tabs from './Tabs';
 import Text from './Text';
+import ToggleButton from './ToggleButton';
 
 export {
   BetForm,
@@ -33,5 +34,6 @@ export {
   Select,
   SideBar,
   Tabs,
-  Text
+  Text,
+  ToggleButton
 };
