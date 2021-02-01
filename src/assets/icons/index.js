@@ -1,6 +1,7 @@
 import AlienIcon from './AlienIcon';
 import BitcoinIcon from './BitcoinIcon';
 import ChartGrowthIcon from './ChartGrowthIcon';
+import CloseIcon from './CloseIcon';
 import GamingConsoleIcon from './GamingConsoleIcon';
 import LaptopIcon from './LaptopIcon';
 import MetaMaskIcon from './MetaMaskIcon';
@@ -18,6 +19,7 @@ export {
   AlienIcon,
   BitcoinIcon,
   ChartGrowthIcon,
+  CloseIcon,
   GamingConsoleIcon,
   LaptopIcon,
   MetaMaskIcon,

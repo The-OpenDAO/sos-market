@@ -39,6 +39,11 @@
   @include font-weight(bold);
 }
 
+.xs-medium {
+  @extend .xs;
+  @include font-weight(medium);
+}
+
 .xs-semibold {
   @extend .xs;
   @include font-weight(semibold);
