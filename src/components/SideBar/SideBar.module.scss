@@ -1,8 +1,10 @@
 .container {
   display: grid;
-  grid-gap: 32px;
+  grid-gap: 3.2rem;
+  grid-template-rows: 27rem 27rem;
 
-  padding: 33px 40px;
+  padding: 3.3rem 3rem;
+  width: 28rem;
 
   background-color: $white;
 }

@@ -13,10 +13,12 @@ function Layout({ children }) {
         <NavBar />
       </header>
       <LandingHeader />
-      <aside>
-        <SideBar />
-      </aside>
-      <main className={styles.main}>{children}</main>
+      <main className={styles.main}>
+        <section className={styles.vertical}>
+          <SideBar />
+          {children}
+        </section>
+      </main>
     </div>
   );
 }

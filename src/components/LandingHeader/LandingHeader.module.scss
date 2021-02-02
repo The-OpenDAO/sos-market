@@ -5,9 +5,11 @@
 
   display: grid;
   grid-template-rows: 1fr 1.2fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.7fr 1fr;
 
-  padding: 0% 5%;
+  justify-self: center;
+  width: 100%;
+  max-width: 114rem;
 }
 
 .description {
