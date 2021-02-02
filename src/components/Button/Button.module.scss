@@ -52,7 +52,7 @@
 
 .default {
   @extend .button;
-  color: $gray-900;
+  color: $gray-500;
   background-color: $white;
 
   border: 1px solid $gray-300;
@@ -191,5 +191,27 @@
     background-color: $danger-300;
 
     border: 1px solid $danger-300;
+  }
+}
+
+.pink {
+  @extend .button;
+  color: $white;
+  background-color: $pink-500;
+
+  border: 1px solid $pink-500;
+
+  &:hover {
+    color: $white;
+    background-color: $pink-900;
+
+    border: 1px solid $pink-900;
+  }
+
+  &:disabled {
+    color: $pink-200;
+    background-color: $pink-300;
+
+    border: 1px solid $pink-300;
   }
 }

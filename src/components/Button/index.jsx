@@ -11,7 +11,8 @@ const variants = {
   secondary: 'secondary',
   success: 'success',
   warning: 'warning',
-  danger: 'danger'
+  danger: 'danger',
+  pink: 'pink'
 };
 
 const positions = {

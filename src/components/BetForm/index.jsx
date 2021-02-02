@@ -7,6 +7,7 @@ import Text from '../Text';
 import Odd from '../Odd';
 import ToggleButton from '../ToggleButton';
 import BetAmountInput from '../BetAmountInput';
+import Button from '../Button';
 
 import odds from './mock';
 
@@ -81,6 +82,58 @@ function BetForm() {
         <ToggleButton />
 
         <BetAmountInput />
+
+        <ul className={styles.details}>
+          <li className={styles.detail}>
+            <Text as="span" variant="bold">
+              Price per fraction
+            </Text>
+            <div className={styles.fill} />
+            <Text as="strong" variant="xs-bold">
+              {`${0.00034} DOT`}
+            </Text>
+          </li>
+          <li className={styles.detail}>
+            <Text as="span" variant="bold">
+              Fractions bought
+            </Text>
+            <div className={styles.fill} />
+            <Text as="strong" variant="xs-bold">
+              3,5
+            </Text>
+          </li>
+          <li className={styles.detail}>
+            <Text as="span" variant="bold">
+              Max ROI
+            </Text>
+            <div className={styles.fill} />
+            <Text as="strong" variant="xs-bold">
+              2,5%
+            </Text>
+          </li>
+          <li className={styles.detail}>
+            <Text as="span" variant="bold">
+              Total stake
+            </Text>
+            <div className={styles.fill} />
+            <Text as="strong" variant="xs-bold">
+              {`${0.245} DOT`}
+            </Text>
+          </li>
+          <li className={styles.detail}>
+            <Text as="span" variant="bold">
+              Potential returns
+            </Text>
+            <div className={styles.fill} />
+            <Text as="h2" variant="xs-bold">
+              {`${0.742} DOT`}
+            </Text>
+          </li>
+        </ul>
+        <div className={styles.actions}>
+          <Button variant="default">Cancel</Button>
+          <Button variant="pink">Cancel</Button>
+        </div>
       </section>
     </div>
   );

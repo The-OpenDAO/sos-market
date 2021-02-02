@@ -1,3 +1,26 @@
+.description {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  > label {
+    font-size: 1.3rem;
+    color: $gray-900;
+  }
+
+  > span {
+    font-size: 1.3rem;
+    color: $gray-500;
+    font-family: 'Gilroy Medium', sans-serif;
+
+    > strong {
+      font-size: 1.3rem;
+      color: $gray-900;
+    }
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;

@@ -28,11 +28,16 @@
 
   &.active {
     background-color: $primary-500;
+    border: 0.1rem solid $primary-500;
 
     h1,
     strong {
       transition: color 0.3s ease-in;
       color: $white;
+    }
+
+    span {
+      color: $gray-500;
     }
   }
 }
@@ -83,7 +88,7 @@
     font-family: 'Gilroy Medium', sans-serif;
     font-size: 1.1rem;
     text-transform: uppercase;
-    color: $gray-500;
+    color: $gray-700;
   }
 
   > strong {
