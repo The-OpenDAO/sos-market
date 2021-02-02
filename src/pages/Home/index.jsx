@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Text, Tabs, Select, BetForm } from 'components';
+import { Text, Tabs, Select, MarketList } from 'components';
 
 import styles from './Home.module.scss';
 
-import { tabs } from './mock';
+import { tabs, markets } from './mock';
 
 function Home() {
   return (
@@ -49,11 +49,7 @@ function Home() {
         </div>
       </div>
 
-      {/* <MarketList markets={markets} /> */}
-
-      <br />
-
-      <BetForm />
+      <MarketList markets={markets} />
     </div>
   );
 }

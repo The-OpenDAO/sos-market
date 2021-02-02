@@ -9,6 +9,7 @@ import LandingHeader from './LandingHeader';
 import Layout from './Layout';
 import MarketCard from './MarketCard';
 import MarketList from './MarketList';
+import Modal from './Modal';
 import NavBar from './NavBar';
 import Odd from './Odd';
 import SearchBar from './SearchBar';
@@ -30,6 +31,7 @@ export {
   Layout,
   MarketCard,
   MarketList,
+  Modal,
   NavBar,
   Odd,
   SearchBar,

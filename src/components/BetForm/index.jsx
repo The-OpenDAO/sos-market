@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 
 import { CloseIcon } from 'assets/icons';
@@ -13,7 +14,7 @@ import odds from './mock';
 
 import styles from './BetForm.module.scss';
 
-function BetForm() {
+function BetForm({ handleClose }) {
   return (
     <div className={styles.container}>
       <section className={styles.market}>
@@ -21,7 +22,7 @@ function BetForm() {
           <Text as="h1" variant="bold">
             Market Overview
           </Text>
-          <button type="button">
+          <button type="button" onClick={() => handleClose()}>
             <CloseIcon />
           </button>
         </header>
@@ -132,11 +133,15 @@ function BetForm() {
         </ul>
         <div className={styles.actions}>
           <Button variant="default">Cancel</Button>
-          <Button variant="pink">Cancel</Button>
+          <Button variant="pink">Place Bet</Button>
         </div>
       </section>
     </div>
   );
 }
+
+BetForm.propTypes = {
+  handleClose: PropTypes.func.isRequired
+};
 
 export default BetForm;
