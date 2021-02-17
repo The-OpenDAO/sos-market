@@ -25,10 +25,21 @@
         "import"
     ],
     "rules": {
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never"
+          }
+        ],
 				"prettier/prettier": "error",
 				"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
 				"react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
+        "react/require-default-props": "off",
         "import/no-unresolved": "error",
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"]
