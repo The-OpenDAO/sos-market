@@ -14,10 +14,10 @@ function BetAmountInput() {
           How much to bet?
         </Text>
         <Text as="span" variant="xs-medium">
-          Available{' '}
+          Available
           <Text as="strong" variant="medium">
             0.0104
-          </Text>{' '}
+          </Text>
           DOT
         </Text>
       </div>

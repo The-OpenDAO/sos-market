@@ -9,15 +9,7 @@ const variants = {
   success: 'success'
 };
 
-function Input({
-  variant,
-  label,
-  name,
-  placeholder,
-  description,
-  disabled,
-  ...props
-}) {
+function Input({ variant, label, name, placeholder, description, disabled }) {
   return (
     <div className={styles.group}>
       <label htmlFor={name} className={styles.label}>
@@ -28,7 +20,6 @@ function Input({
         name={name}
         placeholder={placeholder}
         disabled={disabled}
-        {...props}
       />
       {description ? (
         <span className={styles.description}>{description}</span>

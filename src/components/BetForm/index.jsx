@@ -40,7 +40,7 @@ function BetForm({ handleClose }) {
               Trade Volume
             </Text>
             <Text as="strong" variant="semibold">
-              {324}{' '}
+              {324}
               <Text as="span" variant="semibold">
                 DOT
               </Text>
@@ -51,7 +51,7 @@ function BetForm({ handleClose }) {
               Liquidity
             </Text>
             <Text as="strong" variant="semibold">
-              {23}{' '}
+              {23}
               <Text as="span" variant="semibold">
                 DOT
               </Text>

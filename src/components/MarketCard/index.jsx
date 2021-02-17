@@ -7,7 +7,7 @@ import Text from '../Text';
 
 import styles from './MarketCard.module.scss';
 
-function MarketCard({ market, ...props }) {
+function MarketCard({ market }) {
   const {
     id,
     section,
@@ -20,7 +20,7 @@ function MarketCard({ market, ...props }) {
   } = market;
 
   return (
-    <div className={styles.container} {...props}>
+    <div className={styles.container}>
       <div className={styles.content}>
         <img src={imageUrl} alt={`${id}`} width={40} height={40} />
         <div className={styles.details}>
@@ -39,13 +39,13 @@ function MarketCard({ market, ...props }) {
       <div className={styles.footer}>
         <div className={styles.stats}>
           <Text as="span" variant="bold">
-            {`VOLUME: `}{' '}
+            {`VOLUME: `}
             <Text as="strong" variant="bold">
               {`${volume} DOT`}
             </Text>
           </Text>
           <Text as="span" variant="bold">
-            {`EXPIRATION: `}{' '}
+            {`EXPIRATION: `}
             <Text as="strong" variant="bold">
               {expiration}
             </Text>
