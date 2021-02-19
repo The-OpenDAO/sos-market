@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 @mixin font-weight($style: normal) {
   $style: to_lower_case($style);
   $weights: (
