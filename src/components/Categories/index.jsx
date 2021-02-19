@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 import Label from 'components/Label';
 
-import styles from './Categories.module.scss';
+import styles from 'styles/components/Categories.module.scss';
 
 function Categories({ title, items }) {
   return (

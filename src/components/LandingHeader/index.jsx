@@ -3,7 +3,7 @@ import React from 'react';
 import Text from 'components/Text';
 import SearchBar from 'components/SearchBar';
 
-import styles from './LandingHeader.module.scss';
+import styles from 'styles/components/LandingHeader.module.scss';
 
 function LandingHeader() {
   return (

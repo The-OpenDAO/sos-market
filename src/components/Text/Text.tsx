@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 
-import styles from './Text.module.scss';
+import styles from 'styles/components/Text.module.scss';
 
 type TextTag =
   | 'p'

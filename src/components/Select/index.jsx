@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes, { element } from 'prop-types';
 
-import styles from './Select.module.scss';
+import styles from 'styles/components/Select.module.scss';
 
 const variants = {
   default: 'default'

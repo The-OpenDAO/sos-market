@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import clx from 'classnames';
 
-import styles from './Tabs.module.scss';
+import styles from 'styles/components/Tabs.module.scss';
 
 function Tabs({ direction, items }) {
   const [activeTab, setActiveTab] = useState(items[0].name);

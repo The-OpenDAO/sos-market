@@ -4,6 +4,8 @@ import isEmpty from 'lodash/isEmpty';
 
 import { CloseIcon } from 'assets/icons';
 
+import styles from 'styles/components/BetForm.module.scss';
+
 import Text from '../Text';
 import Odd from '../Odd';
 import ToggleButton from '../ToggleButton';
@@ -11,8 +13,6 @@ import BetAmountInput from '../BetAmountInput';
 import Button from '../Button';
 
 import odds from './mock';
-
-import styles from './BetForm.module.scss';
 
 function BetForm({ handleClose }) {
   return (

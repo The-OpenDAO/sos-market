@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clx from 'classnames';
 
-import BetForm from '../BetForm';
+import styles from 'styles/components/Modal.module.scss';
 
-import styles from './Modal.module.scss';
+import BetForm from '../BetForm';
 
 function Modal({ open, handleClose }) {
   return (

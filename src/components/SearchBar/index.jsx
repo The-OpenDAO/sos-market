@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SearchIcon } from 'assets/icons';
 
-import styles from './SearchBar.module.scss';
+import styles from 'styles/components/SearchBar.module.scss';
 
 function SearchBar() {
   return (

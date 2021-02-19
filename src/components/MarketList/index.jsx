@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 
+import styles from 'styles/components/MarketList.module.scss';
+
 import MarketCard from '../MarketCard';
 import Modal from '../Modal';
-
-import styles from './MarketList.module.scss';
 
 function MarketList({ markets }) {
   const [open, setOpen] = useState(false);

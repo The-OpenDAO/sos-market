@@ -4,7 +4,7 @@ import NavBar from 'components/NavBar';
 import SideBar from 'components/SideBar';
 import LandingHeader from 'components/LandingHeader';
 
-import styles from './Layout.module.scss';
+import styles from 'styles/components/Layout.module.scss';
 
 // eslint-disable-next-line react/prop-types
 function Layout({ children }) {

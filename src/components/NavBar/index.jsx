@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 import { PolkamarketsLogo, MetaMaskIcon, SettingsIcon } from 'assets/icons';
 
-import Button from '../Button';
+import styles from 'styles/components/NavBar.module.scss';
 
-import styles from './NavBar.module.scss';
+import Button from '../Button';
 
 function NavBar() {
   return (

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
+import styles from 'styles/components/ToggleButton.module.scss';
+
 import Button from '../Button';
 
 import buttons from './mock';
-
-import styles from './ToggleButton.module.scss';
 
 function ToggleButton() {
   const [activeButton, setActiveButton] = useState(buttons[0].name);

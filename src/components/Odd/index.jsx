@@ -4,9 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import clx from 'classnames';
-import Text from '../Text';
 
-import styles from './Odd.module.scss';
+import styles from 'styles/components/Odd.module.scss';
+
+import Text from '../Text';
 
 function Odd({ odd }) {
   return (

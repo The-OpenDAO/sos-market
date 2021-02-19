@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from 'styles/components/MarketCard.module.scss';
+
 import Label from '../Label';
 import Breadcrumb from '../Breadcrumb';
 import Text from '../Text';
-
-import styles from './MarketCard.module.scss';
 
 function MarketCard({ market }) {
   const {

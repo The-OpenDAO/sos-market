@@ -16,7 +16,7 @@ import {
   LaptopIcon
 } from 'assets/icons';
 
-import styles from './SideBar.module.scss';
+import styles from 'styles/components/SideBar.module.scss';
 
 const popularCategories = [
   {

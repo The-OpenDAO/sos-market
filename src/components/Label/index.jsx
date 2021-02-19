@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Text from '../Text';
+import styles from 'styles/components/Label.module.scss';
 
-import styles from './Label.module.scss';
+import Text from '../Text';
 
 const variants = {
   default: 'default',
