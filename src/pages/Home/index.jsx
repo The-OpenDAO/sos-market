@@ -2,44 +2,42 @@ import React from 'react';
 
 import { Text, Tabs, Select, MarketList } from 'components';
 
-import styles from 'styles/pages/Home.module.scss';
-
 import { tabs, markets } from './mock';
 
 function Home() {
   return (
-    <div className={styles.content}>
+    <div className="content">
       <Text as="h1" variant="bold">
         Popular Markets
       </Text>
 
-      <ul className={styles.markets}>
-        <li className={styles.market}>
+      <ul className="markets">
+        <li className="market">
           <Text as="p" variant="lg-bold">
             Politics
           </Text>
         </li>
-        <li className={styles.market}>
+        <li className="market">
           <Text as="p" variant="lg-bold">
             Sports
           </Text>
         </li>
-        <li className={styles.market}>
+        <li className="market">
           <Text as="p" variant="lg-bold">
             Finance
           </Text>
         </li>
-        <li className={styles.market}>
+        <li className="market">
           <Text as="p" variant="lg-bold">
             Crypto
           </Text>
         </li>
       </ul>
 
-      <div className={styles.navigation}>
+      <div className="navigation">
         <Tabs items={tabs} />
 
-        <div className={styles.filters}>
+        <div className="filters">
           <Select label="Sub-Category:" name="Sub-Category" disabled>
             <option value="USA">USA</option>
           </Select>
