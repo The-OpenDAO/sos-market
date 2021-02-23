@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Text, Tabs, Select, MarketList } from 'components';
 
-import styles from './Home.module.scss';
+import styles from 'styles/pages/Home.module.scss';
 
 import { tabs, markets } from './mock';
 
