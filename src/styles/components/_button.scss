@@ -1,4 +1,4 @@
-.button {
+.btn {
   display: inline-block;
 
   cursor: pointer;
@@ -24,32 +24,32 @@
     cursor: unset;
     touch-action: unset;
   }
+
+  &__icon {
+    max-height: 24px;
+
+    > svg {
+      fill: $gray-900;
+    }
+
+    &.center {
+      align-self: center;
+    }
+
+    &.left {
+      margin-right: 12px;
+      float: left;
+    }
+
+    &.right {
+      margin-left: 12px;
+      float: right;
+    }
+  }
 }
 
-.icon {
-  max-height: 24px;
-
-  > svg {
-    fill: $gray-900;
-  }
-
-  &.center {
-    align-self: center;
-  }
-
-  &.left {
-    margin-right: 12px;
-    float: left;
-  }
-
-  &.right {
-    margin-left: 12px;
-    float: right;
-  }
-}
-
-.default {
-  @extend .button;
+.btn--default {
+  @extend .btn;
   color: $gray-500;
   background-color: $white;
 
@@ -67,8 +67,8 @@
   }
 }
 
-.noborder {
-  @extend .button;
+.btn--noborder {
+  @extend .btn;
   color: $gray-700;
   background-color: $white;
 
@@ -84,8 +84,8 @@
   }
 }
 
-.primary {
-  @extend .button;
+.btn--primary {
+  @extend .btn;
   color: $white;
   background-color: $primary-500;
 
@@ -104,8 +104,8 @@
   }
 }
 
-.secondary {
-  @extend .button;
+.btn--secondary {
+  @extend .btn;
   color: $primary-500;
   background-color: $primary-100;
 
@@ -126,8 +126,8 @@
   }
 }
 
-.success {
-  @extend .button;
+.btn--success {
+  @extend .btn;
   color: $white;
   background-color: $success-500;
 
@@ -148,8 +148,8 @@
   }
 }
 
-.warning {
-  @extend .button;
+.btn--warning {
+  @extend .btn;
   color: $white;
   background-color: $warning-500;
 
@@ -170,8 +170,8 @@
   }
 }
 
-.danger {
-  @extend .button;
+.btn--danger {
+  @extend .btn;
   color: $white;
   background-color: $danger-500;
 
@@ -192,8 +192,8 @@
   }
 }
 
-.pink {
-  @extend .button;
+.btn--pink {
+  @extend .btn;
   color: $white;
   background-color: $pink-500;
 
