@@ -16,8 +16,6 @@ import {
   LaptopIcon
 } from 'assets/icons';
 
-import styles from 'styles/components/SideBar.module.scss';
-
 const popularCategories = [
   {
     name: 'Sports',
@@ -96,13 +94,13 @@ const allCategories = [
   }
 ];
 
-function SideBar() {
+const SideBar = () => {
   return (
-    <div className={styles.container}>
+    <div className="sidebar">
       <Categories title="Popular Categories" items={popularCategories} />
       <Categories title="All Categories" items={allCategories} />
     </div>
   );
-}
+};
 
 export default SideBar;
