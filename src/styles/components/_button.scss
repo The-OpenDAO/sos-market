@@ -4,13 +4,13 @@
   cursor: pointer;
   touch-action: manipulation;
 
-  margin: 0px;
-  padding: 16px 24px;
+  margin: 0rem;
+  padding: 1.6rem 2.4rem;
 
   outline: none;
-  border-radius: 4px;
+  border-radius: 0.4rem;
 
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -26,7 +26,7 @@
   }
 
   &__icon {
-    max-height: 24px;
+    max-height: 2.4rem;
 
     > svg {
       fill: $gray-900;
@@ -37,12 +37,12 @@
     }
 
     &.left {
-      margin-right: 12px;
+      margin-right: 1.2rem;
       float: left;
     }
 
     &.right {
-      margin-left: 12px;
+      margin-left: 1.2rem;
       float: right;
     }
   }
@@ -53,7 +53,7 @@
   color: $gray-500;
   background-color: $white;
 
-  border: 1px solid $gray-300;
+  border: 0.1rem solid $gray-300;
 
   &:hover {
     background-color: $gray-300;
@@ -63,7 +63,7 @@
     color: $gray-500;
     background-color: $white;
 
-    border: 1px solid $gray-500;
+    border: 0.1rem solid $gray-500;
   }
 }
 
@@ -89,18 +89,18 @@
   color: $white;
   background-color: $primary-500;
 
-  border: 1px solid $primary-500;
+  border: 0.1rem solid $primary-500;
 
   &:hover {
     background-color: $primary-900;
 
-    border: 1px solid $primary-900;
+    border: 0.1rem solid $primary-900;
   }
 
   &:disabled {
     background-color: $primary-400;
 
-    border: 1px solid $primary-400;
+    border: 0.1rem solid $primary-400;
   }
 }
 
@@ -109,20 +109,20 @@
   color: $primary-500;
   background-color: $primary-100;
 
-  border: 1px solid $primary-100;
+  border: 0.1rem solid $primary-100;
 
   &:hover {
     color: $primary-500;
     background-color: $primary-300;
 
-    border: 1px solid $primary-300;
+    border: 0.1rem solid $primary-300;
   }
 
   &:disabled {
     color: $primary-200;
     background-color: $primary-100;
 
-    border: 1px solid $primary-100;
+    border: 0.1rem solid $primary-100;
   }
 }
 
@@ -131,20 +131,20 @@
   color: $white;
   background-color: $success-500;
 
-  border: 1px solid $success-500;
+  border: 0.1rem solid $success-500;
 
   &:hover {
     color: $white;
     background-color: $success-900;
 
-    border: 1px solid $success-900;
+    border: 0.1rem solid $success-900;
   }
 
   &:disabled {
     color: $success-200;
     background-color: $success-300;
 
-    border: 1px solid $success-300;
+    border: 0.1rem solid $success-300;
   }
 }
 
@@ -153,20 +153,20 @@
   color: $white;
   background-color: $warning-500;
 
-  border: 1px solid $warning-500;
+  border: 0.1rem solid $warning-500;
 
   &:hover {
     color: $white;
     background-color: $warning-900;
 
-    border: 1px solid $warning-900;
+    border: 0.1rem solid $warning-900;
   }
 
   &:disabled {
     color: $warning-200;
     background-color: $warning-300;
 
-    border: 1px solid $warning-300;
+    border: 0.1rem solid $warning-300;
   }
 }
 
@@ -175,20 +175,20 @@
   color: $white;
   background-color: $danger-500;
 
-  border: 1px solid $danger-500;
+  border: 0.1rem solid $danger-500;
 
   &:hover {
     color: $white;
     background-color: $danger-900;
 
-    border: 1px solid $danger-900;
+    border: 0.1rem solid $danger-900;
   }
 
   &:disabled {
     color: $danger-200;
     background-color: $danger-300;
 
-    border: 1px solid $danger-300;
+    border: 0.1rem solid $danger-300;
   }
 }
 
@@ -197,19 +197,19 @@
   color: $white;
   background-color: $pink-500;
 
-  border: 1px solid $pink-500;
+  border: 0.1rem solid $pink-500;
 
   &:hover {
     color: $white;
     background-color: $pink-900;
 
-    border: 1px solid $pink-900;
+    border: 0.1rem solid $pink-900;
   }
 
   &:disabled {
     color: $pink-200;
     background-color: $pink-300;
 
-    border: 1px solid $pink-300;
+    border: 0.1rem solid $pink-300;
   }
 }
