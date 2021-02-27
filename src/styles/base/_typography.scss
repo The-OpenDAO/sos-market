@@ -46,29 +46,55 @@ button {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+label,
+strong {
   font-family: 'Gilroy', sans-serif;
+}
+
+h1 {
+  font-size: 4.8rem;
+  line-height: 1.5;
+}
+
+h2 {
+  font-size: 4rem;
+  line-height: 1.5;
+}
+
+h3 {
+  font-size: 3.2rem;
   line-height: 1.5;
 }
 
 h4 {
-  font-family: 'Gilroy', sans-serif;
+  font-size: 2.4rem;
   line-height: 1.36;
 }
 
 h5 {
-  font-family: 'Gilroy', sans-serif;
+  font-size: 1.4rem;
   line-height: 1.4;
   letter-spacing: 0.112rem;
 }
 
 h6 {
-  font-family: 'Gilroy', sans-serif;
+  font-size: 1.2rem;
   line-height: 1.4;
   letter-spacing: 0.096rem;
 }
 
 p {
-  font-family: 'Gilroy', sans-serif;
+  font-size: 1.6rem;
   line-height: 1.4;
+}
+
+label {
+  font-size: 1.3rem;
+  line-height: normal;
 }
