@@ -21,21 +21,31 @@ interface Props {
   children?: React.ReactNode | any;
 }
 
-const Button = ({
-  variant = 'default',
-  icon,
-  iconPosition = 'center',
-  disabled = false,
-  children
-}: Props) => {
-  return (
-    <button type="button" className={`btn--${variant}`} disabled={disabled}>
+const Button = React.forwardRef<HTMLButtonElement, Props>(
+  (
+    {
+      variant = 'default',
+      icon,
+      iconPosition = 'center',
+      disabled = false,
+      children
+    },
+    ref
+  ) => (
+    <button
+      ref={ref}
+      type="button"
+      className={`btn--${variant}`}
+      disabled={disabled}
+    >
       {children}
       {icon ? (
         <div className={cx('btn__icon', iconPosition)}>{icon}</div>
       ) : null}
     </button>
-  );
-};
+  )
+);
+
+Button.displayName = 'Button';
 
 export default Button;
