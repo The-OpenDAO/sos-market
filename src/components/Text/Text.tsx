@@ -1,6 +1,5 @@
 import React, { CSSProperties } from 'react';
-
-import styles from 'styles/components/Text.module.scss';
+import cx from 'classnames';
 
 type TextTag =
   | 'p'
@@ -28,33 +27,33 @@ type TextTag =
   | 'i'
   | 'b';
 
-type Variant =
-  | 'regular'
-  | 'medium'
-  | 'bold'
-  | 'semibold'
-  | 'lg-regular'
-  | 'lg-medium'
-  | 'lg-bold'
-  | 'xs-regular'
-  | 'xs-medium'
-  | 'xs-bold';
+type TextSize = 'regular' | 'lg' | 'xs';
 
+type FontWeight = 'regular' | 'medium' | 'bold' | 'semibold';
 interface Props {
   as?: TextTag;
-  variant?: Variant;
+  size?: TextSize;
+  fontWeight?: FontWeight;
   style?: CSSProperties;
   children?: React.ReactNode | any;
 }
 
-const Text = ({ as = 'p', variant = 'regular', style, children }: Props) => {
+const Text = ({
+  as = 'p',
+  size = 'regular',
+  fontWeight = 'regular',
+  style,
+  children
+}: Props) => {
   const Tag = as;
 
   return (
-    <Tag className={styles[variant]} style={style}>
+    <Tag className={cx(`text-${size}`, `font-${fontWeight}`)} style={style}>
       {children}
     </Tag>
   );
 };
+
+Text.displayName = 'Text';
 
 export default Text;
