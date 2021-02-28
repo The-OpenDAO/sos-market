@@ -6,17 +6,17 @@
 
   > label {
     font-size: 1.3rem;
-    color: $gray-900;
+    color: $grey-900;
   }
 
   > span {
     font-size: 1.3rem;
-    color: $gray-500;
+    color: $grey-500;
     font-family: 'Gilroy', sans-serif;
 
     > strong {
       font-size: 1.3rem;
-      color: $gray-900;
+      color: $grey-900;
     }
   }
 }
@@ -29,7 +29,7 @@
 
   padding: 0rem 1.2rem;
 
-  border: 0.1rem solid $gray-400;
+  border: 0.1rem solid $grey-400;
   border-radius: 0.4rem;
 }
 
@@ -46,7 +46,7 @@
   outline: none;
   border: none;
 
-  color: $gray-500;
+  color: $grey-500;
 
   font-size: 1.4rem;
   font-weight: 600;
@@ -58,7 +58,7 @@
   transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 
   &::placeholder {
-    color: $gray-500;
+    color: $grey-500;
   }
 }
 
@@ -73,7 +73,7 @@
 
   outline: none;
   border: none;
-  border-right: 0.1rem solid $gray-400;
+  border-right: 0.1rem solid $grey-400;
 
   background-color: unset;
 
@@ -97,6 +97,6 @@
 
   > span {
     font-size: 1.3rem;
-    color: $gray-900;
+    color: $grey-900;
   }
 }

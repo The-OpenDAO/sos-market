@@ -29,7 +29,7 @@
     max-height: 2.4rem;
 
     > svg {
-      fill: $gray-900;
+      fill: $grey-900;
     }
 
     &.center {
@@ -50,36 +50,36 @@
 
 .btn--default {
   @extend .btn;
-  color: $gray-500;
+  color: $grey-500;
   background-color: $white;
 
-  border: 0.1rem solid $gray-300;
+  border: 0.1rem solid $grey-300;
 
   &:hover {
-    background-color: $gray-300;
+    background-color: $grey-300;
   }
 
   &:disabled {
-    color: $gray-500;
+    color: $grey-500;
     background-color: $white;
 
-    border: 0.1rem solid $gray-500;
+    border: 0.1rem solid $grey-500;
   }
 }
 
 .btn--noborder {
   @extend .btn;
-  color: $gray-700;
+  color: $grey-700;
   background-color: $white;
 
   border: none;
 
   &:hover {
-    background-color: $gray-300;
+    background-color: $grey-300;
   }
 
   &:disabled {
-    color: $gray-500;
+    color: $grey-500;
     background-color: $white;
   }
 }

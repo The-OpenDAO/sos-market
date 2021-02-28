@@ -1,48 +1,48 @@
-$primary-900: #070283;
-$primary-700: #3033be;
-$primary-500: #5751fc;
-$primary-400: #aba8fd;
-$primary-300: #d2d1fe;
-$primary-200: #d2d0fe;
-$primary-100: #f2f0ff;
+$primary-100: hsl(248, 100%, 97%);
+$primary-300: hsl(241, 100%, 81%);
+$primary-500: hsl(242, 97%, 65%);
+$primary-700: hsl(239, 60%, 47%);
+$primary-900: hsl(242, 97%, 26%);
 
-$success-900: #008860;
-$success-500: #24b98c;
-$success-300: #91dcc5;
-$success-200: #c8ede3;
-$success-100: #effbf7;
+$neutral-white: hsl(0, 0%, 100%);
+$neutral-white-50: hsla(0, 0%, 100%, 0.5);
+$neutral-black: hsl(0, 0%, 0%);
+$neutral-0: hsl(0, 0%, 100%);
 
-$danger-900: #b91c1c;
-$danger-500: #ef4444;
-$danger-300: #f7a1a1;
-$danger-200: #fbd0d0;
-$danger-100: #fef2f2;
+$pink-100: hsl(330, 100%, 97%);
+$pink-500: hsl(328, 100%, 45%);
+$pink-900: hsl(328, 100%, 30%);
+$pink-300: hsl(328, 82%, 78%);
 
-$warning-900: #d97706;
-$warning-500: #fbbf24;
-$warning-300: #fddf91;
-$warning-200: #feefc8;
-$warning-100: #fffbeb;
+$warning-100: hsl(48, 100%, 93%);
+$warning-500: hsl(43, 96%, 56%);
+$warning-900: hsl(32, 95%, 44%);
 
-$gray-900: #283b57;
-$gray-700: #4f6484;
-$gray-500: #acb7ca;
-$gray-400: #dde2ed;
-$gray-300: #e5eaf5;
-$gray-200: #f1f5f9;
-$gray-100: #f7faff;
+$danger-100: hsl(0, 86%, 97%);
+$danger-500: hsl(0, 84%, 60%);
+$danger-900: hsl(0, 74%, 42%);
 
-$black: #000000;
-$white: #ffffff;
+$success-100: hsl(158, 58%, 96%);
+$success-500: hsl(156, 62%, 55%);
+$success-900: hsl(162, 100%, 27%);
 
-$teal-900: #009dbb;
-$teal-700: #00bfe2;
-$teal-500: #00d4fb;
-$teal-300: #a9f2ff;
+$secondary-purple: hsl(255, 100%, 75%);
+$secondary-blue: hsl(209, 100%, 71%);
+$secondary-pink: hsl(338, 100%, 76%);
 
-$pink-900: #990051;
-$pink-700: #e07acf;
-$pink-500: #e6007a;
-$pink-300: #faddf5;
-$pink-200: #f9bfdd;
-$pink-100: #fff1f8;
+$border-dark-mode: hsl(225, 22%, 15%);
+$background-dark-mode-highlight: hsl(217, 40%, 14%);
+
+$grey-50: hsl(0, 0%, 98%);
+$grey-100: hsl(220, 14%, 96%);
+$grey-200: hsl(225, 9%, 91%);
+$grey-300: hsl(217, 10%, 84%);
+$grey-400: hsl(219, 9%, 65%);
+$grey-500: hsl(219, 10%, 46%);
+$grey-600: hsl(213, 10%, 34%);
+$grey-700: hsl(219, 10%, 27%);
+$grey-800: hsl(218, 9%, 17%);
+$grey-900: hsl(220, 11%, 11%);
+$grey-1000: hsl(216, 40%, 12%);
+
+$bg-dark: hsl(225, 22%, 7%);

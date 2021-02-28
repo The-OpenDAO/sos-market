@@ -38,13 +38,13 @@
   text-decoration: none;
   font-size: 1.6rem;
 
-  color: $gray-500;
+  color: $grey-500;
   @include font-weight(bold);
 
   transition: color 0.2s linear 0s;
 
   &:hover {
-    color: $gray-900;
+    color: $grey-900;
   }
 }
 
@@ -56,7 +56,7 @@
   margin: 0rem 1.2rem;
 
   align-self: center;
-  border-right: 0.1rem solid $gray-300;
+  border-right: 0.1rem solid $grey-300;
 }
 
 .actions {
