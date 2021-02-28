@@ -8,3 +8,9 @@
 
   background-color: $white;
 }
+
+.sidebar-section {
+  &__link {
+    color: red;
+  }
+}

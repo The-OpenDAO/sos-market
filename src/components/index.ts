@@ -14,7 +14,7 @@ import NavBar from './NavBar';
 import Odd from './Odd';
 import SearchBar from './SearchBar';
 import Select from './Select';
-import SideBar from './SideBar';
+import Sidebar from './Sidebar';
 import Tabs from './Tabs';
 import Text from './Text';
 import ToggleButton from './ToggleButton';
@@ -36,7 +36,7 @@ export {
   Odd,
   SearchBar,
   Select,
-  SideBar,
+  Sidebar,
   Tabs,
   Text,
   ToggleButton

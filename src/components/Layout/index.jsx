@@ -1,7 +1,7 @@
 import React from 'react';
 
 import NavBar from 'components/NavBar';
-import SideBar from 'components/SideBar';
+import Sidebar from 'components/Sidebar';
 import LandingHeader from 'components/LandingHeader';
 
 import styles from 'styles/components/Layout.module.scss';
@@ -16,7 +16,7 @@ function Layout({ children }) {
       <LandingHeader />
       <main className={styles.main}>
         <section className={styles.vertical}>
-          <SideBar />
+          <Sidebar />
           {children}
         </section>
       </main>
