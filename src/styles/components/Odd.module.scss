@@ -14,7 +14,7 @@
   border: 0.1rem solid $grey-400;
   border-radius: 0.4rem;
 
-  background-color: $white;
+  background-color: $neutral-white;
   transition: background-color 0.3s ease-in;
 
   h1,
@@ -33,7 +33,7 @@
     h1,
     strong {
       transition: color 0.3s ease-in;
-      color: $white;
+      color: $neutral-white;
     }
 
     span {

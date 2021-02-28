@@ -43,11 +43,11 @@
 .label--primary {
   @extend .label;
 
-  color: $white;
+  color: $neutral-white;
   background-color: $primary-500;
 
   > label {
-    color: $white;
+    color: $neutral-white;
   }
 }
 
