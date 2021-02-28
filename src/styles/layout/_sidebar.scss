@@ -4,7 +4,7 @@
   grid-template-rows: 27rem 27rem;
 
   padding: 3.3rem 3rem;
-  width: 28rem;
+  width: 38rem;
 
   background-color: $white;
 }
@@ -21,7 +21,7 @@
   &__title {
     font-size: 12px;
 
-    @include font-weight(bold);
+    font-weight: 700;
     text-transform: uppercase;
   }
 
@@ -33,6 +33,7 @@
 
   &__item {
     position: relative;
+    padding: 1.75rem 0rem;
   }
 }
 
@@ -41,17 +42,23 @@
   flex-wrap: wrap;
   align-items: center;
 
-  margin: 0.8rem 0rem;
-
   text-decoration: none;
 
   transition: color 0.2s linear 0s;
 
   &__icon {
-    > svg {
-      fill: $gray-500;
-      margin-right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    zoom: 1;
 
+    > svg {
+      height: 2rem;
+      width: 2rem;
+
+      margin-right: 1.8rem;
+
+      fill: $gray-700;
       transition: fill 0.2s linear 0s;
     }
   }

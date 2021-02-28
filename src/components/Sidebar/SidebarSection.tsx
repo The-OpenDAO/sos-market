@@ -22,9 +22,11 @@ const SidebarSection = ({ title, items }: Props) => {
         {items?.map(item => (
           <li key={item.name} className="sidebar-section__item">
             <NavLink className="sidebar-link" to={item.to}>
-              <div className="sidebar-link__icon">{item.icon}</div>
+              <figure aria-label={item.name} className="sidebar-link__icon">
+                {item.icon}
+              </figure>
               <div className="sidebar-link__title">{item.name}</div>
-              <Label>{item.count}</Label>
+              <Label variant="primary">{item.count}</Label>
             </NavLink>
           </li>
         ))}
