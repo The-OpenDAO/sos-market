@@ -32,42 +32,51 @@
   }
 
   &__item {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    position: relative;
+  }
+}
 
-    margin: 8px 0px;
-    margin-right: auto;
+.sidebar-link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 
-    color: $gray-500;
+  margin: 0.8rem 0rem;
 
-    font-size: 14px;
-    text-decoration: none;
-    @include font-weight(semibold);
+  text-decoration: none;
 
-    transition: color 0.2s linear 0s;
+  transition: color 0.2s linear 0s;
 
+  &__icon {
     > svg {
       fill: $gray-500;
       margin-right: 12px;
 
       transition: fill 0.2s linear 0s;
     }
+  }
 
-    &:hover {
-      color: $gray-900;
+  &__title {
+    flex-grow: 1;
+    color: $gray-700;
 
-      > svg {
-        fill: $gray-900;
-      }
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  &:hover {
+    color: $gray-900;
+
+    > svg {
+      fill: $gray-900;
     }
+  }
 
-    &--active {
-      color: $primary-500;
+  &--active {
+    color: $primary-500;
 
-      > svg {
-        fill: $primary-500;
-      }
+    > svg {
+      fill: $primary-500;
     }
   }
 }
