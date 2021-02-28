@@ -24,6 +24,7 @@ type TextTag =
   | 'sup'
   | 'sub'
   | 'small'
+  | 'label'
   | 'i'
   | 'b';
 
