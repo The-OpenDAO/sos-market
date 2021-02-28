@@ -14,32 +14,32 @@ const sidebarLinks = {
     title: 'Markets',
     items: [
       {
-        title: 'Sports',
+        name: 'Sports',
         count: 68,
         icon: <SoccerBallIcon />
       },
       {
-        title: 'Gaming',
+        name: 'Gaming',
         count: 56,
         icon: <GamingConsoleIcon />
       },
       {
-        title: 'Politics',
+        name: 'Politics',
         count: 39,
         icon: <WhiteHouseIcon />
       },
       {
-        title: 'Finance',
+        name: 'Finance',
         count: 27,
         icon: <ChartGrowthIcon />
       },
       {
-        title: 'Crypto',
+        name: 'Crypto',
         count: 27,
         icon: <BitcoinIcon />
       },
       {
-        title: 'Weather',
+        name: 'Weather',
         count: 9,
         icon: <SunFogIcon />
       }
