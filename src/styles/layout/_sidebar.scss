@@ -33,7 +33,6 @@
 
   &__item {
     position: relative;
-    padding: 1.75rem 0rem;
   }
 }
 
@@ -42,8 +41,9 @@
   flex-wrap: wrap;
   align-items: center;
 
-  text-decoration: none;
+  padding: 1.75rem 0rem;
 
+  text-decoration: none;
   transition: color 0.2s linear 0s;
 
   &__icon {
