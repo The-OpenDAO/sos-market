@@ -29,7 +29,7 @@
   }
 }
 
-.default {
+.label--default {
   @extend .label;
 
   color: $gray-900;
@@ -40,7 +40,7 @@
   }
 }
 
-.primary {
+.label--primary {
   @extend .label;
 
   color: $white;
@@ -51,7 +51,7 @@
   }
 }
 
-.success {
+.label--success {
   @extend .label;
 
   color: $success-500;
@@ -62,7 +62,7 @@
   }
 }
 
-.warning {
+.label--warning {
   @extend .label;
 
   color: $warning-500;
@@ -73,7 +73,7 @@
   }
 }
 
-.danger {
+.label--danger {
   @extend .label;
 
   color: $danger-500;
@@ -84,7 +84,7 @@
   }
 }
 
-.pink {
+.label--pink {
   @extend .label;
 
   color: $pink-500;
