@@ -28,6 +28,7 @@
   );
 }
 
+// Thanks to @kaitlinmctigue at github.com/kaitlinmctigue
 @mixin themed() {
   @each $theme, $map in $themes {
     .theme--#{$theme} & {
