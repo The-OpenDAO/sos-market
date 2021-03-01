@@ -1,12 +1,17 @@
 // Thanks to @kaitlinmctigue at github.com/kaitlinmctigue
-
 $bg: 'bg';
+$text: 'text';
+$text-hover: 'text-hover';
 
 $themes: (
   light: (
-    bg: $bg-light
+    bg: $bg-light,
+    text: $grey-500,
+    text-hover: $grey-900
   ),
   dark: (
-    bg: $bg-dark
+    bg: $bg-dark,
+    text: $grey-700,
+    text-hover: $neutral-white
   )
 );

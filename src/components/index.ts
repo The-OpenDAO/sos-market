@@ -5,7 +5,6 @@ import Button from './Button';
 import Categories from './Categories';
 import Input from './Input';
 import Label from './Label';
-import LandingHeader from './LandingHeader';
 import Layout from './Layout';
 import MarketCard from './MarketCard';
 import MarketList from './MarketList';
@@ -27,7 +26,6 @@ export {
   Categories,
   Input,
   Label,
-  LandingHeader,
   Layout,
   MarketCard,
   MarketList,

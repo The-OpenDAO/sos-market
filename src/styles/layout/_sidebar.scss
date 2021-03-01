@@ -55,31 +55,35 @@
 
       margin-right: 1.8rem;
 
-      fill: $grey-700;
-      transition: fill 0.2s linear 0s;
+      @include themed() {
+        fill: t($text);
+
+        &:hover {
+          fill: t($text-hover);
+        }
+      }
     }
   }
 
   &__title {
     flex-grow: 1;
-    color: $grey-700;
+
+    @include themed() {
+      color: t($text);
+
+      &:hover {
+        color: t($text-hover);
+      }
+    }
 
     font-size: 1.4rem;
     font-weight: 600;
   }
 
-  &:hover {
-    color: $grey-900;
-
-    > svg {
-      fill: $grey-900;
-    }
-  }
-
   &--active {
     color: $primary-500;
 
-    > svg {
+    > figure > svg {
       fill: $primary-500;
     }
   }
