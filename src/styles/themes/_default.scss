@@ -1,0 +1,10 @@
+$bg: 'bg';
+
+$themes: (
+  light: (
+    bg: $bg-light
+  ),
+  dark: (
+    bg: $bg-dark
+  )
+);

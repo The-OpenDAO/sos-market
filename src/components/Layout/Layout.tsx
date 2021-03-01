@@ -4,18 +4,19 @@ import NavBar from 'components/NavBar';
 import Sidebar from 'components/Sidebar';
 import LandingHeader from 'components/LandingHeader';
 
-import styles from 'styles/components/Layout.module.scss';
+interface Props {
+  children: React.ReactNode | any;
+}
 
-// eslint-disable-next-line react/prop-types
-function Layout({ children }) {
+function Layout({ children }: Props) {
   return (
-    <div className={styles.wrapper}>
-      <header className={styles.header}>
+    <div className="wrapper">
+      <header className="header">
         <NavBar />
       </header>
       <LandingHeader />
-      <main className={styles.main}>
-        <section className={styles.vertical}>
+      <main className="main">
+        <section className="vertical">
           <Sidebar />
           {children}
         </section>
