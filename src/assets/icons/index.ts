@@ -7,6 +7,7 @@ import LaptopIcon from './LaptopIcon';
 import MetaMaskIcon from './MetaMaskIcon';
 import PolkadotIcon from './PolkadotIcon';
 import PolkamarketsLogo from './PolkamarketsLogo';
+import PolkamarketsIcon from './PolkamarketsIcon';
 import PopcornIcon from './PopcornIcon';
 import SearchIcon from './SearchIcon';
 import SettingsIcon from './SettingsIcon';
@@ -26,6 +27,7 @@ export {
   MetaMaskIcon,
   PolkadotIcon,
   PolkamarketsLogo,
+  PolkamarketsIcon,
   PopcornIcon,
   SearchIcon,
   SettingsIcon,
