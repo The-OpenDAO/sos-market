@@ -16,7 +16,7 @@
   grid-column: 1;
 
   @include themed() {
-    background-color: t($bg);
+    background-color: t($background);
   }
 
   display: flex;

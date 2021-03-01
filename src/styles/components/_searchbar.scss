@@ -1,0 +1,61 @@
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 1.2rem;
+
+  @include themed() {
+    background-color: t($input-background);
+  }
+
+  border: none;
+  border-radius: 0.4rem;
+
+  &__input {
+    margin: 0px;
+    width: 100%;
+
+    outline: none;
+    border: none;
+
+    box-sizing: border-box;
+
+    background-color: unset;
+
+    font-size: 14px;
+    font-stretch: normal;
+    font-style: normal;
+    @include font-weight(medium);
+
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-align: left;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+
+    &::placeholder {
+      color: $grey-500;
+    }
+  }
+
+  &__icon {
+    float: right;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    margin-left: 6px;
+    padding: 0px;
+
+    border: none;
+
+    background-color: unset;
+
+    > svg {
+      display: inline-block;
+      vertical-align: middle;
+
+      fill: $primary-500;
+    }
+  }
+}

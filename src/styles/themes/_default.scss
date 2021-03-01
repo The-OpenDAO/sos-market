@@ -1,17 +1,20 @@
 // Thanks to @kaitlinmctigue at github.com/kaitlinmctigue
-$bg: 'bg';
-$text: 'text';
+$background: 'background';
+$text-base: 'text-base';
 $text-hover: 'text-hover';
+$input-background: 'input-background';
 
 $themes: (
   light: (
-    bg: $bg-light,
-    text: $grey-500,
-    text-hover: $grey-900
+    background: $bg-light,
+    text-base: $grey-500,
+    text-hover: $grey-900,
+    input-background: $grey-200
   ),
   dark: (
-    bg: $bg-dark,
-    text: $grey-700,
-    text-hover: $neutral-white
+    background: $bg-dark,
+    text-base: $grey-700,
+    text-hover: $neutral-white,
+    input-background: $grey-700
   )
 );

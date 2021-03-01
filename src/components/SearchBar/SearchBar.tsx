@@ -2,23 +2,20 @@ import React from 'react';
 
 import { SearchIcon } from 'assets/icons';
 
-import styles from 'styles/components/SearchBar.module.scss';
-
-function SearchBar() {
+const SearchBar = () => {
   return (
-    <form className={styles.form}>
+    <form className="searchbar">
       <input
-        className={styles.input}
+        className="searchbar__input"
         name="search"
         placeholder="Search markets"
         type="text"
-        variant="warning"
       />
-      <button className={styles.icon} type="submit">
+      <button className="searchbar__icon" type="submit">
         <SearchIcon />
       </button>
     </form>
   );
-}
+};
 
 export default SearchBar;
