@@ -4,7 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import styles from 'styles/components/MarketList.module.scss';
 
-import MarketCard from '../MarketCard';
+import PredictionCard from '../PredictionCard';
 import Modal from '../Modal';
 
 function MarketList({ markets }) {
@@ -15,11 +15,7 @@ function MarketList({ markets }) {
       <Modal open={open} handleClose={() => setOpen(false)} />
       {!isEmpty(markets) &&
         markets.map(market => (
-          <MarketCard
-            key={market.id}
-            market={market}
-            onClick={() => setOpen(true)}
-          />
+          <PredictionCard key={market.id} market={market} />
         ))}
     </div>
   );

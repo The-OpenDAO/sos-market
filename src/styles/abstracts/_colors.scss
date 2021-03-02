@@ -34,6 +34,13 @@ $border-dark-mode: hsl(225, 22%, 15%);
 $background-dark-mode-highlight: hsl(217, 40%, 14%);
 $input-background-dark: hsl(224, 22%, 14%);
 
+$shadow-light: rgba(hsl(249, 100, 97), 0.75);
+$shadow-dark: rgba(hsl(0, 0, 0), 1);
+
+$card-background-dark: hsl(220, 21%, 11%);
+$card-shadow-light: 0rem 0.4rem 2.4rem $shadow-light;
+$card-shadow-dark: 0rem 0.4rem 4rem $shadow-dark;
+
 $grey-50: hsl(0, 0%, 98%);
 $grey-100: hsl(220, 14%, 96%);
 $grey-200: hsl(225, 9%, 91%);
@@ -46,5 +53,5 @@ $grey-800: hsl(218, 9%, 17%);
 $grey-900: hsl(220, 11%, 11%);
 $grey-1000: hsl(216, 40%, 12%);
 
-$bg-light: $neutral-white;
+$bg-light: hsl(223, 100%, 99%);
 $bg-dark: hsl(225, 22%, 7%);

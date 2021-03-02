@@ -17,6 +17,7 @@ import Sidebar from './Sidebar';
 import Tabs from './Tabs';
 import Text from './Text';
 import ToggleButton from './ToggleButton';
+import PredictionCard from './PredictionCard';
 
 export {
   BetForm,
@@ -37,5 +38,6 @@ export {
   Sidebar,
   Tabs,
   Text,
-  ToggleButton
+  ToggleButton,
+  PredictionCard
 };

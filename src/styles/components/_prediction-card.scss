@@ -1,0 +1,24 @@
+.prediction-card {
+  display: flex;
+  flex-grow: 1;
+
+  padding: 1.6rem;
+  border-radius: 0.4rem;
+
+  transition: background-color 0.3s ease 0s;
+
+  @include themed() {
+    background-color: t($card-background);
+    box-shadow: t($card-shadow);
+  }
+
+  &__image {
+    object-fit: cover;
+    border-radius: 50%;
+
+    height: 6.4rem;
+    width: 6.4rem;
+
+    margin-right: 2.4rem;
+  }
+}

@@ -10,6 +10,8 @@
 
 // Thanks to @kaitlinmctigue at github.com/kaitlinmctigue
 $background: 'background';
+$navbar-background: 'navbar-background';
+
 $text-base: 'text-base';
 $text-hover: 'text-hover';
 
@@ -19,23 +21,32 @@ $input-icon: 'input-icon';
 
 $button-text: 'button-text';
 
+$card-background: 'card-background';
+$card-shadow: 'card-shadow';
+
 $themes: (
   light: (
     background: $bg-light,
+    navbar-background: $neutral-white,
     text-base: $grey-500,
     text-hover: $grey-900,
     input-background: $grey-200,
     input-text: $neutral-black,
     input-icon: $primary-500,
-    button-text: $grey-900
+    button-text: $grey-900,
+    card-background: $neutral-white,
+    card-shadow: $card-shadow-light
   ),
   dark: (
     background: $bg-dark,
+    navbar-background: $bg-dark,
     text-base: $grey-700,
     text-hover: $neutral-white,
     input-background: $input-background-dark,
     input-text: $neutral-white,
     input-icon: $grey-700,
-    button-text: $neutral-white
+    button-text: $neutral-white,
+    card-background: $card-background-dark,
+    card-shadow: $card-shadow-dark
   )
 );
