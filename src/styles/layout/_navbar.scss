@@ -18,26 +18,31 @@
     > svg {
       height: 3.5rem;
       width: 2.9rem;
+      margin-right: 2.4rem;
     }
   }
 
   > form {
     flex-grow: 1;
-    margin: 0rem 3.2rem 0rem 2.4rem;
   }
 }
 
 .navbar-menu {
-  display: inline;
+  display: inline-flex;
   padding: 0rem;
+
+  margin: 0rem 2rem;
 
   &__item {
     display: inline;
+    padding: 0rem 1.2rem;
 
     > a {
       font-size: 1.6rem;
       font-weight: 600;
       text-decoration: none;
+
+      transition: color 0.3s ease 0s;
 
       @include themed() {
         color: t($text-base);

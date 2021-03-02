@@ -60,7 +60,9 @@
       display: inline-block;
       vertical-align: middle;
 
-      fill: $primary-500;
+      @include themed() {
+        fill: t($input-icon);
+      }
     }
   }
 }

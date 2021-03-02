@@ -1,9 +1,21 @@
+::-moz-selection {
+  color: $neutral-white;
+  background: $primary-500;
+}
+
+::selection {
+  color: $neutral-white;
+  background: $primary-500;
+}
+
 // Thanks to @kaitlinmctigue at github.com/kaitlinmctigue
 $background: 'background';
 $text-base: 'text-base';
 $text-hover: 'text-hover';
+
 $input-background: 'input-background';
 $input-text: 'input-text';
+$input-icon: 'input-icon';
 
 $themes: (
   light: (
@@ -11,13 +23,15 @@ $themes: (
     text-base: $grey-500,
     text-hover: $grey-900,
     input-background: $grey-200,
-    input-text: $neutral-black
+    input-text: $neutral-black,
+    input-icon: $primary-500
   ),
   dark: (
     background: $bg-dark,
     text-base: $grey-700,
     text-hover: $neutral-white,
-    input-background: $grey-700,
-    input-text: $neutral-white
+    input-background: $input-background-dark,
+    input-text: $neutral-white,
+    input-icon: $grey-700
   )
 );
