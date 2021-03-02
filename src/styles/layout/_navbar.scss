@@ -1,5 +1,6 @@
 .navbar {
   display: flex;
+  align-items: center;
 
   @include themed() {
     background-color: t($background);
@@ -23,5 +24,28 @@
   > form {
     flex-grow: 1;
     margin: 0rem 3.2rem 0rem 2.4rem;
+  }
+}
+
+.navbar-menu {
+  display: inline;
+  padding: 0rem;
+
+  &__item {
+    display: inline;
+
+    > a {
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-decoration: none;
+
+      @include themed() {
+        color: t($text-base);
+
+        &:hover {
+          color: t($text-hover);
+        }
+      }
+    }
   }
 }

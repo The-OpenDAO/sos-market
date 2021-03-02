@@ -3,18 +3,21 @@ $background: 'background';
 $text-base: 'text-base';
 $text-hover: 'text-hover';
 $input-background: 'input-background';
+$input-text: 'input-text';
 
 $themes: (
   light: (
     background: $bg-light,
     text-base: $grey-500,
     text-hover: $grey-900,
-    input-background: $grey-200
+    input-background: $grey-200,
+    input-text: $neutral-black
   ),
   dark: (
     background: $bg-dark,
     text-base: $grey-700,
     text-hover: $neutral-white,
-    input-background: $grey-700
+    input-background: $grey-700,
+    input-text: $neutral-white
   )
 );
