@@ -13,28 +13,33 @@
   border-radius: 0.4rem;
 
   &__input {
-    margin: 0px;
     width: 100%;
+    margin: 0rem;
+    padding: 0rem;
 
     outline: none;
     border: none;
-
     box-sizing: border-box;
 
     background-color: unset;
 
-    font-size: 14px;
+    @include themed() {
+      color: t($input-text);
+    }
+
+    font-size: 1.6rem;
     font-stretch: normal;
     font-style: normal;
-    @include font-weight(medium);
+    font-weight: 600;
 
     line-height: 1.4;
     letter-spacing: normal;
     text-align: left;
-    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 
     &::placeholder {
-      color: $grey-500;
+      @include themed() {
+        color: t($text-base);
+      }
     }
   }
 
