@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { PolkamarketsIcon } from 'assets/icons';
-import { SearchBar } from 'components';
+import { PolkamarketsIcon, MetaMaskIcon, SettingsIcon } from 'assets/icons';
+import { SearchBar, Button } from 'components';
 
 const NavBar = () => {
   return (
@@ -21,6 +21,16 @@ const NavBar = () => {
           <NavLink to="/faq">FAQ</NavLink>
         </li>
       </ul>
+      <div className="navbar-menu__actions">
+        <Button variant="default" icon={<MetaMaskIcon />} iconPosition="left">
+          Connect Wallet
+        </Button>
+        <Button
+          variant="default"
+          icon={<SettingsIcon />}
+          iconPosition="center"
+        />
+      </div>
     </nav>
   );
 };

@@ -14,10 +14,10 @@ type Variant =
 type Position = 'center' | 'left' | 'right';
 
 interface Props {
-  variant: Variant;
+  variant?: Variant;
   icon?: React.ReactNode | any;
-  iconPosition: Position;
-  disabled: boolean;
+  iconPosition?: Position;
+  disabled?: boolean;
   children?: React.ReactNode | any;
 }
 
@@ -40,7 +40,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
     >
       {children}
       {icon ? (
-        <div className={cx('btn__icon', iconPosition)}>{icon}</div>
+        <figure className={cx('btn__icon', iconPosition)}>{icon}</figure>
       ) : null}
     </button>
   )

@@ -5,20 +5,19 @@
   touch-action: manipulation;
 
   margin: 0rem;
-  padding: 1.6rem 2.4rem;
+  padding: 1.2rem 1.6rem;
 
   outline: none;
   border-radius: 0.4rem;
 
   font-size: 1.6rem;
-  font-weight: bold;
-  font-stretch: normal;
   font-style: normal;
+  font-weight: 600;
   line-height: 1.4;
   letter-spacing: normal;
   text-align: center;
 
-  transition: 220ms all ease-in-out;
+  transition: 0.3s all ease-in-out;
 
   &:disabled {
     cursor: unset;
@@ -29,7 +28,9 @@
     max-height: 2.4rem;
 
     > svg {
-      fill: $grey-900;
+      @include themed() {
+        fill: t($text-base);
+      }
     }
 
     &.center {
@@ -50,13 +51,15 @@
 
 .btn--default {
   @extend .btn;
-  color: $grey-500;
-  background-color: $neutral-white;
 
-  border: 0.1rem solid $grey-300;
+  @include themed() {
+    color: t($button-text);
+    background-color: t($background);
+    border: 0.1rem solid t($input-background);
+  }
 
   &:hover {
-    background-color: $grey-300;
+    background-color: $grey-900;
   }
 
   &:disabled {

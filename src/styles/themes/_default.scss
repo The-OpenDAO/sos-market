@@ -17,6 +17,8 @@ $input-background: 'input-background';
 $input-text: 'input-text';
 $input-icon: 'input-icon';
 
+$button-text: 'button-text';
+
 $themes: (
   light: (
     background: $bg-light,
@@ -24,7 +26,8 @@ $themes: (
     text-hover: $grey-900,
     input-background: $grey-200,
     input-text: $neutral-black,
-    input-icon: $primary-500
+    input-icon: $primary-500,
+    button-text: $grey-900
   ),
   dark: (
     background: $bg-dark,
@@ -32,6 +35,7 @@ $themes: (
     text-hover: $neutral-white,
     input-background: $input-background-dark,
     input-text: $neutral-white,
-    input-icon: $grey-700
+    input-icon: $grey-700,
+    button-text: $neutral-white
   )
 );

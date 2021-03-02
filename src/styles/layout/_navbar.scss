@@ -55,4 +55,9 @@
       }
     }
   }
+
+  &__actions {
+    display: inline-flex;
+    gap: 1.6rem;
+  }
 }
