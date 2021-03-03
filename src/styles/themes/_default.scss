@@ -27,6 +27,8 @@ $card-shadow: 'card-shadow';
 $toggle-switch: 'toggle-switch';
 $toggle-switch-checked: 'toggle-switch-checked';
 
+$sidebar-background: 'sidebar-background';
+
 $themes: (
   light: (
     background: $bg-light,
@@ -40,7 +42,8 @@ $themes: (
     card-background: $neutral-white,
     card-shadow: $card-shadow-light,
     toggle-switch: $grey-300,
-    toggle-switch-checked: $primary-500
+    toggle-switch-checked: $primary-500,
+    sidebar-background: $neutral-white
   ),
   dark: (
     background: $bg-dark,
@@ -54,6 +57,7 @@ $themes: (
     card-background: $card-background-dark,
     card-shadow: $card-shadow-dark,
     toggle-switch: $grey-500,
-    toggle-switch-checked: $primary-500
+    toggle-switch-checked: $primary-500,
+    sidebar-background: $sidebar-background-dark
   )
 );

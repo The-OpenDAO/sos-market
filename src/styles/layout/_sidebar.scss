@@ -4,7 +4,14 @@
   grid-template-rows: 27rem 27rem;
 
   padding: 3.3rem 3rem;
-  width: 38rem;
+  width: 25.4rem;
+  height: 100vh;
+
+  transition: background-color 0.3s ease 0s;
+
+  @include themed() {
+    background-color: t($sidebar-background);
+  }
 }
 
 .sidebar-section {

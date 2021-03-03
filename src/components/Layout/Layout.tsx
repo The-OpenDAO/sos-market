@@ -13,11 +13,11 @@ function Layout({ children }: Props) {
       <header className="header">
         <NavBar />
       </header>
+      <aside>
+        <Sidebar />
+      </aside>
       <main className="main">
-        <section className="vertical">
-          <Sidebar />
-          {children}
-        </section>
+        <section className="vertical">{children}</section>
       </main>
     </div>
   );
