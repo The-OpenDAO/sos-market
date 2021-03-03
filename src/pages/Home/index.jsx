@@ -7,29 +7,30 @@ import { tabs, markets } from './mock';
 function Home() {
   return (
     <div className="content">
-      <Text as="h1" variant="bold">
-        Popular Markets
-      </Text>
-
       <ul className="markets">
         <li className="market">
-          <Text as="p" variant="lg-bold">
+          <Text as="p" fontWeight="semibold">
             Politics
           </Text>
         </li>
         <li className="market">
-          <Text as="p" variant="lg-bold">
-            Sports
-          </Text>
-        </li>
-        <li className="market">
-          <Text as="p" variant="lg-bold">
+          <Text as="p" fontWeight="semibold">
             Finance
           </Text>
         </li>
         <li className="market">
-          <Text as="p" variant="lg-bold">
+          <Text as="p" fontWeight="semibold">
             Crypto
+          </Text>
+        </li>
+        <li className="market">
+          <Text as="p" fontWeight="semibold">
+            eSports
+          </Text>
+        </li>
+        <li className="market">
+          <Text as="p" fontWeight="semibold">
+            Tech
           </Text>
         </li>
       </ul>
@@ -38,9 +39,6 @@ function Home() {
         <Tabs items={tabs} />
 
         <div className="filters">
-          <Select label="Sub-Category:" name="Sub-Category" disabled>
-            <option value="USA">USA</option>
-          </Select>
           <Select label="Sort by:" name="Sort by" disabled>
             <option value="Most traded">Most traded</option>
           </Select>

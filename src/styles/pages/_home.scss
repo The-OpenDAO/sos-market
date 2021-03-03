@@ -2,60 +2,32 @@
   width: 100%;
   max-width: 160rem;
 
-  padding: 3.3rem;
-  margin: 0 auto;
-
-  > h1 {
-    font-size: 2.4rem;
-    color: $grey-900;
-  }
+  margin: 1.2rem auto 0rem auto;
 }
 
 .markets {
   display: grid;
-  grid-template-columns: repeat(4, minmax(17.5rem, 1fr));
-  grid-gap: 2.4rem;
-
-  margin: 16px 0px;
+  grid-template-columns: repeat(5, minmax(20.5rem, 1fr));
+  grid-gap: 2rem;
 
   :nth-child(1):not(p) {
-    background: rgb(255, 223, 170);
-    background: linear-gradient(
-      42deg,
-      rgba(255, 223, 170, 1) 0%,
-      rgba(255, 156, 175, 1) 29%,
-      rgba(255, 192, 134, 1) 100%
-    );
+    background: $card-gradient-yellow;
   }
 
   :nth-child(2) {
-    background: rgb(255, 220, 242);
-    background: linear-gradient(
-      42deg,
-      rgba(255, 220, 242, 1) 0%,
-      rgba(247, 180, 255, 1) 29%,
-      rgba(134, 178, 255, 1) 100%
-    );
+    background: $card-gradient-blue;
   }
 
   :nth-child(3) {
-    background: rgb(177, 236, 255);
-    background: linear-gradient(
-      42deg,
-      rgba(177, 236, 255, 1) 0%,
-      rgba(133, 182, 255, 1) 29%,
-      rgba(133, 147, 255, 1) 100%
-    );
+    background: $card-gradient-green;
   }
 
   :nth-child(4) {
-    background: rgb(255, 129, 234);
-    background: linear-gradient(
-      42deg,
-      rgba(255, 129, 234, 1) 0%,
-      rgba(248, 129, 183, 1) 29%,
-      rgba(181, 197, 255, 1) 100%
-    );
+    background: $card-gradient-pink;
+  }
+
+  :nth-child(5) {
+    background: $card-gradient-orange;
   }
 }
 
@@ -69,10 +41,10 @@
   height: 9rem;
   padding: 2rem;
 
-  border-radius: 0.8rem;
+  border-radius: 0.4rem;
 
   > p {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: $neutral-white;
   }
 }

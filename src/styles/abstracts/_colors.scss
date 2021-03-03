@@ -41,6 +41,12 @@ $card-background-dark: hsl(220, 21%, 11%);
 $card-shadow-light: 0rem 0.4rem 2.4rem $shadow-light;
 $card-shadow-dark: 0rem 0.4rem 4rem $shadow-dark;
 
+$card-gradient-yellow: linear-gradient(106.37deg, #bd7052 0%, #e5cc73 99.91%);
+$card-gradient-blue: linear-gradient(106.37deg, #52b7bd 0%, #8373e5 99.91%);
+$card-gradient-green: linear-gradient(106.37deg, #52bd70 0%, #73d0e5 99.91%);
+$card-gradient-pink: linear-gradient(106.37deg, #ae52bd 0%, #e57381 99.91%);
+$card-gradient-orange: linear-gradient(106.37deg, #bd5252 0%, #e59c73 99.91%);
+
 $grey-50: hsl(0, 0%, 98%);
 $grey-100: hsl(220, 14%, 96%);
 $grey-200: hsl(225, 9%, 91%);
