@@ -1,0 +1,30 @@
+.interface-settings {
+  display: none;
+
+  position: absolute;
+  top: 10rem;
+  right: 2.8rem;
+  z-index: 10;
+
+  padding: 2.4rem;
+  border-radius: 0.4rem;
+
+  @include themed() {
+    background-color: t($card-background);
+    box-shadow: t($card-shadow);
+  }
+
+  > h5 {
+    font-size: 1.5rem;
+
+    @include themed() {
+      color: t($input-text);
+    }
+  }
+}
+
+.interface-settings--collapsed {
+  @extend .interface-settings;
+
+  display: initial;
+}

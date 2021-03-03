@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { PolkamarketsIcon, MetaMaskIcon, SettingsIcon } from 'assets/icons';
-import { SearchBar, Button } from 'components';
+import { SearchBar, Button, InterfaceSettings } from 'components';
 
 const NavBar = () => {
+  const [showInterfaceSettings, setShowInterfaceSettings] = useState(false);
+
+  function toggleInterfaceSettings() {
+    setShowInterfaceSettings(!showInterfaceSettings);
+  }
+
   return (
     <nav className="navbar">
       <figure className="navbar__icon">
@@ -22,6 +28,7 @@ const NavBar = () => {
         </li>
       </ul>
       <div className="navbar-menu__actions">
+        <InterfaceSettings open={showInterfaceSettings} />
         <Button variant="default" icon={<MetaMaskIcon />} iconPosition="left">
           Connect Wallet
         </Button>
@@ -29,6 +36,7 @@ const NavBar = () => {
           variant="default"
           icon={<SettingsIcon />}
           iconPosition="center"
+          onClick={() => toggleInterfaceSettings()}
         />
       </div>
     </nav>

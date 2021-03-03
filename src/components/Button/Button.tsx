@@ -19,6 +19,7 @@ interface Props {
   iconPosition?: Position;
   disabled?: boolean;
   children?: React.ReactNode | any;
+  onClick?: () => void;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, Props>(
@@ -28,7 +29,8 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       icon,
       iconPosition = 'center',
       disabled = false,
-      children
+      children,
+      onClick
     },
     ref
   ) => (
@@ -37,6 +39,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       type="button"
       className={`btn--${variant}`}
       disabled={disabled}
+      onClick={onClick}
     >
       {children}
       {icon ? (

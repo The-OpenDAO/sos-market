@@ -18,6 +18,7 @@ import Tabs from './Tabs';
 import Text from './Text';
 import ToggleButton from './ToggleButton';
 import PredictionCard from './PredictionCard';
+import InterfaceSettings from './InterfaceSettings';
 
 export {
   BetForm,
@@ -39,5 +40,6 @@ export {
   Tabs,
   Text,
   ToggleButton,
-  PredictionCard
+  PredictionCard,
+  InterfaceSettings
 };
