@@ -1,5 +1,6 @@
 const tabs = [
   { name: 'Open', content: null },
+  { name: 'Favorites', content: null },
   { name: 'In-Reporting', content: null },
   { name: 'Resolved', content: null }
 ];
