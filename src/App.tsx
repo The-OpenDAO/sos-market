@@ -1,25 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Routes from 'routes';
-import useTheme from 'hooks/useTheme';
+// import useTheme from 'hooks/useTheme';
 
 import { Layout } from 'components';
 
 function App() {
-  const { theme, setTheme } = useTheme();
-  const browserUseDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
+  // const { theme, setTheme } = useTheme();
+  // const browserUseDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-  useEffect(() => {
-    if (browserUseDarkTheme.matches) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [browserUseDarkTheme.matches]);
+  // useEffect(() => {
+  //   if (browserUseDarkTheme.matches) {
+  //     setTheme('dark');
+  //   } else {
+  //     setTheme('light');
+  //   }
+  // }, [browserUseDarkTheme.matches]);
 
   return (
-    <div className={`theme--${theme}`}>
+    <div className="theme--dark">
       <Layout>
         <Routes />
       </Layout>

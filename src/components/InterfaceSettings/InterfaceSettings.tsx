@@ -29,6 +29,7 @@ const InterfaceSettings = ({ open }: Props) => {
         <ToggleSwitch
           name="dark-mode"
           checked={theme === 'dark'}
+          disabled
           handleChange={handleChangeTheme}
         />
       </div>
