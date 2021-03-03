@@ -1,29 +1,35 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import isEmpty from 'lodash/isEmpty';
 import clx from 'classnames';
 
-import styles from 'styles/components/Tabs.module.scss';
+type Direction = 'row' | 'column';
 
-function Tabs({ direction, items }) {
+type Item = {
+  name: string;
+  content: null;
+};
+
+interface Props {
+  direction?: Direction;
+  items: Item[];
+}
+
+const Tabs = ({ direction = 'row', items }: Props) => {
   const [activeTab, setActiveTab] = useState(items[0].name);
 
-  function handleChangeTab(event) {
+  function handleChangeTab(event: any) {
     setActiveTab(event.target.name);
   }
 
   return (
     <>
-      <ul className={clx(styles.container, styles[direction])}>
+      <ul className={clx('tabs', direction)}>
         {!isEmpty(items) &&
           items.map(item => (
             <li
               key={item.name}
-              className={clx(
-                styles.item,
-                item.name === activeTab && styles.active
-              )}
+              className={clx('tabs__item', item.name === activeTab && 'active')}
             >
               <button
                 type="button"
@@ -40,8 +46,8 @@ function Tabs({ direction, items }) {
           items.map(item => (
             <div
               className={clx(
-                styles.content,
-                item.name === activeTab && styles.active
+                'tabs__content',
+                item.name === activeTab && 'active'
               )}
               key={item.name}
             >
@@ -51,15 +57,6 @@ function Tabs({ direction, items }) {
       </>
     </>
   );
-}
-
-Tabs.defaultProps = {
-  direction: 'row'
-};
-
-Tabs.propTypes = {
-  direction: PropTypes.oneOf(['row', 'column']),
-  items: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Tabs;

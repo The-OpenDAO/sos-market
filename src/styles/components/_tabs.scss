@@ -1,0 +1,68 @@
+.tabs {
+  display: flex;
+  gap: 2.4rem;
+
+  height: fit-content;
+
+  &.row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &.column {
+    flex-direction: column;
+    justify-items: center;
+  }
+
+  &__item {
+    float: left;
+    margin: 0rem;
+    padding: 0rem;
+
+    list-style-type: none;
+    width: fit-content;
+    height: fit-content;
+
+    > button {
+      border: none;
+      outline: none;
+      padding: 0rem;
+
+      background-color: unset;
+
+      @include themed() {
+        color: t($text-base);
+      }
+
+      font-size: 1.4rem;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      cursor: pointer;
+      transition: color 0.3s ease 0s;
+
+      &:hover {
+        @include themed() {
+          color: t($text-hover);
+        }
+      }
+    }
+
+    &.active {
+      > button {
+        @include themed() {
+          color: t($text-hover);
+        }
+      }
+    }
+  }
+
+  &__content {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}
