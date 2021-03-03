@@ -1,19 +1,13 @@
 import React, { createContext, useReducer } from 'react';
 
-const ThemeContext = createContext({});
-const ThemeDispatchContext = createContext({});
+const ThemeContext = createContext({ theme: 'light' });
+const ThemeDispatchContext = createContext();
 
 const actions = {
   SET_THEME: 'theme/set'
 };
 
-type State = {
-  theme: string;
-};
-
-type Action = { type: string; payload: string };
-
-function themeReducer(state: State, action: Action) {
+function themeReducer(state, action) {
   switch (action.type) {
     case actions.SET_THEME: {
       return { theme: action.payload };
@@ -24,11 +18,8 @@ function themeReducer(state: State, action: Action) {
   }
 }
 
-interface Props {
-  children: React.ReactNode | any;
-}
-
-const ThemeProvider = ({ children }: Props) => {
+// eslint-disable-next-line react/prop-types
+const ThemeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(themeReducer, {
     theme: 'light'
   });

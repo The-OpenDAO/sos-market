@@ -1,26 +1,25 @@
 import React, { useEffect } from 'react';
 
 import Routes from 'routes';
+import useTheme from 'hooks/useTheme';
 
 import { Layout } from 'components';
 
 function App() {
-  const [dark, setDark] = React.useState(false);
+  const { theme, setTheme } = useTheme();
   const browserUseDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
 
   useEffect(() => {
     if (browserUseDarkTheme.matches) {
-      setDark(true);
+      setTheme('dark');
     } else {
-      setDark(false);
+      setTheme('light');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [browserUseDarkTheme.matches]);
 
   return (
-    <div className={`${dark ? 'theme--dark' : 'theme--light'}`}>
-      <button type="button" onClick={() => setDark(!dark)}>
-        Change Theme
-      </button>
+    <div className={`theme--${theme}`}>
       <Layout>
         <Routes />
       </Layout>

@@ -2,11 +2,21 @@ import React from 'react';
 
 import { Text, ToggleSwitch } from 'components';
 
+import useTheme from 'hooks/useTheme';
+
 interface Props {
   open: boolean;
 }
 
 const InterfaceSettings = ({ open }: Props) => {
+  const { theme, setTheme } = useTheme();
+
+  function handleChangeTheme(event: React.ChangeEvent<HTMLInputElement>) {
+    const { checked } = event.target;
+
+    setTheme(checked ? 'dark' : 'light');
+  }
+
   return (
     <div
       className={open ? 'interface-settings--collapsed' : 'interface-settings'}
@@ -16,7 +26,11 @@ const InterfaceSettings = ({ open }: Props) => {
         <Text as="label" fontWeight="medium">
           Toggle Dark Mode
         </Text>
-        <ToggleSwitch name="dark-mode" />
+        <ToggleSwitch
+          name="dark-mode"
+          checked={theme === 'dark'}
+          handleChange={handleChangeTheme}
+        />
       </div>
     </div>
   );
