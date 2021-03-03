@@ -19,6 +19,7 @@ import Text from './Text';
 import ToggleButton from './ToggleButton';
 import PredictionCard from './PredictionCard';
 import InterfaceSettings from './InterfaceSettings';
+import ToggleSwitch from './ToggleSwitch';
 
 export {
   BetForm,
@@ -41,5 +42,6 @@ export {
   Text,
   ToggleButton,
   PredictionCard,
-  InterfaceSettings
+  InterfaceSettings,
+  ToggleSwitch
 };

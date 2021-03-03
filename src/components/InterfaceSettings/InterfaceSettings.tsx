@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Text } from 'components';
+import { Text, ToggleSwitch } from 'components';
 
 interface Props {
   open: boolean;
@@ -11,9 +11,13 @@ const InterfaceSettings = ({ open }: Props) => {
     <div
       className={open ? 'interface-settings--collapsed' : 'interface-settings'}
     >
-      <Text as="h5" fontWeight="semibold">
-        Interface Settings
-      </Text>
+      <Text fontWeight="semibold">Interface Settings</Text>
+      <div className="interface-settings__actions">
+        <Text as="label" fontWeight="medium">
+          Toggle Dark Mode
+        </Text>
+        <ToggleSwitch name="dark-mode" />
+      </div>
     </div>
   );
 };

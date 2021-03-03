@@ -1,0 +1,51 @@
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 3.6rem;
+  height: 2rem;
+
+  > input {
+    opacity: 0;
+    width: 0rem;
+    height: 0rem;
+
+    &:checked + .slider {
+      @include themed() {
+        background-color: t($toggle-switch-checked);
+      }
+
+      &::before {
+        transform: translateX(1.6rem);
+      }
+    }
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  @include themed() {
+    background-color: t($toggle-switch);
+  }
+
+  transition: 0.4s;
+  border-radius: 4rem;
+
+  &::before {
+    position: absolute;
+    content: '';
+    height: 1.6rem;
+    width: 1.6rem;
+    left: 0.2rem;
+    bottom: 0.2rem;
+    background-color: white;
+    transition: 0.4s;
+
+    border-radius: 50%;
+  }
+}

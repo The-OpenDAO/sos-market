@@ -24,6 +24,9 @@ $button-text: 'button-text';
 $card-background: 'card-background';
 $card-shadow: 'card-shadow';
 
+$toggle-switch: 'toggle-switch';
+$toggle-switch-checked: 'toggle-switch-checked';
+
 $themes: (
   light: (
     background: $bg-light,
@@ -35,7 +38,9 @@ $themes: (
     input-icon: $primary-500,
     button-text: $grey-900,
     card-background: $neutral-white,
-    card-shadow: $card-shadow-light
+    card-shadow: $card-shadow-light,
+    toggle-switch: $grey-300,
+    toggle-switch-checked: $primary-500
   ),
   dark: (
     background: $bg-dark,
@@ -47,6 +52,8 @@ $themes: (
     input-icon: $grey-700,
     button-text: $neutral-white,
     card-background: $card-background-dark,
-    card-shadow: $card-shadow-dark
+    card-shadow: $card-shadow-dark,
+    toggle-switch: $grey-500,
+    toggle-switch-checked: $primary-500
   )
 );
