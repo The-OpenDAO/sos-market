@@ -41,7 +41,7 @@ const Tabs = ({ direction = 'row', items }: Props) => {
             </li>
           ))}
       </ul>
-      <>
+      {/* <>
         {!isEmpty(items) &&
           items.map(item => (
             <div
@@ -54,7 +54,7 @@ const Tabs = ({ direction = 'row', items }: Props) => {
               {item.content}
             </div>
           ))}
-      </>
+      </> */}
     </>
   );
 };
