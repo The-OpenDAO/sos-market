@@ -10,17 +10,17 @@ function Home() {
       <ul className="markets">
         <li className="market">
           <Text as="p" scale="body" fontWeight="semibold">
-            Politics
+            Crypto
+          </Text>
+        </li>
+        <li className="market">
+          <Text as="p" scale="body" fontWeight="semibold">
+            Sports
           </Text>
         </li>
         <li className="market">
           <Text as="p" scale="body" fontWeight="semibold">
             Finance
-          </Text>
-        </li>
-        <li className="market">
-          <Text as="p" scale="body" fontWeight="semibold">
-            Crypto
           </Text>
         </li>
         <li className="market">

@@ -23,7 +23,7 @@ const InterfaceSettings = ({ open }: Props) => {
     >
       <Text fontWeight="semibold">Interface Settings</Text>
       <div className="interface-settings__actions">
-        <Text as="label" fontWeight="medium">
+        <Text as="label" scale="caption" fontWeight="medium">
           Toggle Dark Mode
         </Text>
         <ToggleSwitch
