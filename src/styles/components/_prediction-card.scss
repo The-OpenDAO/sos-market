@@ -1,16 +1,21 @@
-.prediction-card {
+.prediction-card-container {
   display: flex;
-  flex-grow: 1;
+  flex-direction: column;
 
-  padding: 1.6rem;
-  border-radius: 0.4rem;
-
+  border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
   transition: background-color 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
 
   @include themed() {
     background-color: t($card-background);
     box-shadow: t($card-shadow);
   }
+}
+
+.prediction-card {
+  display: flex;
+  flex-grow: 1;
+
+  padding: 1.6rem;
 
   &__image {
     object-fit: cover;
@@ -91,6 +96,31 @@
 
       > span {
         color: t($color-text);
+      }
+    }
+  }
+}
+
+.prediction-card-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 1rem 1.6rem;
+  background-color: $gray-900;
+  border-radius: 0rem 0rem 0.4rem 0.4rem;
+
+  &__stats {
+    display: inline-flex;
+    gap: 2rem;
+
+    @include themed() {
+      > span {
+        color: t($color-text-alt);
+
+        > strong {
+          color: t($color-text);
+        }
       }
     }
   }

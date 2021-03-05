@@ -6,7 +6,6 @@ import Categories from './Categories';
 import Input from './Input';
 import Label from './Label';
 import Layout from './Layout';
-import MarketCard from './MarketCard';
 import MarketList from './MarketList';
 import Modal from './Modal';
 import NavBar from './NavBar';
@@ -30,7 +29,6 @@ export {
   Input,
   Label,
   Layout,
-  MarketCard,
   MarketList,
   Modal,
   NavBar,
