@@ -1,27 +1,25 @@
 import React from 'react';
 import PropTypes, { element } from 'prop-types';
 
-import styles from 'styles/components/Select.module.scss';
-
 const variants = {
   default: 'default'
 };
 
 function Select({ variant, label, name, description, disabled, children }) {
   return (
-    <div className={styles.group}>
-      <label htmlFor={name} className={styles.label}>
+    <div className="select-group">
+      <label htmlFor={name} className="select-label">
         {label}
       </label>
       <select
-        className={styles[variants[variant]] || styles.default}
+        className={`select--${variants[variant]}`}
         name={name}
         disabled={disabled}
       >
         {children}
       </select>
       {description ? (
-        <span className={styles.description}>{description}</span>
+        <span className="select-description">{description}</span>
       ) : null}
     </div>
   );

@@ -55,11 +55,11 @@
   flex-direction: row;
 
   justify-content: space-between;
-
-  height: 4.4rem; //Modify later
 }
 
 .filters {
   display: inline-flex;
   gap: 3.2rem;
+
+  height: fit-content;
 }
