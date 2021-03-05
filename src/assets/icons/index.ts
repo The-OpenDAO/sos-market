@@ -18,6 +18,9 @@ import UsersIcon from './UsersIcon';
 import WhiteHouseIcon from './WhiteHouseIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import ArrowDownIcon from './ArrowDownIcon';
+import ArrowBackIcon from './ArrowBackIcon';
+import MarketsIcon from './MarketsIcon';
+import PortfolioIcon from './PortifolioIcon';
 
 export {
   AlienIcon,
@@ -39,5 +42,8 @@ export {
   UsersIcon,
   WhiteHouseIcon,
   ArrowUpIcon,
-  ArrowDownIcon
+  ArrowDownIcon,
+  ArrowBackIcon,
+  MarketsIcon,
+  PortfolioIcon
 };

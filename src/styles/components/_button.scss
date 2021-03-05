@@ -76,19 +76,11 @@
 
 .btn--noborder {
   @extend .btn;
-  color: $gray-700;
-  background-color: $neutral-white;
+  padding: 0rem;
+  margin: 0rem;
 
+  background-color: unset;
   border: none;
-
-  &:hover {
-    background-color: $gray-300;
-  }
-
-  &:disabled {
-    color: $gray-500;
-    background-color: $neutral-white;
-  }
 }
 
 .btn--primary {
