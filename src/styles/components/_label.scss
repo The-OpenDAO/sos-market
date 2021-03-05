@@ -32,11 +32,11 @@
 .label--default {
   @extend .label;
 
-  color: $gray-900;
-  background-color: $gray-100;
+  color: $gray-500;
+  background-color: rgba(hsl(216, 14, 70), 0.05);
 
   > label {
-    color: $gray-900;
+    color: $gray-500;
   }
 }
 

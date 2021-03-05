@@ -56,6 +56,10 @@
     color: t($button-text);
     background-color: t($background);
     border: 0.1rem solid t($input-background);
+
+    > figure > svg {
+      fill: t($color-text-alt);
+    }
   }
 
   &:hover {
