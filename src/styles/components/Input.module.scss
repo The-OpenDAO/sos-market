@@ -1,13 +1,13 @@
 .input {
-  height: 44px;
+  height: 4.4rem;
 
-  margin: 0px;
-  padding: 12px;
+  margin: 0rem;
+  padding: 1.2rem;
 
   outline: none;
-  border-radius: 4px;
+  border-radius: 0.4rem;
 
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
@@ -25,14 +25,15 @@
   @extend .input;
   background-color: $neutral-white;
 
-  border: 1.5px solid $gray-300;
+  border: 0.15rem solid $gray-300;
 
   &:focus {
     color: $gray-900;
 
-    border: 1.5px solid $primary-500;
+    border: 0.15rem solid $primary-500;
 
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $primary-300;
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.075) inset,
+      0 0 0.8rem $primary-300;
     outline: 0 none;
   }
 }
@@ -42,14 +43,15 @@
   color: $gray-500;
   background-color: $danger-100;
 
-  border: 1.5px solid $danger-500;
+  border: 0.15rem solid $danger-500;
 
   &:focus {
     color: $gray-900;
 
-    border: 1.5px solid $danger-500;
+    border: 0.15rem solid $danger-500;
 
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $danger-100;
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.075) inset,
+      0 0 0.8rem $danger-100;
     outline: 0 none;
   }
 }
@@ -59,14 +61,15 @@
   color: $gray-500;
   background-color: $success-100;
 
-  border: 1.5px solid $success-500;
+  border: 0.15rem solid $success-500;
 
   &:focus {
     color: $gray-900;
 
-    border: 1.5px solid $success-500;
+    border: 0.15rem solid $success-500;
 
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $success-100;
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.075) inset,
+      0 0 0.8rem $success-100;
     outline: 0 none;
   }
 }
@@ -75,11 +78,11 @@
   display: flex;
   flex-direction: column;
 
-  gap: 8px;
+  gap: 0.8rem;
 }
 
 .label {
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
@@ -91,7 +94,7 @@
 }
 
 .description {
-  font-size: 11px;
+  font-size: 1.1rem;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
