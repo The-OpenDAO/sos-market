@@ -17,7 +17,7 @@
   transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 
   &::placeholder {
-    color: $grey-500;
+    color: $gray-500;
   }
 }
 
@@ -25,10 +25,10 @@
   @extend .input;
   background-color: $neutral-white;
 
-  border: 1.5px solid $grey-300;
+  border: 1.5px solid $gray-300;
 
   &:focus {
-    color: $grey-900;
+    color: $gray-900;
 
     border: 1.5px solid $primary-500;
 
@@ -39,13 +39,13 @@
 
 .error {
   @extend .input;
-  color: $grey-500;
+  color: $gray-500;
   background-color: $danger-100;
 
   border: 1.5px solid $danger-500;
 
   &:focus {
-    color: $grey-900;
+    color: $gray-900;
 
     border: 1.5px solid $danger-500;
 
@@ -56,13 +56,13 @@
 
 .success {
   @extend .input;
-  color: $grey-500;
+  color: $gray-500;
   background-color: $success-100;
 
   border: 1.5px solid $success-500;
 
   &:focus {
-    color: $grey-900;
+    color: $gray-900;
 
     border: 1.5px solid $success-500;
 
@@ -87,7 +87,7 @@
   letter-spacing: normal;
   text-align: left;
 
-  color: $grey-900;
+  color: $gray-900;
 }
 
 .description {
@@ -99,5 +99,5 @@
   letter-spacing: normal;
   text-align: left;
 
-  color: $grey-500;
+  color: $gray-500;
 }

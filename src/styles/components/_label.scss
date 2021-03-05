@@ -32,11 +32,11 @@
 .label--default {
   @extend .label;
 
-  color: $grey-900;
-  background-color: $grey-100;
+  color: $gray-900;
+  background-color: $gray-100;
 
   > label {
-    color: $grey-900;
+    color: $gray-900;
   }
 }
 
@@ -81,16 +81,5 @@
 
   > label {
     color: $danger-500;
-  }
-}
-
-.label--pink {
-  @extend .label;
-
-  color: $pink-500;
-  background-color: $pink-100;
-
-  > label {
-    color: $pink-500;
   }
 }

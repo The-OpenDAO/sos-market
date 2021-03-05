@@ -59,30 +59,30 @@
   }
 
   &:hover {
-    background-color: $grey-900;
+    background-color: $gray-900;
   }
 
   &:disabled {
-    color: $grey-500;
+    color: $gray-500;
     background-color: $neutral-white;
 
-    border: 0.1rem solid $grey-500;
+    border: 0.1rem solid $gray-500;
   }
 }
 
 .btn--noborder {
   @extend .btn;
-  color: $grey-700;
+  color: $gray-700;
   background-color: $neutral-white;
 
   border: none;
 
   &:hover {
-    background-color: $grey-300;
+    background-color: $gray-300;
   }
 
   &:disabled {
-    color: $grey-500;
+    color: $gray-500;
     background-color: $neutral-white;
   }
 }
@@ -192,27 +192,5 @@
     background-color: $danger-100;
 
     border: 0.1rem solid $danger-100;
-  }
-}
-
-.btn--pink {
-  @extend .btn;
-  color: $neutral-white;
-  background-color: $pink-500;
-
-  border: 0.1rem solid $pink-500;
-
-  &:hover {
-    color: $neutral-white;
-    background-color: $pink-900;
-
-    border: 0.1rem solid $pink-900;
-  }
-
-  &:disabled {
-    color: $pink-100;
-    background-color: $pink-300;
-
-    border: 0.1rem solid $pink-300;
   }
 }

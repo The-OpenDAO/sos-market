@@ -1,34 +1,78 @@
-$primary-100: hsl(248, 100%, 97%);
-$primary-300: hsl(241, 100%, 81%);
+$primary-50: hsl(240, 100%, 98%);
+$primary-100: hsl(243, 100%, 96%);
+$primary-200: hsl(241, 96%, 91%);
+$primary-300: hsl(242, 97%, 85%);
+$primary-400: hsl(242, 97%, 75%);
 $primary-500: hsl(242, 97%, 65%);
-$primary-700: hsl(239, 60%, 47%);
-$primary-900: hsl(242, 97%, 26%);
+$primary-600: hsl(242, 97%, 55%);
+$primary-700: hsl(242, 97%, 45%);
+$primary-800: hsl(242, 97%, 35%);
+$primary-900: hsl(242, 97%, 25%);
 
-$neutral-white: hsl(0, 0%, 100%);
-$neutral-white-50: hsla(0, 0%, 100%, 0.5);
+$secondary-50: hsl(330, 100%, 98%);
+$secondary-100: hsl(330, 100%, 96%);
+$secondary-200: hsl(328, 100%, 85%);
+$secondary-300: hsl(328, 100%, 75%);
+$secondary-400: hsl(328, 100%, 65%);
+$secondary-500: hsl(328, 100%, 45%);
+$secondary-600: hsl(328, 100%, 35%);
+$secondary-700: hsl(328, 100%, 25%);
+$secondary-800: hsl(328, 100%, 15%);
+$secondary-900: hsl(328, 100%, 5%);
+
+$success-50: hsl(160, 60%, 98%);
+$success-100: hsl(155, 60%, 96%);
+$success-200: hsl(157, 61%, 86%);
+$success-300: hsl(156, 61%, 76%);
+$success-400: hsl(155, 62%, 65%);
+$success-500: hsl(156, 62%, 55%);
+$success-600: hsl(156, 62%, 45%);
+$success-700: hsl(156, 62%, 35%);
+$success-800: hsl(156, 62%, 25%);
+$success-900: hsl(156, 61%, 15%);
+
+$warning-50: hsl(42, 100%, 98%);
+$warning-100: hsl(42, 100%, 96%);
+$warning-200: hsl(43, 97%, 86%);
+$warning-300: hsl(43, 97%, 76%);
+$warning-400: hsl(43, 97%, 66%);
+$warning-500: hsl(43, 96%, 56%);
+$warning-600: hsl(43, 97%, 46%);
+$warning-700: hsl(43, 97%, 36%);
+$warning-800: hsl(44, 97%, 26%);
+$warning-900: hsl(43, 98%, 16%);
+
+$danger-50: hsl(0, 80%, 98%);
+$danger-100: hsl(0, 81%, 96%);
+$danger-200: hsl(0, 84%, 90%);
+$danger-300: hsl(0, 84%, 80%);
+$danger-400: hsl(0, 84%, 70%);
+$danger-500: hsl(0, 84%, 60%);
+$danger-600: hsl(0, 84%, 50%);
+$danger-700: hsl(0, 84%, 40%);
+$danger-800: hsl(0, 84%, 30%);
+$danger-900: hsl(0, 84%, 20%);
+
+$gray-50: hsl(210, 20%, 98%);
+$gray-100: hsl(220, 14%, 96%);
+$gray-200: hsl(219, 14%, 80%);
+$gray-300: hsl(217, 14%, 70%);
+$gray-400: hsl(216, 15%, 60%);
+$gray-500: hsl(216, 14%, 45%);
+$gray-600: hsl(221, 23%, 19%);
+$gray-700: hsl(220, 21%, 11%);
+$gray-800: hsl(224, 22%, 10%);
+$gray-900: hsl(227, 22%, 8%);
+$gray-1000: hsl(225, 22%, 7%);
+
 $neutral-black: hsl(0, 0%, 0%);
+$neutral-white-50: hsla(0, 0%, 100%, 0.5);
+$neutral-white: hsl(0, 0%, 100%);
 $neutral-0: hsl(0, 0%, 100%);
 
-$pink-100: hsl(330, 100%, 97%);
-$pink-500: hsl(328, 100%, 45%);
-$pink-900: hsl(328, 100%, 30%);
-$pink-300: hsl(328, 82%, 78%);
-
-$warning-100: hsl(48, 100%, 93%);
-$warning-500: hsl(43, 96%, 56%);
-$warning-900: hsl(32, 95%, 44%);
-
-$danger-100: hsl(0, 86%, 97%);
-$danger-500: hsl(0, 84%, 60%);
-$danger-900: hsl(0, 74%, 42%);
-
-$success-100: hsl(158, 58%, 96%);
-$success-500: hsl(156, 62%, 55%);
-$success-900: hsl(162, 100%, 27%);
-
-$secondary-purple: hsl(255, 100%, 75%);
-$secondary-blue: hsl(209, 100%, 71%);
-$secondary-pink: hsl(338, 100%, 76%);
+$alternative-colors-purple: hsl(255, 100%, 75%);
+$alternative-colors-blue: hsl(209, 100%, 71%);
+$alternative-colors-pink: hsl(338, 100%, 76%);
 
 $border-dark-mode: hsl(225, 22%, 15%);
 $background-dark-mode-highlight: hsl(217, 40%, 14%);
@@ -48,18 +92,6 @@ $card-gradient-pink: linear-gradient(106.37deg, #ae52bd 0%, #e57381 99.91%);
 $card-gradient-orange: linear-gradient(106.37deg, #bd5252 0%, #e59c73 99.91%);
 
 $sidebar-background-dark: hsl(222, 22%, 9%);
-
-$grey-50: hsl(0, 0%, 98%);
-$grey-100: hsl(220, 14%, 96%);
-$grey-200: hsl(225, 9%, 91%);
-$grey-300: hsl(217, 10%, 84%);
-$grey-400: hsl(219, 9%, 65%);
-$grey-500: hsl(219, 10%, 46%);
-$grey-600: hsl(213, 10%, 34%);
-$grey-700: hsl(216, 14%, 45%);
-$grey-800: hsl(218, 9%, 17%);
-$grey-900: hsl(220, 11%, 11%);
-$grey-1000: hsl(216, 40%, 12%);
 
 $bg-light: hsl(223, 100%, 99%);
 $bg-dark: hsl(225, 22%, 7%);

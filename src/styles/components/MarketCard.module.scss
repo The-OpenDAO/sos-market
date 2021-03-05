@@ -18,8 +18,8 @@
 
   background-color: $neutral-white;
 
-  border: 0.1rem solid $grey-200;
-  border-bottom: 0.05rem solid $grey-200;
+  border: 0.1rem solid $gray-200;
+  border-bottom: 0.05rem solid $gray-200;
   border-radius: 0.8rem 0.8rem 0rem 0rem;
 
   > img {
@@ -48,10 +48,10 @@
   align-items: center;
 
   padding: 2.4rem 1.2rem;
-  background-color: $grey-100;
+  background-color: $gray-100;
 
-  border: 0.1rem solid $grey-200;
-  border-top: 0.05rem solid $grey-200;
+  border: 0.1rem solid $gray-200;
+  border-top: 0.05rem solid $gray-200;
   border-radius: 0rem 0rem 0.8rem 0.8rem;
 }
 
@@ -62,12 +62,12 @@
   > span {
     text-transform: uppercase;
     font-size: 1.1rem;
-    color: $grey-500;
+    color: $gray-500;
 
     > strong {
       text-transform: uppercase;
       font-size: 1.1rem;
-      color: $grey-900;
+      color: $gray-900;
     }
   }
 }

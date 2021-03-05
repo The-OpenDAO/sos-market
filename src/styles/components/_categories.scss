@@ -28,7 +28,7 @@
     margin: 8px 0px;
     margin-right: auto;
 
-    color: $grey-500;
+    color: $gray-500;
 
     font-size: 14px;
     text-decoration: none;
@@ -37,17 +37,17 @@
     transition: color 0.2s linear 0s;
 
     > svg {
-      fill: $grey-500;
+      fill: $gray-500;
       margin-right: 12px;
 
       transition: fill 0.2s linear 0s;
     }
 
     &:hover {
-      color: $grey-900;
+      color: $gray-900;
 
       > svg {
-        fill: $grey-900;
+        fill: $gray-900;
       }
     }
 

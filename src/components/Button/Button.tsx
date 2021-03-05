@@ -8,7 +8,6 @@ type Variant =
   | 'success'
   | 'warning'
   | 'danger'
-  | 'pink'
   | 'noborder';
 
 type Position = 'center' | 'left' | 'right';

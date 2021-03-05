@@ -17,7 +17,7 @@
   transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 
   &::placeholder {
-    color: $grey-500;
+    color: $gray-500;
   }
 }
 
@@ -48,7 +48,7 @@
   letter-spacing: normal;
   text-align: left;
 
-  color: $grey-500;
+  color: $gray-500;
 }
 
 .description {
@@ -60,5 +60,5 @@
   letter-spacing: normal;
   text-align: left;
 
-  color: $grey-500;
+  color: $gray-500;
 }
