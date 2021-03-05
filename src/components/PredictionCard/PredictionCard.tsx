@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Breadcrumb, Text } from 'components';
+import PredictionSelection from './PredictionSelection';
 
 type Market = {
   id: number;
@@ -16,6 +17,14 @@ type Market = {
   volume: number;
   expiration: string;
   liked: boolean;
+  options: [
+    {
+      id: number;
+      name: string;
+      odd: number;
+      positive: boolean;
+    }
+  ];
 };
 
 interface Props {
@@ -36,6 +45,17 @@ const PredictionCard = ({ market }: Props) => {
           {market.description}
         </Text>
       </div>
+      <ul className="prediction-card__actions">
+        {market.options?.map(option => (
+          <li key={option.id}>
+            <PredictionSelection
+              name={option.name}
+              odd={option.odd}
+              positive={option.positive}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

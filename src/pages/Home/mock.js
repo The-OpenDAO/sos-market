@@ -20,7 +20,21 @@ const markets = [
       'Will Joe Biden be inaugurated as President of the USA on January 20th, 2021?',
     volume: 23.045,
     expiration: 'March 2, 2021',
-    liked: false
+    liked: false,
+    options: [
+      {
+        id: 0,
+        name: 'Yes',
+        odd: 0.26,
+        positive: true
+      },
+      {
+        id: 1,
+        name: 'No',
+        odd: 0.26,
+        positive: false
+      }
+    ]
   },
   {
     id: 1,
@@ -33,7 +47,21 @@ const markets = [
     description: 'Which party will control the senate?',
     volume: 9.025,
     expiration: 'August 11, 2021',
-    liked: false
+    liked: false,
+    options: [
+      {
+        id: 0,
+        name: 'Yes',
+        odd: 0.26,
+        positive: true
+      },
+      {
+        id: 1,
+        name: 'No',
+        odd: 0.26,
+        positive: false
+      }
+    ]
   },
   {
     id: 2,
@@ -49,7 +77,21 @@ const markets = [
       'Will an official Presidential inauguration take place in-person outside the US Capitol on January 20th, 2021?',
     volume: 73.055,
     expiration: 'April 24, 2021',
-    liked: true
+    liked: true,
+    options: [
+      {
+        id: 0,
+        name: 'Yes',
+        odd: 0.26,
+        positive: true
+      },
+      {
+        id: 1,
+        name: 'No',
+        odd: 0.26,
+        positive: false
+      }
+    ]
   },
   {
     id: 3,
@@ -62,7 +104,21 @@ const markets = [
     description: 'Will Donald Trump pardon Julian Assange?',
     volume: 23.045,
     expiration: 'June 3, 2021',
-    liked: false
+    liked: false,
+    options: [
+      {
+        id: 0,
+        name: 'Yes',
+        odd: 0.26,
+        positive: true
+      },
+      {
+        id: 1,
+        name: 'No',
+        odd: 0.26,
+        positive: false
+      }
+    ]
   },
   {
     id: 3,
@@ -75,7 +131,21 @@ const markets = [
     description: 'Will Trump Pardon Himself in His First Term?',
     volume: 23.045,
     expiration: 'October 14, 2021',
-    liked: false
+    liked: false,
+    options: [
+      {
+        id: 0,
+        name: 'Yes',
+        odd: 0.26,
+        positive: true
+      },
+      {
+        id: 1,
+        name: 'No',
+        odd: 0.26,
+        positive: false
+      }
+    ]
   }
 ];
 

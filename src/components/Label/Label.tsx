@@ -22,7 +22,7 @@ const Label = ({
 }: Props) => {
   return (
     <div className={`label--${variant}`}>
-      <Text as="label" fontWeight="semibold">
+      <Text as="label" scale="tiny" fontWeight="semibold">
         {children}
       </Text>
       {icon ? (

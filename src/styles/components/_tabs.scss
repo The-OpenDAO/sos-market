@@ -31,7 +31,7 @@
       background-color: unset;
 
       @include themed() {
-        color: t($color-text);
+        color: t($color-text-alt);
       }
 
       font-size: 1.4rem;

@@ -16,6 +16,8 @@ import SunFogIcon from './SunFogIcon';
 import TwitterIcon from './TwitterIcon';
 import UsersIcon from './UsersIcon';
 import WhiteHouseIcon from './WhiteHouseIcon';
+import ArrowUpIcon from './ArrowUpIcon';
+import ArrowDownIcon from './ArrowDownIcon';
 
 export {
   AlienIcon,
@@ -35,5 +37,7 @@ export {
   SunFogIcon,
   TwitterIcon,
   UsersIcon,
-  WhiteHouseIcon
+  WhiteHouseIcon,
+  ArrowUpIcon,
+  ArrowDownIcon
 };

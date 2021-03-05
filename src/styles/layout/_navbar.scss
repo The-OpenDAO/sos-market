@@ -47,10 +47,10 @@
       transition: color 0.3s ease 0s;
 
       @include themed() {
-        color: t($color-text);
+        color: t($color-text-alt);
 
         &:hover {
-          color: t($text-hover);
+          color: t($color-text);
         }
       }
     }

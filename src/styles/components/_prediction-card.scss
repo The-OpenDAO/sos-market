@@ -24,15 +24,73 @@
 
   &__details {
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 
     gap: 0.8rem;
+    margin-right: 3.2rem;
 
     > p {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+
       @include themed() {
         color: t($color-text);
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1.6rem;
+
+    > li {
+      display: inline;
+    }
+  }
+}
+
+.prediction-selection {
+  cursor: pointer;
+  touch-action: manipulation;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.2rem;
+
+  width: 18.9rem;
+  padding: 1.6rem;
+
+  @include themed() {
+    > p {
+      color: t($color-text);
+    }
+  }
+
+  border: 0.1rem solid $gray-600;
+  border-radius: 0.4rem;
+  transition: background-color 0.3s ease 0s;
+
+  &:hover {
+    background-color: $gray-900;
+  }
+
+  &__odd {
+    @include themed() {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+
+      > p {
+        color: t($color-text-alt3);
+      }
+
+      > span {
+        color: t($color-text-alt2);
       }
     }
   }

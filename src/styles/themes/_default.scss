@@ -14,6 +14,8 @@ $navbar-background: 'navbar-background';
 
 $color-text: 'color-text';
 $color-text-alt: 'color-text-alt';
+$color-text-alt2: 'color-text-alt2';
+$color-text-alt3: 'color-text-alt3';
 $text-hover: 'text-hover';
 
 $input-background: 'input-background';
@@ -50,7 +52,9 @@ $themes: (
     background: $bg-dark,
     navbar-background: $bg-dark,
     color-text: $gray-100,
-    color-text-alt: $gray-700,
+    color-text-alt: $gray-500,
+    color-text-alt2: $gray-400,
+    color-text-alt3: $neutral-white-50,
     text-hover: $neutral-white,
     input-background: $input-background-dark,
     input-text: $neutral-white,
