@@ -39,7 +39,7 @@
 
     &::placeholder {
       @include themed() {
-        color: t($text-base);
+        color: t($color-text);
       }
     }
   }

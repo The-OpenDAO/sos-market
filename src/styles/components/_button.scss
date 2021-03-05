@@ -29,7 +29,7 @@
 
     > svg {
       @include themed() {
-        fill: t($text-base);
+        fill: t($color-text);
       }
     }
 

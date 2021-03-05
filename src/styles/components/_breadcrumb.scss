@@ -1,0 +1,26 @@
+.breadcrumb {
+  @include themed() {
+    &__link {
+      color: t($color-text-alt);
+      text-decoration: none;
+      transition: color 0.2s ease-out;
+
+      &:hover {
+        color: t($color-text);
+      }
+    }
+
+    &__separator {
+      display: inline;
+      color: t($color-text-alt);
+    }
+
+    > span {
+      color: t($color-text);
+
+      font-size: 1.1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}

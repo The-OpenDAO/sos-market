@@ -21,4 +21,19 @@
 
     margin-right: 2.4rem;
   }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 0.8rem;
+
+    > p {
+      @include themed() {
+        color: t($color-text);
+      }
+    }
+  }
 }

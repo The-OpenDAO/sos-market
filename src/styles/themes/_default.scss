@@ -12,7 +12,8 @@
 $background: 'background';
 $navbar-background: 'navbar-background';
 
-$text-base: 'text-base';
+$color-text: 'color-text';
+$color-text-alt: 'color-text-alt';
 $text-hover: 'text-hover';
 
 $input-background: 'input-background';
@@ -31,24 +32,25 @@ $sidebar-background: 'sidebar-background';
 
 $themes: (
   light: (
-    background: $bg-light,
-    navbar-background: $neutral-white,
-    text-base: $gray-500,
-    text-hover: $gray-900,
-    input-background: $gray-200,
-    input-text: $neutral-black,
-    input-icon: $primary-500,
-    button-text: $gray-900,
-    card-background: $neutral-white,
-    card-shadow: $card-shadow-light,
-    toggle-switch: $gray-300,
-    toggle-switch-checked: $primary-500,
-    sidebar-background: $neutral-white
+    // background: $bg-light,
+    // navbar-background: $neutral-white,
+    // color-text: $gray-500,
+    // text-hover: $gray-900,
+    // input-background: $gray-200,
+    // input-text: $neutral-black,
+    // input-icon: $primary-500,
+    // button-text: $gray-900,
+    // card-background: $neutral-white,
+    // card-shadow: $card-shadow-light,
+    // toggle-switch: $gray-300,
+    // toggle-switch-checked: $primary-500,
+    // sidebar-background: $neutral-white
   ),
   dark: (
     background: $bg-dark,
     navbar-background: $bg-dark,
-    text-base: $gray-700,
+    color-text: $gray-100,
+    color-text-alt: $gray-700,
     text-hover: $neutral-white,
     input-background: $input-background-dark,
     input-text: $neutral-white,
