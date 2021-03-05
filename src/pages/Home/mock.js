@@ -8,8 +8,8 @@ const tabs = [
 const markets = [
   {
     id: 0,
-    section: 'Politics',
-    subsection: 'USA',
+    section: 'Esports',
+    subsection: 'CS:GO',
     label: {
       enabled: true,
       title: 'Trending',
@@ -17,20 +17,21 @@ const markets = [
     },
     imageUrl: 'images/image01.png',
     description:
-      'Will Joe Biden be inaugurated as President of the USA on January 20th, 2021?',
-    volume: 23.045,
-    expiration: 'March 2, 2021',
-    liked: false,
+      'Who will win CS:GO Intel Extreme Masters - Katowice 2021 Quarter-final?',
+    volume: 9.025,
+    expiration: 'Feb 26, 2021 - 12:00PM UTC',
+    liquidity: 428,
+    favorite: false,
     options: [
       {
         id: 0,
-        name: 'Yes',
+        name: 'Virtus.pro',
         odd: 0.26,
         positive: true
       },
       {
         id: 1,
-        name: 'No',
+        name: 'Astralis',
         odd: 0.26,
         positive: false
       }
@@ -38,35 +39,37 @@ const markets = [
   },
   {
     id: 1,
-    section: 'Politics',
-    subsection: 'USA',
+    section: 'Crypto',
+    subsection: 'BITCOIN',
     label: {
       enabled: false
     },
     imageUrl: 'images/image02.png',
-    description: 'Which party will control the senate?',
-    volume: 9.025,
-    expiration: 'August 11, 2021',
-    liked: false,
+    description:
+      'Will Bitcoin price close above $50K by February 26th 12pm UTC?',
+    volume: 10.589,
+    expiration: 'Feb 26, 2021 - 12:00PM UTC',
+    liquidity: 428,
+    favorite: true,
     options: [
       {
         id: 0,
         name: 'Yes',
         odd: 0.26,
-        positive: true
+        positive: false
       },
       {
         id: 1,
         name: 'No',
         odd: 0.26,
-        positive: false
+        positive: true
       }
     ]
   },
   {
     id: 2,
-    section: 'Politics',
-    subsection: 'USA',
+    section: 'Crypto',
+    subsection: 'ALTS',
     label: {
       enabled: true,
       title: 'Ends Soon',
@@ -74,20 +77,21 @@ const markets = [
     },
     imageUrl: 'images/image03.png',
     description:
-      'Will an official Presidential inauguration take place in-person outside the US Capitol on January 20th, 2021?',
-    volume: 73.055,
-    expiration: 'April 24, 2021',
-    liked: true,
+      'Which project will have a higher market cap by February 26th 12pm UTC? ADA or DOT?',
+    volume: 509,
+    expiration: 'Feb 26, 2021 - 12:00PM UTC',
+    liquidity: 428,
+    favorite: false,
     options: [
       {
         id: 0,
-        name: 'Yes',
+        name: 'ADA',
         odd: 0.26,
         positive: true
       },
       {
         id: 1,
-        name: 'No',
+        name: 'DOT',
         odd: 0.26,
         positive: false
       }
@@ -95,26 +99,27 @@ const markets = [
   },
   {
     id: 3,
-    section: 'Politics',
-    subsection: 'USA',
+    section: 'Esports',
+    subsection: 'APEX LEGENDS',
     label: {
       enabled: false
     },
     imageUrl: 'images/image04.png',
-    description: 'Will Donald Trump pardon Julian Assange?',
-    volume: 23.045,
-    expiration: 'June 3, 2021',
-    liked: false,
+    description: 'Who will win February 28th UFC Fight Night in Las Vegas?',
+    volume: 125,
+    expiration: 'Feb 26, 2021 - 12:00PM UTC',
+    liquidity: 428,
+    favorite: true,
     options: [
       {
         id: 0,
-        name: 'Yes',
+        name: 'Rozenstruik',
         odd: 0.26,
         positive: true
       },
       {
         id: 1,
-        name: 'No',
+        name: 'Gane',
         odd: 0.26,
         positive: false
       }
@@ -122,28 +127,29 @@ const markets = [
   },
   {
     id: 3,
-    section: 'Politics',
-    subsection: 'USA',
+    section: 'Esports',
+    subsection: 'APEX LEGENDS',
     label: {
       enabled: false
     },
     imageUrl: 'images/image05.png',
-    description: 'Will Trump Pardon Himself in His First Term?',
-    volume: 23.045,
-    expiration: 'October 14, 2021',
-    liked: false,
+    description: 'Will CES be virtual again in 2022?',
+    volume: 6.143,
+    expiration: 'Feb 26, 2021 - 12:00PM UTC',
+    liquidity: 428,
+    favorite: true,
     options: [
       {
         id: 0,
         name: 'Yes',
         odd: 0.26,
-        positive: true
+        positive: false
       },
       {
         id: 1,
         name: 'No',
         odd: 0.26,
-        positive: false
+        positive: true
       }
     ]
   }
