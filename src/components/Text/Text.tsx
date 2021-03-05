@@ -28,12 +28,11 @@ type TextTag =
   | 'i'
   | 'b';
 
-type TextSize = 'regular' | 'lg' | 'xs';
-
-type FontWeight = 'regular' | 'medium' | 'bold' | 'semibold';
+type TextScale = 'heading' | 'body' | 'caption' | 'tiny' | 'tiny-uppercase';
+type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 interface Props {
   as?: TextTag;
-  size?: TextSize;
+  scale?: TextScale;
   fontWeight?: FontWeight;
   style?: CSSProperties;
   children?: React.ReactNode | any;
@@ -41,7 +40,7 @@ interface Props {
 
 const Text = ({
   as = 'p',
-  size = 'regular',
+  scale = 'body',
   fontWeight = 'regular',
   style,
   children
@@ -49,7 +48,7 @@ const Text = ({
   const Tag = as;
 
   return (
-    <Tag className={cx(`text-${size}`, `font-${fontWeight}`)} style={style}>
+    <Tag className={cx(scale, fontWeight)} style={style}>
       {children}
     </Tag>
   );

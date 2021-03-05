@@ -9,27 +9,27 @@ function Home() {
     <div className="content">
       <ul className="markets">
         <li className="market">
-          <Text as="p" fontWeight="semibold">
+          <Text as="p" scale="body" fontWeight="semibold">
             Politics
           </Text>
         </li>
         <li className="market">
-          <Text as="p" fontWeight="semibold">
+          <Text as="p" scale="body" fontWeight="semibold">
             Finance
           </Text>
         </li>
         <li className="market">
-          <Text as="p" fontWeight="semibold">
+          <Text as="p" scale="body" fontWeight="semibold">
             Crypto
           </Text>
         </li>
         <li className="market">
-          <Text as="p" fontWeight="semibold">
+          <Text as="p" scale="body" fontWeight="semibold">
             eSports
           </Text>
         </li>
         <li className="market">
-          <Text as="p" fontWeight="semibold">
+          <Text as="p" scale="body" fontWeight="semibold">
             Tech
           </Text>
         </li>
