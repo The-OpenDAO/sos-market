@@ -21,6 +21,7 @@ import ArrowDownIcon from './ArrowDownIcon';
 import ArrowBackIcon from './ArrowBackIcon';
 import MarketsIcon from './MarketsIcon';
 import PortfolioIcon from './PortifolioIcon';
+import HamburguerMenuIcon from './HamburguerMenuIcon';
 
 export {
   AlienIcon,
@@ -45,5 +46,6 @@ export {
   ArrowDownIcon,
   ArrowBackIcon,
   MarketsIcon,
-  PortfolioIcon
+  PortfolioIcon,
+  HamburguerMenuIcon
 };

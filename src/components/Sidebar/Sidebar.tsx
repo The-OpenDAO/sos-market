@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { ArrowBackIcon, MarketsIcon, PortfolioIcon } from 'assets/icons';
+import {
+  HamburguerMenuIcon,
+  ArrowBackIcon,
+  MarketsIcon,
+  PortfolioIcon
+} from 'assets/icons';
 
 import { Button } from 'components';
 import SidebarSection from './SidebarSection';
@@ -9,15 +14,21 @@ import SidebarSection from './SidebarSection';
 import sidebarLinks from './mock';
 
 function Sidebar() {
+  const [collapsed, setCollapsed] = useState(false);
   const { markets } = sidebarLinks;
 
+  function toggleCollapsed() {
+    setCollapsed(!collapsed);
+  }
+
   return (
-    <div className="sidebar">
+    <div className={collapsed ? 'sidebar--collapsed' : 'sidebar'}>
       <div className="sidebar__header">
         <Button
           variant="noborder"
-          icon={<ArrowBackIcon />}
+          icon={collapsed ? <HamburguerMenuIcon /> : <ArrowBackIcon />}
           iconPosition="center"
+          onClick={() => toggleCollapsed()}
         />
       </div>
       <div className="sidebar__tabs">
