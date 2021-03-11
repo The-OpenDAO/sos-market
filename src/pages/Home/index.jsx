@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tabs, Select, MarketList, FeaturedCard } from 'components';
+import { Tabs, Select, MarketList, FeaturedCard, QuickTrade } from 'components';
 
 import { tabs, categories, markets } from './mock';
 
@@ -31,6 +31,8 @@ function Home() {
       </div>
 
       <MarketList markets={markets} />
+
+      <QuickTrade />
     </div>
   );
 }
