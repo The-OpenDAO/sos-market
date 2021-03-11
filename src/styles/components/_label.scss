@@ -2,18 +2,11 @@
   display: inline-block;
 
   margin: 0rem;
-  padding: 0.4rem 1rem;
+  padding: 0.1rem 0.5rem;
   height: fit-content;
 
   outline: none;
   border-radius: 1.6rem;
-
-  font-size: 1.3rem;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
   text-align: center;
 
   &__icon {
@@ -32,11 +25,11 @@
 .label--default {
   @extend .label;
 
-  color: $gray-500;
-  background-color: rgba(hsl(216, 14, 70), 0.05);
+  color: $gray-900;
+  background-color: $gray-200;
 
   > label {
-    color: $gray-500;
+    color: $gray-900;
   }
 }
 
@@ -51,35 +44,68 @@
   }
 }
 
-.label--success {
-  @extend .label;
-
-  color: $success-500;
-  background-color: $success-100;
-
-  > label {
-    color: $success-500;
-  }
-}
-
 .label--warning {
   @extend .label;
 
-  color: $warning-500;
-  background-color: $warning-100;
+  color: $neutral-white;
+  background-color: $secondary-500;
 
   > label {
-    color: $warning-500;
+    color: $neutral-white;
+  }
+}
+
+.label--success {
+  @extend .label;
+
+  color: $neutral-white;
+  background-color: $success-500;
+
+  > label {
+    color: $neutral-white;
   }
 }
 
 .label--danger {
   @extend .label;
 
-  color: $danger-500;
-  background-color: $danger-100;
+  color: $neutral-white;
+  background-color: $danger-500;
 
   > label {
-    color: $danger-500;
+    color: $neutral-white;
+  }
+}
+
+.label--warning {
+  @extend .label;
+
+  color: $neutral-white;
+  background-color: $warning-500;
+
+  > label {
+    color: $neutral-white;
+  }
+}
+
+.label--black {
+  @extend .label;
+
+  color: $neutral-white;
+  background-color: $neutral-black;
+
+  > label {
+    color: $neutral-white;
+  }
+}
+
+.label--white {
+  @extend .label;
+
+  color: $neutral-black;
+  background-color: $neutral-white;
+
+  > label {
+    color: $neutral-black;
   }
 }

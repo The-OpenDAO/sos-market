@@ -3,7 +3,15 @@ import cx from 'classnames';
 
 import Text from '../Text';
 
-type Variant = 'default' | 'primary' | 'success' | 'warning' | 'danger';
+type Variant =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'black'
+  | 'white';
 
 type Position = 'left' | 'right';
 
