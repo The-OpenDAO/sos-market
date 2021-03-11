@@ -5,6 +5,39 @@ const tabs = [
   { name: 'Resolved', content: null }
 ];
 
+const categories = [
+  {
+    label: 'Crypto',
+    color: 'yellow',
+    value: 2.58,
+    positive: true
+  },
+  {
+    label: 'Sports',
+    color: 'blue',
+    value: 2.58,
+    positive: true
+  },
+  {
+    label: 'Finance',
+    color: 'green',
+    value: 2.58,
+    positive: false
+  },
+  {
+    label: 'eSports',
+    color: 'pink',
+    value: 2.58,
+    positive: true
+  },
+  {
+    label: 'Tech',
+    color: 'orange',
+    value: 2.58,
+    positive: false
+  }
+];
+
 const markets = [
   {
     id: 0,
@@ -155,4 +188,4 @@ const markets = [
   }
 ];
 
-export { tabs, markets };
+export { tabs, categories, markets };

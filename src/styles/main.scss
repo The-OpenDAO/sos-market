@@ -14,17 +14,18 @@
 @import 'layout/sidebar';
 
 // 5. Components
-@import 'components/button';
-@import 'components/text';
-@import 'components/label';
-@import 'components/searchbar';
-@import 'components/prediction-card';
-@import 'components/interface-settings';
-@import 'components/toggle-switch';
-@import 'components/tabs';
 @import 'components/breadcrumb';
-@import 'components/select';
+@import 'components/button';
+@import 'components/featured-card';
+@import 'components/interface-settings';
+@import 'components/label';
 @import 'components/market-list';
+@import 'components/prediction-card';
+@import 'components/searchbar';
+@import 'components/select';
+@import 'components/tabs';
+@import 'components/text';
+@import 'components/toggle-switch';
 
 // 6. Page-specific styles
 @import 'pages/home';

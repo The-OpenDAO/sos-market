@@ -1,38 +1,18 @@
 import React from 'react';
 
-import { Text, Tabs, Select, MarketList } from 'components';
+import { Tabs, Select, MarketList, FeaturedCard } from 'components';
 
-import { tabs, markets } from './mock';
+import { tabs, categories, markets } from './mock';
 
 function Home() {
   return (
     <div className="content">
       <ul className="markets">
-        <li className="market">
-          <Text as="p" scale="body" fontWeight="semibold">
-            Crypto
-          </Text>
-        </li>
-        <li className="market">
-          <Text as="p" scale="body" fontWeight="semibold">
-            Sports
-          </Text>
-        </li>
-        <li className="market">
-          <Text as="p" scale="body" fontWeight="semibold">
-            Finance
-          </Text>
-        </li>
-        <li className="market">
-          <Text as="p" scale="body" fontWeight="semibold">
-            eSports
-          </Text>
-        </li>
-        <li className="market">
-          <Text as="p" scale="body" fontWeight="semibold">
-            Tech
-          </Text>
-        </li>
+        {categories?.map(category => (
+          <li key={category.label}>
+            <FeaturedCard label={category.label} variant={category.color} />
+          </li>
+        ))}
       </ul>
 
       <div className="navigation">

@@ -11,43 +11,6 @@
   grid-gap: 2rem;
 
   margin: 1.2rem 0rem 2.4rem 0rem;
-
-  :nth-child(1):not(p) {
-    background: $card-gradient-yellow;
-  }
-
-  :nth-child(2) {
-    background: $card-gradient-blue;
-  }
-
-  :nth-child(3) {
-    background: $card-gradient-green;
-  }
-
-  :nth-child(4) {
-    background: $card-gradient-pink;
-  }
-
-  :nth-child(5) {
-    background: $card-gradient-orange;
-  }
-}
-
-.market {
-  cursor: pointer;
-  touch-action: manipulation;
-
-  display: grid;
-  grid-template-rows: 1fr 3fr;
-
-  height: 9.6rem;
-  padding: 1.2rem;
-
-  border-radius: 0.4rem;
-
-  > p {
-    color: $neutral-white;
-  }
 }
 
 .navigation {

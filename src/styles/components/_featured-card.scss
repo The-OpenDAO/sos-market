@@ -1,0 +1,46 @@
+.featured-card {
+  cursor: pointer;
+  touch-action: manipulation;
+
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+
+  height: 9.6rem;
+  padding: 1.2rem;
+
+  border-radius: 0.4rem;
+
+  > label {
+    color: $neutral-white;
+  }
+}
+
+.featured-card--yellow {
+  @extend .featured-card;
+
+  background: $card-gradient-yellow;
+}
+
+.featured-card--blue {
+  @extend .featured-card;
+
+  background: $card-gradient-blue;
+}
+
+.featured-card--green {
+  @extend .featured-card;
+
+  background: $card-gradient-green;
+}
+
+.featured-card--pink {
+  @extend .featured-card;
+
+  background: $card-gradient-pink;
+}
+
+.featured-card--orange {
+  @extend .featured-card;
+
+  background: $card-gradient-orange;
+}
