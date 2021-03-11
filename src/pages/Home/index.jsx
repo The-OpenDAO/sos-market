@@ -10,7 +10,12 @@ function Home() {
       <ul className="markets">
         {categories?.map(category => (
           <li key={category.label}>
-            <FeaturedCard label={category.label} variant={category.color} />
+            <FeaturedCard
+              variant={category.color}
+              label={category.label}
+              value={category.value}
+              positive={category.positive}
+            />
           </li>
         ))}
       </ul>

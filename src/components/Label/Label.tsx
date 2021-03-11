@@ -30,14 +30,14 @@ const Label = ({
 }: Props) => {
   return (
     <div className={`label--${variant}`}>
+      {icon ? (
+        <div className={cx(`label--${variant}__icon`, iconPosition)}>
+          {icon}
+        </div>
+      ) : null}
       <Text as="label" scale="tiny" fontWeight="semibold">
         {children}
       </Text>
-      {icon ? (
-        <div className={cx(`label--${variant}__icon`, iconPosition)}>
-          {{ icon }}
-        </div>
-      ) : null}
     </div>
   );
 };
