@@ -19,26 +19,52 @@
   &::placeholder {
     color: $gray-500;
   }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.8rem;
+  }
+
+  &__label {
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+
+    color: $gray-900;
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+
+    color: $gray-500;
+  }
 }
 
-.default {
+.input--default {
   @extend .input;
-  background-color: $neutral-white;
+  background-color: $gray-700;
 
   border: 0.15rem solid $gray-300;
 
   &:focus {
-    color: $gray-900;
-
-    border: 0.15rem solid $primary-500;
-
-    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.075) inset,
-      0 0 0.8rem $primary-300;
+    color: $gray-500;
     outline: 0 none;
   }
 }
 
-.error {
+.input--error {
   @extend .input;
   color: $gray-500;
   background-color: $danger-100;
@@ -56,7 +82,7 @@
   }
 }
 
-.success {
+.input--success {
   @extend .input;
   color: $gray-500;
   background-color: $success-100;
@@ -72,35 +98,4 @@
       0 0 0.8rem $success-100;
     outline: 0 none;
   }
-}
-
-.group {
-  display: flex;
-  flex-direction: column;
-
-  gap: 0.8rem;
-}
-
-.label {
-  font-size: 1.3rem;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-
-  color: $gray-900;
-}
-
-.description {
-  font-size: 1.1rem;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-
-  color: $gray-500;
 }
