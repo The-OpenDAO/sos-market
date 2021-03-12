@@ -78,7 +78,7 @@
   background-color: unset;
 
   color: $alternative-colors-pink;
-  @include font-weight(semibold);
+  font-weight: 700;
   font-size: 1.4rem;
 }
 

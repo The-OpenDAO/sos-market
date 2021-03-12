@@ -1,11 +1,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-
-import Button from '../Button';
+import clx from 'classnames';
 
 import buttons from './mock';
 
-function ToggleButton() {
+type Variant = 'default' | 'primary' | 'success' | 'danger';
+
+interface Props {
+  variant?: Variant;
+}
+
+function ToggleButton({ variant = 'default' }: Props) {
   const [activeButton, setActiveButton] = useState(buttons[0].name);
 
   function handleChangeButton(event: React.MouseEvent<HTMLButtonElement>) {
@@ -14,16 +19,20 @@ function ToggleButton() {
   }
 
   return (
-    <div className="toggle-button">
+    <div className={`toggle-button--${variant}`}>
       {buttons?.map(button => (
-        <Button
+        <button
+          type="button"
           key={button.name}
           name={button.name}
-          variant={button.name === activeButton ? 'primary' : 'noborder'}
+          className={clx({
+            'toggle-button__item': true,
+            active: button.name === activeButton
+          })}
           onClick={event => handleChangeButton(event)}
         >
           {button.name}
-        </Button>
+        </button>
       ))}
     </div>
   );
