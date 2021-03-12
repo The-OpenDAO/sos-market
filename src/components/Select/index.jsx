@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes, { element } from 'prop-types';
+import PropTypes from 'prop-types';
 
 const variants = {
   default: 'default'
 };
 
+// eslint-disable-next-line react/prop-types
 function Select({ variant, label, name, description, disabled, children }) {
   return (
     <div className="select-group">
@@ -32,7 +33,6 @@ Select.defaultProps = {
 };
 
 Select.propTypes = {
-  children: PropTypes.arrayOf(element).isRequired,
   variant: PropTypes.oneOf(Object.values(variants)),
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

@@ -1,4 +1,4 @@
-.btn {
+.button {
   display: inline-block;
 
   cursor: pointer;
@@ -49,8 +49,8 @@
   }
 }
 
-.btn--default {
-  @extend .btn;
+.button--default {
+  @extend .button;
 
   @include themed() {
     color: t($button-text);
@@ -74,8 +74,8 @@
   }
 }
 
-.btn--noborder {
-  @extend .btn;
+.button--noborder {
+  @extend .button;
   padding: 0rem;
   margin: 0rem;
 
@@ -83,8 +83,8 @@
   border: none;
 }
 
-.btn--primary {
-  @extend .btn;
+.button--primary {
+  @extend .button;
   color: $neutral-white;
   background-color: $primary-500;
 
@@ -103,8 +103,8 @@
   }
 }
 
-.btn--secondary {
-  @extend .btn;
+.button--secondary {
+  @extend .button;
   color: $primary-500;
   background-color: $primary-100;
 
@@ -125,8 +125,8 @@
   }
 }
 
-.btn--success {
-  @extend .btn;
+.button--success {
+  @extend .button;
   color: $neutral-white;
   background-color: $success-500;
 
@@ -147,8 +147,8 @@
   }
 }
 
-.btn--warning {
-  @extend .btn;
+.button--warning {
+  @extend .button;
   color: $neutral-white;
   background-color: $warning-500;
 
@@ -169,8 +169,8 @@
   }
 }
 
-.btn--danger {
-  @extend .btn;
+.button--danger {
+  @extend .button;
   color: $neutral-white;
   background-color: $danger-500;
 

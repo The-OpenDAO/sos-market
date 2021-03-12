@@ -159,7 +159,7 @@ const markets = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     section: 'Esports',
     subsection: 'APEX LEGENDS',
     label: {
