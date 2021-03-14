@@ -1,3 +1,4 @@
+import AmountInput from './AmountInput';
 import BetAmountInput from './BetAmountInput';
 import BetForm from './BetForm';
 import Breadcrumb from './Breadcrumb';
@@ -24,6 +25,7 @@ import ToggleButton from './ToggleButton';
 import ToggleSwitch from './ToggleSwitch';
 
 export {
+  AmountInput,
   BetAmountInput,
   BetForm,
   Breadcrumb,

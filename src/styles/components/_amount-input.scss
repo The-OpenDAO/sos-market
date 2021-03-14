@@ -1,0 +1,12 @@
+.amount-input {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    @extend .tiny, .semibold;
+    color: $gray-300;
+  }
+
+  &__input {
+  }
+}
