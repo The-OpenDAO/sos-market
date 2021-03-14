@@ -6,20 +6,27 @@ import buttons from './mock';
 
 type Variant = 'default' | 'primary' | 'success' | 'danger';
 
-interface Props {
-  variant?: Variant;
-}
+type Button = {
+  name: string;
+  default: boolean;
+  variant: string;
+};
 
-function ToggleButton({ variant = 'default' }: Props) {
-  const [activeButton, setActiveButton] = useState(buttons[0].name);
+const ToggleButton = () => {
+  const [activeButton, setActiveButton] = useState<Button>(buttons[0]);
 
   function handleChangeButton(event: React.MouseEvent<HTMLButtonElement>) {
     const { name } = event.currentTarget;
-    setActiveButton(name);
+
+    const newActiveButton = buttons.find(button => button.name === name);
+
+    setActiveButton(
+      newActiveButton || { name: '', default: false, variant: 'default' }
+    );
   }
 
   return (
-    <div className={`toggle-button--${variant}`}>
+    <div className={`toggle-button--${activeButton.variant}`}>
       {buttons?.map(button => (
         <button
           type="button"
@@ -27,7 +34,7 @@ function ToggleButton({ variant = 'default' }: Props) {
           name={button.name}
           className={clx({
             'toggle-button__item': true,
-            active: button.name === activeButton
+            active: button.name === activeButton.name
           })}
           onClick={event => handleChangeButton(event)}
         >
@@ -36,6 +43,6 @@ function ToggleButton({ variant = 'default' }: Props) {
       ))}
     </div>
   );
-}
+};
 
 export default ToggleButton;

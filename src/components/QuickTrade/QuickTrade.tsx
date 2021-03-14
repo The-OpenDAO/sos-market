@@ -9,7 +9,7 @@ import tableItems from './mock';
 function QuickTrade() {
   return (
     <div className="quick-trade">
-      <ToggleButton variant="danger" />
+      <ToggleButton />
       <AmountInput label="Buy Fractions" max={0.0104} />
       <MiniTable items={tableItems} />
     </div>
