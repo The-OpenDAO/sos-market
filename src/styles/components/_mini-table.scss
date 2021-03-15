@@ -16,6 +16,20 @@
     border: none;
     border-bottom: 0.1rem dashed;
   }
+
+  &:last-of-type {
+    > span {
+      color: $success-500;
+    }
+
+    .fill {
+      border-color: $success-500;
+    }
+
+    > strong {
+      color: $success-500;
+    }
+  }
 }
 
 .mini-table__item--default {

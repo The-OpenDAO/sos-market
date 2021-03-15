@@ -9,7 +9,7 @@ const miniTableItems: Item[] = [
   { name: 'Fractions Bought', value: '3,5' },
   { name: 'Current ROI', value: '2,5%' },
   { name: 'Total Stake', value: '0.245 DOT' },
-  { name: 'Loss Amount', value: '0.742 DOT' }
+  { name: 'Potential Returns', value: '0.742 DOT' }
 ];
 
 type Variant = 'default' | 'primary' | 'success' | 'danger';

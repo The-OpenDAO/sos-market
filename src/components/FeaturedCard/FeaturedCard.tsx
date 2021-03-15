@@ -5,14 +5,19 @@ import { CaretUpIcon, CaretDownIcon } from 'assets/icons';
 
 type Variant = 'yellow' | 'blue' | 'green' | 'pink' | 'orange';
 
-interface Props {
+interface FeaturedCardProps {
   label: string;
   value: number;
   positive: boolean;
   variant: Variant;
 }
 
-function FeaturedCard({ label, value, positive, variant }: Props) {
+const FeaturedCard = ({
+  label,
+  value,
+  positive,
+  variant
+}: FeaturedCardProps) => {
   return (
     <div className={`featured-card--${variant}`}>
       <Text as="label" scale="body" fontWeight="semibold">
@@ -27,6 +32,8 @@ function FeaturedCard({ label, value, positive, variant }: Props) {
       </Label>
     </div>
   );
-}
+};
+
+FeaturedCard.displayName = 'Featured Card';
 
 export default FeaturedCard;
