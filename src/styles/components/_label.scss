@@ -26,15 +26,15 @@
 .label--default {
   @extend .label;
 
-  color: $gray-900;
-  background-color: $gray-200;
+  color: $gray-500;
+  background-color: $gray-600;
 
   > label {
-    color: $gray-900;
+    color: $gray-500;
   }
 
   svg {
-    fill: $gray-900;
+    fill: $gray-500;
   }
 }
 
