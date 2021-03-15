@@ -4,6 +4,7 @@ import BetForm from './BetForm';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
 import Categories from './Categories';
+import Checkbox from './Checkbox';
 import FeaturedCard from './FeaturedCard';
 import Input from './Input';
 import InterfaceSettings from './InterfaceSettings';
@@ -31,6 +32,7 @@ export {
   Breadcrumb,
   Button,
   Categories,
+  Checkbox,
   FeaturedCard,
   Input,
   InterfaceSettings,
