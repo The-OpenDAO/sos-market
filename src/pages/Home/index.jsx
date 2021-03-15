@@ -6,33 +6,37 @@ import { tabs, categories, markets } from './mock';
 
 function Home() {
   return (
-    <div className="content">
-      <ul className="markets">
-        {categories?.map(category => (
-          <li key={category.label}>
-            <FeaturedCard
-              variant={category.color}
-              label={category.label}
-              value={category.value}
-              positive={category.positive}
-            />
-          </li>
-        ))}
-      </ul>
+    <div className="home-root">
+      <div className="home-root__content">
+        <ul className="markets">
+          {categories?.map(category => (
+            <li key={category.label}>
+              <FeaturedCard
+                variant={category.color}
+                label={category.label}
+                value={category.value}
+                positive={category.positive}
+              />
+            </li>
+          ))}
+        </ul>
 
-      <div className="navigation">
-        <Tabs items={tabs} />
+        <div className="navigation">
+          <Tabs items={tabs} />
 
-        <div className="filters">
-          <Select label="Sort by:" name="Sort by" disabled>
-            <option value="Most traded">Most traded</option>
-          </Select>
+          <div className="filters">
+            <Select label="Sort by:" name="Sort by" disabled>
+              <option value="Most traded">Most traded</option>
+            </Select>
+          </div>
         </div>
+
+        <MarketList markets={markets} />
       </div>
 
-      <MarketList markets={markets} />
-
-      <QuickTrade />
+      <aside className="home-root__sidebar">
+        <QuickTrade />
+      </aside>
     </div>
   );
 }

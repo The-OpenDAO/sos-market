@@ -1,8 +1,18 @@
-.content {
+.home-root {
   width: 100%;
-  max-width: 160rem;
 
   margin: 0rem auto;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  &__content {
+    grid-column: 1;
+  }
+
+  &__sidebar {
+    grid-column: 2;
+  }
 }
 
 .markets {
