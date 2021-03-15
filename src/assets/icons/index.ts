@@ -24,6 +24,7 @@ import SunFogIcon from './SunFogIcon';
 import ToDoIcon from './ToDoIcon';
 import TwitterIcon from './TwitterIcon';
 import UsersIcon from './UsersIcon';
+import WalletIcon from './WalletIcon';
 import WhiteHouseIcon from './WhiteHouseIcon';
 
 export {
@@ -53,5 +54,6 @@ export {
   ToDoIcon,
   TwitterIcon,
   UsersIcon,
+  WalletIcon,
   WhiteHouseIcon
 };
