@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import cx from 'classnames';
 
@@ -13,19 +12,26 @@ type Variant =
 
 type Position = 'center' | 'left' | 'right';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps = {
   variant?: Variant;
   icon?: React.ReactNode | any;
   iconPosition?: Position;
-  children?: React.ReactNode | any;
-}
+};
 
-const Button = React.forwardRef<HTMLButtonElement, Props>(
+const Button = React.forwardRef<
+  HTMLButtonElement,
+  ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
+>(
   (
-    { variant = 'default', icon, iconPosition = 'center', children, ...props },
+    { variant = 'default', icon, iconPosition = 'center', children, onClick },
     ref
   ) => (
-    <button ref={ref} type="button" className={`button--${variant}`} {...props}>
+    <button
+      ref={ref}
+      type="button"
+      className={`button--${variant}`}
+      onClick={onClick}
+    >
       {children}
       {icon ? (
         <figure className={cx('button__icon', iconPosition)}>{icon}</figure>
