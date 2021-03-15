@@ -7,6 +7,62 @@
     color: $gray-300;
   }
 
+  &__group {
+    display: flex;
+    justify-content: space-between;
+
+    height: 5.2rem;
+    padding: 1.2rem 0.8rem 1.2rem 1.6rem;
+
+    background-color: $gray-800;
+  }
+
   &__input {
+    margin: 0rem 1.2rem 0rem 0rem;
+    padding: 0rem;
+
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+
+    background-color: unset;
+
+    color: $gray-100;
+
+    font-size: 2rem;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 400;
+
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-align: left;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1.2rem;
+
+    > button {
+      cursor: pointer;
+      touch-action: manipulation;
+
+      margin: 0;
+      padding: 0.4rem 0.6rem;
+      background-color: $gray-600;
+      border: none;
+
+      > span {
+        color: $gray-300;
+      }
+
+      &:hover {
+        background-color: $gray-700;
+
+        > span {
+          color: $gray-100;
+        }
+      }
+    }
   }
 }
