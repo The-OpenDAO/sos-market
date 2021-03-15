@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clx from 'classnames';
-
-import buttons from './mock';
+import isEmpty from 'lodash/isEmpty';
+import isUndefined from 'lodash/isUndefined';
 
 type Variant = 'default' | 'primary' | 'success' | 'danger';
 
@@ -11,18 +11,31 @@ type Button = {
   default: boolean;
 };
 
-const ToggleButton = () => {
-  const [activeButton, setActiveButton] = useState<Button>(buttons[0]);
+type ToggleButtonProps = {
+  buttons: Button[];
+};
+
+const ToggleButton = ({ buttons }: ToggleButtonProps) => {
+  const [activeButton, setActiveButton] = useState<Button | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    if (!isEmpty(buttons)) {
+      const defaultButton = buttons.find(button => button.default);
+      setActiveButton(defaultButton);
+    }
+  }, [buttons]);
 
   function handleChangeButton(event: React.MouseEvent<HTMLButtonElement>) {
     const { name } = event.currentTarget;
 
     const newActiveButton = buttons.find(button => button.name === name);
 
-    setActiveButton(
-      newActiveButton || { name: '', default: false, variant: 'default' }
-    );
+    setActiveButton(newActiveButton);
   }
+
+  if (isUndefined(activeButton)) return null;
 
   return (
     <div className={`toggle-button--${activeButton.variant}`}>
