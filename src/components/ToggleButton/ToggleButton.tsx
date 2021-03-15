@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import clx from 'classnames';
 
@@ -8,8 +7,8 @@ type Variant = 'default' | 'primary' | 'success' | 'danger';
 
 type Button = {
   name: string;
+  variant: Variant;
   default: boolean;
-  variant: string;
 };
 
 const ToggleButton = () => {
@@ -44,5 +43,7 @@ const ToggleButton = () => {
     </div>
   );
 };
+
+ToggleButton.displayName = 'Toggle button';
 
 export default ToggleButton;
