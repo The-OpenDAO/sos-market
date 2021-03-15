@@ -21,6 +21,7 @@ import SearchIcon from './SearchIcon';
 import SettingsIcon from './SettingsIcon';
 import SoccerBallIcon from './SoccerBallIcon';
 import SunFogIcon from './SunFogIcon';
+import ToDoIcon from './ToDoIcon';
 import TwitterIcon from './TwitterIcon';
 import UsersIcon from './UsersIcon';
 import WhiteHouseIcon from './WhiteHouseIcon';
@@ -49,6 +50,7 @@ export {
   SettingsIcon,
   SoccerBallIcon,
   SunFogIcon,
+  ToDoIcon,
   TwitterIcon,
   UsersIcon,
   WhiteHouseIcon
