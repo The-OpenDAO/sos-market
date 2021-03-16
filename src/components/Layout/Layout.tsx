@@ -3,11 +3,11 @@ import React from 'react';
 import NavBar from 'components/NavBar';
 import Sidebar from 'components/Sidebar';
 
-interface Props {
+type LayoutProps = {
   children: React.ReactNode | any;
-}
+};
 
-function Layout({ children }: Props) {
+const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="wrapper">
       <header className="header">
@@ -21,6 +21,6 @@ function Layout({ children }: Props) {
       </main>
     </div>
   );
-}
+};
 
 export default Layout;
