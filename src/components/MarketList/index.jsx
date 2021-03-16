@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import isEmpty from 'lodash/isEmpty';
 
-import PredictionCard from '../PredictionCard';
+import isEmpty from 'lodash/isEmpty';
+import PropTypes from 'prop-types';
+
 import Modal from '../Modal';
+import PredictionCard from '../PredictionCard';
 
 function MarketList({ markets }) {
   const [open, setOpen] = useState(false);

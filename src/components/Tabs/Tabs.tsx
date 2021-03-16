@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import isEmpty from 'lodash/isEmpty';
 import clx from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 
 type Direction = 'row' | 'column';
 

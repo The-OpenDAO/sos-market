@@ -1,71 +1,91 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-				"airbnb",
-        "plugin:react/recommended",
-				"plugin:react-hooks/recommended",
-				"plugin:prettier/recommended"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-				"react-hooks",
-				"prettier",
-        "@typescript-eslint",
-        "import"
-    ],
-    "rules": {
-        "import/extensions": [
-          "error",
-          "ignorePackages",
-          {
-            "js": "never",
-            "jsx": "never",
-            "ts": "never",
-            "tsx": "never"
-          }
-        ],
-				"prettier/prettier": "error",
-				"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
-				"react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-        "react/require-default-props": "off",
-        "import/no-unresolved": "error",
-        "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": ["error"]
-    },
-    "settings": {
-        "import/parsers": {
-          "@typescript-eslint/parser": [".ts", ".tsx"]
-        },
-        "import/resolver": {
-          "node": {
-            "paths": ["src"],
-            "extensions": [".js", ".jsx"]
-          },
-          "typescript": {
-            "alwaysTryTypes": true, 
-            "project": "./tsconfig.json"
-
-          }
-        }
-    },
-    "overrides": [
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "@typescript-eslint",
+    "import",
+    "eslint-plugin-import-helpers"
+  ],
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
       {
-          "files": ["**/*.tsx"],
-          "rules": {
-              "react/prop-types": "off"
-          }
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
       }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "/^react/",
+          "module",
+          "/^assets/",
+          "/^pages/",
+          "/^components/",
+          "/^contexts/",
+          "/^hooks/",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ],
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".tsx"] }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/require-default-props": "off",
+    "import/no-unresolved": "error",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx"]
+      },
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
   ]
 }

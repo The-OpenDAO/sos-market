@@ -1,9 +1,8 @@
 import React from 'react';
 
-import ToggleButton from '../ToggleButton';
 import AmountInput from '../AmountInput';
 import MiniTable from '../MiniTable';
-
+import ToggleButton from '../ToggleButton';
 import { toggleButtonItems, miniTableItems } from './mock';
 
 function QuickTrade() {

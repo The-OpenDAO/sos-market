@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Label, Text } from 'components';
 import { CaretUpIcon, CaretDownIcon } from 'assets/icons';
+
+import { Label, Text } from 'components';
 
 type Variant = 'yellow' | 'blue' | 'green' | 'pink' | 'orange';
 

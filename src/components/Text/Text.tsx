@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react';
+
 import cx from 'classnames';
 
 type TextTag =

@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import clx from 'classnames';
 
+import clx from 'classnames';
+import PropTypes from 'prop-types';
 import styles from 'styles/components/Modal.module.scss';
 
 import BetForm from '../BetForm';

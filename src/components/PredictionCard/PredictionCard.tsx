@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Breadcrumb, Text } from 'components';
+
 import PredictionSelection from './PredictionSelection';
 
 type Market = {

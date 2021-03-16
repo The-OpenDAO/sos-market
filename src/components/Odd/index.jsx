@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import clx from 'classnames';
-
+import PropTypes from 'prop-types';
 import styles from 'styles/components/Odd.module.scss';
 
 import Text from '../Text';

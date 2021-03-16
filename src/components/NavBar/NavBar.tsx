@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { PolkamarketsIcon, MetaMaskIcon, SettingsIcon } from 'assets/icons';
+
 import { SearchBar, Button, InterfaceSettings } from 'components';
 
 const NavBar = () => {

@@ -9,9 +9,9 @@ import {
 } from 'assets/icons';
 
 import { Button } from 'components';
-import SidebarSection from './SidebarSection';
 
 import sidebarLinks from './mock';
+import SidebarSection from './SidebarSection';
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);

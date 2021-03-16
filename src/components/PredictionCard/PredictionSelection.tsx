@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Text } from 'components';
 import { ArrowUpIcon, ArrowDownIcon } from 'assets/icons';
+
+import { Text } from 'components';
 
 interface Props {
   name: string;

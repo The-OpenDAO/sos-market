@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { PolkadotIcon } from 'assets/icons';
-
 import styles from 'styles/components/BetAmountInput.module.scss';
+
+import { PolkadotIcon } from 'assets/icons';
 
 import Text from '../Text';
 

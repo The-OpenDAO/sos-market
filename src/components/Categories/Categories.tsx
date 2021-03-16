@@ -1,8 +1,8 @@
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
-import cx from 'classnames';
-
 import { NavLink } from 'react-router-dom';
+
+import cx from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 
 import Label from 'components/Label';
 

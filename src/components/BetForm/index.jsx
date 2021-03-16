@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import isEmpty from 'lodash/isEmpty';
+import PropTypes from 'prop-types';
+import styles from 'styles/components/BetForm.module.scss';
 
 import { CloseIcon } from 'assets/icons';
 
-import styles from 'styles/components/BetForm.module.scss';
-
-import Text from '../Text';
-import Odd from '../Odd';
-import ToggleButton from '../ToggleButton';
 import BetAmountInput from '../BetAmountInput';
 import Button from '../Button';
-
+import Odd from '../Odd';
+import Text from '../Text';
+import ToggleButton from '../ToggleButton';
 import odds from './mock';
 
 function BetForm({ handleClose }) {
