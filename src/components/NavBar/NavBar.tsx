@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import { PolkamarketsIcon, MetaMaskIcon, SettingsIcon } from 'assets/icons';
 
@@ -14,9 +14,11 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <figure className="navbar__icon">
-        <PolkamarketsIcon />
-      </figure>
+      <Link to="/home">
+        <figure className="navbar__icon">
+          <PolkamarketsIcon />
+        </figure>
+      </Link>
       <SearchBar />
       <ul className="navbar-menu">
         <li className="navbar-menu__item">
@@ -43,5 +45,7 @@ const NavBar = () => {
     </nav>
   );
 };
+
+NavBar.displaName = 'NavBar';
 
 export default NavBar;

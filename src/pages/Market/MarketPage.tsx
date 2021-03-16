@@ -1,16 +1,25 @@
 import React from 'react';
-import { Route, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
-function MarketPage() {
+import { Text, Market } from 'components';
+
+const MarketPage = () => {
   const { path } = useRouteMatch();
 
   return (
-    <Route exact path={path}>
-      <div className="market-page">
-        <h1>Please, select an market</h1>
-      </div>
-    </Route>
+    <Switch>
+      <Route exact path={path}>
+        <div className="market-page">
+          <Text as="p" scale="body">
+            Please, select an market
+          </Text>
+        </div>
+      </Route>
+      <Route path={`${path}/:marketId`}>
+        <Market />
+      </Route>
+    </Switch>
   );
-}
+};
 
 export default MarketPage;

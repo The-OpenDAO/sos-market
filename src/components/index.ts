@@ -10,6 +10,7 @@ import Input from './Input';
 import InterfaceSettings from './InterfaceSettings';
 import Label from './Label';
 import Layout from './Layout';
+import Market from './Market';
 import MarketList from './MarketList';
 import MiniTable from './MiniTable';
 import Modal from './Modal';
@@ -38,6 +39,7 @@ export {
   InterfaceSettings,
   Label,
   Layout,
+  Market,
   MarketList,
   MiniTable,
   Modal,
