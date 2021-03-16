@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Text } from 'components';
-
+import MarketAnalytics from './MarketAnalytics';
 import markets from './mock';
 
 type Params = {
@@ -19,11 +18,32 @@ const Market = () => {
     setMarket(currentMarket);
   }, [marketId]);
 
+  function formatMarketAnalytics() {
+    const marketAnalytics = [
+      {
+        title: 'Liquidity',
+        value: `${market?.liquidity || 0} DOT`,
+        color: 'yellow'
+      },
+      {
+        title: 'Volume (24H)',
+        value: `${market?.volume || 0} DOT`,
+        color: 'blue'
+      },
+      { title: 'Fractions', value: `${market?.fractions || 0}`, color: 'pink' },
+      { title: 'Expiration', value: market?.expiration || '', color: 'orange' }
+    ];
+
+    return marketAnalytics;
+  }
+
   if (!market) return null;
+
+  const marketAnalytics = formatMarketAnalytics();
 
   return (
     <div className="market-page">
-      <Text as="p">{market.description}</Text>
+      <MarketAnalytics items={marketAnalytics} />
     </div>
   );
 };
