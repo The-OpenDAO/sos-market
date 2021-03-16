@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 
 import cx from 'classnames';
 
@@ -31,28 +31,25 @@ type TextTag =
 
 type TextScale = 'heading' | 'body' | 'caption' | 'tiny' | 'tiny-uppercase';
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
-interface Props {
+
+type TextProps = {
   as?: TextTag;
   scale?: TextScale;
   fontWeight?: FontWeight;
-  style?: CSSProperties;
+  className?: string;
   children?: React.ReactNode | any;
-}
+};
 
 const Text = ({
   as = 'p',
   scale = 'body',
   fontWeight = 'regular',
-  style,
+  className,
   children
-}: Props) => {
+}: TextProps) => {
   const Tag = as;
 
-  return (
-    <Tag className={cx(scale, fontWeight)} style={style}>
-      {children}
-    </Tag>
-  );
+  return <Tag className={cx(className, scale, fontWeight)}>{children}</Tag>;
 };
 
 Text.displayName = 'Text';
