@@ -6,8 +6,8 @@ import { tabs, categories, markets } from './mock';
 
 function Home() {
   return (
-    <div className="home-root">
-      <div className="home-root__content">
+    <div className="home-page">
+      <div className="home-page__content">
         <ul className="markets">
           {categories?.map(category => (
             <li key={category.label}>

@@ -10,7 +10,7 @@ interface FeaturedCardProps {
   label: string;
   value: number;
   positive: boolean;
-  variant: Variant;
+  variant: Variant | string;
 }
 
 const FeaturedCard = ({
