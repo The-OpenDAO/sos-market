@@ -6,10 +6,15 @@ import {
   WhiteHouseIcon,
   ChartGrowthIcon,
   BitcoinIcon,
-  SunFogIcon
+  SunFogIcon,
+  TwitterIcon,
+  MediumIcon,
+  TelegramIcon,
+  LinkedInIcon,
+  GitHubIcon
 } from 'assets/icons';
 
-const sidebarLinks = {
+const navigationLinks = {
   markets: {
     title: 'Markets',
     items: [
@@ -53,4 +58,32 @@ const sidebarLinks = {
   }
 };
 
-export default sidebarLinks;
+const footerLinks = [
+  {
+    name: 'Polkamarkets Twitter',
+    url: 'https://twitter.com/polkamarkets',
+    icon: <TwitterIcon />
+  },
+  {
+    name: 'Polkamarkets Medium',
+    url: 'https://polkamarkets.medium.com/',
+    icon: <MediumIcon />
+  },
+  {
+    name: 'Polkamarkets Telegram',
+    url: 'https://t.me/polkamarkets',
+    icon: <TelegramIcon />
+  },
+  {
+    name: 'Polkamarkets LinkedIn',
+    url: 'https://www.linkedin.com/company/polkamarkets',
+    icon: <LinkedInIcon />
+  },
+  {
+    name: 'Polkamarkets GitHub',
+    url: 'https://github.com/Polkamarkets',
+    icon: <GitHubIcon />
+  }
+];
+
+export { navigationLinks, footerLinks };

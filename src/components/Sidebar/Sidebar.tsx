@@ -10,12 +10,13 @@ import {
 
 import { Button } from 'components';
 
-import sidebarLinks from './mock';
+import { navigationLinks, footerLinks } from './mock';
+import SidebarFooter from './SidebarFooter';
 import SidebarSection from './SidebarSection';
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
-  const { markets } = sidebarLinks;
+  const { markets } = navigationLinks;
 
   function toggleCollapsed() {
     setCollapsed(!collapsed);
@@ -52,6 +53,7 @@ function Sidebar() {
         </ul>
       </div>
       <SidebarSection title={markets.title} items={markets.items} />
+      <SidebarFooter links={footerLinks} />
     </div>
   );
 }

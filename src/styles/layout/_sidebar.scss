@@ -4,7 +4,7 @@
 
   padding: 2.3rem 3rem;
   width: 25.4rem;
-  min-height: 100vh;
+  height: 100%;
 
   transition: background-color 0.3s ease 0s, width 0.3s ease;
   transition-delay: 0.1s;
@@ -149,5 +149,52 @@
   .label--default {
     transition: opacity 0.3s ease;
     opacity: 0;
+  }
+
+  .sidebar-footer {
+    transition: visibility 0.1s ease;
+    visibility: hidden;
+  }
+}
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4.1rem;
+
+  margin-top: auto;
+  padding: 1rem 0rem;
+
+  &__links {
+    display: flex;
+    gap: 1.6rem;
+  }
+
+  &__link {
+    > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > svg {
+        fill: $gray-500;
+        transition: fill 0.2s ease;
+
+        &:hover {
+          fill: $gray-100;
+        }
+      }
+    }
+  }
+
+  > p {
+    display: inline;
+    overflow: hidden;
+    white-space: nowrap;
+
+    color: $gray-500;
   }
 }
