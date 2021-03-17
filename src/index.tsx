@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-// import ThemeProvider from 'contexts/theme';
+import { ScrollToTop } from 'components';
+
 import ViewportProvider from 'contexts/viewport';
 
 import App from './App';
@@ -15,6 +16,7 @@ ReactDOM.render(
     <ViewportProvider>
       {/* <ThemeProvider> */}
       <Router>
+        <ScrollToTop />
         <App />
       </Router>
       {/* </ThemeProvider> */}

@@ -18,6 +18,7 @@ import NavBar from './NavBar';
 import Odd from './Odd';
 import PredictionCard from './PredictionCard';
 import QuickTrade from './QuickTrade';
+import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
 import Select from './Select';
 import Sidebar from './Sidebar';
@@ -47,6 +48,7 @@ export {
   Odd,
   PredictionCard,
   QuickTrade,
+  ScrollToTop,
   SearchBar,
   Select,
   Sidebar,
