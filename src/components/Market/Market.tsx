@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { formatMarketAnalytics, formatMarketHead } from './mappers';
 import MarketAnalytics from './MarketAnalytics';
+import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
 import markets from './mock';
+import {
+  formatMarketAnalytics,
+  formatMarketHead,
+  generateMarketChartRandomData
+} from './utils';
 
 type Params = {
   marketId: string;
@@ -13,6 +18,8 @@ type Params = {
 const Market = () => {
   const { marketId } = useParams<Params>();
   const [market, setMarket] = useState<typeof markets[0] | undefined>();
+  // eslint-disable-next-line no-unused-vars
+  const [chartDataSize, setChartDataSize] = useState(40);
 
   useEffect(() => {
     const currentMarket = markets.find(m => m.id === parseInt(marketId, 10));
@@ -20,20 +27,30 @@ const Market = () => {
     setMarket(currentMarket);
   }, [marketId]);
 
+  const randomMarketChartData = useMemo(
+    () => generateMarketChartRandomData(chartDataSize),
+    [chartDataSize]
+  );
+
   if (!market) return null;
 
-  const marketAnalytics = formatMarketAnalytics(market);
+  const headerMarketAnalytics = formatMarketAnalytics(market, true);
   const marketHead = formatMarketHead(market);
+  const graphMarketAnalytics = formatMarketAnalytics(market, false);
 
   return (
     <div className="market-page">
-      <MarketAnalytics items={marketAnalytics} />
+      <MarketAnalytics direction="row" items={headerMarketAnalytics} />
       <MarketHead
         section={marketHead.section}
         subsection={marketHead.subsection}
         imageUrl={marketHead.imageUrl}
         description={marketHead.description}
       />
+      <div className="market-chart__container">
+        <MarketChart serie={randomMarketChartData} />
+        <MarketAnalytics direction="column" items={graphMarketAnalytics} />
+      </div>
     </div>
   );
 };

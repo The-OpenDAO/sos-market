@@ -6,6 +6,8 @@ import Text from '../Text';
 
 type ColorVariant = 'yellow' | 'blue' | 'green' | 'pink' | 'orange';
 
+type DirectionVariant = 'row' | 'column';
+
 type AnalyticsItem = {
   title: string;
   value: string | number;
@@ -13,15 +15,19 @@ type AnalyticsItem = {
 };
 
 type MarketAnalyticsProps = {
+  direction?: DirectionVariant;
   items: AnalyticsItem[];
 };
 
-const MarketAnalytics = ({ items }: MarketAnalyticsProps) => {
+const MarketAnalytics = ({
+  direction = 'row',
+  items
+}: MarketAnalyticsProps) => {
   if (isEmpty(items)) return null;
 
   return (
     <div className="market-analytics">
-      <ul className="market-analytics__group">
+      <ul className={`market-analytics__group--${direction}`}>
         {items?.map(item => (
           <li
             key={item.title}
