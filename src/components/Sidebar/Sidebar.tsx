@@ -30,6 +30,7 @@ function Sidebar() {
           icon={collapsed ? <HamburguerMenuIcon /> : <ArrowBackIcon />}
           iconPosition="center"
           onClick={() => toggleCollapsed()}
+          aria-label="Toggle sidebar"
         />
       </div>
       <div className="sidebar__tabs">

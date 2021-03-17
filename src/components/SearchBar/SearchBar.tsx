@@ -11,7 +11,7 @@ const SearchBar = () => {
         placeholder="Search markets"
         type="text"
       />
-      <button className="searchbar__icon" type="submit">
+      <button className="searchbar__icon" type="submit" aria-label="Search">
         <SearchIcon />
       </button>
     </form>

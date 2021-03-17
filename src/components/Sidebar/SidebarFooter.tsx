@@ -18,7 +18,9 @@ const SidebarFooter = ({ links }: SidebarFooterProps) => {
       <ul className="sidebar-footer__links">
         {links?.map(link => (
           <li key={link.name} className="sidebar-footer__link">
-            <a href={link.url}>{link.icon}</a>
+            <a href={link.url} aria-label={link.name}>
+              {link.icon}
+            </a>
           </li>
         ))}
       </ul>

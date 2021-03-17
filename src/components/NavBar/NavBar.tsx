@@ -14,7 +14,7 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <Link to="/home">
+      <Link to="/home" aria-label="Polkamarkets home">
         <figure className="navbar__icon">
           <PolkamarketsIcon />
         </figure>
@@ -32,7 +32,12 @@ const NavBar = () => {
       </ul>
       <div className="navbar-menu__actions">
         <InterfaceSettings open={showInterfaceSettings} />
-        <Button variant="default" icon={<MetaMaskIcon />} iconPosition="left">
+        <Button
+          variant="default"
+          icon={<MetaMaskIcon />}
+          iconPosition="left"
+          aria-label="Connect Wallet"
+        >
           Connect Wallet
         </Button>
         <Button
@@ -40,6 +45,7 @@ const NavBar = () => {
           icon={<SettingsIcon />}
           iconPosition="center"
           onClick={() => toggleInterfaceSettings()}
+          aria-label="Settings"
         />
       </div>
     </nav>

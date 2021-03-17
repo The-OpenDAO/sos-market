@@ -34,6 +34,7 @@ const MarketHead = ({
           icon={<ArrowLeftIcon />}
           iconPosition="left"
           onClick={() => history.push('/home')}
+          aria-label="Back to Markets"
         >
           <Text as="span" scale="caption" fontWeight="semibold">
             Back to Markets
