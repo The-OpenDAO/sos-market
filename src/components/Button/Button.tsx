@@ -33,9 +33,18 @@ const Button = React.forwardRef<
       className={`button--${variant}`}
       onClick={onClick}
     >
+      {icon && iconPosition === 'left' ? (
+        <figure className={cx('button__icon', 'left')}>{icon}</figure>
+      ) : null}
+
+      {icon && iconPosition === 'center' ? (
+        <figure className={cx('button__icon', 'center')}>{icon}</figure>
+      ) : null}
+
       {children}
-      {icon ? (
-        <figure className={cx('button__icon', iconPosition)}>{icon}</figure>
+
+      {icon && iconPosition === 'right' ? (
+        <figure className={cx('button__icon', 'right')}>{icon}</figure>
       ) : null}
     </button>
   )

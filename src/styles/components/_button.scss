@@ -1,6 +1,10 @@
 .button {
   position: relative;
-  display: inline-block;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 
   cursor: pointer;
   touch-action: manipulation;
@@ -29,6 +33,11 @@
   }
 
   &__icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     max-height: 2.4rem;
 
     &.center {
@@ -37,12 +46,10 @@
 
     &.left {
       margin-right: 1.2rem;
-      float: left;
     }
 
     &.right {
       margin-left: 1.2rem;
-      float: right;
     }
   }
 }
