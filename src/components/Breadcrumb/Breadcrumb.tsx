@@ -3,12 +3,12 @@ import React from 'react';
 
 import { Text } from 'components';
 
-interface Props {
+type BreadcrumbProps = {
   previous: string;
   actual: string;
-}
+};
 
-const Breadcrumb = ({ previous, actual }: Props) => {
+const Breadcrumb = ({ previous, actual }: BreadcrumbProps) => {
   return (
     <div className="breadcrumb">
       <a className="breadcrumb__link tiny-uppercase semibold" href={previous}>
@@ -21,5 +21,7 @@ const Breadcrumb = ({ previous, actual }: Props) => {
     </div>
   );
 };
+
+Breadcrumb.displayName = 'Breadcrumb';
 
 export default Breadcrumb;
