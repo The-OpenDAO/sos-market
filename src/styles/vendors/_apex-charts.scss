@@ -1,19 +1,19 @@
 .apexcharts-tooltip.apexcharts-theme-light {
-  border: 0.1rem solid $gray-800;
-  background-color: $gray-800;
-  box-shadow: none;
+  border: 0.1rem solid $gray-800 !important;
+  background-color: $gray-800 !important;
+  box-shadow: none !important;
 
   .apexcharts-tooltip-box {
     @extend .tiny, .medium;
-    font-family: 'Gilroy', sans-serif;
-    color: $gray-400;
+    font-family: 'Gilroy', sans-serif !important;
+    color: $gray-400 !important;
   }
 }
 
 .apexcharts-text {
   tspan {
     @extend .tiny, .medium;
-    font-family: 'Gilroy', sans-serif;
-    color: $gray-500;
+    font-family: 'Gilroy', sans-serif !important;
+    color: $gray-500 !important;
   }
 }
