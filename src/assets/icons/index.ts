@@ -1,6 +1,7 @@
 import AlienIcon from './AlienIcon';
 import ArrowBackIcon from './ArrowBackIcon';
 import ArrowDownIcon from './ArrowDownIcon';
+import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import BitcoinIcon from './BitcoinIcon';
 import CaretDownIcon from './CaretDownIcon';
@@ -35,6 +36,7 @@ export {
   AlienIcon,
   ArrowBackIcon,
   ArrowDownIcon,
+  ArrowLeftIcon,
   ArrowUpIcon,
   BitcoinIcon,
   CaretDownIcon,

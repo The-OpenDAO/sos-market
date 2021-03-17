@@ -58,3 +58,58 @@
 
   background: $card-gradient-orange;
 }
+
+.market-head {
+  display: flex;
+
+  padding: 0.8rem 0rem;
+
+  &__image {
+    object-fit: cover;
+    border-radius: 50%;
+
+    height: 6.4rem;
+    width: 6.4rem;
+
+    margin-right: 2.4rem;
+  }
+
+  &__details {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 0.8rem;
+    margin-right: 3.2rem;
+
+    > p {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+
+      @include themed() {
+        color: t($color-text);
+      }
+    }
+  }
+
+  &__actions {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    > button {
+      padding: 1rem 1.4rem;
+
+      > figure > svg {
+        fill: $gray-300 !important;
+      }
+
+      > span {
+        color: $gray-300;
+      }
+    }
+  }
+}
