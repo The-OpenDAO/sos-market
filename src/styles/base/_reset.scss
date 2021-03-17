@@ -65,11 +65,12 @@ video {
 }
 
 html {
+  height: 100%;
   font-size: 62.5%;
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100%;
   font-size: 1.6rem;
   line-height: 1;
 }
