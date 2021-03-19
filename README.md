@@ -1,0 +1,1 @@
+Sass stylesheet needs a [`.env` file] at the project root with the variable `SASS_PATH=node_modules:src`.
