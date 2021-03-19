@@ -3,15 +3,21 @@ import React, { useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 
-import Modal from '../Modal';
+import markets from '../Market/mock';
 import PredictionCard from '../PredictionCard';
 
-function MarketList({ markets }) {
+type Market = typeof markets[0];
+
+type MarketListProps = {
+  markets: Market[];
+};
+
+// eslint-disable-next-line no-shadow
+function MarketList({ markets }: MarketListProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="market-list">
-      <Modal open={open} handleClose={() => setOpen(false)} />
       {!isEmpty(markets) &&
         markets.map(market => (
           <PredictionCard key={market.id} market={market} />

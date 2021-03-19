@@ -54,6 +54,7 @@ const markets = [
     volume: 9.025,
     expiration: 'Feb 26, 2021 - 12:00PM UTC',
     liquidity: 428,
+    fractions: 458,
     favorite: false,
     options: [
       {
@@ -83,6 +84,7 @@ const markets = [
     volume: 10.589,
     expiration: 'Feb 26, 2021 - 12:00PM UTC',
     liquidity: 428,
+    fractions: 458,
     favorite: true,
     options: [
       {
@@ -114,6 +116,7 @@ const markets = [
     volume: 509,
     expiration: 'Feb 26, 2021 - 12:00PM UTC',
     liquidity: 428,
+    fractions: 458,
     favorite: false,
     options: [
       {
@@ -142,6 +145,7 @@ const markets = [
     volume: 125,
     expiration: 'Feb 26, 2021 - 12:00PM UTC',
     liquidity: 428,
+    fractions: 458,
     favorite: true,
     options: [
       {
@@ -170,6 +174,7 @@ const markets = [
     volume: 6.143,
     expiration: 'Feb 26, 2021 - 12:00PM UTC',
     liquidity: 428,
+    fractions: 458,
     favorite: true,
     options: [
       {

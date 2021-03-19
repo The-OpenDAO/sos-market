@@ -3,32 +3,10 @@ import { Link } from 'react-router-dom';
 
 import { Breadcrumb, Text } from 'components';
 
+import markets from '../Market/mock';
 import PredictionSelection from './PredictionSelection';
 
-type Market = {
-  id: number;
-  section: string;
-  subsection: string;
-  label: {
-    enabled: boolean;
-    title: string;
-    variant: string;
-  };
-  imageUrl: string;
-  description: string;
-  volume: number;
-  expiration: string;
-  liquidity: number;
-  favorite: boolean;
-  options: [
-    {
-      id: number;
-      name: string;
-      odd: number;
-      positive: boolean;
-    }
-  ];
-};
+type Market = typeof markets[0];
 
 interface Props {
   market: Market;

@@ -1,6 +1,4 @@
 import AmountInput from './AmountInput';
-import BetAmountInput from './BetAmountInput';
-import BetForm from './BetForm';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
 import Categories from './Categories';
@@ -13,9 +11,7 @@ import Layout from './Layout';
 import Market from './Market';
 import MarketList from './MarketList';
 import MiniTable from './MiniTable';
-import Modal from './Modal';
 import NavBar from './NavBar';
-import Odd from './Odd';
 import PredictionCard from './PredictionCard';
 import QuickTrade from './QuickTrade';
 import ScrollToTop from './ScrollToTop';
@@ -29,8 +25,6 @@ import ToggleSwitch from './ToggleSwitch';
 
 export {
   AmountInput,
-  BetAmountInput,
-  BetForm,
   Breadcrumb,
   Button,
   Categories,
@@ -43,9 +37,7 @@ export {
   Market,
   MarketList,
   MiniTable,
-  Modal,
   NavBar,
-  Odd,
   PredictionCard,
   QuickTrade,
   ScrollToTop,
