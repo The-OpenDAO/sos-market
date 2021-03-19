@@ -1,10 +1,8 @@
-import React from 'react';
-
 import { Tabs, Select, MarketList, FeaturedCard } from 'components';
 
 import { tabs, categories, markets } from './mock';
 
-function Home() {
+const Home = () => {
   return (
     <div className="home-page">
       <div className="home-page__content">
@@ -35,6 +33,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

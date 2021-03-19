@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import {
@@ -8,13 +8,13 @@ import {
   PortfolioIcon
 } from 'assets/icons';
 
-import { Button } from 'components';
+import Button from '../Button';
 
 import { navigationLinks, footerLinks } from './mock';
 import SidebarFooter from './SidebarFooter';
 import SidebarSection from './SidebarSection';
 
-function Sidebar() {
+const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { markets } = navigationLinks;
 
@@ -57,6 +57,8 @@ function Sidebar() {
       <SidebarFooter links={footerLinks} />
     </div>
   );
-}
+};
+
+Sidebar.displayName = 'Sidebar';
 
 export default Sidebar;

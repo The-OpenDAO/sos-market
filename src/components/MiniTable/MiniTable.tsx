@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Text from '../Text';
 
 type Variant = 'default' | 'success' | 'danger' | 'warning';
@@ -9,12 +7,12 @@ type Item = {
   value: string | number;
 };
 
-interface Props {
+type MiniTableProps = {
   items: Item[];
   variant?: Variant;
-}
+};
 
-function MiniTable({ items, variant = 'default' }: Props) {
+const MiniTable = ({ items, variant = 'default' }: MiniTableProps) => {
   return (
     <ul className="mini-table">
       {items?.map(item => (
@@ -30,6 +28,8 @@ function MiniTable({ items, variant = 'default' }: Props) {
       ))}
     </ul>
   );
-}
+};
+
+MiniTable.displayName = 'Mini table';
 
 export default MiniTable;

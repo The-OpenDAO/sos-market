@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Breadcrumb, Text } from 'components';
@@ -8,11 +7,11 @@ import PredictionSelection from './PredictionSelection';
 
 type Market = typeof markets[0];
 
-interface Props {
+type PredictionCardProps = {
   market: Market;
-}
+};
 
-const PredictionCard = ({ market }: Props) => {
+const PredictionCard = ({ market }: PredictionCardProps) => {
   return (
     <Link to={`/market/${market.id}`}>
       <div className="prediction-card-container">
@@ -66,5 +65,7 @@ const PredictionCard = ({ market }: Props) => {
     </Link>
   );
 };
+
+PredictionCard.displayName = 'Prediction card';
 
 export default PredictionCard;

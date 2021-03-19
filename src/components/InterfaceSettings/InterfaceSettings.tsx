@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { Text, ToggleSwitch } from 'components';
-
 import useTheme from 'hooks/useTheme';
 
-interface Props {
-  open: boolean;
-}
+import Text from '../Text';
+import ToggleSwitch from '../ToggleSwitch';
 
-const InterfaceSettings = ({ open }: Props) => {
+type InterfaceSettingsProps = {
+  open: boolean;
+};
+
+const InterfaceSettings = ({ open }: InterfaceSettingsProps) => {
   const { theme, setTheme } = useTheme();
 
   function handleChangeTheme(event: React.ChangeEvent<HTMLInputElement>) {

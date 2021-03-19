@@ -1,18 +1,16 @@
-import React from 'react';
-
-interface Props {
+type ToggleSwitchProps = {
   name: string;
   checked?: boolean;
   disabled?: boolean;
   handleChange: any;
-}
+};
 
 const ToggleSwitch = ({
   name,
   checked,
   disabled = false,
   handleChange
-}: Props) => {
+}: ToggleSwitchProps) => {
   return (
     <label className="toggle-switch" htmlFor={name}>
       <input
@@ -26,5 +24,7 @@ const ToggleSwitch = ({
     </label>
   );
 };
+
+ToggleSwitch.displayName = 'Toggle switch';
 
 export default ToggleSwitch;

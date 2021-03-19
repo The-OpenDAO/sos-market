@@ -1,10 +1,8 @@
-import React from 'react';
-
 import Routes from 'routes';
 
 import { Layout } from 'components';
 
-function App() {
+const App = () => {
   return (
     <div className="theme--dark">
       <Layout>
@@ -12,6 +10,6 @@ function App() {
       </Layout>
     </div>
   );
-}
+};
 
 export default App;

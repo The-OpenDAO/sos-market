@@ -1,7 +1,4 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
-
-import { Text } from 'components';
+import Text from '../Text';
 
 type BreadcrumbProps = {
   previous: string;

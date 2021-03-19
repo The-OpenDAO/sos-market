@@ -11,7 +11,6 @@ type SelectProps = {
   children: React.ReactNode | any;
 };
 
-// eslint-disable-next-line react/prop-types
 const Select = ({
   variant = 'default',
   label,
@@ -34,5 +33,7 @@ const Select = ({
     </div>
   );
 };
+
+Select.displayName = 'Select';
 
 export default Select;

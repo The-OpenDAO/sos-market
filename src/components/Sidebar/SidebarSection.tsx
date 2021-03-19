@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Label } from 'components';
+import Label from '../Label';
 
 type Item = {
   name: string;
@@ -10,12 +10,12 @@ type Item = {
   to: string;
 };
 
-interface Props {
+type SidebarSectionProps = {
   title: string;
   items: Item[];
-}
+};
 
-const SidebarSection = ({ title, items }: Props) => {
+const SidebarSection = ({ title, items }: SidebarSectionProps) => {
   return (
     <div className="sidebar-section" aria-label={title} role="group">
       <ul className="sidebar-section__list">
@@ -34,5 +34,7 @@ const SidebarSection = ({ title, items }: Props) => {
     </div>
   );
 };
+
+SidebarSection.displayName = 'Sidebar section';
 
 export default SidebarSection;

@@ -31,4 +31,6 @@ const SidebarFooter = ({ links }: SidebarFooterProps) => {
   );
 };
 
+SidebarFooter.displayName = 'Sidebar footer';
+
 export default SidebarFooter;

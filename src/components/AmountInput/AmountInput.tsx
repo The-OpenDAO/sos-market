@@ -4,12 +4,12 @@ import { WalletIcon, PolkadotIcon } from 'assets/icons';
 
 import Text from '../Text';
 
-interface Props {
+type AmountInputProps = {
   label: string;
   max: number;
-}
+};
 
-const AmountInput = ({ label, max }: Props) => {
+const AmountInput = ({ label, max }: AmountInputProps) => {
   const [amount, setAmount] = useState(max);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {

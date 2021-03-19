@@ -1,10 +1,10 @@
-import React, { Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 const Home = lazy(() => import('pages/Home'));
 const Market = lazy(() => import('pages/Market'));
 
-function AppRoutes() {
+const AppRoutes = () => {
   return (
     <Suspense fallback={null}>
       <Switch>
@@ -16,6 +16,6 @@ function AppRoutes() {
       </Switch>
     </Suspense>
   );
-}
+};
 
 export default AppRoutes;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import MarketAnalytics from './MarketAnalytics';
@@ -18,7 +18,6 @@ type Params = {
 const Market = () => {
   const { marketId } = useParams<Params>();
   const [market, setMarket] = useState<typeof markets[0] | undefined>();
-  // eslint-disable-next-line no-unused-vars
   const [chartDataSize, setChartDataSize] = useState(40);
 
   useEffect(() => {

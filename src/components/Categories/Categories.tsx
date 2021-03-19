@@ -1,17 +1,16 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import cx from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
-import Label from 'components/Label';
+import Label from '../Label';
 
-interface Props {
+type CategoriesProps = {
   title: string;
   items: any[];
-}
+};
 
-const Categories = ({ title, items }: Props) => {
+const Categories = ({ title, items }: CategoriesProps) => {
   return (
     <div className="categories">
       <label htmlFor={title} className="categories__title">

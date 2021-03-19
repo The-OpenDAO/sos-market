@@ -1,9 +1,10 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { ArrowLeftIcon } from 'assets/icons';
 
-import { Breadcrumb, Text, Button } from 'components';
+import Breadcrumb from '../Breadcrumb';
+import Button from '../Button';
+import Text from '../Text';
 
 type MarketHeadProps = {
   section: string;
@@ -44,5 +45,7 @@ const MarketHead = ({
     </div>
   );
 };
+
+MarketHead.displayName = 'Market head';
 
 export default MarketHead;

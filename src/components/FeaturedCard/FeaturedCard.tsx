@@ -1,17 +1,16 @@
-import React from 'react';
-
 import { CaretUpIcon, CaretDownIcon } from 'assets/icons';
 
-import { Label, Text } from 'components';
+import Label from '../Label';
+import Text from '../Text';
 
 type Variant = 'yellow' | 'blue' | 'green' | 'pink' | 'orange';
 
-interface FeaturedCardProps {
+type FeaturedCardProps = {
   label: string;
   value: number;
   positive: boolean;
   variant: Variant | string;
-}
+};
 
 const FeaturedCard = ({
   label,

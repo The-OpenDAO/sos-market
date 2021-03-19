@@ -1,7 +1,7 @@
 import React from 'react';
 
-import NavBar from 'components/NavBar';
-import Sidebar from 'components/Sidebar';
+import NavBar from '../NavBar';
+import Sidebar from '../Sidebar';
 
 type LayoutProps = {
   children: React.ReactNode | any;

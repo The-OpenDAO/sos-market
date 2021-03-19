@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import clx from 'classnames';
 import isEmpty from 'lodash/isEmpty';
@@ -10,12 +10,12 @@ type Item = {
   content: null;
 };
 
-interface Props {
+type TabsProps = {
   direction?: Direction;
   items: Item[];
-}
+};
 
-const Tabs = ({ direction = 'row', items }: Props) => {
+const Tabs = ({ direction = 'row', items }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(items[0].name);
 
   function handleChangeTab(event: any) {
@@ -58,5 +58,7 @@ const Tabs = ({ direction = 'row', items }: Props) => {
     </>
   );
 };
+
+Tabs.displayName = 'Tabs';
 
 export default Tabs;

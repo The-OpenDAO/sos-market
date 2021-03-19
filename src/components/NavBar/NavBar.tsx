@@ -3,7 +3,9 @@ import { NavLink, Link } from 'react-router-dom';
 
 import { PolkamarketsIcon, MetaMaskIcon, SettingsIcon } from 'assets/icons';
 
-import { SearchBar, Button, InterfaceSettings } from 'components';
+import Button from '../Button';
+import InterfaceSettings from '../InterfaceSettings';
+import SearchBar from '../SearchBar';
 
 const NavBar = () => {
   const [showInterfaceSettings, setShowInterfaceSettings] = useState(false);

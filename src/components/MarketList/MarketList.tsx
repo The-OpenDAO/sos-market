@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import isEmpty from 'lodash/isEmpty';
-import PropTypes from 'prop-types';
 
 import markets from '../Market/mock';
 import PredictionCard from '../PredictionCard';
@@ -13,7 +12,7 @@ type MarketListProps = {
 };
 
 // eslint-disable-next-line no-shadow
-function MarketList({ markets }: MarketListProps) {
+const MarketList = ({ markets }: MarketListProps) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -24,10 +23,8 @@ function MarketList({ markets }: MarketListProps) {
         ))}
     </div>
   );
-}
-
-MarketList.propTypes = {
-  markets: PropTypes.arrayOf(PropTypes.object).isRequired
 };
+
+MarketList.displayName = 'Market list';
 
 export default MarketList;

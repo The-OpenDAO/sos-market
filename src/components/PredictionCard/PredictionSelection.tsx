@@ -1,16 +1,18 @@
-import React from 'react';
-
 import { ArrowUpIcon, ArrowDownIcon } from 'assets/icons';
 
-import { Text } from 'components';
+import Text from '../Text';
 
-interface Props {
+type PredictionSelectionProps = {
   name: string;
   odd: number;
   positive: boolean;
-}
+};
 
-const PredictionSelection = ({ name, odd, positive }: Props) => {
+const PredictionSelection = ({
+  name,
+  odd,
+  positive
+}: PredictionSelectionProps) => {
   return (
     <div className="prediction-selection" role="button">
       <Text as="p" scale="caption" fontWeight="semibold">
@@ -28,5 +30,7 @@ const PredictionSelection = ({ name, odd, positive }: Props) => {
     </div>
   );
 };
+
+PredictionSelection.displayName = 'Prediction selection';
 
 export default PredictionSelection;

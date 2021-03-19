@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { SearchIcon } from 'assets/icons';
 
 const SearchBar = () => {
@@ -17,5 +15,7 @@ const SearchBar = () => {
     </form>
   );
 };
+
+SearchBar.displayName = 'SearchBar';
 
 export default SearchBar;

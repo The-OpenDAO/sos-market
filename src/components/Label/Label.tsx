@@ -16,19 +16,19 @@ type Variant =
 
 type Position = 'left' | 'right';
 
-interface Props {
+type LabelProps = {
   variant?: Variant;
   icon?: React.ReactNode | any;
   iconPosition?: Position;
   children: React.ReactNode | any;
-}
+};
 
 const Label = ({
   variant = 'default',
   icon,
   iconPosition,
   children
-}: Props) => {
+}: LabelProps) => {
   return (
     <div className={`label--${variant}`}>
       {icon ? (
@@ -42,5 +42,7 @@ const Label = ({
     </div>
   );
 };
+
+Label.displayName = 'Label';
 
 export default Label;
