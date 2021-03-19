@@ -1,6 +1,7 @@
 .market-analytics {
   &__group {
-    display: flex;
+    @include flex-row;
+
     flex-wrap: wrap;
     gap: 1.6rem;
 
@@ -18,11 +19,7 @@
   }
 
   &__item {
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
+    @include flex-column(center, center);
 
     flex-grow: 1;
 
@@ -83,7 +80,7 @@
 }
 
 .market-head {
-  display: flex;
+  @include flex-row;
 
   padding: 0.8rem 0rem;
 
@@ -98,11 +95,8 @@
   }
 
   &__details {
-    display: flex;
+    @include flex-column(center, flex-start);
     flex-grow: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
 
     gap: 0.8rem;
     margin-right: 3.2rem;
@@ -119,9 +113,7 @@
   }
 
   &__actions {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-row(center, center);
 
     > button {
       padding: 1rem 1.4rem;

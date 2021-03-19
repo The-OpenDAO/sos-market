@@ -1,6 +1,5 @@
 .quick-trade {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
 
   width: 32.4rem;
   padding: 2.4rem;

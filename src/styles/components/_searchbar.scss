@@ -1,7 +1,5 @@
 .searchbar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include flex-row(flex-start, center);
 
   padding: 1.2rem;
   transition: background-color 0.3s ease 0s;

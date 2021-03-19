@@ -1,6 +1,5 @@
 .sidebar {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
 
   padding: 2.3rem 3rem;
   width: 25.4rem;
@@ -15,11 +14,7 @@
   }
 
   &__header {
-    display: flex;
-    flex-direction: row;
-
-    justify-content: flex-start;
-    align-items: center;
+    @include flex-row(flex-start, center);
 
     height: 6.4rem;
 
@@ -91,9 +86,7 @@
   transition: color 0.2s linear 0s;
 
   &__icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-row(center, center);
     zoom: 1;
 
     > svg {
@@ -158,10 +151,7 @@
 }
 
 .sidebar-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex-column(center, center);
 
   gap: 4.1rem;
 
@@ -175,9 +165,7 @@
 
   &__link {
     > a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-row(center, center);
 
       > svg {
         fill: $gray-500;

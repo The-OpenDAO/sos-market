@@ -1,9 +1,7 @@
 .button {
   position: relative;
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-row(center, center);
   overflow: hidden;
 
   cursor: pointer;
@@ -33,11 +31,7 @@
   }
 
   &__icon {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
+    @include flex-row(center, center);
     max-height: 2.4rem;
 
     &.center {

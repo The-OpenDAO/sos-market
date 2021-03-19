@@ -31,7 +31,8 @@
 }
 
 .filters {
-  display: inline-flex;
+  @include flex-row;
+
   gap: 3.2rem;
 
   height: fit-content;
