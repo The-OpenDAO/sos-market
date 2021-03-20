@@ -1,7 +1,5 @@
 .market-page {
-  display: flex;
-  flex-direction: column;
-
+  @include flex-column;
   gap: 1.6rem;
 
   width: 100%;
