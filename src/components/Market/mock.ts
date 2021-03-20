@@ -153,6 +153,12 @@ const markets = [
   }
 ];
 
+const tableTabs = [
+  { name: 'Positions', content: null },
+  { name: 'About market', content: null },
+  { name: 'News', content: null }
+];
+
 const tableItems = {
   headers: ['Result', 'Price', 'Trade Type', 'Fractions', 'Max. Payout'],
   rows: [
@@ -164,4 +170,4 @@ const tableItems = {
   ]
 };
 
-export { markets, tableItems };
+export { markets, tableTabs, tableItems };

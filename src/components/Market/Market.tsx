@@ -2,10 +2,11 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Table from '../Table';
+import Tabs from '../Tabs';
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
-import { markets, tableItems } from './mock';
+import { markets, tableTabs, tableItems } from './mock';
 import {
   formatMarketAnalytics,
   formatMarketHead,
@@ -51,6 +52,7 @@ const Market = () => {
         <MarketChart serie={randomMarketChartData} />
         <MarketAnalytics direction="column" items={graphMarketAnalytics} />
       </div>
+      <Tabs direction="row" items={tableTabs} />
       <Table headers={tableItems.headers} rows={tableItems.rows} />
     </div>
   );
