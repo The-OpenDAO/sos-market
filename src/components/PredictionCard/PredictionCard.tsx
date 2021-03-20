@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 
+import { markets } from 'pages/Market/mock';
 import Breadcrumb from '../Breadcrumb';
-import { markets } from '../Market/mock';
+
 import Text from '../Text';
 import PredictionSelection from './PredictionSelection';
 

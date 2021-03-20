@@ -1,6 +1,8 @@
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import { Text, Market } from 'components';
+import { Text } from 'components';
+
+import Market from './Market';
 
 const MarketPage = () => {
   const { path } = useRouteMatch();

@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
 
-import Text from '../Text';
+import { Text } from 'components';
 
 type ColorVariant = 'yellow' | 'blue' | 'green' | 'pink' | 'orange';
 

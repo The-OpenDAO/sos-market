@@ -2,9 +2,7 @@ import { useHistory } from 'react-router-dom';
 
 import { ArrowLeftIcon } from 'assets/icons';
 
-import Breadcrumb from '../Breadcrumb';
-import Button from '../Button';
-import Text from '../Text';
+import { Breadcrumb, Button, Text } from 'components';
 
 type MarketHeadProps = {
   section: string;

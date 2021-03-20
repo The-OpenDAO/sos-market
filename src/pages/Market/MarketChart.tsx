@@ -4,8 +4,8 @@ import clx from 'classnames';
 
 import { CandleStickChartIcon, LineChartIcon } from 'assets/icons';
 
-import CandleStickChart from '../CandleStickChart';
-import Text from '../Text';
+import { CandleStickChart, Text } from 'components';
+
 import { generateMarketChartRandomData } from './utils';
 
 const intervalsInMinutes = {
