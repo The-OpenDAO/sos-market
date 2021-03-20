@@ -18,6 +18,7 @@ import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
 import Select from './Select';
 import Sidebar from './Sidebar';
+import Table from './Table';
 import Tabs from './Tabs';
 import Text from './Text';
 import ToggleButton from './ToggleButton';
@@ -44,6 +45,7 @@ export {
   SearchBar,
   Select,
   Sidebar,
+  Table,
   Tabs,
   Text,
   ToggleButton,

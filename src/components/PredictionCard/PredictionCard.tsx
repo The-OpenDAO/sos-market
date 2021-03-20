@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { Breadcrumb, Text } from 'components';
-
-import markets from '../Market/mock';
+import Breadcrumb from '../Breadcrumb';
+import { markets } from '../Market/mock';
+import Text from '../Text';
 import PredictionSelection from './PredictionSelection';
 
 type Market = typeof markets[0];

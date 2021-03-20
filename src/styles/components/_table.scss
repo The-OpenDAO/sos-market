@@ -1,0 +1,45 @@
+.table {
+  width: 100%;
+  border: 0.1rem solid $gray-600;
+
+  &__header {
+    background-color: $gray-700;
+
+    &-item {
+      padding: 1.2rem 2.4rem;
+
+      @extend .tiny, .bold;
+      text-align: center;
+      color: $gray-400;
+
+      &:first-of-type {
+        text-align: left;
+      }
+
+      &:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+
+  &__row {
+    background-color: $gray-1000;
+    border-top: 0.1rem solid $gray-600;
+
+    &-item {
+      padding: 3.1rem 2.4rem;
+
+      @extend .caption, .semibold;
+      text-align: center;
+      color: $gray-100;
+
+      &:first-of-type {
+        text-align: left;
+      }
+
+      &:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+}

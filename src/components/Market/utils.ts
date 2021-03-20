@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import reverse from 'lodash/reverse';
 import times from 'lodash/times';
 
-import markets from './mock';
+import { markets } from './mock';
 
 type Market = typeof markets[0];
 

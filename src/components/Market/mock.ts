@@ -153,4 +153,15 @@ const markets = [
   }
 ];
 
-export default markets;
+const tableItems = {
+  headers: ['Result', 'Price', 'Trade Type', 'Fractions', 'Max. Payout'],
+  rows: [
+    ['Yes', '0.248 DOT', 'Buy', '13', '2.584 DOT'],
+    ['No', '0.248 DOT', 'Sold', '13', '2.584 DOT'],
+    ['No', '0.248 DOT', 'Sold', '13', '2.584 DOT'],
+    ['No', '0.248 DOT', 'Sold', '13', '2.584 DOT'],
+    ['No', '0.248 DOT', 'Sold', '13', '2.584 DOT']
+  ]
+};
+
+export { markets, tableItems };

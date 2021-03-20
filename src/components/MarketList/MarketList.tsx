@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import isEmpty from 'lodash/isEmpty';
 
-import markets from '../Market/mock';
+import { markets } from '../Market/mock';
 import PredictionCard from '../PredictionCard';
 
 type Market = typeof markets[0];
