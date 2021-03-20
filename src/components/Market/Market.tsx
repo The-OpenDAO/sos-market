@@ -1,18 +1,13 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import CandleStickChart from '../CandleStickChart';
 import Table from '../Table';
 import Tabs from '../Tabs';
-import ToggleButton from '../ToggleButton';
 import MarketAnalytics from './MarketAnalytics';
+import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
 import { markets, tableTabs, tableItems } from './mock';
-import {
-  formatMarketAnalytics,
-  formatMarketHead,
-  generateMarketChartRandomData
-} from './utils';
+import { formatMarketAnalytics, formatMarketHead } from './utils';
 
 type Params = {
   marketId: string;
@@ -21,18 +16,12 @@ type Params = {
 const Market = () => {
   const { marketId } = useParams<Params>();
   const [market, setMarket] = useState<typeof markets[0] | undefined>();
-  const [chartDataSize, setChartDataSize] = useState(40);
 
   useEffect(() => {
     const currentMarket = markets.find(m => m.id === parseInt(marketId, 10));
 
     setMarket(currentMarket);
   }, [marketId]);
-
-  const randomMarketChartData = useMemo(
-    () => generateMarketChartRandomData(chartDataSize),
-    [chartDataSize]
-  );
 
   if (!market) return null;
 
@@ -49,16 +38,11 @@ const Market = () => {
         imageUrl={marketHead.imageUrl}
         description={marketHead.description}
       />
-      <ToggleButton
-        buttons={[
-          { name: 'Market Overview', default: true, variant: 'default' },
-          { name: 'Trading View', default: false, variant: 'default' }
-        ]}
-      />
-      <div className="market-chart__container">
-        <CandleStickChart serie={randomMarketChartData} height={288} />
+      <div className="market-page__stats">
+        <MarketChart />
         <MarketAnalytics direction="column" items={graphMarketAnalytics} />
       </div>
+      <br />
       <Tabs direction="row" items={tableTabs} />
       <Table headers={tableItems.headers} rows={tableItems.rows} />
     </div>

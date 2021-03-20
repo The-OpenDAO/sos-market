@@ -4,6 +4,7 @@ import ArrowDownIcon from './ArrowDownIcon';
 import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import BitcoinIcon from './BitcoinIcon';
+import CandleStickChartIcon from './CandleStickChartIcon';
 import CaretDownIcon from './CaretDownIcon';
 import CaretUpIcon from './CaretUpIcon';
 import ChartGrowthIcon from './ChartGrowthIcon';
@@ -12,6 +13,7 @@ import GamingConsoleIcon from './GamingConsoleIcon';
 import GitHubIcon from './GitHubIcon';
 import HamburguerMenuIcon from './HamburguerMenuIcon';
 import LaptopIcon from './LaptopIcon';
+import LineChartIcon from './LineChartIcon';
 import LinkedInIcon from './LinkedInIcon';
 import MarketsIcon from './MarketsIcon';
 import MediumIcon from './MediumIcon';
@@ -39,6 +41,7 @@ export {
   ArrowLeftIcon,
   ArrowUpIcon,
   BitcoinIcon,
+  CandleStickChartIcon,
   CaretDownIcon,
   CaretUpIcon,
   ChartGrowthIcon,
@@ -47,6 +50,7 @@ export {
   GitHubIcon,
   HamburguerMenuIcon,
   LaptopIcon,
+  LineChartIcon,
   LinkedInIcon,
   MarketsIcon,
   MediumIcon,

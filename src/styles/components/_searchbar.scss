@@ -59,9 +59,7 @@
       display: inline-block;
       vertical-align: middle;
 
-      @include themed() {
-        fill: t($input-icon);
-      }
+      fill: $gray-500;
     }
   }
 }
