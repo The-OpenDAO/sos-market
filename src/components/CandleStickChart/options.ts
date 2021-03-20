@@ -1,17 +1,4 @@
-import ReactApexChart from 'react-apexcharts';
-
-import dayjs from 'dayjs';
-
-type Event = {
-  x: dayjs.Dayjs;
-  y: number[];
-};
-
-type MarketChartProps = {
-  serie: Event[];
-};
-
-const chartOptions = {
+export default {
   chart: {
     toolbar: {
       show: false
@@ -68,18 +55,3 @@ const chartOptions = {
     }
   }
 };
-
-const MarketChart = ({ serie }: MarketChartProps) => {
-  return (
-    <div className="market-chart__chart">
-      <ReactApexChart
-        options={chartOptions}
-        series={[{ data: serie }]}
-        type="candlestick"
-        height={288}
-      />
-    </div>
-  );
-};
-
-export default MarketChart;

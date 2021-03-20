@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
+import CandleStickChart from '../CandleStickChart';
 import Table from '../Table';
 import Tabs from '../Tabs';
+import ToggleButton from '../ToggleButton';
 import MarketAnalytics from './MarketAnalytics';
-import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
 import { markets, tableTabs, tableItems } from './mock';
 import {
@@ -48,8 +49,14 @@ const Market = () => {
         imageUrl={marketHead.imageUrl}
         description={marketHead.description}
       />
+      <ToggleButton
+        buttons={[
+          { name: 'Market Overview', default: true, variant: 'default' },
+          { name: 'Trading View', default: false, variant: 'default' }
+        ]}
+      />
       <div className="market-chart__container">
-        <MarketChart serie={randomMarketChartData} />
+        <CandleStickChart serie={randomMarketChartData} height={288} />
         <MarketAnalytics direction="column" items={graphMarketAnalytics} />
       </div>
       <Tabs direction="row" items={tableTabs} />

@@ -1,6 +1,7 @@
 import AmountInput from './AmountInput';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
+import CandleStickChart from './CandleStickChart';
 import Categories from './Categories';
 import Checkbox from './Checkbox';
 import FeaturedCard from './FeaturedCard';
@@ -28,6 +29,7 @@ export {
   AmountInput,
   Breadcrumb,
   Button,
+  CandleStickChart,
   Categories,
   Checkbox,
   FeaturedCard,
