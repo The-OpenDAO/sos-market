@@ -28,6 +28,7 @@
   &:disabled {
     cursor: unset;
     touch-action: unset;
+    pointer-events: none;
   }
 
   &__icon {
@@ -48,28 +49,10 @@
   }
 }
 
-.button--default {
-  @extend .button;
-
-  @include themed() {
-    color: t($button-text);
-    background-color: t($background);
-    border: 0.1rem solid t($input-background);
-
-    > figure > svg {
-      fill: t($color-text-alt);
-    }
-  }
-
-  &:hover {
-    background-color: $gray-900;
-  }
-
-  &:disabled {
-    color: $gray-500;
-    background-color: $neutral-white;
-
-    border: 0.1rem solid $gray-500;
+@each $variant, $color in $theme-colors {
+  .button--#{$variant} {
+    @extend .button;
+    @include button-variant($variant, $color);
   }
 }
 
@@ -80,112 +63,4 @@
 
   background-color: unset;
   border: none;
-}
-
-.button--primary {
-  @extend .button;
-  color: $neutral-white;
-  background-color: $primary-500;
-
-  border: 0.1rem solid $primary-500;
-
-  &:hover {
-    background-color: $primary-900;
-
-    border: 0.1rem solid $primary-900;
-  }
-
-  &:disabled {
-    background-color: $primary-300;
-
-    border: 0.1rem solid $primary-300;
-  }
-}
-
-.button--secondary {
-  @extend .button;
-  color: $primary-500;
-  background-color: $primary-100;
-
-  border: 0.1rem solid $primary-100;
-
-  &:hover {
-    color: $primary-500;
-    background-color: $primary-300;
-
-    border: 0.1rem solid $primary-300;
-  }
-
-  &:disabled {
-    color: $primary-300;
-    background-color: $primary-100;
-
-    border: 0.1rem solid $primary-100;
-  }
-}
-
-.button--success {
-  @extend .button;
-  color: $neutral-white;
-  background-color: $success-500;
-
-  border: 0.1rem solid $success-500;
-
-  &:hover {
-    color: $neutral-white;
-    background-color: $success-900;
-
-    border: 0.1rem solid $success-900;
-  }
-
-  &:disabled {
-    color: $success-100;
-    background-color: $success-100;
-
-    border: 0.1rem solid $success-100;
-  }
-}
-
-.button--warning {
-  @extend .button;
-  color: $neutral-white;
-  background-color: $warning-500;
-
-  border: 0.1rem solid $warning-500;
-
-  &:hover {
-    color: $neutral-white;
-    background-color: $warning-900;
-
-    border: 0.1rem solid $warning-900;
-  }
-
-  &:disabled {
-    color: $warning-100;
-    background-color: $warning-100;
-
-    border: 0.1rem solid $warning-100;
-  }
-}
-
-.button--danger {
-  @extend .button;
-  color: $neutral-white;
-  background-color: $danger-500;
-
-  border: 0.1rem solid $danger-500;
-
-  &:hover {
-    color: $neutral-white;
-    background-color: $danger-900;
-
-    border: 0.1rem solid $danger-900;
-  }
-
-  &:disabled {
-    color: $danger-100;
-    background-color: $danger-100;
-
-    border: 0.1rem solid $danger-100;
-  }
 }
