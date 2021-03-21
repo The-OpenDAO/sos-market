@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Text } from 'components';
+import { MarketTable, Text } from 'components';
 
-import { portfolioCards } from './mock';
+import { portfolioCards, markets } from './mock';
 import PortfolioCard from './PortfolioCard';
 
 const PortfolioPage = () => {
@@ -29,6 +29,7 @@ const PortfolioPage = () => {
           />
         ))}
       </div>
+      <MarketTable rows={markets} />
     </div>
   );
 };

@@ -10,6 +10,7 @@ import InterfaceSettings from './InterfaceSettings';
 import Label from './Label';
 import Layout from './Layout';
 import MarketList from './MarketList';
+import MarketTable from './MarketTable';
 import MiniTable from './MiniTable';
 import NavBar from './NavBar';
 import PredictionCard from './PredictionCard';
@@ -37,6 +38,7 @@ export {
   Label,
   Layout,
   MarketList,
+  MarketTable,
   MiniTable,
   NavBar,
   PredictionCard,
