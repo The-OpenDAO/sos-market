@@ -9,7 +9,6 @@ import {
 } from 'assets/icons';
 
 import Button from '../Button';
-
 import { navigationLinks, footerLinks } from './mock';
 import SidebarFooter from './SidebarFooter';
 import SidebarSection from './SidebarSection';
@@ -27,11 +26,11 @@ const Sidebar = () => {
       <div className="sidebar__header">
         <Button
           variant="noborder"
-          icon={collapsed ? <HamburguerMenuIcon /> : <ArrowBackIcon />}
-          iconPosition="center"
           onClick={() => toggleCollapsed()}
           aria-label="Toggle sidebar"
-        />
+        >
+          {collapsed ? <HamburguerMenuIcon /> : <ArrowBackIcon />}
+        </Button>
       </div>
       <div className="sidebar__tabs">
         <ul className="sidebar-section__list">

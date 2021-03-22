@@ -30,11 +30,10 @@ const MarketHead = ({
       </div>
       <div className="market-head__actions">
         <Button
-          icon={<ArrowLeftIcon />}
-          iconPosition="left"
           onClick={() => history.push('/home')}
           aria-label="Back to Markets"
         >
+          <ArrowLeftIcon />
           <Text as="span" scale="caption" fontWeight="semibold">
             Back to Markets
           </Text>

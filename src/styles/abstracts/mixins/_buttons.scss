@@ -1,3 +1,9 @@
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
 @mixin button-variant(
   $variant,
   $background,
@@ -8,7 +14,7 @@
   border-width: 0.1rem;
   border-style: solid;
 
-  > figure > svg {
+  svg {
     fill: $neutral-white;
   }
 

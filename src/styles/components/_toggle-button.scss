@@ -9,7 +9,7 @@
   border-radius: 0.4rem;
 
   &__item {
-    @extend .button;
+    @extend %button;
     width: 100%;
     height: 3.4rem;
 

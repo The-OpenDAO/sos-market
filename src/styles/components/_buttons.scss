@@ -1,0 +1,50 @@
+%button {
+  @include flex-row(center, center);
+  gap: 0.8rem;
+
+  @include button-size(
+    $button-padding-y,
+    $button-padding-x,
+    $button-font-size,
+    $button-border-radius
+  );
+
+  font-weight: $button-font-weight;
+  line-height: $button-line-height;
+
+  color: $gray-900;
+  text-align: center;
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: $button-border-width solid transparent;
+
+  transition: $button-transitions;
+
+  &:disabled {
+    cursor: unset;
+    touch-action: unset;
+    pointer-events: none;
+  }
+}
+
+@each $variant, $color in $theme-colors {
+  .button--#{$variant} {
+    @extend %button;
+    @include button-variant($variant, $color);
+  }
+}
+
+.button--noborder {
+  @extend %button;
+  padding: 0rem;
+  margin: 0rem;
+
+  background-color: unset;
+  border: none;
+}

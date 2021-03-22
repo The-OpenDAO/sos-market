@@ -34,21 +34,17 @@ const NavBar = () => {
       </ul>
       <div className="navbar-menu__actions">
         <InterfaceSettings open={showInterfaceSettings} />
-        <Button
-          variant="default"
-          icon={<MetaMaskIcon />}
-          iconPosition="left"
-          aria-label="Connect Wallet"
-        >
+        <Button variant="default" aria-label="Connect Wallet">
+          <MetaMaskIcon />
           Connect Wallet
         </Button>
         <Button
           variant="default"
-          icon={<SettingsIcon />}
-          iconPosition="center"
           onClick={() => toggleInterfaceSettings()}
           aria-label="Settings"
-        />
+        >
+          <SettingsIcon />
+        </Button>
       </div>
     </nav>
   );
