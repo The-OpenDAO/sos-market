@@ -35,7 +35,7 @@ const Sidebar = () => {
       <div className="sidebar__tabs">
         <ul className="sidebar-section__list">
           <li key="markets" className="sidebar-section__item">
-            <NavLink className="sidebar-link" to="/markets">
+            <NavLink className="sidebar-link" to="/home">
               <figure aria-label="markets" className="sidebar-link__icon">
                 <MarketsIcon />
               </figure>

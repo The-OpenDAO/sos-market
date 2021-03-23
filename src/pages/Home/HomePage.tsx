@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="home-page">
       <div className="home-page__content">
-        <ul className="markets">
+        <ul className="home-page__categories-group">
           {categories?.map(category => (
             <li key={category.label}>
               <FeaturedCard
