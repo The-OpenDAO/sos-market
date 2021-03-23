@@ -22,7 +22,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className={collapsed ? 'sidebar--collapsed' : 'sidebar'}>
+    <div className={collapsed ? 'sidebar--collapsed sticky' : 'sidebar sticky'}>
       <div className="sidebar__header">
         <Button
           variant="noborder"

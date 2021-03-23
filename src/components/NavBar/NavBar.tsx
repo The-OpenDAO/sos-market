@@ -15,7 +15,7 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="navbar">
+    <nav className="navbar sticky">
       <Link to="/home" aria-label="Polkamarkets home">
         <figure className="navbar__icon">
           <PolkamarketsIcon />

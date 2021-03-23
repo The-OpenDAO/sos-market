@@ -1,7 +1,9 @@
 .navbar {
-  display: flex;
-  align-items: center;
-  padding: 1.2rem 2.8rem;
+  @include flex-row(space-between, center);
+  flex-wrap: wrap;
+  z-index: 1000;
+
+  padding: 1.6rem 2.8rem;
 
   transition: background-color 0.3s ease 0s;
 

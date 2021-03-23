@@ -10,14 +10,10 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="wrapper">
-      <header className="header">
-        <NavBar />
-      </header>
-      <aside>
-        <Sidebar />
-      </aside>
+      <Sidebar />
       <main className="main">
-        <section className="vertical">{children}</section>
+        <NavBar />
+        <section className="vertical-section">{children}</section>
       </main>
     </div>
   );
