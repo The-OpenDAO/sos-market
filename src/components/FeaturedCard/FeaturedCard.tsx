@@ -4,31 +4,29 @@ import Label from '../Label';
 import Text from '../Text';
 
 type Variant = 'yellow' | 'blue' | 'green' | 'pink' | 'orange';
+type Change = 'up' | 'down';
 
 type FeaturedCardProps = {
-  label: string;
-  value: number;
-  positive: boolean;
-  variant: Variant | string;
+  title: string;
+  change: {
+    type: Change | string;
+    percentage: number;
+  };
+  color: Variant | string;
 };
 
-const FeaturedCard = ({
-  label,
-  value,
-  positive,
-  variant
-}: FeaturedCardProps) => {
+const FeaturedCard = ({ title, change, color }: FeaturedCardProps) => {
   return (
-    <div className={`featured-card--${variant}`}>
+    <div className={`featured-card--${color}`}>
       <Text as="label" scale="body" fontWeight="semibold">
-        {label}
+        {title}
       </Text>
       <Label
-        variant={positive ? 'success' : 'danger'}
-        icon={positive ? <CaretUpIcon /> : <CaretDownIcon />}
+        variant={change.type === 'up' ? 'success' : 'danger'}
+        icon={change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
         iconPosition="left"
       >
-        {`${value}%`}
+        {`${change.percentage}%`}
       </Label>
     </div>
   );

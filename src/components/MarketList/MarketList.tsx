@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import isEmpty from 'lodash/isEmpty';
 
 import { markets } from 'pages/Market/mock';
@@ -14,8 +12,6 @@ type MarketListProps = {
 
 // eslint-disable-next-line no-shadow
 const MarketList = ({ markets }: MarketListProps) => {
-  const [open, setOpen] = useState(false);
-
   return (
     <div className="market-list">
       {!isEmpty(markets) &&

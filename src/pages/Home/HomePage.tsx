@@ -8,12 +8,11 @@ const Home = () => {
       <div className="home-page__content">
         <ul className="home-page__categories-group">
           {categories?.map(category => (
-            <li key={category.label}>
+            <li key={category.title}>
               <FeaturedCard
-                variant={category.color}
-                label={category.label}
-                value={category.value}
-                positive={category.positive}
+                title={category.title}
+                change={category.change}
+                color={category.color}
               />
             </li>
           ))}

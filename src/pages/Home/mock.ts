@@ -7,34 +7,44 @@ const tabs = [
 
 const categories = [
   {
-    label: 'Crypto',
-    color: 'yellow',
-    value: 2.58,
-    positive: true
+    title: 'Crypto',
+    change: {
+      type: 'up',
+      percentage: 2.58
+    },
+    color: 'yellow'
   },
   {
-    label: 'Sports',
-    color: 'blue',
-    value: 2.58,
-    positive: true
+    title: 'Sports',
+    change: {
+      type: 'up',
+      percentage: 2.58
+    },
+    color: 'blue'
   },
   {
-    label: 'Finance',
-    color: 'green',
-    value: 2.58,
-    positive: false
+    title: 'Finance',
+    change: {
+      type: 'down',
+      percentage: 2.58
+    },
+    color: 'green'
   },
   {
-    label: 'eSports',
-    color: 'pink',
-    value: 2.58,
-    positive: true
+    title: 'eSports',
+    change: {
+      type: 'up',
+      percentage: 2.58
+    },
+    color: 'pink'
   },
   {
-    label: 'Tech',
-    color: 'orange',
-    value: 2.58,
-    positive: false
+    title: 'Tech',
+    change: {
+      type: 'down',
+      percentage: 2.58
+    },
+    color: 'orange'
   }
 ];
 

@@ -31,14 +31,11 @@ const Label = ({
 }: LabelProps) => {
   return (
     <div className={`label--${variant}`}>
-      {icon ? (
-        <div className={cx(`label--${variant}__icon`, iconPosition)}>
-          {icon}
-        </div>
-      ) : null}
+      {icon && iconPosition === 'left' ? icon : null}
       <Text as="label" scale="tiny" fontWeight="semibold">
         {children}
       </Text>
+      {icon && iconPosition === 'right' ? icon : null}
     </div>
   );
 };
