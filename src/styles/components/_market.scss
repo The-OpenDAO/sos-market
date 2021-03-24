@@ -48,34 +48,11 @@
   }
 }
 
-.market-analytics__item--yellow {
-  @extend .market-analytics__item;
-
-  background: $card-gradient-yellow;
-}
-
-.market-analytics__item--blue {
-  @extend .market-analytics__item;
-
-  background: $card-gradient-blue;
-}
-
-.market-analytics__item--green {
-  @extend .market-analytics__item;
-
-  background: $card-gradient-green;
-}
-
-.market-analytics__item--pink {
-  @extend .market-analytics__item;
-
-  background: $card-gradient-pink;
-}
-
-.market-analytics__item--orange {
-  @extend .market-analytics__item;
-
-  background: $card-gradient-orange;
+@each $variant, $color in $gradient-colors {
+  .market-analytics__item--#{$variant} {
+    @extend .market-analytics__item;
+    @include card-gradient-variant($color);
+  }
 }
 
 .market-head {
