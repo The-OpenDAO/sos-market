@@ -114,3 +114,11 @@ $theme-colors: (
   'warning': $warning,
   'danger': $danger
 ) !default;
+
+$gradient-colors: (
+  'yellow': $card-gradient-yellow,
+  'blue': $card-gradient-blue,
+  'green': $card-gradient-green,
+  'pink': $card-gradient-pink,
+  'orange': $card-gradient-orange
+) !default;
