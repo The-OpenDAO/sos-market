@@ -44,6 +44,11 @@
 
       &:last-of-type {
         padding: 0rem 3.2rem;
+
+        > button {
+          margin: 0 auto;
+          padding: 1rem 1.6rem;
+        }
       }
 
       &__image {
