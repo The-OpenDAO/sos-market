@@ -1,5 +1,5 @@
 .label {
-  display: inline-flex;
+  @include flex-row(center, center);
   gap: 0.2rem;
 
   width: fit-content;

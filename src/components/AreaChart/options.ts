@@ -60,7 +60,8 @@ function generateCustomOptions(ticker: string) {
       labels: {
         formatter(value) {
           return `${value} ${ticker}`;
-        }
+        },
+        offsetX: -15
       }
     },
     grid: {
@@ -77,6 +78,12 @@ function generateCustomOptions(ticker: string) {
         lines: {
           show: true
         }
+      },
+      padding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
       }
     },
     colors: ['#5751FC'],

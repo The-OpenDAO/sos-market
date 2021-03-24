@@ -37,6 +37,15 @@ const portfolioCards = [
   }
 ];
 
+const balance = {
+  total: 48.485,
+  change: {
+    type: 'up',
+    percetage: 8.91,
+    amount: '+2.498'
+  }
+};
+
 const markets = [
   {
     id: '0',
@@ -149,5 +158,4 @@ const markets = [
   }
 ];
 
-// eslint-disable-next-line import/prefer-default-export
-export { portfolioCards, markets };
+export { portfolioCards, balance, markets };
