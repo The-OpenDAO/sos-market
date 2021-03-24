@@ -1,4 +1,4 @@
-.featured-card {
+%featured-card {
   cursor: pointer;
   touch-action: manipulation;
 
@@ -16,32 +16,9 @@
   }
 }
 
-.featured-card--yellow {
-  @extend .featured-card;
-
-  background: $card-gradient-yellow;
-}
-
-.featured-card--blue {
-  @extend .featured-card;
-
-  background: $card-gradient-blue;
-}
-
-.featured-card--green {
-  @extend .featured-card;
-
-  background: $card-gradient-green;
-}
-
-.featured-card--pink {
-  @extend .featured-card;
-
-  background: $card-gradient-pink;
-}
-
-.featured-card--orange {
-  @extend .featured-card;
-
-  background: $card-gradient-orange;
+@each $variant, $color in $gradient-colors {
+  .featured-card--#{$variant} {
+    @extend %featured-card;
+    @include card-gradient-variant($color);
+  }
 }

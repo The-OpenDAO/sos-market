@@ -58,29 +58,57 @@
   > label {
     color: $neutral-white;
   }
+}
 
-  &--yellow {
+@each $variant, $color in $gradient-colors {
+  .portfolio-card--#{$variant} {
     @extend .portfolio-card;
-    background: $card-gradient-yellow;
+    @include card-gradient-variant($color);
   }
+}
 
-  &--blue {
-    @extend .portfolio-card;
-    background: $card-gradient-blue;
-  }
+.portfolio-chart {
+  @include flex-column;
+  gap: 1rem;
 
-  &--green {
-    @extend .portfolio-card;
-    background: $card-gradient-green;
-  }
+  padding: 2.4rem;
 
-  &--pink {
-    @extend .portfolio-card;
-    background: $card-gradient-pink;
-  }
+  @include border($gray-600);
 
-  &--orange {
-    @extend .portfolio-card;
-    background: $card-gradient-orange;
+  &__header {
+    @include flex-column;
+    gap: 0.4rem;
+
+    &-balance {
+      @include flex-column;
+
+      > h4 {
+        font-size: 2.6rem;
+        color: $gray-100;
+      }
+
+      > span {
+        color: $gray-400;
+      }
+    }
+
+    %change {
+      @include flex-row(flex-start, center);
+      gap: 0.8rem;
+    }
+
+    &-change--up {
+      @extend %change;
+      > span {
+        color: $success-500;
+      }
+    }
+
+    &-change--down {
+      @extend %change;
+      > span {
+        color: $danger-500;
+      }
+    }
   }
 }
