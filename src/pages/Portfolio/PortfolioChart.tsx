@@ -8,7 +8,7 @@ const PortfolioChart = () => {
   return (
     <div className="portfolio-chart">
       <div className="portfolio-chart__view">
-        <AreaChart serie={randomPortfolioChartData} />
+        <AreaChart serie={randomPortfolioChartData} ticker="DOT" height={210} />
       </div>
     </div>
   );

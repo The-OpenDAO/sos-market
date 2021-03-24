@@ -1,9 +1,9 @@
-import React from 'react';
+import { useMemo } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
 import dayjs from 'dayjs';
 
-import options from './options';
+import generateCustomOptions from './options';
 
 type Event = {
   x: dayjs.Dayjs;
@@ -12,15 +12,19 @@ type Event = {
 
 type AreaChartProps = {
   serie: Event[];
+  ticker: string;
+  height?: number | string;
 };
 
-const AreaChart = ({ serie }: AreaChartProps) => {
+const AreaChart = ({ serie, ticker, height = 200 }: AreaChartProps) => {
+  const customOptions = useMemo(() => generateCustomOptions(ticker), [ticker]);
+
   return (
     <ReactApexChart
-      options={options}
+      options={customOptions}
       series={[{ data: serie }]}
       type="area"
-      height="200"
+      height={height}
     />
   );
 };
