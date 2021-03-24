@@ -4,6 +4,7 @@ import { MarketTable, Text } from 'components';
 
 import { portfolioCards, markets } from './mock';
 import PortfolioCard from './PortfolioCard';
+import PortfolioChart from './PortfolioChart';
 
 const PortfolioPage = () => {
   return (
@@ -29,6 +30,8 @@ const PortfolioPage = () => {
           />
         ))}
       </div>
+
+      <PortfolioChart />
       <MarketTable rows={markets} />
     </div>
   );

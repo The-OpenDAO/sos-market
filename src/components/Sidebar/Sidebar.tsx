@@ -14,7 +14,7 @@ import SidebarFooter from './SidebarFooter';
 import SidebarSection from './SidebarSection';
 
 const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const { markets } = navigationLinks;
 
   function toggleCollapsed() {
