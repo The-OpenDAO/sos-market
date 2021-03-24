@@ -1,4 +1,5 @@
 import AmountInput from './AmountInput';
+import AreaChart from './AreaChart';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
 import CandleStickChart from './CandleStickChart';
@@ -27,6 +28,7 @@ import ToggleSwitch from './ToggleSwitch';
 
 export {
   AmountInput,
+  AreaChart,
   Breadcrumb,
   Button,
   CandleStickChart,
