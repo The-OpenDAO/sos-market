@@ -2,22 +2,17 @@ import React from 'react';
 
 type CheckboxProps = {
   label: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 const Checkbox = ({
   label,
-  checked,
-  onChange
+  ...props
 }: CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>) => {
   return (
-    <label className="checkbox" htmlFor={label}>
+    <label className="checkbox caption medium" htmlFor={label}>
       {label}
-      <input
-        type="checkbox"
-        name={label}
-        checked={checked}
-        onChange={onChange}
-      />
+      <input id={label} type="checkbox" {...props} />
       <span className="checkmark" />
     </label>
   );
