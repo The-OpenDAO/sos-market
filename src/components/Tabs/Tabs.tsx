@@ -34,18 +34,18 @@ const TabPane = ({ tab, id, children }: TabPaneProps) => {
 
 type TabsProps = {
   direction?: 'row' | 'column';
-  defaultActiveKey?: string;
+  defaultActiveId?: string;
   children?: React.ReactNode;
 };
 
-const Tabs = ({ direction = 'row', defaultActiveKey, children }: TabsProps) => {
+const Tabs = ({ direction = 'row', defaultActiveId, children }: TabsProps) => {
   const [activeTab, setActiveTab] = useState<string | undefined>(undefined);
 
   const tabs = useMemo(() => getChildrenTabs(children), [children]);
 
   useEffect(() => {
-    setActiveTab(defaultActiveKey);
-  }, [defaultActiveKey]);
+    setActiveTab(defaultActiveId);
+  }, [defaultActiveId]);
 
   if (!activeTab || !children) return null;
 

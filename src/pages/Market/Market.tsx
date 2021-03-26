@@ -43,7 +43,7 @@ const Market = () => {
         <MarketAnalytics direction="column" items={graphMarketAnalytics} />
       </div>
       <br />
-      <Tabs defaultActiveKey="positions">
+      <Tabs defaultActiveId="positions">
         <Tabs.TabPane tab="Positions" id="positions">
           <Table headers={tableItems.headers} rows={tableItems.rows} />
         </Tabs.TabPane>

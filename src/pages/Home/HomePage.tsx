@@ -1,6 +1,6 @@
-import { Tabs, Select, MarketList, FeaturedCard } from 'components';
+import { Select, MarketList, FeaturedCard, Tabs } from 'components';
 
-import { tabs, categories, markets } from './mock';
+import { categories, markets } from './mock';
 
 const Home = () => {
   return (
@@ -18,17 +18,22 @@ const Home = () => {
           ))}
         </ul>
 
-        <div className="navigation">
-          <Tabs items={tabs} />
-
+        {/* <div className="navigation">
           <div className="filters">
             <Select label="Sort by:" name="Sort by" disabled>
               <option value="Most traded">Most traded</option>
             </Select>
           </div>
-        </div>
+        </div> */}
 
-        <MarketList markets={markets} />
+        <Tabs defaultActiveId="open">
+          <Tabs.TabPane tab="Open" id="open">
+            <MarketList markets={markets} />
+          </Tabs.TabPane>
+          <Tabs.TabPane tab="Favorites" id="favorites" />
+          <Tabs.TabPane tab="In-Reporting" id="in-reporting" />
+          <Tabs.TabPane tab="Resolved" id="resolved" />
+        </Tabs>
       </div>
     </div>
   );
