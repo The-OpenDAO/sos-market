@@ -1,17 +1,21 @@
 .tabs {
-  display: flex;
-  gap: 2.4rem;
+  @include flex-column;
+  gap: 1.6rem;
 
   height: fit-content;
 
-  &.row {
-    flex-direction: row;
-    align-items: center;
-  }
+  &__list {
+    gap: 2.4rem;
 
-  &.column {
-    flex-direction: column;
-    justify-items: center;
+    &--row {
+      @extend .tabs__list;
+      @include flex-row(flex-start, center);
+    }
+
+    &--column {
+      @extend .tabs__list;
+      @include flex-column;
+    }
   }
 
   &__item {
@@ -59,10 +63,6 @@
   }
 
   &__content {
-    display: none;
-
-    &.active {
-      display: block;
-    }
+    @include flex-column;
   }
 }

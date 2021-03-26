@@ -1,64 +1,83 @@
-import { useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
 
-import clx from 'classnames';
-import isEmpty from 'lodash/isEmpty';
+import classNames from 'classnames';
 
-type Direction = 'row' | 'column';
+const ActiveTabContext = createContext({});
 
-type Item = {
-  name: string;
-  content: null;
+const getChildrenTabs = (children): { name: string; id: string }[] => {
+  const tabs = React.Children.map(children, child => {
+    return { name: child.props.tab, id: child.props.id };
+  });
+
+  return tabs;
+};
+
+type TabPaneProps = {
+  tab: string;
+  id: string;
+  children?: React.ReactNode;
+};
+
+const TabPane = ({ tab, id, children }: TabPaneProps) => {
+  const activeTab = useContext(ActiveTabContext);
+
+  if (activeTab !== id || !tab) return null;
+
+  return <>{children}</>;
 };
 
 type TabsProps = {
-  direction?: Direction;
-  items: Item[];
+  direction?: 'row' | 'column';
+  defaultActiveKey?: string;
+  children?: React.ReactNode;
 };
 
-const Tabs = ({ direction = 'row', items }: TabsProps) => {
-  const [activeTab, setActiveTab] = useState(items[0].name);
+const Tabs = ({ direction = 'row', defaultActiveKey, children }: TabsProps) => {
+  const [activeTab, setActiveTab] = useState<string | undefined>(undefined);
 
-  function handleChangeTab(event: any) {
-    setActiveTab(event.target.name);
-  }
+  const tabs = useMemo(() => getChildrenTabs(children), [children]);
+
+  useEffect(() => {
+    setActiveTab(defaultActiveKey);
+  }, [defaultActiveKey]);
+
+  if (!activeTab || !children) return null;
 
   return (
-    <>
-      <ul className={clx('tabs', direction)}>
-        {!isEmpty(items) &&
-          items.map(item => (
-            <li
-              key={item.name}
-              className={clx('tabs__item', item.name === activeTab && 'active')}
+    <div className="tabs">
+      <ul className={`tabs__list--${direction}`}>
+        {tabs?.map(tab => (
+          <li
+            key={tab.id}
+            className={classNames({
+              tabs__item: true,
+              active: activeTab === tab.id
+            })}
+          >
+            <button
+              type="button"
+              name={tab.name}
+              onClick={() => setActiveTab(tab.id)}
             >
-              <button
-                type="button"
-                name={item.name}
-                onClick={event => handleChangeTab(event)}
-              >
-                {item.name}
-              </button>
-            </li>
-          ))}
+              {tab.name}
+            </button>
+          </li>
+        ))}
       </ul>
-      {/* <>
-        {!isEmpty(items) &&
-          items.map(item => (
-            <div
-              className={clx(
-                'tabs__content',
-                item.name === activeTab && 'active'
-              )}
-              key={item.name}
-            >
-              {item.content}
-            </div>
-          ))}
-      </> */}
-    </>
+
+      <ActiveTabContext.Provider value={activeTab}>
+        <div className="tabs__content">{children}</div>
+      </ActiveTabContext.Provider>
+    </div>
   );
 };
 
-Tabs.displayName = 'Tabs';
+Tabs.TabPane = TabPane;
 
 export default Tabs;
