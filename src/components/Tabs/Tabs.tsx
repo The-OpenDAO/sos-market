@@ -52,9 +52,10 @@ const Tabs = ({ direction = 'row', defaultActiveId, children }: TabsProps) => {
   return (
     <div className="tabs">
       <ul className={`tabs__list--${direction}`}>
-        {tabs?.map(tab => (
+        {tabs?.map((tab, index) => (
           <li
             key={tab.id}
+            tabIndex={index}
             className={classNames({
               tabs__item: true,
               active: activeTab === tab.id

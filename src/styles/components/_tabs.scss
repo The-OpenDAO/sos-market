@@ -27,16 +27,13 @@
     width: fit-content;
     height: fit-content;
 
-    > button {
+    button {
       border: none;
       outline: none;
       padding: 0rem;
 
+      color: $gray-500;
       background-color: unset;
-
-      @include themed() {
-        color: t($color-text-alt);
-      }
 
       font-size: 1.4rem;
       text-decoration: none;
@@ -47,17 +44,13 @@
       transition: color 0.3s ease 0s;
 
       &:hover {
-        @include themed() {
-          color: t($text-hover);
-        }
+        color: $neutral-white;
       }
     }
 
     &.active {
-      > button {
-        @include themed() {
-          color: t($text-hover);
-        }
+      button {
+        color: $neutral-white;
       }
     }
   }
