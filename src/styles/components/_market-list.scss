@@ -1,6 +1,6 @@
 .market-list {
-  @include flex-column;
+  height: 100vh;
+  width: 100%;
 
-  gap: 2rem;
-  margin: 1.6rem 0rem;
+  margin: 1rem 0rem;
 }

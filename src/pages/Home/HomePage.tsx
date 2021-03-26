@@ -1,4 +1,4 @@
-import { Select, MarketList, FeaturedCard, Tabs } from 'components';
+import { Select, FeaturedCard, Tabs, MarketList } from 'components';
 
 import { categories, markets } from './mock';
 
