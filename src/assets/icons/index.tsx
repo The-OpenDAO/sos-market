@@ -12,6 +12,7 @@ import CloseIcon from './CloseIcon';
 import GamingConsoleIcon from './GamingConsoleIcon';
 import GitHubIcon from './GitHubIcon';
 import HamburguerMenuIcon from './HamburguerMenuIcon';
+import InfoIcon from './InfoIcon';
 import LaptopIcon from './LaptopIcon';
 import LineChartIcon from './LineChartIcon';
 import LinkedInIcon from './LinkedInIcon';
@@ -48,6 +49,7 @@ export {
   CloseIcon,
   GamingConsoleIcon,
   GitHubIcon,
+  InfoIcon,
   HamburguerMenuIcon,
   LaptopIcon,
   LineChartIcon,
