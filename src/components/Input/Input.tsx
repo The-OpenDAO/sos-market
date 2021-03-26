@@ -17,7 +17,7 @@ const Input = React.forwardRef<
     <label htmlFor={name} className="input__label">
       {label}
     </label>
-    <input ref={ref} className={`input--${variant}`} name={name} {...props} />
+    <input ref={ref} className={`input--${variant}`} id={name} {...props} />
     {description ? (
       <span className="input__description">{description}</span>
     ) : null}
