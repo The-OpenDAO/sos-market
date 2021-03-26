@@ -6,7 +6,7 @@ import { Tabs, Table } from 'components';
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
-import { markets, tableTabs, tableItems } from './mock';
+import { markets, tableItems } from './mock';
 import { formatMarketAnalytics, formatMarketHead } from './utils';
 
 type Params = {
@@ -43,8 +43,13 @@ const Market = () => {
         <MarketAnalytics direction="column" items={graphMarketAnalytics} />
       </div>
       <br />
-      <Tabs direction="row" items={tableTabs} />
-      <Table headers={tableItems.headers} rows={tableItems.rows} />
+      <Tabs defaultActiveKey="positions">
+        <Tabs.TabPane tab="Positions" id="positions">
+          <Table headers={tableItems.headers} rows={tableItems.rows} />
+        </Tabs.TabPane>
+        <Tabs.TabPane tab="About markets" id="about" />
+        <Tabs.TabPane tab="News" id="news" />
+      </Tabs>
     </div>
   );
 };
