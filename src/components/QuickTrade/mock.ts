@@ -1,3 +1,31 @@
+type Market = {
+  prediction: string;
+  odd: number;
+  tableItems: {
+    name: string;
+    value: number | string;
+  }[];
+};
+
+const markets: Market[] = [
+  {
+    prediction: 'No',
+    odd: 1.26,
+    tableItems: [
+      { name: 'Price Per Fraction', value: '0.00034 DOT' },
+      { name: 'Total fractions', value: 2359 }
+    ]
+  },
+  {
+    prediction: 'Yes',
+    odd: 1.26,
+    tableItems: [
+      { name: 'Price Per Fraction', value: '0.00034 DOT' },
+      { name: 'Total fractions', value: 2359 }
+    ]
+  }
+];
+
 type Item = {
   name: string;
   value: string | number;
@@ -25,4 +53,4 @@ const toggleButtonItems: Button[] = [
   { name: 'Sell', variant: 'danger', default: false }
 ];
 
-export { miniTableItems, toggleButtonItems };
+export { markets, miniTableItems, toggleButtonItems };

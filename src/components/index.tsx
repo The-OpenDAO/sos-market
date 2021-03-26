@@ -11,6 +11,7 @@ import InterfaceSettings from './InterfaceSettings';
 import Label from './Label';
 import Layout from './Layout';
 import MarketList from './MarketList';
+import MarketSelect from './MarketSelect';
 import MarketTable from './MarketTable';
 import MiniTable from './MiniTable';
 import NavBar from './NavBar';
@@ -40,6 +41,7 @@ export {
   Label,
   Layout,
   MarketList,
+  MarketSelect,
   MarketTable,
   MiniTable,
   NavBar,

@@ -16,31 +16,17 @@
     border: none;
     border-bottom: 0.1rem dashed;
   }
-
-  &:last-of-type {
-    > span {
-      color: $success-500;
-    }
-
-    .fill {
-      border-color: $success-500;
-    }
-
-    > strong {
-      color: $success-500;
-    }
-  }
 }
 
 .mini-table__item--default {
   @extend .mini-table__item;
 
   > span {
-    color: $gray-700;
+    color: $gray-500;
   }
 
   .fill {
-    border-color: $gray-700;
+    border-color: $gray-500;
   }
 
   > strong {

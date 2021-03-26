@@ -1,0 +1,48 @@
+.market-select {
+  @include flex-column;
+  gap: 1.6rem;
+
+  &__item {
+    cursor: pointer;
+
+    @include flex-column;
+    gap: 1.6rem;
+
+    padding: 1.6rem;
+    @include border($gray-600);
+
+    transition: all 0.3s ease;
+
+    &-prediction {
+      @include flex-row(space-between, center);
+
+      p,
+      span,
+      strong {
+        font-size: 1.5rem;
+      }
+
+      p,
+      strong {
+        color: $gray-100;
+      }
+
+      span {
+        color: $gray-500;
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &.active {
+      background: linear-gradient(
+        90deg,
+        rgba(87, 81, 252, 0.4) 0%,
+        rgba(87, 81, 252, 0.14) 100%
+      );
+      @include border($primary-500);
+    }
+  }
+}
