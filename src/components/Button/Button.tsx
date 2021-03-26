@@ -1,5 +1,7 @@
 import React from 'react';
 
+import classNames from 'classnames';
+
 type Variant =
   | 'default'
   | 'primary'
@@ -9,18 +11,21 @@ type Variant =
   | 'danger'
   | 'noborder';
 
+type Size = 'sm' | 'lg';
+
 type ButtonProps = {
   variant?: Variant;
+  size?: Size;
 };
 
 const Button = React.forwardRef<
   HTMLButtonElement,
   ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ variant = 'default', children, onClick, ...props }, ref) => (
+>(({ variant = 'default', size, children, onClick, ...props }, ref) => (
   <button
     ref={ref}
     type="button"
-    className={`button--${variant}`}
+    className={classNames(`button--${variant}`, size && `button-${size}`)}
     onClick={onClick}
     {...props}
   >

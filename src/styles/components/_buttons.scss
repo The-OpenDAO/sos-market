@@ -33,6 +33,24 @@
   }
 }
 
+.button-sm {
+  @include button-size(
+    $button-sm-padding-y,
+    $button-sm-padding-x,
+    $button-sm-font-size,
+    $button-border-radius
+  );
+}
+
+.button-lg {
+  @include button-size(
+    $button-lg-padding-y,
+    $button-lg-padding-x,
+    $button-font-size,
+    $button-border-radius
+  );
+}
+
 @each $variant, $color in $theme-colors {
   .button--#{$variant} {
     @extend %button;
