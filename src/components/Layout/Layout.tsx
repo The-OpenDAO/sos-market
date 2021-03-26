@@ -1,5 +1,7 @@
 import React from 'react';
 
+import QuickTrade from 'components/QuickTrade';
+
 import NavBar from '../NavBar';
 import Sidebar from '../Sidebar';
 
@@ -13,7 +15,10 @@ const Layout = ({ children }: LayoutProps) => {
       <Sidebar />
       <main className="main">
         <NavBar />
-        <section className="vertical-section">{children}</section>
+        <div className="main__group">
+          <section className="vertical-section">{children}</section>
+          <QuickTrade />
+        </div>
       </main>
     </div>
   );
