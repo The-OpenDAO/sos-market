@@ -25,7 +25,7 @@ const Sidebar = () => {
     <div className={collapsed ? 'sidebar--collapsed sticky' : 'sidebar sticky'}>
       <div className="sidebar__header">
         <Button
-          variant="noborder"
+          color="noborder"
           onClick={() => toggleCollapsed()}
           aria-label="Toggle sidebar"
         >

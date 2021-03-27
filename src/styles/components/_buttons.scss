@@ -51,14 +51,21 @@
   );
 }
 
-@each $variant, $color in $theme-colors {
-  .button--#{$variant} {
+@each $color-variant, $color in $theme-colors {
+  .button-normal-#{$color-variant} {
     @extend %button;
-    @include button-variant($variant, $color);
+    @include button-normal-color($color-variant, $color);
   }
 }
 
-.button--noborder {
+@each $color-variant, $color in $theme-colors {
+  .button-outline-#{$color-variant} {
+    @extend %button;
+    @include button-outline-color($color-variant, $color);
+  }
+}
+
+.button-normal-noborder {
   @extend %button;
   padding: 0rem;
   margin: 0rem;

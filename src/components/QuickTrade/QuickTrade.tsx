@@ -58,7 +58,7 @@ const QuickTrade = () => {
             onChange={event => handleChangeAcceptOddChanges(event)}
           />
         </div>
-        <Button variant="success" size="lg">
+        <Button color="success" size="lg">
           Buy
         </Button>
       </div>

@@ -2,7 +2,8 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-type Variant =
+type ButtonVariant = 'normal' | 'outline';
+type ButtonColor =
   | 'default'
   | 'primary'
   | 'secondary'
@@ -10,28 +11,55 @@ type Variant =
   | 'warning'
   | 'danger'
   | 'noborder';
-
-type Size = 'sm' | 'lg';
+type ButtonSize = 'sm' | 'lg';
 
 type ButtonProps = {
-  variant?: Variant;
-  size?: Size;
+  /**
+   * The variant to use
+   * @default 'normal'
+   */
+  variant?: ButtonVariant;
+  /**
+   * The color of the component
+   * @default 'primary'
+   */
+  color?: ButtonColor;
+  /**
+   * The size of the component
+   * @default 'medium'
+   */
+  size?: ButtonSize;
 };
 
 const Button = React.forwardRef<
   HTMLButtonElement,
   ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ variant = 'default', size, children, onClick, ...props }, ref) => (
-  <button
-    ref={ref}
-    type="button"
-    className={classNames(`button--${variant}`, size && `button-${size}`)}
-    onClick={onClick}
-    {...props}
-  >
-    {children}
-  </button>
-));
+>(
+  (
+    {
+      variant = 'normal',
+      color = 'default',
+      size,
+      children,
+      onClick,
+      ...props
+    },
+    ref
+  ) => (
+    <button
+      ref={ref}
+      type="button"
+      className={classNames(
+        `button-${variant}-${color}`,
+        size && `button-${size}`
+      )}
+      onClick={onClick}
+      {...props}
+    >
+      {children}
+    </button>
+  )
+);
 
 Button.displayName = 'Button';
 

@@ -4,8 +4,8 @@
   border-radius: $border-radius;
 }
 
-@mixin button-variant(
-  $variant,
+@mixin button-normal-color(
+  $color,
   $background,
   $background-hover: darken($background, 10%)
 ) {
@@ -18,7 +18,7 @@
     fill: $neutral-white;
   }
 
-  @if $variant == default {
+  @if $color == default {
     border-color: $gray-600;
   } @else {
     border-color: $background;
@@ -26,10 +26,39 @@
 
   &:hover,
   :focus {
-    @if $variant != default {
+    @if $color != default {
       border-color: $background-hover;
     }
     background-color: $background-hover;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+  }
+}
+
+@mixin button-outline-color($color, $background) {
+  color: $background;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: $background;
+
+  svg {
+    fill: $background;
+  }
+
+  @if $color == default {
+    border-color: $gray-600;
+  } @else {
+    border-color: $background;
+  }
+
+  &:hover,
+  :focus {
+    @if $color != default {
+      color: $neutral-white;
+    }
+    background-color: $background;
   }
 
   &:disabled {
