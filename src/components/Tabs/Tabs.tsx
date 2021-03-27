@@ -19,7 +19,13 @@ const getChildrenTabs = (children): { name: string; id: string }[] => {
 };
 
 type TabPaneProps = {
+  /**
+   * Name of the tab pane
+   */
   tab: string;
+  /**
+   * Id of the tab pane
+   */
   id: string;
   children?: React.ReactNode;
 };
@@ -33,7 +39,14 @@ const TabPane = ({ tab, id, children }: TabPaneProps) => {
 };
 
 type TabsProps = {
+  /**
+   * Direction of the tabs items
+   * @default 'row'
+   */
   direction?: 'row' | 'column';
+  /**
+   * Id of the default active tab pane
+   */
   defaultActiveId?: string;
   children?: React.ReactNode;
 };
@@ -78,6 +91,9 @@ const Tabs = ({ direction = 'row', defaultActiveId, children }: TabsProps) => {
     </div>
   );
 };
+
+TabPane.displayName = 'TabPane';
+Tabs.displayName = 'Tabs';
 
 Tabs.TabPane = TabPane;
 

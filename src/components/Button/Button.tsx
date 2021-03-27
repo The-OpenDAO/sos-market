@@ -15,17 +15,17 @@ type ButtonSize = 'sm' | 'lg';
 
 type ButtonProps = {
   /**
-   * The variant to use
+   * Variant to use
    * @default 'normal'
    */
   variant?: ButtonVariant;
   /**
-   * The color of the component
+   * Color of the component
    * @default 'default'
    */
   color?: ButtonColor;
   /**
-   * The size of the component
+   * Size of the component
    * @default 'medium'
    */
   size?: ButtonSize;
