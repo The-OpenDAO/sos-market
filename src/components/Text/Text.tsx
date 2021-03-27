@@ -2,7 +2,7 @@ import React from 'react';
 
 import cx from 'classnames';
 
-type TextTag =
+type TextType =
   | 'p'
   | 'span'
   | 'br'
@@ -28,15 +28,33 @@ type TextTag =
   | 'label'
   | 'i'
   | 'b';
-
 type TextScale = 'heading' | 'body' | 'caption' | 'tiny' | 'tiny-uppercase';
-type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
+type TextFontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type TextProps = {
-  as?: TextTag;
+  /**
+   * HTML text element
+   * @default 'p'
+   */
+  as?: TextType;
+  /**
+   * Scale of the text
+   * @default 'body'
+   */
   scale?: TextScale;
-  fontWeight?: FontWeight;
+  /**
+   * Font weight of the text
+   * @default 'regular'
+   */
+  fontWeight?: TextFontWeight;
+  /**
+   * Aditional class name
+   */
   className?: string;
+  /**
+   * Aditional CSS inline style
+   */
+  style?: React.CSSProperties;
   children?: React.ReactNode | any;
 };
 
@@ -45,11 +63,14 @@ const Text = ({
   scale = 'body',
   fontWeight = 'regular',
   className,
+  style,
   children
 }: TextProps) => {
-  const Tag = as;
-
-  return <Tag className={cx(className, scale, fontWeight)}>{children}</Tag>;
+  return React.createElement(
+    as,
+    { className: cx(className, scale, fontWeight), style },
+    children
+  );
 };
 
 Text.displayName = 'Text';
