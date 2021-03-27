@@ -101,7 +101,9 @@ const MarketTable = ({ rows }: MarketTableProps) => {
             {row.maxPayout}
           </td>
           <td id="trade" className="market-table__row-item">
-            <Button variant="primary">Trade</Button>
+            <Button variant="primary" size="sm">
+              Trade
+            </Button>
           </td>
         </tr>
       ))}

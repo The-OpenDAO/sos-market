@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Tabs, Table } from 'components';
+import { Tabs, Table, Text } from 'components';
 
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
@@ -47,7 +47,18 @@ const Market = () => {
         <Tabs.TabPane tab="Positions" id="positions">
           <Table headers={tableItems.headers} rows={tableItems.rows} />
         </Tabs.TabPane>
-        <Tabs.TabPane tab="About markets" id="about" />
+        <Tabs.TabPane tab="About markets" id="about">
+          <Text as="p" scale="body" fontWeight="medium">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
+            vitae arcu morbi ultrices mollis tortor ac. Natoque interdum non
+            iaculis lacinia ultricies et. Facilisi dui consequat iaculis
+            facilisis feugiat vitae, urna. Sapien lorem turpis id lacus odio
+            risus morbi cursus morbi. Imperdiet nunc, neque, tellus, id
+            pellentesque sagittis. Porttitor blandit sem felis sed. At nunc,
+            pellentesque vel morbi sed tristique aliquam. At urna erat augue
+            quis consequat neque, accumsan. Mauris cras porta...
+          </Text>
+        </Tabs.TabPane>
         <Tabs.TabPane tab="News" id="news" />
       </Tabs>
     </div>
