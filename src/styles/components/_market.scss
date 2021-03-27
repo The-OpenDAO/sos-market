@@ -82,9 +82,7 @@
       word-wrap: break-word;
       hyphens: auto;
 
-      @include themed() {
-        color: t($color-text);
-      }
+      color: $gray-100;
     }
   }
 

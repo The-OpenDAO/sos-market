@@ -24,9 +24,7 @@
 .select--default {
   @extend .select;
 
-  @include themed() {
-    color: t($color-text);
-  }
+  color: $gray-100;
   background-color: unset;
 }
 
@@ -48,9 +46,7 @@
   letter-spacing: normal;
   text-align: left;
 
-  @include themed() {
-    color: t($color-text-alt);
-  }
+  color: $gray-500;
 }
 
 .select-description {

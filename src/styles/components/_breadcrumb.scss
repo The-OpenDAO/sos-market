@@ -1,26 +1,24 @@
 .breadcrumb {
-  @include themed() {
-    &__link {
-      color: t($color-text-alt);
-      text-decoration: none;
-      transition: color 0.2s ease-out;
+  &__link {
+    color: $gray-500;
+    text-decoration: none;
+    transition: color 0.2s ease-out;
 
-      &:hover {
-        color: t($color-text);
-      }
+    &:hover {
+      color: $gray-100;
     }
+  }
 
-    &__separator {
-      display: inline;
-      color: t($color-text-alt);
-    }
+  &__separator {
+    display: inline;
+    color: $gray-500;
+  }
 
-    > span {
-      color: t($color-text);
+  > span {
+    color: $gray-500;
 
-      font-size: 1.1rem;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
   }
 }

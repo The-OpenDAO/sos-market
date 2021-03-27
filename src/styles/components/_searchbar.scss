@@ -4,9 +4,7 @@
   padding: 1.2rem;
   transition: background-color 0.3s ease 0s;
 
-  @include themed() {
-    background-color: t($input-background);
-  }
+  background-color: $input-background-dark;
 
   border: none;
   border-radius: 0.4rem;
@@ -22,9 +20,7 @@
 
     background-color: unset;
 
-    @include themed() {
-      color: t($input-text);
-    }
+    color: $neutral-white;
 
     font-size: 1.6rem;
     font-stretch: normal;
@@ -36,9 +32,7 @@
     text-align: left;
 
     &::placeholder {
-      @include themed() {
-        color: t($color-text-alt);
-      }
+      color: $gray-500;
     }
   }
 

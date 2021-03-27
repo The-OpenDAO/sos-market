@@ -10,9 +10,7 @@
     height: 0rem;
 
     &:checked + .slider {
-      @include themed() {
-        background-color: t($toggle-switch-checked);
-      }
+      background-color: $primary-500;
 
       &::before {
         transform: translateX(1.6rem);
@@ -29,9 +27,7 @@
   right: 0;
   bottom: 0;
 
-  @include themed() {
-    background-color: t($toggle-switch);
-  }
+  background-color: $gray-500;
 
   transition: 0.4s;
   border-radius: 4rem;
