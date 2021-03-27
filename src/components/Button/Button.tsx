@@ -21,7 +21,7 @@ type ButtonProps = {
   variant?: ButtonVariant;
   /**
    * The color of the component
-   * @default 'primary'
+   * @default 'default'
    */
   color?: ButtonColor;
   /**
