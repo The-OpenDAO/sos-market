@@ -1,0 +1,34 @@
+.menu {
+  margin: 0rem;
+  padding: 0rem;
+
+  &__item {
+    display: inline-block;
+    padding: 0rem 1.2rem;
+
+    > * {
+      color: $gray-500;
+      @extend .semibold;
+
+      transition: color 0.3s ease 0s;
+    }
+
+    a {
+      &:hover {
+        color: $gray-100;
+      }
+    }
+  }
+}
+
+.menu--row {
+  @include flex-row;
+}
+
+.menu--column {
+  @include flex-column;
+
+  .menu__item {
+    padding: 1.2rem 0rem;
+  }
+}

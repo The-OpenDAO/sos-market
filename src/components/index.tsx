@@ -13,6 +13,7 @@ import Layout from './Layout';
 import MarketList from './MarketList';
 import MarketSelect from './MarketSelect';
 import MarketTable from './MarketTable';
+import Menu from './Menu';
 import MiniTable from './MiniTable';
 import NavBar from './NavBar';
 import PredictionCard from './PredictionCard';
@@ -43,6 +44,7 @@ export {
   MarketList,
   MarketSelect,
   MarketTable,
+  Menu,
   MiniTable,
   NavBar,
   PredictionCard,

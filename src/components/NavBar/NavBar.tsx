@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { PolkamarketsIcon, MetaMaskIcon, SettingsIcon } from 'assets/icons';
 
 import Button from '../Button';
 import InterfaceSettings from '../InterfaceSettings';
+import Menu from '../Menu';
 import SearchBar from '../SearchBar';
 
 const NavBar = () => {
@@ -22,17 +23,18 @@ const NavBar = () => {
         </figure>
       </Link>
       <SearchBar />
-      <ul className="navbar-menu">
-        <li className="navbar-menu__item">
-          <NavLink exact to="/howitworks">
-            How It Works
-          </NavLink>
-        </li>
-        <li className="navbar-menu__item">
-          <NavLink to="/faq">FAQ</NavLink>
-        </li>
-      </ul>
-      <div className="navbar-menu__actions">
+      <Menu>
+        <Menu.Item key="howitworks">
+          <Link to="/howitworks">How It Works</Link>
+        </Menu.Item>
+        <Menu.Item key="faq">
+          <Link to="/faq">FAQ</Link>
+        </Menu.Item>
+        <Menu.Item key="random">
+          <span>Random</span>
+        </Menu.Item>
+      </Menu>
+      <div className="navbar__actions">
         <InterfaceSettings open={showInterfaceSettings} />
         <Button color="default" aria-label="Connect Wallet">
           <MetaMaskIcon />
