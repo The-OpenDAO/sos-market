@@ -34,11 +34,8 @@ const PortfolioCard = ({
           {title}
         </Text>
 
-        <Label
-          variant={change.type === 'up' ? 'success' : 'danger'}
-          icon={change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
-          iconPosition="left"
-        >
+        <Label color={change.type === 'up' ? 'success' : 'danger'}>
+          {change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
           {`${change.value}%`}
         </Label>
       </div>

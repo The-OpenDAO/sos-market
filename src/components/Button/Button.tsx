@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 type ButtonVariant = 'normal' | 'outline';
+
 type ButtonColor =
   | 'default'
   | 'primary'
@@ -11,6 +12,7 @@ type ButtonColor =
   | 'warning'
   | 'danger'
   | 'noborder';
+
 type ButtonSize = 'sm' | 'lg';
 
 type ButtonProps = {
@@ -50,7 +52,7 @@ const Button = React.forwardRef<
       ref={ref}
       type="button"
       className={classNames(
-        `button-${variant}-${color}`,
+        `button-${variant}--${color}`,
         size && `button-${size}`
       )}
       onClick={onClick}

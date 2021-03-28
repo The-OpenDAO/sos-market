@@ -22,14 +22,9 @@ const PortfolioChart = () => {
         <div
           className={`portfolio-chart__header-change--${balance.change.type}`}
         >
-          <Label
-            variant={balance.change.type === 'up' ? 'success' : 'danger'}
-            icon={
-              balance.change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />
-            }
-            iconPosition="left"
-          >
-            {`${balance.change.percetage}%`}
+          <Label color={balance.change.type === 'up' ? 'success' : 'danger'}>
+            {balance.change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
+            {`${balance.change.percentage}%`}
           </Label>
           <Text as="span" scale="body" fontWeight="semibold">
             {`${balance.change.amount} DOT`}

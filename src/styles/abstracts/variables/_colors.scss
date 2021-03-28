@@ -105,6 +105,8 @@ $secondary: $secondary-500 !default;
 $success: $success-500 !default;
 $warning: $warning-500 !default;
 $danger: $danger-500 !default;
+$white: $neutral-white !default;
+$black: $neutral-black !default;
 
 $theme-colors: (
   'default': $default,
@@ -112,7 +114,9 @@ $theme-colors: (
   'secondary': $secondary,
   'success': $success,
   'warning': $warning,
-  'danger': $danger
+  'danger': $danger,
+  'white': $white,
+  'black': $black
 ) !default;
 
 $gradient-colors: (

@@ -52,20 +52,20 @@
 }
 
 @each $color-variant, $color in $theme-colors {
-  .button-normal-#{$color-variant} {
+  .button-normal--#{$color-variant} {
     @extend %button;
     @include button-normal-color($color-variant, $color);
   }
 }
 
 @each $color-variant, $color in $theme-colors {
-  .button-outline-#{$color-variant} {
+  .button-outline--#{$color-variant} {
     @extend %button;
     @include button-outline-color($color-variant, $color);
   }
 }
 
-.button-normal-noborder {
+.button-normal--noborder {
   @extend %button;
   padding: 0rem;
   margin: 0rem;

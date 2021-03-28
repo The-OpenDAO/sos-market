@@ -26,7 +26,7 @@ const SidebarSection = ({ title, items }: SidebarSectionProps) => {
                 {item.icon}
               </figure>
               <div className="sidebar-link__title">{item.name}</div>
-              <Label variant="default">{item.count}</Label>
+              <Label color="default">{item.count}</Label>
             </NavLink>
           </li>
         ))}

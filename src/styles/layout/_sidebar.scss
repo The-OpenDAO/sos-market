@@ -121,10 +121,6 @@
       fill: $primary-500;
     }
   }
-
-  .label--default {
-    padding: 0.4rem 1rem;
-  }
 }
 
 .sidebar--collapsed {
@@ -132,7 +128,7 @@
   width: 8rem;
 
   .sidebar-link__title,
-  .label--default {
+  .label-normal--default {
     transition: opacity 0.3s ease;
     opacity: 0;
   }

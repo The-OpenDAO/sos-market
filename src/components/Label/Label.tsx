@@ -1,8 +1,10 @@
 import React from 'react';
 
-import Text from '../Text';
+import classNames from 'classnames';
 
-type Variant =
+type LabelVariant = 'normal' | 'outline';
+
+type LabelColor =
   | 'default'
   | 'primary'
   | 'secondary'
@@ -12,29 +14,42 @@ type Variant =
   | 'black'
   | 'white';
 
-type Position = 'left' | 'right';
+type LabelSize = 'sm' | 'lg';
 
 type LabelProps = {
-  variant?: Variant;
-  icon?: React.ReactNode | any;
-  iconPosition?: Position;
+  /**
+   * Variant to use
+   * @default 'normal'
+   */
+  variant?: LabelVariant;
+  /**
+   * Color of the component
+   * @default 'primary'
+   */
+  color?: LabelColor;
+  /**
+   * Size of the component
+   * @default 'sm'
+   */
+  size?: LabelSize;
   children: React.ReactNode | any;
 };
 
 const Label = ({
-  variant = 'default',
-  icon,
-  iconPosition,
+  variant = 'normal',
+  color = 'primary',
+  size = 'sm',
   children
 }: LabelProps) => {
   return (
-    <div className={`label--${variant}`}>
-      {icon && iconPosition === 'left' ? icon : null}
-      <Text as="label" scale="tiny" fontWeight="semibold">
-        {children}
-      </Text>
-      {icon && iconPosition === 'right' ? icon : null}
-    </div>
+    <span
+      className={classNames(
+        `label-${variant}--${color}`,
+        size && `label-${size}`
+      )}
+    >
+      {children}
+    </span>
   );
 };
 

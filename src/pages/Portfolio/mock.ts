@@ -41,7 +41,7 @@ const balance = {
   total: 48.485,
   change: {
     type: 'up',
-    percetage: 8.91,
+    percentage: 8.91,
     amount: '+2.498'
   }
 };

@@ -1,4 +1,4 @@
-.label {
+%label {
   @include flex-row(center, center);
   gap: 0.4rem;
 
@@ -6,129 +6,50 @@
   height: fit-content;
 
   margin: 0rem;
-  padding: 0.1rem 0.6rem;
 
   outline: none;
-  border-radius: 1.6rem;
   text-align: center;
+
+  transition: $label-transitions;
 }
 
-.label--default {
-  @extend .label;
-
-  color: $gray-500;
-  background-color: $gray-600;
-
-  > label {
-    color: $gray-500;
-  }
-
-  svg {
-    fill: $gray-500;
-  }
+.label-sm {
+  @include label-size(
+    $label-sm-padding-y,
+    $label-sm-padding-x,
+    $label-sm-font-size,
+    $label-sm-font-weight,
+    $label-sm-line-height,
+    $label-border-radius
+  );
 }
 
-.label--primary {
-  @extend .label;
-
-  color: $neutral-white;
-  background-color: $primary-500;
-
-  > label {
-    color: $neutral-white;
-  }
-
-  svg {
-    fill: $neutral-white;
-  }
+.label-lg {
+  @include label-size(
+    $label-lg-padding-y,
+    $label-lg-padding-x,
+    $label-lg-font-size,
+    $label-lg-font-weight,
+    $label-lg-line-height,
+    $label-border-radius
+  );
 }
 
-.label--warning {
-  @extend .label;
-
-  color: $neutral-white;
-  background-color: $secondary-500;
-
-  > label {
-    color: $neutral-white;
-  }
-
-  svg {
-    fill: $neutral-white;
+@each $color-variant, $color in $theme-colors {
+  .label-normal--#{$color-variant} {
+    @extend %label;
+    @include label-normal-color($color-variant, $color);
   }
 }
 
-.label--success {
-  @extend .label;
-
-  color: $neutral-white;
-  background-color: $success-500;
-
-  > label {
-    color: $neutral-white;
-  }
-
-  svg {
-    fill: $neutral-white;
-  }
-}
-
-.label--danger {
-  @extend .label;
-
-  color: $neutral-white;
-  background-color: $danger-500;
-
-  > label {
-    color: $neutral-white;
-  }
-
-  svg {
-    fill: $neutral-white;
-  }
-}
-
-.label--warning {
-  @extend .label;
-
-  color: $neutral-white;
-  background-color: $warning-500;
-
-  > label {
-    color: $neutral-white;
-  }
-
-  svg {
-    fill: $neutral-white;
-  }
-}
-
-.label--black {
-  @extend .label;
-
-  color: $neutral-white;
-  background-color: $neutral-black;
-
-  > label {
-    color: $neutral-white;
-  }
-
-  svg {
-    fill: $neutral-white;
-  }
-}
-
-.label--white {
-  @extend .label;
-
-  color: $neutral-black;
-  background-color: $neutral-white;
-
-  > label {
-    color: $neutral-black;
-  }
-
-  svg {
-    fill: $neutral-black;
+@each $color-variant, $color in $theme-colors {
+  .label-outline--#{$color-variant} {
+    @extend %label;
+    @include label-outline-color(
+      $color-variant,
+      $color,
+      $label-border-width,
+      $label-border-radius
+    );
   }
 }

@@ -30,7 +30,7 @@ const Categories = ({ title, items }: CategoriesProps) => {
                 {item.icon}
                 {item.name}
               </NavLink>
-              <Label variant={item.active ? 'primary' : 'default'}>
+              <Label color={item.active ? 'primary' : 'default'}>
                 {item.amount}
               </Label>
             </li>

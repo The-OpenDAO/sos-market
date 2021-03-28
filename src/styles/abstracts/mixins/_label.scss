@@ -1,0 +1,45 @@
+@mixin label-size(
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $font-weight,
+  $line-height,
+  $border-radius
+) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+
+  border-radius: $border-radius;
+}
+
+@mixin label-normal-color($color, $background) {
+  background-color: $background;
+
+  @if $color == white {
+    color: $neutral-black;
+
+    svg {
+      fill: $neutral-black;
+    }
+  } @else {
+    color: $neutral-white;
+
+    svg {
+      fill: $neutral-white;
+    }
+  }
+}
+
+@mixin label-outline-color($color, $background, $border-width, $border-radius) {
+  background-color: unset;
+
+  color: $background;
+
+  svg {
+    fill: $background;
+  }
+
+  @include border($background, $border-width, $border-radius);
+}
