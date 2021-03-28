@@ -1,25 +1,55 @@
-type TableProps = {
-  headers: string[];
-  rows: string[][];
+type TableColumn = {
+  /**
+   * Unique key of this column
+   */
+  key: string;
+  /**
+   * Title of this column
+   */
+  title: string;
 };
 
-const Table = ({ headers, rows }: TableProps) => {
+type TableRow = {
+  /**
+   * Unique key of this row
+   */
+  key: string;
+  [key: string]: any;
+};
+
+type TableProps = {
+  /**
+   * Columns of table
+   */
+  columns: TableColumn[];
+  /**
+   * Array of rows to be displayed
+   */
+  rows: TableRow[];
+};
+
+/**
+ * A table displays rows of data
+ */
+const Table = ({ columns, rows }: TableProps) => {
   return (
     <table className="table">
       <tr className="table__header">
-        {headers?.map(header => (
-          <th className="table__header-item" key={header}>
-            {header}
+        {columns?.map(column => (
+          <th className="table__header-item" id={column.key} key={column.key}>
+            {column.title}
           </th>
         ))}
       </tr>
       {rows?.map(row => (
-        <tr className="table__row" key={row[0]}>
-          {row?.map(item => (
-            <td className="table__row-item" key={item}>
-              {item}
-            </td>
-          ))}
+        <tr className="table__row" key={row.key}>
+          {Object.entries(row)
+            .filter(([key]) => key !== 'key')
+            .map(([key, value]) => (
+              <td className="table__row-item" id={key} key={key}>
+                {value}
+              </td>
+            ))}
         </tr>
       ))}
     </table>

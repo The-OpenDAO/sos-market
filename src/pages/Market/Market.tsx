@@ -45,7 +45,7 @@ const Market = () => {
       <br />
       <Tabs defaultActiveId="positions">
         <Tabs.TabPane tab="Positions" id="positions">
-          <Table headers={tableItems.headers} rows={tableItems.rows} />
+          <Table columns={tableItems.columns} rows={tableItems.rows} />
         </Tabs.TabPane>
         <Tabs.TabPane tab="About markets" id="about">
           <Text as="p" scale="body" fontWeight="medium">

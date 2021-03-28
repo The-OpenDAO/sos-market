@@ -154,13 +154,54 @@ const markets = [
 ];
 
 const tableItems = {
-  headers: ['Result', 'Price', 'Trade Type', 'Fractions', 'Max. Payout'],
+  columns: [
+    { title: 'Result', key: 'result' },
+    { title: 'Price', key: 'price' },
+    { title: 'Trade Type', key: 'tradeType' },
+    { title: 'Fractions', key: 'fractions' },
+    { title: 'Max. Payout', key: 'maxPayout' }
+  ],
   rows: [
-    ['Yes', '0.248 DOT', 'Buy', '13', '2.584 DOT'],
-    ['No', '0.248 DOT', 'Sold', '13', '2.584 DOT'],
-    ['No', '0.248 DOT', 'Sold', '13', '2.584 DOT'],
-    ['No', '0.248 DOT', 'Sold', '13', '2.584 DOT'],
-    ['No', '0.248 DOT', 'Sold', '13', '2.584 DOT']
+    {
+      key: '0',
+      result: 'Yes',
+      price: '0.248 DOT',
+      tradeType: 'Buy',
+      fractions: '13',
+      maxPayout: '2.584 DOT'
+    },
+    {
+      key: '1',
+      result: 'No',
+      price: '0.248 DOT',
+      tradeType: 'Sold',
+      fractions: '13',
+      maxPayout: '2.584 DOT'
+    },
+    {
+      key: '2',
+      result: 'No',
+      price: '0.248 DOT',
+      tradeType: 'Sold',
+      fractions: '13',
+      maxPayout: '2.584 DOT'
+    },
+    {
+      key: '3',
+      result: 'No',
+      price: '0.248 DOT',
+      tradeType: 'Sold',
+      fractions: '13',
+      maxPayout: '2.584 DOT'
+    },
+    {
+      key: '4',
+      result: 'No',
+      price: '0.248 DOT',
+      tradeType: 'Sold',
+      fractions: '13',
+      maxPayout: '2.584 DOT'
+    }
   ]
 };
 
