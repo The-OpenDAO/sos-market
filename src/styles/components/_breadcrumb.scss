@@ -1,24 +1,33 @@
 .breadcrumb {
-  &__link {
-    color: $gray-500;
-    text-decoration: none;
-    transition: color 0.2s ease-out;
+  @include flex-row(flex-start, center);
 
-    &:hover {
+  span {
+    &:first-of-type {
+      display: none;
+    }
+
+    &:last-of-type {
       color: $gray-100;
     }
   }
 
   &__separator {
-    display: inline;
+    @extend .tiny-uppercase, .semibold;
+    margin: 0rem 0.4rem;
     color: $gray-500;
   }
 
-  > span {
+  &__item {
+    @extend .tiny-uppercase, .semibold;
     color: $gray-500;
 
-    font-size: 1.1rem;
-    text-decoration: none;
-    text-transform: uppercase;
+    a {
+      color: $gray-500;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $gray-100;
+      }
+    }
   }
 }

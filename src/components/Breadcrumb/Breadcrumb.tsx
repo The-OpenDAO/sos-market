@@ -1,23 +1,30 @@
-import Text from '../Text';
+import React from 'react';
+
+type ItemProps = {
+  children: React.ReactNode;
+};
 
 type BreadcrumbProps = {
-  previous: string;
-  actual: string;
+  children: React.ReactNode;
 };
 
-const Breadcrumb = ({ previous, actual }: BreadcrumbProps) => {
+const Item = ({ children }: ItemProps) => {
   return (
-    <div className="breadcrumb">
-      <a className="breadcrumb__link tiny-uppercase semibold" href={previous}>
-        {previous}
-      </a>
-      <div className="breadcrumb__separator tiny-uppercase semibold">{` / `}</div>
-      <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
-        {actual}
-      </Text>
-    </div>
+    <>
+      <span className="breadcrumb__separator">/</span>
+      <span className="breadcrumb__item">{children}</span>
+    </>
   );
 };
+
+/**
+ * A breadcrumb displays the current location within a hierarchy
+ */
+const Breadcrumb = ({ children }: BreadcrumbProps) => {
+  return <div className="breadcrumb">{children}</div>;
+};
+
+Breadcrumb.Item = Item;
 
 Breadcrumb.displayName = 'Breadcrumb';
 
