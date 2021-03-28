@@ -51,6 +51,9 @@ type TabsProps = {
   children?: React.ReactNode;
 };
 
+/**
+ * Tabs to switch between different views
+ */
 const Tabs = ({ direction = 'row', defaultActiveId, children }: TabsProps) => {
   const [activeTab, setActiveTab] = useState<string | undefined>(undefined);
 
