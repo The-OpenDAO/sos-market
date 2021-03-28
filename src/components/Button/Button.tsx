@@ -33,6 +33,9 @@ type ButtonProps = {
   size?: ButtonSize;
 };
 
+/**
+ * Button to trigger an operation
+ */
 const Button = React.forwardRef<
   HTMLButtonElement,
   ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
