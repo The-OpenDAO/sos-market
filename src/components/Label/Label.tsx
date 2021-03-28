@@ -35,6 +35,9 @@ type LabelProps = {
   children: React.ReactNode | any;
 };
 
+/**
+ * Label for categorizing or markup
+ */
 const Label = ({
   variant = 'normal',
   color = 'primary',
