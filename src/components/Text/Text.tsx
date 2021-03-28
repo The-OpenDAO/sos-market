@@ -29,6 +29,7 @@ type TextType =
   | 'i'
   | 'b';
 type TextScale = 'heading' | 'body' | 'caption' | 'tiny' | 'tiny-uppercase';
+
 type TextFontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type TextProps = {
@@ -58,6 +59,9 @@ type TextProps = {
   children?: React.ReactNode | any;
 };
 
+/**
+ * Basic text writing, including headings, body text, and more
+ */
 const Text = ({
   as = 'p',
   scale = 'body',
