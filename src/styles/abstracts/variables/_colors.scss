@@ -60,6 +60,7 @@ $gray-50: #f9fafb;
 $gray-100: #f3f4f6;
 $gray-200: #c5cad3;
 $gray-300: #a8b0bd;
+$gray-300-5: #1a1e26;
 $gray-400: #8a96a8;
 $gray-500: #637084;
 $gray-600: #252c3b;
@@ -99,7 +100,7 @@ $sidebar-background-dark: hsl(222, 22%, 9%);
 $bg-light: hsl(223, 100%, 99%);
 $bg-dark: $gray-1000;
 
-$default: $gray-1000 !default;
+$default: $gray-300-5 !default;
 $primary: $primary-500 !default;
 $secondary: $secondary-500 !default;
 $success: $success-500 !default;

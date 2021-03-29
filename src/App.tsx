@@ -4,7 +4,7 @@ import { Layout } from 'components';
 
 const App = () => {
   return (
-    <div className="theme--dark">
+    <div className="app">
       <Layout>
         <Routes />
       </Layout>

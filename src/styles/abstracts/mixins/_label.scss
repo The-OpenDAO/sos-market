@@ -23,6 +23,12 @@
     svg {
       fill: $neutral-black;
     }
+  } @else if $color == default {
+    color: $gray-500;
+
+    svg {
+      fill: $gray-500;
+    }
   } @else {
     color: $neutral-white;
 

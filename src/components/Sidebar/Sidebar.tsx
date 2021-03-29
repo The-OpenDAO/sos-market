@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import classNames from 'classnames';
+
 import {
   HamburguerMenuIcon,
   ArrowBackIcon,
@@ -9,12 +11,12 @@ import {
 } from 'assets/icons';
 
 import Button from '../Button';
+import Menu from '../Menu';
+import Text from '../Text';
 import { navigationLinks, footerLinks } from './mock';
-import SidebarFooter from './SidebarFooter';
-import SidebarSection from './SidebarSection';
 
 const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   const { markets } = navigationLinks;
 
   function toggleCollapsed() {
@@ -32,28 +34,92 @@ const Sidebar = () => {
           {collapsed ? <HamburguerMenuIcon /> : <ArrowBackIcon />}
         </Button>
       </div>
-      <div className="sidebar__tabs">
-        <ul className="sidebar-section__list">
-          <li key="markets" className="sidebar-section__item">
-            <NavLink className="sidebar-link" to="/home">
-              <figure aria-label="markets" className="sidebar-link__icon">
-                <MarketsIcon />
-              </figure>
-              <div className="sidebar-link__title">Markets</div>
+      <div className="sidebar__content">
+        <Menu direction="column">
+          <Menu.Item key="markets" style={{ padding: '1.8rem 0rem' }}>
+            <NavLink
+              to="/home"
+              className="sidebar__link--lg"
+              activeClassName="sidebar__link--lg active"
+            >
+              <MarketsIcon />
+              <span
+                className={classNames(
+                  'market__link-title--lg',
+                  collapsed && 'hidden'
+                )}
+              >
+                Markets
+              </span>
             </NavLink>
-          </li>
-          <li key="portfolio" className="sidebar-section__item">
-            <NavLink className="sidebar-link" to="/portfolio">
-              <figure aria-label="portfolio" className="sidebar-link__icon">
-                <PortfolioIcon />
-              </figure>
-              <div className="sidebar-link__title">Portfolio</div>
+          </Menu.Item>
+          <Menu.Item key="portfolio" style={{ padding: '1.8rem 0rem' }}>
+            <NavLink
+              to="/portfolio"
+              className="sidebar__link--lg"
+              activeClassName="sidebar__link--lg active"
+            >
+              <PortfolioIcon />
+              <span
+                className={classNames(
+                  'market__link-title--lg',
+                  collapsed && 'hidden'
+                )}
+              >
+                Portfolio
+              </span>
             </NavLink>
-          </li>
-        </ul>
+          </Menu.Item>
+        </Menu>
+
+        <hr className="sidebar__separator" />
+
+        <Menu direction="column">
+          {markets.items?.map(market => (
+            <Menu.Item key={market.name} style={{ padding: '1.6rem 0rem' }}>
+              <NavLink
+                to={market.to}
+                className="sidebar__link"
+                activeClassName="sidebar__link active"
+              >
+                {market.icon}
+                <span
+                  className={classNames(
+                    'sidebar__link-title',
+                    collapsed && 'hidden'
+                  )}
+                >
+                  {market.name}
+                </span>
+                <span
+                  className={classNames(
+                    'sidebar__link-counter',
+                    collapsed && 'hidden'
+                  )}
+                >
+                  {market.count}
+                </span>
+              </NavLink>
+            </Menu.Item>
+          ))}
+        </Menu>
       </div>
-      <SidebarSection title={markets.title} items={markets.items} />
-      <SidebarFooter links={footerLinks} />
+
+      <div className={classNames('sidebar__footer', collapsed && 'hidden')}>
+        <Menu>
+          {footerLinks?.map(link => (
+            <Menu.Item key={link.name} style={{ padding: '0rem 0.8rem' }}>
+              <a href={link.url} aria-label={link.name}>
+                {link.icon}
+              </a>
+            </Menu.Item>
+          ))}
+        </Menu>
+
+        <Text as="p" scale="caption" fontWeight="medium">
+          @ 2021 Polkamarkets
+        </Text>
+      </div>
     </div>
   );
 };
