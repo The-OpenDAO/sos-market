@@ -34,24 +34,26 @@ type TableProps = {
 const Table = ({ columns, rows }: TableProps) => {
   return (
     <table className="table">
-      <tr className="table__header">
-        {columns?.map(column => (
-          <th className="table__header-item" id={column.key} key={column.key}>
-            {column.title}
-          </th>
-        ))}
-      </tr>
-      {rows?.map(row => (
-        <tr className="table__row" key={row.key}>
-          {Object.entries(row)
-            .filter(([key]) => key !== 'key')
-            .map(([key, value]) => (
-              <td className="table__row-item" id={key} key={key}>
-                {value}
-              </td>
-            ))}
+      <tbody>
+        <tr className="table__header">
+          {columns?.map(column => (
+            <th className="table__header-item" id={column.key} key={column.key}>
+              {column.title}
+            </th>
+          ))}
         </tr>
-      ))}
+        {rows?.map(row => (
+          <tr className="table__row" key={row.key}>
+            {Object.entries(row)
+              .filter(([key]) => key !== 'key')
+              .map(([key, value]) => (
+                <td className="table__row-item" id={key} key={key}>
+                  {value}
+                </td>
+              ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };
