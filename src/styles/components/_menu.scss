@@ -13,10 +13,9 @@
       transition: color 0.3s ease 0s;
     }
 
-    a {
-      &:hover {
-        color: $gray-100;
-      }
+    svg {
+      fill: $gray-500;
+      transition: fill 0.3s ease 0s;
     }
   }
 }
@@ -27,8 +26,4 @@
 
 .menu--column {
   @include flex-column;
-
-  .menu__item {
-    padding: 1.2rem 0rem;
-  }
 }

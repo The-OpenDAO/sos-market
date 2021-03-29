@@ -4,15 +4,15 @@ import classNames from 'classnames';
 
 type ItemProps = {
   /**
-   * Unique key of this item
+   * Aditional CSS inline style
    */
-  key: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 };
 
-const Item = ({ key, children }: ItemProps) => {
+const Item = ({ style, children, ...props }: ItemProps) => {
   return (
-    <li key={key} className="menu__item">
+    <li className="menu__item" style={style} {...props}>
       {children}
     </li>
   );
@@ -37,8 +37,8 @@ const Menu = ({ direction = 'row', children }: MenuProps) => {
   );
 };
 
-Menu.Item = Item;
-
 Menu.displayName = 'Menu';
+
+Menu.Item = Item;
 
 export default Menu;
