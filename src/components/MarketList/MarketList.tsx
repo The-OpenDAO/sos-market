@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 
@@ -10,6 +11,7 @@ const MarketsContext = createContext({});
 
 const Item = ({ index, style }: ListChildComponentProps) => {
   const markets = useContext(MarketsContext);
+  const market = markets[index];
 
   return (
     <li
@@ -20,7 +22,9 @@ const Item = ({ index, style }: ListChildComponentProps) => {
         bottom: (style.bottom as number) + 5
       }}
     >
-      <PredictionCard market={markets[index]} />
+      <Link to={`/markets/${market.id}`}>
+        <PredictionCard market={market} />
+      </Link>
     </li>
   );
 };
