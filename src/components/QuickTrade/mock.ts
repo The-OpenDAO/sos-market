@@ -11,18 +11,12 @@ const markets: Market[] = [
   {
     prediction: 'No',
     odd: 1.26,
-    tableItems: [
-      { name: 'Price Per Fraction', value: '0.00034 DOT' },
-      { name: 'Total fractions', value: 2359 }
-    ]
+    tableItems: [{ name: 'Price Per Fraction', value: '0.00034 DOT' }]
   },
   {
     prediction: 'Yes',
     odd: 1.26,
-    tableItems: [
-      { name: 'Price Per Fraction', value: '0.00034 DOT' },
-      { name: 'Total fractions', value: 2359 }
-    ]
+    tableItems: [{ name: 'Price Per Fraction', value: '0.00034 DOT' }]
   }
 ];
 
