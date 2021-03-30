@@ -21,7 +21,6 @@ const QuickTrade = () => {
   function handleChangeAcceptOddChanges(
     event: React.ChangeEvent<HTMLInputElement>
   ) {
-    console.log(event.currentTarget);
     setAcceptOddChanges(!acceptOddChanges);
   }
 
