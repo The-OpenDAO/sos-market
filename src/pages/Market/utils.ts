@@ -19,11 +19,6 @@ function formatMarketAnalytics(market: Market, colored: boolean) {
       color: colored ? 'blue' : 'default'
     },
     {
-      title: 'Fractions',
-      value: `${market?.fractions || 0}`,
-      color: colored ? 'pink' : 'default'
-    },
-    {
       title: 'Expiration',
       value: market?.expiration || '',
       color: colored ? 'orange' : 'default'

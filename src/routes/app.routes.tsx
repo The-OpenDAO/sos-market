@@ -13,7 +13,7 @@ const AppRoutes = () => {
           <Redirect to="/home" />
         </Route>
         <Route component={Home} path="/home" />
-        <Route component={Market} path="/market" />
+        <Route component={Market} path="/markets" />
         <Route component={Portfolio} path="/portfolio" />
       </Switch>
     </Suspense>
