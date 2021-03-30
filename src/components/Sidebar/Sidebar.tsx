@@ -109,7 +109,11 @@ const Sidebar = () => {
         <Menu>
           {footerLinks?.map(link => (
             <Menu.Item key={link.name} style={{ padding: '0rem 0.8rem' }}>
-              <a href={link.url} aria-label={link.name}>
+              <a
+                href={link.url}
+                aria-label={link.name}
+                className="sidebar__link"
+              >
                 {link.icon}
               </a>
             </Menu.Item>

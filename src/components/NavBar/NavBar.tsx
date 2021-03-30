@@ -30,9 +30,6 @@ const NavBar = () => {
         <Menu.Item key="faq">
           <Link to="/faq">FAQ</Link>
         </Menu.Item>
-        <Menu.Item key="random">
-          <span>Random</span>
-        </Menu.Item>
       </Menu>
       <div className="navbar__actions">
         <InterfaceSettings open={showInterfaceSettings} />
