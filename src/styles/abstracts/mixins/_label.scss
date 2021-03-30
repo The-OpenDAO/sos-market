@@ -25,6 +25,7 @@
     }
   } @else if $color == default {
     color: $gray-500;
+    background-color: $gray-300-5;
 
     svg {
       fill: $gray-500;
