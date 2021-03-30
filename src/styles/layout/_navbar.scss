@@ -4,16 +4,16 @@
   z-index: 1000;
 
   padding: 1.6rem 2.8rem;
+  background-color: $bg-dark;
 
   transition: background-color 0.3s ease 0s;
 
-  background-color: $bg-dark;
-
   &__icon {
+    zoom: 1;
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    zoom: 1;
 
     padding: 0.65rem 0rem;
 
@@ -29,7 +29,11 @@
   }
 
   &__actions {
-    display: inline-flex;
+    display: none;
     gap: 1.6rem;
+
+    @include breakpoint-to('lg') {
+      display: inline-flex;
+    }
   }
 }
