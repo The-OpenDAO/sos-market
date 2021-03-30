@@ -9,6 +9,10 @@
     color: $gray-100;
   }
 
+  a {
+    color: $primary-500;
+  }
+
   &__stats {
     display: grid;
     grid-template-columns: 3fr 1fr;

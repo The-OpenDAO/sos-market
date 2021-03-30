@@ -42,12 +42,22 @@ const Market = () => {
         <MarketChart />
         <MarketAnalytics direction="column" items={graphMarketAnalytics} />
       </div>
-      <br />
+      <Text
+        as="p"
+        scale="tiny"
+        fontWeight="semibold"
+        style={{ margin: '0.8rem 0rem' }}
+      >
+        {`Resolution source: `}
+        <a href="https://www.google.com/finance" className="tiny semibold">
+          google.com/finance
+        </a>
+      </Text>
       <Tabs defaultActiveId="positions">
         <Tabs.TabPane tab="Positions" id="positions">
           <Table columns={tableItems.columns} rows={tableItems.rows} />
         </Tabs.TabPane>
-        <Tabs.TabPane tab="About markets" id="about">
+        <Tabs.TabPane tab="About market" id="about">
           <Text as="p" scale="body" fontWeight="medium">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
             vitae arcu morbi ultrices mollis tortor ac. Natoque interdum non
