@@ -3,8 +3,12 @@ import { useDispatch } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
 
+import trade from './ducks/trade';
+
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    trade
+  },
   middleware: [thunkMiddleware],
   devTools: true
 });

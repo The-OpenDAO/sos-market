@@ -2,6 +2,8 @@ import React from 'react';
 
 import QuickTrade from 'components/QuickTrade';
 
+import { useAppSelector } from 'hooks';
+
 import NavBar from '../NavBar';
 import Sidebar from '../Sidebar';
 
@@ -10,6 +12,8 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
+  const { showSidebar } = useAppSelector(state => state.trade);
+
   return (
     <div className="wrapper">
       <Sidebar />
@@ -17,7 +21,7 @@ const Layout = ({ children }: LayoutProps) => {
         <NavBar />
         <div className="main__group">
           <section className="vertical-section">{children}</section>
-          <QuickTrade />
+          {showSidebar ? <QuickTrade /> : null}
         </div>
       </main>
     </div>
