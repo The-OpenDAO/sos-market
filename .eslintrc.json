@@ -77,7 +77,7 @@
     "import/resolver": {
       "node": {
         "paths": ["src"],
-        "extensions": [".js", ".jsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       },
       "typescript": {
         "alwaysTryTypes": true,
@@ -87,7 +87,7 @@
   },
   "overrides": [
     {
-      "files": ["**/*.tsx"],
+      "files": ["**/*.ts", "**/*.tsx"],
       "rules": {
         "react/prop-types": "off"
       }
