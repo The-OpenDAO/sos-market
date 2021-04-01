@@ -1,8 +1,8 @@
 @charset 'utf-8';
 
 // 1. Configuration and helpers
-@import 'helpers/position';
 @import 'helpers/display';
+@import 'helpers/position';
 
 // 2. Vendors
 @import 'vendors/apex-charts';
@@ -32,14 +32,14 @@
 @import 'components/menu';
 @import 'components/mini-table';
 @import 'components/prediction-card';
-@import 'components/quick-trade';
 @import 'components/searchbar';
 @import 'components/select';
-@import 'components/tabs';
 @import 'components/table';
+@import 'components/tabs';
 @import 'components/text';
 @import 'components/toggle-button';
 @import 'components/toggle-switch';
+@import 'components/trade';
 
 // 6. Page-specific styles
 @import 'pages/home';
