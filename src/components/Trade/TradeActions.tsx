@@ -8,7 +8,11 @@ function TradeActions() {
 
   return (
     <div className="trade-actions">
-      {!showCharts ? <Button size="lg">Cancel</Button> : null}
+      {!showCharts ? (
+        <Button variant="dark" color="default" size="lg">
+          Cancel
+        </Button>
+      ) : null}
       {type === 'buy' ? (
         <Button size="lg" color="success">
           Buy
