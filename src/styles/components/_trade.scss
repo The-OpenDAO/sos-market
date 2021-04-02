@@ -61,6 +61,132 @@
   }
 }
 
+.trade-type-selector {
+  @include flex-column;
+  gap: 2.4rem;
+
+  width: 100%;
+}
+
+.trade-input {
+  @include flex-column;
+  gap: 0.3rem;
+
+  width: 100%;
+
+  &__group {
+    @include flex-row(space-between, center);
+
+    height: 5.2rem;
+    padding: 1.2rem 0.8rem 1.2rem 1.6rem;
+
+    background-color: $gray-700;
+    border-radius: 0.4rem;
+  }
+
+  &__input {
+    width: 100%;
+    margin: 0rem 0.8rem 0rem 0rem;
+    padding: 0rem;
+
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+
+    background-color: unset;
+
+    color: $gray-100;
+
+    font-size: 2rem;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 400;
+
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-align: left;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-label {
+      @extend .tiny, .semibold;
+      color: $gray-300;
+      text-transform: capitalize;
+    }
+
+    &-wallet {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 0.2rem;
+
+      > figure {
+        margin-right: 0.4rem;
+
+        > svg {
+          fill: $gray-500;
+        }
+      }
+
+      > strong {
+        color: $gray-100;
+      }
+
+      > span {
+        color: $gray-500;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+
+    > button {
+      cursor: pointer;
+      touch-action: manipulation;
+
+      margin: 0rem 0.4rem;
+      padding: 0.4rem 0.6rem;
+      background-color: $gray-600;
+
+      appearance: none;
+      outline: none;
+      border: none;
+      border-radius: 0.4rem;
+
+      transition: background-color 0.3s ease;
+
+      > span {
+        color: $gray-300;
+      }
+
+      &:hover {
+        background-color: $gray-700;
+
+        > span {
+          color: $gray-100;
+        }
+      }
+    }
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    margin: 0rem 0.8rem;
+
+    > span {
+      color: $gray-200;
+    }
+  }
+}
+
 .trade-actions {
   @include flex-column;
   gap: 2.4rem;
