@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 
 import { WalletIcon, PolkadotIcon } from 'assets/icons';
 
+import { useAppSelector } from 'hooks';
+
 import Text from '../Text';
 
-type AmountInputProps = {
-  label: string;
+type TradeInputProps = {
   max: number;
 };
 
-const AmountInput = ({ label, max }: AmountInputProps) => {
+function TradeInput({ max }: TradeInputProps) {
+  const type = useAppSelector(state => state.trade.type);
+  const label = `${type} fractions`;
+
   const [amount, setAmount] = useState(max);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
@@ -23,12 +27,12 @@ const AmountInput = ({ label, max }: AmountInputProps) => {
   }
 
   return (
-    <form className="amount-input">
-      <div className="amount-input__header">
-        <label className="amount-input__header-label" htmlFor={label}>
+    <form className="trade-input">
+      <div className="trade-input__header">
+        <label className="trade-input__header-label" htmlFor={label}>
           {label}
         </label>
-        <div className="amount-input__header-wallet">
+        <div className="trade-input__header-wallet">
           <figure aria-label="Wallet icon">
             <WalletIcon />
           </figure>
@@ -40,9 +44,9 @@ const AmountInput = ({ label, max }: AmountInputProps) => {
           </Text>
         </div>
       </div>
-      <div className="amount-input__group">
+      <div className="trade-input__group">
         <input
-          className="amount-input__input"
+          className="trade-input__input"
           type="number"
           id={label}
           value={amount}
@@ -51,13 +55,13 @@ const AmountInput = ({ label, max }: AmountInputProps) => {
           max={max}
           onChange={event => handleChangeAmount(event)}
         />
-        <div className="amount-input__actions">
-          <button type="button" onClick={() => handleSetMaxAmount()}>
+        <div className="trade-input__actions">
+          <button type="button" onClick={handleSetMaxAmount}>
             <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
               Max
             </Text>
           </button>
-          <div className="amount-input__logo">
+          <div className="trade-input__logo">
             <figure aria-label="Polkadot logo">
               <PolkadotIcon />
             </figure>
@@ -69,8 +73,8 @@ const AmountInput = ({ label, max }: AmountInputProps) => {
       </div>
     </form>
   );
-};
+}
 
-AmountInput.displayName = 'Amount input';
+TradeInput.displayName = 'TradeInput';
 
-export default AmountInput;
+export default TradeInput;

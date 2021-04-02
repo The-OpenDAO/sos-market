@@ -1,6 +1,5 @@
 import { InfoIcon } from 'assets/icons';
 
-import AmountInput from '../AmountInput';
 import Button from '../Button';
 import MarketSelect from '../MarketSelect';
 import MiniTable from '../MiniTable';
@@ -31,7 +30,7 @@ const QuickTrade = () => {
           buttons={toggleButtonItems}
           onChange={activeButton => console.log(activeButton)}
         />
-        <AmountInput label="Buy Fractions" max={0.0104} />
+
         <MiniTable items={miniTableItems} />
 
         <Button color="success" size="lg">

@@ -1,9 +1,10 @@
 import { useAppSelector } from 'hooks';
 
-import TradeActions from './TradeActions';
 import TradeDetails from './TradeDetails';
+import TradeInput from './TradeInput';
 import TradePredictions from './TradePredictions';
 import TradeTerms from './TradeTerms';
+import TradeTypeSelector from './TradeTypeSelector';
 
 function Trade() {
   const visible = useAppSelector(state => state.trade.visible);
@@ -13,7 +14,8 @@ function Trade() {
   return (
     <div className="trade">
       <TradePredictions />
-      <TradeActions />
+      <TradeTypeSelector />
+      <TradeInput max={0.0104} />
       <TradeDetails />
       <TradeTerms />
     </div>
