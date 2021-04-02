@@ -58,6 +58,13 @@
   }
 }
 
+@each $color-variant, $color in $theme-dark-colors {
+  .button-dark--#{$color-variant} {
+    @extend %button;
+    @include button-dark-color($color-variant, $color);
+  }
+}
+
 @each $color-variant, $color in $theme-colors {
   .button-outline--#{$color-variant} {
     @extend %button;

@@ -109,6 +109,13 @@ $danger: $danger-500 !default;
 $white: $neutral-white !default;
 $black: $neutral-black !default;
 
+$default-dark: rgba($gray-600, 0.5) !default;
+$primary-dark: rgba($primary-900, 0.5) !default;
+$secondary-dark: rgba($secondary-900, 0.5) !default;
+$success-dark: rgba($success-900, 0.5) !default;
+$warning-dark: rgba($warning-900, 0.5) !default;
+$danger-dark: rgba($danger-900, 0.5) !default;
+
 $theme-colors: (
   'default': $default,
   'primary': $primary,
@@ -118,6 +125,15 @@ $theme-colors: (
   'danger': $danger,
   'white': $white,
   'black': $black
+) !default;
+
+$theme-dark-colors: (
+  'default': $default-dark,
+  'primary': $primary-dark,
+  'secondary': $secondary-dark,
+  'success': $success-dark,
+  'warning': $warning-dark,
+  'danger': $danger-dark
 ) !default;
 
 $gradient-colors: (

@@ -37,6 +37,32 @@
   }
 }
 
+@mixin button-dark-color(
+  $color,
+  $background,
+  $background-hover: darken($background, 5%)
+) {
+  color: $gray-100;
+  background-color: $background;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: $background;
+
+  svg {
+    fill: $gray-100;
+  }
+
+  &:hover,
+  :focus {
+    border-color: $background-hover;
+    background-color: $background-hover;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+  }
+}
+
 @mixin button-outline-color($color, $background) {
   color: $background;
   border-width: 0.1rem;
