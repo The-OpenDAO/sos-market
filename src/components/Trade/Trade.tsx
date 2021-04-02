@@ -1,5 +1,7 @@
 import { useAppSelector } from 'hooks';
 
+import TradeActions from './TradeActions';
+import TradeCharts from './TradeCharts';
 import TradeDetails from './TradeDetails';
 import TradeInput from './TradeInput';
 import TradePredictions from './TradePredictions';
@@ -13,11 +15,13 @@ function Trade() {
 
   return (
     <div className="trade">
+      <TradeCharts />
       <TradePredictions />
       <TradeTypeSelector />
       <TradeInput max={0.0104} />
       <TradeDetails />
       <TradeTerms />
+      <TradeActions />
     </div>
   );
 }

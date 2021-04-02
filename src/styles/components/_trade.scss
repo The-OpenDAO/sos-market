@@ -1,5 +1,5 @@
 .trade {
-  @include flex-column(space-between, center);
+  @include flex-column(flex-start, center);
   gap: 2.4rem;
   flex-shrink: 0;
 
@@ -8,6 +8,10 @@
 
   padding: 0rem 2.4rem 2.4rem 2.4rem;
   background-color: $gray-900;
+}
+
+.trade-charts {
+  @include flex-column;
 }
 
 .trade-predictions {
@@ -188,10 +192,14 @@
 }
 
 .trade-actions {
-  @include flex-column;
-  gap: 2.4rem;
+  @include flex-row;
+  gap: 0.8rem;
 
   width: 100%;
+
+  :last-child {
+    flex-grow: 1;
+  }
 }
 
 .trade-details {

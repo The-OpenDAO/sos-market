@@ -20,7 +20,7 @@ type PredictionDetails = {
 const initialState = {
   visible: true,
   showCharts: false,
-  showOptions: false,
+  showPredictions: false,
   type: 'buy',
   selectedPredictionId: '',
   predictions: [
@@ -58,9 +58,9 @@ const tradeSlice = createSlice({
       ...state,
       showCharts: action.payload
     }),
-    changeOptionsVisibility: (state, action: PayloadAction<boolean>) => ({
+    changePredictionsVisibility: (state, action: PayloadAction<boolean>) => ({
       ...state,
-      showOptions: action.payload
+      showPredictions: action.payload
     }),
     changeTradeType: (state, action: PayloadAction<TradeType>) => ({
       ...state,
@@ -101,7 +101,7 @@ export default tradeSlice.reducer;
 const {
   changeTradeVisibility,
   changeChartsVisibility,
-  changeOptionsVisibility,
+  changePredictionsVisibility,
   changeTradeType,
   setSelectedPrediction,
   setPredictionDetails,
@@ -112,7 +112,7 @@ const {
 export {
   changeTradeVisibility,
   changeChartsVisibility,
-  changeOptionsVisibility,
+  changePredictionsVisibility,
   changeTradeType,
   setSelectedPrediction,
   setPredictionDetails,
