@@ -1,23 +1,44 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type TradeType = 'Buy' | 'Sell';
+type TradeType = 'buy' | 'sell' | string;
+
+type Prediction = {
+  id: string;
+  name: string;
+  odd: number;
+  pricePerFraction: number;
+};
 
 type PredictionDetails = {
-  pricePerFraction: number;
   fractionsBought: number;
+  currentROI: number;
   totalStake: number;
   potentialReturns: number;
   lossAmount: number;
 };
 
 const initialState = {
-  showSidebar: false,
+  visible: true,
   showCharts: false,
   showOptions: false,
-  type: 'Buy',
-  prediction: null,
-  pricePerFraction: 0,
+  type: 'buy',
+  selectedPredictionId: '',
+  predictions: [
+    {
+      id: '',
+      name: '',
+      odd: 0,
+      pricePerFraction: 0
+    },
+    {
+      id: '',
+      name: '',
+      odd: 0,
+      pricePerFraction: 0
+    }
+  ],
   fractionsBought: 0,
+  currentROI: 0,
   totalStake: 0,
   potentialReturns: 0,
   lossAmount: 0,
@@ -29,9 +50,9 @@ const tradeSlice = createSlice({
   name: 'trade',
   initialState,
   reducers: {
-    changeSidebarVisibility: (state, action: PayloadAction<boolean>) => ({
+    changeTradeVisibility: (state, action: PayloadAction<boolean>) => ({
       ...state,
-      showSidebar: action.payload
+      visible: action.payload
     }),
     changeChartsVisibility: (state, action: PayloadAction<boolean>) => ({
       ...state,
@@ -45,17 +66,21 @@ const tradeSlice = createSlice({
       ...state,
       type: action.payload
     }),
-    setPrediction: (state, action) => ({
+    setSelectedPrediction: (state, action: PayloadAction<string>) => ({
       ...state,
-      prediction: action.payload
+      selectedPredictionId: action.payload
+    }),
+    setPredictions: (state, action: PayloadAction<Prediction[]>) => ({
+      ...state,
+      predictions: action.payload
     }),
     setPredictionDetails: (
       state,
       action: PayloadAction<PredictionDetails>
     ) => ({
       ...state,
-      pricePerFraction: action.payload.pricePerFraction,
       fractionsBought: action.payload.fractionsBought,
+      currentROI: action.payload.currentROI,
       totalStake: action.payload.totalStake,
       potentialReturns: action.payload.potentialReturns,
       lossAmount: action.payload.lossAmount
@@ -74,22 +99,22 @@ const tradeSlice = createSlice({
 export default tradeSlice.reducer;
 
 const {
-  changeSidebarVisibility,
+  changeTradeVisibility,
   changeChartsVisibility,
   changeOptionsVisibility,
   changeTradeType,
-  setPrediction,
+  setSelectedPrediction,
   setPredictionDetails,
   toggleAcceptRules,
   toggleAcceptOddChanges
 } = tradeSlice.actions;
 
 export {
-  changeSidebarVisibility,
+  changeTradeVisibility,
   changeChartsVisibility,
   changeOptionsVisibility,
   changeTradeType,
-  setPrediction,
+  setSelectedPrediction,
   setPredictionDetails,
   toggleAcceptRules,
   toggleAcceptOddChanges

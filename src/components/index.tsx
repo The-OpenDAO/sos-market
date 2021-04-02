@@ -17,7 +17,6 @@ import Menu from './Menu';
 import MiniTable from './MiniTable';
 import NavBar from './NavBar';
 import PredictionCard from './PredictionCard';
-import QuickTrade from './QuickTrade';
 import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
 import Select from './Select';
@@ -27,6 +26,7 @@ import Tabs from './Tabs';
 import Text from './Text';
 import ToggleButton from './ToggleButton';
 import ToggleSwitch from './ToggleSwitch';
+import Trade from './Trade';
 
 export {
   AmountInput,
@@ -48,7 +48,6 @@ export {
   MiniTable,
   NavBar,
   PredictionCard,
-  QuickTrade,
   ScrollToTop,
   SearchBar,
   Select,
@@ -57,5 +56,6 @@ export {
   Tabs,
   Text,
   ToggleButton,
-  ToggleSwitch
+  ToggleSwitch,
+  Trade
 };

@@ -21,7 +21,7 @@ function TradeTerms() {
   }
 
   return (
-    <div className="trade__terms">
+    <div className="trade-terms">
       <Checkbox
         label="Accept rules of the agreement"
         checked={acceptRules}

@@ -37,14 +37,15 @@ const miniTableItems: Item[] = [
 type Variant = 'default' | 'primary' | 'success' | 'danger';
 
 type Button = {
+  id: string;
   name: string;
   variant: Variant;
   default: boolean;
 };
 
 const toggleButtonItems: Button[] = [
-  { name: 'Buy', variant: 'success', default: true },
-  { name: 'Sell', variant: 'danger', default: false }
+  { id: 'buy', name: 'Buy', variant: 'success', default: true },
+  { id: 'sell', name: 'Sell', variant: 'danger', default: false }
 ];
 
 export { markets, miniTableItems, toggleButtonItems };

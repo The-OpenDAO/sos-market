@@ -8,18 +8,6 @@
 
   padding: 0rem 2.4rem 2.4rem 2.4rem;
   background-color: $gray-900;
-
-  &__group {
-    @include flex-column;
-    gap: 1.6rem;
-    width: 100%;
-
-    > button {
-      > * {
-        margin-left: auto;
-      }
-    }
-  }
 }
 
 .trade-predictions {
@@ -73,7 +61,22 @@
   }
 }
 
+.trade-actions {
+  @include flex-column;
+  gap: 2.4rem;
+
+  width: 100%;
+}
+
+.trade-details {
+  @include flex-column;
+
+  width: 100%;
+}
+
 .trade-terms {
   @include flex-column;
   gap: 0.8rem;
+
+  width: 100%;
 }
