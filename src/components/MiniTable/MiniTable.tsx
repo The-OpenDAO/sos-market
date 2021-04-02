@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Text from '../Text';
 
 type Variant = 'default' | 'success' | 'danger' | 'warning';
@@ -10,11 +12,12 @@ type Item = {
 type MiniTableProps = {
   items: Item[];
   variant?: Variant;
+  style?: React.CSSProperties;
 };
 
-const MiniTable = ({ items, variant = 'default' }: MiniTableProps) => {
+function MiniTable({ items, variant = 'default', style }: MiniTableProps) {
   return (
-    <ul className="mini-table">
+    <ul className="mini-table" style={style}>
       {items?.map(item => (
         <li key={item.name} className={`mini-table__item--${variant}`}>
           <Text as="span" scale="tiny-uppercase" fontWeight="bold">
@@ -28,8 +31,8 @@ const MiniTable = ({ items, variant = 'default' }: MiniTableProps) => {
       ))}
     </ul>
   );
-};
+}
 
-MiniTable.displayName = 'Mini table';
+MiniTable.displayName = 'MiniTable';
 
 export default MiniTable;
