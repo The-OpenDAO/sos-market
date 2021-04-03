@@ -4,6 +4,7 @@ import TradeActions from './TradeActions';
 import TradeCharts from './TradeCharts';
 import TradeDetails from './TradeDetails';
 import TradeInput from './TradeInput';
+import TradeLiquidity from './TradeLiquidity';
 import TradePredictions from './TradePredictions';
 import TradeTerms from './TradeTerms';
 import TradeTypeSelector from './TradeTypeSelector';
@@ -15,13 +16,18 @@ function Trade() {
 
   return (
     <div className="trade">
-      <TradeCharts />
-      <TradePredictions />
-      <TradeTypeSelector />
-      <TradeInput max={0.0104} />
-      <TradeDetails />
-      <TradeTerms />
-      <TradeActions />
+      <div className="trade__group" style={{ gap: '1.6rem' }}>
+        <TradeCharts />
+        <TradePredictions />
+        <TradeLiquidity />
+      </div>
+      <div className="trade__group" style={{ gap: '2.4rem' }}>
+        <TradeTypeSelector />
+        <TradeInput max={0.0104} />
+        <TradeDetails />
+        <TradeTerms />
+        <TradeActions />
+      </div>
     </div>
   );
 }

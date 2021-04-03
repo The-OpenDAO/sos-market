@@ -51,6 +51,10 @@
   );
 }
 
+.button-fullWidth {
+  width: 100%;
+}
+
 @each $color-variant, $color in $theme-colors {
   .button-normal--#{$color-variant} {
     @extend %button;
