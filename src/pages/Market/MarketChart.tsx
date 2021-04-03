@@ -2,7 +2,9 @@ import React, { useState, useMemo } from 'react';
 
 import { CandleStickChartIcon, LineChartIcon } from 'assets/icons';
 
-import { CandleStickChart, ChartHeader, Text } from 'components';
+import { generateChartRandomData } from 'pages/Portfolio/utils';
+
+import { CandleStickChart, ChartHeader, LineChart, Text } from 'components';
 
 import { generateMarketChartRandomData } from './utils';
 
@@ -14,6 +16,9 @@ const MarketChart = () => {
     () => generateMarketChartRandomData(currentInterval),
     [currentInterval]
   );
+
+  const lineChartDataA = generateChartRandomData();
+  const lineChartDataB = generateChartRandomData(true);
 
   return (
     <div className="market-chart">
@@ -55,6 +60,18 @@ const MarketChart = () => {
       <div className="market-chart__view">
         {currentView === 'candleStick' ? (
           <CandleStickChart serie={randomMarketChartData} height={288} />
+        ) : null}
+        {currentView === 'line' ? (
+          <LineChart
+            series={[
+              { data: lineChartDataA },
+              {
+                data: lineChartDataB
+              }
+            ]}
+            ticker="DOT"
+            height={288}
+          />
         ) : null}
       </div>
     </div>

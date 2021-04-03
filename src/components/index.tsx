@@ -10,6 +10,7 @@ import Input from './Input';
 import InterfaceSettings from './InterfaceSettings';
 import Label from './Label';
 import Layout from './Layout';
+import LineChart from './LineChart';
 import MarketList from './MarketList';
 import MarketSelect from './MarketSelect';
 import MarketTable from './MarketTable';
@@ -42,6 +43,7 @@ export {
   InterfaceSettings,
   Label,
   Layout,
+  LineChart,
   MarketList,
   MarketSelect,
   MarketTable,
