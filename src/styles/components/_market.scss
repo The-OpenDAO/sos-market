@@ -124,36 +124,6 @@
 
     &-actions {
       @include flex-row;
-      gap: 4.8rem;
-
-      &__interval,
-      &__view {
-        @include flex-row;
-        gap: 0.8rem;
-
-        &-item {
-          @extend %button;
-          padding: 0.4rem 0.8rem;
-          border: 0.1rem solid $gray-600;
-          border-radius: 0.4rem;
-
-          background-color: $gray-1000;
-          color: $gray-500;
-
-          > svg {
-            fill: $gray-500;
-          }
-
-          &.active {
-            background-color: $gray-600;
-            color: $gray-100;
-
-            > svg {
-              fill: $gray-100;
-            }
-          }
-        }
-      }
     }
   }
 
