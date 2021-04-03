@@ -31,6 +31,11 @@ type ButtonProps = {
    * @default 'medium'
    */
   size?: ButtonSize;
+  /**
+   * Fill available width
+   * @default 'false'
+   */
+  fullWidth?: boolean;
 };
 
 /**
@@ -45,6 +50,7 @@ const Button = React.forwardRef<
       variant = 'normal',
       color = 'default',
       size,
+      fullWidth = false,
       children,
       onClick,
       ...props
@@ -56,7 +62,8 @@ const Button = React.forwardRef<
       type="button"
       className={classNames(
         `button-${variant}--${color}`,
-        size && `button-${size}`
+        size && `button-${size}`,
+        fullWidth && 'button-fullWidth'
       )}
       onClick={onClick}
       {...props}
