@@ -1,4 +1,4 @@
-function generateCustomOptions(ticker: string) {
+function generateCustomOptions(ticker: string, showGrid: boolean) {
   return {
     chart: {
       toolbar: {
@@ -9,7 +9,7 @@ function generateCustomOptions(ticker: string) {
     tooltip: {
       custom({ series, seriesIndex, dataPointIndex }) {
         return `<div class="apexcharts-tooltip-box">
-            <span> ${series[seriesIndex][dataPointIndex]} DOT</span>
+            <span> ${series[seriesIndex][dataPointIndex]} ${ticker}</span>
             </div>`;
       }
     },
@@ -44,6 +44,7 @@ function generateCustomOptions(ticker: string) {
     xaxis: {
       type: 'datetime',
       labels: {
+        show: showGrid,
         format: 'hh:mm TT'
       },
       tooltip: {
@@ -58,6 +59,7 @@ function generateCustomOptions(ticker: string) {
     },
     yaxis: {
       labels: {
+        show: showGrid,
         formatter(value) {
           return `${value} ${ticker}`;
         },
@@ -65,7 +67,7 @@ function generateCustomOptions(ticker: string) {
       }
     },
     grid: {
-      show: true,
+      show: showGrid,
       borderColor: '#252C3B',
       strokeDashArray: 5,
       position: 'back',

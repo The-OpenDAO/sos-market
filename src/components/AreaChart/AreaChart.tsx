@@ -14,10 +14,19 @@ type AreaChartProps = {
   serie: Event[];
   ticker: string;
   height?: number | string;
+  showGrid?: boolean;
 };
 
-const AreaChart = ({ serie, ticker, height = 200 }: AreaChartProps) => {
-  const customOptions = useMemo(() => generateCustomOptions(ticker), [ticker]);
+const AreaChart = ({
+  serie,
+  ticker,
+  height = 200,
+  showGrid = true
+}: AreaChartProps) => {
+  const customOptions = useMemo(() => generateCustomOptions(ticker, showGrid), [
+    ticker,
+    showGrid
+  ]);
 
   return (
     <ReactApexChart
