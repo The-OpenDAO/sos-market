@@ -8,7 +8,8 @@ import generateCustomOptions from './options';
 const colors = {
   primary: '#5751fc',
   success: '#46d39a',
-  danger: '#ef4444'
+  danger: '#ef4444',
+  white: '#FFFFFF'
 };
 
 type Event = {
@@ -24,14 +25,16 @@ type MiniAreaChartProps = {
   serie: Event[];
   strokeCurve?: StrokeCurve;
   color?: Color;
-  height?: number;
+  height?: number | string;
+  width?: number | string;
 };
 
 function MiniAreaChart({
   serie,
   strokeCurve = 'smooth',
   color = 'primary',
-  height = 30
+  height = 30,
+  width = 50
 }: MiniAreaChartProps) {
   const customOptions = useMemo(
     () => generateCustomOptions(strokeCurve, colors[color]),
@@ -42,7 +45,7 @@ function MiniAreaChart({
       options={customOptions}
       series={[{ data: serie }]}
       type="area"
-      width={50}
+      width={width}
       height={height}
     />
   );
