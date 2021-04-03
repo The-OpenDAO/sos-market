@@ -10,6 +10,9 @@ type ItemProps = {
   children: React.ReactNode;
 };
 
+/**
+ * Menu item
+ */
 const Item = ({ style, children, ...props }: ItemProps) => {
   return (
     <li className="menu__item" style={style} {...props}>
@@ -17,6 +20,8 @@ const Item = ({ style, children, ...props }: ItemProps) => {
     </li>
   );
 };
+
+Item.displayName = 'MenuItem';
 
 type MenuDirection = 'row' | 'column';
 
