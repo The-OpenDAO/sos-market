@@ -1,12 +1,25 @@
-import React from 'react';
+import { useEffect } from 'react';
+
+import { changeTradeVisibility } from 'redux/ducks/trade';
 
 import { MarketTable, Text } from 'components';
+
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 import { portfolioCards, markets } from './mock';
 import PortfolioCard from './PortfolioCard';
 import PortfolioChart from './PortfolioChart';
 
 const PortfolioPage = () => {
+  const dispatch = useAppDispatch();
+  const visible = useAppSelector(state => state.trade.visible);
+
+  useEffect(() => {
+    if (visible) {
+      dispatch(changeTradeVisibility(false));
+    }
+  }, [dispatch, visible]);
+
   return (
     <div className="portfolio-page">
       <div className="portfolio-page__header">
