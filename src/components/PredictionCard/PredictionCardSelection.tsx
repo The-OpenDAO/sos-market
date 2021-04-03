@@ -8,8 +8,11 @@ import {
 
 import { ArrowUpIcon, ArrowDownIcon } from 'assets/icons';
 
+import { generateChartRandomData } from 'pages/Portfolio/utils';
+
 import { useAppDispatch, useAppSelector } from 'hooks';
 
+import MiniAreaChart from '../MiniAreaChart';
 import Text from '../Text';
 
 type ChangeType = 'up' | 'down';
@@ -78,6 +81,8 @@ function PredictionCardSelectionItem({
     }
   }
 
+  const chartData = generateChartRandomData();
+
   return (
     <button
       type="button"
@@ -87,19 +92,25 @@ function PredictionCardSelectionItem({
       })}
       onClick={handleItemSelection}
     >
-      <Text as="p" scale="caption" fontWeight="semibold">
-        {name}
-      </Text>
-      <div className="prediction-card-selection__item-odd">
-        <Text as="p" scale="tiny-uppercase" fontWeight="bold">
-          ODD
+      <div className="prediction-card-selection__item-group">
+        <Text as="p" scale="caption" fontWeight="semibold">
+          {name}
         </Text>
-        <Text as="span" scale="tiny" fontWeight="bold">
-          {odd}
-        </Text>
-        {oddChange.type === 'up' ? <ArrowUpIcon /> : null}
-        {oddChange.type === 'down' ? <ArrowDownIcon /> : null}
+        <div className="prediction-card-selection__item-odd">
+          <Text as="p" scale="tiny-uppercase" fontWeight="bold">
+            ODD
+          </Text>
+          <Text as="span" scale="tiny" fontWeight="bold">
+            {odd}
+          </Text>
+          {oddChange.type === 'up' ? <ArrowUpIcon /> : null}
+          {oddChange.type === 'down' ? <ArrowDownIcon /> : null}
+        </div>
       </div>
+      <MiniAreaChart
+        serie={chartData}
+        color={oddChange.type === 'up' ? 'success' : 'danger'}
+      />
     </button>
   );
 }

@@ -14,6 +14,7 @@ import MarketList from './MarketList';
 import MarketSelect from './MarketSelect';
 import MarketTable from './MarketTable';
 import Menu from './Menu';
+import MiniAreaChart from './MiniAreaChart';
 import MiniTable from './MiniTable';
 import NavBar from './NavBar';
 import PredictionCard from './PredictionCard';
@@ -45,6 +46,7 @@ export {
   MarketSelect,
   MarketTable,
   Menu,
+  MiniAreaChart,
   MiniTable,
   NavBar,
   PredictionCard,

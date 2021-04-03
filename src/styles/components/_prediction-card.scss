@@ -46,8 +46,8 @@
   gap: 1.6rem;
 
   &__item {
-    @include flex-column;
-    gap: 0.2rem;
+    @include flex-row;
+    gap: 4.2rem;
 
     padding: 1.6rem;
 
@@ -65,6 +65,10 @@
 
     &:hover {
       @include border($gray-600);
+    }
+
+    &-group {
+      @include flex-column(center, flex-start);
     }
 
     &-odd {
