@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import {
+  changeChartsVisibility,
+  changePredictionsVisibility
+} from 'redux/ducks/trade';
+
+import { useAppDispatch } from 'hooks';
+
 import PredictionCardDetails from './PredictionCardDetails';
 import PredictionCardFooter from './PredictionCardFooter';
 import PredictionCardSelection from './PredictionCardSelection';
@@ -35,14 +42,29 @@ type PredictionCardProps = {
 };
 
 function PredictionCard({ market }: PredictionCardProps) {
-  const [showFooter, setShowFooter] = useState(false);
+  const dispatch = useAppDispatch();
 
-  const { id, imageUrl, section, subsection, description, options } = market;
+  const {
+    id,
+    imageUrl,
+    section,
+    subsection,
+    description,
+    options,
+    volume,
+    expiration,
+    liquidity
+  } = market;
+
+  function handleNavigation() {
+    dispatch(changeChartsVisibility(false));
+    dispatch(changePredictionsVisibility(true));
+  }
 
   return (
     <div className="prediction-card">
       <div className="prediction-card__content">
-        <Link to={`/markets/${id}`}>
+        <Link to={`/markets/${id}`} onClick={handleNavigation}>
           <PredictionCardDetails
             imageUrl={imageUrl}
             section={section}
@@ -52,15 +74,12 @@ function PredictionCard({ market }: PredictionCardProps) {
         </Link>
         <PredictionCardSelection predictions={options} />
       </div>
-
-      {showFooter ? (
-        <PredictionCardFooter
-          volume={0}
-          expiration=""
-          liquidity={0}
-          favorite={false}
-        />
-      ) : null}
+      <PredictionCardFooter
+        volume={volume}
+        expiration={expiration}
+        liquidity={liquidity}
+        favorite={false}
+      />
     </div>
   );
 }
