@@ -1,6 +1,5 @@
 .prediction-card {
   @include flex-column;
-  padding: 1.6rem;
 
   border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
   transition: background-color 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
@@ -11,6 +10,8 @@
   &__content {
     @include flex-row(space-between, center);
     gap: 2.4rem;
+
+    padding: 1.6rem;
   }
 }
 

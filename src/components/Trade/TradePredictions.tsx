@@ -8,11 +8,13 @@ import Text from '../Text';
 
 function TradePredictions() {
   const dispatch = useAppDispatch();
-
+  const showPredictions = useAppSelector(state => state.trade.showPredictions);
   const predictions = useAppSelector(state => state.trade.predictions);
   const selectedPredictionId = useAppSelector(
     state => state.trade.selectedPredictionId
   );
+
+  if (!showPredictions) return null;
 
   function handleChangeSelectedPrediction(id: string) {
     dispatch(setSelectedPrediction(id));
