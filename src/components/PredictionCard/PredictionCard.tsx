@@ -1,75 +1,69 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { markets } from 'pages/Market/mock';
+import PredictionCardDetails from './PredictionCardDetails';
+import PredictionCardFooter from './PredictionCardFooter';
+import PredictionCardSelection from './PredictionCardSelection';
 
-import Breadcrumb from '../Breadcrumb';
-import Text from '../Text';
-import PredictionSelection from './PredictionSelection';
+type ChangeType = 'up' | 'down';
 
-type Market = typeof markets[0];
+type Option = {
+  id: number | string;
+  name: string;
+  odd: number;
+  oddChange: {
+    type: ChangeType;
+  };
+};
+
+type Market = {
+  id: string | number;
+  imageUrl: string;
+  section: string;
+  subsection: string;
+  description: string;
+  options: Option[];
+  volume: number;
+  expiration: string;
+  liquidity: number;
+  favorite: boolean;
+};
 
 type PredictionCardProps = {
   market: Market;
 };
 
-const PredictionCard = ({ market }: PredictionCardProps) => {
+function PredictionCard({ market }: PredictionCardProps) {
+  const [showFooter, setShowFooter] = useState(false);
+
+  const { id, imageUrl, section, subsection, description, options } = market;
+
   return (
-    <div className="prediction-card-container">
-      <div className="prediction-card">
-        <img
-          className="prediction-card__image"
-          alt="prediction card"
-          src={market.imageUrl}
+    <div className="prediction-card">
+      <div className="prediction-card__content">
+        <Link to={`/markets/${id}`}>
+          <PredictionCardDetails
+            imageUrl={imageUrl}
+            section={section}
+            subsection={subsection}
+            description={description}
+          />
+        </Link>
+        <PredictionCardSelection predictions={options} />
+      </div>
+
+      {showFooter ? (
+        <PredictionCardFooter
+          volume={0}
+          expiration=""
+          liquidity={0}
+          favorite={false}
         />
-        <div className="prediction-card__details">
-          <Breadcrumb>
-            <Breadcrumb.Item>
-              <Link to={`/${market.section}`}>{market.section}</Link>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>{market.subsection}</Breadcrumb.Item>
-          </Breadcrumb>
-          <Text as="p" scale="body" fontWeight="medium">
-            {market.description}
-          </Text>
-        </div>
-        <ul className="prediction-card__actions">
-          {market.options?.map(option => (
-            <li key={option.id}>
-              <PredictionSelection
-                name={option.name}
-                odd={option.odd}
-                positive={option.positive}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="prediction-card-footer">
-        <div className="prediction-card-footer__stats">
-          <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
-            {`Volume: `}
-            <Text as="strong" scale="tiny-uppercase" fontWeight="semibold">
-              {`${market.volume} DOT`}
-            </Text>
-          </Text>
-          <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
-            {`Expiration: `}
-            <Text as="strong" scale="tiny-uppercase" fontWeight="semibold">
-              {market.expiration}
-            </Text>
-          </Text>
-          <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
-            {`Liquidity: `}
-            <Text as="strong" scale="tiny-uppercase" fontWeight="semibold">
-              {`${market.liquidity} DOT`}
-            </Text>
-          </Text>
-        </div>
-      </div>
+      ) : null}
     </div>
   );
-};
+}
 
-PredictionCard.displayName = 'Prediction card';
+PredictionCard.displayName = 'PredictionCard';
 
 export default PredictionCard;

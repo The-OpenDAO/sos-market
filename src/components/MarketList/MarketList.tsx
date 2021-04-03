@@ -1,5 +1,4 @@
 import { createContext, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 
@@ -22,9 +21,7 @@ const Item = ({ index, style }: ListChildComponentProps) => {
         bottom: (style.bottom as number) + 5
       }}
     >
-      <Link to={`/markets/${market.id}`}>
-        <PredictionCard market={market} />
-      </Link>
+      <PredictionCard market={market} />
     </li>
   );
 };

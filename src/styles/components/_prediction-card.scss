@@ -1,94 +1,91 @@
-.prediction-card-container {
-  display: flex;
-  flex-direction: column;
+.prediction-card {
+  @include flex-column;
+  padding: 1.6rem;
 
   border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
   transition: background-color 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
 
   background-color: $card-background-dark;
   box-shadow: $card-shadow-dark;
+
+  &__content {
+    @include flex-row(space-between, center);
+    gap: 2.4rem;
+  }
 }
 
-.prediction-card {
-  display: flex;
-  flex-grow: 1;
-
-  padding: 1.6rem;
+.prediction-card-details {
+  @include flex-row(flex-start, center);
+  gap: 2.4rem;
 
   &__image {
-    object-fit: cover;
-    border-radius: 50%;
-
     height: 6.4rem;
     width: 6.4rem;
 
-    margin-right: 2.4rem;
+    object-fit: cover;
+    border-radius: 50%;
   }
 
-  &__details {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-
+  &__description {
+    @include flex-column(center, flex-start);
     gap: 0.8rem;
-    margin-right: 3.2rem;
 
-    > p {
+    p {
+      color: $gray-100;
+
       overflow-wrap: break-word;
       word-wrap: break-word;
       hyphens: auto;
-
-      color: $gray-100;
-    }
-  }
-
-  &__actions {
-    display: flex;
-    gap: 1.6rem;
-
-    > li {
-      display: inline;
     }
   }
 }
 
-.prediction-selection {
-  cursor: pointer;
-  touch-action: manipulation;
+.prediction-card-selection {
+  @include flex-row(center, center);
+  gap: 1.6rem;
 
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 0.2rem;
+  &__item {
+    @include flex-column;
+    gap: 0.2rem;
 
-  width: 18.9rem;
-  padding: 1.6rem;
+    padding: 1.6rem;
 
-  > p {
-    color: $gray-100;
-  }
+    cursor: pointer;
+    touch-action: manipulation;
 
-  border: 0.1rem solid $gray-600;
-  border-radius: 0.4rem;
-  transition: background-color 0.3s ease 0s;
-
-  &:hover {
     background-color: $gray-900;
-  }
+    @include border($gray-900);
 
-  &__odd {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
+    transition: all 0.3s ease 0s;
 
-    > p {
-      color: $neutral-white-50;
+    p {
+      color: $gray-100;
     }
 
-    > span {
-      color: $gray-100;
+    &:hover {
+      @include border($gray-600);
+    }
+
+    &-odd {
+      @include flex-row(flex-start, center);
+      gap: 0.3rem;
+
+      p {
+        color: $neutral-white-50;
+      }
+
+      span {
+        color: $gray-100;
+      }
+    }
+
+    &.active {
+      background: linear-gradient(
+        90deg,
+        rgba(87, 81, 252, 0.4) 0%,
+        rgba(87, 81, 252, 0.14) 100%
+      );
+      @include border($primary-500);
     }
   }
 }

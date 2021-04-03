@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type TradeType = 'buy' | 'sell' | string;
 
 type Prediction = {
-  id: string;
+  id: number | string;
   name: string;
   odd: number;
   pricePerFraction: number;
@@ -18,7 +18,7 @@ type PredictionDetails = {
 };
 
 const initialState = {
-  visible: true,
+  visible: false,
   showCharts: false,
   showPredictions: false,
   type: 'buy',
@@ -66,11 +66,11 @@ const tradeSlice = createSlice({
       ...state,
       type: action.payload
     }),
-    setSelectedPrediction: (state, action: PayloadAction<string>) => ({
+    setSelectedPrediction: (state, action) => ({
       ...state,
       selectedPredictionId: action.payload
     }),
-    setPredictions: (state, action: PayloadAction<Prediction[]>) => ({
+    setPredictions: (state, action) => ({
       ...state,
       predictions: action.payload
     }),
@@ -104,6 +104,7 @@ const {
   changePredictionsVisibility,
   changeTradeType,
   setSelectedPrediction,
+  setPredictions,
   setPredictionDetails,
   toggleAcceptRules,
   toggleAcceptOddChanges
@@ -115,6 +116,7 @@ export {
   changePredictionsVisibility,
   changeTradeType,
   setSelectedPrediction,
+  setPredictions,
   setPredictionDetails,
   toggleAcceptRules,
   toggleAcceptOddChanges
