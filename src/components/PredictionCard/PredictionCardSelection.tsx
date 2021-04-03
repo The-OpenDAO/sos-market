@@ -15,6 +15,8 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 import MiniAreaChart from '../MiniAreaChart';
 import Text from '../Text';
 
+const chartData = generateChartRandomData();
+
 type ChangeType = 'up' | 'down';
 
 type PredictionCardSelectionItemProps = {
@@ -80,8 +82,6 @@ function PredictionCardSelectionItem({
       removePredictions();
     }
   }
-
-  const chartData = generateChartRandomData();
 
   return (
     <button
