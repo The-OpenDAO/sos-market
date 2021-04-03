@@ -3,6 +3,7 @@ import Breadcrumb from './Breadcrumb';
 import Button from './Button';
 import CandleStickChart from './CandleStickChart';
 import Categories from './Categories';
+import ChartHeader from './ChartHeader';
 import Checkbox from './Checkbox';
 import FeaturedCard from './FeaturedCard';
 import Input from './Input';
@@ -33,6 +34,7 @@ export {
   Button,
   CandleStickChart,
   Categories,
+  ChartHeader,
   Checkbox,
   FeaturedCard,
   Input,

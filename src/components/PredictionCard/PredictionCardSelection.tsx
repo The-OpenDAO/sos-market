@@ -2,7 +2,8 @@ import classNames from 'classnames';
 import {
   changeTradeVisibility,
   setSelectedPrediction,
-  setPredictions
+  setPredictions,
+  changeChartsVisibility
 } from 'redux/ducks/trade';
 
 import { ArrowUpIcon, ArrowDownIcon } from 'assets/icons';
@@ -64,6 +65,7 @@ function PredictionCardSelectionItem({
       dispatch(changeTradeVisibility(true));
     }
 
+    dispatch(changeChartsVisibility(true));
     updatePredictions();
 
     if (id !== selectedPredictionId) {
@@ -71,6 +73,7 @@ function PredictionCardSelectionItem({
     } else if (id === selectedPredictionId) {
       dispatch(setSelectedPrediction(''));
       dispatch(changeTradeVisibility(false));
+      dispatch(changeChartsVisibility(false));
       removePredictions();
     }
   }

@@ -7,10 +7,12 @@
 
   .apexcharts-tooltip-box {
     padding: 1.6rem;
-    
-    > span {
-      @extend .caption, .bold;
-      color: $gray-100;
+
+    @extend .caption, .bold;
+    color: $gray-300 !important;
+
+    span {
+      color: $gray-100 !important;
     }
   }
 }
