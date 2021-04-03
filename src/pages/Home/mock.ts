@@ -61,7 +61,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'up'
-        }
+        },
+        pricePerFraction: 0
       },
       {
         id: '11fewrf',
@@ -69,7 +70,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'down'
-        }
+        },
+        pricePerFraction: 0
       }
     ]
   },
@@ -92,7 +94,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'down'
-        }
+        },
+        pricePerFraction: 0
       },
       {
         id: '12aSASas',
@@ -100,7 +103,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'up'
-        }
+        },
+        pricePerFraction: 0
       }
     ]
   },
@@ -123,7 +127,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'up'
-        }
+        },
+        pricePerFraction: 0
       },
       {
         id: '13asadada',
@@ -131,7 +136,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'down'
-        }
+        },
+        pricePerFraction: 0
       }
     ]
   },
@@ -153,7 +159,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'up'
-        }
+        },
+        pricePerFraction: 0
       },
       {
         id: '14asdewqref',
@@ -161,7 +168,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'down'
-        }
+        },
+        pricePerFraction: 0
       }
     ]
   },
@@ -183,7 +191,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'down'
-        }
+        },
+        pricePerFraction: 0
       },
       {
         id: '15adacAA',
@@ -191,7 +200,8 @@ const markets = [
         odd: 0.26,
         oddChange: {
           type: 'up'
-        }
+        },
+        pricePerFraction: 0
       }
     ]
   }

@@ -14,6 +14,7 @@ type Option = {
   oddChange: {
     type: ChangeType;
   };
+  pricePerFraction: number;
 };
 
 type Market = {

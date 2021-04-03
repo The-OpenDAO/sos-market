@@ -110,6 +110,7 @@ type Prediction = {
   oddChange: {
     type: ChangeType;
   };
+  pricePerFraction: number;
 };
 
 type PredictionSelectionProps = {
