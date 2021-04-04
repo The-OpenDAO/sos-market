@@ -1,0 +1,9 @@
+@import '~rc-slider/assets/index.css';
+
+.rc-slider-mark-text {
+  margin-left: 0.1rem !important;
+  margin-top: -0.5rem !important;
+
+  @extend .tiny, .semibold;
+  color: $gray-300 !important;
+}

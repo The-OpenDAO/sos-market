@@ -23,6 +23,7 @@ import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
 import Select from './Select';
 import Sidebar from './Sidebar';
+import StepSlider from './StepSlider';
 import Table from './Table';
 import Tabs from './Tabs';
 import Text from './Text';
@@ -56,6 +57,7 @@ export {
   SearchBar,
   Select,
   Sidebar,
+  StepSlider,
   Table,
   Tabs,
   Text,

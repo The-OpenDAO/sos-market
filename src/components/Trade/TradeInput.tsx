@@ -4,6 +4,7 @@ import { WalletIcon, PolkadotIcon } from 'assets/icons';
 
 import { useAppSelector } from 'hooks';
 
+import StepSlider from '../StepSlider';
 import Text from '../Text';
 
 type TradeInputProps = {
@@ -24,6 +25,12 @@ function TradeInput({ max }: TradeInputProps) {
 
   function handleSetMaxAmount() {
     setAmount(max);
+  }
+
+  function handleChangeSlider(value: number) {
+    const percentage = value / 100;
+
+    setAmount(max * percentage);
   }
 
   return (
@@ -71,6 +78,7 @@ function TradeInput({ max }: TradeInputProps) {
           </div>
         </div>
       </div>
+      <StepSlider onChange={value => handleChangeSlider(value)} />
     </form>
   );
 }

@@ -6,6 +6,7 @@
 
 // 2. Vendors
 @import 'vendors/apex-charts';
+@import 'vendors/rc-slider';
 
 // 3. Base stuff
 @import 'base/reset';
@@ -34,6 +35,7 @@
 @import 'components/prediction-card';
 @import 'components/searchbar';
 @import 'components/select';
+@import 'components/step-slider';
 @import 'components/table';
 @import 'components/tabs';
 @import 'components/text';
