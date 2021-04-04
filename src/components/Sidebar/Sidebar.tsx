@@ -16,7 +16,7 @@ import Text from '../Text';
 import { navigationLinks, footerLinks } from './mock';
 
 const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const { markets } = navigationLinks;
 
   function toggleCollapsed() {
