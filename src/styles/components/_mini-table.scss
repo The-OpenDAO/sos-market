@@ -1,83 +1,24 @@
 .mini-table {
-  display: flex;
-  flex-direction: column;
-
+  @include flex-column;
   gap: 0.4rem;
-}
 
-.mini-table__item {
-  display: flex;
-  gap: 0.8rem;
+  &__item {
+    @include flex-row;
+    gap: 0.8rem;
 
-  .fill {
-    flex-grow: 1;
+    .fill-empty-space {
+      flex-grow: 1;
 
-    align-self: center;
-    border: none;
-    border-bottom: 0.1rem dashed;
+      align-self: center;
+      border: none;
+      border-bottom: 0.1rem dashed;
+    }
   }
 }
 
-.mini-table__item--default {
-  @extend .mini-table__item;
-
-  > span {
-    color: $gray-500;
-  }
-
-  .fill {
-    border-color: $gray-500;
-  }
-
-  > strong {
-    color: $gray-100;
-  }
-}
-
-.mini-table__item--success {
-  @extend .mini-table__item;
-
-  > span {
-    color: $success-500;
-  }
-
-  .fill {
-    border-color: $success-500;
-  }
-
-  > strong {
-    color: $success-500;
-  }
-}
-
-.mini-table__item--danger {
-  @extend .mini-table__item;
-
-  > span {
-    color: $danger-500;
-  }
-
-  .fill {
-    border-color: $danger-500;
-  }
-
-  > strong {
-    color: $danger-500;
-  }
-}
-
-.mini-table__item--warning {
-  @extend .mini-table__item;
-
-  > span {
-    color: $warning-500;
-  }
-
-  .fill {
-    border-color: $warning-500;
-  }
-
-  > strong {
-    color: $warning-500;
+@each $color-variant, $color in $theme-colors {
+  .mini-table__item--#{$color-variant} {
+    @extend .mini-table__item;
+    @include mini-table-item-color($color-variant, $color);
   }
 }

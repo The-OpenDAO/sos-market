@@ -10,21 +10,29 @@ function formatMiniTableItems(
   );
 
   return [
-    { name: 'Prediction', value: selectedPredictionObj?.name || '' },
     {
-      name: 'Price per fraction',
+      key: 'prediction',
+      title: 'Prediction',
+      value: selectedPredictionObj?.name || ''
+    },
+    {
+      key: 'pricePerFraction',
+      title: 'Price per fraction',
       value: `${selectedPredictionObj?.pricePerFraction || 0} DOT`
     },
     {
-      name: 'Fractions bought',
+      key: 'fractionsBought',
+      title: 'Fractions bought',
       value: fractionsBought
     },
     {
-      name: 'Current ROI',
+      key: 'roi',
+      title: 'Current ROI',
       value: `${currentROI}%`
     },
     {
-      name: 'Total stake',
+      key: 'stake',
+      title: 'Total stake',
       value: `${totalStake} DOT`
     }
   ];

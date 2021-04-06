@@ -2,28 +2,48 @@ import React from 'react';
 
 import Text from '../Text';
 
-type Variant = 'default' | 'success' | 'danger' | 'warning';
+type MiniTableColor = 'default' | 'success' | 'danger' | 'warning';
 
-type Item = {
-  name: string;
+type MiniTableRow = {
+  /**
+   * Unique key of this row
+   */
+  key: string;
+  /**
+   * Title of this row
+   */
+  title: string;
+  /**
+   * Value of this row
+   */
   value: string | number;
 };
 
 type MiniTableProps = {
-  items: Item[];
-  variant?: Variant;
+  /**
+   * Array of rows to be displayed
+   */
+  rows: MiniTableRow[];
+  /**
+   * Color of the component
+   * @default 'default'
+   */
+  color?: MiniTableColor;
+  /**
+   * Aditional CSS inline style
+   */
   style?: React.CSSProperties;
 };
 
-function MiniTable({ items, variant = 'default', style }: MiniTableProps) {
+function MiniTable({ rows, color = 'default', style }: MiniTableProps) {
   return (
     <ul className="mini-table" style={style}>
-      {items?.map(item => (
-        <li key={item.name} className={`mini-table__item--${variant}`}>
+      {rows?.map(item => (
+        <li key={item.key} className={`mini-table__item--${color}`}>
           <Text as="span" scale="tiny-uppercase" fontWeight="bold">
-            {item.name}
+            {item.title}
           </Text>
-          <div className="fill" />
+          <div className="fill-empty-space" />
           <Text as="strong" scale="caption" fontWeight="bold">
             {item.value}
           </Text>

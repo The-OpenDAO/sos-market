@@ -25,19 +25,25 @@ function TradeDetails() {
 
   return (
     <div className="trade-details">
-      <MiniTable items={miniTableItems} style={{ paddingBottom: '0.4rem' }} />
+      <MiniTable rows={miniTableItems} style={{ paddingBottom: '0.4rem' }} />
       {type === 'buy' ? (
         <MiniTable
-          items={[
-            { name: 'Potential returns', value: `${potentialReturns} DOT` }
+          rows={[
+            {
+              key: 'returns',
+              title: 'Potential returns',
+              value: `${potentialReturns} DOT`
+            }
           ]}
-          variant="success"
+          color="success"
         />
       ) : null}
       {type === 'sell' ? (
         <MiniTable
-          items={[{ name: 'Loss amount', value: `${lossAmount} DOT` }]}
-          variant="danger"
+          rows={[
+            { key: 'loss', title: 'Loss amount', value: `${lossAmount} DOT` }
+          ]}
+          color="danger"
         />
       ) : null}
     </div>

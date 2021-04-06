@@ -46,8 +46,12 @@ function TradePredictions() {
             </Text>
           </div>
           <MiniTable
-            items={[
-              { name: 'Price Per Fraction', value: prediction.pricePerFraction }
+            rows={[
+              {
+                key: 'pricePerFraction',
+                title: 'Price Per Fraction',
+                value: prediction.pricePerFraction
+              }
             ]}
           />
         </div>

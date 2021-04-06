@@ -1,0 +1,27 @@
+@mixin mini-table-item-color($color-variant, $color) {
+  @if $color-variant == default {
+    span {
+      color: $gray-500;
+    }
+
+    .fill-empty-space {
+      border-color: $gray-500;
+    }
+
+    strong {
+      color: $gray-100;
+    }
+  } @else {
+    span {
+      color: $color;
+    }
+
+    .fill-empty-space {
+      border-color: $color;
+    }
+
+    strong {
+      color: $color;
+    }
+  }
+}

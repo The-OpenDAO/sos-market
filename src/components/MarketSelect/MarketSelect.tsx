@@ -9,7 +9,8 @@ type Market = {
   prediction: string;
   odd: number;
   tableItems: {
-    name: string;
+    key: string;
+    title: string;
     value: number | string;
   }[];
 };
@@ -62,7 +63,7 @@ const MarketSelect = ({ markets }: MarketSelectProps) => {
               </Text>
             </Text>
           </div>
-          <MiniTable items={market.tableItems} />
+          <MiniTable rows={market.tableItems} />
         </div>
       ))}
     </div>
