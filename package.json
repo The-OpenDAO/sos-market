@@ -15,6 +15,7 @@
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "@types/react-window": "^1.8.2",
     "apexcharts": "^3.26.0",
+    "bepro-js": "bepronetwork/bepro-js#feature/prediction-markets",
     "classnames": "^2.2.6",
     "craco-plugin-style-resources-loader": "0.0.3",
     "dayjs": "^1.10.4",
