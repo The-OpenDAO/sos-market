@@ -6,7 +6,6 @@ import ChartHeader from './ChartHeader';
 import Checkbox from './Checkbox';
 import FeaturedCard from './FeaturedCard';
 import Input from './Input';
-import InterfaceSettings from './InterfaceSettings';
 import Label from './Label';
 import Layout from './Layout';
 import LineChart from './LineChart';
@@ -39,7 +38,6 @@ export {
   Checkbox,
   FeaturedCard,
   Input,
-  InterfaceSettings,
   Label,
   Layout,
   LineChart,
