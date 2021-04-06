@@ -1,20 +1,56 @@
+import React, { useState } from 'react';
+
 import { SearchIcon } from 'assets/icons';
 
-const SearchBar = () => {
+type SearchBarProps = {
+  /**
+   * Name of the component
+   */
+  name: string;
+  /**
+   * Placeholder of the input field
+   */
+  placeholder?: string;
+  /**
+   * The callback function triggered when click or press Enter on search button
+   */
+  onSearch: (text: string) => void;
+};
+
+/**
+ * A search bar with standard search input
+ */
+function SearchBar({ name, placeholder, onSearch }: SearchBarProps) {
+  const [searchText, setSearchText] = useState('');
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = event.currentTarget;
+
+    setSearchText(value);
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    onSearch(searchText);
+  }
+
   return (
-    <form className="searchbar">
+    <form className="searchbar" onSubmit={handleSubmit}>
       <input
-        className="searchbar__input"
-        name="search"
-        placeholder="Search markets"
         type="text"
+        className="searchbar__input"
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        onChange={handleChange}
       />
       <button className="searchbar__icon" type="submit" aria-label="Search">
         <SearchIcon />
       </button>
     </form>
   );
-};
+}
 
 SearchBar.displayName = 'SearchBar';
 
