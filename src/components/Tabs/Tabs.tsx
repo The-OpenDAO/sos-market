@@ -10,13 +10,13 @@ import classNames from 'classnames';
 
 const ActiveTabContext = createContext({});
 
-const getChildrenTabs = (children): { name: string; id: string }[] => {
+function getChildrenTabs(children): { name: string; id: string }[] {
   const tabs = React.Children.map(children, child => {
     return { name: child.props.tab, id: child.props.id };
   });
 
   return tabs;
-};
+}
 
 type TabPaneProps = {
   /**
@@ -30,13 +30,13 @@ type TabPaneProps = {
   children?: React.ReactNode;
 };
 
-const TabPane = ({ tab, id, children }: TabPaneProps) => {
+function TabPane({ tab, id, children }: TabPaneProps) {
   const activeTab = useContext(ActiveTabContext);
 
   if (activeTab !== id || !tab) return null;
 
   return <>{children}</>;
-};
+}
 
 type TabsProps = {
   /**
@@ -54,7 +54,7 @@ type TabsProps = {
 /**
  * Tabs to switch between different views
  */
-const Tabs = ({ direction = 'row', defaultActiveId, children }: TabsProps) => {
+function Tabs({ direction = 'row', defaultActiveId, children }: TabsProps) {
   const [activeTab, setActiveTab] = useState<string | undefined>(undefined);
 
   const tabs = useMemo(() => getChildrenTabs(children), [children]);
@@ -93,9 +93,8 @@ const Tabs = ({ direction = 'row', defaultActiveId, children }: TabsProps) => {
       </ActiveTabContext.Provider>
     </div>
   );
-};
+}
 
-TabPane.displayName = 'TabPane';
 Tabs.displayName = 'Tabs';
 
 Tabs.TabPane = TabPane;
