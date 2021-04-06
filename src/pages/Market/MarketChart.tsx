@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 
 import { CandleStickChartIcon, LineChartIcon } from 'assets/icons';
 
@@ -51,7 +51,7 @@ const MarketChart = () => {
             ]}
             defaultIntervalId="hour"
             defaultViewId="candleStick"
-            onChangeInterval={(interval, value) => setCurrentInterval(value)}
+            onChangeInterval={(_interval, value) => setCurrentInterval(value)}
             onChangeView={view => setCurrentView(view)}
           />
         </div>

@@ -4,14 +4,12 @@ type PredictionCardFooterProps = {
   volume: number;
   expiration: string;
   liquidity: number;
-  favorite: boolean;
 };
 
 function PredictionCardFooter({
   volume,
   expiration,
-  liquidity,
-  favorite
+  liquidity
 }: PredictionCardFooterProps) {
   return (
     <div className="prediction-card-footer">

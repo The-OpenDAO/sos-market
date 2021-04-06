@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type TradeType = 'buy' | 'sell' | string;
 
-type Prediction = {
-  id: number | string;
-  name: string;
-  odd: number;
-  pricePerFraction: number;
-};
+// type Prediction = {
+//   id: number | string;
+//   name: string;
+//   odd: number;
+//   pricePerFraction: number;
+// };
 
 type PredictionDetails = {
   fractionsBought: number;

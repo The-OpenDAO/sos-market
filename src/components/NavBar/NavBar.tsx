@@ -14,7 +14,11 @@ function NavBar() {
           <PolkamarketsIcon />
         </figure>
       </Link>
-      <SearchBar />
+      <SearchBar
+        name="SearchMarkets"
+        placeholder="Search markets"
+        onSearch={text => {}}
+      />
       <NavBarMenu />
       <NavBarActions />
     </nav>

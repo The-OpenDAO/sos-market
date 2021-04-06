@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
@@ -78,7 +77,6 @@ function PredictionCard({ market }: PredictionCardProps) {
         volume={volume}
         expiration={expiration}
         liquidity={liquidity}
-        favorite={false}
       />
     </div>
   );
