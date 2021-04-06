@@ -29,9 +29,9 @@ type TableProps = {
 };
 
 /**
- * A table displays rows of data
+ * A table that displays rows of data
  */
-const Table = ({ columns, rows }: TableProps) => {
+function Table({ columns, rows }: TableProps) {
   return (
     <table className="table">
       <tbody>
@@ -56,7 +56,7 @@ const Table = ({ columns, rows }: TableProps) => {
       </tbody>
     </table>
   );
-};
+}
 
 Table.displayName = 'Table';
 
