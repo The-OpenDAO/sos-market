@@ -38,12 +38,12 @@ type LabelProps = {
 /**
  * Label for categorizing or markup
  */
-const Label = ({
+function Label({
   variant = 'normal',
   color = 'primary',
   size = 'sm',
   children
-}: LabelProps) => {
+}: LabelProps) {
   return (
     <span
       className={classNames(
@@ -54,7 +54,7 @@ const Label = ({
       {children}
     </span>
   );
-};
+}
 
 Label.displayName = 'Label';
 
