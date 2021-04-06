@@ -1,14 +1,21 @@
 import React from 'react';
 
 type CheckboxProps = {
+  /**
+   * The label property of input[type="checkbox"]
+   */
   label: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const Checkbox = ({
+/**
+ *
+ *  Used for selecting multiple values from several options
+ */
+function Checkbox({
   label,
   ...props
-}: CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>) => {
+}: CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label className="checkbox caption medium" htmlFor={label}>
       {label}
@@ -16,7 +23,7 @@ const Checkbox = ({
       <span className="checkmark" />
     </label>
   );
-};
+}
 
 Checkbox.displayName = 'Checkbox';
 
