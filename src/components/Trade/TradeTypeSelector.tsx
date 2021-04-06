@@ -19,8 +19,8 @@ function TradeTypeSelector() {
       <ToggleButton
         defaultActiveId="buy"
         buttons={[
-          { id: 'buy', name: 'Buy', variant: 'success' },
-          { id: 'sell', name: 'Sell', variant: 'danger' }
+          { id: 'buy', name: 'Buy', color: 'success' },
+          { id: 'sell', name: 'Sell', color: 'danger' }
         ]}
         onChange={tradeType => handleChangeTradeType(tradeType)}
       />

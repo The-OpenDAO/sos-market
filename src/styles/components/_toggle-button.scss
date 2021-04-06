@@ -1,20 +1,15 @@
 .toggle-button {
-  display: flex;
-  flex-direction: row;
-
+  @include flex-row;
   width: 100%;
-
   padding: 0.2rem;
   margin-bottom: 1rem;
 
-  border: 0.1rem solid;
-  border-radius: 0.4rem;
+  @include border(transparent);
 
   &__item {
     @extend %button;
     flex-grow: 1;
     height: 3.4rem;
-
     padding: 0.8rem 2rem;
 
     font-size: 1.5rem;
@@ -22,66 +17,13 @@
 
     background-color: unset;
     border: none;
-    transition: color 0.3s ease, background-color 0.3s ease;
+    transition: all 0.3s ease 0s;
   }
 }
 
-.toggle-button--default {
-  @extend .toggle-button;
-
-  border-color: $gray-600;
-
-  .toggle-button__item {
-    color: $gray-200;
-
-    &.active {
-      color: $gray-100;
-      background-color: $gray-600;
-    }
-  }
-}
-
-.toggle-button--primary {
-  @extend .toggle-button;
-
-  border-color: $primary-500-30;
-
-  .toggle-button__item {
-    color: $primary-500;
-
-    &.active {
-      color: $gray-100;
-      background-color: $primary-500-30;
-    }
-  }
-}
-
-.toggle-button--success {
-  @extend .toggle-button;
-
-  border-color: $success-500-30;
-
-  .toggle-button__item {
-    color: $success-500;
-
-    &.active {
-      color: $gray-100;
-      background-color: $success-500-30;
-    }
-  }
-}
-
-.toggle-button--danger {
-  @extend .toggle-button;
-
-  border-color: $danger-500-30;
-
-  .toggle-button__item {
-    color: $danger-500;
-
-    &.active {
-      color: $gray-100;
-      background-color: $danger-500-30;
-    }
+@each $color-variant, $color in $theme-colors {
+  .toggle-button--#{$color-variant} {
+    @extend .toggle-button;
+    @include toggle-button-color($color-variant, $color);
   }
 }

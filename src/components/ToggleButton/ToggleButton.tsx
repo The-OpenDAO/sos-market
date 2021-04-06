@@ -1,15 +1,25 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 
-import clx from 'classnames';
+import classNames from 'classnames';
 import isUndefined from 'lodash/isUndefined';
 
-type Variant = 'default' | 'primary' | 'success' | 'danger';
+type ButtonColor = 'default' | 'primary' | 'success' | 'danger';
 
 type Button = {
+  /**
+   * Unique id of this button
+   */
   id: string;
+  /**
+   * Name of this button
+   */
   name: string;
-  variant: Variant;
+  /**
+   * Color of the component
+   * @default 'default'
+   */
+  color: ButtonColor;
 };
 
 type ToggleButtonProps = {
@@ -17,7 +27,13 @@ type ToggleButtonProps = {
    * Id of the default active button
    */
   defaultActiveId: string;
+  /**
+   * Array of buttons to be displayed
+   */
   buttons: Button[];
+  /**
+   * The callback function triggered when click on button
+   */
   onChange: (id: string | undefined) => void;
 };
 
@@ -53,18 +69,18 @@ function ToggleButton({
   }
 
   return (
-    <div className={`toggle-button--${activeButton.variant}`}>
+    <div className={`toggle-button--${activeButton.color}`}>
       {buttons?.map(button => (
         <button
           type="button"
           key={button.id}
           id={button.id}
           name={button.name}
-          className={clx({
+          className={classNames({
             'toggle-button__item': true,
             active: button.id === activeButton.id
           })}
-          onClick={event => handleChangeActiveButton(event)}
+          onClick={handleChangeActiveButton}
         >
           {button.name}
         </button>

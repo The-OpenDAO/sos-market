@@ -1,0 +1,29 @@
+@mixin toggle-button-color(
+  $color-variant,
+  $color,
+  $background: rgba($color, 0.3)
+) {
+  @if $color-variant == default {
+    border-color: $gray-600;
+
+    .toggle-button__item {
+      color: $gray-200;
+
+      &.active {
+        color: $gray-100;
+        background-color: $gray-600;
+      }
+    }
+  } @else {
+    border-color: $background;
+
+    .toggle-button__item {
+      color: $color;
+
+      &.active {
+        color: $gray-100;
+        background-color: $background;
+      }
+    }
+  }
+}
