@@ -13,15 +13,13 @@ type ItemProps = {
 /**
  * Menu item
  */
-const Item = ({ style, children, ...props }: ItemProps) => {
+function Item({ style, children, ...props }: ItemProps) {
   return (
     <li className="menu__item" style={style} {...props}>
       {children}
     </li>
   );
-};
-
-Item.displayName = 'MenuItem';
+}
 
 type MenuDirection = 'row' | 'column';
 
@@ -36,11 +34,11 @@ type MenuProps = {
 /**
  * A menu for navigation
  */
-const Menu = ({ direction = 'row', children }: MenuProps) => {
+function Menu({ direction = 'row', children }: MenuProps) {
   return (
     <ul className={classNames('menu', `menu--${direction}`)}>{children}</ul>
   );
-};
+}
 
 Menu.displayName = 'Menu';
 
