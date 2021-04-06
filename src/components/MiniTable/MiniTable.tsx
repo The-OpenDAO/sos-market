@@ -35,6 +35,9 @@ type MiniTableProps = {
   style?: React.CSSProperties;
 };
 
+/**
+ * A mini table that displays rows of data
+ */
 function MiniTable({ rows, color = 'default', style }: MiniTableProps) {
   return (
     <ul className="mini-table" style={style}>
