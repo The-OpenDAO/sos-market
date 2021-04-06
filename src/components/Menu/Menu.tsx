@@ -28,15 +28,21 @@ type MenuProps = {
    * Direction of menu
    */
   direction?: MenuDirection;
+  /**
+   * Aditional CSS inline style
+   */
+  style?: React.CSSProperties;
   children: React.ReactNode;
 };
 
 /**
  * A menu for navigation
  */
-function Menu({ direction = 'row', children }: MenuProps) {
+function Menu({ direction = 'row', style, children }: MenuProps) {
   return (
-    <ul className={classNames('menu', `menu--${direction}`)}>{children}</ul>
+    <ul className={classNames('menu', `menu--${direction}`)} style={style}>
+      {children}
+    </ul>
   );
 }
 
