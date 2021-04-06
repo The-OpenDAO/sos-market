@@ -1,6 +1,6 @@
 import React from 'react';
 
-import cx from 'classnames';
+import classNames from 'classnames';
 
 type TextType =
   | 'p'
@@ -28,6 +28,7 @@ type TextType =
   | 'label'
   | 'i'
   | 'b';
+
 type TextScale = 'heading' | 'body' | 'caption' | 'tiny' | 'tiny-uppercase';
 
 type TextFontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
@@ -62,20 +63,20 @@ type TextProps = {
 /**
  * Basic text writing, including headings, body text, and more
  */
-const Text = ({
+function Text({
   as = 'p',
   scale = 'body',
   fontWeight = 'regular',
   className,
   style,
   children
-}: TextProps) => {
+}: TextProps) {
   return React.createElement(
     as,
-    { className: cx(className, scale, fontWeight), style },
+    { className: classNames(className, scale, fontWeight), style },
     children
   );
-};
+}
 
 Text.displayName = 'Text';
 
