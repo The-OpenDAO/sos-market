@@ -1,4 +1,4 @@
-.home-page {
+.home {
   width: 100%;
 
   margin: 0rem auto;
@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 1fr auto;
 
-  &__categories-group {
+  &__categories {
     @include flex-row;
     flex-wrap: wrap;
     gap: 2rem;

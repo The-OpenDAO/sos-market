@@ -1,22 +1,13 @@
-import { FeaturedCard, Tabs, MarketList } from 'components';
+import { Tabs, MarketList } from 'components';
 
-import { categories, markets } from './mock';
+import HomeCategories from './HomeCategories';
+import { markets } from './mock';
 
-const Home = () => {
+function Home() {
   return (
-    <div className="home-page">
-      <div className="home-page__content">
-        <ul className="home-page__categories-group">
-          {categories?.map(category => (
-            <li key={category.title}>
-              <FeaturedCard
-                title={category.title}
-                change={category.change}
-                color={category.color}
-              />
-            </li>
-          ))}
-        </ul>
+    <div className="home">
+      <div className="home__content">
+        <HomeCategories />
 
         {/* <div className="navigation">
           <div className="filters">
@@ -37,6 +28,8 @@ const Home = () => {
       </div>
     </div>
   );
-};
+}
+
+Home.displayName = 'Home';
 
 export default Home;
