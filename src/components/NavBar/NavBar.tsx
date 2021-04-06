@@ -7,6 +7,9 @@ import NavBarActions from './NavBarActions';
 import NavBarMenu from './NavBarMenu';
 
 function NavBar() {
+  function handleSearch(text: string) {
+    return text;
+  }
   return (
     <nav className="navbar sticky">
       <Link to="/home" aria-label="Home">
@@ -17,7 +20,7 @@ function NavBar() {
       <SearchBar
         name="SearchMarkets"
         placeholder="Search markets"
-        onSearch={text => {}}
+        onSearch={handleSearch}
       />
       <NavBarMenu />
       <NavBarActions />
