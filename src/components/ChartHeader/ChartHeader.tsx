@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 import classNames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 
 type Interval = {
   id: string;
@@ -15,12 +16,12 @@ type View = {
 };
 
 type ChartHeaderProps = {
-  intervals: Interval[];
-  views: View[];
-  defaultIntervalId: string;
-  defaultViewId: string;
-  onChangeInterval: (interval: string, value: number) => void;
-  onChangeView: (view: string) => void;
+  intervals?: Interval[];
+  views?: View[];
+  defaultIntervalId?: string;
+  defaultViewId?: string;
+  onChangeInterval?: (interval: string, value: number) => void;
+  onChangeView?: (view: string) => void;
 };
 
 function ChartHeader({
@@ -41,12 +42,10 @@ function ChartHeader({
     setCurrentView(defaultViewId);
   }, [defaultIntervalId, defaultViewId]);
 
-  if (!defaultIntervalId || !defaultViewId) return null;
-
   function handleChangeInterval(event: React.MouseEvent<HTMLButtonElement>) {
     const { id, value } = event.currentTarget;
 
-    if (id !== currentInterval) {
+    if (id !== currentInterval && onChangeInterval) {
       setCurrentInterval(id);
       onChangeInterval(id, parseInt(value, 10));
     }
@@ -55,7 +54,7 @@ function ChartHeader({
   function handleChangeView(event: React.MouseEvent<HTMLButtonElement>) {
     const { id } = event.currentTarget;
 
-    if (id !== currentView) {
+    if (id !== currentView && onChangeView) {
       setCurrentView(id);
       onChangeView(id);
     }
@@ -63,39 +62,43 @@ function ChartHeader({
 
   return (
     <div className="chart-header">
-      <div className="chart-header__interval">
-        {intervals.map(interval => (
-          <button
-            key={interval.id}
-            id={interval.id}
-            className={classNames({
-              'chart-header__interval-item': true,
-              active: currentInterval === interval.id
-            })}
-            type="button"
-            value={interval.value}
-            onClick={event => handleChangeInterval(event)}
-          >
-            {interval.name}
-          </button>
-        ))}
-      </div>
-      <div className="chart-header__view">
-        {views.map(view => (
-          <button
-            key={view.id}
-            id={view.id}
-            className={classNames({
-              'chart-header__view-item': true,
-              active: currentView === view.id
-            })}
-            type="button"
-            onClick={event => handleChangeView(event)}
-          >
-            {view.icon}
-          </button>
-        ))}
-      </div>
+      {!isEmpty(intervals) ? (
+        <div className="chart-header__interval">
+          {intervals?.map(interval => (
+            <button
+              key={interval.id}
+              id={interval.id}
+              className={classNames({
+                'chart-header__interval-item': true,
+                active: currentInterval === interval.id
+              })}
+              type="button"
+              value={interval.value}
+              onClick={event => handleChangeInterval(event)}
+            >
+              {interval.name}
+            </button>
+          ))}
+        </div>
+      ) : null}
+      {!isEmpty(views) ? (
+        <div className="chart-header__view">
+          {views?.map(view => (
+            <button
+              key={view.id}
+              id={view.id}
+              className={classNames({
+                'chart-header__view-item': true,
+                active: currentView === view.id
+              })}
+              type="button"
+              onClick={event => handleChangeView(event)}
+            >
+              {view.icon}
+            </button>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
