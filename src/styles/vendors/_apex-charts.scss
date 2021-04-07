@@ -1,26 +1,52 @@
 .apexcharts-tooltip.apexcharts-theme-light {
+  padding: 2.4rem !important;
+
   background-color: $gray-1000 !important;
+
   border: 0.1rem solid $gray-600 !important;
-
   border-radius: 0.4rem !important;
+
   box-shadow: none !important;
-
-  .apexcharts-tooltip-box {
-    padding: 1.6rem;
-
-    @extend .caption, .bold;
-    color: $gray-300 !important;
-
-    span {
-      color: $gray-100 !important;
-    }
-  }
 }
 
-.apexcharts-text {
-  tspan {
-    @extend .tiny, .medium;
-    font-family: 'Gilroy', sans-serif !important;
-    color: $gray-500 !important;
-  }
+.apexcharts-xaxis-label,
+.apexcharts-yaxis-label,
+.apexcharts-tooltip-title,
+.apexcharts-tooltip-text-label,
+.apexcharts-tooltip-text-value {
+  font-family: 'Gilroy', sans-serif !important;
+}
+
+.apexcharts-tooltip-title {
+  border-bottom: none !important;
+  background: transparent !important;
+
+  @extend .caption, .semibold;
+  color: $gray-100 !important;
+}
+
+.apexcharts-tooltip-marker {
+  width: 0.8rem !important;
+  height: 0.8rem !important;
+  border-radius: 0.2rem !important;
+}
+
+.apexcharts-tooltip-text-label {
+  @extend .caption, .medium;
+  color: $gray-300 !important;
+}
+
+.apexcharts-tooltip-text-value {
+  @extend .caption, .bold;
+  color: $gray-100 !important;
+}
+
+.apexcharts-xaxis-label,
+.apexcharts-yaxis-label {
+  @extend .tiny, .medium;
+  fill: $gray-500;
+}
+
+.apexcharts-legend-marker {
+  margin-right: 0.8rem !important;
 }

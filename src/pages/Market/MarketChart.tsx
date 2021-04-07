@@ -1,21 +1,11 @@
-import { useState, useMemo } from 'react';
-
-import { CandleStickChartIcon, LineChartIcon } from 'assets/icons';
+import { useState } from 'react';
 
 import { generateChartRandomData } from 'pages/Portfolio/utils';
 
-import { CandleStickChart, ChartHeader, LineChart, Text } from 'components';
-
-import { generateMarketChartRandomData } from './utils';
+import { ChartHeader, LineChart, Text } from 'components';
 
 const MarketChart = () => {
-  const [currentInterval, setCurrentInterval] = useState(60);
-  const [currentView, setCurrentView] = useState('candleStick');
-
-  const randomMarketChartData = useMemo(
-    () => generateMarketChartRandomData(currentInterval),
-    [currentInterval]
-  );
+  const [_currentInterval, setCurrentInterval] = useState(60);
 
   const lineChartDataA = generateChartRandomData();
   const lineChartDataB = generateChartRandomData(true);
@@ -39,40 +29,24 @@ const MarketChart = () => {
               { id: 'day', name: '1D', value: 120 },
               { id: 'month', name: '1M', value: 120 }
             ]}
-            views={[
-              {
-                id: 'candleStick',
-                icon: <CandleStickChartIcon />
-              },
-              {
-                id: 'line',
-                icon: <LineChartIcon />
-              }
-            ]}
             defaultIntervalId="hour"
-            defaultViewId="candleStick"
             onChangeInterval={(_interval, value) => setCurrentInterval(value)}
-            onChangeView={view => setCurrentView(view)}
           />
         </div>
       </div>
 
       <div className="market-chart__view">
-        {currentView === 'candleStick' ? (
-          <CandleStickChart serie={randomMarketChartData} height={288} />
-        ) : null}
-        {currentView === 'line' ? (
-          <LineChart
-            series={[
-              { data: lineChartDataA },
-              {
-                data: lineChartDataB
-              }
-            ]}
-            ticker="DOT"
-            height={288}
-          />
-        ) : null}
+        <LineChart
+          series={[
+            { name: 'Yes', data: lineChartDataA },
+            {
+              name: 'No',
+              data: lineChartDataB
+            }
+          ]}
+          ticker="DOT"
+          height={340}
+        />
       </div>
     </div>
   );

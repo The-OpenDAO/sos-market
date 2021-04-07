@@ -1,26 +1,56 @@
-function generateCustomOptions(ticker: string, showGrid: boolean) {
+import { relativeTimeFromNow } from 'helpers/date';
+
+function generateCustomOptions(ticker: string) {
   return {
     chart: {
+      type: 'line',
       toolbar: {
         show: false
       },
-      type: 'line'
+      zoom: {
+        enabled: false
+      }
     },
     tooltip: {
-      enabled: false,
-      custom({ series, seriesIndex, dataPointIndex }) {
-        return `<div class="apexcharts-tooltip-box">
-            <span> ${series[seriesIndex][dataPointIndex]} ${ticker}</span>
-            </div>`;
+      enabled: true,
+      shared: true,
+      marker: {
+        show: true
+      },
+      x: {
+        show: true,
+        formatter: value => `${relativeTimeFromNow(value)}`
+      },
+      y: {
+        show: true,
+        formatter: value => `${parseFloat(value).toFixed(3)} ${ticker}`
       }
     },
     legend: {
-      show: false
+      show: true,
+      markers: {
+        width: 16,
+        height: 16,
+        radius: 2
+      },
+      itemMargin: {
+        horizontal: 6,
+        vertical: 2
+      },
+      fontSize: '14px',
+      fontFamily: 'Gilroy',
+      fontWeight: 700,
+      labels: {
+        colors: ['#F3F4F6']
+      },
+      onItemClick: {
+        toggleDataSeries: false
+      }
     },
     markers: {
       size: 0,
       colors: undefined,
-      strokeColors: ['#9F7EFF', '#FF83B0', '#5751FC'],
+      strokeColors: ['#9F7EFF', '#FF83B0'],
       strokeWidth: 2,
       strokeOpacity: 1,
       strokeDashArray: 0,
@@ -43,13 +73,16 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
     },
     stroke: {
       curve: 'smooth',
-      width: 1.7
+      width: 2
     },
     xaxis: {
       type: 'datetime',
       labels: {
-        show: showGrid,
-        format: 'hh:mm TT'
+        show: true,
+        format: 'hh:mm TT',
+        style: {
+          cssClass: 'apexcharts-xaxis-label'
+        }
       },
       tooltip: {
         enabled: false
@@ -63,15 +96,18 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
     },
     yaxis: {
       labels: {
-        show: showGrid,
+        show: true,
         formatter(value) {
-          return `${value} ${ticker}`;
+          return `${value}`;
         },
-        offsetX: -15
+        offsetX: -15,
+        style: {
+          cssClass: 'apexcharts-yaxis-label'
+        }
       }
     },
     grid: {
-      show: showGrid,
+      show: true,
       borderColor: '#252C3B',
       strokeDashArray: 5,
       position: 'back',
@@ -88,11 +124,11 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       padding: {
         top: 0,
         right: 0,
-        bottom: 0,
+        bottom: 12,
         left: 0
       }
     },
-    colors: ['#9F7EFF', '#FF83B0', '#5751FC']
+    colors: ['#9F7EFF', '#FF83B0']
   };
 }
 

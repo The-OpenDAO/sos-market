@@ -11,26 +11,18 @@ type Event = {
 };
 
 type Serie = {
+  name: string;
   data: Event[];
 };
 
-type AreaChartProps = {
+type LineChartProps = {
   series: Serie[];
   ticker: string;
   height?: number | string;
-  showGrid?: boolean;
 };
 
-function LineChart({
-  series,
-  ticker,
-  height = 200,
-  showGrid = true
-}: AreaChartProps) {
-  const customOptions = useMemo(() => generateCustomOptions(ticker, showGrid), [
-    ticker,
-    showGrid
-  ]);
+function LineChart({ series, ticker, height = 200 }: LineChartProps) {
+  const customOptions = useMemo(() => generateCustomOptions(ticker), [ticker]);
 
   return (
     <ReactApexChart
