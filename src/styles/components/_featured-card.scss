@@ -19,6 +19,6 @@
 @each $variant, $color in $gradient-colors {
   .featured-card--#{$variant} {
     @extend %featured-card;
-    @include card-gradient-variant($color);
+    @include card-background-color($color);
   }
 }

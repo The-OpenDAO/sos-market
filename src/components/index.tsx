@@ -2,6 +2,7 @@ import AreaChart from './AreaChart';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
 import CandleStickChart from './CandleStickChart';
+import Card from './Card';
 import ChartHeader from './ChartHeader';
 import Checkbox from './Checkbox';
 import FeaturedCard from './FeaturedCard';
@@ -34,6 +35,7 @@ export {
   Breadcrumb,
   Button,
   CandleStickChart,
+  Card,
   ChartHeader,
   Checkbox,
   FeaturedCard,

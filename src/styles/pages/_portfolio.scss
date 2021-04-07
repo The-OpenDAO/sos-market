@@ -63,7 +63,7 @@
 @each $variant, $color in $gradient-colors {
   .portfolio-card--#{$variant} {
     @extend .portfolio-card;
-    @include card-gradient-variant($color);
+    @include card-background-color($color);
   }
 }
 

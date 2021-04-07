@@ -1,0 +1,38 @@
+.card {
+  @include flex-column;
+  @include card-size($card-padding-y, $card-padding-x);
+
+  &__header {
+    @include flex-row(space-between, center);
+
+    &-title {
+      color: $gray-500;
+    }
+
+    &-extra {
+      color: $gray-500;
+    }
+  }
+
+  &__content {
+    @include flex-column;
+  }
+}
+
+.card-lg {
+  @include card-size($card-lg-padding-y, $card-lg-padding-x);
+}
+
+@each $color-variant, $color in $theme-colors {
+  .card--#{$color-variant} {
+    @extend .card;
+    @include card-background-color($color);
+  }
+}
+
+@each $color-variant, $color in $gradient-colors {
+  .card--gradient-#{$color-variant} {
+    @extend .card;
+    @include card-background-color($color);
+  }
+}

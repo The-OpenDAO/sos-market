@@ -1,0 +1,7 @@
+@mixin card-size($padding-y, $padding-x) {
+  padding: $padding-y $padding-x;
+}
+
+@mixin card-background-color($background) {
+  background: $background;
+}
