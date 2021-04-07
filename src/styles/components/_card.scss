@@ -1,6 +1,7 @@
 .card {
   @include flex-column;
   @include card-size($card-padding-y, $card-padding-x);
+  @include border(none);
 
   &__header {
     @include flex-row(space-between, center);
@@ -14,7 +15,7 @@
     }
   }
 
-  &__content {
+  &__body {
     @include flex-column;
   }
 }

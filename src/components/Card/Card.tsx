@@ -2,8 +2,6 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import Text from '../Text';
-
 type CardBackgroundColor =
   | 'default'
   | 'primary'
@@ -20,9 +18,9 @@ type CardBackgroundColor =
 type CardSize = 'lg';
 
 type CardProps = {
-  title: string;
+  title: React.ReactNode;
   extra?: React.ReactNode;
-  backgroundColor?: CardBackgroundColor;
+  backgroundColor?: CardBackgroundColor | string;
   size?: CardSize;
   style?: React.CSSProperties;
   children?: React.ReactNode;
@@ -38,23 +36,14 @@ function Card({
 }: CardProps) {
   return (
     <div
-      className={
-        (classNames(`card--${backgroundColor}`), size && `card-${size}`)
-      }
+      className={classNames(`card--${backgroundColor}`, size && `card-${size}`)}
       style={style}
     >
       <div className="card__header">
-        <Text
-          className="card__header-title"
-          as="label"
-          scale="tiny-uppercase"
-          fontWeight="bold"
-        >
-          {title}
-        </Text>
+        <div className="card__header-title">{title}</div>
         {extra ? <div className="card__header-extra">{extra}</div> : null}
       </div>
-      <div className="card__content">{children}</div>
+      <div className="card__body">{children}</div>
     </div>
   );
 }

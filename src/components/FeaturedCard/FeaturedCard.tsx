@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import { CaretUpIcon, CaretDownIcon } from 'assets/icons';
 
+import Card from '../Card';
 import Label from '../Label';
 import Text from '../Text';
 
@@ -17,15 +19,26 @@ type FeaturedCardProps = {
 
 const FeaturedCard = ({ title, change, color }: FeaturedCardProps) => {
   return (
-    <div className={`featured-card--${color}`}>
-      <Text as="label" scale="body" fontWeight="semibold">
-        {title}
-      </Text>
-      <Label color={change.type === 'up' ? 'success' : 'danger'}>
-        {change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
-        {`${change.percentage}%`}
-      </Label>
-    </div>
+    <Card
+      title={
+        <Text
+          className="featured-card__title"
+          as="label"
+          scale="body"
+          fontWeight="semibold"
+        >
+          {title}
+        </Text>
+      }
+      extra={
+        <Label color={change.type === 'up' ? 'success' : 'danger'}>
+          {change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
+          {`${change.percentage}%`}
+        </Label>
+      }
+      backgroundColor={`gradient-${color}`}
+      style={{ height: '9.6rem' }}
+    />
   );
 };
 
