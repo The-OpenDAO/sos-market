@@ -2,6 +2,8 @@ import React from 'react';
 
 import classNames from 'classnames';
 
+type JustifyContent = 'flex-start' | 'center' | 'flex-end' | 'space-between';
+
 type CardBackgroundColor =
   | 'default'
   | 'primary'
@@ -19,7 +21,9 @@ type CardSize = 'lg';
 
 type CardProps = {
   title: React.ReactNode;
+  titleJustify?: JustifyContent;
   extra?: React.ReactNode;
+  bodyJustify?: JustifyContent;
   backgroundColor?: CardBackgroundColor | string;
   size?: CardSize;
   style?: React.CSSProperties;
@@ -28,7 +32,9 @@ type CardProps = {
 
 function Card({
   title,
+  titleJustify = 'center',
   extra,
+  bodyJustify = 'center',
   backgroundColor = 'default',
   size,
   style,
@@ -39,11 +45,13 @@ function Card({
       className={classNames(`card--${backgroundColor}`, size && `card-${size}`)}
       style={style}
     >
-      <div className="card__header">
+      <div className="card__header" style={{ justifyContent: titleJustify }}>
         <div className="card__header-title">{title}</div>
         {extra ? <div className="card__header-extra">{extra}</div> : null}
       </div>
-      <div className="card__body">{children}</div>
+      <div className="card__body" style={{ alignItems: bodyJustify }}>
+        {children}
+      </div>
     </div>
   );
 }

@@ -58,6 +58,7 @@
       1,
       { "extensions": [".js", ".jsx", ".tsx"] }
     ],
+    "react/jsx-wrap-multilines": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",

@@ -1,31 +1,12 @@
 .market-analytics {
   &__group {
-    @include flex-row;
-
-    flex-wrap: wrap;
     gap: 1.6rem;
-
     height: 100%;
-
-    &--row {
-      @extend .market-analytics__group;
-    }
-
-    &--column {
-      @extend .market-analytics__group;
-      flex-direction: column;
-    }
   }
 
   &__item {
-    @include flex-column(center, center);
-
     flex-grow: 1;
-
     height: 8rem;
-    padding: 1.2rem 2.4rem;
-
-    border-radius: 0.4rem;
 
     &-title {
       color: $neutral-white-50;
@@ -34,24 +15,6 @@
     &-value {
       color: $gray-100;
     }
-  }
-}
-
-.market-analytics__item--default {
-  @extend .market-analytics__item;
-
-  background: $gray-1000;
-  border: 0.1rem solid $gray-600;
-
-  .market-analytics__item-title {
-    color: $gray-500;
-  }
-}
-
-@each $variant, $color in $gradient-colors {
-  .market-analytics__item--#{$variant} {
-    @extend .market-analytics__item;
-    @include card-background-color($color);
   }
 }
 

@@ -1,5 +1,6 @@
 .card {
   @include flex-column;
+  gap: 0.4rem;
   @include card-size($card-padding-y, $card-padding-x);
   @include border(none);
 

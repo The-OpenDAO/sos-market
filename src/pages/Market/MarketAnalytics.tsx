@@ -1,59 +1,98 @@
-import isEmpty from 'lodash/isEmpty';
-
-import { Text } from 'components';
-
-type ColorVariant = 'yellow' | 'blue' | 'green' | 'pink' | 'orange';
-
-type DirectionVariant = 'row' | 'column';
-
-type AnalyticsItem = {
-  title: string;
-  value: string | number;
-  color: ColorVariant | string;
-};
+import { Card, Grid, Text } from 'components';
 
 type MarketAnalyticsProps = {
-  direction?: DirectionVariant;
-  items: AnalyticsItem[];
+  liquidity: number;
+  volume: number;
+  expiration: string;
 };
 
-const MarketAnalytics = ({
-  direction = 'row',
-  items
-}: MarketAnalyticsProps) => {
-  if (isEmpty(items)) return null;
-
+function MarketAnalytics({
+  liquidity,
+  volume,
+  expiration
+}: MarketAnalyticsProps) {
   return (
     <div className="market-analytics">
-      <ul className={`market-analytics__group--${direction}`}>
-        {items?.map(item => (
-          <li
-            key={item.title}
-            className={`market-analytics__item--${item.color}`}
-          >
-            <Text
-              className="market-analytics__item-title"
-              as="h2"
-              scale="tiny-uppercase"
-              fontWeight="bold"
+      <Grid fluid>
+        <Grid.Row className="market-analytics__group">
+          <Grid.Col className="market-analytics__item">
+            <Card
+              backgroundColor="gradient-yellow"
+              title={
+                <Text
+                  className="market-analytics__item-title"
+                  as="h2"
+                  scale="tiny-uppercase"
+                  fontWeight="bold"
+                >
+                  Liquidity
+                </Text>
+              }
             >
-              {item.title}
-            </Text>
-            <Text
-              className="market-analytics__item-value"
-              as="p"
-              scale="body"
-              fontWeight="semibold"
+              <Text
+                className="market-analytics__item-value"
+                as="p"
+                scale="body"
+                fontWeight="semibold"
+              >
+                {`${liquidity} DOT`}
+              </Text>
+            </Card>
+          </Grid.Col>
+          <Grid.Col className="market-analytics__item">
+            <Card
+              backgroundColor="gradient-blue"
+              title={
+                <Text
+                  className="market-analytics__item-title"
+                  as="h2"
+                  scale="tiny-uppercase"
+                  fontWeight="bold"
+                >
+                  Volume
+                </Text>
+              }
             >
-              {item.value}
-            </Text>
-          </li>
-        ))}
-      </ul>
+              <Text
+                className="market-analytics__item-value"
+                as="p"
+                scale="body"
+                fontWeight="semibold"
+              >
+                {`${volume} DOT`}
+              </Text>
+            </Card>
+          </Grid.Col>
+          <Grid.Col className="market-analytics__item">
+            <Card
+              backgroundColor="gradient-orange"
+              title={
+                <Text
+                  className="market-analytics__item-title"
+                  as="h2"
+                  scale="tiny-uppercase"
+                  fontWeight="bold"
+                >
+                  Expiration
+                </Text>
+              }
+            >
+              <Text
+                className="market-analytics__item-value"
+                as="p"
+                scale="body"
+                fontWeight="semibold"
+              >
+                {expiration}
+              </Text>
+            </Card>
+          </Grid.Col>
+        </Grid.Row>
+      </Grid>
     </div>
   );
-};
+}
 
-MarketAnalytics.displayName = 'Market analytics';
+MarketAnalytics.displayName = 'MarketAnalytics';
 
 export default MarketAnalytics;

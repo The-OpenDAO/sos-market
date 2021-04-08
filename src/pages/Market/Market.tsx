@@ -7,7 +7,7 @@ import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
 import { markets, tableItems } from './mock';
-import { formatMarketAnalytics, formatMarketHead } from './utils';
+import { formatMarketHead } from './utils';
 
 type Params = {
   marketId: string;
@@ -25,13 +25,15 @@ const Market = () => {
 
   if (!market) return null;
 
-  const headerMarketAnalytics = formatMarketAnalytics(market, true);
   const marketHead = formatMarketHead(market);
-  const graphMarketAnalytics = formatMarketAnalytics(market, false);
 
   return (
     <div className="market-page">
-      <MarketAnalytics direction="row" items={headerMarketAnalytics} />
+      <MarketAnalytics
+        liquidity={market.liquidity}
+        volume={market.volume}
+        expiration={market.expiration}
+      />
       <MarketHead
         section={marketHead.section}
         subsection={marketHead.subsection}
@@ -40,7 +42,6 @@ const Market = () => {
       />
       <div className="market-page__stats">
         <MarketChart />
-        <MarketAnalytics direction="column" items={graphMarketAnalytics} />
       </div>
       <Text
         as="p"
