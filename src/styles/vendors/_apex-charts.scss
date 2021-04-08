@@ -21,8 +21,7 @@
   border-bottom: none !important;
   background: transparent !important;
 
-  @extend .caption, .semibold;
-  color: $gray-100 !important;
+  @extend .caption, .semibold, .text-light;
 }
 
 .apexcharts-tooltip-marker {
@@ -32,13 +31,11 @@
 }
 
 .apexcharts-tooltip-text-label {
-  @extend .caption, .medium;
-  color: $gray-300 !important;
+  @extend .caption, .medium, .text-light-gray;
 }
 
 .apexcharts-tooltip-text-value {
-  @extend .caption, .bold;
-  color: $gray-100 !important;
+  @extend .caption, .bold, .text-light;
 }
 
 .apexcharts-xaxis-label,
