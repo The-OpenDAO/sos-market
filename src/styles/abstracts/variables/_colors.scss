@@ -140,3 +140,20 @@ $gradient-colors: (
   'pink': $card-gradient-pink,
   'orange': $card-gradient-orange
 ) !default;
+
+$text-colors: (
+  'primary': $primary-500,
+  'secondary': $secondary-500,
+  'success': $success-500,
+  'warning': $warning-500,
+  'danger': $danger-500,
+  'light': $gray-100,
+  'dark': $gray-900,
+  'white': $neutral-white,
+  'white-50': $neutral-white-50,
+  'black': $neutral-black,
+  'gray': $gray-500,
+  'lighter-gray': $gray-200,
+  'light-gray': $gray-300,
+  'dark-gray': $gray-700
+) !default;

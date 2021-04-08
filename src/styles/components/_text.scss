@@ -39,3 +39,9 @@
 .bold {
   font-weight: 700;
 }
+
+@each $color-variant, $color in $text-colors {
+  .text-#{$color-variant} {
+    @include text-color($color);
+  }
+}

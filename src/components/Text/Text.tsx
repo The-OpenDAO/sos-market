@@ -33,6 +33,22 @@ type TextScale = 'heading' | 'body' | 'caption' | 'tiny' | 'tiny-uppercase';
 
 type TextFontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
+type TextColor =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'light'
+  | 'dark'
+  | 'white'
+  | 'white-50'
+  | 'black'
+  | 'gray'
+  | 'lighter-gray'
+  | 'light-gray'
+  | 'dark-gray';
+
 type TextProps = {
   /**
    * HTML text element
@@ -49,6 +65,10 @@ type TextProps = {
    * @default 'regular'
    */
   fontWeight?: TextFontWeight;
+  /**
+   * Color of the text
+   */
+  color?: TextColor;
   /**
    * Aditional class name
    */
@@ -67,13 +87,22 @@ function Text({
   as = 'p',
   scale = 'body',
   fontWeight = 'regular',
+  color,
   className,
   style,
   children
 }: TextProps) {
   return React.createElement(
     as,
-    { className: classNames(className, scale, fontWeight), style },
+    {
+      className: classNames(
+        className,
+        scale,
+        fontWeight,
+        color && `text-${color}`
+      ),
+      style
+    },
     children
   );
 }
