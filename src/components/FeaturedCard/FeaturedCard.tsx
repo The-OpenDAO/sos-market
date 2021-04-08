@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-wrap-multilines */
 import { CaretUpIcon, CaretDownIcon } from 'assets/icons';
 
 import Card from '../Card';
@@ -20,6 +19,7 @@ type FeaturedCardProps = {
 const FeaturedCard = ({ title, change, color }: FeaturedCardProps) => {
   return (
     <Card
+      backgroundColor={`gradient-${color}`}
       title={
         <Text
           className="featured-card__title"
@@ -30,13 +30,13 @@ const FeaturedCard = ({ title, change, color }: FeaturedCardProps) => {
           {title}
         </Text>
       }
+      titleJustify="space-between"
       extra={
         <Label color={change.type === 'up' ? 'success' : 'danger'}>
           {change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
           {`${change.percentage}%`}
         </Label>
       }
-      backgroundColor={`gradient-${color}`}
       style={{ height: '9.6rem' }}
     />
   );
