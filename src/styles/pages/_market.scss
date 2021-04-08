@@ -5,14 +5,6 @@
   width: 100%;
   padding: 2.4rem 0rem;
 
-  p {
-    color: $gray-100;
-  }
-
-  p > a {
-    color: $primary-500;
-  }
-
   &__stats {
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -29,13 +21,12 @@
   &__item {
     flex-grow: 1;
     height: 8rem;
+  }
+}
 
-    &-title {
-      color: $neutral-white-50;
-    }
-
-    &-value {
-      color: $gray-100;
-    }
+.pm-market {
+  &__stats {
+    @include flex-column;
+    gap: 1.6rem;
   }
 }

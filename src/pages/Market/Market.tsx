@@ -6,6 +6,7 @@ import { Tabs, Table, Text } from 'components';
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
+import MarketStats from './MarketStats';
 import { markets, tableItems } from './mock';
 import { formatMarketHead } from './utils';
 
@@ -42,15 +43,25 @@ const Market = () => {
       />
       <div className="market-page__stats">
         <MarketChart />
+        <MarketStats
+          price={2.55}
+          dayChangePercentage={10}
+          weekChangePercentage={2}
+          lastWeekPrices={[]}
+        />
       </div>
       <Text
         as="p"
         scale="tiny"
         fontWeight="semibold"
-        style={{ margin: '0.8rem 0rem' }}
+        style={{ margin: '0.8rem 0rem', alignSelf: 'center' }}
+        color="lighter-gray"
       >
         {`Resolution source: `}
-        <a href="https://www.google.com/finance" className="tiny semibold">
+        <a
+          href="https://www.google.com/finance"
+          className="tiny semibold text-primary"
+        >
           google.com/finance
         </a>
       </Text>
@@ -59,7 +70,7 @@ const Market = () => {
           <Table columns={tableItems.columns} rows={tableItems.rows} />
         </Tabs.TabPane>
         <Tabs.TabPane tab="About market" id="about">
-          <Text as="p" scale="body" fontWeight="medium">
+          <Text as="p" scale="body" fontWeight="medium" color="light">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
             vitae arcu morbi ultrices mollis tortor ac. Natoque interdum non
             iaculis lacinia ultricies et. Facilisi dui consequat iaculis
