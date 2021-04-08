@@ -52,12 +52,7 @@ function generateMarketChartRandomData(size: number) {
 
     const currentEvent = {
       x: currentTime,
-      y: [
-        currentValue,
-        currentValue + 1,
-        currentValue - 1,
-        currentValue + Math.round(Math.random()) * 2 - 1
-      ]
+      y: currentValue
     };
     currentIndex += 1;
 

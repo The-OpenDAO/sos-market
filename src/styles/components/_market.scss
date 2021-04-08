@@ -50,10 +50,6 @@
   &__header {
     @include flex-row(space-between, center);
 
-    &-title {
-      color: $gray-100;
-    }
-
     &-actions {
       @include flex-row;
     }

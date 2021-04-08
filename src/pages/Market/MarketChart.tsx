@@ -15,21 +15,16 @@ const MarketChart = () => {
 
   return (
     <div className="market-chart">
-      <ToggleButton
+      {/* <ToggleButton
         defaultActiveId="marketOverview"
         buttons={[
           { id: 'marketOverview', name: 'Market Overview', color: 'default' },
           { id: 'tradingView', name: 'Trading View', color: 'default' }
         ]}
         onChange={view => setCurrentView(view)}
-      />
+      /> */}
       <div className="market-chart__header">
-        <Text
-          className="market-chart__header-title"
-          as="h2"
-          scale="body"
-          fontWeight="semibold"
-        >
+        <Text as="h2" scale="body" fontWeight="semibold" color="light">
           Market Overview
         </Text>
         <div className="market-chart__header-actions">

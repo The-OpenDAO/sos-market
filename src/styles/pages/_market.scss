@@ -28,5 +28,9 @@
   &__stats {
     @include flex-column;
     gap: 1.6rem;
+
+    &-item {
+      flex-grow: 1;
+    }
   }
 }

@@ -110,6 +110,7 @@ function PredictionCardSelectionItem({
       <MiniAreaChart
         serie={chartData}
         color={oddChange.type === 'up' ? 'success' : 'danger'}
+        width={48}
       />
     </button>
   );

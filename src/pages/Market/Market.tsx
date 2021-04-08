@@ -8,7 +8,7 @@ import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
 import MarketStats from './MarketStats';
 import { markets, tableItems } from './mock';
-import { formatMarketHead } from './utils';
+import { formatMarketHead, generateMarketChartRandomData } from './utils';
 
 type Params = {
   marketId: string;
@@ -27,6 +27,7 @@ const Market = () => {
   if (!market) return null;
 
   const marketHead = formatMarketHead(market);
+  const marketLastWeek = generateMarketChartRandomData(10);
 
   return (
     <div className="market-page">
@@ -47,7 +48,7 @@ const Market = () => {
           price={2.55}
           dayChangePercentage={10}
           weekChangePercentage={2}
-          lastWeekPrices={[]}
+          lastWeekPrices={marketLastWeek}
         />
       </div>
       <Text

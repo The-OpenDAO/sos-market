@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import { Card, Text } from 'components';
+import { Card, MiniAreaChart, Text } from 'components';
 
 type PriceEvent = {
   x: dayjs.Dayjs;
@@ -23,6 +23,7 @@ function MarketStats({
   return (
     <div className="pm-market__stats">
       <Card
+        className="pm-market__stats-item"
         size="lg"
         title={
           <Text
@@ -40,6 +41,7 @@ function MarketStats({
         </Text>
       </Card>
       <Card
+        className="pm-market__stats-item"
         size="lg"
         title={
           <Text
@@ -57,6 +59,7 @@ function MarketStats({
         </Text>
       </Card>
       <Card
+        className="pm-market__stats-item"
         size="lg"
         title={
           <Text
@@ -74,6 +77,7 @@ function MarketStats({
         </Text>
       </Card>
       <Card
+        className="pm-market__stats-item"
         size="lg"
         title={
           <Text
@@ -85,7 +89,10 @@ function MarketStats({
             Last 7 days
           </Text>
         }
-      />
+        bodyJustify="flex-end"
+      >
+        <MiniAreaChart serie={lastWeekPrices} height={30} />
+      </Card>
     </div>
   );
 }
