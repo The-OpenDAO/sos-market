@@ -74,15 +74,22 @@
   }
 
   @if $color == default {
+    color: $gray-300;
     border-color: $gray-600;
-  } @else {
-    border-color: $background;
+
+    svg {
+      fill: $gray-300;
+    }
   }
 
   &:hover,
   :focus {
     @if $color != default {
       color: $neutral-white;
+
+      svg {
+        fill: $neutral-white;
+      }
     }
     background-color: $background;
   }

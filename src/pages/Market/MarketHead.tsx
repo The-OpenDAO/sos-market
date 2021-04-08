@@ -48,11 +48,14 @@ const MarketHead = ({
         </Text>
       </div>
       <div className="market-head__actions">
-        <Button onClick={handleNavigation} aria-label="Back to Markets">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleNavigation}
+          aria-label="Back to Markets"
+        >
           <ArrowLeftIcon />
-          <Text as="span" scale="caption" fontWeight="semibold">
-            Back to Markets
-          </Text>
+          Back to Markets
         </Button>
       </div>
     </div>

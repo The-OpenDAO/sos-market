@@ -26,6 +26,10 @@
 
   transition: $button-transitions;
 
+  svg {
+    transition: fill 0.3s ease 0s;
+  }
+
   &:disabled {
     cursor: unset;
     touch-action: unset;

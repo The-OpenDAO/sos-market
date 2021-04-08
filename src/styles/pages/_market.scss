@@ -19,3 +19,23 @@
     gap: 1.6rem;
   }
 }
+
+.market-analytics {
+  &__group {
+    gap: 1.6rem;
+    height: 100%;
+  }
+
+  &__item {
+    flex-grow: 1;
+    height: 8rem;
+
+    &-title {
+      color: $neutral-white-50;
+    }
+
+    &-value {
+      color: $gray-100;
+    }
+  }
+}
