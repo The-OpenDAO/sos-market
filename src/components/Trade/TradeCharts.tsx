@@ -12,7 +12,7 @@ function TradeCharts() {
 
   if (!showCharts) return null;
 
-  const chartData = generateMarketChartRandomData(30);
+  // const chartData = generateMarketChartRandomData(30);
 
   return (
     <div className="trade-charts">
@@ -38,7 +38,7 @@ function TradeCharts() {
         onChangeInterval={(interval, value) => console.log(interval, value)}
         onChangeView={view => console.log(view)}
       />
-      <CandleStickChart serie={chartData} height={180} />
+      {/* <CandleStickChart serie={chartData} height={180} /> */}
     </div>
   );
 }
