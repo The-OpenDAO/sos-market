@@ -28,13 +28,13 @@
 @each $color-variant, $color in $theme-colors {
   .card--#{$color-variant} {
     @extend .card;
-    @include card-background-color($color);
+    @include card-background-color($color-variant, $color);
   }
 }
 
 @each $color-variant, $color in $gradient-colors {
   .card--gradient-#{$color-variant} {
     @extend .card;
-    @include card-background-color($color);
+    @include card-background-color($color-variant, $color);
   }
 }

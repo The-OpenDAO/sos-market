@@ -2,6 +2,9 @@
   padding: $padding-y $padding-x;
 }
 
-@mixin card-background-color($background) {
+@mixin card-background-color($color-variant, $background) {
+  @if $color-variant == default {
+    @include border($gray-600);
+  }
   background: $background;
 }
