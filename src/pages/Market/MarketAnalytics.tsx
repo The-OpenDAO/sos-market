@@ -24,6 +24,7 @@ function MarketAnalytics({
                   as="h2"
                   scale="tiny-uppercase"
                   fontWeight="bold"
+                  color="white-50"
                 >
                   Liquidity
                 </Text>
@@ -34,6 +35,7 @@ function MarketAnalytics({
                 as="p"
                 scale="body"
                 fontWeight="semibold"
+                color="white"
               >
                 {`${liquidity} DOT`}
               </Text>
@@ -48,6 +50,7 @@ function MarketAnalytics({
                   as="h2"
                   scale="tiny-uppercase"
                   fontWeight="bold"
+                  color="white-50"
                 >
                   Volume
                 </Text>
@@ -58,6 +61,7 @@ function MarketAnalytics({
                 as="p"
                 scale="body"
                 fontWeight="semibold"
+                color="white"
               >
                 {`${volume} DOT`}
               </Text>
@@ -72,6 +76,7 @@ function MarketAnalytics({
                   as="h2"
                   scale="tiny-uppercase"
                   fontWeight="bold"
+                  color="white-50"
                 >
                   Expiration
                 </Text>
@@ -82,6 +87,7 @@ function MarketAnalytics({
                 as="p"
                 scale="body"
                 fontWeight="semibold"
+                color="white"
               >
                 {expiration}
               </Text>
