@@ -34,7 +34,7 @@ function MiniAreaChart({
   strokeCurve = 'smooth',
   color = 'primary',
   height = 30,
-  width = 50
+  width = '100%'
 }: MiniAreaChartProps) {
   const customOptions = useMemo(
     () => generateCustomOptions(strokeCurve, colors[color]),

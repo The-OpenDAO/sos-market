@@ -1,6 +1,7 @@
 function generateCustomOptions(strokeCurve, color) {
   return {
     chart: {
+      sparkline: { enabled: true },
       toolbar: {
         show: false
       },
@@ -42,10 +43,10 @@ function generateCustomOptions(strokeCurve, color) {
     grid: {
       show: false,
       padding: {
-        top: -20,
+        top: 0,
         right: 0,
-        bottom: -15,
-        left: -10
+        bottom: 0,
+        left: 0
       }
     },
     colors: [color],
