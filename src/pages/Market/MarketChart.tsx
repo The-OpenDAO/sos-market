@@ -2,16 +2,27 @@ import { useState } from 'react';
 
 import { generateChartRandomData } from 'pages/Portfolio/utils';
 
-import { ChartHeader, LineChart, Text } from 'components';
+import { ChartHeader, LineChart, Text, ToggleButton } from 'components';
 
 const MarketChart = () => {
   const [_currentInterval, setCurrentInterval] = useState(60);
+  const [currentView, setCurrentView] = useState<string | undefined>(
+    'marketOverview'
+  );
 
   const lineChartDataA = generateChartRandomData();
   const lineChartDataB = generateChartRandomData(true);
 
   return (
     <div className="market-chart">
+      <ToggleButton
+        defaultActiveId="marketOverview"
+        buttons={[
+          { id: 'marketOverview', name: 'Market Overview', color: 'default' },
+          { id: 'tradingView', name: 'Trading View', color: 'default' }
+        ]}
+        onChange={view => setCurrentView(view)}
+      />
       <div className="market-chart__header">
         <Text
           className="market-chart__header-title"
@@ -36,17 +47,19 @@ const MarketChart = () => {
       </div>
 
       <div className="market-chart__view">
-        <LineChart
-          series={[
-            { name: 'Yes', data: lineChartDataA },
-            {
-              name: 'No',
-              data: lineChartDataB
-            }
-          ]}
-          ticker="DOT"
-          height={340}
-        />
+        {currentView === 'marketOverview' ? (
+          <LineChart
+            series={[
+              { name: 'Yes', data: lineChartDataA },
+              {
+                name: 'No',
+                data: lineChartDataB
+              }
+            ]}
+            ticker="DOT"
+            height={332}
+          />
+        ) : null}
       </div>
     </div>
   );

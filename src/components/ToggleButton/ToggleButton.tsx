@@ -47,11 +47,13 @@ function ToggleButton({
   );
 
   useEffect(() => {
-    const newActiveButton = buttons.find(
-      button => button.id === defaultActiveId
-    );
-    setActiveButton(newActiveButton);
-  }, [buttons, defaultActiveId]);
+    if (isUndefined(activeButton)) {
+      const newActiveButton = buttons.find(
+        button => button.id === defaultActiveId
+      );
+      setActiveButton(newActiveButton);
+    }
+  }, [activeButton, buttons, defaultActiveId]);
 
   if (isUndefined(activeButton)) return null;
 
