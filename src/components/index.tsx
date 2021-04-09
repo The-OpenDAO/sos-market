@@ -30,6 +30,7 @@ import Tabs from './Tabs';
 import Text from './Text';
 import ToggleButton from './ToggleButton';
 import ToggleSwitch from './ToggleSwitch';
+import Tooltip from './Tooltip';
 import Trade from './Trade';
 
 export {
@@ -65,6 +66,7 @@ export {
   Table,
   Tabs,
   Text,
+  Tooltip,
   ToggleButton,
   ToggleSwitch,
   Trade
