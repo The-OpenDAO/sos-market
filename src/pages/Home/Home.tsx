@@ -1,9 +1,28 @@
+import { useState, useEffect } from 'react';
+
 import { Tabs, MarketList } from 'components';
 
+import {
+  PolkamarketsApiService,
+  PolkamarketsApiMappingService
+} from '../../services';
 import HomeCategories from './HomeCategories';
-import { markets } from './mock';
 
 function Home() {
+  const [markets = [], setMarkets] = useState<any[]>();
+
+  const loadMarkets = async () => {
+    let apiMarkets = await new PolkamarketsApiService().getMarkets();
+    apiMarkets = apiMarkets.map(apiMarket => {
+      return PolkamarketsApiMappingService.mapMarket(apiMarket);
+    });
+    setMarkets(apiMarkets);
+  };
+
+  useEffect(() => {
+    loadMarkets();
+  }, []);
+
   return (
     <div className="home">
       <div className="home__content">
