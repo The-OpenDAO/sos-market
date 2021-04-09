@@ -1,12 +1,15 @@
 function formatMiniTableItems(
   predictions,
   selectedPredictionId,
+  selectedMarketId,
   fractionsBought,
   currentROI,
   totalStake
 ) {
   const selectedPredictionObj = predictions.find(
-    prediction => prediction.id === selectedPredictionId
+    prediction =>
+      prediction.id === selectedPredictionId &&
+      prediction.marketId === selectedMarketId
   );
 
   return [

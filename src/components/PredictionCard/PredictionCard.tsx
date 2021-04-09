@@ -18,6 +18,7 @@ type ChangeType = 'up' | 'down';
 
 type Option = {
   id: number | string;
+  marketId: number | string;
   name: string;
   odd: number;
   oddChange: {

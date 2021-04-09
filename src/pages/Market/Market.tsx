@@ -34,7 +34,10 @@ const Market = () => {
 
   const loadMarket = async () => {
     let apiMarket = await new PolkamarketsApiService().getMarket(marketId);
-    apiMarket = PolkamarketsApiMappingService.mapMarket(apiMarket);
+    apiMarket = apiMarket
+      ? PolkamarketsApiMappingService.mapMarket(apiMarket)
+      : null;
+
     setMarket(apiMarket);
     dispatch(setPredictions(apiMarket?.options));
     dispatch(setSelectedPrediction(apiMarket?.options[0].id));

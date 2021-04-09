@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import {
   changeTradeVisibility,
   setSelectedPrediction,
+  setSelectedMarket,
   setPredictions,
   changeChartsVisibility
 } from 'redux/ducks/trade';
@@ -21,6 +22,7 @@ type ChangeType = 'up' | 'down';
 
 type PredictionCardSelectionItemProps = {
   id: number | string;
+  marketId: number | string;
   name: string;
   odd: number;
   oddChange: {
@@ -31,6 +33,7 @@ type PredictionCardSelectionItemProps = {
 
 function PredictionCardSelectionItem({
   id,
+  marketId,
   name,
   odd,
   oddChange,
@@ -40,6 +43,9 @@ function PredictionCardSelectionItem({
   const visible = useAppSelector(state => state.trade.visible);
   const selectedPredictionId = useAppSelector(
     state => state.trade.selectedPredictionId
+  );
+  const selectedMarketId = useAppSelector(
+    state => state.trade.selectedMarketId
   );
 
   function updatePredictions() {
@@ -73,10 +79,12 @@ function PredictionCardSelectionItem({
     dispatch(changeChartsVisibility(true));
     updatePredictions();
 
-    if (id !== selectedPredictionId) {
+    if (id !== selectedPredictionId || marketId !== selectedMarketId) {
       dispatch(setSelectedPrediction(id));
-    } else if (id === selectedPredictionId) {
+      dispatch(setSelectedMarket(marketId));
+    } else if (id === selectedPredictionId && marketId === selectedMarketId) {
       dispatch(setSelectedPrediction(''));
+      dispatch(setSelectedMarket(''));
       dispatch(changeTradeVisibility(false));
       dispatch(changeChartsVisibility(false));
       removePredictions();
@@ -88,7 +96,7 @@ function PredictionCardSelectionItem({
       type="button"
       className={classNames({
         'prediction-card-selection__item': true,
-        active: id === selectedPredictionId
+        active: id === selectedPredictionId && marketId === selectedMarketId
       })}
       onClick={handleItemSelection}
     >
@@ -120,6 +128,7 @@ PredictionCardSelectionItem.displayName = 'PredictionCardSelectionItem';
 
 type Prediction = {
   id: number | string;
+  marketId: number | string;
   name: string;
   odd: number;
   oddChange: {
@@ -145,6 +154,7 @@ const PredictionSelection = ({ predictions }: PredictionSelectionProps) => {
         <li key={prediction.name}>
           <PredictionCardSelectionItem
             id={prediction.id}
+            marketId={prediction.marketId}
             name={prediction.name}
             odd={prediction.odd}
             oddChange={prediction.oddChange}

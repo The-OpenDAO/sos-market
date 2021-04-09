@@ -13,6 +13,9 @@ function TradePredictions() {
   const selectedPredictionId = useAppSelector(
     state => state.trade.selectedPredictionId
   );
+  const selectedMarketId = useAppSelector(
+    state => state.trade.selectedMarketId
+  );
 
   if (!showPredictions) return null;
 
@@ -27,7 +30,9 @@ function TradePredictions() {
           key={prediction.id}
           className={classNames({
             'trade-predictions__item': true,
-            active: prediction.id === selectedPredictionId
+            active:
+              prediction.id === selectedPredictionId &&
+              prediction.marketId === selectedMarketId
           })}
           role="button"
           tabIndex={index}

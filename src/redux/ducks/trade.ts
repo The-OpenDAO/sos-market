@@ -23,15 +23,18 @@ const initialState = {
   showPredictions: false,
   type: 'buy',
   selectedPredictionId: '',
+  selectedMarketId: '',
   predictions: [
     {
       id: '',
+      marketId: '',
       name: '',
       odd: 0,
       pricePerFraction: 0
     },
     {
       id: '',
+      marketId: '',
       name: '',
       odd: 0,
       pricePerFraction: 0
@@ -70,6 +73,10 @@ const tradeSlice = createSlice({
       ...state,
       selectedPredictionId: action.payload
     }),
+    setSelectedMarket: (state, action) => ({
+      ...state,
+      selectedMarketId: action.payload
+    }),
     setPredictions: (state, action) => ({
       ...state,
       predictions: action.payload
@@ -104,6 +111,7 @@ const {
   changePredictionsVisibility,
   changeTradeType,
   setSelectedPrediction,
+  setSelectedMarket,
   setPredictions,
   setPredictionDetails,
   toggleAcceptRules,
@@ -116,6 +124,7 @@ export {
   changePredictionsVisibility,
   changeTradeType,
   setSelectedPrediction,
+  setSelectedMarket,
   setPredictions,
   setPredictionDetails,
   toggleAcceptRules,

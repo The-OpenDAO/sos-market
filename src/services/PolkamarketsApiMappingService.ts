@@ -14,6 +14,7 @@ const MarketMapping = {
 // component => api
 const MarketOutcomeMapping = {
   id: 'id',
+  marketId: 'market_id',
   name: 'title',
   odd: 'price',
   pricePerFraction: 'price'

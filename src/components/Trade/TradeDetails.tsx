@@ -8,6 +8,7 @@ function TradeDetails() {
     type,
     predictions,
     selectedPredictionId,
+    selectedMarketId,
     fractionsBought,
     currentROI,
     totalStake,
@@ -18,6 +19,7 @@ function TradeDetails() {
   const miniTableItems = formatMiniTableItems(
     predictions,
     selectedPredictionId,
+    selectedMarketId,
     fractionsBought,
     currentROI,
     totalStake

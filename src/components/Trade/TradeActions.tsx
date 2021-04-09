@@ -1,6 +1,7 @@
 import {
   changeTradeVisibility,
-  setSelectedPrediction
+  setSelectedPrediction,
+  setSelectedMarket
 } from 'redux/ducks/trade';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -15,6 +16,7 @@ function TradeActions() {
   function handleCancel() {
     dispatch(changeTradeVisibility(false));
     dispatch(setSelectedPrediction(''));
+    dispatch(setSelectedMarket(''));
   }
 
   return (
