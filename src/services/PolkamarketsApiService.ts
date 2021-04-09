@@ -13,7 +13,7 @@ export default class PolkarmarketsApiService {
     return response.json();
   }
 
-  public async getMarket(marketId: string): Promise<any[]> {
+  public async getMarket(marketId: string): Promise<any> {
     const url = `${this.apiUrl}/markets/${marketId}`;
     const response = await fetch(url);
 

@@ -12,11 +12,15 @@ import { Tabs, Table, Text } from 'components';
 
 import { useAppDispatch } from 'hooks';
 
+import {
+  PolkamarketsApiService,
+  PolkamarketsApiMappingService
+} from '../../services';
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
 import MarketStats from './MarketStats';
-import { markets, tableItems } from './mock';
+import { tableItems } from './mock';
 import { formatMarketHead, generateMarketChartRandomData } from './utils';
 
 type Params = {
@@ -26,15 +30,19 @@ type Params = {
 const Market = () => {
   const dispatch = useAppDispatch();
   const { marketId } = useParams<Params>();
-  const [market, setMarket] = useState<typeof markets[0] | undefined>();
+  const [market, setMarket] = useState<any | undefined>();
+
+  const loadMarket = async () => {
+    let apiMarket = await new PolkamarketsApiService().getMarket(marketId);
+    apiMarket = PolkamarketsApiMappingService.mapMarket(apiMarket);
+    setMarket(apiMarket);
+    dispatch(setPredictions(apiMarket?.options));
+    dispatch(setSelectedPrediction(apiMarket?.options[0].id));
+  };
 
   useEffect(() => {
-    const currentMarket = markets.find(m => m.id === parseInt(marketId, 10));
-
-    setMarket(currentMarket);
+    loadMarket();
     dispatch(changeTradeVisibility(true));
-    dispatch(setPredictions(currentMarket?.options));
-    dispatch(setSelectedPrediction(currentMarket?.options[0].id));
     dispatch(changePredictionsVisibility(true));
   }, [marketId, dispatch]);
 
