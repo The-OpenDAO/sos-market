@@ -14,5 +14,8 @@ module.exports = {
         styleType: 'scss'
       }
     }
-  ]
+  ],
+  babel: {
+    plugins: [['@babel/plugin-proposal-class-properties']]
+  }
 };
