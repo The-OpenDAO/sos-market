@@ -157,3 +157,10 @@ $text-colors: (
   'light-gray': $gray-300,
   'dark-gray': $gray-700
 ) !default;
+
+$toast-colors: (
+  'danger': $danger-500,
+  'warning': $warning-500,
+  'success': $success-500,
+  'info': $primary-500
+) !default;

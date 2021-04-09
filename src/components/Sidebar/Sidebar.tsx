@@ -10,7 +10,7 @@ import {
   PortfolioIcon
 } from 'assets/icons';
 
-import Button from '../Button';
+import { Button } from '../Button';
 import Menu from '../Menu';
 import Text from '../Text';
 import { navigationLinks, footerLinks } from './mock';

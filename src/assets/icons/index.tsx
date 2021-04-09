@@ -8,6 +8,7 @@ import CandleStickChartIcon from './CandleStickChartIcon';
 import CaretDownIcon from './CaretDownIcon';
 import CaretUpIcon from './CaretUpIcon';
 import ChartGrowthIcon from './ChartGrowthIcon';
+import CheckIcon from './CheckIcon';
 import CloseIcon from './CloseIcon';
 import GamingConsoleIcon from './GamingConsoleIcon';
 import GitHubIcon from './GitHubIcon';
@@ -24,6 +25,7 @@ import PolkamarketsIcon from './PolkamarketsIcon';
 import PolkamarketsLogo from './PolkamarketsLogo';
 import PopcornIcon from './PopcornIcon';
 import PortfolioIcon from './PortifolioIcon';
+import RemoveIcon from './RemoveIcon';
 import SearchIcon from './SearchIcon';
 import SettingsIcon from './SettingsIcon';
 import SoccerBallIcon from './SoccerBallIcon';
@@ -33,6 +35,7 @@ import ToDoIcon from './ToDoIcon';
 import TwitterIcon from './TwitterIcon';
 import UsersIcon from './UsersIcon';
 import WalletIcon from './WalletIcon';
+import WarningIcon from './WarningIcon';
 import WhiteHouseIcon from './WhiteHouseIcon';
 
 export {
@@ -46,6 +49,7 @@ export {
   CaretDownIcon,
   CaretUpIcon,
   ChartGrowthIcon,
+  CheckIcon,
   CloseIcon,
   GamingConsoleIcon,
   GitHubIcon,
@@ -62,6 +66,7 @@ export {
   PolkamarketsLogo,
   PopcornIcon,
   PortfolioIcon,
+  RemoveIcon,
   SearchIcon,
   SettingsIcon,
   SoccerBallIcon,
@@ -71,5 +76,6 @@ export {
   TwitterIcon,
   UsersIcon,
   WalletIcon,
+  WarningIcon,
   WhiteHouseIcon
 };

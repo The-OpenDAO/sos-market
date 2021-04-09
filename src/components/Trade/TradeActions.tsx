@@ -5,7 +5,7 @@ import {
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-import Button from '../Button';
+import { Button } from '../Button';
 
 function TradeActions() {
   const dispatch = useAppDispatch();

@@ -1,6 +1,6 @@
 import { MetaMaskIcon, SettingsIcon } from 'assets/icons';
 
-import Button from '../Button';
+import { Button } from '../Button';
 
 function NavBarActions() {
   return (

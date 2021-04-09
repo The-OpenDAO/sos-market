@@ -1,0 +1,72 @@
+.pm-c-toast {
+  @include flex-column;
+  gap: 0.5rem;
+  padding: 2.4rem;
+
+  &__header {
+    @include flex-row(flex-start, center);
+    gap: 0.8rem;
+  }
+
+  &__body {
+    @include flex-column;
+    gap: 1.6rem;
+  }
+
+  &__actions {
+    @include flex-row(flex-start, center);
+    gap: 0.8rem;
+  }
+}
+
+.pm-c-toast--danger {
+  @extend .pm-c-toast;
+
+  .pm-c-toast__header {
+    svg {
+      fill: $danger-500;
+    }
+  }
+
+  background-color: #201419;
+  @include border($danger-900);
+}
+
+.pm-c-toast--warning {
+  @extend .pm-c-toast;
+
+  .pm-c-toast__header {
+    svg {
+      fill: $warning-500;
+    }
+  }
+
+  background-color: #211e17;
+  @include border($warning-900);
+}
+
+.pm-c-toast--success {
+  @extend .pm-c-toast;
+
+  .pm-c-toast__header {
+    svg {
+      fill: $success-500;
+    }
+  }
+
+  background-color: #132020;
+  @include border($success-900);
+}
+
+.pm-c-toast--info {
+  @extend .pm-c-toast;
+
+  .pm-c-toast__header {
+    svg {
+      fill: $primary-500;
+    }
+  }
+
+  background-color: #090819;
+  @include border($primary-900);
+}

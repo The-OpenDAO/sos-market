@@ -88,3 +88,16 @@
   background-color: unset;
   border: none;
 }
+
+@each $color-variant, $color in $text-colors {
+  .button-text--#{$color-variant} {
+    @extend %button;
+    @include text-color($color);
+
+    transition: opacity 0.3s ease 0s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

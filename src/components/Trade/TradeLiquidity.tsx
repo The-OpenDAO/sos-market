@@ -1,6 +1,6 @@
 import { InfoIcon } from 'assets/icons';
 
-import Button from '../Button';
+import { Button } from '../Button';
 
 function TradeLiquidity() {
   return (

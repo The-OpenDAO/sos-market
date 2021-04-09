@@ -1,6 +1,6 @@
 import AreaChart from './AreaChart';
 import Breadcrumb from './Breadcrumb';
-import Button from './Button';
+import { Button, ButtonText } from './Button';
 import CandleStickChart from './CandleStickChart';
 import Card from './Card';
 import { Category, CategoryDisabled, CategoryAnalytics } from './Category';
@@ -28,6 +28,7 @@ import StepSlider from './StepSlider';
 import Table from './Table';
 import Tabs from './Tabs';
 import Text from './Text';
+import Toast from './Toast';
 import ToggleButton from './ToggleButton';
 import ToggleSwitch from './ToggleSwitch';
 import Tooltip from './Tooltip';
@@ -37,6 +38,7 @@ export {
   AreaChart,
   Breadcrumb,
   Button,
+  ButtonText,
   CandleStickChart,
   Card,
   Category,
@@ -66,6 +68,7 @@ export {
   Table,
   Tabs,
   Text,
+  Toast,
   Tooltip,
   ToggleButton,
   ToggleSwitch,
