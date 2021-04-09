@@ -1,8 +1,7 @@
 import { MetaMaskIcon, PolkadotIcon, SettingsIcon } from 'assets/icons';
 
-import { WalletInfo } from 'components';
-
 import { Button } from '../Button';
+import WalletInfo from '../WalletInfo';
 
 function NavBarActions() {
   const walletConnected = true;
