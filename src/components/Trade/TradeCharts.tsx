@@ -1,18 +1,18 @@
-import { CandleStickChartIcon, LineChartIcon } from 'assets/icons';
-
-import { generateMarketChartRandomData } from 'pages/Market/utils';
+import { generateChartRandomData } from 'components/Category/utils';
 
 import { useAppSelector } from 'hooks';
 
-import CandleStickChart from '../CandleStickChart';
 import ChartHeader from '../ChartHeader';
+import LineChart from '../LineChart';
 
 function TradeCharts() {
   const showCharts = useAppSelector(state => state.trade.showCharts);
+  const predictions = useAppSelector(state => state.trade.predictions);
 
   if (!showCharts) return null;
 
-  // const chartData = generateMarketChartRandomData(30);
+  const lineChartDataA = generateChartRandomData();
+  const lineChartDataB = generateChartRandomData(true);
 
   return (
     <div className="trade-charts">
@@ -23,22 +23,20 @@ function TradeCharts() {
           { id: 'day', name: '1D', value: 120 },
           { id: 'month', name: '1M', value: 120 }
         ]}
-        views={[
+        defaultIntervalId="hour"
+        onChangeInterval={(interval, value) => console.log(interval, value)}
+      />
+      <LineChart
+        series={[
+          { name: predictions[0].name, data: lineChartDataA },
           {
-            id: 'candleStick',
-            icon: <CandleStickChartIcon />
-          },
-          {
-            id: 'line',
-            icon: <LineChartIcon />
+            name: predictions[1].name,
+            data: lineChartDataB
           }
         ]}
-        defaultIntervalId="hour"
-        defaultViewId="candleStick"
-        onChangeInterval={(interval, value) => console.log(interval, value)}
-        onChangeView={view => console.log(view)}
+        ticker="DOT"
+        height={180}
       />
-      {/* <CandleStickChart serie={chartData} height={180} /> */}
     </div>
   );
 }

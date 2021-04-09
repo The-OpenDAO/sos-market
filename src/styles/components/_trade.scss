@@ -23,6 +23,7 @@
 
 .trade-charts {
   @include flex-column;
+  width: 100%;
 }
 
 .trade-predictions {
