@@ -5,7 +5,8 @@ import {
   changePredictionsVisibility,
   changeTradeVisibility,
   setPredictions,
-  setSelectedPrediction
+  setSelectedPrediction,
+  setSelectedMarket
 } from 'redux/ducks/trade';
 
 import { useAppDispatch } from 'hooks';
@@ -64,6 +65,7 @@ function PredictionCard({ market }: PredictionCardProps) {
     dispatch(changeChartsVisibility(false));
     dispatch(setPredictions(market.options));
     dispatch(setSelectedPrediction(market.options[0].id));
+    dispatch(setSelectedMarket(market.id));
     dispatch(changePredictionsVisibility(true));
   }
 
