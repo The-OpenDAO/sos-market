@@ -20,6 +20,7 @@ import LinkedInIcon from './LinkedInIcon';
 import MarketsIcon from './MarketsIcon';
 import MediumIcon from './MediumIcon';
 import MetaMaskIcon from './MetaMaskIcon';
+import MetaMaskIconSmall from './MetaMaskIconSmall';
 import PolkadotIcon from './PolkadotIcon';
 import PolkamarketsIcon from './PolkamarketsIcon';
 import PolkamarketsLogo from './PolkamarketsLogo';
@@ -61,6 +62,7 @@ export {
   MarketsIcon,
   MediumIcon,
   MetaMaskIcon,
+  MetaMaskIconSmall,
   PolkadotIcon,
   PolkamarketsIcon,
   PolkamarketsLogo,

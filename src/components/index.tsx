@@ -33,6 +33,7 @@ import ToggleButton from './ToggleButton';
 import ToggleSwitch from './ToggleSwitch';
 import Tooltip from './Tooltip';
 import Trade from './Trade';
+import WalletInfo from './WalletInfo';
 
 export {
   AreaChart,
@@ -72,5 +73,6 @@ export {
   Tooltip,
   ToggleButton,
   ToggleSwitch,
-  Trade
+  Trade,
+  WalletInfo
 };

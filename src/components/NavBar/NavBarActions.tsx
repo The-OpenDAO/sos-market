@@ -1,14 +1,27 @@
-import { MetaMaskIcon, SettingsIcon } from 'assets/icons';
+import { MetaMaskIcon, PolkadotIcon, SettingsIcon } from 'assets/icons';
+
+import { WalletInfo } from 'components';
 
 import { Button } from '../Button';
 
 function NavBarActions() {
+  const walletConnected = true;
+
   return (
     <div className="navbar__actions">
-      <Button color="default" aria-label="Connect Wallet">
-        <MetaMaskIcon />
-        Connect Wallet
-      </Button>
+      {walletConnected ? (
+        <WalletInfo
+          balance={0}
+          currencyIcon={<PolkadotIcon />}
+          address="0xC857Bd392eE052E31Ce89F50aFB8315839D1dF43"
+        />
+      ) : (
+        <Button color="default" aria-label="Connect Wallet">
+          <MetaMaskIcon />
+          Connect Wallet
+        </Button>
+      )}
+
       <Button color="default" aria-label="Settings">
         <SettingsIcon />
       </Button>
