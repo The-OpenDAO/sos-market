@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import {
+  changePredictionsVisibility,
+  changeTradeVisibility,
+  setPredictions,
+  setSelectedPrediction
+} from 'redux/ducks/trade';
+
 import { Tabs, Table, Text } from 'components';
+
+import { useAppDispatch } from 'hooks';
 
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
@@ -15,6 +24,7 @@ type Params = {
 };
 
 const Market = () => {
+  const dispatch = useAppDispatch();
   const { marketId } = useParams<Params>();
   const [market, setMarket] = useState<typeof markets[0] | undefined>();
 
@@ -22,7 +32,11 @@ const Market = () => {
     const currentMarket = markets.find(m => m.id === parseInt(marketId, 10));
 
     setMarket(currentMarket);
-  }, [marketId]);
+    dispatch(changeTradeVisibility(true));
+    dispatch(setPredictions(currentMarket?.options));
+    dispatch(setSelectedPrediction(currentMarket?.options[0].id));
+    dispatch(changePredictionsVisibility(true));
+  }, [marketId, dispatch]);
 
   if (!market) return null;
 
