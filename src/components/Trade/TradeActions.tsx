@@ -24,6 +24,11 @@ function TradeActions() {
     tradingService.buy(marketId, predictionId, amount);
   }
 
+  async function handleSell() {
+    const tradingService = new TradingService();
+    tradingService.sell(marketId, predictionId, amount);
+  }
+
   return (
     <div className="trade-actions">
       {showCharts ? (
@@ -37,7 +42,7 @@ function TradeActions() {
         </Button>
       ) : null}
       {type === 'sell' ? (
-        <Button size="lg" color="danger">
+        <Button size="lg" color="danger" onClick={handleSell}>
           Sell
         </Button>
       ) : null}

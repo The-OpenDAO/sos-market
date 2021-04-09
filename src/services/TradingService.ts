@@ -14,15 +14,21 @@ export default class TradingService {
     });
   }
 
-  public async buy(
-    marketId: string | number,
-    outcomeId: string | number,
-    ethAmount: number
-  ) {
+  public async buy(marketId: string | number, outcomeId: string | number, ethAmount: number) {
     const response = await this.contract.buy({
       marketId,
       outcomeId,
       ethAmount
+    });
+
+    return response;
+  }
+
+  public async sell(marketId: string | number, outcomeId: string | number, shares: number) {
+    const response = await this.contract.sell({
+      marketId,
+      outcomeId,
+      shares
     });
 
     return response;
