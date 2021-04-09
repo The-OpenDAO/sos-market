@@ -18,52 +18,12 @@
     }
   }
 
-  &__cards {
-    @include flex-row;
-    flex-wrap: wrap;
+  &__analytics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 2.4rem;
 
     margin: 2.4rem 0rem;
-  }
-}
-
-.portfolio-card {
-  cursor: pointer;
-  touch-action: manipulation;
-
-  @include flex-column;
-  gap: 0.4rem;
-
-  flex-grow: 1;
-  height: 9.6rem;
-  padding: 1.6rem;
-
-  &__header {
-    @include flex-row(space-between, flex-start);
-    gap: 1rem;
-
-    &-title {
-      color: $neutral-white-50;
-    }
-  }
-
-  &__content {
-    &-value {
-      color: $gray-100;
-    }
-  }
-
-  border-radius: 0.4rem;
-
-  > label {
-    color: $neutral-white;
-  }
-}
-
-@each $variant, $color in $gradient-colors {
-  .portfolio-card--#{$variant} {
-    @extend .portfolio-card;
-    @include card-background-color($variant, $color);
   }
 }
 

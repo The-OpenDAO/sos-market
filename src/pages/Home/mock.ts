@@ -3,6 +3,7 @@ import { generateChartRandomData } from 'pages/Portfolio/utils';
 const categories = [
   {
     title: 'Crypto',
+    route: 'crypto',
     change: {
       type: 'up',
       amount: 2.58
@@ -12,6 +13,7 @@ const categories = [
   },
   {
     title: 'Gaming',
+    route: 'gaming',
     change: {
       type: 'down',
       amount: 2.58

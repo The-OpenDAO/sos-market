@@ -1,39 +1,45 @@
-const portfolioCards = [
+import { generateChartRandomData } from './utils';
+
+const portfolioAnalytics = [
   {
     title: 'Total earnings',
     value: '23.485 DOT',
     change: {
       type: 'up',
-      value: 2.58
+      amount: 2.58
     },
-    variant: 'yellow'
+    backgroundColor: 'yellow',
+    chartData: generateChartRandomData()
   },
   {
     title: 'Open positions',
     value: 12,
     change: {
       type: 'down',
-      value: 2.58
+      amount: 2.58
     },
-    variant: 'blue'
+    backgroundColor: 'blue',
+    chartData: generateChartRandomData()
   },
   {
     title: 'Liquidity provided',
-    value: '  42.058 DOT',
+    value: '42.058 DOT',
     change: {
       type: 'up',
-      value: 2.58
+      amount: 2.58
     },
-    variant: 'pink'
+    backgroundColor: 'pink',
+    chartData: generateChartRandomData()
   },
   {
     title: 'Liquidity earnings',
     value: '2.485 DOT',
     change: {
       type: 'up',
-      value: 2.58
+      amount: 2.58
     },
-    variant: 'orange'
+    backgroundColor: 'orange',
+    chartData: generateChartRandomData()
   }
 ];
 
@@ -158,4 +164,4 @@ const markets = [
   }
 ];
 
-export { portfolioCards, balance, markets };
+export { portfolioAnalytics, balance, markets };

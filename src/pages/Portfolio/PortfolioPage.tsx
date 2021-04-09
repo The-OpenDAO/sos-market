@@ -2,12 +2,11 @@ import { useEffect } from 'react';
 
 import { changeTradeVisibility } from 'redux/ducks/trade';
 
-import { MarketTable, Text } from 'components';
+import { CategoryAnalytics, MarketTable, Text } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-import { portfolioCards, markets } from './mock';
-import PortfolioCard from './PortfolioCard';
+import { portfolioAnalytics, markets } from './mock';
 import PortfolioChart from './PortfolioChart';
 
 const PortfolioPage = () => {
@@ -32,17 +31,19 @@ const PortfolioPage = () => {
           Portfolio
         </Text>
       </div>
-      <div className="portfolio-page__cards">
-        {portfolioCards?.map(card => (
-          <PortfolioCard
-            key={card.title}
-            title={card.title}
-            value={card.value}
-            change={card.change}
-            variant={card.variant}
-          />
+      <ul className="portfolio-page__analytics">
+        {portfolioAnalytics?.map(item => (
+          <li key={item.title}>
+            <CategoryAnalytics
+              title={item.title}
+              value={item.value}
+              change={item.change}
+              chartData={item.chartData}
+              backgroundColor={item.backgroundColor}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
 
       <PortfolioChart />
       <MarketTable rows={markets} />

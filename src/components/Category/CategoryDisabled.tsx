@@ -3,16 +3,14 @@ import MiniAreaChart from '../MiniAreaChart';
 import Text from '../Text';
 import { generateChartRandomData } from './utils';
 
-import './Category.scss';
-
 const chartData = generateChartRandomData();
 
-type CategoryProps = {
+type CategoryDisabledProps = {
   title: string;
   info?: string;
 };
 
-function CategoryDisabled({ title, info }: CategoryProps) {
+function CategoryDisabled({ title, info }: CategoryDisabledProps) {
   return (
     <div className="pm-c-category--disabled">
       <div className="pm-c-category__header">
@@ -38,5 +36,7 @@ function CategoryDisabled({ title, info }: CategoryProps) {
     </div>
   );
 }
+
+CategoryDisabled.displayName = 'CategoryDisabled';
 
 export default CategoryDisabled;

@@ -3,7 +3,7 @@ import Breadcrumb from './Breadcrumb';
 import Button from './Button';
 import CandleStickChart from './CandleStickChart';
 import Card from './Card';
-import { Category, CategoryDisabled } from './Category';
+import { Category, CategoryDisabled, CategoryAnalytics } from './Category';
 import ChartHeader from './ChartHeader';
 import Checkbox from './Checkbox';
 import FeaturedCard from './FeaturedCard';
@@ -40,6 +40,7 @@ export {
   Card,
   Category,
   CategoryDisabled,
+  CategoryAnalytics,
   ChartHeader,
   Checkbox,
   FeaturedCard,
