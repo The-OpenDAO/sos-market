@@ -1,3 +1,7 @@
+import { useState, useEffect } from 'react';
+
+import { TradingService } from 'services';
+
 import { useAppSelector } from 'hooks';
 
 import TradeActions from './TradeActions';
@@ -11,6 +15,18 @@ import TradeTypeSelector from './TradeTypeSelector';
 
 function Trade() {
   const visible = useAppSelector(state => state.trade.visible);
+  const [balance = 0, setBalance] = useState<any | undefined>();
+
+  const loadBalance = async () => {
+    const tradingService = new TradingService();
+    const currentBalance = await tradingService.getBalance();
+
+    setBalance(currentBalance);
+  };
+
+  useEffect(() => {
+    loadBalance();
+  }, []);
 
   if (!visible) return null;
 
@@ -23,7 +39,7 @@ function Trade() {
       </div>
       <div className="trade__group" style={{ gap: '2.4rem' }}>
         <TradeTypeSelector />
-        <TradeInput max={0.0104} />
+        <TradeInput max={balance} />
         <TradeDetails />
         <TradeTerms />
         <TradeActions />

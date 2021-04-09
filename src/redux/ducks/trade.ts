@@ -40,6 +40,7 @@ const initialState = {
       pricePerFraction: 0
     }
   ],
+  amount: 0,
   fractionsBought: 0,
   currentROI: 0,
   totalStake: 0,
@@ -81,6 +82,10 @@ const tradeSlice = createSlice({
       ...state,
       predictions: action.payload
     }),
+    setTradeInput: (state, action) => ({
+      ...state,
+      amount: action.payload
+    }),
     setPredictionDetails: (
       state,
       action: PayloadAction<PredictionDetails>
@@ -114,6 +119,7 @@ const {
   setSelectedMarket,
   setPredictions,
   setPredictionDetails,
+  setTradeInput,
   toggleAcceptRules,
   toggleAcceptOddChanges
 } = tradeSlice.actions;
@@ -127,6 +133,7 @@ export {
   setSelectedMarket,
   setPredictions,
   setPredictionDetails,
+  setTradeInput,
   toggleAcceptRules,
   toggleAcceptOddChanges
 };

@@ -22,10 +22,7 @@ const MarketOutcomeMapping = {
 
 export default class PolkamarketsApiMappingService {
   public static mapMarket(apiMarket) {
-    const market = PolkamarketsApiMappingService.mapApiObject(
-      apiMarket,
-      MarketMapping
-    );
+    const market = PolkamarketsApiMappingService.mapApiObject(apiMarket, MarketMapping);
 
     // mapping outcomes
     market.options = apiMarket.outcomes.map(apiMarketOutcome => {
@@ -36,10 +33,11 @@ export default class PolkamarketsApiMappingService {
   }
 
   public static mapMarketOutcome(apiMarketOutcome) {
-    const marketOutcome = PolkamarketsApiMappingService.mapApiObject(
-      apiMarketOutcome,
-      MarketOutcomeMapping
-    );
+    const marketOutcome = PolkamarketsApiMappingService.mapApiObject(apiMarketOutcome, MarketOutcomeMapping);
+
+    // rounding value up to 3 decimals
+    marketOutcome.odd = parseFloat(marketOutcome.odd.toFixed(3));
+    marketOutcome.pricePerFraction = parseFloat(marketOutcome.pricePerFraction.toFixed(3));
 
     // manually adding TODO options
     marketOutcome.oddChange = { type: Math.random() > 0.5 ? 'up' : 'down' };

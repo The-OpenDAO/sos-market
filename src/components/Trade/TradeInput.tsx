@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
+import { setTradeInput } from 'redux/ducks/trade';
+
 import { WalletIcon, PolkadotIcon } from 'assets/icons';
 
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useAppDispatch } from 'hooks';
 
 import StepSlider from '../StepSlider';
 import Text from '../Text';
@@ -12,25 +14,30 @@ type TradeInputProps = {
 };
 
 function TradeInput({ max }: TradeInputProps) {
+  const dispatch = useAppDispatch();
   const type = useAppSelector(state => state.trade.type);
   const label = `${type} fractions`;
 
   const [amount, setAmount] = useState(max);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
-    const { value } = event.currentTarget;
+    let { value }: any = event.currentTarget;
+    value = parseFloat(value) || 0;
 
-    setAmount(parseFloat(value) || 0);
+    setAmount(value);
+    dispatch(setTradeInput(value));
   }
 
   function handleSetMaxAmount() {
     setAmount(max);
+    dispatch(setTradeInput(max));
   }
 
   function handleChangeSlider(value: number) {
     const percentage = value / 100;
 
     setAmount(max * percentage);
+    dispatch(setTradeInput(max * percentage));
   }
 
   return (

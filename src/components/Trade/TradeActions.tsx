@@ -1,8 +1,5 @@
-import {
-  changeTradeVisibility,
-  setSelectedPrediction,
-  setSelectedMarket
-} from 'redux/ducks/trade';
+import { changeTradeVisibility, setSelectedPrediction, setSelectedMarket } from 'redux/ducks/trade';
+import { TradingService } from 'services';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -12,11 +9,19 @@ function TradeActions() {
   const dispatch = useAppDispatch();
   const showCharts = useAppSelector(state => state.trade.showCharts);
   const type = useAppSelector(state => state.trade.type);
+  const marketId = useAppSelector(state => state.trade.selectedMarketId);
+  const predictionId = useAppSelector(state => state.trade.selectedPredictionId);
+  const amount = useAppSelector(state => state.trade.amount);
 
   function handleCancel() {
     dispatch(changeTradeVisibility(false));
     dispatch(setSelectedPrediction(''));
     dispatch(setSelectedMarket(''));
+  }
+
+  async function handleBuy() {
+    const tradingService = new TradingService();
+    tradingService.buy(marketId, predictionId, amount);
   }
 
   return (
@@ -27,7 +32,7 @@ function TradeActions() {
         </Button>
       ) : null}
       {type === 'buy' ? (
-        <Button size="lg" color="success">
+        <Button size="lg" color="success" onClick={handleBuy}>
           Buy
         </Button>
       ) : null}
