@@ -1,17 +1,23 @@
-import { FeaturedCard } from 'components';
+import { Category, CategoryDisabled } from 'components';
 
-import { categories } from './mock';
+import { categories, categoriesDisabled } from './mock';
 
 function HomeCategories() {
   return (
     <ul className="home__categories">
       {categories?.map(category => (
         <li key={category.title}>
-          <FeaturedCard
+          <Category
             title={category.title}
             change={category.change}
-            color={category.color}
+            chartData={category.chartData}
+            backgroundColor={category.backgroundColor}
           />
+        </li>
+      ))}
+      {categoriesDisabled?.map(category => (
+        <li key={category.title}>
+          <CategoryDisabled title={category.title} info={category.info} />
         </li>
       ))}
     </ul>

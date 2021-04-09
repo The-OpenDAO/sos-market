@@ -1,4 +1,4 @@
-function generateCustomOptions(strokeCurve, color) {
+function generateCustomOptions(strokeCurve, strokeWidth, color, gradientShade) {
   return {
     chart: {
       sparkline: { enabled: true },
@@ -18,7 +18,8 @@ function generateCustomOptions(strokeCurve, color) {
     },
     stroke: {
       curve: strokeCurve,
-      width: 1.7
+      width: strokeWidth,
+      colors: color === '#FFFFFF' ? ['#FFFFFF57'] : undefined
     },
     xaxis: {
       type: 'datetime',
@@ -53,9 +54,9 @@ function generateCustomOptions(strokeCurve, color) {
     fill: {
       type: 'gradient',
       gradient: {
-        shade: 'dark',
-        opacityFrom: 0.85,
-        opacityTo: 0.5
+        shade: gradientShade,
+        opacityFrom: 0.7,
+        opacityTo: 0.2
       }
     }
   };

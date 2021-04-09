@@ -31,10 +31,10 @@
       fill: $gray-500;
     }
   } @else {
-    color: $neutral-white;
+    color: $gray-100;
 
     svg {
-      fill: $neutral-white;
+      fill: $gray-100;
     }
   }
 }

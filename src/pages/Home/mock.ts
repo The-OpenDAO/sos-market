@@ -1,43 +1,36 @@
+import { generateChartRandomData } from 'pages/Portfolio/utils';
+
 const categories = [
   {
     title: 'Crypto',
     change: {
       type: 'up',
-      percentage: 2.58
+      amount: 2.58
     },
-    color: 'yellow'
+    backgroundColor: 'yellow',
+    chartData: generateChartRandomData()
   },
   {
-    title: 'Sports',
-    change: {
-      type: 'up',
-      percentage: 2.58
-    },
-    color: 'blue'
-  },
-  {
-    title: 'Finance',
+    title: 'Gaming',
     change: {
       type: 'down',
-      percentage: 2.58
+      amount: 2.58
     },
-    color: 'green'
+    backgroundColor: 'pink',
+    chartData: generateChartRandomData()
+  }
+];
+
+const categoriesDisabled = [
+  {
+    title: 'Sports'
   },
   {
-    title: 'eSports',
-    change: {
-      type: 'up',
-      percentage: 2.58
-    },
-    color: 'pink'
+    title: 'Politics',
+    info: 'Coming Soon'
   },
   {
-    title: 'Tech',
-    change: {
-      type: 'down',
-      percentage: 2.58
-    },
-    color: 'orange'
+    title: 'Tech'
   }
 ];
 
@@ -207,4 +200,4 @@ const markets = [
   }
 ];
 
-export { categories, markets };
+export { categories, categoriesDisabled, markets };

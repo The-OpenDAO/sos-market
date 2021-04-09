@@ -24,7 +24,9 @@ type Color = keyof typeof colors;
 type MiniAreaChartProps = {
   serie: Event[];
   strokeCurve?: StrokeCurve;
+  strokeWidth?: number;
   color?: Color;
+  gradientShade?: 'light' | 'dark';
   height?: number | string;
   width?: number | string;
 };
@@ -32,13 +34,21 @@ type MiniAreaChartProps = {
 function MiniAreaChart({
   serie,
   strokeCurve = 'smooth',
+  strokeWidth = 1.7,
   color = 'primary',
+  gradientShade = 'dark',
   height = 30,
   width = '100%'
 }: MiniAreaChartProps) {
   const customOptions = useMemo(
-    () => generateCustomOptions(strokeCurve, colors[color]),
-    [strokeCurve, color]
+    () =>
+      generateCustomOptions(
+        strokeCurve,
+        strokeWidth,
+        colors[color],
+        gradientShade
+      ),
+    [strokeCurve, strokeWidth, color, gradientShade]
   );
   return (
     <ReactApexChart
