@@ -2,7 +2,10 @@ import { Link } from 'react-router-dom';
 
 import {
   changeChartsVisibility,
-  changePredictionsVisibility
+  changePredictionsVisibility,
+  changeTradeVisibility,
+  setPredictions,
+  setSelectedPrediction
 } from 'redux/ducks/trade';
 
 import { useAppDispatch } from 'hooks';
@@ -56,7 +59,10 @@ function PredictionCard({ market }: PredictionCardProps) {
   } = market;
 
   function handleNavigation() {
+    dispatch(changeTradeVisibility(true));
     dispatch(changeChartsVisibility(false));
+    dispatch(setPredictions(market.options));
+    dispatch(setSelectedPrediction(market.options[0].id));
     dispatch(changePredictionsVisibility(true));
   }
 
