@@ -12,10 +12,10 @@ const PortfolioChart = () => {
     <div className="portfolio-chart">
       <div className="portfolio-chart__header">
         <div className="portfolio-chart__header-balance">
-          <Text as="h4" scale="heading" fontWeight="semibold">
+          <Text as="h4" scale="heading" fontWeight="semibold" color="light">
             {`${balance.total} DOT`}
           </Text>
-          <Text as="span" scale="tiny" fontWeight="medium">
+          <Text as="span" scale="tiny" fontWeight="medium" color="dark-gray">
             Total Balance
           </Text>
         </div>
@@ -26,7 +26,7 @@ const PortfolioChart = () => {
             {balance.change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
             {`${balance.change.percentage}%`}
           </Label>
-          <Text as="span" scale="body" fontWeight="semibold">
+          <Text as="span" scale="body" fontWeight="semibold" color="success">
             {`${balance.change.amount} DOT`}
           </Text>
         </div>

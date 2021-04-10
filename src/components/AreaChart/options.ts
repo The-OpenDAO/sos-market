@@ -1,16 +1,36 @@
+import { fromTimestampToDate } from 'helpers/date';
+
 function generateCustomOptions(ticker: string, showGrid: boolean) {
   return {
     chart: {
       toolbar: {
         show: false
       },
-      type: 'area'
+      type: 'area',
+      zoom: {
+        enabled: false
+      }
     },
     tooltip: {
-      custom({ series, seriesIndex, dataPointIndex }) {
+      enabled: true,
+      marker: {
+        show: false
+      },
+      custom({ series, seriesIndex, dataPointIndex, w }) {
+        const currentValue = series[seriesIndex][dataPointIndex];
+        const currentDate = w.globals.seriesX[seriesIndex][dataPointIndex];
+        const formatedDate = fromTimestampToDate(currentDate).format(
+          'MMMM D, YYYY'
+        );
+        const formatedTime = fromTimestampToDate(currentDate).format('h:mm A');
+
         return `<div class="apexcharts-tooltip-box">
-            <span> ${series[seriesIndex][dataPointIndex]} ${ticker}</span>
-            </div>`;
+          <span class="apexcharts-tooltip-text-value">${currentValue.toFixed(
+            3
+          )} ${ticker}</span>
+          <span class="apexcharts-tooltip-text-date">${formatedDate}</span>
+          <span class="apexcharts-tooltip-text-date">${formatedTime}</span>
+          </div>`;
       }
     },
     markers: {

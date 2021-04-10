@@ -59,16 +59,10 @@
 
     &-change--up {
       @extend %change;
-      > span {
-        color: $success-500;
-      }
     }
 
     &-change--down {
       @extend %change;
-      > span {
-        color: $danger-500;
-      }
     }
   }
 }

@@ -9,11 +9,17 @@
   box-shadow: none !important;
 }
 
+.apexcharts-tooltip-box {
+  @include flex-column(center, center);
+  gap: 0.5rem;
+}
+
 .apexcharts-xaxis-label,
 .apexcharts-yaxis-label,
 .apexcharts-tooltip-title,
 .apexcharts-tooltip-text-label,
-.apexcharts-tooltip-text-value {
+.apexcharts-tooltip-text-value,
+.apexcharts-tooltip-text-date {
   font-family: 'Gilroy', sans-serif !important;
 }
 
@@ -36,6 +42,11 @@
 
 .apexcharts-tooltip-text-value {
   @extend .caption, .bold, .text-light;
+}
+
+.apexcharts-tooltip-text-date {
+  @extend .tiny, .semibold;
+  color: $gray-400;
 }
 
 .apexcharts-xaxis-label,
