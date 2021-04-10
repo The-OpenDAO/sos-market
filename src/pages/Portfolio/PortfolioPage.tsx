@@ -32,17 +32,19 @@ const PortfolioPage = () => {
         </Text>
       </div>
       <ul className="portfolio-page__analytics">
-        {portfolioAnalytics?.map(item => (
-          <li key={item.title}>
-            <CategoryAnalytics
-              title={item.title}
-              value={item.value}
-              change={item.change}
-              chartData={item.chartData}
-              backgroundColor={item.backgroundColor}
-            />
-          </li>
-        ))}
+        {portfolioAnalytics?.map(
+          ({ title, value, change, chartData, backgroundColor }) => (
+            <li key={title}>
+              <CategoryAnalytics
+                title={title}
+                value={value}
+                change={change}
+                chartData={chartData}
+                backgroundColor={backgroundColor}
+              />
+            </li>
+          )
+        )}
       </ul>
 
       <PortfolioChart />

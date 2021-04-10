@@ -73,7 +73,10 @@ const markets = [
       }
     },
     fractions: 389,
-    maxPayout: '2.584 DOT'
+    maxPayout: '2.584 DOT',
+    result: {
+      type: 'lost'
+    }
   },
   {
     id: '1',
@@ -95,7 +98,10 @@ const markets = [
       }
     },
     fractions: 389,
-    maxPayout: '2.584 DOT'
+    maxPayout: '2.584 DOT',
+    result: {
+      type: 'won'
+    }
   },
   {
     id: '2',
@@ -117,7 +123,10 @@ const markets = [
       }
     },
     fractions: 389,
-    maxPayout: '2.584 DOT'
+    maxPayout: '2.584 DOT',
+    result: {
+      type: 'lost'
+    }
   },
   {
     id: '3',
@@ -138,7 +147,10 @@ const markets = [
       }
     },
     fractions: 389,
-    maxPayout: '2.584 DOT'
+    maxPayout: '2.584 DOT',
+    result: {
+      type: 'pending'
+    }
   },
   {
     id: '4',
@@ -160,7 +172,10 @@ const markets = [
       }
     },
     fractions: 389,
-    maxPayout: '2.584 DOT'
+    maxPayout: '2.584 DOT',
+    result: {
+      type: 'pending'
+    }
   }
 ];
 
