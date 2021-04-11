@@ -33,7 +33,11 @@ export default class BeproService {
     try {
       this.loggedIn = await this.bepro.login();
       // successful login
-      if (this.loggedIn) this.address = await this.getAddress();
+      if (this.loggedIn) {
+        this.address = await this.getAddress();
+        // TODO: set this in bepro
+        this.contract.params.web3.eth.defaultAccount = this.address;
+      }
     } catch (e) {
       // should be non-blocking
       return false;

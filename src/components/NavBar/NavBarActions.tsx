@@ -16,8 +16,8 @@ function NavBarActions() {
   const walletAddress = useAppSelector(state => state.bepro.ethAddress);
   const walletBalance = useAppSelector(state => state.bepro.ethBalance);
 
-  const handleConnectWallet = () => {
-    beproService.login();
+  const handleConnectWallet = async () => {
+    await beproService.login();
     fetchWallet(dispatch);
   };
 
