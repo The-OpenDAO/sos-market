@@ -39,12 +39,12 @@ const Market = () => {
       ? PolkamarketsApiMappingService.mapMarket(apiMarket)
       : null;
 
-    setMarket(apiMarket);
     dispatch(changeTradeVisibility(true));
     dispatch(setPredictions(apiMarket?.options));
     dispatch(setSelectedPrediction(apiMarket?.options[0]?.id));
     dispatch(setSelectedMarket(apiMarket?.id));
     dispatch(changePredictionsVisibility(true));
+    setMarket(apiMarket);
   };
 
   useEffect(() => {
