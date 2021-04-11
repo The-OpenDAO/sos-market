@@ -5,7 +5,8 @@ import {
   changePredictionsVisibility,
   changeTradeVisibility,
   setPredictions,
-  setSelectedPrediction
+  setSelectedPrediction,
+  setSelectedMarket
 } from 'redux/ducks/trade';
 
 import { Tabs, Table, Text } from 'components';
@@ -39,14 +40,15 @@ const Market = () => {
       : null;
 
     setMarket(apiMarket);
+    dispatch(changeTradeVisibility(true));
     dispatch(setPredictions(apiMarket?.options));
-    dispatch(setSelectedPrediction(apiMarket?.options[0].id));
+    dispatch(setSelectedPrediction(apiMarket?.options[0]?.id));
+    dispatch(setSelectedMarket(apiMarket?.id));
+    dispatch(changePredictionsVisibility(true));
   };
 
   useEffect(() => {
     loadMarket();
-    dispatch(changeTradeVisibility(true));
-    dispatch(changePredictionsVisibility(true));
   }, [marketId, dispatch]);
 
   if (!market) return null;
