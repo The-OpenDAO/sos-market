@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
 
+import bepro from './ducks/bepro';
 import trade from './ducks/trade';
 
 const store = configureStore({
   reducer: {
-    trade
+    trade,
+    bepro
   },
   middleware: [thunkMiddleware],
   devTools: true
