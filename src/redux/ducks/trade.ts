@@ -82,7 +82,7 @@ const tradeSlice = createSlice({
       ...state,
       predictions: action.payload
     }),
-    setTradeInput: (state, action) => ({
+    setTradeAmount: (state, action) => ({
       ...state,
       amount: action.payload
     }),
@@ -119,7 +119,7 @@ const {
   setSelectedMarket,
   setPredictions,
   setPredictionDetails,
-  setTradeInput,
+  setTradeAmount,
   toggleAcceptRules,
   toggleAcceptOddChanges
 } = tradeSlice.actions;
@@ -133,7 +133,7 @@ export {
   setSelectedMarket,
   setPredictions,
   setPredictionDetails,
-  setTradeInput,
+  setTradeAmount,
   toggleAcceptRules,
   toggleAcceptOddChanges
 };

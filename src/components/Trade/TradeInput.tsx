@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { setTradeInput } from 'redux/ducks/trade';
+import { setTradeAmount } from 'redux/ducks/trade';
 
 import { WalletIcon, PolkadotIcon } from 'assets/icons';
 
@@ -25,19 +25,19 @@ function TradeInput({ max }: TradeInputProps) {
     value = parseFloat(value) || 0;
 
     setAmount(value);
-    dispatch(setTradeInput(value));
+    dispatch(setTradeAmount(value));
   }
 
   function handleSetMaxAmount() {
     setAmount(max);
-    dispatch(setTradeInput(max));
+    dispatch(setTradeAmount(max));
   }
 
   function handleChangeSlider(value: number) {
     const percentage = value / 100;
 
     setAmount(max * percentage);
-    dispatch(setTradeInput(max * percentage));
+    dispatch(setTradeAmount(max * percentage));
   }
 
   return (
