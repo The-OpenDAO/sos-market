@@ -25,6 +25,15 @@ export default class PolkarmarketsApiService {
     return response.json();
   }
 
+  public async reloadMarket(marketId: string): Promise<any> {
+    const requestOptions = { method: 'POST' };
+    const url = `${this.apiUrl}/markets/${marketId}/reload`;
+
+    const response = await fetch(url, requestOptions);
+
+    return response.json();
+  }
+
   // eslint-disable-next-line
   public async getPortfolio(address: string): Promise<any[]> {
     // TODO

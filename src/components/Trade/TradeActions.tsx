@@ -3,7 +3,7 @@ import {
   setSelectedPrediction,
   setSelectedMarket
 } from 'redux/ducks/trade';
-import { BeproService } from 'services';
+import { BeproService, PolkamarketsApiService } from 'services';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -27,12 +27,20 @@ function TradeActions() {
 
   async function handleBuy() {
     const beproService = new BeproService();
-    beproService.buy(marketId, predictionId, amount);
+    // performing buy action on smart contract
+    await beproService.buy(marketId, predictionId, amount);
+
+    // triggering cache reload action on api
+    await new PolkamarketsApiService().reloadMarket(marketId);
   }
 
   async function handleSell() {
     const beproService = new BeproService();
-    beproService.sell(marketId, predictionId, amount);
+    // performing sell action on smart contract
+    await beproService.sell(marketId, predictionId, amount);
+
+    // triggering cache reload action on api
+    await new PolkamarketsApiService().reloadMarket(marketId);
   }
 
   return (
