@@ -26,17 +26,20 @@ function TradeInput() {
 
   // TODO: improve this
   function max() {
-    // max for buy actions - eth balance
-    if (type === 'buy') return balance;
+    let maxAmount = 0;
 
+    // max for buy actions - eth balance
+    if (type === 'buy') {
+      maxAmount = balance;
+    }
     // max for sell actions - number of outcome shares
-    if (type === 'sell') {
-      return (
-        portfolio[selectedMarketId]?.outcomeShares[selectedPredictionId] || 0
-      );
+    else if (type === 'sell') {
+      maxAmount =
+        portfolio[selectedMarketId]?.outcomeShares[selectedPredictionId] || 0;
     }
 
-    return 0;
+    // rounding (down) to 5 decimals
+    return Math.floor(maxAmount * 1e5) / 1e5;
   }
 
   const [amount, setAmount] = useState(max());
