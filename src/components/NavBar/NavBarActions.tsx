@@ -1,5 +1,5 @@
 import { fetchWallet } from 'redux/ducks/bepro';
-import { TradingService } from 'services';
+import { BeproService } from 'services';
 
 import { MetaMaskIcon, PolkadotIcon, SettingsIcon } from 'assets/icons';
 
@@ -10,14 +10,14 @@ import WalletInfo from '../WalletInfo';
 
 function NavBarActions() {
   const dispatch = useAppDispatch();
-  const tradingService = new TradingService();
+  const beproService = new BeproService();
 
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
   const walletAddress = useAppSelector(state => state.bepro.ethAddress);
   const walletBalance = useAppSelector(state => state.bepro.ethBalance);
 
   const handleConnectWallet = () => {
-    tradingService.login();
+    beproService.login();
     fetchWallet(dispatch);
   };
 

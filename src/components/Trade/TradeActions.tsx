@@ -3,7 +3,7 @@ import {
   setSelectedPrediction,
   setSelectedMarket
 } from 'redux/ducks/trade';
-import { TradingService } from 'services';
+import { BeproService } from 'services';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -26,13 +26,13 @@ function TradeActions() {
   }
 
   async function handleBuy() {
-    const tradingService = new TradingService();
-    tradingService.buy(marketId, predictionId, amount);
+    const beproService = new BeproService();
+    beproService.buy(marketId, predictionId, amount);
   }
 
   async function handleSell() {
-    const tradingService = new TradingService();
-    tradingService.sell(marketId, predictionId, amount);
+    const beproService = new BeproService();
+    beproService.sell(marketId, predictionId, amount);
   }
 
   return (

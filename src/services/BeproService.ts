@@ -1,6 +1,6 @@
 import * as beprojs from 'bepro-js';
 
-export default class TradingService {
+export default class BeproService {
   // bepro app
   public bepro: any;
 

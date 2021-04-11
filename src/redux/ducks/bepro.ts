@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TradingService } from 'services';
+import { BeproService } from 'services';
 
 const initialState = {
   isLoggedIn: false,
@@ -42,18 +42,18 @@ const {
 
 // fetching initial wallet details
 const fetchWallet = async (dispatch: any) => {
-  const tradingService = new TradingService();
+  const beproService = new BeproService();
 
-  const isLoggedIn = await tradingService.isLoggedIn();
+  const isLoggedIn = await beproService.isLoggedIn();
   dispatch(changeIsLoggedIn(isLoggedIn));
 
   if (isLoggedIn) {
-    await tradingService.login();
+    await beproService.login();
 
-    const address = await tradingService.getAddress();
+    const address = await beproService.getAddress();
     dispatch(changeEthAddress(address));
 
-    const balance = await tradingService.getBalance();
+    const balance = await beproService.getBalance();
     dispatch(changeEthBalance(balance));
   }
 };
