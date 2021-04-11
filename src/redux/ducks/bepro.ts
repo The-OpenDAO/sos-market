@@ -5,7 +5,7 @@ const initialState = {
   isLoggedIn: false,
   ethAddress: '',
   ethBalance: 0,
-  marketBalances: {}
+  portfolio: {}
 };
 
 const beproSlice = createSlice({
@@ -24,9 +24,9 @@ const beproSlice = createSlice({
       ...state,
       ethBalance: action.payload
     }),
-    changeMarketBalances: (state, action: PayloadAction<Object>) => ({
+    changePortfolio: (state, action: PayloadAction<Object>) => ({
       ...state,
-      marketBalances: action.payload
+      portfolio: action.payload
     })
   }
 });
@@ -37,7 +37,7 @@ const {
   changeIsLoggedIn,
   changeEthAddress,
   changeEthBalance,
-  changeMarketBalances
+  changePortfolio
 } = beproSlice.actions;
 
 // fetching initial wallet details
@@ -55,6 +55,9 @@ const fetchWallet = async (dispatch: any) => {
 
     const balance = await beproService.getBalance();
     dispatch(changeEthBalance(balance));
+
+    const portfolio = await beproService.getPortfolio();
+    dispatch(changePortfolio(portfolio));
   }
 };
 
@@ -62,6 +65,6 @@ export {
   changeIsLoggedIn,
   changeEthAddress,
   changeEthBalance,
-  changeMarketBalances,
+  changePortfolio,
   fetchWallet
 };

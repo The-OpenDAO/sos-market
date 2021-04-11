@@ -11,7 +11,6 @@ import TradeTypeSelector from './TradeTypeSelector';
 
 function Trade() {
   const visible = useAppSelector(state => state.trade.visible);
-  const balance = useAppSelector(state => state.bepro.ethBalance);
 
   if (!visible) return null;
 
@@ -24,7 +23,7 @@ function Trade() {
       </div>
       <div className="trade__group" style={{ gap: '2.4rem' }}>
         <TradeTypeSelector />
-        <TradeInput max={balance} />
+        <TradeInput />
         <TradeDetails />
         <TradeTerms />
         <TradeActions />

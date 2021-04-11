@@ -9,16 +9,37 @@ import { useAppSelector, useAppDispatch } from 'hooks';
 import StepSlider from '../StepSlider';
 import Text from '../Text';
 
-type TradeInputProps = {
-  max: number;
-};
-
-function TradeInput({ max }: TradeInputProps) {
+function TradeInput() {
   const dispatch = useAppDispatch();
   const type = useAppSelector(state => state.trade.type);
   const label = `${type} fractions`;
 
-  const [amount, setAmount] = useState(max);
+  const selectedPredictionId = useAppSelector(
+    state => state.trade.selectedPredictionId
+  );
+  const selectedMarketId = useAppSelector(
+    state => state.trade.selectedMarketId
+  );
+  // buy and sell have different maxes
+  const balance = useAppSelector(state => state.bepro.ethBalance);
+  const portfolio = useAppSelector(state => state.bepro.portfolio);
+
+  // TODO: improve this
+  function max() {
+    // max for buy actions - eth balance
+    if (type === 'buy') return balance;
+
+    // max for sell actions - number of outcome shares
+    if (type === 'sell') {
+      return (
+        portfolio[selectedMarketId]?.outcomeShares[selectedPredictionId] || 0
+      );
+    }
+
+    return 0;
+  }
+
+  const [amount, setAmount] = useState(max());
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
     let { value }: any = event.currentTarget;
@@ -29,15 +50,15 @@ function TradeInput({ max }: TradeInputProps) {
   }
 
   function handleSetMaxAmount() {
-    setAmount(max);
-    dispatch(setTradeAmount(max));
+    setAmount(max());
+    dispatch(setTradeAmount(max()));
   }
 
   function handleChangeSlider(value: number) {
     const percentage = value / 100;
 
-    setAmount(max * percentage);
-    dispatch(setTradeAmount(max * percentage));
+    setAmount(max() * percentage);
+    dispatch(setTradeAmount(max() * percentage));
   }
 
   return (
@@ -51,10 +72,10 @@ function TradeInput({ max }: TradeInputProps) {
             <WalletIcon />
           </figure>
           <Text as="strong" scale="tiny" fontWeight="semibold">
-            {max}
+            {max()}
           </Text>
           <Text as="span" scale="tiny" fontWeight="semibold">
-            DOT
+            {type === 'buy' ? ' DOT' : ' Shares'}
           </Text>
         </div>
       </div>
@@ -66,7 +87,7 @@ function TradeInput({ max }: TradeInputProps) {
           value={amount}
           step=".0001"
           min={0}
-          max={max}
+          max={max()}
           onChange={event => handleChangeAmount(event)}
         />
         <div className="trade-input__actions">
@@ -75,14 +96,23 @@ function TradeInput({ max }: TradeInputProps) {
               Max
             </Text>
           </button>
-          <div className="trade-input__logo">
-            <figure aria-label="Polkadot logo">
-              <PolkadotIcon />
-            </figure>
-            <Text as="span" scale="caption" fontWeight="bold">
-              DOT
-            </Text>
-          </div>
+          {type === 'buy' ? (
+            <div className="trade-input__logo">
+              <figure aria-label="Polkadot logo">
+                <PolkadotIcon />
+              </figure>
+              <Text as="span" scale="caption" fontWeight="bold">
+                DOT
+              </Text>
+            </div>
+          ) : null}
+          {type === 'sell' ? (
+            <div className="trade-input__logo">
+              <Text as="span" scale="caption" fontWeight="bold">
+                Shares
+              </Text>
+            </div>
+          ) : null}
         </div>
       </div>
       <StepSlider onChange={value => handleChangeSlider(value)} />

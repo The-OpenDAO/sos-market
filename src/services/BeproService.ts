@@ -100,4 +100,13 @@ export default class BeproService {
 
     return parseFloat(balance) || 0;
   }
+
+  public async getPortfolio(): Promise<Object> {
+    // ensuring user has wallet connected
+    if (!this.address) return {};
+
+    const response = await this.contract.getMyPortfolio();
+
+    return response;
+  }
 }
