@@ -11,7 +11,7 @@ export default class TradingService {
   public loggedIn: boolean = false;
 
   // user eth address
-  public address: string | null = null;
+  public address: string = '';
 
   constructor() {
     this.bepro = new beprojs.Application({ mainnet: false });
@@ -22,11 +22,18 @@ export default class TradingService {
     });
   }
 
+  // returns wether wallet is connected to service or not
+  public async isLoggedIn(): Promise<boolean> {
+    return this.bepro.isLoggedIn();
+  }
+
   public async login() {
     if (this.loggedIn) return true;
 
     try {
       this.loggedIn = await this.bepro.login();
+      // successful login
+      if (this.loggedIn) this.address = await this.getAddress();
     } catch (e) {
       // should be non-blocking
       return false;
@@ -69,10 +76,10 @@ export default class TradingService {
     return response;
   }
 
-  public async getAddress(): Promise<string | null> {
+  public async getAddress(): Promise<string> {
     if (this.address) return this.address;
 
-    return this.bepro.getAddress();
+    return this.bepro.getAddress() || '';
   }
 
   public async getBalance(): Promise<number> {
@@ -81,6 +88,6 @@ export default class TradingService {
     // returns user balance in ETH
     const balance = await this.bepro.getETHBalance();
 
-    return balance || 0;
+    return parseFloat(balance) || 0;
   }
 }

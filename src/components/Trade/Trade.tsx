@@ -1,7 +1,3 @@
-import { useState, useEffect } from 'react';
-
-import { TradingService } from 'services';
-
 import { useAppSelector } from 'hooks';
 
 import TradeActions from './TradeActions';
@@ -15,18 +11,7 @@ import TradeTypeSelector from './TradeTypeSelector';
 
 function Trade() {
   const visible = useAppSelector(state => state.trade.visible);
-  const [balance = 0, setBalance] = useState<any | undefined>();
-
-  const loadBalance = async () => {
-    const tradingService = new TradingService();
-    const currentBalance = await tradingService.getBalance();
-
-    setBalance(currentBalance);
-  };
-
-  useEffect(() => {
-    loadBalance();
-  }, []);
+  const balance = useAppSelector(state => state.bepro.ethBalance);
 
   if (!visible) return null;
 

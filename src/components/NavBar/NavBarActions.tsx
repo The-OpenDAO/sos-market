@@ -1,21 +1,40 @@
+import { fetchWallet } from 'redux/ducks/bepro';
+import { TradingService } from 'services';
+
 import { MetaMaskIcon, PolkadotIcon, SettingsIcon } from 'assets/icons';
+
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 import { Button } from '../Button';
 import WalletInfo from '../WalletInfo';
 
 function NavBarActions() {
-  const walletConnected = true;
+  const dispatch = useAppDispatch();
+  const tradingService = new TradingService();
+
+  const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
+  const walletAddress = useAppSelector(state => state.bepro.ethAddress);
+  const walletBalance = useAppSelector(state => state.bepro.ethBalance);
+
+  const handleConnectWallet = () => {
+    tradingService.login();
+    fetchWallet(dispatch);
+  };
 
   return (
     <div className="navbar__actions">
       {walletConnected ? (
         <WalletInfo
-          balance={0}
+          balance={walletBalance}
           currencyIcon={<PolkadotIcon />}
-          address="0xC857Bd392eE052E31Ce89F50aFB8315839D1dF43"
+          address={walletAddress}
         />
       ) : (
-        <Button color="default" aria-label="Connect Wallet">
+        <Button
+          color="default"
+          aria-label="Connect Wallet"
+          onClick={handleConnectWallet}
+        >
           <MetaMaskIcon />
           Connect Wallet
         </Button>
