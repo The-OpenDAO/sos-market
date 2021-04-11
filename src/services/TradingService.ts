@@ -1,17 +1,38 @@
 import * as beprojs from 'bepro-js';
 
 export default class TradingService {
-  public beproApp: any;
+  // bepro app
+  public bepro: any;
 
+  // smart contract bepro instance
   public contract: any;
 
+  // indicates if user has already done a successful metamask login
+  public loggedIn: boolean = false;
+
+  // user eth address
+  public address: string | null = null;
+
   constructor() {
-    this.beproApp = new beprojs.Application({ mainnet: false });
-    this.beproApp.start();
-    this.beproApp.login();
-    this.contract = this.beproApp.getPredictionMarketContract({
+    this.bepro = new beprojs.Application({ mainnet: false });
+    this.bepro.start();
+    // fetching contract
+    this.contract = this.bepro.getPredictionMarketContract({
       contractAddress: process.env.REACT_APP_CONTRACT_ADDRESS
     });
+  }
+
+  public async login() {
+    if (this.loggedIn) return true;
+
+    try {
+      this.loggedIn = await this.bepro.login();
+    } catch (e) {
+      // should be non-blocking
+      return false;
+    }
+
+    return this.loggedIn;
   }
 
   public async buy(
@@ -19,6 +40,9 @@ export default class TradingService {
     outcomeId: string | number,
     ethAmount: number
   ) {
+    // ensuring user has wallet connected
+    await this.login();
+
     const response = await this.contract.buy({
       marketId,
       outcomeId,
@@ -33,6 +57,9 @@ export default class TradingService {
     outcomeId: string | number,
     shares: number
   ) {
+    // ensuring user has wallet connected
+    await this.login();
+
     const response = await this.contract.sell({
       marketId,
       outcomeId,
@@ -42,9 +69,17 @@ export default class TradingService {
     return response;
   }
 
+  public async getAddress(): Promise<string | null> {
+    if (this.address) return this.address;
+
+    return this.bepro.getAddress();
+  }
+
   public async getBalance(): Promise<number> {
+    if (!this.address) return 0;
+
     // returns user balance in ETH
-    const balance = await this.beproApp.getETHBalance();
+    const balance = await this.bepro.getETHBalance();
 
     return balance || 0;
   }
