@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TradingService } from 'services';
 
 const initialState = {
-  bepro: false,
   isLoggedIn: false,
   ethAddress: '',
   ethBalance: 0,
@@ -40,9 +40,28 @@ const {
   changeMarketBalances
 } = beproSlice.actions;
 
+// fetching initial wallet details
+const fetchWallet = async (dispatch: any) => {
+  const tradingService = new TradingService();
+
+  const isLoggedIn = await tradingService.isLoggedIn();
+  dispatch(changeIsLoggedIn(isLoggedIn));
+
+  if (isLoggedIn) {
+    await tradingService.login();
+
+    const address = await tradingService.getAddress();
+    dispatch(changeEthAddress(address));
+
+    const balance = await tradingService.getBalance();
+    dispatch(changeEthBalance(balance));
+  }
+};
+
 export {
   changeIsLoggedIn,
   changeEthAddress,
   changeEthBalance,
-  changeMarketBalances
+  changeMarketBalances,
+  fetchWallet
 };
