@@ -17,6 +17,10 @@ export default class BeproService {
     this.bepro = new beprojs.Application({ mainnet: false });
     this.bepro.start();
     // fetching contract
+    this.getContract();
+  }
+
+  public getContract() {
     this.contract = this.bepro.getPredictionMarketContract({
       contractAddress: process.env.REACT_APP_CONTRACT_ADDRESS
     });
@@ -36,7 +40,9 @@ export default class BeproService {
       if (this.loggedIn) {
         this.address = await this.getAddress();
         // TODO: set this in bepro
-        this.contract.params.web3.eth.defaultAccount = this.address;
+        this.bepro.web3.eth.defaultAccount = this.address;
+        // re-fetching contract
+        this.getContract();
       }
     } catch (e) {
       // should be non-blocking
