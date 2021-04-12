@@ -9,13 +9,15 @@
 
   &__body {
     @include flex-column(center, center);
+    gap: 2.4rem;
+
+    padding: 1.6rem;
+    padding-top: 3.2rem;
 
     @include breakpoint-to('md') {
       @include flex-row(space-between, center);
+      padding: 1.6rem;
     }
-
-    gap: 2.4rem;
-    padding: 1.6rem;
   }
 
   &__footer {
