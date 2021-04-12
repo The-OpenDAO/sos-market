@@ -1,9 +1,9 @@
-type Outcome = {
+export interface Outcome {
   id: number | string;
   marketId: number | string;
   price: number;
   title: string;
-};
+}
 
 export interface Market {
   id: number | string;

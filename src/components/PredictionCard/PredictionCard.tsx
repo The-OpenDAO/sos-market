@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { Market } from 'models/market';
+import { Market as MarketInterface } from 'models/market';
 import {
   changeChartsVisibility,
   changePredictionsVisibility,
@@ -12,28 +12,16 @@ import {
 
 import { useAppDispatch } from 'hooks';
 
-import PredictionCardDetails from './PredictionCardDetails';
-import PredictionCardFooter from './PredictionCardFooter';
-import PredictionCardSelection from './PredictionCardSelection';
+import Market from '../Market';
 
 type PredictionCardProps = {
-  market: Market;
+  market: MarketInterface;
 };
 
 function PredictionCard({ market }: PredictionCardProps) {
   const dispatch = useAppDispatch();
 
-  const {
-    id,
-    imageUrl,
-    category,
-    subcategory,
-    title,
-    outcomes,
-    volume,
-    expiresAt,
-    liquidity
-  } = market;
+  const { id, outcomes } = market;
 
   function handleNavigation() {
     dispatch(changeTradeVisibility(true));
@@ -46,22 +34,15 @@ function PredictionCard({ market }: PredictionCardProps) {
 
   return (
     <div className="prediction-card">
-      <div className="prediction-card__content">
+      <div className="prediction-card__body">
         <Link to={`/markets/${id}`} onClick={handleNavigation}>
-          <PredictionCardDetails
-            imageUrl={imageUrl}
-            section={category}
-            subsection={subcategory}
-            description={title}
-          />
+          <Market market={market} />
         </Link>
-        {/* <PredictionCardSelection predictions={outcomes} /> */}
+        <Market.Options options={outcomes} />
       </div>
-      <PredictionCardFooter
-        volume={volume}
-        expiration={expiresAt}
-        liquidity={liquidity}
-      />
+      <div className="prediction-card__footer">
+        <Market.Footer market={market} ticker="DOT" />
+      </div>
     </div>
   );
 }

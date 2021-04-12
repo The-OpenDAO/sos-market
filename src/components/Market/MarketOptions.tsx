@@ -1,44 +1,31 @@
 import classNames from 'classnames';
+import { Outcome } from 'models/market';
 import {
+  changeChartsVisibility,
   changeTradeVisibility,
-  setSelectedPrediction,
-  setSelectedMarket,
   setPredictions,
-  changeChartsVisibility
+  setSelectedMarket,
+  setSelectedPrediction
 } from 'redux/ducks/trade';
 
-import { ArrowUpIcon, ArrowDownIcon } from 'assets/icons';
-
-import { generateChartRandomData } from 'pages/Portfolio/utils';
+import { ArrowDownIcon, ArrowUpIcon } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
+import { generateChartRandomData } from '../Category/utils';
 import MiniAreaChart from '../MiniAreaChart';
 import Text from '../Text';
 
 const chartData = generateChartRandomData();
 
-type ChangeType = 'up' | 'down';
-
-type PredictionCardSelectionItemProps = {
-  id: number | string;
-  marketId: number | string;
-  name: string;
-  odd: number;
-  oddChange: {
-    type: ChangeType;
-  };
-  onChange: () => void;
+type MarketOptionsItemProps = {
+  option: Outcome;
+  onSelect: () => void;
 };
 
-function PredictionCardSelectionItem({
-  id,
-  marketId,
-  name,
-  odd,
-  oddChange,
-  onChange
-}: PredictionCardSelectionItemProps) {
+function MarketOptionsItem({ option, onSelect }: MarketOptionsItemProps) {
+  const { id, marketId, title, price } = option;
+
   const dispatch = useAppDispatch();
   const visible = useAppSelector(state => state.trade.visible);
   const selectedPredictionId = useAppSelector(
@@ -49,7 +36,7 @@ function PredictionCardSelectionItem({
   );
 
   function updatePredictions() {
-    onChange();
+    onSelect();
   }
 
   function removePredictions() {
@@ -95,77 +82,64 @@ function PredictionCardSelectionItem({
     <button
       type="button"
       className={classNames({
-        'prediction-card-selection__item': true,
+        'pm-c-market-options__item': true,
         active: id === selectedPredictionId && marketId === selectedMarketId
       })}
       onClick={handleItemSelection}
     >
-      <div className="prediction-card-selection__item-group">
-        <Text as="p" scale="caption" fontWeight="semibold">
-          {name}
+      <div className="pm-c-market-options__item-group">
+        <Text as="p" scale="caption" fontWeight="semibold" color="light">
+          {title}
         </Text>
-        <div className="prediction-card-selection__item-odd">
-          <Text as="p" scale="tiny-uppercase" fontWeight="bold">
+        <div className="pm-c-market-options__item-odd">
+          <Text
+            as="p"
+            scale="tiny-uppercase"
+            fontWeight="bold"
+            color="white-50"
+          >
             ODD
           </Text>
-          <Text as="span" scale="tiny" fontWeight="bold">
-            {odd}
+          <Text as="span" scale="tiny" fontWeight="bold" color="light">
+            {price.toFixed(3)}
           </Text>
-          {oddChange.type === 'up' ? <ArrowUpIcon /> : null}
-          {oddChange.type === 'down' ? <ArrowDownIcon /> : null}
+          {Math.random() > 0.5 ? <ArrowUpIcon /> : <ArrowDownIcon />}
         </div>
       </div>
       <MiniAreaChart
         serie={chartData}
-        color={oddChange.type === 'up' ? 'success' : 'danger'}
+        color={Math.random() > 0.5 ? 'success' : 'danger'}
         width={48}
       />
     </button>
   );
 }
 
-PredictionCardSelectionItem.displayName = 'PredictionCardSelectionItem';
-
-type Prediction = {
-  id: number | string;
-  marketId: number | string;
-  name: string;
-  odd: number;
-  oddChange: {
-    type: ChangeType;
-  };
-  pricePerFraction: number;
+type MarketOptionsProps = {
+  options: Outcome[];
 };
 
-type PredictionSelectionProps = {
-  predictions: Prediction[];
-};
-
-const PredictionSelection = ({ predictions }: PredictionSelectionProps) => {
+function MarketOptions({ options }: MarketOptionsProps) {
   const dispatch = useAppDispatch();
 
   function handleChangeSelectedPrediction() {
-    dispatch(setPredictions(predictions));
+    dispatch(setPredictions(options));
   }
 
   return (
-    <ul className="prediction-card-selection">
-      {predictions?.map(prediction => (
-        <li key={prediction.name}>
-          <PredictionCardSelectionItem
-            id={prediction.id}
-            marketId={prediction.marketId}
-            name={prediction.name}
-            odd={prediction.odd}
-            oddChange={prediction.oddChange}
-            onChange={handleChangeSelectedPrediction}
+    <ul className="pm-c-market-options">
+      {options.map(option => (
+        <li key={option.id}>
+          <MarketOptionsItem
+            option={option}
+            onSelect={handleChangeSelectedPrediction}
           />
         </li>
       ))}
     </ul>
   );
-};
+}
 
-PredictionSelection.displayName = 'PredictionSelection';
+MarketOptions.displayName = 'MarketOptions';
 
-export default PredictionSelection;
+export default MarketOptions;

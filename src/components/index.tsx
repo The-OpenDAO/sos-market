@@ -12,6 +12,7 @@ import Input from './Input';
 import Label from './Label';
 import Layout from './Layout';
 import LineChart from './LineChart';
+import Market from './Market';
 import MarketList from './MarketList';
 import MarketSelect from './MarketSelect';
 import MarketTable from './MarketTable';
@@ -53,6 +54,7 @@ export {
   Label,
   Layout,
   LineChart,
+  Market,
   MarketList,
   MarketSelect,
   MarketTable,
