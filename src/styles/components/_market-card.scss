@@ -1,10 +1,20 @@
 .pm-c-market {
   &__body {
-    @include flex-row;
+    @include flex-column(center, center);
+
+    @include breakpoint-to('md') {
+      @include flex-row;
+    }
+
     gap: 2.4rem;
 
     &-details {
-      @include flex-column(center, flex-start);
+      @include flex-column(center, center);
+
+      @include breakpoint-to('md') {
+        @include flex-column(center, flex-start);
+      }
+
       gap: 0.8rem;
 
       p {

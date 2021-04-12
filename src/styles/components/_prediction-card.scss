@@ -8,7 +8,12 @@
   transition: background-color 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
 
   &__body {
-    @include flex-row(space-between, center);
+    @include flex-column(center, center);
+
+    @include breakpoint-to('md') {
+      @include flex-row(space-between, center);
+    }
+
     gap: 2.4rem;
     padding: 1.6rem;
   }
