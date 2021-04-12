@@ -3,6 +3,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 
 import isEmpty from 'lodash/isEmpty';
+import { Market } from 'models/market';
 
 import PredictionCard from '../PredictionCard';
 
@@ -27,7 +28,7 @@ const Item = ({ index, style }: ListChildComponentProps) => {
 };
 
 type MarketListProps = {
-  markets: any[];
+  markets: Market[];
 };
 
 const MarketList = ({ markets }: MarketListProps) => {

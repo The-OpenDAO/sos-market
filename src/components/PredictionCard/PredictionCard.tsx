@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+import { Market } from 'models/market';
 import {
   changeChartsVisibility,
   changePredictionsVisibility,
@@ -15,32 +16,6 @@ import PredictionCardDetails from './PredictionCardDetails';
 import PredictionCardFooter from './PredictionCardFooter';
 import PredictionCardSelection from './PredictionCardSelection';
 
-type ChangeType = 'up' | 'down';
-
-type Option = {
-  id: number | string;
-  marketId: number | string;
-  name: string;
-  odd: number;
-  oddChange: {
-    type: ChangeType;
-  };
-  pricePerFraction: number;
-};
-
-type Market = {
-  id: string | number;
-  imageUrl: string;
-  section: string;
-  subsection: string;
-  description: string;
-  options: Option[];
-  volume: number;
-  expiration: string;
-  liquidity: number;
-  favorite: boolean;
-};
-
 type PredictionCardProps = {
   market: Market;
 };
@@ -51,21 +26,21 @@ function PredictionCard({ market }: PredictionCardProps) {
   const {
     id,
     imageUrl,
-    section,
-    subsection,
-    description,
-    options,
+    category,
+    subcategory,
+    title,
+    outcomes,
     volume,
-    expiration,
+    expiresAt,
     liquidity
   } = market;
 
   function handleNavigation() {
     dispatch(changeTradeVisibility(true));
     dispatch(changeChartsVisibility(false));
-    dispatch(setPredictions(market.options));
-    dispatch(setSelectedPrediction(market.options[0].id));
-    dispatch(setSelectedMarket(market.id));
+    dispatch(setPredictions(outcomes));
+    dispatch(setSelectedPrediction(outcomes[0].id));
+    dispatch(setSelectedMarket(id));
     dispatch(changePredictionsVisibility(true));
   }
 
@@ -75,16 +50,16 @@ function PredictionCard({ market }: PredictionCardProps) {
         <Link to={`/markets/${id}`} onClick={handleNavigation}>
           <PredictionCardDetails
             imageUrl={imageUrl}
-            section={section}
-            subsection={subsection}
-            description={description}
+            section={category}
+            subsection={subcategory}
+            description={title}
           />
         </Link>
-        <PredictionCardSelection predictions={options} />
+        {/* <PredictionCardSelection predictions={outcomes} /> */}
       </div>
       <PredictionCardFooter
         volume={volume}
-        expiration={expiration}
+        expiration={expiresAt}
         liquidity={liquidity}
       />
     </div>
