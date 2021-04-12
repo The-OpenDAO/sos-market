@@ -1,5 +1,10 @@
 .sidebar {
-  @include flex-column;
+  display: none;
+
+  @include breakpoint-to('md') {
+    @include flex-column;
+  }
+
   flex-shrink: 0;
 
   height: 100vh;
