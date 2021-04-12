@@ -1,5 +1,12 @@
+type Outcome = {
+  id: number | string;
+  marketId: number | string;
+  price: number;
+  title: string;
+};
+
 export interface Market {
-  id: string | number;
+  id: number | string;
   category: string;
   subcategory: string;
   imageUrl: string;
@@ -8,4 +15,5 @@ export interface Market {
   shares: number;
   liquidity: number;
   expiresAt: string;
+  outcomes: Outcome[];
 }
