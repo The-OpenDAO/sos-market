@@ -3,12 +3,12 @@ import { changeTradeType } from 'redux/ducks/trade';
 
 import { useAppDispatch } from 'hooks';
 
-import ToggleButton from '../ToggleButton';
+import ButtonGroup from '../ButtonGroup';
 
 function TradeTypeSelector() {
   const dispatch = useAppDispatch();
 
-  function handleChangeTradeType(tradeType: string | undefined) {
+  function handleChangeTradeType(tradeType: string) {
     if (!isUndefined(tradeType)) {
       dispatch(changeTradeType(tradeType));
     }
@@ -16,7 +16,7 @@ function TradeTypeSelector() {
 
   return (
     <div className="trade-type-selector">
-      <ToggleButton
+      <ButtonGroup
         defaultActiveId="buy"
         buttons={[
           { id: 'buy', name: 'Buy', color: 'success' },

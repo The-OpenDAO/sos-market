@@ -1,4 +1,4 @@
-.toggle-button {
+.pm-c-button-group {
   @include flex-row;
   width: 100%;
   padding: 0.2rem;
@@ -22,8 +22,8 @@
 }
 
 @each $color-variant, $color in $theme-colors {
-  .toggle-button--#{$color-variant} {
-    @extend .toggle-button;
-    @include toggle-button-color($color-variant, $color);
+  .pm-c-button-group--#{$color-variant} {
+    @extend .pm-c-button-group;
+    @include button-group-color($color-variant, $color);
   }
 }

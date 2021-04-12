@@ -1,4 +1,4 @@
-@mixin toggle-button-color(
+@mixin button-group-color(
   $color-variant,
   $color,
   $background: rgba($color, 0.3)
@@ -6,7 +6,7 @@
   @if $color-variant == default {
     border-color: $gray-600;
 
-    .toggle-button__item {
+    .pm-c-button-group__item {
       color: $gray-200;
 
       &.active {
@@ -17,7 +17,7 @@
   } @else {
     border-color: $background;
 
-    .toggle-button__item {
+    .pm-c-button-group__item {
       color: $color;
 
       &.active {
