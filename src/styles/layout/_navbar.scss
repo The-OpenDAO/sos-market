@@ -14,11 +14,6 @@
     @include flex-row(flex-start, center);
     padding: 0.65rem 0rem;
     margin-right: 0.8rem;
-
-    svg {
-      height: 3.5rem;
-      width: 2.9rem;
-    }
   }
 
   .searchbar {
