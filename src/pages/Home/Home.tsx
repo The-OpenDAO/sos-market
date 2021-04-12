@@ -1,27 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+
+import { getMarkets } from 'redux/ducks/markets';
 
 import { Tabs, MarketList } from 'components';
 
-import {
-  PolkamarketsApiService,
-  PolkamarketsApiMappingService
-} from '../../services';
+import { useAppDispatch, useAppSelector } from 'hooks';
+
 import HomeCategories from './HomeCategories';
 
 function Home() {
-  const [markets = [], setMarkets] = useState<any[]>();
-
-  const loadMarkets = async () => {
-    let apiMarkets = await new PolkamarketsApiService().getMarkets();
-    apiMarkets = apiMarkets.map(apiMarket => {
-      return PolkamarketsApiMappingService.mapMarket(apiMarket);
-    });
-    setMarkets(apiMarkets);
-  };
+  const dispatch = useAppDispatch();
+  const { markets, isLoading, error } = useAppSelector(state => state.markets);
 
   useEffect(() => {
-    loadMarkets();
-  }, []);
+    dispatch(getMarkets());
+  }, [dispatch]);
 
   return (
     <div className="home">
