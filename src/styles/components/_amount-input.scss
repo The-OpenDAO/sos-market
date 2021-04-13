@@ -1,4 +1,4 @@
-.trade-input {
+.pm-c-amount-input {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -42,31 +42,18 @@
     justify-content: space-between;
     align-items: center;
 
-    &-label {
-      @extend .tiny, .semibold;
-      color: $gray-300;
-    }
-
     &-wallet {
       display: inline-flex;
       align-items: center;
 
       gap: 0.2rem;
 
-      > figure {
+      figure {
         margin-right: 0.4rem;
 
-        > svg {
+        svg {
           fill: $gray-500;
         }
-      }
-
-      > strong {
-        color: $gray-100;
-      }
-
-      > span {
-        color: $gray-500;
       }
     }
   }
@@ -74,7 +61,7 @@
   &__actions {
     display: flex;
 
-    > button {
+    button {
       cursor: pointer;
       touch-action: manipulation;
 
@@ -89,14 +76,14 @@
 
       transition: background-color 0.3s ease;
 
-      > span {
+      span {
         color: $gray-300;
       }
 
       &:hover {
         background-color: $gray-700;
 
-        > span {
+        span {
           color: $gray-100;
         }
       }

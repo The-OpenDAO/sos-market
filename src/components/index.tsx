@@ -1,3 +1,4 @@
+import AmountInput from './AmountInput';
 import AreaChart from './AreaChart';
 import Breadcrumb from './Breadcrumb';
 import { Button, ButtonText } from './Button';
@@ -38,6 +39,7 @@ import Trade from './Trade';
 import WalletInfo from './WalletInfo';
 
 export {
+  AmountInput,
   AreaChart,
   Breadcrumb,
   Button,
