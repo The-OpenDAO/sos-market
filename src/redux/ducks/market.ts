@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Market } from 'models/market';
 import * as marketService from 'services/Polkamarkets/market';
 
-export interface MarketIntialState {
+export interface MarketInitialState {
   market: Market;
   selectedOutcomeId: string | number | undefined;
   isLoading: boolean;
   error: any;
 }
 
-const initialState: MarketIntialState = {
+const initialState: MarketInitialState = {
   market: {
     id: '',
     category: '',
