@@ -24,6 +24,7 @@ import MiniAreaChart from './MiniAreaChart';
 import MiniTable from './MiniTable';
 import NavBar from './NavBar';
 import PredictionCard from './PredictionCard';
+import RightSidebar from './RightSidebar';
 import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
 import Select from './Select';
@@ -35,7 +36,7 @@ import Text from './Text';
 import Toast from './Toast';
 import ToggleSwitch from './ToggleSwitch';
 import Tooltip from './Tooltip';
-import Trade from './Trade';
+import TradeForm from './TradeForm';
 import WalletInfo from './WalletInfo';
 
 export {
@@ -71,6 +72,7 @@ export {
   SearchBar,
   Select,
   Sidebar,
+  RightSidebar,
   StepSlider,
   Table,
   Tabs,
@@ -79,6 +81,6 @@ export {
   Tooltip,
   ButtonGroup,
   ToggleSwitch,
-  Trade,
+  TradeForm,
   WalletInfo
 };

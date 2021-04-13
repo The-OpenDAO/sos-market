@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 import { Button } from '../Button';
 
-function TradeActions() {
+function TradeFormActions() {
   const dispatch = useAppDispatch();
   const showCharts = useAppSelector(state => state.trade.showCharts);
   const type = useAppSelector(state => state.trade.type);
@@ -44,7 +44,7 @@ function TradeActions() {
   }
 
   return (
-    <div className="trade-actions">
+    <div className="pm-c-trade-form-actions">
       {showCharts ? (
         <Button variant="dark" color="default" size="lg" onClick={handleCancel}>
           Cancel
@@ -64,6 +64,6 @@ function TradeActions() {
   );
 }
 
-TradeActions.displayName = 'TradeActions';
+TradeFormActions.displayName = 'TradeFormActions';
 
-export default TradeActions;
+export default TradeFormActions;

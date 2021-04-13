@@ -2,9 +2,9 @@ import { InfoIcon } from 'assets/icons';
 
 import { Button } from '../Button';
 
-function TradeLiquidity() {
+function TradeFormLiquidity() {
   return (
-    <div className="trade-liquidity">
+    <div className="pm-c-trade-form-liquidity">
       <Button variant="dark" size="sm" fullWidth>
         <span>Add Liquidity</span>
         <InfoIcon />
@@ -13,6 +13,6 @@ function TradeLiquidity() {
   );
 }
 
-TradeLiquidity.displayName = 'TradeLiquidity';
+TradeFormLiquidity.displayName = 'TradeFormLiquidity';
 
-export default TradeLiquidity;
+export default TradeFormLiquidity;

@@ -1,11 +1,10 @@
-import { generateChartRandomData } from 'components/Category/utils';
-
 import { useAppSelector } from 'hooks';
 
+import { generateChartRandomData } from '../Category/utils';
 import ChartHeader from '../ChartHeader';
 import LineChart from '../LineChart';
 
-function TradeCharts() {
+function TradeFormCharts() {
   const showCharts = useAppSelector(state => state.trade.showCharts);
   const predictions = useAppSelector(state => state.trade.predictions);
 
@@ -15,7 +14,7 @@ function TradeCharts() {
   const lineChartDataB = generateChartRandomData(true);
 
   return (
-    <div className="trade-charts">
+    <div className="pm-c-trade-form-charts">
       <ChartHeader
         intervals={[
           { id: 'hour', name: '1H', value: 60 },
@@ -41,6 +40,6 @@ function TradeCharts() {
   );
 }
 
-TradeCharts.displayName = 'TradeCharts';
+TradeFormCharts.displayName = 'TradeFormCharts';
 
-export default TradeCharts;
+export default TradeFormCharts;

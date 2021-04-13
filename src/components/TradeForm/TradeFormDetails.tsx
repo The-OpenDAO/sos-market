@@ -3,7 +3,7 @@ import { useAppSelector } from 'hooks';
 import MiniTable from '../MiniTable';
 import formatMiniTableItems from './utils';
 
-function TradeDetails() {
+function TradeFormDetails() {
   const {
     type,
     predictions,
@@ -26,7 +26,7 @@ function TradeDetails() {
   );
 
   return (
-    <div className="trade-details">
+    <div className="pm-c-trade-form-details">
       <MiniTable rows={miniTableItems} style={{ paddingBottom: '0.4rem' }} />
       {type === 'buy' ? (
         <MiniTable
@@ -52,6 +52,6 @@ function TradeDetails() {
   );
 }
 
-TradeDetails.displayName = 'TradeDetails';
+TradeFormDetails.displayName = 'TradeFormDetails';
 
-export default TradeDetails;
+export default TradeFormDetails;

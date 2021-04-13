@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 import Checkbox from '../Checkbox';
 
-function TradeTerms() {
+function TradeFormTerms() {
   const dispatch = useAppDispatch();
 
   const acceptRules = useAppSelector(state => state.trade.acceptRules);
@@ -21,7 +21,7 @@ function TradeTerms() {
   }
 
   return (
-    <div className="trade-terms">
+    <div className="pm-c-trade-form-terms">
       <Checkbox
         label="Accept rules of the agreement"
         checked={acceptRules}
@@ -36,6 +36,6 @@ function TradeTerms() {
   );
 }
 
-TradeTerms.displayName = 'TradeTerms';
+TradeFormTerms.displayName = 'TradeFormTerms';
 
-export default TradeTerms;
+export default TradeFormTerms;

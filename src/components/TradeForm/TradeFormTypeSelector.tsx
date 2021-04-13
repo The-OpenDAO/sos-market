@@ -5,7 +5,7 @@ import { useAppDispatch } from 'hooks';
 
 import ButtonGroup from '../ButtonGroup';
 
-function TradeTypeSelector() {
+function TradeFormTypeSelector() {
   const dispatch = useAppDispatch();
 
   function handleChangeTradeType(tradeType: string) {
@@ -15,7 +15,7 @@ function TradeTypeSelector() {
   }
 
   return (
-    <div className="trade-type-selector">
+    <div className="pm-c-trade-form-type-selector">
       <ButtonGroup
         defaultActiveId="buy"
         buttons={[
@@ -28,6 +28,6 @@ function TradeTypeSelector() {
   );
 }
 
-TradeTypeSelector.displayName = 'TradeTypeSelector';
+TradeFormTypeSelector.displayName = 'TradeFormTypeSelector';
 
-export default TradeTypeSelector;
+export default TradeFormTypeSelector;

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 import MiniTable from '../MiniTable';
 import Text from '../Text';
 
-function TradePredictions() {
+function TradeFormPredictions() {
   const dispatch = useAppDispatch();
   const showPredictions = useAppSelector(state => state.trade.showPredictions);
   const predictions = useAppSelector(state => state.trade.predictions);
@@ -24,12 +24,12 @@ function TradePredictions() {
   }
 
   return (
-    <div className="trade-predictions">
+    <div className="pm-c-trade-form-predictions">
       {predictions?.map((prediction, index) => (
         <div
           key={prediction.id}
           className={classNames({
-            'trade-predictions__item': true,
+            'pm-c-trade-form-predictions__item': true,
             active:
               prediction.id === selectedPredictionId &&
               prediction.marketId === selectedMarketId
@@ -39,7 +39,7 @@ function TradePredictions() {
           onClick={() => handleChangeSelectedPrediction(prediction.id)}
           onKeyPress={() => handleChangeSelectedPrediction(prediction.id)}
         >
-          <div className="trade-predictions__item-prediction">
+          <div className="pm-c-trade-form-predictions__item-prediction">
             <Text as="p" fontWeight="bold">
               {prediction.name}
             </Text>
@@ -65,6 +65,6 @@ function TradePredictions() {
   );
 }
 
-TradePredictions.displayName = 'TradePredictions';
+TradeFormPredictions.displayName = 'TradeFormPredictions';
 
-export default TradePredictions;
+export default TradeFormPredictions;
