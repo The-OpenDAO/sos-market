@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { generateChartRandomData } from 'pages/Portfolio/utils';
 
-import { ChartHeader, LineChart, Text, ToggleButton } from 'components';
+import { ChartHeader, LineChart, Text } from 'components';
 
 const MarketChart = () => {
   const [_currentInterval, setCurrentInterval] = useState(60);
@@ -15,14 +15,6 @@ const MarketChart = () => {
 
   return (
     <div className="market-chart">
-      {/* <ToggleButton
-        defaultActiveId="marketOverview"
-        buttons={[
-          { id: 'marketOverview', name: 'Market Overview', color: 'default' },
-          { id: 'tradingView', name: 'Trading View', color: 'default' }
-        ]}
-        onChange={view => setCurrentView(view)}
-      /> */}
       <div className="market-chart__header">
         <Text as="h2" scale="body" fontWeight="semibold" color="light">
           Market Overview
