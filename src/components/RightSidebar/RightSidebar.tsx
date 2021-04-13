@@ -5,7 +5,9 @@ import TradeForm from '../TradeForm';
 
 function RightSidebar() {
   const tradeFormVisible = useAppSelector(state => state.trade.visible);
-  const liquidityFormVisible = useAppSelector(state => state.liquidity.visible);
+  const liquidityFormIsVisible = useAppSelector(
+    state => state.liquidity.isVisible
+  );
 
   if (tradeFormVisible)
     return (
@@ -14,7 +16,7 @@ function RightSidebar() {
       </div>
     );
 
-  if (liquidityFormVisible)
+  if (liquidityFormIsVisible)
     return (
       <div className="pm-l-right-sidebar">
         <LiquidityForm />
