@@ -1,8 +1,8 @@
 import React from 'react';
 
 import NavBar from '../NavBar';
+import RightSidebar from '../RightSidebar';
 import Sidebar from '../Sidebar';
-import Trade from '../Trade';
 
 type LayoutProps = {
   children: React.ReactNode | any;
@@ -16,7 +16,7 @@ function Layout({ children }: LayoutProps) {
         <NavBar />
         <div className="main__group">
           <section className="vertical-section">{children}</section>
-          <Trade />
+          <RightSidebar />
         </div>
       </main>
     </div>
