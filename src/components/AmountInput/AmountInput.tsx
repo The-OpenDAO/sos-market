@@ -10,9 +10,10 @@ import Text from '../Text';
 type AmountInputProps = {
   label: string;
   max: number;
+  onChange: (value: number) => void;
 };
 
-function AmountInput({ label, max }: AmountInputProps) {
+function AmountInput({ label, max, onChange }: AmountInputProps) {
   const [amount, setAmount] = useState(max);
   const { name, ticker, icon } = useCurrency();
 
@@ -22,14 +23,19 @@ function AmountInput({ label, max }: AmountInputProps) {
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
-    let { value }: any = event.currentTarget;
-    value = parseFloat(value) || 0;
+    const { value } = event.currentTarget;
 
-    setAmount(round(value));
+    const roundedAmount = round(parseFloat(value) || 0);
+
+    setAmount(roundedAmount);
+    onChange(roundedAmount);
   }
 
   function handleSetMaxAmount() {
-    setAmount(round(max));
+    const roundedMax = round(max);
+
+    setAmount(roundedMax);
+    onChange(roundedMax);
   }
 
   // function handleChangeSlider(value: number) {
