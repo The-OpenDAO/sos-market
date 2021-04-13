@@ -2,6 +2,8 @@
   @include flex-column(space-between, center);
   gap: 2.4rem;
 
+  height: 100%;
+
   &__group {
     @include flex-column(flex-start, center);
 
