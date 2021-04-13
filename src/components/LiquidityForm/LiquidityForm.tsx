@@ -1,3 +1,4 @@
+import LiquidityFormActions from './LiquidityFormActions';
 import LiquidityFormInfo from './LiquidityFormInfo';
 import LiquidityFormInput from './LiquidityFormInput';
 import LiquidityFormTerms from './LiquidityFormTerms';
@@ -13,6 +14,7 @@ function LiquidityForm() {
         <LiquidityFormTypeSelector />
         <LiquidityFormInput />
         <LiquidityFormTerms />
+        <LiquidityFormActions />
       </div>
     </div>
   );

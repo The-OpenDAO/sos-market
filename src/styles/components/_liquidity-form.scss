@@ -1,10 +1,13 @@
 .pm-c-liquidity-form {
   @include flex-column(space-between, center);
   gap: 2.4rem;
-  width: 100%;
+
+  height: 100%;
+  width: 30rem;
 
   &__group {
     @include flex-column(flex-start, center);
+    gap: 2.4rem;
     width: 100%;
   }
 
@@ -13,6 +16,13 @@
   }
 
   &__actions {
+    @include flex-row;
+    gap: 0.8rem;
+
     width: 100%;
+
+    :last-child {
+      flex-grow: 1;
+    }
   }
 }
