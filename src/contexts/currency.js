@@ -8,7 +8,7 @@ const CurrencyDispatchContext = createContext({});
 const initalState = {
   name: 'Polkadot',
   ticker: 'DOT',
-  icon: PolkadotIcon
+  icon: <PolkadotIcon />
 };
 
 const actions = {
