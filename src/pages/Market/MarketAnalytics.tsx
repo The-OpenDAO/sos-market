@@ -1,5 +1,7 @@
 import { Card, Grid, Text } from 'components';
 
+import useCurrency from 'hooks/useCurrency';
+
 type MarketAnalyticsProps = {
   liquidity: number;
   volume: number;
@@ -11,88 +13,96 @@ function MarketAnalytics({
   volume,
   expiration
 }: MarketAnalyticsProps) {
+  const { ticker } = useCurrency();
+
   return (
     <div className="market-analytics">
       <Grid fluid>
         <Grid.Row className="market-analytics__group">
-          <Grid.Col className="market-analytics__item">
-            <Card
-              backgroundColor="gradient-yellow"
-              title={
-                <Text
-                  className="market-analytics__item-title"
-                  as="h2"
-                  scale="tiny-uppercase"
-                  fontWeight="bold"
-                  color="white-50"
-                >
-                  Liquidity
-                </Text>
-              }
-            >
-              <Text
-                className="market-analytics__item-value"
-                as="p"
-                scale="body"
-                fontWeight="semibold"
-                color="white"
+          {liquidity ? (
+            <Grid.Col className="market-analytics__item">
+              <Card
+                backgroundColor="gradient-yellow"
+                title={
+                  <Text
+                    className="market-analytics__item-title"
+                    as="h2"
+                    scale="tiny-uppercase"
+                    fontWeight="bold"
+                    color="white-50"
+                  >
+                    Liquidity
+                  </Text>
+                }
               >
-                {`${liquidity} DOT`}
-              </Text>
-            </Card>
-          </Grid.Col>
-          <Grid.Col className="market-analytics__item">
-            <Card
-              backgroundColor="gradient-blue"
-              title={
                 <Text
-                  className="market-analytics__item-title"
-                  as="h2"
-                  scale="tiny-uppercase"
-                  fontWeight="bold"
-                  color="white-50"
+                  className="market-analytics__item-value"
+                  as="p"
+                  scale="body"
+                  fontWeight="semibold"
+                  color="white"
                 >
-                  Volume
+                  {`${liquidity} ${ticker}`}
                 </Text>
-              }
-            >
-              <Text
-                className="market-analytics__item-value"
-                as="p"
-                scale="body"
-                fontWeight="semibold"
-                color="white"
+              </Card>
+            </Grid.Col>
+          ) : null}
+          {volume ? (
+            <Grid.Col className="market-analytics__item">
+              <Card
+                backgroundColor="gradient-blue"
+                title={
+                  <Text
+                    className="market-analytics__item-title"
+                    as="h2"
+                    scale="tiny-uppercase"
+                    fontWeight="bold"
+                    color="white-50"
+                  >
+                    Volume
+                  </Text>
+                }
               >
-                {`${volume} DOT`}
-              </Text>
-            </Card>
-          </Grid.Col>
-          <Grid.Col className="market-analytics__item">
-            <Card
-              backgroundColor="gradient-orange"
-              title={
                 <Text
-                  className="market-analytics__item-title"
-                  as="h2"
-                  scale="tiny-uppercase"
-                  fontWeight="bold"
-                  color="white-50"
+                  className="market-analytics__item-value"
+                  as="p"
+                  scale="body"
+                  fontWeight="semibold"
+                  color="white"
                 >
-                  Expiration
+                  {`${volume} ${ticker}`}
                 </Text>
-              }
-            >
-              <Text
-                className="market-analytics__item-value"
-                as="p"
-                scale="body"
-                fontWeight="semibold"
-                color="white"
+              </Card>
+            </Grid.Col>
+          ) : null}
+          {expiration ? (
+            <Grid.Col className="market-analytics__item">
+              <Card
+                backgroundColor="gradient-orange"
+                title={
+                  <Text
+                    className="market-analytics__item-title"
+                    as="h2"
+                    scale="tiny-uppercase"
+                    fontWeight="bold"
+                    color="white-50"
+                  >
+                    Expiration
+                  </Text>
+                }
               >
-                {expiration}
-              </Text>
-            </Card>
-          </Grid.Col>
+                <Text
+                  className="market-analytics__item-value"
+                  as="p"
+                  scale="body"
+                  fontWeight="semibold"
+                  color="white"
+                >
+                  {expiration}
+                </Text>
+              </Card>
+            </Grid.Col>
+          ) : null}
         </Grid.Row>
       </Grid>
     </div>
