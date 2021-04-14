@@ -16,8 +16,8 @@ function TradeFormCharts() {
   if (!showCharts) return null;
 
   const intervals = [
-    { id: '1h', name: '1H', value: 1 },
     { id: '24h', name: '24H', value: 24 },
+    { id: '7d', name: '7D', value: 168 },
     { id: '30d', name: '30D', value: 720 },
     { id: 'all', name: 'ALL', value: 720 }
   ];
