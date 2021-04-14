@@ -1,28 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import {
-  changePredictionsVisibility,
-  setPredictions,
-  setSelectedPrediction,
-  setSelectedMarket
-} from 'redux/ducks/trade';
+import { getMarket, selectOutcome } from 'redux/ducks/market';
+import { changePredictionsVisibility } from 'redux/ducks/trade';
 import { openTradeForm } from 'redux/ducks/ui';
 
 import { Tabs, Table, Text } from 'components';
 
-import { useAppDispatch } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
-import {
-  PolkamarketsApiService,
-  PolkamarketsApiMappingService
-} from '../../services';
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
 import MarketStats from './MarketStats';
 import { tableItems } from './mock';
-import { formatMarketHead, generateMarketChartRandomData } from './utils';
+import { generateMarketChartRandomData } from './utils';
 
 type Params = {
   marketId: string;
@@ -31,29 +23,16 @@ type Params = {
 const Market = () => {
   const dispatch = useAppDispatch();
   const { marketId } = useParams<Params>();
-  const [market, setMarket] = useState<any | undefined>();
-
-  const loadMarket = async () => {
-    let apiMarket = await new PolkamarketsApiService().getMarket(marketId);
-    apiMarket = apiMarket
-      ? PolkamarketsApiMappingService.mapMarket(apiMarket)
-      : null;
-
-    dispatch(openTradeForm());
-    dispatch(setPredictions(apiMarket?.options));
-    dispatch(setSelectedPrediction(apiMarket?.options[0]?.id));
-    dispatch(setSelectedMarket(apiMarket?.id));
-    dispatch(changePredictionsVisibility(true));
-    setMarket(apiMarket);
-  };
+  const { market, isLoading, error } = useAppSelector(state => state.market);
 
   useEffect(() => {
-    loadMarket();
-  }, [marketId, dispatch]);
+    dispatch(getMarket(marketId));
+    dispatch(openTradeForm());
+    dispatch(changePredictionsVisibility(true));
+  }, [dispatch, marketId]);
 
-  if (!market) return null;
+  if (!market || isLoading) return null;
 
-  const marketHead = formatMarketHead(market);
   const marketLastWeek = generateMarketChartRandomData(10);
 
   return (
@@ -61,13 +40,13 @@ const Market = () => {
       <MarketAnalytics
         liquidity={market.liquidity}
         volume={market.volume}
-        expiration={market.expiration}
+        expiration={market.expiresAt}
       />
       <MarketHead
-        section={marketHead.section}
-        subsection={marketHead.subsection}
-        imageUrl={marketHead.imageUrl}
-        description={marketHead.description}
+        section={market.category}
+        subsection={market.subcategory}
+        imageUrl={market.imageUrl}
+        description={market.title}
       />
       <div className="market-page__stats">
         <MarketChart />

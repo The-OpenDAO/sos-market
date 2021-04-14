@@ -3,10 +3,14 @@ export interface Outcome {
   marketId: number | string;
   price: number;
   title: string;
+  change: {
+    type: string;
+    chartData: any[];
+  };
 }
 
 export interface Market {
-  id: number | string;
+  id: string;
   category: string;
   subcategory: string;
   imageUrl: string;

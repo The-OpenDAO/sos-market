@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
+
 import classNames from 'classnames';
-import { Outcome } from 'models/market';
+import { Market, Outcome } from 'models/market';
+import { selectOutcome } from 'redux/ducks/market';
 import {
   changeChartsVisibility,
-  setPredictions,
-  setSelectedMarket,
-  setSelectedPrediction
+  changePredictionsVisibility
 } from 'redux/ducks/trade';
 import { closeTradeForm, openTradeForm } from 'redux/ducks/ui';
 
@@ -19,62 +20,39 @@ import Text from '../Text';
 const chartData = generateChartRandomData();
 
 type MarketOptionsItemProps = {
+  market: Market;
   option: Outcome;
-  onSelect: () => void;
 };
 
-function MarketOptionsItem({ option, onSelect }: MarketOptionsItemProps) {
+function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
+  const dispatch = useAppDispatch();
+
   const { id, marketId, title, price } = option;
 
-  const dispatch = useAppDispatch();
-  const visible = useAppSelector(state => state.ui.tradeForm.visible);
   const selectedPredictionId = useAppSelector(
-    state => state.trade.selectedPredictionId
+    state => state.market.selectedOutcomeId
   );
-  const selectedMarketId = useAppSelector(
-    state => state.trade.selectedMarketId
-  );
+  const selectedMarketId = useAppSelector(state => state.market.market.id);
 
-  function updatePredictions() {
-    onSelect();
-  }
+  const isCurrentSelectedPrediction =
+    marketId === selectedMarketId && id === selectedPredictionId;
 
-  function removePredictions() {
-    dispatch(
-      setPredictions([
-        {
-          id: '',
-          name: '',
-          odd: 0,
-          pricePerFraction: 0
-        },
-        {
-          id: '',
-          name: '',
-          odd: 0,
-          pricePerFraction: 0
-        }
-      ])
-    );
-  }
-
-  function handleItemSelection() {
-    if (!visible) {
+  useEffect(() => {
+    if (selectedMarketId === marketId && selectedPredictionId === id) {
       dispatch(openTradeForm());
     }
+  }, [selectedMarketId, marketId, selectedPredictionId, id, dispatch]);
 
+  function handleItemSelection() {
+    dispatch(openTradeForm());
+    dispatch(changePredictionsVisibility(false));
     dispatch(changeChartsVisibility(true));
-    updatePredictions();
 
-    if (id !== selectedPredictionId || marketId !== selectedMarketId) {
-      dispatch(setSelectedPrediction(id));
-      dispatch(setSelectedMarket(marketId));
-    } else if (id === selectedPredictionId && marketId === selectedMarketId) {
-      dispatch(setSelectedPrediction(''));
-      dispatch(setSelectedMarket(''));
+    if (!isCurrentSelectedPrediction) {
+      dispatch(selectOutcome(market, option.id));
+    } else {
+      dispatch(selectOutcome(market, ''));
       dispatch(closeTradeForm());
-      dispatch(changeChartsVisibility(false));
-      removePredictions();
     }
   }
 
@@ -116,24 +94,16 @@ function MarketOptionsItem({ option, onSelect }: MarketOptionsItemProps) {
 }
 
 type MarketOptionsProps = {
-  options: Outcome[];
+  market: Market;
 };
 
-function MarketOptions({ options }: MarketOptionsProps) {
-  const dispatch = useAppDispatch();
-
-  function handleChangeSelectedPrediction() {
-    dispatch(setPredictions(options));
-  }
-
+function MarketOptions({ market }: MarketOptionsProps) {
+  const { outcomes } = market;
   return (
     <ul className="pm-c-market-options">
-      {options.map(option => (
+      {outcomes.map(option => (
         <li key={option.id}>
-          <MarketOptionsItem
-            option={option}
-            onSelect={handleChangeSelectedPrediction}
-          />
+          <MarketOptionsItem market={market} option={option} />
         </li>
       ))}
     </ul>

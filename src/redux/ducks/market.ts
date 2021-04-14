@@ -4,7 +4,7 @@ import * as marketService from 'services/Polkamarkets/market';
 
 export interface MarketInitialState {
   market: Market;
-  selectedOutcomeId: string | number | undefined;
+  selectedOutcomeId: string | number;
   isLoading: boolean;
   error: any;
 }
@@ -24,18 +24,26 @@ const initialState: MarketInitialState = {
       {
         id: '',
         marketId: '',
+        title: '',
         price: 0,
-        title: ''
+        change: {
+          type: '',
+          chartData: []
+        }
       },
       {
         id: '',
         marketId: '',
+        title: '',
         price: 0,
-        title: ''
+        change: {
+          type: '',
+          chartData: []
+        }
       }
     ]
   },
-  selectedOutcomeId: undefined,
+  selectedOutcomeId: '',
   isLoading: false,
   error: null
 };
@@ -48,19 +56,52 @@ const marketSlice = createSlice({
       ...state,
       isLoading: true
     }),
-    success: (state, action: PayloadAction<Market>) => ({
-      ...state,
-      market: action.payload,
-      isLoading: false,
-      selectedOutcomeId: action.payload.outcomes[0].id
-    }),
+    success: {
+      reducer: (state, action: PayloadAction<Market>) => ({
+        ...state,
+        market: action.payload,
+        isLoading: false,
+        selectedOutcomeId:
+          state.market.id !== action.payload.id
+            ? action.payload.outcomes[0].id
+            : state.selectedOutcomeId
+      }),
+      prepare: (market: Market) => {
+        return {
+          payload: {
+            ...market,
+            outcomes: market.outcomes.map(outcome => ({
+              ...outcome,
+              price: Number(outcome.price.toFixed(3))
+            }))
+          }
+        };
+      }
+    },
     error: (state, action) => ({
       ...state,
       market: initialState.market,
       isLoading: false,
       error: action.payload
     }),
-    outcomeSelected: (state, action: PayloadAction<string>) => ({
+    marketSelected: {
+      reducer: (state, action: PayloadAction<Market>) => ({
+        ...state,
+        market: action.payload
+      }),
+      prepare: (market: Market) => {
+        return {
+          payload: {
+            ...market,
+            outcomes: market.outcomes.map(outcome => ({
+              ...outcome,
+              price: Number(outcome.price.toFixed(3))
+            }))
+          }
+        };
+      }
+    },
+    outcomeSelected: (state, action: PayloadAction<string | number>) => ({
       ...state,
       selectedOutcomeId: action.payload
     })
@@ -69,7 +110,13 @@ const marketSlice = createSlice({
 
 export default marketSlice.reducer;
 
-const { request, success, error, outcomeSelected } = marketSlice.actions;
+const {
+  request,
+  success,
+  error,
+  marketSelected,
+  outcomeSelected
+} = marketSlice.actions;
 
 export function getMarket(marketId: string) {
   return async dispatch => {
@@ -84,8 +131,9 @@ export function getMarket(marketId: string) {
   };
 }
 
-export function selectOutcome(outcomeId: string) {
+export function selectOutcome(market: Market, outcomeId: string | number) {
   return async dispatch => {
+    dispatch(marketSelected(market));
     dispatch(outcomeSelected(outcomeId));
   };
 }

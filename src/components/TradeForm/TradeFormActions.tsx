@@ -1,4 +1,3 @@
-import { setSelectedPrediction, setSelectedMarket } from 'redux/ducks/trade';
 import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
@@ -10,16 +9,12 @@ function TradeFormActions() {
   const dispatch = useAppDispatch();
   const showCharts = useAppSelector(state => state.trade.showCharts);
   const type = useAppSelector(state => state.trade.type);
-  const marketId = useAppSelector(state => state.trade.selectedMarketId);
-  const predictionId = useAppSelector(
-    state => state.trade.selectedPredictionId
-  );
+  const marketId = useAppSelector(state => state.market.market.id);
+  const predictionId = useAppSelector(state => state.market.selectedOutcomeId);
   const amount = useAppSelector(state => state.trade.amount);
 
   function handleCancel() {
     dispatch(closeTradeForm());
-    dispatch(setSelectedPrediction(''));
-    dispatch(setSelectedMarket(''));
   }
 
   async function handleBuy() {

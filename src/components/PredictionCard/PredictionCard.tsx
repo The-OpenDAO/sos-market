@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom';
 import { Market as MarketInterface } from 'models/market';
 import {
   changeChartsVisibility,
-  changePredictionsVisibility,
-  setPredictions,
-  setSelectedPrediction,
-  setSelectedMarket
+  changePredictionsVisibility
 } from 'redux/ducks/trade';
 import { openTradeForm } from 'redux/ducks/ui';
 
 import { useAppDispatch } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
 import Market from '../Market';
 
@@ -20,15 +18,13 @@ type PredictionCardProps = {
 
 function PredictionCard({ market }: PredictionCardProps) {
   const dispatch = useAppDispatch();
+  const { ticker } = useCurrency();
 
-  const { id, outcomes } = market;
+  const { id } = market;
 
   function handleNavigation() {
     dispatch(openTradeForm());
     dispatch(changeChartsVisibility(false));
-    dispatch(setPredictions(outcomes));
-    dispatch(setSelectedPrediction(outcomes[0].id));
-    dispatch(setSelectedMarket(id));
     dispatch(changePredictionsVisibility(true));
   }
 
@@ -38,10 +34,10 @@ function PredictionCard({ market }: PredictionCardProps) {
         <Link to={`/markets/${id}`} onClick={handleNavigation}>
           <Market market={market} />
         </Link>
-        <Market.Options options={outcomes} />
+        <Market.Options market={market} />
       </div>
       <div className="prediction-card__footer">
-        <Market.Footer market={market} ticker="DOT" />
+        <Market.Footer market={market} ticker={ticker} />
       </div>
     </div>
   );

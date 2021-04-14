@@ -2,13 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type TradeType = 'buy' | 'sell' | string;
 
-// type Prediction = {
-//   id: number | string;
-//   name: string;
-//   odd: number;
-//   pricePerFraction: number;
-// };
-
 type PredictionDetails = {
   fractionsBought: number;
   currentROI: number;
@@ -21,24 +14,6 @@ const initialState = {
   showCharts: false,
   showPredictions: false,
   type: 'buy',
-  selectedPredictionId: '',
-  selectedMarketId: '',
-  predictions: [
-    {
-      id: '',
-      marketId: '',
-      name: '',
-      odd: 0,
-      pricePerFraction: 0
-    },
-    {
-      id: '',
-      marketId: '',
-      name: '',
-      odd: 0,
-      pricePerFraction: 0
-    }
-  ],
   amount: 0,
   fractionsBought: 0,
   currentROI: 0,
@@ -64,18 +39,6 @@ const tradeSlice = createSlice({
     changeTradeType: (state, action: PayloadAction<TradeType>) => ({
       ...state,
       type: action.payload
-    }),
-    setSelectedPrediction: (state, action) => ({
-      ...state,
-      selectedPredictionId: action.payload
-    }),
-    setSelectedMarket: (state, action) => ({
-      ...state,
-      selectedMarketId: action.payload
-    }),
-    setPredictions: (state, action) => ({
-      ...state,
-      predictions: action.payload
     }),
     setTradeAmount: (state, action) => ({
       ...state,
@@ -109,9 +72,6 @@ const {
   changeChartsVisibility,
   changePredictionsVisibility,
   changeTradeType,
-  setSelectedPrediction,
-  setSelectedMarket,
-  setPredictions,
   setPredictionDetails,
   setTradeAmount,
   toggleAcceptRules,
@@ -122,9 +82,6 @@ export {
   changeChartsVisibility,
   changePredictionsVisibility,
   changeTradeType,
-  setSelectedPrediction,
-  setSelectedMarket,
-  setPredictions,
   setPredictionDetails,
   setTradeAmount,
   toggleAcceptRules,
