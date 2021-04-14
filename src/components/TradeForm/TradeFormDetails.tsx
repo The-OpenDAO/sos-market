@@ -4,7 +4,10 @@ import MiniTable from '../MiniTable';
 import formatMiniTableItems from './utils';
 
 function TradeFormDetails() {
-  const { market, selectedOutcomeId } = useAppSelector(state => state.market);
+  const { market } = useAppSelector(state => state.market);
+  const selectedOutcomeId = useAppSelector(
+    state => state.trade.selectedOutcomeId
+  );
   const { id, outcomes } = market;
   const {
     type,
