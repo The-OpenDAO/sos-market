@@ -1,5 +1,8 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import classNames from 'classnames';
-import { selectOutcome } from 'redux/ducks/market';
+import { changePredictionsVisibility, selectOutcome } from 'redux/ducks/trade';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -7,26 +10,41 @@ import MiniTable from '../MiniTable';
 import Text from '../Text';
 
 function TradeFormPredictions() {
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const showPredictions = useAppSelector(state => state.trade.showPredictions);
-  const { market, selectedOutcomeId } = useAppSelector(state => state.market);
+  const selectedMarketId = useAppSelector(
+    state => state.trade.selectedMarketId
+  );
+  const selectedOutcomeId = useAppSelector(
+    state => state.trade.selectedOutcomeId
+  );
+  const outcomes = useAppSelector(state => state.market.market.outcomes);
+
+  useEffect(() => {
+    if (location.pathname === '/home') {
+      dispatch(changePredictionsVisibility(false));
+    } else {
+      dispatch(changePredictionsVisibility(true));
+    }
+  }, [showPredictions, location, dispatch]);
 
   if (!showPredictions) return null;
 
   function handleChangeSelectedPrediction(id: string | number) {
-    dispatch(selectOutcome(market, id));
+    dispatch(selectOutcome(selectedMarketId, id));
   }
 
   return (
     <div className="pm-c-trade-form-predictions">
-      {market.outcomes.map((prediction, index) => (
+      {outcomes.map((prediction, index) => (
         <div
           key={prediction.id}
           className={classNames({
             'pm-c-trade-form-predictions__item': true,
             active:
               prediction.id === selectedOutcomeId &&
-              prediction.marketId === market.id
+              prediction.marketId === selectedMarketId
           })}
           role="button"
           tabIndex={index}

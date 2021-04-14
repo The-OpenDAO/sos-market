@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { fromPriceChartToLineChartSeries } from 'helpers/chart';
+import { changeChartsVisibility } from 'redux/ducks/trade';
 
-import { useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 import ChartHeader from '../ChartHeader';
 import LineChart from '../LineChart';
 
 function TradeFormCharts() {
+  const location = useLocation();
+  const dispatch = useAppDispatch();
   const showCharts = useAppSelector(state => state.trade.showCharts);
   const predictions = useAppSelector(state => state.market.market.outcomes);
+
+  useEffect(() => {
+    if (location.pathname !== '/home') {
+      dispatch(changeChartsVisibility(false));
+    } else {
+      dispatch(changeChartsVisibility(true));
+    }
+  }, [showCharts, location, dispatch]);
 
   const [currentInterval, setCurrentInterval] = useState(24);
 

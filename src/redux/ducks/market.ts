@@ -4,7 +4,6 @@ import * as marketService from 'services/Polkamarkets/market';
 
 export interface MarketInitialState {
   market: Market;
-  selectedOutcomeId: string | number;
   isLoading: boolean;
   error: any;
 }
@@ -22,7 +21,7 @@ const initialState: MarketInitialState = {
     expiresAt: '',
     outcomes: [
       {
-        id: '',
+        id: '-1',
         marketId: '',
         title: '',
         price: 0,
@@ -33,7 +32,7 @@ const initialState: MarketInitialState = {
         priceCharts: []
       },
       {
-        id: '',
+        id: '-2',
         marketId: '',
         title: '',
         price: 0,
@@ -45,7 +44,6 @@ const initialState: MarketInitialState = {
       }
     ]
   },
-  selectedOutcomeId: '',
   isLoading: false,
   error: null
 };
@@ -62,11 +60,7 @@ const marketSlice = createSlice({
       reducer: (state, action: PayloadAction<Market>) => ({
         ...state,
         market: action.payload,
-        isLoading: false,
-        selectedOutcomeId:
-          state.market.id !== action.payload.id
-            ? action.payload.outcomes[0].id
-            : state.selectedOutcomeId
+        isLoading: false
       }),
       prepare: (market: Market) => {
         return {
@@ -102,23 +96,15 @@ const marketSlice = createSlice({
           }
         };
       }
-    },
-    outcomeSelected: (state, action: PayloadAction<string | number>) => ({
-      ...state,
-      selectedOutcomeId: action.payload
-    })
+    }
   }
 });
 
 export default marketSlice.reducer;
 
-const {
-  request,
-  success,
-  error,
-  marketSelected,
-  outcomeSelected
-} = marketSlice.actions;
+const { request, success, error, marketSelected } = marketSlice.actions;
+
+export { marketSelected };
 
 export function getMarket(marketId: string) {
   return async dispatch => {
@@ -130,12 +116,5 @@ export function getMarket(marketId: string) {
     } catch (err) {
       dispatch(error(err));
     }
-  };
-}
-
-export function selectOutcome(market: Market, outcomeId: string | number) {
-  return async dispatch => {
-    dispatch(marketSelected(market));
-    dispatch(outcomeSelected(outcomeId));
   };
 }

@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { getMarket, selectOutcome } from 'redux/ducks/market';
-import { changePredictionsVisibility } from 'redux/ducks/trade';
+import { getMarket } from 'redux/ducks/market';
 import { openTradeForm } from 'redux/ducks/ui';
 
 import { Tabs, Table, Text } from 'components';
@@ -23,12 +22,11 @@ type Params = {
 const Market = () => {
   const dispatch = useAppDispatch();
   const { marketId } = useParams<Params>();
-  const { market, isLoading, error } = useAppSelector(state => state.market);
+  const { market, isLoading } = useAppSelector(state => state.market);
 
   useEffect(() => {
     dispatch(getMarket(marketId));
     dispatch(openTradeForm());
-    dispatch(changePredictionsVisibility(true));
   }, [dispatch, marketId]);
 
   if (!market || isLoading) return null;

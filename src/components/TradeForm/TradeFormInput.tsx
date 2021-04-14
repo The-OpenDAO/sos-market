@@ -14,7 +14,13 @@ function TradeFormInput() {
   const type = useAppSelector(state => state.trade.type);
   const label = `${type} fractions`;
 
-  const { market, selectedOutcomeId } = useAppSelector(state => state.market);
+  const selectedMarketId = useAppSelector(
+    state => state.trade.selectedMarketId
+  );
+
+  const selectedOutcomeId = useAppSelector(
+    state => state.trade.selectedOutcomeId
+  );
 
   // buy and sell have different maxes
   const balance = useAppSelector(state => state.bepro.ethBalance);
@@ -30,7 +36,8 @@ function TradeFormInput() {
     }
     // max for sell actions - number of outcome shares
     else if (type === 'sell') {
-      maxAmount = portfolio[market.id]?.outcomeShares[selectedOutcomeId] || 0;
+      maxAmount =
+        portfolio[selectedMarketId]?.outcomeShares[selectedOutcomeId] || 0;
     }
 
     // rounding (down) to 5 decimals

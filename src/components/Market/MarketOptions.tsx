@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 
 import classNames from 'classnames';
 import { Market, Outcome } from 'models/market';
-import { selectOutcome } from 'redux/ducks/market';
+import { marketSelected } from 'redux/ducks/market';
 import {
+  selectOutcome,
   changeChartsVisibility,
   changePredictionsVisibility
 } from 'redux/ducks/trade';
@@ -30,9 +31,11 @@ function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
   const { id, marketId, title, price } = option;
 
   const selectedPredictionId = useAppSelector(
-    state => state.market.selectedOutcomeId
+    state => state.trade.selectedOutcomeId
   );
-  const selectedMarketId = useAppSelector(state => state.market.market.id);
+  const selectedMarketId = useAppSelector(
+    state => state.trade.selectedMarketId
+  );
 
   const isCurrentSelectedPrediction =
     marketId === selectedMarketId && id === selectedPredictionId;
@@ -45,13 +48,14 @@ function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
 
   function handleItemSelection() {
     dispatch(openTradeForm());
+    dispatch(marketSelected(market));
     dispatch(changePredictionsVisibility(false));
     dispatch(changeChartsVisibility(true));
 
     if (!isCurrentSelectedPrediction) {
-      dispatch(selectOutcome(market, option.id));
+      dispatch(selectOutcome(market.id, option.id));
     } else {
-      dispatch(selectOutcome(market, ''));
+      dispatch(selectOutcome(market.id, ''));
       dispatch(closeTradeForm());
     }
   }
