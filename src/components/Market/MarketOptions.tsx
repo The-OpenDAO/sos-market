@@ -2,11 +2,11 @@ import classNames from 'classnames';
 import { Outcome } from 'models/market';
 import {
   changeChartsVisibility,
-  changeTradeVisibility,
   setPredictions,
   setSelectedMarket,
   setSelectedPrediction
 } from 'redux/ducks/trade';
+import { closeTradeForm, openTradeForm } from 'redux/ducks/ui';
 
 import { ArrowDownIcon, ArrowUpIcon } from 'assets/icons';
 
@@ -27,7 +27,7 @@ function MarketOptionsItem({ option, onSelect }: MarketOptionsItemProps) {
   const { id, marketId, title, price } = option;
 
   const dispatch = useAppDispatch();
-  const visible = useAppSelector(state => state.trade.visible);
+  const visible = useAppSelector(state => state.ui.tradeForm.visible);
   const selectedPredictionId = useAppSelector(
     state => state.trade.selectedPredictionId
   );
@@ -60,7 +60,7 @@ function MarketOptionsItem({ option, onSelect }: MarketOptionsItemProps) {
 
   function handleItemSelection() {
     if (!visible) {
-      dispatch(changeTradeVisibility(true));
+      dispatch(openTradeForm());
     }
 
     dispatch(changeChartsVisibility(true));
@@ -72,7 +72,7 @@ function MarketOptionsItem({ option, onSelect }: MarketOptionsItemProps) {
     } else if (id === selectedPredictionId && marketId === selectedMarketId) {
       dispatch(setSelectedPrediction(''));
       dispatch(setSelectedMarket(''));
-      dispatch(changeTradeVisibility(false));
+      dispatch(closeTradeForm());
       dispatch(changeChartsVisibility(false));
       removePredictions();
     }

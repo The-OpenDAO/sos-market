@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 
 import {
   changePredictionsVisibility,
-  changeTradeVisibility,
   setPredictions,
   setSelectedPrediction,
   setSelectedMarket
 } from 'redux/ducks/trade';
+import { openTradeForm } from 'redux/ducks/ui';
 
 import { Tabs, Table, Text } from 'components';
 
@@ -39,7 +39,7 @@ const Market = () => {
       ? PolkamarketsApiMappingService.mapMarket(apiMarket)
       : null;
 
-    dispatch(changeTradeVisibility(true));
+    dispatch(openTradeForm());
     dispatch(setPredictions(apiMarket?.options));
     dispatch(setSelectedPrediction(apiMarket?.options[0]?.id));
     dispatch(setSelectedMarket(apiMarket?.id));

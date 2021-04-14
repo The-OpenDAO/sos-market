@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { changeTradeVisibility } from 'redux/ducks/trade';
+import { closeTradeForm } from 'redux/ducks/ui';
 
 import { CategoryAnalytics, MarketTable, Text } from 'components';
 
@@ -11,11 +11,11 @@ import PortfolioChart from './PortfolioChart';
 
 const PortfolioPage = () => {
   const dispatch = useAppDispatch();
-  const visible = useAppSelector(state => state.trade.visible);
+  const visible = useAppSelector(state => state.ui.tradeForm.visible);
 
   useEffect(() => {
     if (visible) {
-      dispatch(changeTradeVisibility(false));
+      dispatch(closeTradeForm());
     }
   }, [dispatch, visible]);
 

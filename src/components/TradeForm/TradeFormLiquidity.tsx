@@ -1,4 +1,4 @@
-import { openForm } from 'redux/ducks/liquidity';
+import { openLiquidityForm } from 'redux/ducks/ui';
 
 import { InfoIcon } from 'assets/icons';
 
@@ -10,7 +10,7 @@ function TradeFormLiquidity() {
   const dispatch = useAppDispatch();
 
   function handleAddLiquidity() {
-    dispatch(openForm());
+    dispatch(openLiquidityForm());
   }
 
   return (

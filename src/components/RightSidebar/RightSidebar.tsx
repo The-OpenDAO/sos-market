@@ -4,12 +4,14 @@ import LiquidityForm from '../LiquidityForm';
 import TradeForm from '../TradeForm';
 
 function RightSidebar() {
-  const tradeFormVisible = useAppSelector(state => state.trade.visible);
+  const tradeFormIsVisible = useAppSelector(
+    state => state.ui.tradeForm.visible
+  );
   const liquidityFormIsVisible = useAppSelector(
-    state => state.liquidity.isVisible
+    state => state.ui.liquidityForm.visible
   );
 
-  if (tradeFormVisible)
+  if (tradeFormIsVisible)
     return (
       <div className="pm-l-right-sidebar">
         <TradeForm />

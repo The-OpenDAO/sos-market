@@ -1,8 +1,5 @@
-import {
-  changeTradeVisibility,
-  setSelectedPrediction,
-  setSelectedMarket
-} from 'redux/ducks/trade';
+import { setSelectedPrediction, setSelectedMarket } from 'redux/ducks/trade';
+import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -20,7 +17,7 @@ function TradeFormActions() {
   const amount = useAppSelector(state => state.trade.amount);
 
   function handleCancel() {
-    dispatch(changeTradeVisibility(false));
+    dispatch(closeTradeForm());
     dispatch(setSelectedPrediction(''));
     dispatch(setSelectedMarket(''));
   }

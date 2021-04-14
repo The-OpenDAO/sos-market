@@ -27,14 +27,20 @@ const uiSlice = createSlice({
     }),
     openLiquidityForm: state => ({
       ...state,
+      tradeForm: {
+        visible: false
+      },
       liquidityForm: {
         visible: true
       }
     }),
-    closeLiquidtyForm: state => ({
+    closeLiquidityForm: state => ({
       ...state,
       liquidityForm: {
         visible: false
+      },
+      tradeForm: {
+        visible: true
       }
     })
   }
@@ -46,7 +52,7 @@ const {
   openTradeForm,
   closeTradeForm,
   openLiquidityForm,
-  closeLiquidtyForm
+  closeLiquidityForm
 } = uiSlice.actions;
 
-export { openTradeForm, closeTradeForm, openLiquidityForm, closeLiquidtyForm };
+export { openTradeForm, closeTradeForm, openLiquidityForm, closeLiquidityForm };

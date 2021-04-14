@@ -4,11 +4,11 @@ import { Market as MarketInterface } from 'models/market';
 import {
   changeChartsVisibility,
   changePredictionsVisibility,
-  changeTradeVisibility,
   setPredictions,
   setSelectedPrediction,
   setSelectedMarket
 } from 'redux/ducks/trade';
+import { openTradeForm } from 'redux/ducks/ui';
 
 import { useAppDispatch } from 'hooks';
 
@@ -24,7 +24,7 @@ function PredictionCard({ market }: PredictionCardProps) {
   const { id, outcomes } = market;
 
   function handleNavigation() {
-    dispatch(changeTradeVisibility(true));
+    dispatch(openTradeForm());
     dispatch(changeChartsVisibility(false));
     dispatch(setPredictions(outcomes));
     dispatch(setSelectedPrediction(outcomes[0].id));

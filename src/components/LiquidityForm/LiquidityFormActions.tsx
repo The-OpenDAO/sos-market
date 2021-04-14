@@ -1,4 +1,4 @@
-import { closeForm } from 'redux/ducks/liquidity';
+import { closeLiquidityForm } from 'redux/ducks/ui';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -11,7 +11,7 @@ function LiquidityFormActions() {
   );
 
   function handleCancel() {
-    dispatch(closeForm());
+    dispatch(closeLiquidityForm());
   }
 
   function handleAddliquidity() {}
