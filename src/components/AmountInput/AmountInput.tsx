@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import { WalletIcon } from 'assets/icons';
 
-import useCurrency from 'hooks/useCurrency';
-
 // import StepSlider from '../StepSlider';
 import Text from '../Text';
 
@@ -11,11 +9,11 @@ type AmountInputProps = {
   label: string;
   max: number;
   onChange: (value: number) => void;
+  currency: any;
 };
 
-function AmountInput({ label, max, onChange }: AmountInputProps) {
+function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
   const [amount, setAmount] = useState(max);
-  const { name, ticker, icon } = useCurrency();
 
   function round(value) {
     return Math.floor(value * 1e5) / 1e5;
@@ -58,7 +56,7 @@ function AmountInput({ label, max, onChange }: AmountInputProps) {
             {max}
           </Text>
           <Text as="span" scale="tiny" fontWeight="semibold" color="gray">
-            {ticker}
+            {currency.ticker}
           </Text>
         </div>
       </div>
@@ -80,9 +78,11 @@ function AmountInput({ label, max, onChange }: AmountInputProps) {
             </Text>
           </button>
           <div className="pm-c-amount-input__logo">
-            <figure aria-label={name}>{icon}</figure>
+            {currency.icon ? (
+              <figure aria-label={currency.name}>{currency.icon}</figure>
+            ) : null}
             <Text as="span" scale="caption" fontWeight="bold">
-              {ticker}
+              {currency.ticker}
             </Text>
           </div>
         </div>
