@@ -104,7 +104,9 @@ function generateCustomOptions(ticker: string) {
         style: {
           cssClass: 'apexcharts-yaxis-label'
         }
-      }
+      },
+      min: 0,
+      max: 1
     },
     grid: {
       show: true,

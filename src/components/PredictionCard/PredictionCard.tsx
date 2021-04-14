@@ -1,89 +1,44 @@
 import { Link } from 'react-router-dom';
 
+import { Market as MarketInterface } from 'models/market';
 import {
   changeChartsVisibility,
-  changePredictionsVisibility,
-  changeTradeVisibility,
-  setPredictions,
-  setSelectedPrediction
+  changePredictionsVisibility
 } from 'redux/ducks/trade';
+import { openTradeForm } from 'redux/ducks/ui';
 
 import { useAppDispatch } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
-import PredictionCardDetails from './PredictionCardDetails';
-import PredictionCardFooter from './PredictionCardFooter';
-import PredictionCardSelection from './PredictionCardSelection';
-
-type ChangeType = 'up' | 'down';
-
-type Option = {
-  id: number | string;
-  name: string;
-  odd: number;
-  oddChange: {
-    type: ChangeType;
-  };
-  pricePerFraction: number;
-};
-
-type Market = {
-  id: string | number;
-  imageUrl: string;
-  section: string;
-  subsection: string;
-  description: string;
-  options: Option[];
-  volume: number;
-  expiration: string;
-  liquidity: number;
-  favorite: boolean;
-};
+import Market from '../Market';
 
 type PredictionCardProps = {
-  market: Market;
+  market: MarketInterface;
 };
 
 function PredictionCard({ market }: PredictionCardProps) {
   const dispatch = useAppDispatch();
+  const { ticker } = useCurrency();
 
-  const {
-    id,
-    imageUrl,
-    section,
-    subsection,
-    description,
-    options,
-    volume,
-    expiration,
-    liquidity
-  } = market;
+  const { id } = market;
 
   function handleNavigation() {
-    dispatch(changeTradeVisibility(true));
+    dispatch(openTradeForm());
     dispatch(changeChartsVisibility(false));
-    dispatch(setPredictions(market.options));
-    dispatch(setSelectedPrediction(market.options[0].id));
     dispatch(changePredictionsVisibility(true));
   }
 
   return (
     <div className="prediction-card">
-      <div className="prediction-card__content">
+      <div className="prediction-card__body">
         <Link to={`/markets/${id}`} onClick={handleNavigation}>
-          <PredictionCardDetails
-            imageUrl={imageUrl}
-            section={section}
-            subsection={subsection}
-            description={description}
-          />
+          <Market market={market} />
         </Link>
-        <PredictionCardSelection predictions={options} />
+        <Market.Options market={market} />
       </div>
-      <PredictionCardFooter
-        volume={volume}
-        expiration={expiration}
-        liquidity={liquidity}
-      />
+      <div className="prediction-card__footer">
+        <Market.Footer market={market} ticker={ticker} />
+      </div>
     </div>
   );
 }

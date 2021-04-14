@@ -1,9 +1,21 @@
+import { useEffect } from 'react';
+
+import { getMarkets } from 'redux/ducks/markets';
+
 import { Tabs, MarketList } from 'components';
 
+import { useAppDispatch, useAppSelector } from 'hooks';
+
 import HomeCategories from './HomeCategories';
-import { markets } from './mock';
 
 function Home() {
+  const dispatch = useAppDispatch();
+  const { markets, isLoading, error } = useAppSelector(state => state.markets);
+
+  useEffect(() => {
+    dispatch(getMarkets());
+  }, [dispatch]);
+
   return (
     <div className="home">
       <div className="home__content">

@@ -1,23 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import {
-  changePredictionsVisibility,
-  changeTradeVisibility,
-  setPredictions,
-  setSelectedPrediction
-} from 'redux/ducks/trade';
+import { getMarket, selectOutcome } from 'redux/ducks/market';
+import { changePredictionsVisibility } from 'redux/ducks/trade';
+import { openTradeForm } from 'redux/ducks/ui';
 
 import { Tabs, Table, Text } from 'components';
 
-import { useAppDispatch } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
 import MarketStats from './MarketStats';
-import { markets, tableItems } from './mock';
-import { formatMarketHead, generateMarketChartRandomData } from './utils';
+import { tableItems } from './mock';
+import { generateMarketChartRandomData } from './utils';
 
 type Params = {
   marketId: string;
@@ -26,21 +23,16 @@ type Params = {
 const Market = () => {
   const dispatch = useAppDispatch();
   const { marketId } = useParams<Params>();
-  const [market, setMarket] = useState<typeof markets[0] | undefined>();
+  const { market, isLoading, error } = useAppSelector(state => state.market);
 
   useEffect(() => {
-    const currentMarket = markets.find(m => m.id === parseInt(marketId, 10));
-
-    setMarket(currentMarket);
-    dispatch(changeTradeVisibility(true));
-    dispatch(setPredictions(currentMarket?.options));
-    dispatch(setSelectedPrediction(currentMarket?.options[0].id));
+    dispatch(getMarket(marketId));
+    dispatch(openTradeForm());
     dispatch(changePredictionsVisibility(true));
-  }, [marketId, dispatch]);
+  }, [dispatch, marketId]);
 
-  if (!market) return null;
+  if (!market || isLoading) return null;
 
-  const marketHead = formatMarketHead(market);
   const marketLastWeek = generateMarketChartRandomData(10);
 
   return (
@@ -48,13 +40,13 @@ const Market = () => {
       <MarketAnalytics
         liquidity={market.liquidity}
         volume={market.volume}
-        expiration={market.expiration}
+        expiration={market.expiresAt}
       />
       <MarketHead
-        section={marketHead.section}
-        subsection={marketHead.subsection}
-        imageUrl={marketHead.imageUrl}
-        description={marketHead.description}
+        section={market.category}
+        subsection={market.subcategory}
+        imageUrl={market.imageUrl}
+        description={market.title}
       />
       <div className="market-page__stats">
         <MarketChart />

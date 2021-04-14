@@ -1,0 +1,75 @@
+.pm-c-market {
+  &__body {
+    @include flex-column(center, center);
+
+    @include breakpoint-to('md') {
+      @include flex-row;
+    }
+
+    gap: 2.4rem;
+
+    &-details {
+      @include flex-column(center, center);
+
+      @include breakpoint-to('md') {
+        @include flex-column(center, flex-start);
+      }
+
+      gap: 0.8rem;
+
+      p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+      }
+    }
+  }
+}
+
+.pm-c-market-options {
+  @include flex-row(center, center);
+  gap: 1.6rem;
+
+  &__item {
+    cursor: pointer;
+    touch-action: manipulation;
+
+    @include flex-row;
+    gap: 2.4rem;
+    padding: 1.6rem;
+
+    background-color: $gray-900;
+    @include border($gray-900);
+
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      @include border($gray-600);
+    }
+
+    &-group {
+      @include flex-column(center, flex-start);
+    }
+
+    &-odd {
+      @include flex-row(flex-start, center);
+      gap: 0.3rem;
+    }
+
+    &.active {
+      background: linear-gradient(
+        90deg,
+        rgba(87, 81, 252, 0.4) 0%,
+        rgba(87, 81, 252, 0.14) 100%
+      );
+      @include border($primary-500);
+    }
+  }
+}
+
+.pm-c-market-footer {
+  &__stats {
+    @include flex-row;
+    gap: 2.4rem;
+  }
+}

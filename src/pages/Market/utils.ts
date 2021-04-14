@@ -34,7 +34,7 @@ function generateRandomNumberBetween(min: number, max: number) {
 
 function formatMarketHead(market: Market) {
   const marketHead = {
-    imageUrl: `../${market?.imageUrl}` || '',
+    imageUrl: market?.imageUrl || '',
     section: market?.section || '',
     subsection: market?.subsection || '',
     description: market?.description || ''

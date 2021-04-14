@@ -1,40 +1,51 @@
 import { useState } from 'react';
 
-import { generateChartRandomData } from 'pages/Portfolio/utils';
+import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 
-import { ChartHeader, LineChart, Text, ToggleButton } from 'components';
+import { ChartHeader, LineChart, Text } from 'components';
+
+import { useAppSelector } from 'hooks';
 
 const MarketChart = () => {
-  const [_currentInterval, setCurrentInterval] = useState(60);
+  const predictions = useAppSelector(state => state.market.market.outcomes);
+
+  const [currentInterval, setCurrentInterval] = useState(24);
   const [currentView, setCurrentView] = useState<string | undefined>(
     'marketOverview'
   );
 
-  const lineChartDataA = generateChartRandomData();
-  const lineChartDataB = generateChartRandomData(true);
+  const intervals = [
+    { id: '24h', name: '24H', value: 24 },
+    { id: '7d', name: '7D', value: 168 },
+    { id: '30d', name: '30D', value: 720 },
+    { id: 'all', name: 'ALL', value: 720 }
+  ];
+
+  const timeframe = intervals.find(
+    interval => interval.value === currentInterval
+  );
+
+  const series = predictions.map(prediction => {
+    const chart = prediction.priceCharts.find(
+      priceChart => priceChart.timeframe === timeframe?.id
+    );
+
+    const data = fromPriceChartToLineChartSeries(chart?.prices || []);
+    return {
+      name: prediction.title,
+      data
+    };
+  });
 
   return (
     <div className="market-chart">
-      {/* <ToggleButton
-        defaultActiveId="marketOverview"
-        buttons={[
-          { id: 'marketOverview', name: 'Market Overview', color: 'default' },
-          { id: 'tradingView', name: 'Trading View', color: 'default' }
-        ]}
-        onChange={view => setCurrentView(view)}
-      /> */}
       <div className="market-chart__header">
         <Text as="h2" scale="body" fontWeight="semibold" color="light">
           Market Overview
         </Text>
         <div className="market-chart__header-actions">
           <ChartHeader
-            intervals={[
-              { id: 'hour', name: '1H', value: 60 },
-              { id: '12hour', name: '12H', value: 120 },
-              { id: 'day', name: '1D', value: 120 },
-              { id: 'month', name: '1M', value: 120 }
-            ]}
+            intervals={intervals}
             defaultIntervalId="hour"
             onChangeInterval={(_interval, value) => setCurrentInterval(value)}
           />
@@ -43,17 +54,7 @@ const MarketChart = () => {
 
       <div className="market-chart__view">
         {currentView === 'marketOverview' ? (
-          <LineChart
-            series={[
-              { name: 'Yes', data: lineChartDataA },
-              {
-                name: 'No',
-                data: lineChartDataB
-              }
-            ]}
-            ticker="DOT"
-            height={332}
-          />
+          <LineChart series={series} ticker="DOT" height={332} />
         ) : null}
       </div>
     </div>

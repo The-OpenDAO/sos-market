@@ -2,13 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type TradeType = 'buy' | 'sell' | string;
 
-// type Prediction = {
-//   id: number | string;
-//   name: string;
-//   odd: number;
-//   pricePerFraction: number;
-// };
-
 type PredictionDetails = {
   fractionsBought: number;
   currentROI: number;
@@ -18,25 +11,10 @@ type PredictionDetails = {
 };
 
 const initialState = {
-  visible: false,
   showCharts: false,
   showPredictions: false,
   type: 'buy',
-  selectedPredictionId: '',
-  predictions: [
-    {
-      id: '',
-      name: '',
-      odd: 0,
-      pricePerFraction: 0
-    },
-    {
-      id: '',
-      name: '',
-      odd: 0,
-      pricePerFraction: 0
-    }
-  ],
+  amount: 0,
   fractionsBought: 0,
   currentROI: 0,
   totalStake: 0,
@@ -50,10 +28,6 @@ const tradeSlice = createSlice({
   name: 'trade',
   initialState,
   reducers: {
-    changeTradeVisibility: (state, action: PayloadAction<boolean>) => ({
-      ...state,
-      visible: action.payload
-    }),
     changeChartsVisibility: (state, action: PayloadAction<boolean>) => ({
       ...state,
       showCharts: action.payload
@@ -66,13 +40,9 @@ const tradeSlice = createSlice({
       ...state,
       type: action.payload
     }),
-    setSelectedPrediction: (state, action) => ({
+    setTradeAmount: (state, action) => ({
       ...state,
-      selectedPredictionId: action.payload
-    }),
-    setPredictions: (state, action) => ({
-      ...state,
-      predictions: action.payload
+      amount: action.payload
     }),
     setPredictionDetails: (
       state,
@@ -99,25 +69,21 @@ const tradeSlice = createSlice({
 export default tradeSlice.reducer;
 
 const {
-  changeTradeVisibility,
   changeChartsVisibility,
   changePredictionsVisibility,
   changeTradeType,
-  setSelectedPrediction,
-  setPredictions,
   setPredictionDetails,
+  setTradeAmount,
   toggleAcceptRules,
   toggleAcceptOddChanges
 } = tradeSlice.actions;
 
 export {
-  changeTradeVisibility,
   changeChartsVisibility,
   changePredictionsVisibility,
   changeTradeType,
-  setSelectedPrediction,
-  setPredictions,
   setPredictionDetails,
+  setTradeAmount,
   toggleAcceptRules,
   toggleAcceptOddChanges
 };

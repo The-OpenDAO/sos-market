@@ -1,119 +1,29 @@
 .prediction-card {
   @include flex-column;
 
-  border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
-  transition: background-color 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
-
   background-color: $card-background-dark;
   box-shadow: $card-shadow-dark;
 
-  &__content {
-    @include flex-row(space-between, center);
+  border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
+  transition: background-color 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
+
+  &__body {
+    @include flex-column(center, center);
     gap: 2.4rem;
 
     padding: 1.6rem;
-  }
-}
+    padding-top: 3.2rem;
 
-.prediction-card-details {
-  @include flex-row(flex-start, center);
-  gap: 2.4rem;
-
-  &__image {
-    height: 6.4rem;
-    width: 6.4rem;
-
-    object-fit: cover;
-    border-radius: 50%;
-  }
-
-  &__description {
-    @include flex-column(center, flex-start);
-    gap: 0.8rem;
-
-    p {
-      color: $gray-100;
-
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto;
+    @include breakpoint-to('md') {
+      @include flex-row(space-between, center);
+      padding: 1.6rem;
     }
   }
-}
 
-.prediction-card-selection {
-  @include flex-row(center, center);
-  gap: 1.6rem;
-
-  &__item {
-    @include flex-row;
-    gap: 4.2rem;
-
-    padding: 1.6rem;
-
-    cursor: pointer;
-    touch-action: manipulation;
+  &__footer {
+    padding: 1rem 1.6rem;
 
     background-color: $gray-900;
-    @include border($gray-900);
-
-    transition: all 0.3s ease 0s;
-
-    p {
-      color: $gray-100;
-    }
-
-    &:hover {
-      @include border($gray-600);
-    }
-
-    &-group {
-      @include flex-column(center, flex-start);
-    }
-
-    &-odd {
-      @include flex-row(flex-start, center);
-      gap: 0.3rem;
-
-      p {
-        color: $neutral-white-50;
-      }
-
-      span {
-        color: $gray-100;
-      }
-    }
-
-    &.active {
-      background: linear-gradient(
-        90deg,
-        rgba(87, 81, 252, 0.4) 0%,
-        rgba(87, 81, 252, 0.14) 100%
-      );
-      @include border($primary-500);
-    }
-  }
-}
-
-.prediction-card-footer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  padding: 1rem 1.6rem;
-  background-color: $gray-900;
-  border-radius: 0rem 0rem 0.4rem 0.4rem;
-
-  &__stats {
-    display: inline-flex;
-    gap: 2rem;
-
-    > span {
-      color: $gray-500;
-
-      > strong {
-        color: $gray-100;
-      }
-    }
+    border-radius: 0rem 0rem 0.4rem 0.4rem;
   }
 }

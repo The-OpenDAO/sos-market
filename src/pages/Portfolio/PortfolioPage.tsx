@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { changeTradeVisibility } from 'redux/ducks/trade';
+import { closeRightSidebar } from 'redux/ducks/ui';
 
 import { CategoryAnalytics, MarketTable, Text } from 'components';
 
@@ -11,13 +11,15 @@ import PortfolioChart from './PortfolioChart';
 
 const PortfolioPage = () => {
   const dispatch = useAppDispatch();
-  const visible = useAppSelector(state => state.trade.visible);
+  const rightSidebarIsVisible = useAppSelector(
+    state => state.ui.rightSidebar.visible
+  );
 
   useEffect(() => {
-    if (visible) {
-      dispatch(changeTradeVisibility(false));
+    if (rightSidebarIsVisible) {
+      dispatch(closeRightSidebar());
     }
-  }, [dispatch, visible]);
+  }, [rightSidebarIsVisible, dispatch]);
 
   return (
     <div className="portfolio-page">

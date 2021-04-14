@@ -1,0 +1,29 @@
+.pm-c-button-group {
+  @include flex-row;
+  width: 100%;
+  padding: 0.2rem;
+  margin-bottom: 1rem;
+
+  @include border(transparent);
+
+  &__item {
+    @extend %button;
+    flex-grow: 1;
+    height: 3.4rem;
+    padding: 0.8rem 2rem;
+
+    font-size: 1.5rem;
+    line-height: 0rem;
+
+    background-color: unset;
+    border: none;
+    transition: all 0.3s ease 0s;
+  }
+}
+
+@each $color-variant, $color in $theme-colors {
+  .pm-c-button-group--#{$color-variant} {
+    @extend .pm-c-button-group;
+    @include button-group-color($color-variant, $color);
+  }
+}
