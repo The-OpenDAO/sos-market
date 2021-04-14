@@ -1,4 +1,5 @@
 import { closeLiquidityForm } from 'redux/ducks/ui';
+import { BeproService, PolkamarketsApiService } from 'services';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -9,12 +10,22 @@ function LiquidityFormActions() {
   const transactionType = useAppSelector(
     state => state.liquidity.transactionType
   );
+  const marketId = useAppSelector(state => state.market.market.id);
+  const amount = useAppSelector(state => state.liquidity.amount);
 
   function handleCancel() {
     dispatch(closeLiquidityForm());
   }
 
-  function handleAddliquidity() {}
+  async function handleAddliquidity() {
+    const beproService = new BeproService();
+
+    // performing buy action on smart contract
+    await beproService.addLiquidity(marketId, amount);
+
+    // triggering cache reload action on api
+    await new PolkamarketsApiService().reloadMarket(marketId);
+  }
 
   function handleRemoveLiquidity() {}
 

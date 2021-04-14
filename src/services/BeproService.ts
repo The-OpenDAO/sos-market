@@ -86,6 +86,18 @@ export default class BeproService {
     return response;
   }
 
+  public async addLiquidity(marketId: string | number, ethAmount: number) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contract.addLiquidity({
+      marketId,
+      ethAmount
+    });
+
+    return response;
+  }
+
   public async getAddress(): Promise<string> {
     if (this.address) return this.address;
 
