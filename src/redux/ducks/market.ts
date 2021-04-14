@@ -29,7 +29,8 @@ const initialState: MarketInitialState = {
         change: {
           type: '',
           chartData: []
-        }
+        },
+        priceCharts: []
       },
       {
         id: '',
@@ -39,7 +40,8 @@ const initialState: MarketInitialState = {
         change: {
           type: '',
           chartData: []
-        }
+        },
+        priceCharts: []
       }
     ]
   },

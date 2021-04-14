@@ -1,3 +1,14 @@
+export interface PriceChartPoint {
+  value: number;
+  timestamp: number;
+  date: string;
+}
+
+export interface PriceChart {
+  timeframe: string;
+  prices: PriceChartPoint[];
+}
+
 export interface Outcome {
   id: number | string;
   marketId: number | string;
@@ -7,6 +18,7 @@ export interface Outcome {
     type: string;
     chartData: any[];
   };
+  priceCharts: PriceChart[];
 }
 
 export interface Market {

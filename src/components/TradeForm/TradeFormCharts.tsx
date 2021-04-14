@@ -1,6 +1,9 @@
+import { useState } from 'react';
+
+import { fromPriceChartToLineChartSeries } from 'helpers/chart';
+
 import { useAppSelector } from 'hooks';
 
-import { generateChartRandomData } from '../Category/utils';
 import ChartHeader from '../ChartHeader';
 import LineChart from '../LineChart';
 
@@ -8,34 +11,41 @@ function TradeFormCharts() {
   const showCharts = useAppSelector(state => state.trade.showCharts);
   const predictions = useAppSelector(state => state.market.market.outcomes);
 
+  const [currentInterval, setCurrentInterval] = useState(24);
+
   if (!showCharts) return null;
 
-  const lineChartDataA = generateChartRandomData();
-  const lineChartDataB = generateChartRandomData(true);
+  const intervals = [
+    { id: '1h', name: '1H', value: 1 },
+    { id: '24h', name: '24H', value: 24 },
+    { id: '30d', name: '30D', value: 720 },
+    { id: 'all', name: 'ALL', value: 720 }
+  ];
+
+  const timeframe = intervals.find(
+    interval => interval.value === currentInterval
+  );
+
+  const series = predictions.map(prediction => {
+    const chart = prediction.priceCharts.find(
+      priceChart => priceChart.timeframe === timeframe?.id
+    );
+
+    const data = fromPriceChartToLineChartSeries(chart?.prices || []);
+    return {
+      name: prediction.title,
+      data
+    };
+  });
 
   return (
     <div className="pm-c-trade-form-charts">
       <ChartHeader
-        intervals={[
-          { id: 'hour', name: '1H', value: 60 },
-          { id: '12hour', name: '12H', value: 120 },
-          { id: 'day', name: '1D', value: 120 },
-          { id: 'month', name: '1M', value: 120 }
-        ]}
+        intervals={intervals}
         defaultIntervalId="hour"
-        onChangeInterval={(interval, value) => console.log(interval, value)}
+        onChangeInterval={(_interval, value) => setCurrentInterval(value)}
       />
-      <LineChart
-        series={[
-          { name: predictions[0].title, data: lineChartDataA },
-          {
-            name: predictions[1].title,
-            data: lineChartDataB
-          }
-        ]}
-        ticker="DOT"
-        height={180}
-      />
+      <LineChart series={series} ticker="DOT" height={180} />
     </div>
   );
 }
