@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { setSelectedPrediction } from 'redux/ducks/trade';
+import { selectOutcome } from 'redux/ducks/market';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -9,30 +9,24 @@ import Text from '../Text';
 function TradeFormPredictions() {
   const dispatch = useAppDispatch();
   const showPredictions = useAppSelector(state => state.trade.showPredictions);
-  const predictions = useAppSelector(state => state.trade.predictions);
-  const selectedPredictionId = useAppSelector(
-    state => state.trade.selectedPredictionId
-  );
-  const selectedMarketId = useAppSelector(
-    state => state.trade.selectedMarketId
-  );
+  const { market, selectedOutcomeId } = useAppSelector(state => state.market);
 
   if (!showPredictions) return null;
 
-  function handleChangeSelectedPrediction(id: string) {
-    dispatch(setSelectedPrediction(id));
+  function handleChangeSelectedPrediction(id: string | number) {
+    dispatch(selectOutcome(market, id));
   }
 
   return (
     <div className="pm-c-trade-form-predictions">
-      {predictions?.map((prediction, index) => (
+      {market.outcomes.map((prediction, index) => (
         <div
           key={prediction.id}
           className={classNames({
             'pm-c-trade-form-predictions__item': true,
             active:
-              prediction.id === selectedPredictionId &&
-              prediction.marketId === selectedMarketId
+              prediction.id === selectedOutcomeId &&
+              prediction.marketId === market.id
           })}
           role="button"
           tabIndex={index}
@@ -41,12 +35,12 @@ function TradeFormPredictions() {
         >
           <div className="pm-c-trade-form-predictions__item-prediction">
             <Text as="p" fontWeight="bold">
-              {prediction.name}
+              {prediction.title}
             </Text>
             <Text as="span" fontWeight="bold">
               {`ODD `}
               <Text as="strong" fontWeight="bold">
-                {prediction.odd}
+                {prediction.price.toFixed(3)}
               </Text>
             </Text>
           </div>
@@ -55,7 +49,7 @@ function TradeFormPredictions() {
               {
                 key: 'pricePerFraction',
                 title: 'Price Per Fraction',
-                value: prediction.pricePerFraction
+                value: prediction.price
               }
             ]}
           />

@@ -6,7 +6,7 @@ import LineChart from '../LineChart';
 
 function TradeFormCharts() {
   const showCharts = useAppSelector(state => state.trade.showCharts);
-  const predictions = useAppSelector(state => state.trade.predictions);
+  const predictions = useAppSelector(state => state.market.market.outcomes);
 
   if (!showCharts) return null;
 
@@ -27,9 +27,9 @@ function TradeFormCharts() {
       />
       <LineChart
         series={[
-          { name: predictions[0].name, data: lineChartDataA },
+          { name: predictions[0].title, data: lineChartDataA },
           {
-            name: predictions[1].name,
+            name: predictions[1].title,
             data: lineChartDataB
           }
         ]}

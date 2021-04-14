@@ -4,11 +4,10 @@ import MiniTable from '../MiniTable';
 import formatMiniTableItems from './utils';
 
 function TradeFormDetails() {
+  const { market, selectedOutcomeId } = useAppSelector(state => state.market);
+  const { id, outcomes } = market;
   const {
     type,
-    predictions,
-    selectedPredictionId,
-    selectedMarketId,
     fractionsBought,
     currentROI,
     totalStake,
@@ -17,9 +16,9 @@ function TradeFormDetails() {
   } = useAppSelector(state => state.trade);
 
   const miniTableItems = formatMiniTableItems(
-    predictions,
-    selectedPredictionId,
-    selectedMarketId,
+    outcomes,
+    selectedOutcomeId,
+    id,
     fractionsBought,
     currentROI,
     totalStake

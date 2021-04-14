@@ -16,12 +16,12 @@ function formatMiniTableItems(
     {
       key: 'prediction',
       title: 'Prediction',
-      value: selectedPredictionObj?.name || ''
+      value: selectedPredictionObj?.title || ''
     },
     {
       key: 'pricePerFraction',
       title: 'Price per fraction',
-      value: `${selectedPredictionObj?.pricePerFraction || 0} DOT`
+      value: `${selectedPredictionObj?.price || 0} DOT`
     },
     {
       key: 'fractionsBought',
