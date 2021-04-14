@@ -27,7 +27,15 @@ function LiquidityFormActions() {
     await new PolkamarketsApiService().reloadMarket(marketId);
   }
 
-  function handleRemoveLiquidity() {}
+  async function handleRemoveLiquidity() {
+    const beproService = new BeproService();
+
+    // performing buy action on smart contract
+    await beproService.removeLiquidity(marketId, amount);
+
+    // triggering cache reload action on api
+    await new PolkamarketsApiService().reloadMarket(marketId);
+  }
 
   return (
     <div className="pm-c-liquidity-form__actions">
