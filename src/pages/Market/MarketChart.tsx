@@ -5,8 +5,10 @@ import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 import { ChartHeader, LineChart, Text } from 'components';
 
 import { useAppSelector } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
 const MarketChart = () => {
+  const { ticker } = useCurrency();
   const predictions = useAppSelector(state => state.market.market.outcomes);
 
   const [currentInterval, setCurrentInterval] = useState(24);
@@ -54,7 +56,7 @@ const MarketChart = () => {
 
       <div className="market-chart__view">
         {currentView === 'marketOverview' ? (
-          <LineChart series={series} ticker="DOT" height={332} />
+          <LineChart series={series} ticker={ticker} height={332} />
         ) : null}
       </div>
     </div>

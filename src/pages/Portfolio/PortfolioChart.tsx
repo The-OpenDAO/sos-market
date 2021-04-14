@@ -13,7 +13,7 @@ const PortfolioChart = () => {
       <div className="portfolio-chart__header">
         <div className="portfolio-chart__header-balance">
           <Text as="h4" scale="heading" fontWeight="semibold" color="light">
-            {`${balance.total} DOT`}
+            {`${balance.total} ETH`}
           </Text>
           <Text as="span" scale="tiny" fontWeight="medium" color="dark-gray">
             Total Balance
@@ -27,12 +27,12 @@ const PortfolioChart = () => {
             {`${balance.change.percentage}%`}
           </Label>
           <Text as="span" scale="body" fontWeight="semibold" color="success">
-            {`${balance.change.amount} DOT`}
+            {`${balance.change.amount} ETH`}
           </Text>
         </div>
       </div>
       <div className="portfolio-chart__view">
-        <AreaChart serie={randomPortfolioChartData} ticker="DOT" height={210} />
+        <AreaChart serie={randomPortfolioChartData} ticker="ETH" height={210} />
       </div>
     </div>
   );

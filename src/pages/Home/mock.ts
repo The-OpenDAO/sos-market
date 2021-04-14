@@ -109,7 +109,7 @@ const markets = [
     subsection: 'ALTS',
     imageUrl: 'images/image03.png',
     description:
-      'Which project will have a higher market cap by February 26th 12pm UTC? ADA or DOT?',
+      'Which project will have a higher market cap by February 26th 12pm UTC? ADA or ETH?',
     volume: 509,
     expiration: 'Feb 26, 2021 - 12:00PM UTC',
     liquidity: 428,
@@ -127,7 +127,7 @@ const markets = [
       },
       {
         id: '13asadada',
-        name: 'DOT',
+        name: 'ETH',
         odd: 0.26,
         oddChange: {
           type: 'down'

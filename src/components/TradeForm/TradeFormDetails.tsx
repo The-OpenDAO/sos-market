@@ -36,7 +36,7 @@ function TradeFormDetails() {
             {
               key: 'returns',
               title: 'Potential returns',
-              value: `${potentialReturns} DOT`
+              value: `${potentialReturns} ETH`
             }
           ]}
           color="success"
@@ -45,7 +45,7 @@ function TradeFormDetails() {
       {type === 'sell' ? (
         <MiniTable
           rows={[
-            { key: 'loss', title: 'Loss amount', value: `${lossAmount} DOT` }
+            { key: 'loss', title: 'Loss amount', value: `${lossAmount} ETH` }
           ]}
           color="danger"
         />

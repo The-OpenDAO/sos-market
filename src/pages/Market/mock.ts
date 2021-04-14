@@ -71,7 +71,7 @@ const markets = [
     subsection: 'ALTS',
     imageUrl: 'images/image03.png',
     description:
-      'Which project will have a higher market cap by February 26th 12pm UTC? ADA or DOT?',
+      'Which project will have a higher market cap by February 26th 12pm UTC? ADA or ETH?',
     volume: 509,
     expiration: 'Feb 26, 2021 - 12:00PM UTC',
     liquidity: 428,
@@ -89,7 +89,7 @@ const markets = [
       },
       {
         id: '13asadada',
-        name: 'DOT',
+        name: 'ETH',
         odd: 0.26,
         oddChange: {
           type: 'down'
@@ -176,42 +176,42 @@ const tableItems = {
     {
       key: '0',
       result: 'Yes',
-      price: '0.248 DOT',
+      price: '0.248 ETH',
       tradeType: 'Buy',
       fractions: '13',
-      maxPayout: '2.584 DOT'
+      maxPayout: '2.584 ETH'
     },
     {
       key: '1',
       result: 'No',
-      price: '0.248 DOT',
+      price: '0.248 ETH',
       tradeType: 'Sold',
       fractions: '13',
-      maxPayout: '2.584 DOT'
+      maxPayout: '2.584 ETH'
     },
     {
       key: '2',
       result: 'No',
-      price: '0.248 DOT',
+      price: '0.248 ETH',
       tradeType: 'Sold',
       fractions: '13',
-      maxPayout: '2.584 DOT'
+      maxPayout: '2.584 ETH'
     },
     {
       key: '3',
       result: 'No',
-      price: '0.248 DOT',
+      price: '0.248 ETH',
       tradeType: 'Sold',
       fractions: '13',
-      maxPayout: '2.584 DOT'
+      maxPayout: '2.584 ETH'
     },
     {
       key: '4',
       result: 'No',
-      price: '0.248 DOT',
+      price: '0.248 ETH',
       tradeType: 'Sold',
       fractions: '13',
-      maxPayout: '2.584 DOT'
+      maxPayout: '2.584 ETH'
     }
   ]
 };

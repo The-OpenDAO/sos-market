@@ -1,14 +1,16 @@
 import { fetchWallet } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { MetaMaskIcon, PolkadotIcon, SettingsIcon } from 'assets/icons';
+import { MetaMaskIcon, SettingsIcon } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
 import { Button } from '../Button';
 import WalletInfo from '../WalletInfo';
 
 function NavBarActions() {
+  const { icon } = useCurrency();
   const dispatch = useAppDispatch();
   const beproService = new BeproService();
 
@@ -26,7 +28,7 @@ function NavBarActions() {
       {walletConnected ? (
         <WalletInfo
           balance={walletBalance}
-          currencyIcon={<PolkadotIcon />}
+          currencyIcon={icon}
           address={walletAddress}
         />
       ) : (

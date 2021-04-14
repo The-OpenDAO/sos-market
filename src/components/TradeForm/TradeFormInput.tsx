@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 
 import { setTradeAmount } from 'redux/ducks/trade';
 
-import { WalletIcon, PolkadotIcon } from 'assets/icons';
+import { WalletIcon } from 'assets/icons';
 
 import { useAppSelector, useAppDispatch } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
 import StepSlider from '../StepSlider';
 import Text from '../Text';
 
 function TradeFormInput() {
+  const { name, ticker, icon } = useCurrency();
   const dispatch = useAppDispatch();
   const type = useAppSelector(state => state.trade.type);
   const label = `${type} fractions`;
@@ -80,7 +82,7 @@ function TradeFormInput() {
             {max()}
           </Text>
           <Text as="span" scale="tiny" fontWeight="semibold">
-            {type === 'buy' ? ' DOT' : ' Shares'}
+            {type === 'buy' ? ticker : ' Shares'}
           </Text>
         </div>
       </div>
@@ -103,11 +105,9 @@ function TradeFormInput() {
           </button>
           {type === 'buy' ? (
             <div className="pm-c-trade-form-input__logo">
-              <figure aria-label="Polkadot logo">
-                <PolkadotIcon />
-              </figure>
+              <figure aria-label={name}>{icon}</figure>
               <Text as="span" scale="caption" fontWeight="bold">
-                DOT
+                {ticker}
               </Text>
             </div>
           ) : null}
