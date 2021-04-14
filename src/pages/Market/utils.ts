@@ -10,12 +10,12 @@ function formatMarketAnalytics(market: Market, colored: boolean) {
   const marketAnalytics = [
     {
       title: 'Liquidity',
-      value: `${market?.liquidity || 0} DOT`,
+      value: `${market?.liquidity || 0} ETH`,
       color: colored ? 'yellow' : 'default'
     },
     {
       title: 'Volume (24H)',
-      value: `${market?.volume || 0} DOT`,
+      value: `${market?.volume || 0} ETH`,
       color: colored ? 'blue' : 'default'
     },
     {

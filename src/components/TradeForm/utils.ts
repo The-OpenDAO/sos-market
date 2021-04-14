@@ -21,7 +21,7 @@ function formatMiniTableItems(
     {
       key: 'pricePerFraction',
       title: 'Price per fraction',
-      value: `${selectedPredictionObj?.price || 0} DOT`
+      value: `${selectedPredictionObj?.price || 0} ETH`
     },
     {
       key: 'fractionsBought',
@@ -36,7 +36,7 @@ function formatMiniTableItems(
     {
       key: 'stake',
       title: 'Total stake',
-      value: `${totalStake} DOT`
+      value: `${totalStake} ETH`
     }
   ];
 }

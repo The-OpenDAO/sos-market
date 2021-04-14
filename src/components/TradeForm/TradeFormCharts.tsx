@@ -5,11 +5,13 @@ import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 import { changeChartsVisibility } from 'redux/ducks/trade';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
 import ChartHeader from '../ChartHeader';
 import LineChart from '../LineChart';
 
 function TradeFormCharts() {
+  const { ticker } = useCurrency();
   const location = useLocation();
   const dispatch = useAppDispatch();
   const showCharts = useAppSelector(state => state.trade.showCharts);
@@ -57,7 +59,7 @@ function TradeFormCharts() {
         defaultIntervalId="hour"
         onChangeInterval={(_interval, value) => setCurrentInterval(value)}
       />
-      <LineChart series={series} ticker="DOT" height={180} />
+      <LineChart series={series} ticker={ticker} height={180} />
     </div>
   );
 }
