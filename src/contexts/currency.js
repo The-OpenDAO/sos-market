@@ -1,14 +1,14 @@
 import { createContext, useReducer } from 'react';
 
-import { PolkadotIcon } from 'assets/icons';
+import { EthereumIcon } from 'assets/icons';
 
 const CurrencyContext = createContext({});
 const CurrencyDispatchContext = createContext({});
 
 const initalState = {
-  name: 'Polkadot',
-  ticker: 'DOT',
-  icon: <PolkadotIcon />
+  name: 'Ethereum',
+  ticker: 'ETH',
+  icon: <EthereumIcon />
 };
 
 const actions = {
