@@ -2,6 +2,9 @@
   "name": "polkamarkets",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.x"
+  },
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@reduxjs/toolkit": "^1.5.0",
