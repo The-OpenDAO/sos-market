@@ -14,6 +14,8 @@ const initialState = {
   showCharts: false,
   showPredictions: false,
   type: 'buy',
+  selectedMarketId: '',
+  selectedOutcomeId: '',
   amount: 0,
   fractionsBought: 0,
   currentROI: 0,
@@ -44,6 +46,11 @@ const tradeSlice = createSlice({
       ...state,
       amount: action.payload
     }),
+    outcomeSelected: (state, action) => ({
+      ...state,
+      selectedMarketId: action.payload.marketId,
+      selectedOutcomeId: action.payload.outcomeId
+    }),
     setPredictionDetails: (
       state,
       action: PayloadAction<PredictionDetails>
@@ -72,6 +79,7 @@ const {
   changeChartsVisibility,
   changePredictionsVisibility,
   changeTradeType,
+  outcomeSelected,
   setPredictionDetails,
   setTradeAmount,
   toggleAcceptRules,
@@ -82,8 +90,15 @@ export {
   changeChartsVisibility,
   changePredictionsVisibility,
   changeTradeType,
+  outcomeSelected,
   setPredictionDetails,
   setTradeAmount,
   toggleAcceptRules,
   toggleAcceptOddChanges
 };
+
+export function selectOutcome(marketId: string, outcomeId: string | number) {
+  return async dispatch => {
+    dispatch(outcomeSelected({ marketId, outcomeId }));
+  };
+}
