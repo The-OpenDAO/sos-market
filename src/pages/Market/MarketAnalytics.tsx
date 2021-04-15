@@ -42,7 +42,7 @@ function MarketAnalytics({
                   fontWeight="semibold"
                   color="white"
                 >
-                  {`${liquidity} ${ticker}`}
+                  {`${liquidity.toFixed(3)} ${ticker}`}
                 </Text>
               </Card>
             </Grid.Col>

@@ -1,46 +1,12 @@
 import dayjs from 'dayjs';
+import { fromTimestampToDate } from 'helpers/date';
+import { roundNumber } from 'helpers/math';
 import reverse from 'lodash/reverse';
 import times from 'lodash/times';
-
-import { markets } from './mock';
-
-type Market = typeof markets[0];
-
-function formatMarketAnalytics(market: Market, colored: boolean) {
-  const marketAnalytics = [
-    {
-      title: 'Liquidity',
-      value: `${market?.liquidity || 0} ETH`,
-      color: colored ? 'yellow' : 'default'
-    },
-    {
-      title: 'Volume (24H)',
-      value: `${market?.volume || 0} ETH`,
-      color: colored ? 'blue' : 'default'
-    },
-    {
-      title: 'Expiration',
-      value: market?.expiration || '',
-      color: colored ? 'orange' : 'default'
-    }
-  ];
-
-  return marketAnalytics;
-}
+import { Market } from 'models/market';
 
 function generateRandomNumberBetween(min: number, max: number) {
   return Math.random() * (max - min + 1) + min;
-}
-
-function formatMarketHead(market: Market) {
-  const marketHead = {
-    imageUrl: market?.imageUrl || '',
-    section: market?.section || '',
-    subsection: market?.subsection || '',
-    description: market?.description || ''
-  };
-
-  return marketHead;
 }
 
 function generateMarketChartRandomData(size: number) {
@@ -62,8 +28,42 @@ function generateMarketChartRandomData(size: number) {
   return reverse(data);
 }
 
-export {
-  formatMarketAnalytics,
-  formatMarketHead,
-  generateMarketChartRandomData
-};
+function formatMarketActions(actions: [], market: Market, ticker: string) {
+  const columns = [
+    { title: 'Date', key: 'date' },
+    { title: 'Outcome', key: 'outcome' },
+    { title: 'Trade Type', key: 'tradeType' },
+    { title: 'Shares', key: 'shares' },
+    { title: 'Price', key: 'price' },
+    { title: 'Value', key: 'value' }
+  ];
+
+  const rows = actions.reverse().map((action: any, index: number) => {
+    const key = index.toString();
+    const date = fromTimestampToDate(action.timestamp * 1000).format(
+      'YYYY-MM-DD'
+    );
+    const outcome =
+      action.action === 'Buy' || action.action === 'Sell'
+        ? market.outcomes[action.outcomeId]?.title
+        : null;
+    const tradeType = action.action;
+    const shares = roundNumber(action.shares, 3);
+    const price = `${roundNumber(action.value / action.shares, 3)} ${ticker}`;
+    const value = `${roundNumber(action.value, 3)} ${ticker}`;
+
+    return {
+      key,
+      date,
+      outcome,
+      tradeType,
+      shares,
+      price,
+      value
+    };
+  });
+
+  return { columns, rows };
+}
+
+export { formatMarketActions, generateMarketChartRandomData };

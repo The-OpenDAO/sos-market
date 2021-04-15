@@ -133,4 +133,13 @@ export default class BeproService {
 
     return response;
   }
+
+  public async getActions(): Promise<any[]> {
+    // ensuring user has wallet connected
+    if (!this.address) return [];
+
+    const response = await this.contract.getMyActions();
+
+    return response;
+  }
 }
