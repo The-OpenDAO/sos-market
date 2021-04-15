@@ -56,7 +56,7 @@ function TradeFormPredictions() {
               {prediction.title}
             </Text>
             <Text as="span" fontWeight="bold">
-              {`ODD `}
+              {`PRICE `}
               <Text as="strong" fontWeight="bold">
                 {prediction.price.toFixed(3)}
               </Text>

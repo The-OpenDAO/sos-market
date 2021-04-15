@@ -80,7 +80,7 @@ function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
             fontWeight="bold"
             color="white-50"
           >
-            ODD
+            PRICE
           </Text>
           <Text as="span" scale="tiny" fontWeight="bold" color="light">
             {price.toFixed(3)}

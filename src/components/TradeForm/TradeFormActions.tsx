@@ -124,7 +124,7 @@ function TradeFormActions() {
             <Toast.Actions>
               <a
                 target="_blank"
-                href={`https://etherscan.io/tx/${transactionSuccessHash}`}
+                href={`https://kovan.etherscan.io/tx/${transactionSuccessHash}`}
                 rel="noreferrer"
               >
                 <Button color="success">View on Etherscan</Button>
