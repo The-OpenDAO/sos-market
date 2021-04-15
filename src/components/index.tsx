@@ -22,6 +22,7 @@ import MarketTable from './MarketTable';
 import Menu from './Menu';
 import MiniAreaChart from './MiniAreaChart';
 import MiniTable from './MiniTable';
+import ModalNotification from './ModalNotification';
 import NavBar from './NavBar';
 import PredictionCard from './PredictionCard';
 import RightSidebar from './RightSidebar';
@@ -67,6 +68,7 @@ export {
   Menu,
   MiniAreaChart,
   MiniTable,
+  ModalNotification,
   NavBar,
   PredictionCard,
   ScrollToTop,
