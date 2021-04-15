@@ -34,6 +34,7 @@ import Table from './Table';
 import Tabs from './Tabs';
 import Text from './Text';
 import Toast from './Toast';
+import ToastNotification from './ToastNotification';
 import ToggleSwitch from './ToggleSwitch';
 import Tooltip from './Tooltip';
 import TradeForm from './TradeForm';
@@ -78,6 +79,7 @@ export {
   Tabs,
   Text,
   Toast,
+  ToastNotification,
   Tooltip,
   ButtonGroup,
   ToggleSwitch,
