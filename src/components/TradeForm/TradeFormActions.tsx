@@ -1,9 +1,14 @@
+import { useState } from 'react';
+
 import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
+import useToastNotification from 'hooks/useToastNotification';
 
-import { Button } from '../Button';
+import { Button, ButtonText } from '../Button';
+import Toast from '../Toast';
+import ToastNotification from '../ToastNotification';
 
 function TradeFormActions() {
   const dispatch = useAppDispatch();
@@ -13,23 +18,50 @@ function TradeFormActions() {
   const predictionId = useAppSelector(state => state.trade.selectedOutcomeId);
   const amount = useAppSelector(state => state.trade.amount);
 
+  const [transactionSuccess, setTransactionSuccess] = useState(false);
+  const [transactionSuccessHash, setTransactionSuccessHash] = useState(
+    undefined
+  );
+
+  const { show, close } = useToastNotification();
+
   function handleCancel() {
     dispatch(closeTradeForm());
   }
 
   async function handleBuy() {
+    setTransactionSuccess(false);
+    setTransactionSuccessHash(undefined);
+
     const beproService = new BeproService();
     // performing buy action on smart contract
-    await beproService.buy(marketId, predictionId, amount);
+    const response = await beproService.buy(marketId, predictionId, amount);
+    const { status, transactionHash } = response;
+
+    if (status && transactionHash) {
+      setTransactionSuccess(status);
+      setTransactionSuccessHash(transactionHash);
+      show(type);
+    }
 
     // triggering cache reload action on api
     await new PolkamarketsApiService().reloadMarket(marketId);
   }
 
   async function handleSell() {
+    setTransactionSuccess(false);
+    setTransactionSuccessHash(undefined);
+
     const beproService = new BeproService();
     // performing sell action on smart contract
-    await beproService.sell(marketId, predictionId, amount);
+    const response = await beproService.sell(marketId, predictionId, amount);
+    const { status, transactionHash } = response;
+
+    if (status && transactionHash) {
+      setTransactionSuccess(status);
+      setTransactionSuccessHash(transactionHash);
+      show(type);
+    }
 
     // triggering cache reload action on api
     await new PolkamarketsApiService().reloadMarket(marketId);
@@ -51,6 +83,29 @@ function TradeFormActions() {
         <Button size="lg" color="danger" onClick={handleSell}>
           Sell
         </Button>
+      ) : null}
+
+      {transactionSuccess && transactionSuccessHash ? (
+        <ToastNotification id={type} duration={10000}>
+          <Toast
+            variant="success"
+            title="Success"
+            description="Your transaction is completed!"
+          >
+            <Toast.Actions>
+              <a
+                target="_blank"
+                href={`https://etherscan.io/tx/${transactionSuccessHash}`}
+                rel="noreferrer"
+              >
+                <Button color="success">View on Etherscan</Button>
+              </a>
+              <ButtonText color="white" onClick={() => close(type)}>
+                Dismiss
+              </ButtonText>
+            </Toast.Actions>
+          </Toast>
+        </ToastNotification>
       ) : null}
     </div>
   );

@@ -70,3 +70,12 @@
   background-color: #090819;
   @include border($primary-900);
 }
+
+#toast-notification-portal {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+
+  @include flex-column(flex-start, flex-end);
+  gap: 2rem;
+}
