@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import dayjs from 'dayjs';
 import { getMarket } from 'redux/ducks/market';
 import { openTradeForm } from 'redux/ducks/ui';
 
@@ -45,7 +46,7 @@ const Market = () => {
       <MarketAnalytics
         liquidity={market.liquidity}
         volume={market.volume}
-        expiration={market.expiresAt}
+        expiration={dayjs(market.expiresAt).format('YYYY-MM-DD')}
       />
       <MarketHead
         section={market.category}

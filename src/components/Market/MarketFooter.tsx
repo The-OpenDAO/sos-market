@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+import { roundNumber } from 'helpers/math';
 import { Market } from 'models/market';
 
 import Text from '../Text';
@@ -44,7 +46,7 @@ function MarketFooter({ market, ticker }: MarketFooterProps) {
               fontWeight="semibold"
               color="lighter-gray"
             >
-              {expiresAt}
+              {dayjs(expiresAt).format('YYYY-MM-DD')}
             </Text>
           </Text>
         ) : null}
@@ -62,7 +64,7 @@ function MarketFooter({ market, ticker }: MarketFooterProps) {
               fontWeight="semibold"
               color="lighter-gray"
             >
-              {`${liquidity} ${ticker}`}
+              {`${roundNumber(liquidity, 3)} ${ticker}`}
             </Text>
           </Text>
         ) : null}
