@@ -14,7 +14,7 @@ function TradeFormInput() {
   const { name, ticker, icon } = useCurrency();
   const dispatch = useAppDispatch();
   const type = useAppSelector(state => state.trade.type);
-  const label = `${type} fractions`;
+  const label = `${type} shares`;
 
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId

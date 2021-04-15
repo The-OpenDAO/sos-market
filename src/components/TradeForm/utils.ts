@@ -20,17 +20,17 @@ function formatMiniTableItems(
     },
     {
       key: 'pricePerFraction',
-      title: 'Price per fraction',
+      title: 'Price per share',
       value: `${selectedPredictionObj?.price || 0} ETH`
     },
     {
       key: 'fractionsBought',
-      title: 'Fractions bought',
+      title: 'Est. Shares bought',
       value: fractionsBought
     },
     {
       key: 'roi',
-      title: 'Current ROI',
+      title: 'Maximum ROI',
       value: `${currentROI}%`
     },
     {

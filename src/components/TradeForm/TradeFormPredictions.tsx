@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import classNames from 'classnames';
+import { roundNumber } from 'helpers/math';
 import { changePredictionsVisibility, selectOutcome } from 'redux/ducks/trade';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -20,6 +21,7 @@ function TradeFormPredictions() {
     state => state.trade.selectedOutcomeId
   );
   const outcomes = useAppSelector(state => state.market.market.outcomes);
+  const portfolio = useAppSelector(state => state.bepro.portfolio);
 
   useEffect(() => {
     if (location.pathname === '/home') {
@@ -65,9 +67,13 @@ function TradeFormPredictions() {
           <MiniTable
             rows={[
               {
-                key: 'pricePerFraction',
-                title: 'Price Per Fraction',
-                value: prediction.price
+                key: 'yourShares',
+                title: 'Your Shares',
+                value:
+                  roundNumber(
+                    portfolio[selectedMarketId]?.outcomeShares[prediction.id],
+                    3
+                  ) || 0
               }
             ]}
           />
