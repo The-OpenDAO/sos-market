@@ -15,9 +15,10 @@ function ModalNotification({
   useEffect(() => {
     if (visible) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'visible';
     }
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
   }, [visible]);
 
   return createPortal(
