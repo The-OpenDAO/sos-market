@@ -1,7 +1,5 @@
 import Routes from 'routes';
 
-import { Layout } from 'components';
-
 import CurrencyProvider from 'contexts/currency';
 import ViewportProvider from 'contexts/viewport';
 
@@ -10,9 +8,7 @@ const App = () => {
     <div className="app">
       <ViewportProvider>
         <CurrencyProvider>
-          <Layout>
-            <Routes />
-          </Layout>
+          <Routes />
         </CurrencyProvider>
       </ViewportProvider>
     </div>
