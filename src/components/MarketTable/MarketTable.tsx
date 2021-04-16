@@ -1,47 +1,19 @@
+import { roundNumber } from 'helpers/math';
+
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
+
+import useCurrency from 'hooks/useCurrency';
 
 import { Button } from '../Button';
 import Text from '../Text';
 
-const headers = [
-  'Market',
-  'Price',
-  'Profit/Loss',
-  'Fractions',
-  'Max. Payout',
-  ''
-];
-
-type Row = {
-  id: string;
-  imageUrl: string;
-  description: string;
-  price: {
-    value: number | string;
-    change: {
-      type: string;
-      value: number | string;
-    };
-  };
-  profit: {
-    value: number | string;
-    change: {
-      type: string;
-      value: number | string;
-    };
-  };
-  fractions: number | string;
-  maxPayout: number | string;
-  result: {
-    type: string;
-  };
-};
-
 type MarketTableProps = {
-  rows: Row[];
+  rows: any[];
+  headers: any[];
 };
 
-const MarketTable = ({ rows }: MarketTableProps) => {
+const MarketTable = ({ rows, headers }: MarketTableProps) => {
+  const { ticker } = useCurrency();
   return (
     <table className="market-table">
       <tbody>
@@ -54,27 +26,33 @@ const MarketTable = ({ rows }: MarketTableProps) => {
         </tr>
         {rows?.map(
           ({
-            id,
-            imageUrl,
-            description,
+            market,
+            outcome,
             price,
             profit,
-            fractions,
+            value,
+            shares,
             maxPayout,
             result
           }) => (
-            <tr className="market-table__row" key={id}>
+            <tr
+              className="market-table__row"
+              key={`${market.id}-${outcome.id}`}
+            >
               <td id="market" className="market-table__row-item">
                 <img
                   className="market-table__row-item__image"
-                  src={imageUrl}
-                  alt={id}
+                  src={market.imageUrl}
+                  alt={market.id}
                 />
-                {description}
+                {market.title}
+              </td>
+              <td id="outcome" className="market-table__row-item">
+                {outcome.title}
               </td>
               <td id="price" className="market-table__row-item">
                 <div className="market-table__row-item__group">
-                  {price.value}
+                  {`${roundNumber(price.value, 3)} ${ticker}`}
                   <Text
                     className={`market-table__row-item__change--${price.change.type}`}
                     as="span"
@@ -108,11 +86,14 @@ const MarketTable = ({ rows }: MarketTableProps) => {
                   </Text>
                 </div>
               </td>
-              <td id="fractions" className="market-table__row-item">
-                {fractions}
+              <td id="value" className="market-table__row-item">
+                {`${roundNumber(value, 3)} ${ticker}`}
+              </td>
+              <td id="shares" className="market-table__row-item">
+                {roundNumber(shares, 3)}
               </td>
               <td id="maxPayout" className="market-table__row-item">
-                {maxPayout}
+                {`${roundNumber(maxPayout, 3)} ${ticker}`}
               </td>
               <td id="trade" className="market-table__row-item">
                 {result.type === 'pending' ? (

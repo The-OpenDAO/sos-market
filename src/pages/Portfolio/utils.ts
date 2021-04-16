@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { Market, Outcome } from 'models/market';
 
 function generateRandomNumberBetween(min: number, max: number) {
   return Math.random() * (max - min + 1) + min;
@@ -32,4 +33,64 @@ function generateChartRandomData(reverse = false) {
   return data;
 }
 
-export { generateRandomNumberBetween, generateChartRandomData };
+function formatMarketPositions(portfolio: Object, markets: Market[]) {
+  const headers = [
+    'Market',
+    'Outcome',
+    'Price (24h)',
+    'Profit/Loss',
+    'Value',
+    'Shares',
+    'Max. Payout',
+    ''
+  ];
+
+  const rows: any[] = [];
+
+  // looping through outcomes array and showing positions where user holds shares
+  markets.forEach((market: Market) => {
+    market.outcomes.forEach((outcome: Outcome) => {
+      // eslint-disable-next-line no-continue
+      if (portfolio[market.id]?.outcomeShares[outcome.id]) {
+        const price = {
+          value: outcome.price,
+          change: {
+            type: 'up',
+            value: 2.8
+          }
+        };
+        const profit = {
+          value: 'TO DO',
+          change: {
+            type: 'down',
+            value: 2.8
+          }
+        };
+        const value =
+          portfolio[market.id]?.outcomeShares[outcome.id] * outcome.price;
+        const shares = portfolio[market.id]?.outcomeShares[outcome.id];
+        const maxPayout = portfolio[market.id]?.outcomeShares[outcome.id];
+        const result = { type: 'pending' };
+
+        rows.push({
+          market,
+          outcome,
+          price,
+          value,
+          profit,
+          shares,
+          maxPayout,
+          result
+        });
+      }
+    });
+  });
+
+  return { headers, rows };
+}
+
+export {
+  formatMarketPositions,
+  generateRandomNumberBetween,
+  generateChartRandomData
+};

@@ -1,25 +1,32 @@
 import { useEffect } from 'react';
 
+import { getMarkets } from 'redux/ducks/markets';
 import { closeRightSidebar } from 'redux/ducks/ui';
 
-import { CategoryAnalytics, MarketTable, Text } from 'components';
+import { CategoryAnalytics, MarketTable, Tabs, Text } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-import { portfolioAnalytics, markets } from './mock';
+import { portfolioAnalytics } from './mock';
 import PortfolioChart from './PortfolioChart';
+import { formatMarketPositions } from './utils';
 
 const PortfolioPage = () => {
   const dispatch = useAppDispatch();
   const rightSidebarIsVisible = useAppSelector(
     state => state.ui.rightSidebar.visible
   );
+  const { markets, isLoading, error } = useAppSelector(state => state.markets);
+  const portfolio = useAppSelector(state => state.bepro.portfolio);
 
   useEffect(() => {
     if (rightSidebarIsVisible) {
       dispatch(closeRightSidebar());
     }
+    dispatch(getMarkets());
   }, [rightSidebarIsVisible, dispatch]);
+
+  const marketPositions = formatMarketPositions(portfolio, markets);
 
   return (
     <div className="portfolio-page">
@@ -50,7 +57,21 @@ const PortfolioPage = () => {
       </ul>
 
       <PortfolioChart />
-      <MarketTable rows={markets} />
+
+      <Tabs defaultActiveId="positions">
+        <Tabs.TabPane tab="Market Positions" id="positions">
+          <MarketTable
+            rows={marketPositions.rows}
+            headers={marketPositions.headers}
+          />
+        </Tabs.TabPane>
+        <Tabs.TabPane tab="Liquidity Positions" id="news">
+          <MarketTable
+            rows={marketPositions.rows}
+            headers={marketPositions.headers}
+          />
+        </Tabs.TabPane>
+      </Tabs>
     </div>
   );
 };
