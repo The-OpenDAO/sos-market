@@ -39,6 +39,7 @@
 @import 'components/market-table';
 @import 'components/menu';
 @import 'components/mini-table';
+@import 'components/modal-notification';
 @import 'components/prediction-card';
 @import 'components/searchbar';
 @import 'components/select';
@@ -47,6 +48,7 @@
 @import 'components/tabs';
 @import 'components/text';
 @import 'components/toast';
+@import 'components/toast-notification';
 @import 'components/tooltip';
 @import 'components/toggle-switch';
 @import 'components/trade-form';
@@ -56,5 +58,6 @@
 @import 'pages/home';
 @import 'pages/market';
 @import 'pages/portfolio';
+@import 'pages/private-beta';
 
 // 7. Themes
