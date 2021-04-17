@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { selectOutcome } from 'redux/ducks/trade';
 import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
@@ -17,15 +18,22 @@ function TradeFormActions() {
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
   const predictionId = useAppSelector(state => state.trade.selectedOutcomeId);
   const amount = useAppSelector(state => state.trade.amount);
+  const maxAmount = useAppSelector(state => state.trade.maxAmount);
+  const acceptRules = useAppSelector(state => state.trade.acceptRules);
+  const acceptOddChanges = useAppSelector(
+    state => state.trade.acceptOddChanges
+  );
 
   const [transactionSuccess, setTransactionSuccess] = useState(false);
   const [transactionSuccessHash, setTransactionSuccessHash] = useState(
     undefined
   );
 
+  const [isLoading, setIsLoading] = useState(false);
   const { show, close } = useToastNotification();
 
   function handleCancel() {
+    dispatch(selectOutcome('', ''));
     dispatch(closeTradeForm());
   }
 
@@ -34,8 +42,12 @@ function TradeFormActions() {
     setTransactionSuccessHash(undefined);
 
     const beproService = new BeproService();
+
     // performing buy action on smart contract
+    setIsLoading(true);
     const response = await beproService.buy(marketId, predictionId, amount);
+    setIsLoading(false);
+
     const { status, transactionHash } = response;
 
     if (status && transactionHash) {
@@ -53,8 +65,12 @@ function TradeFormActions() {
     setTransactionSuccessHash(undefined);
 
     const beproService = new BeproService();
+
     // performing sell action on smart contract
+    setIsLoading(true);
     const response = await beproService.sell(marketId, predictionId, amount);
+    setIsLoading(false);
+
     const { status, transactionHash } = response;
 
     if (status && transactionHash) {
@@ -67,6 +83,9 @@ function TradeFormActions() {
     await new PolkamarketsApiService().reloadMarket(marketId);
   }
 
+  const isValidAmount = amount > 0 && amount <= maxAmount;
+  const hasAcceptedTerms = acceptRules && acceptOddChanges;
+
   return (
     <div className="pm-c-trade-form-actions">
       {showCharts ? (
@@ -75,12 +94,22 @@ function TradeFormActions() {
         </Button>
       ) : null}
       {type === 'buy' ? (
-        <Button size="lg" color="success" onClick={handleBuy}>
+        <Button
+          size="lg"
+          color="success"
+          onClick={handleBuy}
+          disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+        >
           Buy
         </Button>
       ) : null}
       {type === 'sell' ? (
-        <Button size="lg" color="danger" onClick={handleSell}>
+        <Button
+          size="lg"
+          color="danger"
+          onClick={handleSell}
+          disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+        >
           Sell
         </Button>
       ) : null}

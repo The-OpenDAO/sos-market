@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
-import { setTradeAmount } from 'redux/ducks/trade';
+import { setTradeAmount, setMaxAmount } from 'redux/ducks/trade';
 
 import { WalletIcon } from 'assets/icons';
 
@@ -29,7 +29,7 @@ function TradeFormInput() {
   const portfolio = useAppSelector(state => state.bepro.portfolio);
 
   // TODO: improve this
-  function max() {
+  const max = useCallback(() => {
     let maxAmount = 0;
 
     // max for buy actions - eth balance
@@ -44,7 +44,11 @@ function TradeFormInput() {
 
     // rounding (down) to 5 decimals
     return Math.floor(maxAmount * 1e5) / 1e5;
-  }
+  }, [type, balance, portfolio, selectedMarketId, selectedOutcomeId]);
+
+  useEffect(() => {
+    dispatch(setMaxAmount(max()));
+  }, [dispatch, max]);
 
   const [amount, setAmount] = useState(max());
 
