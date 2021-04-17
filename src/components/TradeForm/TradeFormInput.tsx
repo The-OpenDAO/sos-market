@@ -46,11 +46,13 @@ function TradeFormInput() {
     return Math.floor(maxAmount * 1e5) / 1e5;
   }, [type, balance, portfolio, selectedMarketId, selectedOutcomeId]);
 
+  const [amount, setAmount] = useState(max());
+
   useEffect(() => {
     dispatch(setMaxAmount(max()));
-  }, [dispatch, max]);
-
-  const [amount, setAmount] = useState(max());
+    dispatch(setTradeAmount(max()));
+    setAmount(max());
+  }, [dispatch, max, type]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
     let { value }: any = event.currentTarget;

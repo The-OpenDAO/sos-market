@@ -1,4 +1,6 @@
-import { changeAmount } from 'redux/ducks/liquidity';
+import { useCallback, useEffect } from 'react';
+
+import { changeAmount, changeMaxAmount } from 'redux/ducks/liquidity';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
@@ -17,7 +19,7 @@ function LiquidityFormInput() {
   const portfolio = useAppSelector(state => state.bepro.portfolio);
   const currency = useCurrency();
 
-  function max() {
+  const max = useCallback(() => {
     let maxAmount = 0;
 
     // max for buy actions - eth balance
@@ -31,7 +33,11 @@ function LiquidityFormInput() {
 
     // rounding (down) to 5 decimals
     return Math.floor(maxAmount * 1e5) / 1e5;
-  }
+  }, [transactionType, balance, portfolio, marketId]);
+
+  useEffect(() => {
+    dispatch(changeMaxAmount(max()));
+  }, [dispatch, max, transactionType]);
 
   // TODO: improve this
   function currentCurrency() {

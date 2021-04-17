@@ -5,12 +5,14 @@ type TransactionType = 'add' | 'remove' | string;
 export interface LiquidityInitialState {
   transactionType: TransactionType;
   amount: number;
+  maxAmount: number;
   acceptedTerms: boolean;
 }
 
 const initialState: LiquidityInitialState = {
   transactionType: 'add',
   amount: 0,
+  maxAmount: 0,
   acceptedTerms: false
 };
 
@@ -25,6 +27,10 @@ const liquiditySlice = createSlice({
     changeAmount: (state, action: PayloadAction<number>) => ({
       ...state,
       amount: action.payload
+    }),
+    changeMaxAmount: (state, action: PayloadAction<number>) => ({
+      ...state,
+      maxAmount: action.payload
     }),
     toggleAcceptedTerms: (state, action: PayloadAction<boolean>) => ({
       ...state,
@@ -41,8 +47,15 @@ export default liquiditySlice.reducer;
 const {
   changeTransactionType,
   changeAmount,
+  changeMaxAmount,
   toggleAcceptedTerms,
   reset
 } = liquiditySlice.actions;
 
-export { changeTransactionType, changeAmount, toggleAcceptedTerms, reset };
+export {
+  changeTransactionType,
+  changeAmount,
+  changeMaxAmount,
+  toggleAcceptedTerms,
+  reset
+};

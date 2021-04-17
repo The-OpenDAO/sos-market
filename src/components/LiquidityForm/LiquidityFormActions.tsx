@@ -17,12 +17,16 @@ function LiquidityFormActions() {
   );
   const marketId = useAppSelector(state => state.market.market.id);
   const amount = useAppSelector(state => state.liquidity.amount);
+  const maxAmount = useAppSelector(state => state.liquidity.maxAmount);
 
   const [transactionSuccess, setTransactionSuccess] = useState(false);
   const [transactionSuccessHash, setTransactionSuccessHash] = useState(
     undefined
   );
 
+  const acceptedTerms = useAppSelector(state => state.liquidity.acceptedTerms);
+
+  const [isLoading, setIsLoading] = useState(false);
   const { show, close } = useToastNotification();
 
   function handleCancel() {
@@ -36,7 +40,10 @@ function LiquidityFormActions() {
     const beproService = new BeproService();
 
     // performing buy action on smart contract
+    setIsLoading(true);
     const response = await beproService.addLiquidity(marketId, amount);
+    setIsLoading(false);
+
     const { status, transactionHash } = response;
 
     if (status && transactionHash) {
@@ -56,7 +63,10 @@ function LiquidityFormActions() {
     const beproService = new BeproService();
 
     // performing buy action on smart contract
+    setIsLoading(true);
     const response = await beproService.removeLiquidity(marketId, amount);
+    setIsLoading(false);
+
     const { status, transactionHash } = response;
 
     if (status && transactionHash) {
@@ -69,6 +79,8 @@ function LiquidityFormActions() {
     await new PolkamarketsApiService().reloadMarket(marketId);
   }
 
+  const isValidAmount = amount > 0 && amount <= maxAmount;
+
   return (
     <div className="pm-c-liquidity-form__actions">
       <Button variant="dark" color="default" size="lg" onClick={handleCancel}>
@@ -76,13 +88,23 @@ function LiquidityFormActions() {
       </Button>
 
       {transactionType === 'add' ? (
-        <Button size="lg" color="primary" onClick={handleAddliquidity}>
+        <Button
+          size="lg"
+          color="primary"
+          onClick={handleAddliquidity}
+          disabled={!isValidAmount || !acceptedTerms || isLoading}
+        >
           Add Liquidity
         </Button>
       ) : null}
 
       {transactionType === 'remove' ? (
-        <Button size="lg" color="primary" onClick={handleRemoveLiquidity}>
+        <Button
+          size="lg"
+          color="primary"
+          onClick={handleRemoveLiquidity}
+          disabled={!isValidAmount || !acceptedTerms || isLoading}
+        >
           Remove Liquidity
         </Button>
       ) : null}

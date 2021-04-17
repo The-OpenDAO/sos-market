@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { WalletIcon } from 'assets/icons';
 
@@ -12,12 +12,17 @@ type AmountInputProps = {
   currency: any;
 };
 
+function round(value) {
+  return Math.floor(value * 1e5) / 1e5;
+}
+
 function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
   const [amount, setAmount] = useState(max);
 
-  function round(value) {
-    return Math.floor(value * 1e5) / 1e5;
-  }
+  useEffect(() => {
+    onChange(max);
+    setAmount(max);
+  }, [max, onChange]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
