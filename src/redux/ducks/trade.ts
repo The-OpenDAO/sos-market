@@ -17,6 +17,7 @@ const initialState = {
   selectedMarketId: '',
   selectedOutcomeId: '',
   amount: 0,
+  maxAmount: 0,
   fractionsBought: 0,
   currentROI: 0,
   totalStake: 0,
@@ -45,6 +46,10 @@ const tradeSlice = createSlice({
     setTradeAmount: (state, action) => ({
       ...state,
       amount: action.payload
+    }),
+    setMaxAmount: (state, action) => ({
+      ...state,
+      maxAmount: action.payload
     }),
     outcomeSelected: (state, action) => ({
       ...state,
@@ -82,6 +87,7 @@ const {
   outcomeSelected,
   setPredictionDetails,
   setTradeAmount,
+  setMaxAmount,
   toggleAcceptRules,
   toggleAcceptOddChanges
 } = tradeSlice.actions;
@@ -93,6 +99,7 @@ export {
   outcomeSelected,
   setPredictionDetails,
   setTradeAmount,
+  setMaxAmount,
   toggleAcceptRules,
   toggleAcceptOddChanges
 };
