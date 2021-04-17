@@ -12,7 +12,7 @@ type MarketTableProps = {
   headers: any[];
 };
 
-const MarketTable = ({ rows, headers }: MarketTableProps) => {
+const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
   const { ticker } = useCurrency();
   return (
     <table className="market-table">
@@ -122,6 +122,6 @@ const MarketTable = ({ rows, headers }: MarketTableProps) => {
   );
 };
 
-MarketTable.displayName = 'Market table';
+PortfolioMarketTable.displayName = 'Portfolio Market table';
 
-export default MarketTable;
+export default PortfolioMarketTable;

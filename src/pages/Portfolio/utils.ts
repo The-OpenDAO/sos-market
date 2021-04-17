@@ -50,7 +50,6 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
     market.outcomes.forEach((outcome: Outcome) => {
-      // eslint-disable-next-line no-continue
       if (portfolio[market.id]?.outcomeShares[outcome.id]) {
         const price = {
           value: outcome.price,
@@ -89,8 +88,50 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
   return { headers, rows };
 }
 
+function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
+  const headers = [
+    'Market',
+    'Shares',
+    'Value',
+    'Pool Share',
+    'Fees Earned',
+    ''
+  ];
+
+  const rows: any[] = [];
+
+  // looping through outcomes array and showing positions where user holds shares
+  markets.forEach((market: Market) => {
+    if (portfolio[market.id]?.liquidityShares) {
+      const value = {
+        value: 'TO DO',
+        change: {
+          type: 'down',
+          value: 2.8
+        }
+      };
+      const shares = portfolio[market.id]?.liquidityShares;
+      const poolShare = shares / market.liquidity;
+      const feesEarned = 'In Progress';
+      const result = { type: 'pending' };
+
+      rows.push({
+        market,
+        value,
+        shares,
+        poolShare,
+        feesEarned,
+        result
+      });
+    }
+  });
+
+  return { headers, rows };
+}
+
 export {
   formatMarketPositions,
+  formatLiquidityPositions,
   generateRandomNumberBetween,
   generateChartRandomData
 };

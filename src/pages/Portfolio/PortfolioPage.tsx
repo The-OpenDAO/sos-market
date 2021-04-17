@@ -3,13 +3,19 @@ import { useEffect } from 'react';
 import { getMarkets } from 'redux/ducks/markets';
 import { closeRightSidebar } from 'redux/ducks/ui';
 
-import { CategoryAnalytics, MarketTable, Tabs, Text } from 'components';
+import {
+  CategoryAnalytics,
+  PortfolioLiquidityTable,
+  PortfolioMarketTable,
+  Tabs,
+  Text
+} from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 import { portfolioAnalytics } from './mock';
 import PortfolioChart from './PortfolioChart';
-import { formatMarketPositions } from './utils';
+import { formatLiquidityPositions, formatMarketPositions } from './utils';
 
 const PortfolioPage = () => {
   const dispatch = useAppDispatch();
@@ -27,6 +33,7 @@ const PortfolioPage = () => {
   }, [rightSidebarIsVisible, dispatch]);
 
   const marketPositions = formatMarketPositions(portfolio, markets);
+  const liquidityPositions = formatLiquidityPositions(portfolio, markets);
 
   return (
     <div className="portfolio-page">
@@ -60,15 +67,15 @@ const PortfolioPage = () => {
 
       <Tabs defaultActiveId="positions">
         <Tabs.TabPane tab="Market Positions" id="positions">
-          <MarketTable
+          <PortfolioMarketTable
             rows={marketPositions.rows}
             headers={marketPositions.headers}
           />
         </Tabs.TabPane>
         <Tabs.TabPane tab="Liquidity Positions" id="news">
-          <MarketTable
-            rows={marketPositions.rows}
-            headers={marketPositions.headers}
+          <PortfolioLiquidityTable
+            rows={liquidityPositions.rows}
+            headers={liquidityPositions.headers}
           />
         </Tabs.TabPane>
       </Tabs>
