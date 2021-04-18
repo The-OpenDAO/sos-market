@@ -1,12 +1,30 @@
+import { useEffect } from 'react';
+
+import { fromPriceChartToLineChartSeries } from 'helpers/chart';
+import { getPortfolio } from 'redux/ducks/portfolio';
+
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
 import { AreaChart, Label, Text } from 'components';
 
+import { useAppDispatch, useAppSelector } from 'hooks';
+
 import { balance } from './mock';
-import { generateChartRandomData } from './utils';
 
 const PortfolioChart = () => {
-  const randomPortfolioChartData = generateChartRandomData();
+  const dispatch = useAppDispatch();
+  const ethAddress = useAppSelector(state => state.bepro.ethAddress);
+  const holdingsChart = useAppSelector(
+    state => state.portfolio.portfolio.holdingsChart
+  );
+
+  useEffect(() => {
+    if (ethAddress) {
+      dispatch(getPortfolio(ethAddress));
+    }
+  }, [ethAddress, dispatch]);
+
+  const holdingsChartData = fromPriceChartToLineChartSeries(holdingsChart);
 
   return (
     <div className="portfolio-chart">
@@ -32,7 +50,7 @@ const PortfolioChart = () => {
         </div>
       </div>
       <div className="portfolio-chart__view">
-        <AreaChart serie={randomPortfolioChartData} ticker="ETH" height={210} />
+        <AreaChart serie={holdingsChartData} ticker="ETH" height={210} />
       </div>
     </div>
   );
