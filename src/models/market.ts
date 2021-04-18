@@ -6,6 +6,7 @@ export interface PriceChartPoint {
 
 export interface PriceChart {
   timeframe: string;
+  changePercent: number;
   prices: PriceChartPoint[];
 }
 
