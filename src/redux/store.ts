@@ -8,6 +8,7 @@ import bepro from './ducks/bepro';
 import liquidity from './ducks/liquidity';
 import market from './ducks/market';
 import markets from './ducks/markets';
+import portfolio from './ducks/portfolio';
 import trade from './ducks/trade';
 import ui from './ducks/ui';
 
@@ -17,6 +18,7 @@ const store = configureStore({
     market,
     liquidity,
     markets,
+    portfolio,
     bepro,
     ui
   },
