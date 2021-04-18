@@ -1,5 +1,7 @@
 import dayjs from 'dayjs';
+import { roundNumber } from 'helpers/math';
 import { Market, Outcome } from 'models/market';
+import { Portfolio } from 'models/portfolio';
 
 function generateRandomNumberBetween(min: number, max: number) {
   return Math.random() * (max - min + 1) + min;
@@ -129,9 +131,55 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
   return { headers, rows };
 }
 
+function formatPortfolioAnalytics(portfolio: Portfolio, ticker: string) {
+  return [
+    {
+      title: 'Total earnings',
+      value: `${roundNumber(portfolio.closedMarketsProfit, 3)} ${ticker}`,
+      change: {
+        type: 'up',
+        amount: 2.58
+      },
+      backgroundColor: 'yellow',
+      chartData: generateChartRandomData()
+    },
+    {
+      title: 'Open positions',
+      value: portfolio.openPositions,
+      change: {
+        type: 'down',
+        amount: 2.58
+      },
+      backgroundColor: 'blue',
+      chartData: generateChartRandomData()
+    },
+    {
+      title: 'Liquidity provided',
+      value: `${roundNumber(portfolio.liquidityProvided, 3)} ${ticker}`,
+      change: {
+        type: 'up',
+        amount: 2.58
+      },
+      backgroundColor: 'pink',
+      chartData: generateChartRandomData()
+    },
+    {
+      title: 'Liquidity earnings',
+      value: 'In Progress',
+      change: {
+        type: 'up',
+        amount: 2.58
+      },
+      backgroundColor: 'orange',
+      chartData: generateChartRandomData()
+    }
+  ];
+}
+
 export {
   formatMarketPositions,
   formatLiquidityPositions,
+  formatPortfolioAnalytics,
   generateRandomNumberBetween,
   generateChartRandomData
 };

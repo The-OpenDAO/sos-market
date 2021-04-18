@@ -8,4 +8,8 @@ export interface Portfolio {
   address: string;
   holdingsValue: number;
   holdingsChart: HoldingsChartPoint[];
+  closedMarketsProfit: number;
+  openPositions: number;
+  liquidityProvided: number;
+  liquidityFeesEarned: number;
 }

@@ -1,28 +1,21 @@
-import { useEffect } from 'react';
-
 import { fromPriceChartToLineChartSeries } from 'helpers/chart';
-import { getPortfolio } from 'redux/ducks/portfolio';
+import { roundNumber } from 'helpers/math';
 
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
 import { AreaChart, Label, Text } from 'components';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppSelector } from 'hooks';
 
 import { balance } from './mock';
 
 const PortfolioChart = () => {
-  const dispatch = useAppDispatch();
-  const ethAddress = useAppSelector(state => state.bepro.ethAddress);
   const holdingsChart = useAppSelector(
     state => state.portfolio.portfolio.holdingsChart
   );
-
-  useEffect(() => {
-    if (ethAddress) {
-      dispatch(getPortfolio(ethAddress));
-    }
-  }, [ethAddress, dispatch]);
+  const holdingsValue = useAppSelector(
+    state => state.portfolio.portfolio.holdingsValue
+  );
 
   const holdingsChartData = fromPriceChartToLineChartSeries(holdingsChart);
 
@@ -31,7 +24,7 @@ const PortfolioChart = () => {
       <div className="portfolio-chart__header">
         <div className="portfolio-chart__header-balance">
           <Text as="h4" scale="heading" fontWeight="semibold" color="light">
-            {`${balance.total} ETH`}
+            {`${roundNumber(holdingsValue, 3)} ETH`}
           </Text>
           <Text as="span" scale="tiny" fontWeight="medium" color="dark-gray">
             Total Balance

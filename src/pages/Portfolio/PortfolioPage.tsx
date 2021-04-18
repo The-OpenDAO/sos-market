@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { getMarkets } from 'redux/ducks/markets';
+import { getPortfolio } from 'redux/ducks/portfolio';
 import { closeRightSidebar } from 'redux/ducks/ui';
 
 import {
@@ -12,18 +13,27 @@ import {
 } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
-import { portfolioAnalytics } from './mock';
 import PortfolioChart from './PortfolioChart';
-import { formatLiquidityPositions, formatMarketPositions } from './utils';
+import {
+  formatLiquidityPositions,
+  formatMarketPositions,
+  formatPortfolioAnalytics
+} from './utils';
 
 const PortfolioPage = () => {
   const dispatch = useAppDispatch();
+  const { ticker } = useCurrency();
   const rightSidebarIsVisible = useAppSelector(
     state => state.ui.rightSidebar.visible
   );
   const { markets, isLoading, error } = useAppSelector(state => state.markets);
+  const ethAddress = useAppSelector(state => state.bepro.ethAddress);
+  // portfolio data fetched from wallet
   const portfolio = useAppSelector(state => state.bepro.portfolio);
+  // portfolio stats fetched from api
+  const apiPortfolio = useAppSelector(state => state.portfolio.portfolio);
 
   useEffect(() => {
     if (rightSidebarIsVisible) {
@@ -32,6 +42,13 @@ const PortfolioPage = () => {
     dispatch(getMarkets());
   }, [rightSidebarIsVisible, dispatch]);
 
+  useEffect(() => {
+    if (ethAddress) {
+      dispatch(getPortfolio(ethAddress));
+    }
+  }, [ethAddress, dispatch]);
+
+  const analytics = formatPortfolioAnalytics(apiPortfolio, ticker);
   const marketPositions = formatMarketPositions(portfolio, markets);
   const liquidityPositions = formatLiquidityPositions(portfolio, markets);
 
@@ -48,7 +65,7 @@ const PortfolioPage = () => {
         </Text>
       </div>
       <ul className="portfolio-page__analytics">
-        {portfolioAnalytics?.map(
+        {analytics?.map(
           ({ title, value, change, chartData, backgroundColor }) => (
             <li key={title}>
               <CategoryAnalytics
