@@ -26,6 +26,7 @@ function LiquidityFormActions() {
   );
 
   const acceptedTerms = useAppSelector(state => state.liquidity.acceptedTerms);
+  const ethAddress = useAppSelector(state => state.bepro.ethAddress);
 
   const [isLoading, setIsLoading] = useState(false);
   const { show, close } = useToastNotification();
@@ -55,6 +56,7 @@ function LiquidityFormActions() {
 
     // triggering cache reload action on api
     new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
     await fetchWallet(dispatch);
@@ -81,6 +83,7 @@ function LiquidityFormActions() {
 
     // triggering cache reload action on api
     new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
     await fetchWallet(dispatch);
