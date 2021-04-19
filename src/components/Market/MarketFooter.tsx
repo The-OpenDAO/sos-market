@@ -28,7 +28,7 @@ function MarketFooter({ market, ticker }: MarketFooterProps) {
               fontWeight="semibold"
               color="lighter-gray"
             >
-              {`${volume} ${ticker}`}
+              {`${roundNumber(volume, 3)} ${ticker}`}
             </Text>
           </Text>
         ) : null}
