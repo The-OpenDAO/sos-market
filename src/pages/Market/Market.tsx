@@ -1,19 +1,20 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import dayjs from 'dayjs';
 import { getMarket } from 'redux/ducks/market';
 import { openTradeForm } from 'redux/ducks/ui';
 
 import { Tabs, Table, Text } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
 import MarketHead from './MarketHead';
 import MarketStats from './MarketStats';
-import { tableItems } from './mock';
-import { generateMarketChartRandomData } from './utils';
+import { formatMarketActions, generateMarketChartRandomData } from './utils';
 
 type Params = {
   marketId: string;
@@ -21,8 +22,10 @@ type Params = {
 
 const Market = () => {
   const dispatch = useAppDispatch();
+  const { ticker } = useCurrency();
   const { marketId } = useParams<Params>();
   const { market, isLoading } = useAppSelector(state => state.market);
+  const actions = useAppSelector(state => state.bepro.actions);
 
   useEffect(() => {
     dispatch(getMarket(marketId));
@@ -32,13 +35,18 @@ const Market = () => {
   if (!market || isLoading) return null;
 
   const marketLastWeek = generateMarketChartRandomData(10);
+  const tableItems = formatMarketActions(
+    (actions as any).filter(action => action.marketId === market?.id),
+    market,
+    ticker
+  );
 
   return (
     <div className="market-page">
       <MarketAnalytics
         liquidity={market.liquidity}
         volume={market.volume}
-        expiration={market.expiresAt}
+        expiration={dayjs(market.expiresAt).format('YYYY-MM-DD')}
       />
       <MarketHead
         section={market.category}

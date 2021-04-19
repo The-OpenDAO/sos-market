@@ -18,12 +18,13 @@ import LiquidityForm from './LiquidityForm';
 import Market from './Market';
 import MarketList from './MarketList';
 import MarketSelect from './MarketSelect';
-import MarketTable from './MarketTable';
 import Menu from './Menu';
 import MiniAreaChart from './MiniAreaChart';
 import MiniTable from './MiniTable';
 import ModalNotification from './ModalNotification';
 import NavBar from './NavBar';
+import PortfolioLiquidityTable from './PortfolioLiquidityTable';
+import PortfolioMarketTable from './PortfolioMarketTable';
 import PredictionCard from './PredictionCard';
 import RightSidebar from './RightSidebar';
 import ScrollToTop from './ScrollToTop';
@@ -64,12 +65,13 @@ export {
   Market,
   MarketList,
   MarketSelect,
-  MarketTable,
   Menu,
   MiniAreaChart,
   MiniTable,
   ModalNotification,
   NavBar,
+  PortfolioLiquidityTable,
+  PortfolioMarketTable,
   PredictionCard,
   ScrollToTop,
   SearchBar,

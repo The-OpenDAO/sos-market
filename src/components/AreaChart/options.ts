@@ -78,12 +78,17 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       }
     },
     yaxis: {
+      tickAmount: 5,
       labels: {
         show: showGrid,
         formatter(value) {
-          return `${value} ${ticker}`;
+          return `${value.toFixed(1)} ${ticker}`;
         },
         offsetX: -15
+      },
+      max: max => {
+        // giving a small offset on top
+        return max * 1.1;
       }
     },
     grid: {

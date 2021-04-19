@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { fetchWallet } from 'redux/ducks/bepro';
 import { closeLiquidityForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
@@ -53,7 +54,10 @@ function LiquidityFormActions() {
     }
 
     // triggering cache reload action on api
-    await new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadMarket(marketId);
+
+    // updating wallet
+    await fetchWallet(dispatch);
   }
 
   async function handleRemoveLiquidity() {
@@ -76,7 +80,10 @@ function LiquidityFormActions() {
     }
 
     // triggering cache reload action on api
-    await new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadMarket(marketId);
+
+    // updating wallet
+    await fetchWallet(dispatch);
   }
 
   const isValidAmount = amount > 0 && amount <= maxAmount;
@@ -119,7 +126,7 @@ function LiquidityFormActions() {
             <Toast.Actions>
               <a
                 target="_blank"
-                href={`https://etherscan.io/tx/${transactionSuccessHash}`}
+                href={`https://kovan.etherscan.io/tx/${transactionSuccessHash}`}
                 rel="noreferrer"
               >
                 <Button color="success">View on Etherscan</Button>

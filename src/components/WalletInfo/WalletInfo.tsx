@@ -22,7 +22,7 @@ function WalletInfo({ balance, currencyIcon, address }: WalletInfoProps) {
       </Button>
       <a
         target="_blank"
-        href={`https://etherscan.io/address/${address}`}
+        href={`https://kovan.etherscan.io/address/${address}`}
         rel="noreferrer"
       >
         <Button color="default" aria-label="Address">

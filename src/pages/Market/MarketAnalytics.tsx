@@ -1,3 +1,5 @@
+import { roundNumber } from 'helpers/math';
+
 import { Card, Grid, Text } from 'components';
 
 import useCurrency from 'hooks/useCurrency';
@@ -42,7 +44,7 @@ function MarketAnalytics({
                   fontWeight="semibold"
                   color="white"
                 >
-                  {`${liquidity} ${ticker}`}
+                  {`${roundNumber(liquidity, 3)} ${ticker}`}
                 </Text>
               </Card>
             </Grid.Col>
@@ -70,7 +72,7 @@ function MarketAnalytics({
                   fontWeight="semibold"
                   color="white"
                 >
-                  {`${volume} ${ticker}`}
+                  {`${roundNumber(volume, 3)} ${ticker}`}
                 </Text>
               </Card>
             </Grid.Col>

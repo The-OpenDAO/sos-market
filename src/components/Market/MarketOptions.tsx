@@ -12,13 +12,11 @@ import { closeTradeForm, openTradeForm } from 'redux/ducks/ui';
 
 import { ArrowDownIcon, ArrowUpIcon } from 'assets/icons';
 
+import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-import { generateChartRandomData } from '../Category/utils';
 import MiniAreaChart from '../MiniAreaChart';
 import Text from '../Text';
-
-const chartData = generateChartRandomData();
 
 type MarketOptionsItemProps = {
   market: Market;
@@ -39,6 +37,16 @@ function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
 
   const isCurrentSelectedPrediction =
     marketId === selectedMarketId && id === selectedPredictionId;
+
+  // using 7d timeframe
+  const marketPriceChart = option.priceCharts.find(
+    priceChart => priceChart.timeframe === '7d'
+  );
+  const marketPriceUp =
+    !marketPriceChart?.changePercent || marketPriceChart?.changePercent > 0;
+  const chartData = fromPriceChartToLineChartSeries(
+    marketPriceChart?.prices || []
+  );
 
   useEffect(() => {
     if (selectedMarketId === marketId && selectedPredictionId === id) {
@@ -80,17 +88,17 @@ function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
             fontWeight="bold"
             color="white-50"
           >
-            ODD
+            PRICE
           </Text>
           <Text as="span" scale="tiny" fontWeight="bold" color="light">
             {price.toFixed(3)}
           </Text>
-          {Math.random() > 0.5 ? <ArrowUpIcon /> : <ArrowDownIcon />}
+          {marketPriceUp ? <ArrowUpIcon /> : <ArrowDownIcon />}
         </div>
       </div>
       <MiniAreaChart
         serie={chartData}
-        color={Math.random() > 0.5 ? 'success' : 'danger'}
+        color={marketPriceUp ? 'success' : 'danger'}
         width={48}
       />
     </button>

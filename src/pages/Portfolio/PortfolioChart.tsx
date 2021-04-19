@@ -1,19 +1,30 @@
+import { fromPriceChartToLineChartSeries } from 'helpers/chart';
+import { roundNumber } from 'helpers/math';
+
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
 import { AreaChart, Label, Text } from 'components';
 
+import { useAppSelector } from 'hooks';
+
 import { balance } from './mock';
-import { generateChartRandomData } from './utils';
 
 const PortfolioChart = () => {
-  const randomPortfolioChartData = generateChartRandomData();
+  const holdingsChart = useAppSelector(
+    state => state.portfolio.portfolio.holdingsChart
+  );
+  const holdingsValue = useAppSelector(
+    state => state.portfolio.portfolio.holdingsValue
+  );
+
+  const holdingsChartData = fromPriceChartToLineChartSeries(holdingsChart);
 
   return (
     <div className="portfolio-chart">
       <div className="portfolio-chart__header">
         <div className="portfolio-chart__header-balance">
           <Text as="h4" scale="heading" fontWeight="semibold" color="light">
-            {`${balance.total} ETH`}
+            {`${roundNumber(holdingsValue, 3)} ETH`}
           </Text>
           <Text as="span" scale="tiny" fontWeight="medium" color="dark-gray">
             Total Balance
@@ -32,7 +43,7 @@ const PortfolioChart = () => {
         </div>
       </div>
       <div className="portfolio-chart__view">
-        <AreaChart serie={randomPortfolioChartData} ticker="ETH" height={210} />
+        <AreaChart serie={holdingsChartData} ticker="ETH" height={210} />
       </div>
     </div>
   );
