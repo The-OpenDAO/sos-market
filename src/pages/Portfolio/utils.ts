@@ -138,7 +138,24 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
       const shares = portfolio[market.id]?.liquidityShares;
       const poolShare = shares / market.liquidity;
       const feesEarned = 'In Progress';
-      const result = { type: 'pending' };
+      let result = { type: 'pending' };
+      if (market.state === 'closed') {
+        result = { type: 'awaiting_resolution' };
+      } else if (
+        // user holds shares of winning outcome
+        market.state === 'resolved' &&
+        portfolio[market.id]?.claimStatus.liquidityToClaim &&
+        !portfolio[market.id]?.claimStatus.liquidityClaimed
+      ) {
+        // user already claimed winnings of winning outcome
+        result = { type: 'awaiting_claim' };
+      } else if (
+        // user holds shares of winning outcome
+        market.state === 'resolved' &&
+        portfolio[market.id]?.claimStatus.liquidityClaimed
+      ) {
+        result = { type: 'claimed' };
+      }
 
       rows.push({
         market,

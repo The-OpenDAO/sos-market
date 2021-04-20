@@ -1,7 +1,10 @@
 import { roundNumber } from 'helpers/math';
+import { fetchWallet } from 'redux/ducks/bepro';
+import { BeproService } from 'services';
 
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
+import { useAppDispatch } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import { Button } from '../Button';
@@ -13,7 +16,18 @@ type MarketTableProps = {
 };
 
 const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
+  const dispatch = useAppDispatch();
   const { ticker } = useCurrency();
+
+  async function handleClaimLiquidity(marketId) {
+    const beproService = new BeproService();
+
+    await beproService.claimLiquidity(marketId);
+
+    // updating wallet
+    await fetchWallet(dispatch);
+  }
+
   return (
     <table className="market-table">
       <tbody>
@@ -66,9 +80,44 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
               </td>
               <td id="trade" className="market-table__row-item">
                 {result.type === 'pending' ? (
-                  <Button size="sm" variant="dark" color="primary" fullWidth>
+                  <Button size="sm" variant="dark" color="default" fullWidth>
+                    Trade
+                  </Button>
+                ) : null}
+                {result.type === 'awaiting_claim' ? (
+                  <Button
+                    size="sm"
+                    variant="normal"
+                    color="primary"
+                    fullWidth
+                    onClick={() => handleClaimLiquidity(market.id)}
+                  >
+                    Withdraw
+                  </Button>
+                ) : null}
+                {result.type === 'awaiting_resolution' ? (
+                  <Button
+                    size="sm"
+                    variant="dark"
+                    color="primary"
+                    fullWidth
+                    disabled
+                  >
                     <Text scale="caption" fontWeight="semibold" color="primary">
-                      Widthdraw
+                      Awaiting Resolution
+                    </Text>
+                  </Button>
+                ) : null}
+                {result.type === 'claimed' ? (
+                  <Button
+                    size="sm"
+                    variant="dark"
+                    color="primary"
+                    fullWidth
+                    disabled
+                  >
+                    <Text scale="caption" fontWeight="semibold" color="primary">
+                      Withdrawn
                     </Text>
                   </Button>
                 ) : null}
