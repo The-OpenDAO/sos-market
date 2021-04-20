@@ -127,21 +127,39 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
                   </Button>
                 ) : null}
                 {result.type === 'awaiting_resolution' ? (
-                  <Button size="sm" variant="dark" color="primary" fullWidth>
+                  <Button
+                    size="sm"
+                    variant="dark"
+                    color="primary"
+                    fullWidth
+                    disabled
+                  >
                     <Text scale="caption" fontWeight="semibold" color="primary">
                       Awaiting Resolution
                     </Text>
                   </Button>
                 ) : null}
                 {result.type === 'claimed' ? (
-                  <Button size="sm" variant="dark" color="primary" fullWidth>
+                  <Button
+                    size="sm"
+                    variant="dark"
+                    color="primary"
+                    fullWidth
+                    disabled
+                  >
                     <Text scale="caption" fontWeight="semibold" color="primary">
                       Winnings Claimed
                     </Text>
                   </Button>
                 ) : null}
                 {result.type === 'lost' ? (
-                  <Button size="sm" variant="dark" color="danger" fullWidth>
+                  <Button
+                    size="sm"
+                    variant="dark"
+                    color="danger"
+                    fullWidth
+                    disabled
+                  >
                     <Text
                       scale="caption"
                       fontWeight="semibold"
