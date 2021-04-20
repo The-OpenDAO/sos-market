@@ -71,7 +71,30 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
           portfolio[market.id]?.outcomeShares[outcome.id] * outcome.price;
         const shares = portfolio[market.id]?.outcomeShares[outcome.id];
         const maxPayout = portfolio[market.id]?.outcomeShares[outcome.id];
-        const result = { type: 'pending' };
+        let result = { type: 'pending' };
+        if (market.state === 'closed') {
+          result = { type: 'awaiting_resolution' };
+        } else if (
+          // user holds shares of winning outcome
+          market.state === 'resolved' &&
+          portfolio[market.id]?.claimStatus.winningsToClaim &&
+          !portfolio[market.id]?.claimStatus.winningsClaimed
+        ) {
+          // user already claimed winnings of winning outcome
+          result = { type: 'awaiting_claim' };
+        } else if (
+          // user holds shares of winning outcome
+          market.state === 'resolved' &&
+          portfolio[market.id]?.claimStatus.winningsClaimed
+        ) {
+          result = { type: 'claimed' };
+        } else if (
+          // user holds shares of winning outcome
+          market.state === 'resolved' &&
+          !portfolio[market.id]?.claimStatus.winningsToClaim
+        ) {
+          result = { type: 'lost' };
+        }
 
         rows.push({
           market,

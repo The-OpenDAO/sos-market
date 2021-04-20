@@ -32,5 +32,7 @@ export interface Market {
   shares: number;
   liquidity: number;
   expiresAt: string;
+  state: string;
+  resolvedOutcomeId: number;
   outcomes: Outcome[];
 }

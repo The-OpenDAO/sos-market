@@ -1,7 +1,10 @@
 import { roundNumber } from 'helpers/math';
+import { fetchWallet } from 'redux/ducks/bepro';
+import { BeproService } from 'services';
 
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
+import { useAppDispatch } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import { Button } from '../Button';
@@ -13,7 +16,18 @@ type MarketTableProps = {
 };
 
 const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
+  const dispatch = useAppDispatch();
   const { ticker } = useCurrency();
+
+  async function handleClaimWinnings(marketId) {
+    const beproService = new BeproService();
+
+    await beproService.claimWinnings(marketId);
+
+    // updating wallet
+    await fetchWallet(dispatch);
+  }
+
   return (
     <table className="market-table">
       <tbody>
@@ -101,15 +115,39 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
                     Trade
                   </Button>
                 ) : null}
-                {result.type === 'won' ? (
-                  <Button size="sm" variant="normal" color="primary" fullWidth>
+                {result.type === 'awaiting_claim' ? (
+                  <Button
+                    size="sm"
+                    variant="normal"
+                    color="primary"
+                    fullWidth
+                    onClick={() => handleClaimWinnings(market.id)}
+                  >
                     Claim Winnings
                   </Button>
                 ) : null}
-                {result.type === 'lost' ? (
+                {result.type === 'awaiting_resolution' ? (
                   <Button size="sm" variant="dark" color="primary" fullWidth>
                     <Text scale="caption" fontWeight="semibold" color="primary">
-                      Claim Winnings
+                      Awaiting Resolution
+                    </Text>
+                  </Button>
+                ) : null}
+                {result.type === 'claimed' ? (
+                  <Button size="sm" variant="dark" color="primary" fullWidth>
+                    <Text scale="caption" fontWeight="semibold" color="primary">
+                      Winnings Claimed
+                    </Text>
+                  </Button>
+                ) : null}
+                {result.type === 'lost' ? (
+                  <Button size="sm" variant="dark" color="danger" fullWidth>
+                    <Text
+                      scale="caption"
+                      fontWeight="semibold"
+                      color="light-gray"
+                    >
+                      Lost
                     </Text>
                   </Button>
                 ) : null}
