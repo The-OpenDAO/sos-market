@@ -23,7 +23,7 @@ const initialState: PortfolioInitialState = {
 };
 
 const portfolioSlice = createSlice({
-  name: 'market',
+  name: 'portfolio',
   initialState,
   reducers: {
     request: state => ({
