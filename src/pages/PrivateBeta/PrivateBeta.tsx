@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
 
+import isEmpty from 'lodash/isEmpty';
 import { fetchWallet } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
 import { ArrowRightIcon, PolkamarketsIcon } from 'assets/icons';
 
-import { Button, ModalNotification, Text } from 'components';
+import {
+  Button,
+  ModalNotification,
+  Text,
+  Toast,
+  ToastNotification
+} from 'components';
 
 import { useAppDispatch, useLocalStorage } from 'hooks';
+import useToastNotification from 'hooks/useToastNotification';
 
 function PrivateBeta() {
+  const [wrongWallet, setWrongWallet] = useState(false);
   const [walletAddress, setWalletAddress] = useLocalStorage(
     'walletAddress',
     undefined
   );
   const [address, setAddress] = useState('');
   const dispatch = useAppDispatch();
+  const { show } = useToastNotification();
   const beproService = new BeproService();
 
   function handleChangeAddress(event: React.ChangeEvent<HTMLInputElement>) {
@@ -26,12 +36,24 @@ function PrivateBeta() {
 
   function handleSubmit() {
     setWalletAddress(address);
+
+    // Example:
+
+    // if (passApiCheck) {
+    //   setWalletAddress(address);
+    // } else {
+    //   setWrongWallet(true);
+    //   show('wrong-wallet');
+    // }
   }
 
   const handleConnectWallet = async () => {
     await beproService.login();
     fetchWallet(dispatch);
   };
+
+  // TODO: Add address validation
+  const isValidAddress = !isEmpty(address);
 
   return (
     <div className="pm-private-beta">
@@ -67,12 +89,26 @@ function PrivateBeta() {
               value={address}
               onChange={event => handleChangeAddress(event)}
             />
-            <Button type="submit" color="primary" size="lg">
+            <Button
+              type="submit"
+              color="primary"
+              size="lg"
+              disabled={!isValidAddress}
+            >
               <ArrowRightIcon />
             </Button>
           </form>
         </div>
       </ModalNotification>
+      {wrongWallet ? (
+        <ToastNotification id="wrong-wallet" duration={5000}>
+          <Toast
+            variant="danger"
+            title="Wrong Wallet"
+            description="Your wallet isn’t whitelisted. Please connect the correct one to start using the platform."
+          />
+        </ToastNotification>
+      ) : null}
     </div>
   );
 }
