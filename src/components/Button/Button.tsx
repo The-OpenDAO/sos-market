@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 
 import classNames from 'classnames';
@@ -47,6 +48,7 @@ const Button = React.forwardRef<
 >(
   (
     {
+      type = 'button',
       variant = 'normal',
       color = 'default',
       size,
@@ -59,7 +61,7 @@ const Button = React.forwardRef<
   ) => (
     <button
       ref={ref}
-      type="button"
+      type={type}
       className={classNames(
         `button-${variant}--${color}`,
         size && `button-${size}`,
