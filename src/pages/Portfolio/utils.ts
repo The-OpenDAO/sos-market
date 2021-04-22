@@ -41,8 +41,8 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
     'Outcome',
     'Price (24h)',
     'Profit/Loss',
-    'Value',
     'Shares',
+    'Value',
     'Max. Payout',
     ''
   ];
@@ -135,17 +135,17 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
     if (portfolio[market.id]?.liquidityShares) {
+      const shares = portfolio[market.id]?.liquidityShares;
+      const poolShare = shares / market.liquidity;
+      const feesEarned = 'In Progress';
+      let result = { type: 'pending' };
       const value = {
-        value: 'TO DO',
+        value: shares * market.liquidityPrice,
         change: {
           type: 'down',
           value: 2.8
         }
       };
-      const shares = portfolio[market.id]?.liquidityShares;
-      const poolShare = shares / market.liquidity;
-      const feesEarned = 'In Progress';
-      let result = { type: 'pending' };
       if (market.state === 'closed') {
         result = { type: 'awaiting_resolution' };
       } else if (

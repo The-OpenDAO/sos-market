@@ -100,11 +100,11 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
                   </Text>
                 </div>
               </td>
-              <td id="value" className="market-table__row-item">
-                {`${roundNumber(value, 3)} ${ticker}`}
-              </td>
               <td id="shares" className="market-table__row-item">
                 {roundNumber(shares, 3)}
+              </td>
+              <td id="value" className="market-table__row-item">
+                {`${roundNumber(value, 3)} ${ticker}`}
               </td>
               <td id="maxPayout" className="market-table__row-item">
                 {`${roundNumber(maxPayout, 3)} ${ticker}`}
