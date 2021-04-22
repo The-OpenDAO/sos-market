@@ -34,14 +34,14 @@
     cursor: pointer;
     touch-action: manipulation;
 
-    @include flex-row;
+    @include flex-row($align: center);
     gap: 2.4rem;
     padding: 1.6rem;
 
     background-color: $gray-900;
     @include border($gray-900);
 
-    transition: all 0.3s ease 0s;
+    // transition: all 0.3s ease 0s;
 
     &:hover {
       @include border($gray-600);
