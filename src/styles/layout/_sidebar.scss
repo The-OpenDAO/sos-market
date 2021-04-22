@@ -56,6 +56,19 @@
     &-title {
     }
 
+    &.active,
+    &:hover {
+      color: $gray-100;
+
+      svg {
+        fill: $gray-200;
+      }
+
+      .sidebar__link-counter {
+        @extend .label-normal--primary;
+      }
+    }
+
     &-counter {
       @extend .label-normal--default, .label-sm;
       margin-left: auto;
@@ -81,8 +94,7 @@
   }
 
   .menu__item {
-    &:hover,
-    &.active {
+    &:hover {
       .sidebar__link {
         color: $gray-200;
 
