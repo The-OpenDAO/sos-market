@@ -42,7 +42,7 @@ function NavBarActions() {
           Connect Wallet
         </Button>
       )}
-      <Tooltip text="Create market" position="bottom">
+      <Tooltip text="Create Market" position="bottom">
         <a
           className="button-normal--default navbar__actions-create-market"
           aria-label="Create market"
