@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { roundNumber } from 'helpers/math';
 import { fetchWallet } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
@@ -80,9 +82,11 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
               </td>
               <td id="trade" className="market-table__row-item">
                 {result.type === 'pending' ? (
-                  <Button size="sm" variant="dark" color="default" fullWidth>
-                    Trade
-                  </Button>
+                  <Link to={`/markets/${market.id}`}>
+                    <Button size="sm" variant="dark" color="default" fullWidth>
+                      Trade
+                    </Button>
+                  </Link>
                 ) : null}
                 {result.type === 'awaiting_claim' ? (
                   <Button
