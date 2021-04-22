@@ -37,6 +37,11 @@ type ButtonProps = {
    * @default 'false'
    */
   fullWidth?: boolean;
+  /**
+   * Loading state
+   * @default 'false'
+   */
+  loading?: boolean;
 };
 
 /**
@@ -53,6 +58,7 @@ const Button = React.forwardRef<
       color = 'default',
       size,
       fullWidth = false,
+      loading = false,
       children,
       onClick,
       ...props
@@ -70,7 +76,7 @@ const Button = React.forwardRef<
       onClick={onClick}
       {...props}
     >
-      {children}
+      {loading ? <span className="spinner" /> : children}
     </button>
   )
 );
