@@ -1,12 +1,13 @@
 import { fetchWallet } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { MetaMaskIcon, SettingsIcon } from 'assets/icons';
+import { AddIcon, MetaMaskIcon } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import { Button } from '../Button';
+import Tooltip from '../Tooltip';
 import WalletInfo from '../WalletInfo';
 
 function NavBarActions() {
@@ -41,10 +42,17 @@ function NavBarActions() {
           Connect Wallet
         </Button>
       )}
-
-      <Button color="default" aria-label="Settings">
-        <SettingsIcon />
-      </Button>
+      <Tooltip text="Create Market" position="bottom">
+        <a
+          className="button-normal--default navbar__actions-create-market"
+          aria-label="Create market"
+          target="_blank"
+          href="https://www.google.com/forms/about"
+          rel="noreferrer"
+        >
+          <AddIcon />
+        </a>
+      </Tooltip>
     </div>
   );
 }

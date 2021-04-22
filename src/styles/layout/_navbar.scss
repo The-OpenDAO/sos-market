@@ -27,5 +27,14 @@
     @include breakpoint-to('lg') {
       display: inline-flex;
     }
+
+    //TODO: create link button
+    &-create-market {
+      height: 100%;
+
+      &:hover {
+        background-color: $gray-500 !important;
+      }
+    }
   }
 }
