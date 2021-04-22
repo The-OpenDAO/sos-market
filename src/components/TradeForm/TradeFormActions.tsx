@@ -107,8 +107,10 @@ function TradeFormActions() {
         <Button
           size="lg"
           color="success"
+          fullWidth
           onClick={handleBuy}
           disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+          loading={isLoading}
         >
           Buy
         </Button>
@@ -116,9 +118,11 @@ function TradeFormActions() {
       {type === 'sell' ? (
         <Button
           size="lg"
-          color="danger"
+          color="warning"
+          fullWidth
           onClick={handleSell}
           disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+          loading={isLoading}
         >
           Sell
         </Button>
