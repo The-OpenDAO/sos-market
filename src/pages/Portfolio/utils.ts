@@ -53,11 +53,18 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
   markets.forEach((market: Market) => {
     market.outcomes.forEach((outcome: Outcome) => {
       if (portfolio[market.id]?.outcomeShares[outcome.id]) {
+        const priceChart = outcome.priceCharts.find(
+          chart => chart.timeframe === '24h'
+        );
+
         const price = {
           value: outcome.price,
           change: {
-            type: 'up',
-            value: 2.8
+            type:
+              !priceChart?.changePercent || priceChart?.changePercent > 0
+                ? 'up'
+                : 'down',
+            value: roundNumber((priceChart?.changePercent || 0) * 100, 2)
           }
         };
         const profit = {
