@@ -90,7 +90,7 @@ function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
           >
             PRICE
           </Text>
-          <Text as="span" scale="tiny" fontWeight="medium" color="light">
+          <Text as="span" scale="tiny" fontWeight="bold" color="light">
             {price.toFixed(3)}
           </Text>
           {marketPriceUp ? <ArrowUpIcon /> : <ArrowDownIcon />}

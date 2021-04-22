@@ -35,13 +35,10 @@
   }
 
   &:hover {
-    .label-normal--primary {
-      opacity: 1;
-    }
+    opacity: 1;
   }
 
   .label-normal--primary {
     opacity: 0;
-    transition: opacity 0.15s ease-in-out;
   }
 }

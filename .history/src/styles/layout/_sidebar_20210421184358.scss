@@ -59,6 +59,20 @@
     &-counter {
       @extend .label-normal--default, .label-sm;
       margin-left: auto;
+      padding: 0.3rem 1rem;
+    }
+
+    &:hover,
+    &.active {
+      color: $gray-200;
+
+      svg {
+        fill: $gray-200;
+      }
+
+      .sidebar__link-counter {
+        @extend .label-normal--primary;
+      }
     }
 
     &--lg {
@@ -77,23 +91,6 @@
       white-space: nowrap;
 
       color: $gray-500;
-    }
-  }
-
-  .menu__item {
-    &:hover,
-    &.active {
-      .sidebar__link {
-        color: $gray-200;
-
-        svg {
-          fill: $gray-200;
-        }
-
-        .sidebar__link-counter {
-          @extend .label-normal--primary;
-        }
-      }
     }
   }
 }

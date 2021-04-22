@@ -19,12 +19,13 @@
     }
 
     // Removed this because it was creating a weird visual bug on the sidebar item.
-    &:hover,
-    &:focus {
-      a {
-        color: $gray-100;
-      }
-    }
+
+    // &:hover,
+    // &:focus {
+    //   a {
+    //     color: $gray-100;
+    //   }
+    // }
   }
 }
 

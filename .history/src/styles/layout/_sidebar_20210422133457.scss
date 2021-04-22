@@ -81,9 +81,9 @@
   }
 
   .menu__item {
-    &:hover,
-    &.active {
-      .sidebar__link {
+    .sidebar__link {
+      &:hover,
+      &.active {
         color: $gray-200;
 
         svg {

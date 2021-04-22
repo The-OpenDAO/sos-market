@@ -61,6 +61,19 @@
       margin-left: auto;
     }
 
+    &:hover,
+    &.active {
+      color: $gray-200;
+
+      svg {
+        fill: $gray-200;
+      }
+
+      .sidebar__link-counter {
+        @extend .label-normal--primary;
+      }
+    }
+
     &--lg {
       @extend .sidebar__link;
       font-size: 1.7rem;
@@ -77,23 +90,6 @@
       white-space: nowrap;
 
       color: $gray-500;
-    }
-  }
-
-  .menu__item {
-    &:hover,
-    &.active {
-      .sidebar__link {
-        color: $gray-200;
-
-        svg {
-          fill: $gray-200;
-        }
-
-        .sidebar__link-counter {
-          @extend .label-normal--primary;
-        }
-      }
     }
   }
 }

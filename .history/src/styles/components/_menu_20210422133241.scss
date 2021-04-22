@@ -24,6 +24,18 @@
       a {
         color: $gray-100;
       }
+
+      @extend .sidebar__link {
+        color: $gray-200;
+
+        svg {
+          fill: $gray-200;
+        }
+
+        .sidebar__link-counter {
+          @extend .label-normal--primary;
+        }
+      }
     }
   }
 }

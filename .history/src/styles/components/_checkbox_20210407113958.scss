@@ -30,7 +30,8 @@
 .checkbox input:checked ~ .checkmark {
   background-color: $primary-500;
   border-color: $primary-500;
-  box-shadow: 0px 0px 0px 3px rbga($primary-500, 0.4);
+  box-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.075) inset,
+    0rem 0rem 0.8rem $primary-500;
 }
 
 .checkmark:after {
