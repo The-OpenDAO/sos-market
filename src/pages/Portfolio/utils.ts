@@ -52,7 +52,7 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
     market.outcomes.forEach((outcome: Outcome) => {
-      if (portfolio[market.id]?.outcomeShares[outcome.id]) {
+      if (portfolio[market.id]?.outcomes[outcome.id]?.shares) {
         const priceChart = outcome.priceCharts.find(
           chart => chart.timeframe === '24h'
         );
@@ -75,9 +75,9 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
           }
         };
         const value =
-          portfolio[market.id]?.outcomeShares[outcome.id] * outcome.price;
-        const shares = portfolio[market.id]?.outcomeShares[outcome.id];
-        const maxPayout = portfolio[market.id]?.outcomeShares[outcome.id];
+          portfolio[market.id]?.outcomes[outcome.id]?.shares * outcome.price;
+        const shares = portfolio[market.id]?.outcomes[outcome.id]?.shares;
+        const maxPayout = portfolio[market.id]?.outcomes[outcome.id]?.shares;
         let result = { type: 'pending' };
         if (market.state === 'closed') {
           result = { type: 'awaiting_resolution' };
@@ -134,8 +134,8 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
 
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
-    if (portfolio[market.id]?.liquidityShares) {
-      const shares = portfolio[market.id]?.liquidityShares;
+    if (portfolio[market.id]?.liquidity?.shares) {
+      const shares = portfolio[market.id]?.liquidity?.shares;
       const poolShare = shares / market.liquidity;
       const feesEarned = 'In Progress';
       let result = { type: 'pending' };
