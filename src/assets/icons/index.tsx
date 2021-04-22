@@ -1,3 +1,4 @@
+import AddIcon from './AddIcon';
 import AlienIcon from './AlienIcon';
 import ArrowBackIcon from './ArrowBackIcon';
 import ArrowDownIcon from './ArrowDownIcon';
@@ -42,6 +43,7 @@ import WarningIcon from './WarningIcon';
 import WhiteHouseIcon from './WhiteHouseIcon';
 
 export {
+  AddIcon,
   AlienIcon,
   ArrowBackIcon,
   ArrowDownIcon,

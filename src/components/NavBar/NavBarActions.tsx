@@ -1,12 +1,13 @@
 import { fetchWallet } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { MetaMaskIcon, SettingsIcon } from 'assets/icons';
+import { AddIcon, MetaMaskIcon } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import { Button } from '../Button';
+import Tooltip from '../Tooltip';
 import WalletInfo from '../WalletInfo';
 
 function NavBarActions() {
@@ -41,10 +42,11 @@ function NavBarActions() {
           Connect Wallet
         </Button>
       )}
-
-      <Button color="default" aria-label="Settings">
-        <SettingsIcon />
-      </Button>
+      <Tooltip text="Create market">
+        <Button color="default" aria-label="Settings">
+          <AddIcon />
+        </Button>
+      </Tooltip>
     </div>
   );
 }
