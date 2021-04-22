@@ -84,7 +84,7 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
               </td>
               <td id="profit" className="market-table__row-item">
                 <div className="market-table__row-item__group">
-                  {profit.value}
+                  {`${roundNumber(profit.value, 3)} ${ticker}`}
                   <Text
                     className={`market-table__row-item__change--${profit.change.type}`}
                     as="span"

@@ -56,7 +56,7 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
         const priceChart = outcome.priceCharts.find(
           chart => chart.timeframe === '24h'
         );
-
+        const shares = portfolio[market.id]?.outcomes[outcome.id]?.shares;
         const price = {
           value: outcome.price,
           change: {
@@ -64,19 +64,23 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
               !priceChart?.changePercent || priceChart?.changePercent > 0
                 ? 'up'
                 : 'down',
-            value: roundNumber((priceChart?.changePercent || 0) * 100, 2)
+            value: roundNumber(
+              Math.abs(priceChart?.changePercent || 0) * 100,
+              2
+            )
           }
         };
+        const buyPrice = portfolio[market.id]?.outcomes[outcome.id]?.price;
         const profit = {
-          value: 'TO DO',
+          value: (outcome.price - buyPrice) * shares,
           change: {
-            type: 'down',
-            value: 2.8
+            type: buyPrice <= outcome.price ? 'up' : 'down',
+            // eslint-disable-next-line prettier/prettier
+            value: roundNumber((Math.abs(outcome.price - buyPrice) / buyPrice) * 100, 2)
           }
         };
         const value =
           portfolio[market.id]?.outcomes[outcome.id]?.shares * outcome.price;
-        const shares = portfolio[market.id]?.outcomes[outcome.id]?.shares;
         const maxPayout = portfolio[market.id]?.outcomes[outcome.id]?.shares;
         let result = { type: 'pending' };
         if (market.state === 'closed') {
@@ -136,14 +140,15 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
   markets.forEach((market: Market) => {
     if (portfolio[market.id]?.liquidity?.shares) {
       const shares = portfolio[market.id]?.liquidity?.shares;
+      const buyPrice = portfolio[market.id]?.liquidity?.price;
       const poolShare = shares / market.liquidity;
       const feesEarned = 'In Progress';
       let result = { type: 'pending' };
       const value = {
         value: shares * market.liquidityPrice,
         change: {
-          type: 'down',
-          value: 2.8
+          type: buyPrice <= market.liquidityPrice ? 'up' : 'down',
+          value: Math.abs(market.liquidityPrice - buyPrice) / buyPrice
         }
       };
       if (market.state === 'closed') {

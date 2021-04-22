@@ -66,7 +66,7 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
                     ) : (
                       <CaretDownIcon />
                     )}
-                    {`${value.change.value}%`}
+                    {`${roundNumber(value.change.value * 100, 2)}%`}
                   </Text>
                 </div>
               </td>
