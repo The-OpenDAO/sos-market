@@ -28,7 +28,7 @@ function LiquidityFormInput() {
     }
     // max for sell actions - number of outcome shares
     else if (transactionType === 'remove') {
-      maxAmount = portfolio[marketId]?.liquidityShares || 0;
+      maxAmount = portfolio[marketId]?.liquidity?.shares || 0;
     }
 
     // rounding (down) to 5 decimals

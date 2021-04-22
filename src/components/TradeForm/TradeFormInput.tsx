@@ -39,7 +39,7 @@ function TradeFormInput() {
     // max for sell actions - number of outcome shares
     else if (type === 'sell') {
       maxAmount =
-        portfolio[selectedMarketId]?.outcomeShares[selectedOutcomeId] || 0;
+        portfolio[selectedMarketId]?.outcomes[selectedOutcomeId]?.shares || 0;
     }
 
     // rounding (down) to 5 decimals

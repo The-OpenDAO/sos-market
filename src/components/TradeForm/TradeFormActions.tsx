@@ -24,6 +24,7 @@ function TradeFormActions() {
   const acceptOddChanges = useAppSelector(
     state => state.trade.acceptOddChanges
   );
+  const ethAddress = useAppSelector(state => state.bepro.ethAddress);
 
   const [transactionSuccess, setTransactionSuccess] = useState(false);
   const [transactionSuccessHash, setTransactionSuccessHash] = useState(
@@ -59,6 +60,7 @@ function TradeFormActions() {
 
     // triggering cache reload action on api
     new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
     await fetchWallet(dispatch);
@@ -85,6 +87,7 @@ function TradeFormActions() {
 
     // triggering cache reload action on api
     new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
     await fetchWallet(dispatch);

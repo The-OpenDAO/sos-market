@@ -69,11 +69,8 @@ function TradeFormPredictions() {
               {
                 key: 'yourShares',
                 title: 'Your Shares',
-                value:
-                  roundNumber(
-                    portfolio[selectedMarketId]?.outcomeShares[prediction.id],
-                    3
-                  ) || 0
+                // eslint-disable-next-line prettier/prettier
+                value: roundNumber(portfolio[selectedMarketId]?.outcomes[prediction.id]?.shares, 3) || 0
               }
             ]}
           />
