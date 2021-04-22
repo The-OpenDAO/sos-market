@@ -101,8 +101,10 @@ function LiquidityFormActions() {
         <Button
           size="lg"
           color="primary"
+          fullWidth
           onClick={handleAddliquidity}
           disabled={!isValidAmount || !acceptedTerms || isLoading}
+          loading={isLoading}
         >
           Add Liquidity
         </Button>
@@ -112,8 +114,10 @@ function LiquidityFormActions() {
         <Button
           size="lg"
           color="primary"
+          fullWidth
           onClick={handleRemoveLiquidity}
           disabled={!isValidAmount || !acceptedTerms || isLoading}
+          loading={isLoading}
         >
           Remove Liquidity
         </Button>
