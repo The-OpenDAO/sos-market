@@ -42,10 +42,16 @@ function NavBarActions() {
           Connect Wallet
         </Button>
       )}
-      <Tooltip text="Create market">
-        <Button color="default" aria-label="Settings">
+      <Tooltip text="Create market" position="bottom">
+        <a
+          className="button-normal--default navbar__actions-create-market"
+          aria-label="Create market"
+          target="_blank"
+          href="https://www.google.com/forms/about"
+          rel="noreferrer"
+        >
           <AddIcon />
-        </Button>
+        </a>
       </Tooltip>
     </div>
   );
