@@ -2,7 +2,6 @@
   @include flex-row(space-between, center);
   flex-wrap: wrap;
   gap: 1.6rem;
-  z-index: 1000;
 
   padding: 1.6rem 2.4rem;
   background-color: $background-dark;
@@ -26,6 +25,15 @@
 
     @include breakpoint-to('lg') {
       display: inline-flex;
+    }
+
+    //TODO: create link button
+    &-create-market {
+      height: 100%;
+
+      &:hover {
+        background-color: $gray-500 !important;
+      }
     }
   }
 }

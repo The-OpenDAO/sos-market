@@ -1,0 +1,26 @@
+.spinner {
+  position: relative;
+  text-indent: -9999em;
+  border-top: 0.26rem solid rgba($neutral-white, 0.4);
+  border-right: 0.26rem solid rgba($neutral-white, 0.4);
+  border-bottom: 0.26rem solid rgba($neutral-white, 0.4);
+  border-left: 0.26rem solid rgba($neutral-white, 0.9);
+  transform: translateZ(0);
+  animation: load 1.1s infinite linear;
+}
+
+.spinner,
+.spinner:after {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
