@@ -24,6 +24,7 @@ import MiniAreaChart from './MiniAreaChart';
 import MiniTable from './MiniTable';
 import ModalNotification from './ModalNotification';
 import NavBar from './NavBar';
+import NetworkInfo from './NetworkInfo';
 import PortfolioLiquidityTable from './PortfolioLiquidityTable';
 import PortfolioMarketTable from './PortfolioMarketTable';
 import PredictionCard from './PredictionCard';
@@ -72,6 +73,7 @@ export {
   MiniTable,
   ModalNotification,
   NavBar,
+  NetworkInfo,
   PortfolioLiquidityTable,
   PortfolioMarketTable,
   PredictionCard,

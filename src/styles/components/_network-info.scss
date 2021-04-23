@@ -1,0 +1,57 @@
+.pm-c-network-info {
+  @include flex-row(center, center);
+  gap: 0.6rem;
+
+  padding: 0.8rem 1.2rem;
+
+  background-color: $gray-800;
+  border-radius: 0.4rem;
+
+  &__dot {
+    display: inline-block;
+
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 50%;
+  }
+}
+
+.pm-c-network-info--main {
+  @extend .pm-c-network-info;
+
+  .pm-c-network-info__dot {
+    background-color: #29b6af;
+  }
+}
+
+.pm-c-network-info--ropsten {
+  @extend .pm-c-network-info;
+
+  .pm-c-network-info__dot {
+    background-color: #ff4a8d;
+  }
+}
+
+.pm-c-network-info--kovan {
+  @extend .pm-c-network-info;
+
+  .pm-c-network-info__dot {
+    background-color: #fbbf24;
+  }
+}
+
+.pm-c-network-info--rinkeby {
+  @extend .pm-c-network-info;
+
+  .pm-c-network-info__dot {
+    background-color: #9064ff;
+  }
+}
+
+.pm-c-network-info--goerli {
+  @extend .pm-c-network-info;
+
+  .pm-c-network-info__dot {
+    background-color: #3099f2;
+  }
+}

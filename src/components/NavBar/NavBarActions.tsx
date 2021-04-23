@@ -11,6 +11,7 @@ import useCurrency from 'hooks/useCurrency';
 
 import AlertNotification from '../AlertNotification';
 import { Button } from '../Button';
+import NetworkInfo from '../NetworkInfo';
 import Tooltip from '../Tooltip';
 import WalletInfo from '../WalletInfo';
 
@@ -41,6 +42,8 @@ function NavBarActions() {
         variant="warning"
         description="You’re part of our Beta Testing users. You’re on Kovan Test Network and you’re predicting with test ETH."
       />
+
+      <NetworkInfo network="kovan" />
 
       {walletConnected ? (
         <WalletInfo
