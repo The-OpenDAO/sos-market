@@ -5,13 +5,15 @@
     'nav header header'
     'nav main aside';
   grid-template-columns: auto 1fr auto;
-  grid-template-rows: 8rem 1fr;
+  grid-template-rows: auto 1fr;
 
   background-color: $gray-1000;
 
   &__header {
     grid-area: header;
     z-index: 1000;
+
+    background-color: $gray-1000;
   }
 
   &__nav {

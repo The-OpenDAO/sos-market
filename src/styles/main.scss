@@ -19,6 +19,7 @@
 @import 'layout/right-sidebar';
 
 // 5. Components
+@import 'components/alert-notification';
 @import 'components/amount-input';
 @import 'components/breadcrumb';
 @import 'components/buttons';
@@ -40,6 +41,7 @@
 @import 'components/menu';
 @import 'components/mini-table';
 @import 'components/modal-notification';
+@import 'components/network-info';
 @import 'components/prediction-card';
 @import 'components/searchbar';
 @import 'components/select';

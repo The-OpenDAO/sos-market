@@ -36,6 +36,7 @@ import SoccerBallIcon from './SoccerBallIcon';
 import SunFogIcon from './SunFogIcon';
 import TelegramIcon from './TelegramIcon';
 import ToDoIcon from './ToDoIcon';
+import TwarningIcon from './TWarningIcon';
 import TwitterIcon from './TwitterIcon';
 import UsersIcon from './UsersIcon';
 import WalletIcon from './WalletIcon';
@@ -81,6 +82,7 @@ export {
   SunFogIcon,
   TelegramIcon,
   ToDoIcon,
+  TwarningIcon,
   TwitterIcon,
   UsersIcon,
   WalletIcon,
