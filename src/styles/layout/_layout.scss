@@ -1,28 +1,30 @@
-.wrapper {
-  @include flex-row;
+.pm-l-layout {
+  display: grid;
 
-  width: 100%;
-  min-height: 100%;
-}
+  grid-template-areas:
+    'nav header header'
+    'nav main aside';
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 8rem 1fr;
 
-.main {
-  width: 100%;
+  background-color: $gray-1000;
 
-  background-color: $neutral-black;
-  transition: background-color 0.3s ease 0s;
-
-  &__group {
-    @include flex-row;
+  &__header {
+    grid-area: header;
+    z-index: 1000;
   }
-}
 
-.vertical-section {
-  position: relative;
-  @include flex-column(flex-start, center);
+  &__nav {
+    grid-area: nav;
+  }
 
-  width: 100%;
-  min-height: 100vh;
+  &__main {
+    grid-area: main;
 
-  padding: 0rem 2.4rem;
-  margin: 0rem auto;
+    padding: 0rem 2.4rem;
+  }
+
+  &__aside {
+    grid-area: aside;
+  }
 }

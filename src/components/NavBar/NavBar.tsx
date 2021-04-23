@@ -16,7 +16,7 @@ function NavBar() {
   }
 
   return (
-    <nav className="navbar sticky">
+    <div className="navbar">
       <Link to="/home" aria-label="Home">
         <figure className="navbar__icon">
           {!isMobile ? <PolkamarketsIcon /> : <PolkamarketsLogo />}
@@ -33,7 +33,7 @@ function NavBar() {
           <NavBarActions />
         </>
       ) : null}
-    </nav>
+    </div>
   );
 }
 
