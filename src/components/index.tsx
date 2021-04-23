@@ -1,3 +1,4 @@
+import AlertNotification from './AlertNotification';
 import AmountInput from './AmountInput';
 import AreaChart from './AreaChart';
 import Breadcrumb from './Breadcrumb';
@@ -43,6 +44,7 @@ import TradeForm from './TradeForm';
 import WalletInfo from './WalletInfo';
 
 export {
+  AlertNotification,
   AmountInput,
   AreaChart,
   Breadcrumb,
