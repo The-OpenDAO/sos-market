@@ -33,4 +33,15 @@
   .pm-c-category__body {
     filter: blur(0.4rem);
   }
+
+  &:hover {
+    .label-normal--primary {
+      opacity: 1;
+    }
+  }
+
+  .label-normal--primary {
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+  }
 }
