@@ -25,14 +25,16 @@ const categories = [
 
 const categoriesDisabled = [
   {
-    title: 'Sports'
+    title: 'Sports',
+    info: 'Coming Soon'
   },
   {
     title: 'Politics',
     info: 'Coming Soon'
   },
   {
-    title: 'Tech'
+    title: 'Tech',
+    info: 'Coming Soon'
   }
 ];
 
