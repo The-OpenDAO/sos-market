@@ -1,38 +1,22 @@
 import { Link } from 'react-router-dom';
 
-import { PolkamarketsIcon, PolkamarketsLogo } from 'assets/icons';
+import { PolkamarketsIcon } from 'assets/icons';
 
-import { useViewport } from 'hooks';
-
-import SearchBar from '../SearchBar';
 import NavBarActions from './NavBarActions';
 import NavBarMenu from './NavBarMenu';
+import NavBarSearch from './NavBarSearch';
 
 function NavBar() {
-  const { isMobile } = useViewport();
-
-  function handleSearch(text: string) {
-    return text;
-  }
-
   return (
-    <div className="navbar">
+    <div className="pm-c-navbar">
       <Link to="/home" aria-label="Home">
-        <figure className="navbar__icon">
-          {!isMobile ? <PolkamarketsIcon /> : <PolkamarketsLogo />}
+        <figure className="pm-c-navbar__icon">
+          <PolkamarketsIcon />
         </figure>
       </Link>
-      {!isMobile ? (
-        <>
-          <SearchBar
-            name="SearchMarkets"
-            placeholder="Search markets"
-            onSearch={handleSearch}
-          />
-          <NavBarMenu />
-          <NavBarActions />
-        </>
-      ) : null}
+      <NavBarSearch />
+      <NavBarMenu />
+      <NavBarActions />
     </div>
   );
 }

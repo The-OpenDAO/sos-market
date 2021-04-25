@@ -36,7 +36,7 @@ function NavBarActions() {
   };
 
   return (
-    <div className="navbar__actions">
+    <div className="pm-c-navbar__actions">
       <AlertNotification
         id="beta-testing"
         variant="warning"
@@ -63,7 +63,7 @@ function NavBarActions() {
       )}
       <Tooltip text="Create Market" position="bottom">
         <a
-          className="button-normal--default navbar__actions-create-market"
+          className="button-normal--default pm-c-navbar__actions-create-market"
           aria-label="Create market"
           target="_blank"
           href="https://www.google.com/forms/about"
