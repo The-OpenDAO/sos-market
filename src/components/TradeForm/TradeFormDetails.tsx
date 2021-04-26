@@ -1,10 +1,13 @@
+import { roundNumber } from 'helpers/math';
 import { useAppSelector } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
 import MiniTable from '../MiniTable';
 import { formatMiniTableItems } from './utils';
 
 function TradeFormDetails() {
   const { market } = useAppSelector(state => state.market);
+  const { ticker } = useCurrency();
   const selectedOutcomeId = useAppSelector(
     state => state.trade.selectedOutcomeId
   );
@@ -14,14 +17,14 @@ function TradeFormDetails() {
   );
 
   const miniTableItems = formatMiniTableItems(
+    type,
     outcomes,
     selectedOutcomeId,
     id,
     shares,
     price,
     maxROI,
-    totalStake,
-    maxStake
+    totalStake
   );
 
   return (
@@ -31,9 +34,9 @@ function TradeFormDetails() {
         <MiniTable
           rows={[
             {
-              key: 'returns',
+              key: 'buy-stake',
               title: 'Potential returns',
-              value: `${maxStake} ETH`
+              value: `${roundNumber(maxStake, 3)} ${ticker}`
             }
           ]}
           color="success"
@@ -42,7 +45,11 @@ function TradeFormDetails() {
       {type === 'sell' ? (
         <MiniTable
           rows={[
-            { key: 'loss', title: 'Loss amount', value: `${totalStake} ETH` }
+            {
+              key: 'sell-stake',
+              title: 'Total stake',
+              value: `${roundNumber(totalStake, 3)} ${ticker}`
+            }
           ]}
           color="danger"
         />

@@ -13,7 +13,7 @@ import useCurrency from 'hooks/useCurrency';
 
 import StepSlider from '../StepSlider';
 import Text from '../Text';
-import { calculateSharesBought } from './utils';
+import { calculateTradeDetails } from './utils';
 
 function TradeFormInput() {
   const { name, ticker, icon } = useCurrency();
@@ -64,7 +64,7 @@ function TradeFormInput() {
   function changeTradeAmount(value: number) {
     dispatch(setTradeAmount(value));
 
-    const tradeDetails = calculateSharesBought(market, outcome, value);
+    const tradeDetails = calculateTradeDetails(type, market, outcome, value);
 
     dispatch(setTradeDetails(tradeDetails));
   }
