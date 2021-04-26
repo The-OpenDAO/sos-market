@@ -1,7 +1,7 @@
 import { useAppSelector } from 'hooks';
 
 import MiniTable from '../MiniTable';
-import formatMiniTableItems from './utils';
+import { formatMiniTableItems } from './utils';
 
 function TradeFormDetails() {
   const { market } = useAppSelector(state => state.market);
@@ -9,22 +9,19 @@ function TradeFormDetails() {
     state => state.trade.selectedOutcomeId
   );
   const { id, outcomes } = market;
-  const {
-    type,
-    fractionsBought,
-    currentROI,
-    totalStake,
-    potentialReturns,
-    lossAmount
-  } = useAppSelector(state => state.trade);
+  const { type, shares, price, maxROI, totalStake, maxStake } = useAppSelector(
+    state => state.trade
+  );
 
   const miniTableItems = formatMiniTableItems(
     outcomes,
     selectedOutcomeId,
     id,
-    fractionsBought,
-    currentROI,
-    totalStake
+    shares,
+    price,
+    maxROI,
+    totalStake,
+    maxStake
   );
 
   return (
@@ -36,7 +33,7 @@ function TradeFormDetails() {
             {
               key: 'returns',
               title: 'Potential returns',
-              value: `${potentialReturns} ETH`
+              value: `${maxStake} ETH`
             }
           ]}
           color="success"
@@ -45,7 +42,7 @@ function TradeFormDetails() {
       {type === 'sell' ? (
         <MiniTable
           rows={[
-            { key: 'loss', title: 'Loss amount', value: `${lossAmount} ETH` }
+            { key: 'loss', title: 'Loss amount', value: `${totalStake} ETH` }
           ]}
           color="danger"
         />
