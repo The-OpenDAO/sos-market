@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import classNames from 'classnames';
+import { openSidebar, closeSidebar } from 'redux/ducks/ui';
 
 import {
   HamburguerMenuIcon,
@@ -10,17 +10,20 @@ import {
   PortfolioIcon
 } from 'assets/icons';
 
+import { useAppDispatch, useAppSelector } from 'hooks';
+
 import { Button } from '../Button';
 import Menu from '../Menu';
 import Text from '../Text';
 import { navigationLinks, footerLinks } from './mock';
 
 const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(true);
+  const dispatch = useAppDispatch();
+  const collapsed = useAppSelector(state => state.ui.sidebar.collapsed);
   const { markets } = navigationLinks;
 
   function toggleCollapsed() {
-    setCollapsed(!collapsed);
+    dispatch(collapsed ? openSidebar() : closeSidebar());
   }
 
   return (
