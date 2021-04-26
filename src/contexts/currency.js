@@ -8,6 +8,7 @@ const CurrencyDispatchContext = createContext({});
 const initalState = {
   name: 'Ethereum',
   ticker: 'ETH',
+  symbol: 'Ξ',
   icon: <EthereumIcon />
 };
 

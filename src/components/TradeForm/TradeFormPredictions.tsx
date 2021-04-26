@@ -6,6 +6,7 @@ import { roundNumber } from 'helpers/math';
 import { changePredictionsVisibility, selectOutcome } from 'redux/ducks/trade';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
+import useCurrency from 'hooks/useCurrency';
 
 import MiniTable from '../MiniTable';
 import Text from '../Text';
@@ -13,6 +14,8 @@ import Text from '../Text';
 function TradeFormPredictions() {
   const location = useLocation();
   const dispatch = useAppDispatch();
+  const { symbol } = useCurrency();
+
   const showPredictions = useAppSelector(state => state.trade.showPredictions);
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId
@@ -63,7 +66,7 @@ function TradeFormPredictions() {
                 {prediction.price.toFixed(3)}
               </Text>
               <Text as="strong" fontWeight="medium">
-                {` Ξ`}
+                {` ${symbol}`}
               </Text>
             </Text>
           </div>
