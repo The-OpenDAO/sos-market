@@ -94,7 +94,8 @@ function TradeFormActions() {
   }
 
   const isValidAmount = amount > 0 && amount <= maxAmount;
-  const hasAcceptedTerms = acceptRules && acceptOddChanges;
+  // terms currently disabled
+  const hasAcceptedTerms = true;
 
   return (
     <div className="pm-c-trade-form-actions">

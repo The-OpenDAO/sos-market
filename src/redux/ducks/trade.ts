@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type TradeType = 'buy' | 'sell' | string;
 
-type PredictionDetails = {
-  fractionsBought: number;
-  currentROI: number;
+export interface TradeDetails {
+  shares: number;
+  price: number;
+  maxROI: number;
   totalStake: number;
-  potentialReturns: number;
-  lossAmount: number;
-};
+  maxStake: number;
+}
 
 const initialState = {
   showCharts: false,
@@ -18,11 +18,11 @@ const initialState = {
   selectedOutcomeId: '',
   amount: 0,
   maxAmount: 0,
-  fractionsBought: 0,
-  currentROI: 0,
+  shares: 0,
+  price: 0,
+  maxROI: 0,
   totalStake: 0,
-  potentialReturns: 0,
-  lossAmount: 0,
+  maxStake: 0,
   acceptRules: false,
   acceptOddChanges: false
 };
@@ -56,16 +56,13 @@ const tradeSlice = createSlice({
       selectedMarketId: action.payload.marketId,
       selectedOutcomeId: action.payload.outcomeId
     }),
-    setPredictionDetails: (
-      state,
-      action: PayloadAction<PredictionDetails>
-    ) => ({
+    setTradeDetails: (state, action: PayloadAction<TradeDetails>) => ({
       ...state,
-      fractionsBought: action.payload.fractionsBought,
-      currentROI: action.payload.currentROI,
+      shares: action.payload.shares,
+      price: action.payload.price,
+      maxROI: action.payload.maxROI,
       totalStake: action.payload.totalStake,
-      potentialReturns: action.payload.potentialReturns,
-      lossAmount: action.payload.lossAmount
+      maxStake: action.payload.maxStake
     }),
     toggleAcceptRules: (state, action: PayloadAction<boolean>) => ({
       ...state,
@@ -85,7 +82,7 @@ const {
   changePredictionsVisibility,
   changeTradeType,
   outcomeSelected,
-  setPredictionDetails,
+  setTradeDetails,
   setTradeAmount,
   setMaxAmount,
   toggleAcceptRules,
@@ -97,7 +94,7 @@ export {
   changePredictionsVisibility,
   changeTradeType,
   outcomeSelected,
-  setPredictionDetails,
+  setTradeDetails,
   setTradeAmount,
   setMaxAmount,
   toggleAcceptRules,

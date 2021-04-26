@@ -20,6 +20,7 @@ export interface Outcome {
     chartData: any[];
   };
   priceCharts: PriceChart[];
+  shares: number;
 }
 
 export interface Market {
