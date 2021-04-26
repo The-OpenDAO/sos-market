@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 import TradeFormActions from './TradeFormActions';
 import TradeFormCharts from './TradeFormCharts';
+import TradeFormClosed from './TradeFormClosed';
 import TradeFormDetails from './TradeFormDetails';
 import TradeFormInput from './TradeFormInput';
 import TradeFormLiquidity from './TradeFormLiquidity';
@@ -18,6 +19,7 @@ import TradeFormTypeSelector from './TradeFormTypeSelector';
 function TradeForm() {
   const dispatch = useAppDispatch();
   const { id, outcomes } = useAppSelector(state => state.market.market);
+  const marketState = useAppSelector(state => state.market.market.state);
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId
   );
@@ -34,15 +36,18 @@ function TradeForm() {
       <div className="pm-c-trade-form__group" style={{ gap: '1.6rem' }}>
         <TradeFormCharts />
         <TradeFormPredictions />
-        <TradeFormLiquidity />
+        {marketState === 'open' ? <TradeFormLiquidity /> : null}
+        {marketState !== 'open' ? <TradeFormClosed /> : null}
       </div>
-      <div className="pm-c-trade-form__group" style={{ gap: '2.4rem' }}>
-        <TradeFormTypeSelector />
-        <TradeFormInput />
-        <TradeFormDetails />
-        {/* <TradeFormTerms /> */}
-        <TradeFormActions />
-      </div>
+      {marketState === 'open' ? (
+        <div className="pm-c-trade-form__group" style={{ gap: '2.4rem' }}>
+          <TradeFormTypeSelector />
+          <TradeFormInput />
+          <TradeFormDetails />
+          {/* <TradeFormTerms /> */}
+          <TradeFormActions />
+        </div>
+      ) : null}
     </div>
   );
 }
