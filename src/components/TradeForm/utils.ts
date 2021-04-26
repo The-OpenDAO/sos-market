@@ -4,6 +4,7 @@ import { TradeDetails } from 'redux/ducks/trade';
 
 function formatMiniTableItems(
   action,
+  ticker,
   predictions,
   selectedPredictionId,
   selectedMarketId,
@@ -27,7 +28,8 @@ function formatMiniTableItems(
     {
       key: 'pricePerFraction',
       title: 'Price per share',
-      value: `${roundNumber(price || selectedPredictionObj?.price || 0, 3)} ETH`
+      // eslint-disable-next-line prettier/prettier
+      value: `${roundNumber(price || selectedPredictionObj?.price || 0, 3)} ${ticker}`
     },
     {
       key: 'shares',
@@ -50,7 +52,7 @@ function formatMiniTableItems(
     {
       key: 'stake',
       title: 'Total stake',
-      value: `${roundNumber(totalStake, 3)} ETH`
+      value: `${roundNumber(totalStake, 3)} ${ticker}`
     }
   ];
 }
@@ -101,7 +103,7 @@ function calculateEthAmountSold(market, outcome, shares): TradeDetails {
       oppositeShares +
       shares +
       outcome.shares);
-  const price = totalStake / shares || 0;
+  const price = shares > 0 ? totalStake / shares : outcome.price;
 
   // ROI is not relevant on sell
   const maxROI = 1;
