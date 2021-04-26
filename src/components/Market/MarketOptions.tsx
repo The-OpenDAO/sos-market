@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import classNames from 'classnames';
+import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 import { Market, Outcome } from 'models/market';
 import { marketSelected } from 'redux/ducks/market';
 import {
@@ -12,7 +13,6 @@ import { closeTradeForm, openTradeForm } from 'redux/ducks/ui';
 
 import { ArrowDownIcon, ArrowUpIcon } from 'assets/icons';
 
-import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 import MiniAreaChart from '../MiniAreaChart';
@@ -96,11 +96,13 @@ function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
           {marketPriceUp ? <ArrowUpIcon /> : <ArrowDownIcon />}
         </div>
       </div>
-      <MiniAreaChart
-        serie={chartData}
-        color={marketPriceUp ? 'success' : 'danger'}
-        width={48}
-      />
+      <div className="pm-c-market-options__item-chart">
+        <MiniAreaChart
+          serie={chartData}
+          color={marketPriceUp ? 'success' : 'danger'}
+          width={48}
+        />
+      </div>
     </button>
   );
 }

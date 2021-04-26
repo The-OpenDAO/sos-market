@@ -33,6 +33,20 @@
   @include flex-row(center, center);
   gap: 1.6rem;
 
+  width: 100%;
+
+  @include breakpoint-to('sm') {
+    width: auto;
+  }
+
+  li {
+    flex-grow: 1;
+
+    @include breakpoint-to('sm') {
+      flex-grow: 0;
+    }
+  }
+
   &__item {
     cursor: pointer;
     touch-action: manipulation;
@@ -40,6 +54,12 @@
     @include flex-row;
     gap: 2.4rem;
     padding: 1.6rem;
+
+    width: 100%;
+
+    @include breakpoint-to('sm') {
+      width: auto;
+    }
 
     background-color: $gray-900;
     @include border($gray-900);
@@ -52,6 +72,14 @@
 
     &-group {
       @include flex-column(center, flex-start);
+    }
+
+    &-chart {
+      display: none;
+
+      @include breakpoint-to('sm') {
+        display: inline-block;
+      }
     }
 
     &-odd {
