@@ -16,7 +16,7 @@ type ToastVariant = 'danger' | 'warning' | 'success' | 'info';
 
 type ToastProps = {
   variant: ToastVariant;
-  title: string;
+  title?: string;
   description?: string;
   children?: React.ReactNode;
 };

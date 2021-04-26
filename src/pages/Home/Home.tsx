@@ -1,11 +1,13 @@
 import { Tabs, MarketList } from 'components';
 
 import HomeCategories from './HomeCategories';
+import HomeMobileInfo from './HomeMobileInfo';
 
 function Home() {
   return (
-    <div className="home">
-      <div className="home__content">
+    <div className="pm-home">
+      <div className="pm-home__content">
+        <HomeMobileInfo />
         <HomeCategories />
 
         {/* <div className="navigation">

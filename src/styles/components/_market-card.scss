@@ -48,6 +48,7 @@
   }
 
   &__item {
+    pointer-events: none;
     cursor: pointer;
     touch-action: manipulation;
 
@@ -57,7 +58,8 @@
 
     width: 100%;
 
-    @include breakpoint-to('sm') {
+    @include breakpoint-to('md') {
+      pointer-events: all;
       width: auto;
     }
 
