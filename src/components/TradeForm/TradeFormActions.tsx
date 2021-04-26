@@ -119,7 +119,7 @@ function TradeFormActions() {
       {type === 'sell' ? (
         <Button
           size="lg"
-          color="warning"
+          color="danger"
           fullWidth
           onClick={handleSell}
           disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
