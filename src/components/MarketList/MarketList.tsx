@@ -1,14 +1,20 @@
-import isEmpty from 'lodash/isEmpty';
-import { Market } from 'models/market';
+import { useEffect } from 'react';
+
+import { getMarkets } from 'redux/ducks/markets';
+
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 import PredictionCard from '../PredictionCard';
 
-type MarketListProps = {
-  markets: Market[];
-};
+const MarketList = () => {
+  const dispatch = useAppDispatch();
+  const { markets, isLoading, error } = useAppSelector(state => state.markets);
 
-const MarketList = ({ markets }: MarketListProps) => {
-  if (isEmpty(markets)) return null;
+  useEffect(() => {
+    dispatch(getMarkets());
+  }, [dispatch]);
+
+  if (isLoading) return null;
 
   return (
     <ul className="market-list">

@@ -18,9 +18,12 @@
       gap: 0.8rem;
 
       p {
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        hyphens: auto;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        word-break: break-word;
       }
     }
   }
@@ -71,5 +74,12 @@
   &__stats {
     @include flex-row;
     gap: 2.4rem;
+
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include breakpoint-to('lg') {
+      justify-content: flex-start;
+    }
   }
 }
