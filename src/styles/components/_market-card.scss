@@ -18,9 +18,12 @@
       gap: 0.8rem;
 
       p {
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        hyphens: auto;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        word-break: break-word;
       }
     }
   }
@@ -30,13 +33,35 @@
   @include flex-row(center, center);
   gap: 1.6rem;
 
+  width: 100%;
+
+  @include breakpoint-to('sm') {
+    width: auto;
+  }
+
+  li {
+    flex-grow: 1;
+
+    @include breakpoint-to('sm') {
+      flex-grow: 0;
+    }
+  }
+
   &__item {
+    pointer-events: none;
     cursor: pointer;
     touch-action: manipulation;
 
     @include flex-row($align: center);
     gap: 2.4rem;
     padding: 1.6rem;
+
+    width: 100%;
+
+    @include breakpoint-to('md') {
+      pointer-events: all;
+      width: auto;
+    }
 
     background-color: $gray-900;
     @include border($gray-900);
@@ -49,6 +74,14 @@
 
     &-group {
       @include flex-column(center, flex-start);
+    }
+
+    &-chart {
+      display: none;
+
+      @include breakpoint-to('sm') {
+        display: inline-block;
+      }
     }
 
     &-odd {
@@ -71,5 +104,12 @@
   &__stats {
     @include flex-row;
     gap: 2.4rem;
+
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include breakpoint-to('lg') {
+      justify-content: flex-start;
+    }
   }
 }

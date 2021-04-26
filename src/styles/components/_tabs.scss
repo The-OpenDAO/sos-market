@@ -10,11 +10,13 @@
     &--row {
       @extend .tabs__list;
       @include flex-row(flex-start, center);
+      flex-wrap: wrap;
     }
 
     &--column {
       @extend .tabs__list;
       @include flex-column;
+      flex-wrap: wrap;
     }
   }
 

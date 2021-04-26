@@ -4,7 +4,7 @@ import { categories, categoriesDisabled } from './mock';
 
 function HomeCategories() {
   return (
-    <ul className="home__categories">
+    <ul className="pm-home__categories">
       {categories?.map(category => (
         <li key={category.title}>
           <Category

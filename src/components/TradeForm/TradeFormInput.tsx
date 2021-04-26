@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
-import { setTradeAmount, setMaxAmount } from 'redux/ducks/trade';
+import {
+  setTradeAmount,
+  setMaxAmount,
+  setTradeDetails
+} from 'redux/ducks/trade';
 
 import { WalletIcon } from 'assets/icons';
 
@@ -9,6 +13,7 @@ import useCurrency from 'hooks/useCurrency';
 
 import StepSlider from '../StepSlider';
 import Text from '../Text';
+import { calculateTradeDetails } from './utils';
 
 function TradeFormInput() {
   const { name, ticker, icon } = useCurrency();
@@ -27,6 +32,8 @@ function TradeFormInput() {
   // buy and sell have different maxes
   const balance = useAppSelector(state => state.bepro.ethBalance);
   const portfolio = useAppSelector(state => state.bepro.portfolio);
+  const market = useAppSelector(state => state.market.market);
+  const outcome = market.outcomes[selectedOutcomeId];
 
   // TODO: improve this
   const max = useCallback(() => {
@@ -39,7 +46,7 @@ function TradeFormInput() {
     // max for sell actions - number of outcome shares
     else if (type === 'sell') {
       maxAmount =
-        portfolio[selectedMarketId]?.outcomeShares[selectedOutcomeId] || 0;
+        portfolio[selectedMarketId]?.outcomes[selectedOutcomeId]?.shares || 0;
     }
 
     // rounding (down) to 5 decimals
@@ -54,24 +61,32 @@ function TradeFormInput() {
     setAmount(max());
   }, [dispatch, max, type]);
 
+  function changeTradeAmount(value: number) {
+    dispatch(setTradeAmount(value));
+
+    const tradeDetails = calculateTradeDetails(type, market, outcome, value);
+
+    dispatch(setTradeDetails(tradeDetails));
+  }
+
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
     let { value }: any = event.currentTarget;
     value = parseFloat(value) || 0;
 
     setAmount(value);
-    dispatch(setTradeAmount(value));
+    changeTradeAmount(value);
   }
 
   function handleSetMaxAmount() {
     setAmount(max());
-    dispatch(setTradeAmount(max()));
+    changeTradeAmount(max());
   }
 
   function handleChangeSlider(value: number) {
     const percentage = value / 100;
 
     setAmount(max() * percentage);
-    dispatch(setTradeAmount(max() * percentage));
+    changeTradeAmount(max() * percentage);
   }
 
   return (

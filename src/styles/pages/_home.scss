@@ -1,16 +1,44 @@
-.home {
+.pm-home {
   width: 100%;
   margin: 0rem auto;
 
   display: grid;
   grid-template-columns: 1fr auto;
 
-  &__categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    gap: 2rem;
+  &__mobile-info {
+    @include flex-column(center, center);
+    gap: 1.2rem;
 
-    margin: 1.2rem 0rem 2.4rem 0rem;
+    margin: 1.6rem 0rem;
+    padding: 2rem;
+    background-color: rgba($primary-500, 0.2);
+
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.4);
+    border-radius: 0.4rem;
+
+    svg {
+      fill: $primary-300;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    @include breakpoint-to('sm') {
+      display: none;
+    }
+  }
+
+  &__categories {
+    display: none;
+
+    @include breakpoint-to('sm') {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      gap: 2rem;
+
+      margin: 1.2rem 0rem 2.4rem 0rem;
+    }
   }
 
   &__content {

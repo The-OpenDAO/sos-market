@@ -25,7 +25,9 @@ function LiquidityFormActions() {
     undefined
   );
 
-  const acceptedTerms = useAppSelector(state => state.liquidity.acceptedTerms);
+  // terms currently disabled
+  const acceptedTerms = true;
+  const ethAddress = useAppSelector(state => state.bepro.ethAddress);
 
   const [isLoading, setIsLoading] = useState(false);
   const { show, close } = useToastNotification();
@@ -55,6 +57,7 @@ function LiquidityFormActions() {
 
     // triggering cache reload action on api
     new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
     await fetchWallet(dispatch);
@@ -81,6 +84,7 @@ function LiquidityFormActions() {
 
     // triggering cache reload action on api
     new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
     await fetchWallet(dispatch);
@@ -98,8 +102,10 @@ function LiquidityFormActions() {
         <Button
           size="lg"
           color="primary"
+          fullWidth
           onClick={handleAddliquidity}
           disabled={!isValidAmount || !acceptedTerms || isLoading}
+          loading={isLoading}
         >
           Add Liquidity
         </Button>
@@ -109,8 +115,10 @@ function LiquidityFormActions() {
         <Button
           size="lg"
           color="primary"
+          fullWidth
           onClick={handleRemoveLiquidity}
           disabled={!isValidAmount || !acceptedTerms || isLoading}
+          loading={isLoading}
         >
           Remove Liquidity
         </Button>

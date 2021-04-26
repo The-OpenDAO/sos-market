@@ -110,6 +110,28 @@ export default class BeproService {
     return response;
   }
 
+  public async claimWinnings(marketId: string | number) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contract.claimWinnings({
+      marketId
+    });
+
+    return response;
+  }
+
+  public async claimLiquidity(marketId: string | number) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contract.claimLiquidity({
+      marketId
+    });
+
+    return response;
+  }
+
   public async getAddress(): Promise<string> {
     if (this.address) return this.address;
 

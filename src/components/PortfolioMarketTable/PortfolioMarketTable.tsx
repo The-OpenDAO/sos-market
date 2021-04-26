@@ -1,7 +1,12 @@
+import { Link } from 'react-router-dom';
+
 import { roundNumber } from 'helpers/math';
+import { fetchWallet } from 'redux/ducks/bepro';
+import { BeproService } from 'services';
 
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
+import { useAppDispatch } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import { Button } from '../Button';
@@ -13,7 +18,18 @@ type MarketTableProps = {
 };
 
 const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
+  const dispatch = useAppDispatch();
   const { ticker } = useCurrency();
+
+  async function handleClaimWinnings(marketId) {
+    const beproService = new BeproService();
+
+    await beproService.claimWinnings(marketId);
+
+    // updating wallet
+    await fetchWallet(dispatch);
+  }
+
   return (
     <table className="market-table">
       <tbody>
@@ -70,7 +86,7 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
               </td>
               <td id="profit" className="market-table__row-item">
                 <div className="market-table__row-item__group">
-                  {profit.value}
+                  {`${roundNumber(profit.value, 3)} ${ticker}`}
                   <Text
                     className={`market-table__row-item__change--${profit.change.type}`}
                     as="span"
@@ -86,30 +102,74 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
                   </Text>
                 </div>
               </td>
-              <td id="value" className="market-table__row-item">
-                {`${roundNumber(value, 3)} ${ticker}`}
-              </td>
               <td id="shares" className="market-table__row-item">
                 {roundNumber(shares, 3)}
+              </td>
+              <td id="value" className="market-table__row-item">
+                {`${roundNumber(value, 3)} ${ticker}`}
               </td>
               <td id="maxPayout" className="market-table__row-item">
                 {`${roundNumber(maxPayout, 3)} ${ticker}`}
               </td>
               <td id="trade" className="market-table__row-item">
                 {result.type === 'pending' ? (
-                  <Button size="sm" variant="dark" color="default" fullWidth>
-                    Trade
-                  </Button>
+                  <Link to={`/markets/${market.id}`}>
+                    <Button size="sm" variant="dark" color="default" fullWidth>
+                      Trade
+                    </Button>
+                  </Link>
                 ) : null}
-                {result.type === 'won' ? (
-                  <Button size="sm" variant="normal" color="primary" fullWidth>
+                {result.type === 'awaiting_claim' ? (
+                  <Button
+                    size="sm"
+                    variant="normal"
+                    color="primary"
+                    fullWidth
+                    onClick={() => handleClaimWinnings(market.id)}
+                  >
                     Claim Winnings
                   </Button>
                 ) : null}
-                {result.type === 'lost' ? (
-                  <Button size="sm" variant="dark" color="primary" fullWidth>
+                {result.type === 'awaiting_resolution' ? (
+                  <Button
+                    size="sm"
+                    variant="dark"
+                    color="primary"
+                    fullWidth
+                    disabled
+                  >
                     <Text scale="caption" fontWeight="semibold" color="primary">
-                      Claim Winnings
+                      Awaiting Resolution
+                    </Text>
+                  </Button>
+                ) : null}
+                {result.type === 'claimed' ? (
+                  <Button
+                    size="sm"
+                    variant="dark"
+                    color="primary"
+                    fullWidth
+                    disabled
+                  >
+                    <Text scale="caption" fontWeight="semibold" color="primary">
+                      Winnings Claimed
+                    </Text>
+                  </Button>
+                ) : null}
+                {result.type === 'lost' ? (
+                  <Button
+                    size="sm"
+                    variant="dark"
+                    color="danger"
+                    fullWidth
+                    disabled
+                  >
+                    <Text
+                      scale="caption"
+                      fontWeight="semibold"
+                      color="light-gray"
+                    >
+                      Lost
                     </Text>
                   </Button>
                 ) : null}

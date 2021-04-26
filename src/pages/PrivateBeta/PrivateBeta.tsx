@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import isEmpty from 'lodash/isEmpty';
-import { fetchWallet } from 'redux/ducks/bepro';
-import { BeproService } from 'services';
+import * as whitelistService from 'services/Polkamarkets/whitelist';
 
 import { ArrowRightIcon, PolkamarketsIcon } from 'assets/icons';
 
@@ -26,7 +25,6 @@ function PrivateBeta() {
   const [address, setAddress] = useState('');
   const dispatch = useAppDispatch();
   const { show } = useToastNotification();
-  const beproService = new BeproService();
 
   function handleChangeAddress(event: React.ChangeEvent<HTMLInputElement>) {
     const { value } = event.target;
@@ -34,23 +32,23 @@ function PrivateBeta() {
     setAddress(value);
   }
 
-  function handleSubmit() {
-    setWalletAddress(address);
+  async function handleSubmit(event) {
+    // preventing form redirect
+    event.preventDefault();
 
-    // Example:
+    const response = await whitelistService.getWhitelistStatus(address);
+    const { data } = response;
 
-    // if (passApiCheck) {
-    //   setWalletAddress(address);
-    // } else {
-    //   setWrongWallet(true);
-    //   show('wrong-wallet');
-    // }
+    // could be improved but no need for - it's a temporary service
+    if (data?.whitelisted) {
+      setWalletAddress(address);
+      // forcing a browser refresh - routes conditions have changed
+      window.location.reload();
+    } else {
+      setWrongWallet(true);
+      show('wrong-wallet');
+    }
   }
-
-  const handleConnectWallet = async () => {
-    await beproService.login();
-    fetchWallet(dispatch);
-  };
 
   // TODO: Add address validation
   const isValidAddress = !isEmpty(address);

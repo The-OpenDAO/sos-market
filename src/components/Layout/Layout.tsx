@@ -10,15 +10,18 @@ type LayoutProps = {
 
 function Layout({ children }: LayoutProps) {
   return (
-    <div className="wrapper">
-      <Sidebar />
-      <main className="main">
+    <div className="pm-l-layout">
+      <header className="pm-l-layout__header sticky">
+        <div id="alert-notification-portal" />
         <NavBar />
-        <div className="main__group">
-          <section className="vertical-section">{children}</section>
-          <RightSidebar />
-        </div>
-      </main>
+      </header>
+      <nav className="pm-l-layout__nav">
+        <Sidebar />
+      </nav>
+      <main className="pm-l-layout__main">{children}</main>
+      <aside className="pm-l-layout__aside">
+        <RightSidebar />
+      </aside>
     </div>
   );
 }

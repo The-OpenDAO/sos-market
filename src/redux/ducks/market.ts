@@ -18,7 +18,10 @@ const initialState: MarketInitialState = {
     volume: 0,
     shares: 0,
     liquidity: 0,
+    liquidityPrice: 0,
     expiresAt: '',
+    state: 'open',
+    resolvedOutcomeId: -1,
     outcomes: [
       {
         id: '-1',
@@ -29,7 +32,8 @@ const initialState: MarketInitialState = {
           type: '',
           chartData: []
         },
-        priceCharts: []
+        priceCharts: [],
+        shares: 0
       },
       {
         id: '-2',
@@ -40,7 +44,8 @@ const initialState: MarketInitialState = {
           type: '',
           chartData: []
         },
-        priceCharts: []
+        priceCharts: [],
+        shares: 0
       }
     ]
   },

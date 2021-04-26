@@ -14,7 +14,7 @@
     padding: 1.6rem;
     padding-top: 3.2rem;
 
-    @include breakpoint-to('md') {
+    @include breakpoint-to('lg') {
       @include flex-row(space-between, center);
       padding: 1.6rem;
     }

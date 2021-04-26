@@ -1,3 +1,4 @@
+import AlertNotification from './AlertNotification';
 import AmountInput from './AmountInput';
 import AreaChart from './AreaChart';
 import Breadcrumb from './Breadcrumb';
@@ -23,6 +24,7 @@ import MiniAreaChart from './MiniAreaChart';
 import MiniTable from './MiniTable';
 import ModalNotification from './ModalNotification';
 import NavBar from './NavBar';
+import NetworkInfo from './NetworkInfo';
 import PortfolioLiquidityTable from './PortfolioLiquidityTable';
 import PortfolioMarketTable from './PortfolioMarketTable';
 import PredictionCard from './PredictionCard';
@@ -43,6 +45,7 @@ import TradeForm from './TradeForm';
 import WalletInfo from './WalletInfo';
 
 export {
+  AlertNotification,
   AmountInput,
   AreaChart,
   Breadcrumb,
@@ -70,6 +73,7 @@ export {
   MiniTable,
   ModalNotification,
   NavBar,
+  NetworkInfo,
   PortfolioLiquidityTable,
   PortfolioMarketTable,
   PredictionCard,

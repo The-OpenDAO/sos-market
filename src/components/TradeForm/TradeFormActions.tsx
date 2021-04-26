@@ -24,6 +24,7 @@ function TradeFormActions() {
   const acceptOddChanges = useAppSelector(
     state => state.trade.acceptOddChanges
   );
+  const ethAddress = useAppSelector(state => state.bepro.ethAddress);
 
   const [transactionSuccess, setTransactionSuccess] = useState(false);
   const [transactionSuccessHash, setTransactionSuccessHash] = useState(
@@ -59,6 +60,7 @@ function TradeFormActions() {
 
     // triggering cache reload action on api
     new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
     await fetchWallet(dispatch);
@@ -85,13 +87,15 @@ function TradeFormActions() {
 
     // triggering cache reload action on api
     new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
     await fetchWallet(dispatch);
   }
 
   const isValidAmount = amount > 0 && amount <= maxAmount;
-  const hasAcceptedTerms = acceptRules && acceptOddChanges;
+  // terms currently disabled
+  const hasAcceptedTerms = true;
 
   return (
     <div className="pm-c-trade-form-actions">
@@ -104,8 +108,10 @@ function TradeFormActions() {
         <Button
           size="lg"
           color="success"
+          fullWidth
           onClick={handleBuy}
           disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+          loading={isLoading}
         >
           Buy
         </Button>
@@ -114,8 +120,10 @@ function TradeFormActions() {
         <Button
           size="lg"
           color="danger"
+          fullWidth
           onClick={handleSell}
           disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+          loading={isLoading}
         >
           Sell
         </Button>

@@ -1,9 +1,16 @@
+import { roundNumber } from 'helpers/math';
+import { Market, Outcome } from 'models/market';
+import { TradeDetails } from 'redux/ducks/trade';
+
 function formatMiniTableItems(
+  action,
+  ticker,
   predictions,
   selectedPredictionId,
   selectedMarketId,
-  fractionsBought,
-  currentROI,
+  shares,
+  price,
+  maxROI,
   totalStake
 ) {
   const selectedPredictionObj = predictions.find(
@@ -12,7 +19,7 @@ function formatMiniTableItems(
       prediction.marketId === selectedMarketId
   );
 
-  return [
+  const items = [
     {
       key: 'prediction',
       title: 'Prediction',
@@ -21,24 +28,102 @@ function formatMiniTableItems(
     {
       key: 'pricePerFraction',
       title: 'Price per share',
-      value: `${selectedPredictionObj?.price || 0} ETH`
+      // eslint-disable-next-line prettier/prettier
+      value: `${roundNumber(price || selectedPredictionObj?.price || 0, 3)} ${ticker}`
     },
     {
-      key: 'fractionsBought',
-      title: 'Est. Shares bought',
-      value: fractionsBought
-    },
+      key: 'shares',
+      title: action === 'buy' ? 'Est. Shares bought' : 'Shares sold',
+      value: roundNumber(shares, 3)
+    }
+  ];
+
+  if (action === 'sell') return items;
+
+  // adding ROI + stake items to buy action
+
+  return [
+    ...items,
     {
       key: 'roi',
       title: 'Maximum ROI',
-      value: `${currentROI}%`
+      value: `${roundNumber(maxROI, 3)}%`
     },
     {
       key: 'stake',
       title: 'Total stake',
-      value: `${totalStake} ETH`
+      value: `${roundNumber(totalStake, 3)} ${ticker}`
     }
   ];
 }
 
-export default formatMiniTableItems;
+function calculateSharesBought(
+  market: Market,
+  outcome: Outcome,
+  ethAmount: number
+): TradeDetails {
+  // TODO: move formulas to beprojs
+  // eslint-disable-next-line prettier/prettier
+  const newOutcomeShares = market.liquidity ** 2 / (market.liquidity ** 2 / outcome.shares + ethAmount);
+
+  const shares = outcome.shares - newOutcomeShares + ethAmount || 0;
+  const price = ethAmount / shares || 0;
+  const maxROI = shares > 0 ? (1 / price - 1) * 100 : 0;
+  const totalStake = ethAmount;
+  const maxStake = shares - ethAmount;
+
+  return {
+    price,
+    shares,
+    maxROI,
+    totalStake,
+    maxStake
+  };
+}
+
+function calculateEthAmountSold(market, outcome, shares): TradeDetails {
+  // TODO: move formulas to beprojs
+  // x = 1/2 (-sqrt(a^2 - 2 a (y + z) + 4 b + (y + z)^2) + a + y + z)
+  // x = ETH amount user will receive
+  // y = # shares sold
+  // z = # selling shares available
+  // a = # opposite shares available
+  // b = product balance
+  const oppositeShares = market.liquidity ** 2 / outcome.shares;
+
+  const totalStake =
+    (1 / 2) *
+    (-1 *
+      Math.sqrt(
+        oppositeShares ** 2 -
+          2 * oppositeShares * (shares + outcome.shares) +
+          4 * market.liquidity ** 2 +
+          (shares + outcome.shares) ** 2
+      ) +
+      oppositeShares +
+      shares +
+      outcome.shares);
+  const price = shares > 0 ? totalStake / shares : outcome.price;
+
+  // ROI is not relevant on sell
+  const maxROI = 1;
+  const maxStake = 0;
+
+  return {
+    price,
+    shares,
+    maxROI,
+    totalStake,
+    maxStake
+  };
+}
+
+function calculateTradeDetails(action, market, outcome, amount): TradeDetails {
+  if (action === 'sell') {
+    return calculateEthAmountSold(market, outcome, amount);
+  }
+
+  return calculateSharesBought(market, outcome, amount);
+}
+
+export { formatMiniTableItems, calculateTradeDetails };

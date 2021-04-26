@@ -41,8 +41,8 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
     'Outcome',
     'Price (24h)',
     'Profit/Loss',
-    'Value',
     'Shares',
+    'Value',
     'Max. Payout',
     ''
   ];
@@ -52,26 +52,60 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
     market.outcomes.forEach((outcome: Outcome) => {
-      if (portfolio[market.id]?.outcomeShares[outcome.id]) {
+      if (portfolio[market.id]?.outcomes[outcome.id]?.shares) {
+        const priceChart = outcome.priceCharts.find(
+          chart => chart.timeframe === '24h'
+        );
+        const shares = portfolio[market.id]?.outcomes[outcome.id]?.shares;
         const price = {
           value: outcome.price,
           change: {
-            type: 'up',
-            value: 2.8
+            type:
+              !priceChart?.changePercent || priceChart?.changePercent > 0
+                ? 'up'
+                : 'down',
+            value: roundNumber(
+              Math.abs(priceChart?.changePercent || 0) * 100,
+              2
+            )
           }
         };
+        const buyPrice = portfolio[market.id]?.outcomes[outcome.id]?.price;
         const profit = {
-          value: 'TO DO',
+          value: (outcome.price - buyPrice) * shares,
           change: {
-            type: 'down',
-            value: 2.8
+            type: buyPrice <= outcome.price ? 'up' : 'down',
+            // eslint-disable-next-line prettier/prettier
+            value: roundNumber((Math.abs(outcome.price - buyPrice) / buyPrice) * 100, 2)
           }
         };
         const value =
-          portfolio[market.id]?.outcomeShares[outcome.id] * outcome.price;
-        const shares = portfolio[market.id]?.outcomeShares[outcome.id];
-        const maxPayout = portfolio[market.id]?.outcomeShares[outcome.id];
-        const result = { type: 'pending' };
+          portfolio[market.id]?.outcomes[outcome.id]?.shares * outcome.price;
+        const maxPayout = portfolio[market.id]?.outcomes[outcome.id]?.shares;
+        let result = { type: 'pending' };
+        if (market.state === 'closed') {
+          result = { type: 'awaiting_resolution' };
+        } else if (
+          // user holds shares of winning outcome
+          market.state === 'resolved' &&
+          portfolio[market.id]?.claimStatus.winningsToClaim &&
+          !portfolio[market.id]?.claimStatus.winningsClaimed
+        ) {
+          // user already claimed winnings of winning outcome
+          result = { type: 'awaiting_claim' };
+        } else if (
+          // user holds shares of winning outcome
+          market.state === 'resolved' &&
+          portfolio[market.id]?.claimStatus.winningsClaimed
+        ) {
+          result = { type: 'claimed' };
+        } else if (
+          // user holds shares of winning outcome
+          market.state === 'resolved' &&
+          !portfolio[market.id]?.claimStatus.winningsToClaim
+        ) {
+          result = { type: 'lost' };
+        }
 
         rows.push({
           market,
@@ -104,18 +138,36 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
 
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
-    if (portfolio[market.id]?.liquidityShares) {
-      const value = {
-        value: 'TO DO',
-        change: {
-          type: 'down',
-          value: 2.8
-        }
-      };
-      const shares = portfolio[market.id]?.liquidityShares;
+    if (portfolio[market.id]?.liquidity?.shares) {
+      const shares = portfolio[market.id]?.liquidity?.shares;
+      const buyPrice = portfolio[market.id]?.liquidity?.price;
       const poolShare = shares / market.liquidity;
       const feesEarned = 'In Progress';
-      const result = { type: 'pending' };
+      let result = { type: 'pending' };
+      const value = {
+        value: shares * market.liquidityPrice,
+        change: {
+          type: buyPrice <= market.liquidityPrice ? 'up' : 'down',
+          value: Math.abs(market.liquidityPrice - buyPrice) / buyPrice
+        }
+      };
+      if (market.state === 'closed') {
+        result = { type: 'awaiting_resolution' };
+      } else if (
+        // user holds shares of winning outcome
+        market.state === 'resolved' &&
+        portfolio[market.id]?.claimStatus.liquidityToClaim &&
+        !portfolio[market.id]?.claimStatus.liquidityClaimed
+      ) {
+        // user already claimed winnings of winning outcome
+        result = { type: 'awaiting_claim' };
+      } else if (
+        // user holds shares of winning outcome
+        market.state === 'resolved' &&
+        portfolio[market.id]?.claimStatus.liquidityClaimed
+      ) {
+        result = { type: 'claimed' };
+      }
 
       rows.push({
         market,

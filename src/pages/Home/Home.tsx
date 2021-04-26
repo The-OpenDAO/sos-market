@@ -1,24 +1,13 @@
-import { useEffect } from 'react';
-
-import { getMarkets } from 'redux/ducks/markets';
-
 import { Tabs, MarketList } from 'components';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
-
 import HomeCategories from './HomeCategories';
+import HomeMobileInfo from './HomeMobileInfo';
 
 function Home() {
-  const dispatch = useAppDispatch();
-  const { markets, isLoading, error } = useAppSelector(state => state.markets);
-
-  useEffect(() => {
-    dispatch(getMarkets());
-  }, [dispatch]);
-
   return (
-    <div className="home">
-      <div className="home__content">
+    <div className="pm-home">
+      <div className="pm-home__content">
+        <HomeMobileInfo />
         <HomeCategories />
 
         {/* <div className="navigation">
@@ -31,7 +20,7 @@ function Home() {
 
         <Tabs defaultActiveId="open">
           <Tabs.TabPane tab="Open" id="open">
-            <MarketList markets={markets} />
+            <MarketList />
           </Tabs.TabPane>
           <Tabs.TabPane tab="Favorites" id="favorites" />
           <Tabs.TabPane tab="In-Reporting" id="in-reporting" />
