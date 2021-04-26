@@ -13,7 +13,7 @@ function LiquidityForm() {
       <div className="pm-c-liquidity-form__group">
         <LiquidityFormTypeSelector />
         <LiquidityFormInput />
-        <LiquidityFormTerms />
+        {/* <LiquidityFormTerms /> */}
         <LiquidityFormActions />
       </div>
     </div>

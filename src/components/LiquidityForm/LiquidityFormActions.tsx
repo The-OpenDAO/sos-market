@@ -25,7 +25,8 @@ function LiquidityFormActions() {
     undefined
   );
 
-  const acceptedTerms = useAppSelector(state => state.liquidity.acceptedTerms);
+  // terms currently disabled
+  const acceptedTerms = true;
   const ethAddress = useAppSelector(state => state.bepro.ethAddress);
 
   const [isLoading, setIsLoading] = useState(false);

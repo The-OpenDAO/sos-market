@@ -40,7 +40,7 @@ function TradeForm() {
         <TradeFormTypeSelector />
         <TradeFormInput />
         <TradeFormDetails />
-        <TradeFormTerms />
+        {/* <TradeFormTerms /> */}
         <TradeFormActions />
       </div>
     </div>
