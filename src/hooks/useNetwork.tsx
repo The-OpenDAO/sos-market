@@ -7,14 +7,15 @@ declare global {
     ethereum: any;
   }
 }
-export interface Network {
+
+type Network = {
   id: string;
   name: string;
   key: string;
   currency: string;
-}
+};
 
-export const ethereumNetworks = {
+const ethereumNetworks = {
   '0x1': { id: '1', name: 'Ethereum Mainnet', key: 'mainnet', currency: 'ETH' },
   '0x3': { id: '3', name: 'Ropsten Testnet', key: 'ropsten', currency: 'ETH' },
   '0x4': { id: '4', name: 'Rinkeby Testnet', key: 'rinkeby', currency: 'ETH' },
@@ -31,7 +32,15 @@ export const ethereumNetworks = {
     name: 'Moonbase Alpha',
     key: 'moonbase-alpha',
     currency: 'DEV'
-  }
+  },
+  '0x539': { id: '1337', name: 'Local Testnet', key: 'local', currency: 'ETH' }
+};
+
+export const defaultNetwork = (): Network => {
+  const networkId = Number(process.env.REACT_APP_NETWORK_ID) || 42;
+  const networkIdHex = `0x${networkId.toString(16)}`;
+
+  return ethereumNetworks[networkIdHex];
 };
 
 function useNetwork() {
