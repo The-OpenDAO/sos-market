@@ -24,6 +24,7 @@ import MarketsIcon from './MarketsIcon';
 import MediumIcon from './MediumIcon';
 import MetaMaskIcon from './MetaMaskIcon';
 import MetaMaskIconSmall from './MetaMaskIconSmall';
+import MoonbeamIcon from './MoonbeamIcon';
 import PolkadotIcon from './PolkadotIcon';
 import PolkamarketsIcon from './PolkamarketsIcon';
 import PolkamarketsLogo from './PolkamarketsLogo';
@@ -70,6 +71,7 @@ export {
   MediumIcon,
   MetaMaskIcon,
   MetaMaskIconSmall,
+  MoonbeamIcon,
   PolkadotIcon,
   PolkamarketsIcon,
   PolkamarketsLogo,
