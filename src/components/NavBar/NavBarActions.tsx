@@ -8,6 +8,7 @@ import { AddIcon, MetaMaskIcon } from 'assets/icons';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
 import useCurrency from 'hooks/useCurrency';
+import useNetwork from 'hooks/useNetwork';
 
 import AlertNotification from '../AlertNotification';
 import { Button } from '../Button';
@@ -19,6 +20,8 @@ function NavBarActions() {
   const { show } = useAlertNotification();
   const { icon } = useCurrency();
   const dispatch = useAppDispatch();
+  const network = useNetwork();
+
   const beproService = new BeproService();
 
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
@@ -44,7 +47,7 @@ function NavBarActions() {
         description="You’re part of our Beta Testing users. You’re on Kovan Test Network and you’re predicting with test ETH."
       />
 
-      <NetworkInfo network="kovan" />
+      {network ? <NetworkInfo name={network.name} slug={network.key} /> : null}
 
       {walletConnected ? (
         <WalletInfo

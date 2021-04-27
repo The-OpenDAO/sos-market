@@ -1,6 +1,14 @@
 import { ModalNotification, Text } from 'components';
 
+import { ethereumNetworks } from 'hooks/useNetwork';
+
 function WrongNetwork() {
+  // eslint-disable-next-line radix
+  const networkId = `0x${parseInt(
+    process.env.REACT_APP_NETWORK_ID || '42'
+  ).toString(16)}`;
+  const correctNetwork = ethereumNetworks[networkId];
+
   return (
     <div className="pm-wrong-network">
       <ModalNotification visible>
@@ -22,7 +30,8 @@ function WrongNetwork() {
             color="lighter-gray"
             style={{ textAlign: 'center', paddingBottom: '1rem' }}
           >
-            Change your MetaMask to Kovan Test Network
+            Change your MetaMask to
+            {` ${correctNetwork?.name}`}
           </Text>
         </div>
       </ModalNotification>
