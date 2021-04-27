@@ -1,5 +1,7 @@
 import { ModalNotification, Text } from 'components';
 
+import { defaultNetwork } from 'hooks/useNetwork';
+
 function WrongNetwork() {
   return (
     <div className="pm-wrong-network">
@@ -22,7 +24,8 @@ function WrongNetwork() {
             color="lighter-gray"
             style={{ textAlign: 'center', paddingBottom: '1rem' }}
           >
-            Change your MetaMask to Kovan Test Network
+            Change your MetaMask to
+            {` ${defaultNetwork().name}`}
           </Text>
         </div>
       </ModalNotification>

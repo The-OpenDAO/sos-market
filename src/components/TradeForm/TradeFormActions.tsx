@@ -144,7 +144,7 @@ function TradeFormActions() {
                 href={`https://kovan.etherscan.io/tx/${transactionSuccessHash}`}
                 rel="noreferrer"
               >
-                <Button color="success">View on Etherscan</Button>
+                <Button color="success">View on Explorer</Button>
               </a>
               <ButtonText color="white" onClick={() => close(type)}>
                 Dismiss

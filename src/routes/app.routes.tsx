@@ -23,7 +23,7 @@ const AppRoutes = () => {
     !walletConnected || network?.id === REACT_APP_NETWORK_ID;
 
   useEffect(() => {
-    if (isAllowedNetwork) {
+    if (isAllowedNetwork && walletConnected) {
       fetchAditionalData(store.dispatch);
     }
   }, [isAllowedNetwork]);

@@ -66,12 +66,17 @@ const login = async (dispatch: any) => {
 
 const fetchAditionalData = async (dispatch: any) => {
   const beproService = new BeproService();
+  const isLoggedIn = await beproService.isLoggedIn();
 
-  const portfolio = await beproService.getPortfolio();
-  dispatch(changePortfolio(portfolio));
+  if (isLoggedIn) {
+    await beproService.login();
 
-  const actions = await beproService.getActions();
-  dispatch(changeActions(actions));
+    const portfolio = await beproService.getPortfolio();
+    dispatch(changePortfolio(portfolio));
+
+    const actions = await beproService.getActions();
+    dispatch(changeActions(actions));
+  }
 };
 
 export {

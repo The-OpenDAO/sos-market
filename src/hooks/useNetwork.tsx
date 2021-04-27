@@ -11,14 +11,36 @@ declare global {
 type Network = {
   id: string;
   name: string;
+  key: string;
+  currency: string;
 };
 
 const ethereumNetworks = {
-  '0x1': { id: '1', name: 'Ethereum Main Network (Mainnet)' },
-  '0x3': { id: '3', name: 'Ropsten Test Network' },
-  '0x4': { id: '4', name: 'Rinkeby Test Network' },
-  '0x5': { id: '5', name: 'Goerli Test Network' },
-  '0x2a': { id: '42', name: 'Kovan Test Network' }
+  '0x1': { id: '1', name: 'Ethereum Mainnet', key: 'mainnet', currency: 'ETH' },
+  '0x3': { id: '3', name: 'Ropsten Testnet', key: 'ropsten', currency: 'ETH' },
+  '0x4': { id: '4', name: 'Rinkeby Testnet', key: 'rinkeby', currency: 'ETH' },
+  '0x5': { id: '5', name: 'Goerli Testnet', key: 'goerli', currency: 'ETH' },
+  '0x2a': { id: '42', name: 'Kovan Testnet', key: 'kovan', currency: 'ETH' },
+  '0x501': {
+    id: '1281',
+    name: 'Moonbase Local',
+    key: 'moonbase-local',
+    currency: 'DEV'
+  },
+  '0x507': {
+    id: '1287',
+    name: 'Moonbase Alpha',
+    key: 'moonbase-alpha',
+    currency: 'DEV'
+  },
+  '0x539': { id: '1337', name: 'Local Testnet', key: 'local', currency: 'ETH' }
+};
+
+export const defaultNetwork = (): Network => {
+  const networkId = Number(process.env.REACT_APP_NETWORK_ID) || 42;
+  const networkIdHex = `0x${networkId.toString(16)}`;
+
+  return ethereumNetworks[networkIdHex];
 };
 
 function useNetwork() {
@@ -26,22 +48,31 @@ function useNetwork() {
 
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
 
+  function checkNetworkObserver() {
+    window.ethereum?.on('chainChanged', chainId => {
+      setNetwork(ethereumNetworks[chainId]);
+    });
+  }
+
   async function getChainId() {
-    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    const chainId = await window.ethereum?.request({ method: 'eth_chainId' });
 
     setNetwork(ethereumNetworks[chainId]);
   }
 
-  useEffect(() => {
+  async function checkNetwork() {
     if (walletConnected) {
-      getChainId();
-
-      window.ethereum.on('chainChanged', chainId => {
-        setNetwork(ethereumNetworks[chainId]);
-        window.location.reload();
-      });
+      await getChainId();
     }
+  }
+
+  useEffect(() => {
+    checkNetwork();
   }, [walletConnected, setNetwork]);
+
+  useEffect(() => {
+    checkNetworkObserver();
+  }, []);
 
   return network;
 }

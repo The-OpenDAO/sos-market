@@ -71,11 +71,8 @@ const Market = () => {
         color="lighter-gray"
       >
         {`Resolution source: `}
-        <a
-          href="https://www.google.com/finance"
-          className="tiny semibold text-primary"
-        >
-          google.com/finance
+        <a href={market.oracleSource} className="tiny semibold text-primary">
+          {market.oracleSource}
         </a>
       </Text>
       <Tabs defaultActiveId="positions">
