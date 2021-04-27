@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { fetchWallet } from 'redux/ducks/bepro';
+import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { closeLiquidityForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
@@ -60,7 +60,8 @@ function LiquidityFormActions() {
     new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
-    await fetchWallet(dispatch);
+    await login(dispatch);
+    await fetchAditionalData(dispatch);
   }
 
   async function handleRemoveLiquidity() {
@@ -87,7 +88,8 @@ function LiquidityFormActions() {
     new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
-    await fetchWallet(dispatch);
+    await login(dispatch);
+    await fetchAditionalData(dispatch);
   }
 
   const isValidAmount = amount > 0 && amount <= maxAmount;

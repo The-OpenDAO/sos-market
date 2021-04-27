@@ -38,11 +38,12 @@ function useNetwork() {
 
       window.ethereum.on('chainChanged', chainId => {
         setNetwork(ethereumNetworks[chainId]);
+        window.location.reload();
       });
     }
   }, [walletConnected, setNetwork]);
 
-  return { network };
+  return network;
 }
 
 export default useNetwork;

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { fetchWallet } from 'redux/ducks/bepro';
+import { login } from 'redux/ducks/bepro';
 import store from 'redux/store';
 
 import { ScrollToTop } from 'components';
@@ -15,8 +15,7 @@ import reportWebVitals from './reportWebVitals';
 
 import 'styles/main.scss';
 
-// fetching wallet state and sending to dispatcher
-fetchWallet(store.dispatch);
+login(store.dispatch);
 
 const render = () => {
   ReactDOM.render(

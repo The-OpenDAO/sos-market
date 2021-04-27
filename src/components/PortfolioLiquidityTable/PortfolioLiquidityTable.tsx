@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { roundNumber } from 'helpers/math';
-import { fetchWallet } from 'redux/ducks/bepro';
+import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
@@ -27,7 +27,8 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
     await beproService.claimLiquidity(marketId);
 
     // updating wallet
-    await fetchWallet(dispatch);
+    await login(dispatch);
+    await fetchAditionalData(dispatch);
   }
 
   return (

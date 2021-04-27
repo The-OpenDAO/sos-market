@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { fetchWallet } from 'redux/ducks/bepro';
+import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
 import { AddIcon, MetaMaskIcon } from 'assets/icons';
@@ -32,7 +32,8 @@ function NavBarActions() {
 
   const handleConnectWallet = async () => {
     await beproService.login();
-    fetchWallet(dispatch);
+    await login(dispatch);
+    await fetchAditionalData(dispatch);
   };
 
   return (

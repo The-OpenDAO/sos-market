@@ -47,7 +47,7 @@ const {
 } = beproSlice.actions;
 
 // fetching initial wallet details
-const fetchWallet = async (dispatch: any) => {
+const login = async (dispatch: any) => {
   const beproService = new BeproService();
 
   const isLoggedIn = await beproService.isLoggedIn();
@@ -61,13 +61,17 @@ const fetchWallet = async (dispatch: any) => {
 
     const balance = await beproService.getBalance();
     dispatch(changeEthBalance(balance));
-
-    const portfolio = await beproService.getPortfolio();
-    dispatch(changePortfolio(portfolio));
-
-    const actions = await beproService.getActions();
-    dispatch(changeActions(actions));
   }
+};
+
+const fetchAditionalData = async (dispatch: any) => {
+  const beproService = new BeproService();
+
+  const portfolio = await beproService.getPortfolio();
+  dispatch(changePortfolio(portfolio));
+
+  const actions = await beproService.getActions();
+  dispatch(changeActions(actions));
 };
 
 export {
@@ -76,5 +80,6 @@ export {
   changeEthBalance,
   changePortfolio,
   changeActions,
-  fetchWallet
+  login,
+  fetchAditionalData
 };
