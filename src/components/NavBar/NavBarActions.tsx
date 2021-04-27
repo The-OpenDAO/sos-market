@@ -36,7 +36,6 @@ function NavBarActions() {
   const handleConnectWallet = async () => {
     await beproService.login();
     await login(dispatch);
-    await fetchAditionalData(dispatch);
   };
 
   return (
