@@ -36,5 +36,6 @@ export interface Market {
   expiresAt: string;
   state: string;
   resolvedOutcomeId: number;
+  oracleSource: string;
   outcomes: Outcome[];
 }

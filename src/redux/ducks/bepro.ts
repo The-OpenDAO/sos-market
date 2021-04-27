@@ -66,6 +66,7 @@ const login = async (dispatch: any) => {
 
 const fetchAditionalData = async (dispatch: any) => {
   const beproService = new BeproService();
+  await beproService.login();
 
   const portfolio = await beproService.getPortfolio();
   dispatch(changePortfolio(portfolio));

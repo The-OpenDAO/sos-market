@@ -22,6 +22,7 @@ const initialState: MarketInitialState = {
     expiresAt: '',
     state: 'open',
     resolvedOutcomeId: -1,
+    oracleSource: '',
     outcomes: [
       {
         id: '-1',
