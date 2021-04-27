@@ -44,7 +44,7 @@ function NavBarActions() {
       <AlertNotification
         id="beta-testing"
         variant="warning"
-        description="You’re part of our Beta Testing users. You’re on Kovan Test Network and you’re predicting with test ETH."
+        description={`Welcome to Polkamarkets Beta! You’re on ${network?.name} and placing predictions with ${network?.currency}`}
       />
 
       {network ? <NetworkInfo name={network.name} slug={network.key} /> : null}
