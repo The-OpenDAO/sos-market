@@ -1,6 +1,7 @@
 import useAppDispatch from './useAppDispatch';
 import useAppSelector from './useAppSelector';
 import useLocalStorage from './useLocalStorage';
+import useNetwork from './useNetwork';
 import useTheme from './useTheme';
 import useViewport from './useViewport';
 
@@ -9,5 +10,6 @@ export {
   useAppSelector,
   useTheme,
   useViewport,
-  useLocalStorage
+  useLocalStorage,
+  useNetwork
 };
