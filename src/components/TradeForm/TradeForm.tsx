@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import { changePredictionsVisibility, selectOutcome } from 'redux/ducks/trade';
-import { openTradeForm } from 'redux/ducks/ui';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
+import Toast from '../Toast';
 import TradeFormActions from './TradeFormActions';
 import TradeFormCharts from './TradeFormCharts';
-import TradeFormClosed from './TradeFormClosed';
 import TradeFormDetails from './TradeFormDetails';
 import TradeFormInput from './TradeFormInput';
 import TradeFormLiquidity from './TradeFormLiquidity';
@@ -34,20 +32,33 @@ function TradeForm() {
   return (
     <div className="pm-c-trade-form">
       <div className="pm-c-trade-form__group" style={{ gap: '1.6rem' }}>
+        {marketState !== 'open' ? (
+          <Toast
+            variant="warning"
+            description="This market is closed. If you have any winnings to claim please check
+      your portfolio"
+            style={{ padding: '1.6rem', alignItems: 'center' }}
+          />
+        ) : null}
         <TradeFormCharts />
-        <TradeFormPredictions />
-        {marketState === 'open' ? <TradeFormLiquidity /> : null}
-        {marketState !== 'open' ? <TradeFormClosed /> : null}
+        {marketState === 'open' ? (
+          <>
+            <TradeFormPredictions />
+            <TradeFormLiquidity />
+          </>
+        ) : null}
       </div>
-      {marketState === 'open' ? (
-        <div className="pm-c-trade-form__group" style={{ gap: '2.4rem' }}>
-          <TradeFormTypeSelector />
-          <TradeFormInput />
-          <TradeFormDetails />
-          {/* <TradeFormTerms /> */}
-          <TradeFormActions />
-        </div>
-      ) : null}
+      <div className="pm-c-trade-form__group" style={{ gap: '2.4rem' }}>
+        {marketState === 'open' ? (
+          <>
+            <TradeFormTypeSelector />
+            <TradeFormInput />
+            <TradeFormDetails />
+            {/* <TradeFormTerms /> */}
+          </>
+        ) : null}
+        <TradeFormActions />
+      </div>
     </div>
   );
 }

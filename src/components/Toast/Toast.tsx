@@ -18,12 +18,13 @@ type ToastProps = {
   variant: ToastVariant;
   title?: string;
   description?: string;
+  style?: React.CSSProperties;
   children?: React.ReactNode;
 };
 
-function Toast({ variant, title, description, children }: ToastProps) {
+function Toast({ variant, title, description, style, children }: ToastProps) {
   return (
-    <div className={`pm-c-toast--${variant}`}>
+    <div className={`pm-c-toast--${variant}`} style={style}>
       <div className="pm-c-toast__header">
         {icons[variant]}
         <Text scale="body" fontWeight="semibold" color="light">
@@ -32,7 +33,12 @@ function Toast({ variant, title, description, children }: ToastProps) {
       </div>
       <div className="pm-c-toast__body">
         {description ? (
-          <Text scale="caption" fontWeight="medium" color="light">
+          <Text
+            scale="caption"
+            fontWeight="medium"
+            color="light"
+            style={{ textAlign: 'center' }}
+          >
             {description}
           </Text>
         ) : null}

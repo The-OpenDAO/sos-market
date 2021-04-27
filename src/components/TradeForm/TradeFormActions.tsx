@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { selectOutcome } from 'redux/ducks/trade';
@@ -17,6 +18,7 @@ function TradeFormActions() {
   const showCharts = useAppSelector(state => state.trade.showCharts);
   const type = useAppSelector(state => state.trade.type);
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
+  const marketState = useAppSelector(state => state.market.market.state);
   const predictionId = useAppSelector(state => state.trade.selectedOutcomeId);
   const amount = useAppSelector(state => state.trade.amount);
   const maxAmount = useAppSelector(state => state.trade.maxAmount);
@@ -99,6 +101,18 @@ function TradeFormActions() {
   // terms currently disabled
   const hasAcceptedTerms = true;
 
+  if (marketState !== 'open') {
+    return (
+      <div className="pm-c-trade-form-actions">
+        <Link to="/portfolio" style={{ width: 'inherit' }}>
+          <Button color="primary" size="lg" fullWidth>
+            Go to Portfolio
+          </Button>
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="pm-c-trade-form-actions">
       {showCharts ? (
@@ -130,7 +144,6 @@ function TradeFormActions() {
           Sell
         </Button>
       ) : null}
-
       {transactionSuccess && transactionSuccessHash ? (
         <ToastNotification id={type} duration={10000}>
           <Toast
