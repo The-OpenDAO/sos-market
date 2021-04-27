@@ -49,13 +49,13 @@ function useNetwork() {
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
 
   function checkNetworkObserver() {
-    window.ethereum.on('chainChanged', chainId => {
+    window.ethereum?.on('chainChanged', chainId => {
       setNetwork(ethereumNetworks[chainId]);
     });
   }
 
   async function getChainId() {
-    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    const chainId = await window.ethereum?.request({ method: 'eth_chainId' });
 
     setNetwork(ethereumNetworks[chainId]);
   }
