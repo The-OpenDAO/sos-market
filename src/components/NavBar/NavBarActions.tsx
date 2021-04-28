@@ -8,7 +8,7 @@ import { AddIcon, MetaMaskIcon } from 'assets/icons';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
 import useCurrency from 'hooks/useCurrency';
-import useNetwork from 'hooks/useNetwork';
+import useNetwork, { defaultNetwork } from 'hooks/useNetwork';
 
 import AlertNotification from '../AlertNotification';
 import { Button } from '../Button';
@@ -20,7 +20,7 @@ function NavBarActions() {
   const { show } = useAlertNotification();
   const { icon } = useCurrency();
   const dispatch = useAppDispatch();
-  const network = useNetwork();
+  const network = useNetwork() || defaultNetwork();
 
   const beproService = new BeproService();
 
@@ -43,7 +43,7 @@ function NavBarActions() {
       <AlertNotification
         id="beta-testing"
         variant="warning"
-        description={`Welcome to Polkamarkets! You’re on ${network?.name} and placing predictions with ${network?.currency}.`}
+        description={`Welcome to Polkamarkets! You’re on ${network.name} and placing predictions with ${network.currency}.`}
       />
 
       {network ? <NetworkInfo name={network.name} slug={network.key} /> : null}
