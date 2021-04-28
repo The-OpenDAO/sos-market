@@ -38,9 +38,7 @@ const MarketHead = ({
       <img className="market-head__image" alt="market head" src={imageUrl} />
       <div className="market-head__details">
         <Breadcrumb>
-          <Breadcrumb.Item>
-            <Link to={`/${section}`}>{section}</Link>
-          </Breadcrumb.Item>
+          <Breadcrumb.Item>{section}</Breadcrumb.Item>
           <Breadcrumb.Item>{subsection}</Breadcrumb.Item>
         </Breadcrumb>
         <Text as="p" scale="body" fontWeight="medium">

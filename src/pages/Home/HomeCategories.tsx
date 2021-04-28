@@ -9,18 +9,18 @@ function HomeCategories() {
         <li key={category.title}>
           <Category
             title={category.title}
-            route={category.route}
             change={category.change}
             chartData={category.chartData}
             backgroundColor={category.backgroundColor}
           />
         </li>
       ))}
+      {/* disabling disabled categories for testnet
       {categoriesDisabled?.map(category => (
         <li key={category.title}>
           <CategoryDisabled title={category.title} info={category.info} />
         </li>
-      ))}
+      )) */}
     </ul>
   );
 }

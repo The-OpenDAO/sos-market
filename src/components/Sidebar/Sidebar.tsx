@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import classNames from 'classnames';
+import { setFilter } from 'redux/ducks/markets';
 import { openSidebar, closeSidebar } from 'redux/ducks/ui';
 
 import {
@@ -21,9 +22,18 @@ const Sidebar = () => {
   const dispatch = useAppDispatch();
   const collapsed = useAppSelector(state => state.ui.sidebar.collapsed);
   const { markets } = navigationLinks;
+  const filter = useAppSelector(state => state.markets.filter);
 
   function toggleCollapsed() {
     dispatch(collapsed ? openSidebar() : closeSidebar());
+  }
+
+  function handleCategorySelected(title: string) {
+    if (title === filter) {
+      dispatch(setFilter(''));
+    } else {
+      dispatch(setFilter(title));
+    }
   }
 
   return (
@@ -81,9 +91,13 @@ const Sidebar = () => {
           {markets.items?.map(market => (
             <Menu.Item key={market.name} style={{ padding: '1.6rem 0rem' }}>
               <NavLink
-                to={market.to}
+                to="#"
                 className="sidebar__link"
                 activeClassName="sidebar__link active"
+                isActive={(_match, _location) => {
+                  return market.name === filter;
+                }}
+                onClick={() => handleCategorySelected(market.name)}
               >
                 {market.icon}
                 <span
@@ -94,14 +108,19 @@ const Sidebar = () => {
                 >
                   {market.name}
                 </span>
-                <span
-                  className={classNames(
-                    'sidebar__link-counter',
-                    collapsed && 'hidden'
-                  )}
-                >
-                  {market.count}
-                </span>
+                {
+                  // TODO: calculate categories market count
+                  false ? (
+                    <span
+                      className={classNames(
+                        'sidebar__link-counter',
+                        collapsed && 'hidden'
+                      )}
+                    >
+                      {market.count}
+                    </span>
+                  ) : null
+                }
               </NavLink>
             </Menu.Item>
           ))}

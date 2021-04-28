@@ -20,23 +20,40 @@ const categories = [
     },
     backgroundColor: 'pink',
     chartData: generateChartRandomData()
-  }
-];
-
-const categoriesDisabled = [
+  },
   {
     title: 'Sports',
-    info: 'Coming Soon'
+    route: 'sports',
+    change: {
+      type: 'down',
+      amount: 2.58
+    },
+    backgroundColor: 'orange',
+    chartData: generateChartRandomData()
   },
   {
     title: 'Politics',
-    info: 'Coming Soon'
+    route: 'politics',
+    change: {
+      type: 'down',
+      amount: 2.58
+    },
+    backgroundColor: 'green',
+    chartData: generateChartRandomData()
   },
   {
-    title: 'Tech',
-    info: 'Coming Soon'
+    title: 'Weather',
+    route: 'weather',
+    change: {
+      type: 'down',
+      amount: 2.58
+    },
+    backgroundColor: 'blue',
+    chartData: generateChartRandomData()
   }
 ];
+
+const categoriesDisabled = [];
 
 const markets = [
   {

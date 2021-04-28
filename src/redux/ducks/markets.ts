@@ -6,12 +6,14 @@ export interface MarketsIntialState {
   markets: Market[];
   isLoading: boolean;
   error: any;
+  filter: string;
 }
 
 const initialState: MarketsIntialState = {
   markets: [],
   isLoading: false,
-  error: null
+  error: null,
+  filter: ''
 };
 
 const marketsSlice = createSlice({
@@ -27,17 +29,35 @@ const marketsSlice = createSlice({
       markets: action.payload,
       isLoading: false
     }),
-    error: (_state, action) => ({
+    error: (state, action) => ({
+      ...state,
       markets: [],
       isLoading: false,
       error: action.payload
+    }),
+    setFilter: (state, action: PayloadAction<string>) => ({
+      ...state,
+      filter: action.payload
     })
   }
 });
 
 export default marketsSlice.reducer;
 
-const { request, success, error } = marketsSlice.actions;
+const { request, success, error, setFilter } = marketsSlice.actions;
+
+export { setFilter };
+
+export const filteredMarketsSelector = (state: MarketsIntialState) => {
+  const regExpFromFilter = new RegExp(state.filter, 'i');
+
+  return state.markets.filter(
+    ({ category, subcategory, title }) =>
+      category.match(regExpFromFilter) ||
+      subcategory.match(regExpFromFilter) ||
+      title.match(regExpFromFilter)
+  );
+};
 
 export function getMarkets() {
   return async dispatch => {

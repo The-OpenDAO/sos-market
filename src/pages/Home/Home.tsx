@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { getMarkets } from 'redux/ducks/markets';
+import { filteredMarketsSelector, getMarkets } from 'redux/ducks/markets';
 
 import { Tabs, MarketList } from 'components';
 
@@ -11,7 +11,9 @@ import HomeMobileInfo from './HomeMobileInfo';
 
 function Home() {
   const dispatch = useAppDispatch();
-  const { markets } = useAppSelector(state => state.markets);
+  const markets = useAppSelector(state =>
+    filteredMarketsSelector(state.markets)
+  );
 
   const openMarkets = markets.filter(market => market.state === 'open');
   const closedMarkets = markets.filter(market => market.state === 'closed');
