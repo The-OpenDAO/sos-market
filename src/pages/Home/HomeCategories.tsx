@@ -9,7 +9,6 @@ function HomeCategories() {
         <li key={category.title}>
           <Category
             title={category.title}
-            route={category.route}
             change={category.change}
             chartData={category.chartData}
             backgroundColor={category.backgroundColor}
