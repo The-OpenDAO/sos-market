@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import { Market as MarketInterface } from 'models/market';
 
 import Breadcrumb from '../Breadcrumb';
@@ -16,7 +14,7 @@ function Market({ market }: MarketCardProps) {
   return (
     <div className="pm-c-market">
       <div className="pm-c-market__body">
-        <img height={66} width={66} src={imageUrl} alt="" />
+        <img className="pm-c-market__body-image" src={imageUrl} alt="" />
         <div className="pm-c-market__body-details">
           <Breadcrumb>
             <Breadcrumb.Item>{`${category.toLowerCase()}`}</Breadcrumb.Item>
