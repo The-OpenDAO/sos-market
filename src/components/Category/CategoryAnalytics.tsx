@@ -32,12 +32,13 @@ function CategoryAnalytics({
         <Text as="h5" scale="tiny-uppercase" fontWeight="bold" color="white-50">
           {title}
         </Text>
+        {/* disabling change labels at the moment
         {change ? (
           <Label size="lg" color={change.type === 'up' ? 'success' : 'danger'}>
             {change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
             {`${change.amount}%`}
           </Label>
-        ) : null}
+        ) : null} */}
       </div>
       <div className="pm-c-category__body">
         <Text
