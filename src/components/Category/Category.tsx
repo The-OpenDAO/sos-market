@@ -35,6 +35,7 @@ function Category({
           <Text as="label" scale="body" fontWeight="semibold" color="white">
             {title}
           </Text>
+          {/* disabling change labels at the moment
           {change ? (
             <Label
               size="lg"
@@ -43,7 +44,7 @@ function Category({
               {change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
               {`${change.amount}%`}
             </Label>
-          ) : null}
+          ) : null} */}
         </div>
         <div className="pm-c-category__body">
           {chartData ? (

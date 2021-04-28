@@ -14,12 +14,14 @@ const PortfolioChart = () => {
   const holdingsChart = useAppSelector(
     state => state.portfolio.portfolio.holdingsChart
   );
-  const holdingsValue = useAppSelector(
-    state => state.portfolio.portfolio.holdingsValue
+  const { holdingsValue, holdingsPerformance } = useAppSelector(
+    state => state.portfolio.portfolio
   );
   const { ticker } = useCurrency();
 
   const holdingsChartData = fromPriceChartToLineChartSeries(holdingsChart);
+  const holdingsPerformanceColor =
+    holdingsPerformance.change >= 0 ? 'success' : 'danger';
 
   return (
     <div className="portfolio-chart">
@@ -35,12 +37,24 @@ const PortfolioChart = () => {
         <div
           className={`portfolio-chart__header-change--${balance.change.type}`}
         >
-          <Label color={balance.change.type === 'up' ? 'success' : 'danger'}>
-            {balance.change.type === 'up' ? <CaretUpIcon /> : <CaretDownIcon />}
-            {`${balance.change.percentage}%`}
+          <Label color={holdingsPerformanceColor}>
+            {holdingsPerformance.change >= 0 ? (
+              <CaretUpIcon />
+            ) : (
+              <CaretDownIcon />
+            )}
+            {`${roundNumber(
+              Math.abs(holdingsPerformance.changePercent) * 100,
+              2
+            )}%`}
           </Label>
-          <Text as="span" scale="body" fontWeight="semibold" color="success">
-            {`${balance.change.amount} ${ticker}`}
+          <Text
+            as="span"
+            scale="body"
+            fontWeight="semibold"
+            color={holdingsPerformanceColor}
+          >
+            {`${roundNumber(holdingsPerformance.change, 3)} ${ticker}`}
           </Text>
         </div>
       </div>

@@ -43,7 +43,7 @@ function NavBarActions() {
       <AlertNotification
         id="beta-testing"
         variant="warning"
-        description={`Welcome to Polkamarkets Beta! You’re on ${network?.name} and placing predictions with ${network?.currency}`}
+        description={`Welcome to Polkamarkets! You’re on ${network?.name} and placing predictions with ${network?.currency}.`}
       />
 
       {network ? <NetworkInfo name={network.name} slug={network.key} /> : null}
@@ -69,7 +69,7 @@ function NavBarActions() {
           className="button-normal--default pm-c-navbar__actions-create-market"
           aria-label="Create market"
           target="_blank"
-          href="https://www.google.com/forms/about"
+          href="https://docs.google.com/forms/d/1WA_WQ3Ma6iXr1HExs541cmquoI4n3SysI_DGuDyrRVQ/"
           rel="noreferrer"
         >
           <AddIcon />

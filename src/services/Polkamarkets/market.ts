@@ -2,8 +2,8 @@ import { Market } from 'models/market';
 
 import api, { polkamarketsApiUrl } from './api';
 
-async function getMarket(marketId: string) {
-  const url = `${polkamarketsApiUrl}/markets/${marketId}`;
+async function getMarket(marketSlug: string) {
+  const url = `${polkamarketsApiUrl}/markets/${marketSlug}`;
   return api.get<Market>(url);
 }
 
@@ -12,8 +12,8 @@ async function getMarkets() {
   return api.get<Market[]>(url);
 }
 
-async function reloadMarket(marketId: string) {
-  const url = `${polkamarketsApiUrl}/markets/${marketId}/reload`;
+async function reloadMarket(marketSlug: string) {
+  const url = `${polkamarketsApiUrl}/markets/${marketSlug}/reload`;
   return api.post(url);
 }
 

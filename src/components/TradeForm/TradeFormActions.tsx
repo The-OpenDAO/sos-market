@@ -19,6 +19,7 @@ function TradeFormActions() {
   const type = useAppSelector(state => state.trade.type);
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
   const marketState = useAppSelector(state => state.market.market.state);
+  const marketSlug = useAppSelector(state => state.market.market.slug);
   const predictionId = useAppSelector(state => state.trade.selectedOutcomeId);
   const amount = useAppSelector(state => state.trade.amount);
   const maxAmount = useAppSelector(state => state.trade.maxAmount);
@@ -61,7 +62,7 @@ function TradeFormActions() {
     }
 
     // triggering cache reload action on api
-    new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadMarket(marketSlug);
     new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
@@ -89,7 +90,7 @@ function TradeFormActions() {
     }
 
     // triggering cache reload action on api
-    new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadMarket(marketSlug);
     new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
