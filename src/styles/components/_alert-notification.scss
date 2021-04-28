@@ -13,6 +13,10 @@
   &__actions {
     @include flex-row(flex-end, center);
   }
+
+  a {
+    color: $gray-500;
+  }
 }
 
 .pm-c-alert-notification--warning {

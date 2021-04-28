@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import { createPortal } from 'react-dom';
+import { Link } from 'react-router-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -43,6 +45,13 @@ function AlertNotification({
               {icons[variant]}
               <Text as="p" scale="tiny" fontWeight="semibold" color="white">
                 {description}
+              </Text>
+              <Text as="p" scale="tiny" fontWeight="semibold" color="white">
+                {'Your '}
+                <Link target="_blank" to="//discord.gg/dfnvfHspe4">
+                  feedback
+                </Link>
+                {' is highly appreciated 🎉'}
               </Text>
             </div>
             <div className="pm-c-alert-notification__actions">

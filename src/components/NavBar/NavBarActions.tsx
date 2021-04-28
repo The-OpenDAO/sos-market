@@ -43,7 +43,7 @@ function NavBarActions() {
       <AlertNotification
         id="beta-testing"
         variant="warning"
-        description={`Welcome to Polkamarkets Beta! You’re on ${network?.name} and placing predictions with ${network?.currency}`}
+        description={`Welcome to Polkamarkets! You’re on ${network?.name} and placing predictions with ${network?.currency}.`}
       />
 
       {network ? <NetworkInfo name={network.name} slug={network.key} /> : null}
