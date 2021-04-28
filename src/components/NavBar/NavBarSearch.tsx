@@ -1,8 +1,14 @@
+import { setFilter } from 'redux/ducks/markets';
+
+import { useAppDispatch } from 'hooks';
+
 import SearchBar from '../SearchBar';
 
 function NavBarSearch() {
+  const dispatch = useAppDispatch();
+
   function handleSearch(text: string) {
-    return text;
+    dispatch(setFilter(text));
   }
 
   return (
