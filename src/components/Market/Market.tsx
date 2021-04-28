@@ -19,9 +19,7 @@ function Market({ market }: MarketCardProps) {
         <img height={66} width={66} src={imageUrl} alt="" />
         <div className="pm-c-market__body-details">
           <Breadcrumb>
-            <Breadcrumb.Item>
-              <Link to={`/${category.toLowerCase()}`}>{category}</Link>
-            </Breadcrumb.Item>
+            <Breadcrumb.Item>{`${category.toLowerCase()}`}</Breadcrumb.Item>
             <Breadcrumb.Item>{subcategory}</Breadcrumb.Item>
           </Breadcrumb>
           <Text as="p" scale="body" fontWeight="medium" color="light">
