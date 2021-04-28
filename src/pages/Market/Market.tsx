@@ -32,7 +32,12 @@ const Market = () => {
     dispatch(openTradeForm());
   }, [dispatch, marketId]);
 
-  if (!market || isLoading) return null;
+  if (!market || market.id === '' || isLoading)
+    return (
+      <div className="pm-market__loading">
+        <span className="spinner--primary" />
+      </div>
+    );
 
   const marketLastWeek = generateMarketChartRandomData(10);
   const tableItems = formatMarketActions(

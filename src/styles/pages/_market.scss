@@ -34,3 +34,10 @@
     }
   }
 }
+
+.pm-market__loading {
+  @include flex-column(center, center);
+
+  height: 100%;
+  width: 100%;
+}
