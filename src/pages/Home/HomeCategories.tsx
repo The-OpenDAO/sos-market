@@ -15,11 +15,12 @@ function HomeCategories() {
           />
         </li>
       ))}
+      {/* disabling disabled categories for testnet
       {categoriesDisabled?.map(category => (
         <li key={category.title}>
           <CategoryDisabled title={category.title} info={category.info} />
         </li>
-      ))}
+      )) */}
     </ul>
   );
 }

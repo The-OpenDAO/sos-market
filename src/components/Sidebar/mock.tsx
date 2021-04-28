@@ -17,10 +17,10 @@ const navigationLinks = {
     title: 'Markets',
     items: [
       {
-        name: 'Sports',
-        count: 68,
-        icon: <SoccerBallIcon />,
-        to: 'sports'
+        name: 'Crypto',
+        count: 27,
+        icon: <BitcoinIcon />,
+        to: 'crypto'
       },
       {
         name: 'Gaming',
@@ -29,22 +29,16 @@ const navigationLinks = {
         to: 'gaming'
       },
       {
+        name: 'Sports',
+        count: 68,
+        icon: <SoccerBallIcon />,
+        to: 'sports'
+      },
+      {
         name: 'Politics',
         count: 39,
         icon: <WhiteHouseIcon />,
         to: 'politics'
-      },
-      {
-        name: 'Finance',
-        count: 27,
-        icon: <ChartGrowthIcon />,
-        to: 'finance'
-      },
-      {
-        name: 'Crypto',
-        count: 27,
-        icon: <BitcoinIcon />,
-        to: 'crypto'
       },
       {
         name: 'Weather',
