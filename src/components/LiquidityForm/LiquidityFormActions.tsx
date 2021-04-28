@@ -17,6 +17,7 @@ function LiquidityFormActions() {
     state => state.liquidity.transactionType
   );
   const marketId = useAppSelector(state => state.market.market.id);
+  const marketSlug = useAppSelector(state => state.market.market.slug);
   const amount = useAppSelector(state => state.liquidity.amount);
   const maxAmount = useAppSelector(state => state.liquidity.maxAmount);
 
@@ -56,7 +57,7 @@ function LiquidityFormActions() {
     }
 
     // triggering cache reload action on api
-    new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadMarket(marketSlug);
     new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet
@@ -84,7 +85,7 @@ function LiquidityFormActions() {
     }
 
     // triggering cache reload action on api
-    new PolkamarketsApiService().reloadMarket(marketId);
+    new PolkamarketsApiService().reloadMarket(marketSlug);
     new PolkamarketsApiService().reloadPortfolio(ethAddress);
 
     // updating wallet

@@ -20,7 +20,7 @@ function PredictionCard({ market }: PredictionCardProps) {
   const dispatch = useAppDispatch();
   const { ticker } = useCurrency();
 
-  const { id } = market;
+  const { slug } = market;
 
   function handleNavigation() {
     dispatch(openTradeForm());
@@ -31,7 +31,7 @@ function PredictionCard({ market }: PredictionCardProps) {
   return (
     <div className="prediction-card">
       <div className="prediction-card__body">
-        <Link to={`/markets/${id}`} onClick={handleNavigation}>
+        <Link to={`/markets/${slug}`} onClick={handleNavigation}>
           <Market market={market} />
         </Link>
         <Market.Options market={market} />

@@ -11,6 +11,7 @@ export interface MarketInitialState {
 const initialState: MarketInitialState = {
   market: {
     id: '',
+    slug: '',
     category: '',
     subcategory: '',
     imageUrl: '',
@@ -112,11 +113,11 @@ const { request, success, error, marketSelected } = marketSlice.actions;
 
 export { marketSelected };
 
-export function getMarket(marketId: string) {
+export function getMarket(marketSlug: string) {
   return async dispatch => {
     dispatch(request());
     try {
-      const response = await marketService.getMarket(marketId);
+      const response = await marketService.getMarket(marketSlug);
       const { data } = response;
       dispatch(success(data));
     } catch (err) {

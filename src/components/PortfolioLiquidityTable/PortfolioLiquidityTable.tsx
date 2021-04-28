@@ -83,7 +83,7 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
               </td>
               <td id="trade" className="market-table__row-item">
                 {result.type === 'pending' ? (
-                  <Link to={`/markets/${market.id}`}>
+                  <Link to={`/markets/${market.slug}`}>
                     <Button size="sm" variant="dark" color="default" fullWidth>
                       Trade
                     </Button>

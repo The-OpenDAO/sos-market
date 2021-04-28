@@ -25,6 +25,7 @@ export interface Outcome {
 
 export interface Market {
   id: string;
+  slug: string;
   category: string;
   subcategory: string;
   imageUrl: string;
