@@ -5,8 +5,15 @@
     @include breakpoint-to('md') {
       @include flex-row;
     }
-
     gap: 2.4rem;
+
+    &-image {
+      object-fit: cover;
+      border-radius: 50%;
+
+      height: 6.4rem;
+      width: 6.4rem;
+    }
 
     &-details {
       @include flex-column(center, center);
