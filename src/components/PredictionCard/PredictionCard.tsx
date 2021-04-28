@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { Market as MarketInterface } from 'models/market';
+import { clearMarket } from 'redux/ducks/market';
 import {
   changeChartsVisibility,
   changePredictionsVisibility
@@ -23,6 +24,7 @@ function PredictionCard({ market }: PredictionCardProps) {
   const { slug } = market;
 
   function handleNavigation() {
+    dispatch(clearMarket());
     dispatch(openTradeForm());
     dispatch(changeChartsVisibility(false));
     dispatch(changePredictionsVisibility(true));
