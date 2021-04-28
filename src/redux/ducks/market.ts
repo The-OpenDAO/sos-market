@@ -103,15 +103,25 @@ const marketSlice = createSlice({
           }
         };
       }
-    }
+    },
+    clearMarket: state => ({
+      ...state,
+      market: initialState.market
+    })
   }
 });
 
 export default marketSlice.reducer;
 
-const { request, success, error, marketSelected } = marketSlice.actions;
+const {
+  request,
+  success,
+  error,
+  marketSelected,
+  clearMarket
+} = marketSlice.actions;
 
-export { marketSelected };
+export { marketSelected, clearMarket };
 
 export function getMarket(marketSlug: string) {
   return async dispatch => {
