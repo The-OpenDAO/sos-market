@@ -3,10 +3,15 @@ export interface HoldingsChartPoint {
   timestamp: number;
   date: string;
 }
+export interface HoldingsPerformance {
+  change: number;
+  changePercent: number;
+}
 
 export interface Portfolio {
   address: string;
   holdingsValue: number;
+  holdingsPerformance: HoldingsPerformance;
   holdingsChart: HoldingsChartPoint[];
   closedMarketsProfit: number;
   openPositions: number;

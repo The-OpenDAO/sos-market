@@ -12,6 +12,10 @@ const initialState: PortfolioInitialState = {
   portfolio: {
     address: '',
     holdingsValue: 0,
+    holdingsPerformance: {
+      change: 0,
+      changePercent: 0
+    },
     closedMarketsProfit: 0,
     openPositions: 0,
     liquidityProvided: 0,
