@@ -1,18 +1,9 @@
-import { useEffect } from 'react';
-
-import { getMarkets } from 'redux/ducks/markets';
-
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppSelector } from 'hooks';
 
 import PredictionCard from '../PredictionCard';
 
-const MarketList = () => {
-  const dispatch = useAppDispatch();
-  const { markets, isLoading, error } = useAppSelector(state => state.markets);
-
-  useEffect(() => {
-    dispatch(getMarkets());
-  }, [dispatch]);
+const MarketList = ({ markets }) => {
+  const { isLoading, error } = useAppSelector(state => state.markets);
 
   if (isLoading) return null;
 
