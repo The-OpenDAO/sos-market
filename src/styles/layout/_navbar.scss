@@ -6,6 +6,8 @@
   background-color: $background-dark;
   transition: background-color 0.3s ease 0s;
 
+  border-bottom: 1px solid $gray-700;
+
   &__icon {
     zoom: 1;
 
