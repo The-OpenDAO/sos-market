@@ -218,9 +218,12 @@
 }
 
 .pm-c-trade-form-details {
-  @include flex-column;
+  @include flex-column($justify: flex-end);
 
   width: 100%;
+
+  // Added this height to make the form stay on the same position in either buy or sell tabs.
+  height: 14.4rem;
 }
 
 .pm-c-trade-form-terms {
