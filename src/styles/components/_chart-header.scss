@@ -10,6 +10,7 @@
     &-item {
       @extend %button;
       padding: 0.4rem 0.8rem;
+      min-width: 4.5rem;
 
       @extend .caption, .bold;
       color: $gray-500;
