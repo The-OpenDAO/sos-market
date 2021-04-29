@@ -7,10 +7,15 @@
     @include flex-row;
     gap: 0.8rem;
 
+    width: 100%;
+    place-content: space-between;
+
     &-item {
       @extend %button;
       padding: 0.4rem 0.8rem;
       min-width: 4.5rem;
+
+      width: 100%;
 
       @extend .caption, .bold;
       color: $gray-500;
