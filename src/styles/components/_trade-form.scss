@@ -177,14 +177,12 @@
       border: none;
       border-radius: 0.4rem;
 
-      transition: background-color 0.3s ease;
-
       > span {
         color: $gray-300;
       }
 
       &:hover {
-        background-color: $gray-700;
+        background-color: $gray-600;
 
         > span {
           color: $gray-100;
