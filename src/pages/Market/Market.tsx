@@ -61,12 +61,7 @@ const Market = () => {
       />
       <div className="market-page__stats">
         <MarketChart />
-        <MarketStats
-          price={2.55}
-          dayChangePercentage={10}
-          weekChangePercentage={2}
-          lastWeekPrices={marketLastWeek}
-        />
+        <MarketStats market={market} />
       </div>
       <Text
         as="p"
