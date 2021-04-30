@@ -13,6 +13,10 @@
   width: fit-content;
   height: calc(100vh - #{$height-navbar + $height-mini-alert});
 
+  @include respond-below(lg) {
+    height: auto;
+  }
+
   padding: 2.4rem 2.4rem 2.4rem 0;
 
   overflow-y: auto;
