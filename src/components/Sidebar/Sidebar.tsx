@@ -54,6 +54,10 @@ const Sidebar = () => {
               to="/home"
               className="sidebar__link--lg"
               activeClassName="sidebar__link--lg active"
+              isActive={(_match, location) => {
+                return location.pathname === '/home' && filter === '';
+              }}
+              onClick={() => handleCategorySelected('')}
             >
               <MarketsIcon />
               <span
@@ -91,11 +95,13 @@ const Sidebar = () => {
           {markets.items?.map(market => (
             <Menu.Item key={market.name} style={{ padding: '1.6rem 0rem' }}>
               <NavLink
-                to="#"
+                to="/home"
                 className="sidebar__link"
                 activeClassName="sidebar__link active"
-                isActive={(_match, _location) => {
-                  return market.name === filter;
+                isActive={(_match, location) => {
+                  return (
+                    location.pathname === '/home' && market.name === filter
+                  );
                 }}
                 onClick={() => handleCategorySelected(market.name)}
               >
