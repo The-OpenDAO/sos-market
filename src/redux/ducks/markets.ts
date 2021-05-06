@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Category } from 'models/category';
 import { Market } from 'models/market';
 import * as marketService from 'services/Polkamarkets/market';
 
@@ -48,8 +49,19 @@ const { request, success, error, setFilter } = marketsSlice.actions;
 
 export { setFilter };
 
-export const filteredMarketsSelector = (state: MarketsIntialState) => {
+export const filteredMarketsSelector = (
+  state: MarketsIntialState,
+  categories: Category[]
+) => {
   const regExpFromFilter = new RegExp(state.filter, 'i');
+  const regExpFullFilter = new RegExp(`^${state.filter}$`, 'i');
+
+  if (categories.some(category => category.title.match(regExpFullFilter))) {
+    // filter fully matches category, filtering by category
+    return state.markets.filter(({ category }) =>
+      category.match(regExpFullFilter)
+    );
+  }
 
   return state.markets.filter(
     ({ category, subcategory, title }) =>
