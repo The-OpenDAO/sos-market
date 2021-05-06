@@ -5,14 +5,16 @@ import { filteredMarketsSelector, getMarkets } from 'redux/ducks/markets';
 import { Tabs, MarketList } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
+import useCategories from 'hooks/useCategories';
 
 import HomeCategories from './HomeCategories';
 import HomeMobileInfo from './HomeMobileInfo';
 
 function Home() {
   const dispatch = useAppDispatch();
+  const categories = useCategories();
   const markets = useAppSelector(state =>
-    filteredMarketsSelector(state.markets)
+    filteredMarketsSelector(state.markets, categories)
   );
 
   const openMarkets = markets.filter(market => market.state === 'open');
