@@ -12,17 +12,18 @@ import {
 } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
+import useCategories from 'hooks/useCategories';
 
 import { Button } from '../Button';
 import Menu from '../Menu';
 import Text from '../Text';
-import { navigationLinks, footerLinks } from './mock';
+import { footerLinks } from './mock';
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
   const collapsed = useAppSelector(state => state.ui.sidebar.collapsed);
-  const { markets } = navigationLinks;
   const filter = useAppSelector(state => state.markets.filter);
+  const categories = useCategories();
 
   function toggleCollapsed() {
     dispatch(collapsed ? openSidebar() : closeSidebar());
@@ -92,27 +93,27 @@ const Sidebar = () => {
         <hr className="sidebar__separator" />
 
         <Menu direction="column">
-          {markets.items?.map(market => (
-            <Menu.Item key={market.name} style={{ padding: '1.6rem 0rem' }}>
+          {categories?.map(category => (
+            <Menu.Item key={category.title} style={{ padding: '1.6rem 0rem' }}>
               <NavLink
                 to="/home"
                 className="sidebar__link"
                 activeClassName="sidebar__link active"
                 isActive={(_match, location) => {
                   return (
-                    location.pathname === '/home' && market.name === filter
+                    location.pathname === '/home' && category.title === filter
                   );
                 }}
-                onClick={() => handleCategorySelected(market.name)}
+                onClick={() => handleCategorySelected(category.title)}
               >
-                {market.icon}
+                {category.icon}
                 <span
                   className={classNames(
                     'sidebar__link-title',
                     collapsed && 'hidden'
                   )}
                 >
-                  {market.name}
+                  {category.title}
                 </span>
                 {
                   // TODO: calculate categories market count
@@ -123,7 +124,7 @@ const Sidebar = () => {
                         collapsed && 'hidden'
                       )}
                     >
-                      {market.count}
+                      {123}
                     </span>
                   ) : null
                 }
