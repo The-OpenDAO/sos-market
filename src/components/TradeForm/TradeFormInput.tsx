@@ -66,14 +66,18 @@ function TradeFormInput() {
     return roundDown(maxAmount);
   }, [type, balance, portfolio, selectedMarketId, selectedOutcomeId]);
 
-  const [amount, setAmount] = useState<number | undefined>(max());
+  const [amount, setAmount] = useState<number | undefined>(0);
   const [stepAmount, setStepAmount] = useState<number>(0);
 
   useEffect(() => {
     dispatch(setMaxAmount(max()));
-    dispatch(setTradeAmount(max()));
-    setAmount(max());
   }, [dispatch, max, type]);
+
+  useEffect(() => {
+    dispatch(setTradeAmount(0));
+    setAmount(0);
+    setStepAmount(0);
+  }, [dispatch, type]);
 
   function changeTradeAmount(value: number) {
     dispatch(setTradeAmount(value));
