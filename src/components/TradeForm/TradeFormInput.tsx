@@ -42,6 +42,8 @@ function TradeFormInput() {
   const market = useAppSelector(state => state.market.market);
   const outcome = market.outcomes[selectedOutcomeId];
 
+  const roundDown = (value: number) => Math.floor(value * 1e5) / 1e5;
+
   // TODO: improve this
   const max = useCallback(() => {
     let maxAmount = 0;
@@ -57,7 +59,7 @@ function TradeFormInput() {
     }
 
     // rounding (down) to 5 decimals
-    return Math.floor(maxAmount * 1e5) / 1e5;
+    return roundDown(maxAmount);
   }, [type, balance, portfolio, selectedMarketId, selectedOutcomeId]);
 
   const [amount, setAmount] = useState<number | undefined>(max());
@@ -85,15 +87,19 @@ function TradeFormInput() {
   }
 
   function handleSetMaxAmount() {
-    setAmount(max());
-    changeTradeAmount(max());
+    const newMax = max();
+
+    setAmount(newMax);
+    changeTradeAmount(newMax);
   }
 
   function handleChangeSlider(value: number) {
     const percentage = value / 100;
 
-    setAmount(max() * percentage);
-    changeTradeAmount(max() * percentage);
+    const newAmount = roundDown(max() * percentage);
+
+    setAmount(newAmount);
+    changeTradeAmount(newAmount);
   }
 
   return (
