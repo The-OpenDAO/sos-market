@@ -48,26 +48,32 @@ function TradeFormActions() {
 
     const beproService = new BeproService();
 
-    // performing buy action on smart contract
     setIsLoading(true);
-    const response = await beproService.buy(marketId, predictionId, amount);
-    setIsLoading(false);
 
-    const { status, transactionHash } = response;
+    try {
+      // performing buy action on smart contract
+      const response = await beproService.buy(marketId, predictionId, amount);
 
-    if (status && transactionHash) {
-      setTransactionSuccess(status);
-      setTransactionSuccessHash(transactionHash);
-      show(type);
+      setIsLoading(false);
+
+      const { status, transactionHash } = response;
+
+      if (status && transactionHash) {
+        setTransactionSuccess(status);
+        setTransactionSuccessHash(transactionHash);
+        show(type);
+      }
+
+      // triggering cache reload action on api
+      new PolkamarketsApiService().reloadMarket(marketSlug);
+      new PolkamarketsApiService().reloadPortfolio(ethAddress);
+
+      // updating wallet
+      await login(dispatch);
+      await fetchAditionalData(dispatch);
+    } catch (error) {
+      setIsLoading(false);
     }
-
-    // triggering cache reload action on api
-    new PolkamarketsApiService().reloadMarket(marketSlug);
-    new PolkamarketsApiService().reloadPortfolio(ethAddress);
-
-    // updating wallet
-    await login(dispatch);
-    await fetchAditionalData(dispatch);
   }
 
   async function handleSell() {
@@ -76,26 +82,32 @@ function TradeFormActions() {
 
     const beproService = new BeproService();
 
-    // performing sell action on smart contract
     setIsLoading(true);
-    const response = await beproService.sell(marketId, predictionId, amount);
-    setIsLoading(false);
 
-    const { status, transactionHash } = response;
+    try {
+      // performing sell action on smart contract
+      const response = await beproService.sell(marketId, predictionId, amount);
 
-    if (status && transactionHash) {
-      setTransactionSuccess(status);
-      setTransactionSuccessHash(transactionHash);
-      show(type);
+      setIsLoading(false);
+
+      const { status, transactionHash } = response;
+
+      if (status && transactionHash) {
+        setTransactionSuccess(status);
+        setTransactionSuccessHash(transactionHash);
+        show(type);
+      }
+
+      // triggering cache reload action on api
+      new PolkamarketsApiService().reloadMarket(marketSlug);
+      new PolkamarketsApiService().reloadPortfolio(ethAddress);
+
+      // updating wallet
+      await login(dispatch);
+      await fetchAditionalData(dispatch);
+    } catch (error) {
+      setIsLoading(false);
     }
-
-    // triggering cache reload action on api
-    new PolkamarketsApiService().reloadMarket(marketSlug);
-    new PolkamarketsApiService().reloadPortfolio(ethAddress);
-
-    // updating wallet
-    await login(dispatch);
-    await fetchAditionalData(dispatch);
   }
 
   const isValidAmount = amount > 0 && amount <= maxAmount;
