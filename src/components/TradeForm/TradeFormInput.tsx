@@ -79,20 +79,18 @@ function TradeFormInput() {
     setStepAmount(0);
   }, [dispatch, type]);
 
-  function changeTradeAmount(value: number) {
-    dispatch(setTradeAmount(value));
-
-    const tradeDetails = calculateTradeDetails(type, market, outcome, value);
+  useEffect(() => {
+    const tradeDetails = calculateTradeDetails(type, market, outcome, amount);
 
     dispatch(setTradeDetails(tradeDetails));
-  }
+  }, [dispatch, type, market, outcome, amount]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
     const { value } = event.currentTarget;
     const newAmount = value ? parseFloat(value) : undefined;
 
     setAmount(newAmount);
-    changeTradeAmount(newAmount || 0);
+    dispatch(setTradeAmount(newAmount || 0));
     setStepAmount(100 * ((newAmount || 0) / max()));
   }
 
@@ -100,7 +98,7 @@ function TradeFormInput() {
     const newMax = max();
 
     setAmount(newMax);
-    changeTradeAmount(newMax);
+    dispatch(setTradeAmount(newMax));
     setStepAmount(100);
   }
 
@@ -110,7 +108,7 @@ function TradeFormInput() {
     const newAmount = roundDown(max() * percentage);
 
     setAmount(newAmount);
-    changeTradeAmount(newAmount);
+    dispatch(setTradeAmount(newAmount));
     setStepAmount(value);
   }
 
