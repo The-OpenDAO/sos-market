@@ -25,7 +25,11 @@ function TradeFormInput() {
   const inputEl = useRef<HTMLInputElement>(null);
 
   if (!isNull(inputEl.current)) {
-    inputEl.current.addEventListener('wheel', event => event.stopPropagation());
+    inputEl.current.addEventListener(
+      'wheel',
+      event => event.stopPropagation(),
+      { passive: true }
+    );
   }
 
   const selectedMarketId = useAppSelector(
@@ -63,6 +67,7 @@ function TradeFormInput() {
   }, [type, balance, portfolio, selectedMarketId, selectedOutcomeId]);
 
   const [amount, setAmount] = useState<number | undefined>(max());
+  const [stepAmount, setStepAmount] = useState<number>(0);
 
   useEffect(() => {
     dispatch(setMaxAmount(max()));
@@ -84,6 +89,7 @@ function TradeFormInput() {
 
     setAmount(newAmount);
     changeTradeAmount(newAmount || 0);
+    setStepAmount(100 * ((newAmount || 0) / max()));
   }
 
   function handleSetMaxAmount() {
@@ -91,6 +97,7 @@ function TradeFormInput() {
 
     setAmount(newMax);
     changeTradeAmount(newMax);
+    setStepAmount(100);
   }
 
   function handleChangeSlider(value: number) {
@@ -100,6 +107,7 @@ function TradeFormInput() {
 
     setAmount(newAmount);
     changeTradeAmount(newAmount);
+    setStepAmount(value);
   }
 
   return (
@@ -156,7 +164,10 @@ function TradeFormInput() {
           ) : null}
         </div>
       </div>
-      <StepSlider onChange={value => handleChangeSlider(value)} />
+      <StepSlider
+        currentValue={stepAmount}
+        onChange={value => handleChangeSlider(value)}
+      />
     </form>
   );
 }
