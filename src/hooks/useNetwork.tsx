@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 
+import { fetchAditionalData, login } from 'redux/ducks/bepro';
+import store from 'redux/store';
+
 import useAppSelector from './useAppSelector';
 
 declare global {
@@ -48,6 +51,13 @@ function useNetwork() {
 
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
 
+  function accountObserver() {
+    window.ethereum?.on('accountsChanged', () => {
+      login(store.dispatch);
+      fetchAditionalData(store.dispatch);
+    });
+  }
+
   function checkNetworkObserver() {
     window.ethereum?.on('chainChanged', chainId => {
       setNetwork(ethereumNetworks[chainId]);
@@ -72,6 +82,10 @@ function useNetwork() {
 
   useEffect(() => {
     checkNetworkObserver();
+  }, []);
+
+  useEffect(() => {
+    accountObserver();
   }, []);
 
   return network;
