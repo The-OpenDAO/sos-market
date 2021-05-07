@@ -113,6 +113,7 @@ function TradeFormInput() {
           type="number"
           id={label}
           value={amount}
+          lang="en"
           step=".0001"
           min={0}
           max={max()}
