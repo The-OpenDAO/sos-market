@@ -80,9 +80,11 @@ function TradeFormInput() {
   }, [dispatch, type]);
 
   useEffect(() => {
-    const tradeDetails = calculateTradeDetails(type, market, outcome, amount);
+    if (![type, market, outcome, amount].includes(undefined)) {
+      const tradeDetails = calculateTradeDetails(type, market, outcome, amount);
 
-    dispatch(setTradeDetails(tradeDetails));
+      dispatch(setTradeDetails(tradeDetails));
+    }
   }, [dispatch, type, market, outcome, amount]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
