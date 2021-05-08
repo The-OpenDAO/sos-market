@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import dayjs from 'dayjs';
 import { getMarket } from 'redux/ducks/market';
+import { reset } from 'redux/ducks/trade';
 import { openTradeForm } from 'redux/ducks/ui';
 
 import { Tabs, Table, Text } from 'components';
@@ -28,6 +29,7 @@ const Market = () => {
   const actions = useAppSelector(state => state.bepro.actions);
 
   useEffect(() => {
+    dispatch(reset());
     dispatch(getMarket(marketId));
     dispatch(openTradeForm());
   }, [dispatch, marketId]);

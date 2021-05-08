@@ -71,6 +71,9 @@ const tradeSlice = createSlice({
     toggleAcceptOddChanges: (state, action: PayloadAction<boolean>) => ({
       ...state,
       acceptOddChanges: action.payload
+    }),
+    reset: () => ({
+      ...initialState
     })
   }
 });
@@ -86,7 +89,8 @@ const {
   setTradeAmount,
   setMaxAmount,
   toggleAcceptRules,
-  toggleAcceptOddChanges
+  toggleAcceptOddChanges,
+  reset
 } = tradeSlice.actions;
 
 export {
@@ -98,7 +102,8 @@ export {
   setTradeAmount,
   setMaxAmount,
   toggleAcceptRules,
-  toggleAcceptOddChanges
+  toggleAcceptOddChanges,
+  reset
 };
 
 export function selectOutcome(marketId: string, outcomeId: string | number) {
