@@ -3649,7 +3649,7 @@ bcrypt-pbkdf@^1.0.0:
 
 bepro-js@bepronetwork/bepro-js#feature/prediction-markets:
   version "1.1.7"
-  resolved "https://codeload.github.com/bepronetwork/bepro-js/tar.gz/ce5975993b6030858089f00477736f17818603eb"
+  resolved "https://codeload.github.com/bepronetwork/bepro-js/tar.gz/1aec4d9527487ff978f24506477f7d0094411dbb"
   dependencies:
     "@openzeppelin/contracts" "^3.2.0"
     abi-decoder "^1.2.0"

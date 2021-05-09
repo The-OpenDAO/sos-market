@@ -52,15 +52,24 @@ function useNetwork() {
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
 
   function accountObserver() {
-    window.ethereum?.on('accountsChanged', () => {
-      login(store.dispatch);
-      fetchAditionalData(store.dispatch);
+    window.ethereum?.on('accountsChanged', async () => {
+      const chainId = await window.ethereum?.request({ method: 'eth_chainId' });
+
+      if (defaultNetwork() === ethereumNetworks[chainId]) {
+        login(store.dispatch);
+        fetchAditionalData(store.dispatch);
+      }
     });
   }
 
   function checkNetworkObserver() {
     window.ethereum?.on('chainChanged', chainId => {
       setNetwork(ethereumNetworks[chainId]);
+
+      if (defaultNetwork() === ethereumNetworks[chainId]) {
+        login(store.dispatch);
+        fetchAditionalData(store.dispatch);
+      }
     });
   }
 
