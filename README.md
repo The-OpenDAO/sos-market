@@ -1,5 +1,15 @@
 # Polkamarkets
 
+Welcome! Polkamarkets is a DeFi-Powered Prediction Market built for cross-chain information exchange and trading, where users take positions on outcomes of real world events–in a decentralized and interoperable platform on Polkadot.
+
+## Project Overview
+
+Our web interface is built with React.
+
+The backend is being developed in partnership with [Bepro.network](https://github.com/bepronetwork), through [`bepro-js`](https://github.com/bepronetwork/bepro-js). You can have a look on our smart contract [here](https://github.com/bepronetwork/bepro-js/blob/feature/prediction-markets/contracts/PredictionMarket.sol).
+
+We're currently running in closed Beta on the Kovan testnet. You can access it at [https://app.polkamarkets.com](https://app.polkamarkets.com)
+
 ## Project Setup
 
 ### 1. Required software
