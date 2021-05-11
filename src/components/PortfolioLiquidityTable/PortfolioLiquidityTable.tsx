@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { roundNumber } from 'helpers/math';
@@ -21,14 +22,24 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
   const dispatch = useAppDispatch();
   const { ticker } = useCurrency();
 
+  const [isLoadingClaimLiquidity, setIsLoadingClaimLiquidity] = useState(false);
+
   async function handleClaimLiquidity(marketId) {
     const beproService = new BeproService();
 
-    await beproService.claimLiquidity(marketId);
+    setIsLoadingClaimLiquidity(true);
 
-    // updating wallet
-    await login(dispatch);
-    await fetchAditionalData(dispatch);
+    try {
+      await beproService.claimLiquidity(marketId);
+
+      // updating wallet
+      await login(dispatch);
+      await fetchAditionalData(dispatch);
+
+      setIsLoadingClaimLiquidity(false);
+    } catch (error) {
+      setIsLoadingClaimLiquidity(false);
+    }
   }
 
   return (
@@ -96,6 +107,7 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
                     color="primary"
                     fullWidth
                     onClick={() => handleClaimLiquidity(market.id)}
+                    loading={isLoadingClaimLiquidity}
                   >
                     Withdraw
                   </Button>
