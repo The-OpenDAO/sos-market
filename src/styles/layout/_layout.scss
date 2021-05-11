@@ -9,9 +9,6 @@
 
   background-color: $gray-1000;
 
-  // I was getting weird scrolls on this div on windows
-  overflow: hidden;
-
   &__header {
     grid-area: header;
     z-index: 1000;
