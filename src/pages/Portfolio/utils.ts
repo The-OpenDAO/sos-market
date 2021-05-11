@@ -76,7 +76,10 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
           change: {
             type: buyPrice <= outcome.price ? 'up' : 'down',
             // eslint-disable-next-line prettier/prettier
-            value: roundNumber((Math.abs(outcome.price - buyPrice) / buyPrice) * 100, 2)
+            value: roundNumber(
+              (Math.abs(outcome.price - buyPrice) / buyPrice) * 100,
+              2
+            )
           }
         };
         const value =
