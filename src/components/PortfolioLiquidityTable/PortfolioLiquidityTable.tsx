@@ -22,12 +22,16 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
   const dispatch = useAppDispatch();
   const { ticker } = useCurrency();
 
-  const [isLoadingClaimLiquidity, setIsLoadingClaimLiquidity] = useState(false);
+  const [isLoadingClaimLiquidity, setIsLoadingClaimLiquidity] = useState({});
+
+  function handleChangeIsLoading(id: string | number, isLoading: boolean) {
+    setIsLoadingClaimLiquidity({ ...isLoadingClaimLiquidity, [id]: isLoading });
+  }
 
   async function handleClaimLiquidity(marketId) {
     const beproService = new BeproService();
 
-    setIsLoadingClaimLiquidity(true);
+    handleChangeIsLoading(marketId, true);
 
     try {
       await beproService.claimLiquidity(marketId);
@@ -36,9 +40,9 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
       await login(dispatch);
       await fetchAditionalData(dispatch);
 
-      setIsLoadingClaimLiquidity(false);
+      handleChangeIsLoading(marketId, false);
     } catch (error) {
-      setIsLoadingClaimLiquidity(false);
+      handleChangeIsLoading(marketId, false);
     }
   }
 
@@ -107,7 +111,7 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
                     color="primary"
                     fullWidth
                     onClick={() => handleClaimLiquidity(market.id)}
-                    loading={isLoadingClaimLiquidity}
+                    loading={isLoadingClaimLiquidity[market.id] || false}
                   >
                     Withdraw
                   </Button>

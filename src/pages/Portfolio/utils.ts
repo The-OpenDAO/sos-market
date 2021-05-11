@@ -111,7 +111,6 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
         }
 
         rows.push({
-          id: `${market.id}${outcome.id}`,
           market,
           outcome,
           price,
@@ -174,7 +173,6 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
       }
 
       rows.push({
-        id: market.id,
         market,
         value,
         shares,
