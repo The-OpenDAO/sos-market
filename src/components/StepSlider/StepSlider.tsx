@@ -10,13 +10,15 @@ const marks = {
 };
 
 type StepSliderProps = {
+  currentValue: number;
   onChange: (value: number) => void;
 };
 
-function StepSlider({ onChange }: StepSliderProps) {
+function StepSlider({ currentValue, onChange }: StepSliderProps) {
   return (
     <div className="step-slider">
       <Slider
+        value={currentValue}
         min={0}
         max={100}
         marks={marks}

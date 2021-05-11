@@ -1,16 +1,18 @@
-import { Category, CategoryDisabled } from 'components';
+import { Category } from 'components';
 
-import { categories, categoriesDisabled } from './mock';
+import useCategories from 'hooks/useCategories';
 
 function HomeCategories() {
+  const categories = useCategories();
+
   return (
     <ul className="pm-home__categories">
       {categories?.map(category => (
         <li key={category.title}>
           <Category
             title={category.title}
-            change={category.change}
-            chartData={category.chartData}
+            change={category.change} // change and chart disabled at the moment
+            chartData={category.chartData} // change and chart disabled at the moment
             backgroundColor={category.backgroundColor}
           />
         </li>

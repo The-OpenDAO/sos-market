@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import dayjs from 'dayjs';
 import { getMarket } from 'redux/ducks/market';
+import { reset } from 'redux/ducks/trade';
 import { openTradeForm } from 'redux/ducks/ui';
 
 import { Tabs, Table, Text } from 'components';
@@ -28,6 +29,7 @@ const Market = () => {
   const actions = useAppSelector(state => state.bepro.actions);
 
   useEffect(() => {
+    dispatch(reset());
     dispatch(getMarket(marketId));
     dispatch(openTradeForm());
   }, [dispatch, marketId]);
@@ -61,12 +63,7 @@ const Market = () => {
       />
       <div className="market-page__stats">
         <MarketChart />
-        <MarketStats
-          price={2.55}
-          dayChangePercentage={10}
-          weekChangePercentage={2}
-          lastWeekPrices={marketLastWeek}
-        />
+        <MarketStats market={market} />
       </div>
       <Text
         as="p"
@@ -84,19 +81,18 @@ const Market = () => {
         <Tabs.TabPane tab="Positions" id="positions">
           <Table columns={tableItems.columns} rows={tableItems.rows} />
         </Tabs.TabPane>
-        <Tabs.TabPane tab="About market" id="about">
+        {/* market.description ? (
+          <Tabs.TabPane tab="About market" id="about">
+            <Text as="p" scale="body" fontWeight="medium" color="light">
+              Coming Soon 🔥
+            </Text>
+          </Tabs.TabPane>
+        ) : null */}
+        <Tabs.TabPane tab="News" id="news">
           <Text as="p" scale="body" fontWeight="medium" color="light">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
-            vitae arcu morbi ultrices mollis tortor ac. Natoque interdum non
-            iaculis lacinia ultricies et. Facilisi dui consequat iaculis
-            facilisis feugiat vitae, urna. Sapien lorem turpis id lacus odio
-            risus morbi cursus morbi. Imperdiet nunc, neque, tellus, id
-            pellentesque sagittis. Porttitor blandit sem felis sed. At nunc,
-            pellentesque vel morbi sed tristique aliquam. At urna erat augue
-            quis consequat neque, accumsan. Mauris cras porta...
+            Coming Soon 🔥
           </Text>
         </Tabs.TabPane>
-        <Tabs.TabPane tab="News" id="news" />
       </Tabs>
     </div>
   );

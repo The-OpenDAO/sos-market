@@ -27,7 +27,9 @@ function CategoryAnalytics({
   backgroundColor
 }: CategoryAnalyticsProps) {
   return (
-    <div className={`pm-c-category--${backgroundColor}`}>
+    <div
+      className={`pm-c-category--${backgroundColor} pm-c-category--analytics`}
+    >
       <div className="pm-c-category__header">
         <Text as="h5" scale="tiny-uppercase" fontWeight="bold" color="white-50">
           {title}

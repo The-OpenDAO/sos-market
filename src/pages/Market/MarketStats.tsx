@@ -1,6 +1,10 @@
 import dayjs from 'dayjs';
+import { roundNumber } from 'helpers/math';
+import { Market } from 'models/market';
 
 import { Card, MiniAreaChart, Text } from 'components';
+
+import useCurrency from 'hooks/useCurrency';
 
 type PriceEvent = {
   x: dayjs.Dayjs;
@@ -8,18 +12,27 @@ type PriceEvent = {
 };
 
 type MarketStatsProps = {
-  price: number;
-  dayChangePercentage: number;
-  weekChangePercentage: number;
-  lastWeekPrices: PriceEvent[];
+  market: Market;
 };
 
-function MarketStats({
-  price,
-  dayChangePercentage,
-  weekChangePercentage,
-  lastWeekPrices
-}: MarketStatsProps) {
+function MarketStats({ market }: MarketStatsProps) {
+  const { symbol } = useCurrency();
+  const outcomeStats = market.outcomes.map(outcome => {
+    const chartData = outcome.priceCharts.find(
+      chart => chart.timeframe === '24h'
+    );
+
+    const changePercent = chartData?.changePercent ?? 0;
+    const changeColor = changePercent >= 0 ? 'success' : 'danger';
+
+    return {
+      title: outcome.title,
+      price: outcome.price,
+      changePercent,
+      changeColor
+    };
+  });
+
   return (
     <div className="pm-market__stats">
       <Card
@@ -32,12 +45,12 @@ function MarketStats({
             fontWeight="bold"
             color="gray"
           >
-            Price
+            {outcomeStats[0].title}
           </Text>
         }
       >
         <Text as="p" scale="body" fontWeight="semibold" color="light">
-          {`$ ${price}`}
+          {`${outcomeStats[0].price} ${symbol}`}
         </Text>
       </Card>
       <Card
@@ -54,8 +67,17 @@ function MarketStats({
           </Text>
         }
       >
-        <Text as="p" scale="body" fontWeight="semibold" color="danger">
-          {`${dayChangePercentage}%`}
+        <Text
+          as="p"
+          scale="body"
+          fontWeight="semibold"
+          // eslint-disable-next-line no-undef
+          color={outcomeStats[0].changeColor as any}
+        >
+          {`${roundNumber(
+            Math.abs(outcomeStats[0].changePercent || 0) * 100,
+            2
+          )}%`}
         </Text>
       </Card>
       <Card
@@ -68,12 +90,12 @@ function MarketStats({
             fontWeight="bold"
             color="gray"
           >
-            7D %
+            {outcomeStats[1].title}
           </Text>
         }
       >
-        <Text as="p" scale="body" fontWeight="semibold" color="success">
-          {`${weekChangePercentage}%`}
+        <Text as="p" scale="body" fontWeight="semibold" color="light">
+          {`${outcomeStats[1].price} ${symbol}`}
         </Text>
       </Card>
       <Card
@@ -86,12 +108,21 @@ function MarketStats({
             fontWeight="bold"
             color="gray"
           >
-            Last 7 days
+            24H %
           </Text>
         }
-        bodyJustify="flex-end"
       >
-        <MiniAreaChart serie={lastWeekPrices} height={30} />
+        <Text
+          as="p"
+          scale="body"
+          fontWeight="semibold"
+          color={outcomeStats[1].changeColor as any}
+        >
+          {`${roundNumber(
+            Math.abs(outcomeStats[1].changePercent || 0) * 100,
+            2
+          )}%`}
+        </Text>
       </Card>
     </div>
   );

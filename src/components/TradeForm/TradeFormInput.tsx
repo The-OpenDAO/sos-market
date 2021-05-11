@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 
+import isNull from 'lodash/isNull';
 import {
   setTradeAmount,
   setMaxAmount,
@@ -21,6 +22,16 @@ function TradeFormInput() {
   const type = useAppSelector(state => state.trade.type);
   const label = `${type} shares`;
 
+  const inputEl = useRef<HTMLInputElement>(null);
+
+  if (!isNull(inputEl.current)) {
+    inputEl.current.addEventListener(
+      'wheel',
+      event => event.stopPropagation(),
+      { passive: true }
+    );
+  }
+
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId
   );
@@ -34,6 +45,8 @@ function TradeFormInput() {
   const portfolio = useAppSelector(state => state.bepro.portfolio);
   const market = useAppSelector(state => state.market.market);
   const outcome = market.outcomes[selectedOutcomeId];
+
+  const roundDown = (value: number) => Math.floor(value * 1e5) / 1e5;
 
   // TODO: improve this
   const max = useCallback(() => {
@@ -50,43 +63,55 @@ function TradeFormInput() {
     }
 
     // rounding (down) to 5 decimals
-    return Math.floor(maxAmount * 1e5) / 1e5;
+    return roundDown(maxAmount);
   }, [type, balance, portfolio, selectedMarketId, selectedOutcomeId]);
 
-  const [amount, setAmount] = useState(max());
+  const [amount, setAmount] = useState<number | undefined>(0);
+  const [stepAmount, setStepAmount] = useState<number>(0);
 
   useEffect(() => {
     dispatch(setMaxAmount(max()));
-    dispatch(setTradeAmount(max()));
-    setAmount(max());
   }, [dispatch, max, type]);
 
-  function changeTradeAmount(value: number) {
-    dispatch(setTradeAmount(value));
+  useEffect(() => {
+    dispatch(setTradeAmount(0));
+    setAmount(0);
+    setStepAmount(0);
+  }, [dispatch, type]);
 
-    const tradeDetails = calculateTradeDetails(type, market, outcome, value);
+  useEffect(() => {
+    if (![type, market, outcome, amount].includes(undefined)) {
+      const tradeDetails = calculateTradeDetails(type, market, outcome, amount);
 
-    dispatch(setTradeDetails(tradeDetails));
-  }
+      dispatch(setTradeDetails(tradeDetails));
+    }
+  }, [dispatch, type, market, outcome, amount]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
-    let { value }: any = event.currentTarget;
-    value = parseFloat(value) || 0;
+    const { value } = event.currentTarget;
+    const newAmount = value ? parseFloat(value) : undefined;
 
-    setAmount(value);
-    changeTradeAmount(value);
+    setAmount(newAmount);
+    dispatch(setTradeAmount(newAmount || 0));
+    setStepAmount(100 * ((newAmount || 0) / max()));
   }
 
   function handleSetMaxAmount() {
-    setAmount(max());
-    changeTradeAmount(max());
+    const newMax = max();
+
+    setAmount(newMax);
+    dispatch(setTradeAmount(newMax));
+    setStepAmount(100);
   }
 
   function handleChangeSlider(value: number) {
     const percentage = value / 100;
 
-    setAmount(max() * percentage);
-    changeTradeAmount(max() * percentage);
+    const newAmount = roundDown(max() * percentage);
+
+    setAmount(newAmount);
+    dispatch(setTradeAmount(newAmount));
+    setStepAmount(value);
   }
 
   return (
@@ -109,10 +134,12 @@ function TradeFormInput() {
       </div>
       <div className="pm-c-trade-form-input__group">
         <input
+          ref={inputEl}
           className="pm-c-trade-form-input__input"
           type="number"
           id={label}
           value={amount}
+          lang="en"
           step=".0001"
           min={0}
           max={max()}
@@ -141,7 +168,10 @@ function TradeFormInput() {
           ) : null}
         </div>
       </div>
-      <StepSlider onChange={value => handleChangeSlider(value)} />
+      <StepSlider
+        currentValue={stepAmount}
+        onChange={value => handleChangeSlider(value)}
+      />
     </form>
   );
 }
