@@ -34,10 +34,10 @@
 
     @include breakpoint-to('sm') {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
       gap: 2rem;
 
-      margin: 1.2rem 0rem 2.4rem 0rem;
+      margin: 0 0rem 2.4rem 0rem;
     }
   }
 

@@ -11,9 +11,13 @@
   flex-shrink: 0;
 
   width: fit-content;
-  height: calc(100vh - 8rem);
+  height: calc(100vh - #{$height-navbar + $height-mini-alert});
 
-  padding: 1.6rem 2.4rem 2.4rem 2.4rem;
+  @include respond-below(lg) {
+    height: auto;
+  }
+
+  padding: 2.4rem 2.4rem 2.4rem 0;
 
   overflow-y: auto;
 }

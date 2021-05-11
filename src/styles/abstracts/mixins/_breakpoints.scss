@@ -16,3 +16,58 @@
          + 'Please make sure it is defined in `$breakpoints` map.';
   }
 }
+
+//
+//  Mixins for Responsive
+//
+
+// I had to change the variables names because I was getting conflitcts with the other responsive mixin. This needs a lot of refactoring. HC
+
+// A map of breakpoints.
+$new-breakpoints: (
+  xs: 640px,
+  sm: 1024px,
+  md: 1366px,
+  lg: 1920px
+);
+
+@mixin respond-above($new-breakpoint) {
+  @if map-has-key($new-breakpoints, $new-breakpoint) {
+    $new-breakpoint-value: map-get($new-breakpoints, $new-breakpoint);
+    @media (min-width: $new-breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$new-breakpoint}.';
+  }
+}
+
+@mixin respond-below($new-breakpoint) {
+  @if map-has-key($new-breakpoints, $new-breakpoint) {
+    $new-breakpoint-value: map-get($new-breakpoints, $new-breakpoint);
+    @media (max-width: ($new-breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$new-breakpoint}.';
+  }
+}
+
+@mixin respond-between($lower, $upper) {
+  @if map-has-key($new-breakpoints, $lower) and
+    map-has-key($new-breakpoints, $upper)
+  {
+    $lower-new-breakpoint: map-get($new-breakpoints, $lower);
+    $upper-new-breakpoint: map-get($new-breakpoints, $upper);
+    @media (min-width: $lower-new-breakpoint) and (max-width: ($upper-new-breakpoint - 1)) {
+      @content;
+    }
+  } @else {
+    @if (map-has-key($new-breakpoints, $lower) == false) {
+      @warn 'Your lower breakpoint was invalid: #{$lower}.';
+    }
+    @if (map-has-key($new-breakpoints, $upper) == false) {
+      @warn 'Your upper breakpoint was invalid: #{$upper}.';
+    }
+  }
+}

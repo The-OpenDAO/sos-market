@@ -44,10 +44,7 @@ function AlertNotification({
             <div className="pm-c-alert-notification__body">
               {icons[variant]}
               <Text as="p" scale="tiny" fontWeight="semibold" color="white">
-                {description}
-              </Text>
-              <Text as="p" scale="tiny" fontWeight="semibold" color="white">
-                {'Your '}
+                {description} {'Your '}
                 <Link target="_blank" to="//discord.gg/dfnvfHspe4">
                   feedback
                 </Link>
