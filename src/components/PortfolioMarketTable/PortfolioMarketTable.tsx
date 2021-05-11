@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { roundNumber } from 'helpers/math';
@@ -21,14 +22,24 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
   const dispatch = useAppDispatch();
   const { ticker } = useCurrency();
 
+  const [isLoadingClaimWinnings, setIsLoadingClaimWinnings] = useState(false);
+
   async function handleClaimWinnings(marketId) {
     const beproService = new BeproService();
 
-    await beproService.claimWinnings(marketId);
+    setIsLoadingClaimWinnings(true);
 
-    // updating wallet
-    await login(dispatch);
-    await fetchAditionalData(dispatch);
+    try {
+      await beproService.claimWinnings(marketId);
+
+      // updating wallet
+      await login(dispatch);
+      await fetchAditionalData(dispatch);
+
+      setIsLoadingClaimWinnings(false);
+    } catch (error) {
+      setIsLoadingClaimWinnings(false);
+    }
   }
 
   return (
@@ -127,6 +138,7 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
                     color="primary"
                     fullWidth
                     onClick={() => handleClaimWinnings(market.id)}
+                    loading={isLoadingClaimWinnings}
                   >
                     Claim Winnings
                   </Button>
