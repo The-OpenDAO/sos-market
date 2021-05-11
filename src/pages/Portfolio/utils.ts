@@ -76,7 +76,10 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
           change: {
             type: buyPrice <= outcome.price ? 'up' : 'down',
             // eslint-disable-next-line prettier/prettier
-            value: roundNumber((Math.abs(outcome.price - buyPrice) / buyPrice) * 100, 2)
+            value: roundNumber(
+              (Math.abs(outcome.price - buyPrice) / buyPrice) * 100,
+              2
+            )
           }
         };
         const value =
@@ -108,6 +111,7 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
         }
 
         rows.push({
+          id: `${market.id}${outcome.id}`,
           market,
           outcome,
           price,
@@ -170,6 +174,7 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
       }
 
       rows.push({
+        id: market.id,
         market,
         value,
         shares,
