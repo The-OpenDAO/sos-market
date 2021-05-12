@@ -132,6 +132,15 @@ export default class BeproService {
     return response;
   }
 
+  public async getMarketPrices(marketId: string | number) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contract.getMarketPrices({ marketId });
+
+    return response;
+  }
+
   public async getAddress(): Promise<string> {
     if (this.address) return this.address;
 

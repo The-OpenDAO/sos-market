@@ -107,6 +107,17 @@ const marketSlice = createSlice({
     clearMarket: state => ({
       ...state,
       market: initialState.market
+    }),
+    changeOutcomePrice: (state, action) => ({
+      ...state,
+      market: {
+        ...state.market,
+        outcomes: state.market.outcomes.map((outcome, index) =>
+          index === action.payload.outcomeId
+            ? { ...outcome, price: action.payload.outcomePrice }
+            : outcome
+        )
+      }
     })
   }
 });
@@ -118,10 +129,11 @@ const {
   success,
   error,
   marketSelected,
-  clearMarket
+  clearMarket,
+  changeOutcomePrice
 } = marketSlice.actions;
 
-export { marketSelected, clearMarket };
+export { marketSelected, clearMarket, changeOutcomePrice };
 
 export function getMarket(marketSlug: string) {
   return async dispatch => {
