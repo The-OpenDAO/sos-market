@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
+import { changeOutcomePrice } from 'redux/ducks/market';
+import { changeMarketOutcomePrice } from 'redux/ducks/markets';
 import { selectOutcome } from 'redux/ducks/trade';
 import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
@@ -42,6 +44,19 @@ function TradeFormActions() {
     dispatch(closeTradeForm());
   }
 
+  async function reloadMarketPrices() {
+    const marketPrices = await new BeproService().getMarketPrices(marketId);
+
+    Object.keys(marketPrices.outcomes).forEach(key => {
+      const outcomeId = Number(key);
+      const outcomePrice = marketPrices.outcomes[outcomeId];
+
+      // updating both market/markets redux
+      dispatch(changeMarketOutcomePrice({ marketId, outcomeId, outcomePrice }));
+      dispatch(changeOutcomePrice({ outcomeId, outcomePrice }));
+    });
+  }
+
   async function handleBuy() {
     setTransactionSuccess(false);
     setTransactionSuccessHash(undefined);
@@ -63,6 +78,9 @@ function TradeFormActions() {
         setTransactionSuccessHash(transactionHash);
         show(type);
       }
+
+      // triggering market prices redux update
+      reloadMarketPrices();
 
       // triggering cache reload action on api
       new PolkamarketsApiService().reloadMarket(marketSlug);
@@ -97,6 +115,9 @@ function TradeFormActions() {
         setTransactionSuccessHash(transactionHash);
         show(type);
       }
+
+      // triggering market prices redux update
+      reloadMarketPrices();
 
       // triggering cache reload action on api
       new PolkamarketsApiService().reloadMarket(marketSlug);
