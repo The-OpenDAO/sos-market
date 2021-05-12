@@ -39,4 +39,5 @@ export interface Market {
   resolvedOutcomeId: number;
   oracleSource: string;
   outcomes: Outcome[];
+  tradingViewSymbol: any;
 }

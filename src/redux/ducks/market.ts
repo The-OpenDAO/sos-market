@@ -2,8 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Market } from 'models/market';
 import * as marketService from 'services/Polkamarkets/market';
 
+const chartViewsEnum = [
+  { id: 'marketOverview', name: 'Market Overview', color: 'default' },
+  { id: 'tradingView', name: 'TradingView', color: 'default' }
+];
+
 export interface MarketInitialState {
   market: Market;
+  chartViews: Array<any>;
+  chartViewType: string;
   isLoading: boolean;
   error: any;
 }
@@ -49,8 +56,11 @@ const initialState: MarketInitialState = {
         priceCharts: [],
         shares: 0
       }
-    ]
+    ],
+    tradingViewSymbol: 'APPLE'
   },
+  chartViews: chartViewsEnum,
+  chartViewType: 'marketOverview',
   isLoading: false,
   error: null
 };
@@ -76,7 +86,8 @@ const marketSlice = createSlice({
             outcomes: market.outcomes.map(outcome => ({
               ...outcome,
               price: Number(outcome.price.toFixed(3))
-            }))
+            })),
+            tradingViewSymbol: 'APPLE'
           }
         };
       }
@@ -99,7 +110,8 @@ const marketSlice = createSlice({
             outcomes: market.outcomes.map(outcome => ({
               ...outcome,
               price: Number(outcome.price.toFixed(3))
-            }))
+            })),
+            tradingViewSymbol: 'APPLE'
           }
         };
       }
@@ -107,6 +119,10 @@ const marketSlice = createSlice({
     clearMarket: state => ({
       ...state,
       market: initialState.market
+    }),
+    setChartViewType: (state, action: PayloadAction<string>) => ({
+      ...state,
+      chartViewType: action.payload
     })
   }
 });
@@ -118,10 +134,11 @@ const {
   success,
   error,
   marketSelected,
-  clearMarket
+  clearMarket,
+  setChartViewType
 } = marketSlice.actions;
 
-export { marketSelected, clearMarket };
+export { marketSelected, clearMarket, setChartViewType };
 
 export function getMarket(marketSlug: string) {
   return async dispatch => {

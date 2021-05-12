@@ -6,13 +6,14 @@ import { getMarket } from 'redux/ducks/market';
 import { reset } from 'redux/ducks/trade';
 import { openTradeForm } from 'redux/ducks/ui';
 
-import { Tabs, Table, Text } from 'components';
+import { Tabs, Table, Text, ButtonGroup } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
+import MarketChartViewSelector from './MarketChartViewSelector';
 import MarketHead from './MarketHead';
 import MarketStats from './MarketStats';
 import { formatMarketActions, generateMarketChartRandomData } from './utils';
@@ -61,6 +62,7 @@ const Market = () => {
         imageUrl={market.imageUrl}
         description={market.title}
       />
+      <MarketChartViewSelector />
       <div className="market-page__stats">
         <MarketChart />
         <MarketStats market={market} />
