@@ -22,12 +22,16 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
   const dispatch = useAppDispatch();
   const { ticker } = useCurrency();
 
-  const [isLoadingClaimWinnings, setIsLoadingClaimWinnings] = useState(false);
+  const [isLoadingClaimWinnings, setIsLoadingClaimWinnings] = useState({});
+
+  function handleChangeIsLoading(id: string | number, isLoading: boolean) {
+    setIsLoadingClaimWinnings({ ...isLoadingClaimWinnings, [id]: isLoading });
+  }
 
   async function handleClaimWinnings(marketId) {
     const beproService = new BeproService();
 
-    setIsLoadingClaimWinnings(true);
+    handleChangeIsLoading(marketId, true);
 
     try {
       await beproService.claimWinnings(marketId);
@@ -36,9 +40,9 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
       await login(dispatch);
       await fetchAditionalData(dispatch);
 
-      setIsLoadingClaimWinnings(false);
+      handleChangeIsLoading(marketId, false);
     } catch (error) {
-      setIsLoadingClaimWinnings(false);
+      handleChangeIsLoading(marketId, false);
     }
   }
 
@@ -138,7 +142,7 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
                     color="primary"
                     fullWidth
                     onClick={() => handleClaimWinnings(market.id)}
-                    loading={isLoadingClaimWinnings}
+                    loading={isLoadingClaimWinnings[market.id] || false}
                   >
                     Claim Winnings
                   </Button>

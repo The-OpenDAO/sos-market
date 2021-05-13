@@ -44,7 +44,9 @@ function formatMarketActions(actions: [], market: Market, ticker: string) {
       'YYYY-MM-DD'
     );
     const outcome =
-      action.action === 'Buy' || action.action === 'Sell'
+      action.action === 'Buy' ||
+      action.action === 'Sell' ||
+      action.action === 'Claim Winnings'
         ? market.outcomes[action.outcomeId]?.title
         : null;
     const tradeType = action.action;

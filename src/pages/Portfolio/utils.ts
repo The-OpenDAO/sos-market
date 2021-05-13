@@ -76,7 +76,10 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
           change: {
             type: buyPrice <= outcome.price ? 'up' : 'down',
             // eslint-disable-next-line prettier/prettier
-            value: roundNumber((Math.abs(outcome.price - buyPrice) / buyPrice) * 100, 2)
+            value: roundNumber(
+              (Math.abs(outcome.price - buyPrice) / buyPrice) * 100,
+              2
+            )
           }
         };
         const value =
@@ -89,20 +92,22 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
           // user holds shares of winning outcome
           market.state === 'resolved' &&
           portfolio[market.id]?.claimStatus.winningsToClaim &&
-          !portfolio[market.id]?.claimStatus.winningsClaimed
+          !portfolio[market.id]?.claimStatus.winningsClaimed &&
+          outcome.id === market.resolvedOutcomeId
         ) {
           // user already claimed winnings of winning outcome
           result = { type: 'awaiting_claim' };
         } else if (
           // user holds shares of winning outcome
           market.state === 'resolved' &&
-          portfolio[market.id]?.claimStatus.winningsClaimed
+          portfolio[market.id]?.claimStatus.winningsClaimed &&
+          outcome.id === market.resolvedOutcomeId
         ) {
           result = { type: 'claimed' };
         } else if (
-          // user holds shares of winning outcome
+          // user holds shares of losing outcome
           market.state === 'resolved' &&
-          !portfolio[market.id]?.claimStatus.winningsToClaim
+          outcome.id !== market.resolvedOutcomeId
         ) {
           result = { type: 'lost' };
         }

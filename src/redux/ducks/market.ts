@@ -121,6 +121,17 @@ const marketSlice = createSlice({
     setChartViewType: (state, action: PayloadAction<string>) => ({
       ...state,
       chartViewType: action.payload
+    }),
+    changeOutcomePrice: (state, action) => ({
+      ...state,
+      market: {
+        ...state.market,
+        outcomes: state.market.outcomes.map((outcome, index) =>
+          index === action.payload.outcomeId
+            ? { ...outcome, price: action.payload.outcomePrice }
+            : outcome
+        )
+      }
     })
   }
 });
@@ -133,10 +144,11 @@ const {
   error,
   marketSelected,
   clearMarket,
+  changeOutcomePrice,
   setChartViewType
 } = marketSlice.actions;
 
-export { marketSelected, clearMarket, setChartViewType };
+export { marketSelected, clearMarket, changeOutcomePrice, setChartViewType };
 
 export function getMarket(marketSlug: string) {
   return async dispatch => {

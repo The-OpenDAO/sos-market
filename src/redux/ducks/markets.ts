@@ -39,15 +39,36 @@ const marketsSlice = createSlice({
     setFilter: (state, action: PayloadAction<string>) => ({
       ...state,
       filter: action.payload
+    }),
+    changeMarketOutcomePrice: (state, action) => ({
+      ...state,
+      markets: state.markets.map(market =>
+        market.id === action.payload.marketId
+          ? {
+              ...market,
+              outcomes: market.outcomes.map((outcome, outcomeIndex) =>
+                outcomeIndex === action.payload.outcomeId
+                  ? { ...outcome, price: action.payload.outcomePrice }
+                  : outcome
+              )
+            }
+          : market
+      )
     })
   }
 });
 
 export default marketsSlice.reducer;
 
-const { request, success, error, setFilter } = marketsSlice.actions;
+const {
+  request,
+  success,
+  error,
+  setFilter,
+  changeMarketOutcomePrice
+} = marketsSlice.actions;
 
-export { setFilter };
+export { setFilter, changeMarketOutcomePrice };
 
 export const filteredMarketsSelector = (
   state: MarketsIntialState,
