@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import dayjs from 'dayjs';
-import { getMarket } from 'redux/ducks/market';
+import { getMarket, setChartViewType } from 'redux/ducks/market';
 import { reset } from 'redux/ducks/trade';
 import { openTradeForm } from 'redux/ducks/ui';
 
@@ -32,6 +32,7 @@ const Market = () => {
   useEffect(() => {
     dispatch(reset());
     dispatch(getMarket(marketId));
+    dispatch(setChartViewType('marketOverview'));
     dispatch(openTradeForm());
   }, [dispatch, marketId]);
 
