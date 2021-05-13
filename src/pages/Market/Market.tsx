@@ -73,7 +73,12 @@ const Market = () => {
         color="lighter-gray"
       >
         {`Resolution source: `}
-        <a href={market.oracleSource} className="tiny semibold text-primary">
+        <a
+          href={market.oracleSource}
+          target="_blank"
+          className="tiny semibold text-primary"
+          rel="noreferrer"
+        >
           {market.oracleSource}
         </a>
       </Text>

@@ -141,7 +141,9 @@ const Sidebar = () => {
               <a
                 href={link.url}
                 aria-label={link.name}
+                target="_blank"
                 className="sidebar__link"
+                rel="noreferrer"
               >
                 {link.icon}
               </a>
