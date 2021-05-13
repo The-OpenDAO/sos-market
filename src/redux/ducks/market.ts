@@ -57,7 +57,7 @@ const initialState: MarketInitialState = {
         shares: 0
       }
     ],
-    tradingViewSymbol: 'APPLE'
+    tradingViewSymbol: null
   },
   chartViews: chartViewsEnum,
   chartViewType: 'marketOverview',
@@ -86,8 +86,7 @@ const marketSlice = createSlice({
             outcomes: market.outcomes.map(outcome => ({
               ...outcome,
               price: Number(outcome.price.toFixed(3))
-            })),
-            tradingViewSymbol: 'APPLE'
+            }))
           }
         };
       }
@@ -110,8 +109,7 @@ const marketSlice = createSlice({
             outcomes: market.outcomes.map(outcome => ({
               ...outcome,
               price: Number(outcome.price.toFixed(3))
-            })),
-            tradingViewSymbol: 'APPLE'
+            }))
           }
         };
       }
