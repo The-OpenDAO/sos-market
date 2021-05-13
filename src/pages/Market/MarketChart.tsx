@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TradingViewStockChartWidget } from 'react-tradingview-components';
+import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 
 import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 
@@ -12,6 +12,7 @@ const MarketChart = () => {
   const { ticker } = useCurrency();
   const predictions = useAppSelector(state => state.market.market.outcomes);
   const { chartViewType } = useAppSelector(state => state.market);
+  const { tradingViewSymbol } = useAppSelector(state => state.market.market);
 
   const [currentInterval, setCurrentInterval] = useState(24);
 
@@ -42,7 +43,7 @@ const MarketChart = () => {
     <div className="market-chart">
       <div className="market-chart__view">
         {chartViewType === 'marketOverview' ? (
-          <>
+          <div style={{ padding: '2.4rem' }}>
             <div className="market-chart__header">
               <div className="market-chart__header-actions">
                 <ChartHeader
@@ -56,14 +57,14 @@ const MarketChart = () => {
               </div>
             </div>
             <LineChart series={series} ticker={ticker} height={332} />
-          </>
+          </div>
         ) : null}
         {chartViewType === 'tradingView' ? (
-          <TradingViewStockChartWidget
-            symbol="BTCUSD"
-            theme="Dark"
-            range="D"
-            autoSize
+          <TradingViewWidget
+            theme={Themes.DARK}
+            width="100%"
+            height={454}
+            symbol={tradingViewSymbol}
           />
         ) : null}
       </div>
