@@ -3,7 +3,7 @@ import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 
 import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 
-import { ChartHeader, LineChart } from 'components';
+import { ChartHeader, LineChart, Text } from 'components';
 
 import { useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
@@ -45,6 +45,9 @@ const MarketChart = () => {
         {chartViewType === 'marketOverview' ? (
           <div style={{ padding: '2.4rem' }}>
             <div className="market-chart__header">
+              <Text as="h2" scale="body" fontWeight="semibold" color="light">
+                Market Overview
+              </Text>
               <div className="market-chart__header-actions">
                 <ChartHeader
                   intervals={intervals}

@@ -63,7 +63,7 @@ const Market = () => {
         imageUrl={market.imageUrl}
         description={market.title}
       />
-      <MarketChartViewSelector />
+      {market.tradingViewSymbol ? <MarketChartViewSelector /> : null}
       <div className="market-page__stats">
         <MarketChart />
         <MarketStats market={market} />
