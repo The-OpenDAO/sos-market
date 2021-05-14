@@ -2,8 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Market } from 'models/market';
 import * as marketService from 'services/Polkamarkets/market';
 
+const chartViewsEnum = [
+  { id: 'marketOverview', name: 'Market Overview', color: 'default' },
+  { id: 'tradingView', name: 'TradingView', color: 'default' }
+];
+
 export interface MarketInitialState {
   market: Market;
+  chartViews: Array<any>;
+  chartViewType: string;
   isLoading: boolean;
   error: any;
 }
@@ -49,8 +56,11 @@ const initialState: MarketInitialState = {
         priceCharts: [],
         shares: 0
       }
-    ]
+    ],
+    tradingViewSymbol: null
   },
+  chartViews: chartViewsEnum,
+  chartViewType: 'marketOverview',
   isLoading: false,
   error: null
 };
@@ -108,6 +118,10 @@ const marketSlice = createSlice({
       ...state,
       market: initialState.market
     }),
+    setChartViewType: (state, action: PayloadAction<string>) => ({
+      ...state,
+      chartViewType: action.payload
+    }),
     changeOutcomePrice: (state, action) => ({
       ...state,
       market: {
@@ -130,10 +144,11 @@ const {
   error,
   marketSelected,
   clearMarket,
-  changeOutcomePrice
+  changeOutcomePrice,
+  setChartViewType
 } = marketSlice.actions;
 
-export { marketSelected, clearMarket, changeOutcomePrice };
+export { marketSelected, clearMarket, changeOutcomePrice, setChartViewType };
 
 export function getMarket(marketSlug: string) {
   return async dispatch => {
