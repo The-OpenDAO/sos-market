@@ -132,3 +132,24 @@ button {
     outline: 0;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: radial-gradient(circle, #454d5e 0%, #454d5e 0%);
+  border-radius: 1.5rem;
+  box-shadow: inset 0.7rem 0.7rem 1.2rem #e8e8e8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(13deg, #637084 14%, #637084 64%);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 0rem;
+  box-shadow: inset 0.7rem -1rem 1.2rem #0e101600;
+}
