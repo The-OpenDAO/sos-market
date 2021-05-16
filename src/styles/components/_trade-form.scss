@@ -10,6 +10,10 @@
 
     width: 100%;
   }
+
+  & > :last-child {
+    padding-bottom: 2.4rem;
+  }
 }
 
 .pm-c-trade-form-charts {
