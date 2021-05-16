@@ -54,16 +54,6 @@ const PortfolioPage = () => {
 
   return (
     <div className="portfolio-page">
-      <div className="portfolio-page__header">
-        <Text
-          className="portfolio-page__header-title"
-          as="h1"
-          scale="heading"
-          fontWeight="semibold"
-        >
-          Portfolio
-        </Text>
-      </div>
       <ul className="portfolio-page__analytics">
         {analytics?.map(
           ({ title, value, change, chartData, backgroundColor }) => (
