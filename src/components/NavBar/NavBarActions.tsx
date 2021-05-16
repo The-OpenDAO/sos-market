@@ -56,6 +56,7 @@ function NavBarActions() {
         />
       ) : (
         <Button
+          className="button-normal--default button-sm"
           color="default"
           aria-label="Connect Wallet"
           onClick={handleConnectWallet}
