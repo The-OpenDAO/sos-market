@@ -11,8 +11,10 @@
     width: 100%;
   }
 
-  & > :last-child {
-    padding-bottom: 2.4rem;
+  @media only screen and (max-height: 870px) {
+    & > :last-child {
+      padding-bottom: 2.4rem;
+    }
   }
 }
 
