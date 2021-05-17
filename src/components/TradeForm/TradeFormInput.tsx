@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
-import isNull from 'lodash/isNull';
 import {
   setTradeAmount,
   setMaxAmount,
@@ -21,16 +20,6 @@ function TradeFormInput() {
   const dispatch = useAppDispatch();
   const type = useAppSelector(state => state.trade.type);
   const label = `${type} shares`;
-
-  const inputEl = useRef<HTMLInputElement>(null);
-
-  if (!isNull(inputEl.current)) {
-    inputEl.current.addEventListener(
-      'wheel',
-      event => event.stopPropagation(),
-      { passive: true }
-    );
-  }
 
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId
@@ -134,7 +123,6 @@ function TradeFormInput() {
       </div>
       <div className="pm-c-trade-form-input__group">
         <input
-          ref={inputEl}
           className="pm-c-trade-form-input__input"
           type="number"
           id={label}
@@ -144,6 +132,7 @@ function TradeFormInput() {
           min={0}
           max={max()}
           onChange={event => handleChangeAmount(event)}
+          onWheel={event => event.currentTarget.blur()}
         />
         <div className="pm-c-trade-form-input__actions">
           <button type="button" onClick={handleSetMaxAmount}>
