@@ -10,6 +10,12 @@
 
     width: 100%;
   }
+
+  @media only screen and (max-height: 870px) {
+    & > :last-child {
+      padding-bottom: 2.4rem;
+    }
+  }
 }
 
 .pm-c-trade-form-charts {

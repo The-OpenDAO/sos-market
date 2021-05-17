@@ -1,9 +1,8 @@
 .portfolio-page {
   @include flex-column;
-  gap: 1.6rem;
+  gap: 2.4rem;
 
   width: 100%;
-  padding: 2.4rem 0rem;
 
   &__header {
     @include flex-row(space-between, center);
@@ -22,8 +21,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 2.4rem;
-
-    margin: 2.4rem 0rem;
   }
 }
 

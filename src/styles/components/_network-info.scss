@@ -37,11 +37,14 @@
   @extend .pm-c-network-info;
 
   .pm-c-network-info__dot {
-    background-color: #fbbf24;
+    background-color: #9265fc;
   }
 }
 
-.pm-c-network-info--local, .pm-c-network-info--rinkeby, .pm-c-network-info--moonbase-alpha, .pm-c-network-info--moonbase-local {
+.pm-c-network-info--local,
+.pm-c-network-info--rinkeby,
+.pm-c-network-info--moonbase-alpha,
+.pm-c-network-info--moonbase-local {
   @extend .pm-c-network-info;
 
   .pm-c-network-info__dot {

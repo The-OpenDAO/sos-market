@@ -132,3 +132,18 @@ button {
     outline: 0;
   }
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252c3b;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e1016;
+  border-radius: 0px;
+}
