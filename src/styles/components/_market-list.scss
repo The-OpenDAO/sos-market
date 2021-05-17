@@ -7,3 +7,22 @@
 
   margin: 1rem 0rem;
 }
+
+.pm-c-market-list__empty-state {
+  width: 100%;
+  height: auto;
+
+  padding: 5.9rem 2rem;
+
+  border: 0.1rem solid $gray-600;
+  border-radius: 0.4rem;
+
+  &__body {
+    @include flex-column(center, center);
+    gap: 1.2rem;
+
+    svg {
+      fill: $primary-500;
+    }
+  }
+}
