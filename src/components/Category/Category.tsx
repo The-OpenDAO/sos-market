@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import dayjs from 'dayjs';
 import { setFilter } from 'redux/ducks/markets';
 import { useAppDispatch } from 'redux/store';
@@ -5,6 +6,7 @@ import { useAppDispatch } from 'redux/store';
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
 import { useAppSelector } from 'hooks';
+import useCategories from 'hooks/useCategories';
 
 import Label from '../Label';
 import MiniAreaChart from '../MiniAreaChart';
@@ -29,7 +31,15 @@ function Category({
   backgroundColor
 }: CategoryProps) {
   const dispatch = useAppDispatch();
+  const categories = useCategories();
   const filter = useAppSelector(state => state.markets.filter);
+
+  const filterMatchesWithTitle = (categoryTitle: string) =>
+    categoryTitle.match(new RegExp(`^${filter}$`, 'i'));
+
+  const filterMatchesSomeCategory = categories
+    .map(category => category.title)
+    .some(filterMatchesWithTitle);
 
   function handleCategorySelected() {
     if (title === filter) {
@@ -41,7 +51,11 @@ function Category({
 
   return (
     <div
-      className={`pm-c-category--${backgroundColor}`}
+      className={classnames({
+        [`pm-c-category--${backgroundColor}`]: true,
+        'pm-c-category--outfocus':
+          filterMatchesSomeCategory && !filterMatchesWithTitle(title)
+      })}
       role="button"
       tabIndex={0}
       onClick={handleCategorySelected}
