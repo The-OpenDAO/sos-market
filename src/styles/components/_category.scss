@@ -5,6 +5,8 @@
   cursor: pointer;
   touch-action: manipulation;
 
+  transition: opacity 0.3s;
+
   &__header {
     @include flex-row(space-between, center);
     gap: 1rem;
@@ -22,6 +24,12 @@
     @extend .pm-c-category;
     @include card-background-color($color-variant, $color);
   }
+}
+
+.pm-c-category--outfocus {
+  @extend .pm-c-category;
+
+  opacity: 0.3;
 }
 
 .pm-c-category--disabled {
