@@ -83,6 +83,7 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
           min={0}
           max={max}
           onChange={event => handleChangeAmount(event)}
+          onWheel={event => event.currentTarget.blur()}
         />
         <div className="pm-c-amount-input__actions">
           <button type="button" onClick={handleSetMaxAmount}>
