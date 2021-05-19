@@ -1,3 +1,4 @@
+import { reset } from 'redux/ducks/liquidity';
 import { openLiquidityForm } from 'redux/ducks/ui';
 
 import { InfoIcon } from 'assets/icons';
@@ -10,6 +11,7 @@ function TradeFormLiquidity() {
   const dispatch = useAppDispatch();
 
   function handleAddLiquidity() {
+    dispatch(reset());
     dispatch(openLiquidityForm());
   }
 

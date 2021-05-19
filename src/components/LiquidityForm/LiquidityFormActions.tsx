@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
+import { reset } from 'redux/ducks/liquidity';
 import { closeLiquidityForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
@@ -35,6 +36,7 @@ function LiquidityFormActions() {
 
   function handleCancel() {
     dispatch(closeLiquidityForm());
+    dispatch(reset());
   }
 
   async function handleAddliquidity() {
