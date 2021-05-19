@@ -20,17 +20,65 @@
 }
 
 .pm-c-alert--information {
-  @extend .pm-c-alert--information;
+  @extend .pm-c-alert;
 
   border-left: 0.3rem solid $primary-500;
 
-  &__title {
+  .pm-c-alert__title {
     svg {
       fill: $primary-500;
     }
 
     span {
       color: $primary-500;
+    }
+  }
+}
+
+.pm-c-alert--success {
+  @extend .pm-c-alert;
+
+  border-left: 0.3rem solid $success-500;
+
+  .pm-c-alert__title {
+    svg {
+      fill: $success-500;
+    }
+
+    span {
+      color: $success-500;
+    }
+  }
+}
+
+.pm-c-alert--warning {
+  @extend .pm-c-alert;
+
+  border-left: 0.3rem solid $warning-500;
+
+  .pm-c-alert__title {
+    svg {
+      fill: $warning-500;
+    }
+
+    span {
+      color: $warning-500;
+    }
+  }
+}
+
+.pm-c-alert--error {
+  @extend .pm-c-alert;
+
+  border-left: 0.3rem solid $danger-500;
+
+  .pm-c-alert__title {
+    svg {
+      fill: $danger-500;
+    }
+
+    span {
+      color: $danger-500;
     }
   }
 }
