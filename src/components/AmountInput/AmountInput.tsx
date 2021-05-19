@@ -17,7 +17,7 @@ function round(value) {
 }
 
 function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState<number | undefined>(0);
   const [stepAmount, setStepAmount] = useState<number>(0);
 
   useEffect(() => {
@@ -30,11 +30,11 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
     event.preventDefault();
     const { value } = event.currentTarget;
 
-    const roundedAmount = round(parseFloat(value) || 0);
+    const newAmount = value ? parseFloat(value) : undefined;
 
-    setAmount(roundedAmount);
-    setStepAmount(100 * (roundedAmount / max));
-    onChange(roundedAmount);
+    setAmount(newAmount);
+    setStepAmount(100 * ((newAmount || 0) / max));
+    onChange(newAmount || 0);
   }
 
   function handleSetMaxAmount() {
