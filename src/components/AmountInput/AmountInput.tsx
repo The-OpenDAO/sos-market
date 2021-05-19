@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { WalletIcon } from 'assets/icons';
 
-// import StepSlider from '../StepSlider';
+import StepSlider from '../StepSlider';
 import Text from '../Text';
 
 type AmountInputProps = {
@@ -18,10 +18,12 @@ function round(value) {
 
 function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
   const [amount, setAmount] = useState(max);
+  const [stepAmount, setStepAmount] = useState<number>(max);
 
   useEffect(() => {
     onChange(max);
     setAmount(max);
+    setStepAmount(100);
   }, [max, onChange]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
@@ -31,6 +33,7 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
     const roundedAmount = round(parseFloat(value) || 0);
 
     setAmount(roundedAmount);
+    setStepAmount(100 * (roundedAmount / max));
     onChange(roundedAmount);
   }
 
@@ -38,19 +41,24 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
     const roundedMax = round(max);
 
     setAmount(roundedMax);
+    setStepAmount(100);
     onChange(roundedMax);
   }
 
-  // function handleChangeSlider(value: number) {
-  //   const percentage = value / 100;
+  function handleChangeSlider(value: number) {
+    const percentage = value / 100;
 
-  //   setAmount(round(percentage * amount));
-  // }
+    const newAmount = round(max * percentage);
+
+    setAmount(newAmount);
+    onChange(newAmount);
+    setStepAmount(value);
+  }
 
   return (
     <form className="pm-c-amount-input">
       <div className="pm-c-amount-input__header">
-        <label className="tiny semibold text-light-gray" htmlFor={label}>
+        <label className="tiny semibold text-lighter-gray" htmlFor={label}>
           {label}
         </label>
         <div className="pm-c-amount-input__header-wallet">
@@ -92,7 +100,10 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
           </div>
         </div>
       </div>
-      {/* <StepSlider onChange={value => handleChangeSlider(value)} /> */}
+      <StepSlider
+        currentValue={stepAmount}
+        onChange={value => handleChangeSlider(value)}
+      />
     </form>
   );
 }

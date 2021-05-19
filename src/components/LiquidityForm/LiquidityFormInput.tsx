@@ -19,6 +19,8 @@ function LiquidityFormInput() {
   const portfolio = useAppSelector(state => state.bepro.portfolio);
   const currency = useCurrency();
 
+  const roundDown = (value: number) => Math.floor(value * 1e5) / 1e5;
+
   const max = useCallback(() => {
     let maxAmount = 0;
 
@@ -32,7 +34,7 @@ function LiquidityFormInput() {
     }
 
     // rounding (down) to 5 decimals
-    return Math.floor(maxAmount * 1e5) / 1e5;
+    return roundDown(maxAmount);
   }, [transactionType, balance, portfolio, marketId]);
 
   useEffect(() => {
@@ -51,12 +53,14 @@ function LiquidityFormInput() {
   }
 
   return (
-    <AmountInput
-      label="Liquidity Amount"
-      max={max()}
-      onChange={amount => handleChangeAmount(amount)}
-      currency={currentCurrency()}
-    />
+    <div className="pm-c-liquidity-form__input">
+      <AmountInput
+        label="Liquidity Amount"
+        max={max()}
+        onChange={amount => handleChangeAmount(amount)}
+        currency={currentCurrency()}
+      />
+    </div>
   );
 }
 
