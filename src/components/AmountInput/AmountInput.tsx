@@ -58,7 +58,7 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
   return (
     <form className="pm-c-amount-input">
       <div className="pm-c-amount-input__header">
-        <label className="tiny semibold text-lighter-gray" htmlFor={label}>
+        <label className="tiny semibold text-light-gray" htmlFor={label}>
           {label}
         </label>
         <div className="pm-c-amount-input__header-wallet">
