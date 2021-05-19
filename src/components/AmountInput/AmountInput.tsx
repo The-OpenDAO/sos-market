@@ -17,13 +17,13 @@ function round(value) {
 }
 
 function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
-  const [amount, setAmount] = useState(max);
-  const [stepAmount, setStepAmount] = useState<number>(max);
+  const [amount, setAmount] = useState(0);
+  const [stepAmount, setStepAmount] = useState<number>(0);
 
   useEffect(() => {
-    onChange(max);
-    setAmount(max);
-    setStepAmount(100);
+    onChange(0);
+    setAmount(0);
+    setStepAmount(0);
   }, [max, onChange]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
