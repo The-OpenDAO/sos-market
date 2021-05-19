@@ -1,0 +1,36 @@
+.pm-c-alert {
+  @include flex-column(center, flex-start);
+  gap: 0.6rem;
+
+  width: 100%;
+  height: auto;
+
+  padding: 2.4rem;
+
+  background-color: $gray-1000;
+  border: 0.1rem solid $gray-600;
+  border-radius: 0rem 0.4rem 0.4rem 0rem;
+
+  filter: drop-shadow(0rem 0.4rem 2.4rem rgba($neutral-black, 0.4));
+
+  &__title {
+    @include flex-row(flex-start, center);
+    gap: 0.6rem;
+  }
+}
+
+.pm-c-alert--information {
+  @extend .pm-c-alert--information;
+
+  border-left: 0.3rem solid $primary-500;
+
+  &__title {
+    svg {
+      fill: $primary-500;
+    }
+
+    span {
+      color: $primary-500;
+    }
+  }
+}
