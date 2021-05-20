@@ -39,6 +39,7 @@ function LiquidityFormInput() {
 
   useEffect(() => {
     dispatch(changeMaxAmount(max()));
+    dispatch(changeAmount(0));
   }, [dispatch, max, transactionType]);
 
   // TODO: improve this
@@ -48,8 +49,8 @@ function LiquidityFormInput() {
       : { name: 'Shares', ticker: 'Shares' };
   }
 
-  function handleChangeAmount(amount: number) {
-    dispatch(changeAmount(amount));
+  function handleChangeAmount(liquidityAmount: number) {
+    dispatch(changeAmount(liquidityAmount));
   }
 
   return (
@@ -57,7 +58,7 @@ function LiquidityFormInput() {
       <AmountInput
         label="Liquidity Amount"
         max={max()}
-        onChange={amount => handleChangeAmount(amount)}
+        onChange={liquidityAmount => handleChangeAmount(liquidityAmount)}
         currency={currentCurrency()}
       />
     </div>

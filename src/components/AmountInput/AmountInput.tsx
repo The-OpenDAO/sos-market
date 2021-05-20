@@ -24,7 +24,7 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
     onChange(0);
     setAmount(0);
     setStepAmount(0);
-  }, [max, onChange]);
+  }, [max]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
