@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { roundNumber } from 'helpers/math';
 
 import { InfoIcon } from 'assets/icons';
@@ -82,9 +81,15 @@ function LiquidityFormDetails() {
           market?.outcomes[0] === outcomeDetails.outcome;
 
         return [
-          <hr className="pm-c-liquidity-form__details-separator" />,
+          <hr
+            key={`outcome-hr-${outcomeDetails.outcome.id}`}
+            className="pm-c-liquidity-form__details-separator"
+          />,
 
-          <div className="pm-c-liquidity-form__details-outcome">
+          <div
+            key={`outcome-title-${outcomeDetails.outcome.id}`}
+            className="pm-c-liquidity-form__details-outcome"
+          >
             <Text
               as="span"
               scale="caption"
@@ -109,7 +114,10 @@ function LiquidityFormDetails() {
             </Text>
           </div>,
 
-          <div className="pm-c-liquidity-form__details-group">
+          <div
+            key={`outcome-details-${outcomeDetails.outcome.id}`}
+            className="pm-c-liquidity-form__details-group"
+          >
             <div className="pm-c-liquidity-form__details-outcome-shares-value">
               <Text
                 as="span"
