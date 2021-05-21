@@ -14,7 +14,7 @@ function onResponse(response: AxiosResponse) {
  * Axios Error interceptor
  */
 function onError(error: AxiosError) {
-  return error;
+  return Promise.reject(error);
 }
 
 export { onResponse, onError };

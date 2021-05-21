@@ -17,6 +17,7 @@ import useCategories from 'hooks/useCategories';
 import { Button } from '../Button';
 import Menu from '../Menu';
 import Text from '../Text';
+import Tooltip from '../Tooltip';
 import { footerLinks } from './mock';
 
 const Sidebar = () => {
@@ -50,86 +51,100 @@ const Sidebar = () => {
       </div>
       <div className="sidebar__content">
         <Menu direction="column">
-          <Menu.Item key="markets" style={{ padding: '1.8rem 0rem' }}>
-            <NavLink
-              to="/home"
-              className="sidebar__link--lg"
-              activeClassName="sidebar__link--lg active"
-              isActive={(_match, location) => {
-                return location.pathname === '/home' && filter === '';
-              }}
-              onClick={() => handleCategorySelected('')}
-            >
-              <MarketsIcon />
-              <span
-                className={classNames(
-                  'market__link-title--lg',
-                  collapsed && 'hidden'
-                )}
+          <Tooltip text="Markets" position="right" disabled={!collapsed}>
+            <Menu.Item key="markets" style={{ padding: '1.8rem 0rem' }}>
+              <NavLink
+                to="/home"
+                className="sidebar__link--lg"
+                activeClassName="sidebar__link--lg active"
+                isActive={(_match, location) => {
+                  return location.pathname === '/home' && filter === '';
+                }}
+                onClick={() => handleCategorySelected('')}
               >
-                Markets
-              </span>
-            </NavLink>
-          </Menu.Item>
-          <Menu.Item key="portfolio" style={{ padding: '1.8rem 0rem' }}>
-            <NavLink
-              to="/portfolio"
-              className="sidebar__link--lg"
-              activeClassName="sidebar__link--lg active"
-            >
-              <PortfolioIcon />
-              <span
-                className={classNames(
-                  'market__link-title--lg',
-                  collapsed && 'hidden'
-                )}
+                <MarketsIcon />
+                <span
+                  className={classNames(
+                    'market__link-title--lg',
+                    collapsed && 'hidden'
+                  )}
+                >
+                  Markets
+                </span>
+              </NavLink>
+            </Menu.Item>
+          </Tooltip>
+          <Tooltip text="Portfolio" position="right" disabled={!collapsed}>
+            <Menu.Item key="portfolio" style={{ padding: '1.8rem 0rem' }}>
+              <NavLink
+                to="/portfolio"
+                className="sidebar__link--lg"
+                activeClassName="sidebar__link--lg active"
               >
-                Portfolio
-              </span>
-            </NavLink>
-          </Menu.Item>
+                <PortfolioIcon />
+                <span
+                  className={classNames(
+                    'market__link-title--lg',
+                    collapsed && 'hidden'
+                  )}
+                >
+                  Portfolio
+                </span>
+              </NavLink>
+            </Menu.Item>
+          </Tooltip>
         </Menu>
 
         <hr className="sidebar__separator" />
 
         <Menu direction="column">
           {categories?.map(category => (
-            <Menu.Item key={category.title} style={{ padding: '1.6rem 0rem' }}>
-              <NavLink
-                to="/home"
-                className="sidebar__link"
-                activeClassName="sidebar__link active"
-                isActive={(_match, location) => {
-                  return (
-                    location.pathname === '/home' && category.title === filter
-                  );
-                }}
-                onClick={() => handleCategorySelected(category.title)}
+            <Tooltip
+              key={category.title}
+              text={category.title}
+              position="right"
+              disabled={!collapsed}
+            >
+              <Menu.Item
+                key={category.title}
+                style={{ padding: '1.6rem 0rem' }}
               >
-                {category.icon}
-                <span
-                  className={classNames(
-                    'sidebar__link-title',
-                    collapsed && 'hidden'
-                  )}
+                <NavLink
+                  to="/home"
+                  className="sidebar__link"
+                  activeClassName="sidebar__link active"
+                  isActive={(_match, location) => {
+                    return (
+                      location.pathname === '/home' && category.title === filter
+                    );
+                  }}
+                  onClick={() => handleCategorySelected(category.title)}
                 >
-                  {category.title}
-                </span>
-                {
-                  // TODO: calculate categories market count
-                  false ? (
-                    <span
-                      className={classNames(
-                        'sidebar__link-counter',
-                        collapsed && 'hidden'
-                      )}
-                    >
-                      {123}
-                    </span>
-                  ) : null
-                }
-              </NavLink>
-            </Menu.Item>
+                  {category.icon}
+                  <span
+                    className={classNames(
+                      'sidebar__link-title',
+                      collapsed && 'hidden'
+                    )}
+                  >
+                    {category.title}
+                  </span>
+                  {
+                    // TODO: calculate categories market count
+                    false ? (
+                      <span
+                        className={classNames(
+                          'sidebar__link-counter',
+                          collapsed && 'hidden'
+                        )}
+                      >
+                        {123}
+                      </span>
+                    ) : null
+                  }
+                </NavLink>
+              </Menu.Item>
+            </Tooltip>
           ))}
         </Menu>
       </div>

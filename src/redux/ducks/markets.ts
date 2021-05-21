@@ -28,7 +28,8 @@ const marketsSlice = createSlice({
     success: (state, action: PayloadAction<Market[]>) => ({
       ...state,
       markets: action.payload,
-      isLoading: false
+      isLoading: false,
+      error: null
     }),
     error: (state, action) => ({
       ...state,

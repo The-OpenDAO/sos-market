@@ -26,3 +26,16 @@
     }
   }
 }
+
+.pm-c-market-list__error {
+  @extend .pm-c-market-list__empty-state;
+
+  &__body {
+    @extend .pm-c-market-list__empty-state__body;
+  }
+
+  &__actions {
+    @extend .pm-c-market-list__empty-state__body;
+    padding: 2rem 0rem;
+  }
+}
