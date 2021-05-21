@@ -1,23 +1,30 @@
 import { useCallback, useEffect } from 'react';
 
-import { changeAmount, changeMaxAmount } from 'redux/ducks/liquidity';
+import {
+  changeAmount,
+  changeMaxAmount,
+  setLiquidityDetails
+} from 'redux/ducks/liquidity';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import AmountInput from '../AmountInput';
+import { calculateLiquidityDetails } from './utils';
 
 function LiquidityFormInput() {
   const dispatch = useAppDispatch();
   const transactionType = useAppSelector(
     state => state.liquidity.transactionType
   );
+  const market = useAppSelector(state => state.market.market);
   const marketId = useAppSelector(state => state.market.market.id);
 
   // buy and sell have different maxes
   const balance = useAppSelector(state => state.bepro.ethBalance);
   const portfolio = useAppSelector(state => state.bepro.portfolio);
   const currency = useCurrency();
+  const amount = useAppSelector(state => state.liquidity.amount);
 
   const roundDown = (value: number) => Math.floor(value * 1e5) / 1e5;
 
@@ -41,6 +48,16 @@ function LiquidityFormInput() {
     dispatch(changeMaxAmount(max()));
     dispatch(changeAmount(0));
   }, [dispatch, max, transactionType]);
+
+  useEffect(() => {
+    const liquidityDetails = calculateLiquidityDetails(
+      transactionType,
+      market,
+      amount
+    );
+
+    dispatch(setLiquidityDetails(liquidityDetails));
+  }, [dispatch, transactionType, market, amount]);
 
   // TODO: improve this
   function currentCurrency() {
