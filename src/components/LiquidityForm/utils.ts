@@ -128,16 +128,8 @@ function calculateLiquidityRemoved(
 }
 
 function calculateLiquidityDetails(action, market, amount): LiquidityDetails {
-  // TODO: move formulas to beprojs
-  // eslint-disable-next-line prettier/prettier
-  const minOutcome = market.outcomes.reduce((prev, curr) => {
-    return prev.shares < curr.shares ? prev : curr;
-  });
-
-  const liquidityRatio = (minOutcome.shares * amount) / market.liquidity;
-
   // balanced (50-50 prices) market
-  if (liquidityRatio === market.liquidity) {
+  if (market.liquidityPrice === 1) {
     return {
       liquidityShares: amount,
       liquidityStake: amount,
