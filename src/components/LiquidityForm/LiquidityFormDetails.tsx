@@ -13,6 +13,9 @@ function LiquidityFormDetails() {
   const liquidityDetails = useAppSelector(
     state => state.liquidity.liquidityDetails
   );
+  const transactionType = useAppSelector(
+    state => state.liquidity.transactionType
+  );
   const market = useAppSelector(state => state.market.market);
 
   return (
@@ -48,7 +51,14 @@ function LiquidityFormDetails() {
             color="lighter-gray-50"
           >
             Liquidity Value
-            <Tooltip text="Example" position="top">
+            <Tooltip
+              text={
+                transactionType === 'add'
+                  ? 'Amount added to liquidity pool'
+                  : "Amount you'll receive"
+              }
+              position="top"
+            >
               <InfoIcon />
             </Tooltip>
           </Text>
@@ -126,7 +136,10 @@ function LiquidityFormDetails() {
                 color="lighter-gray-50"
               >
                 Outcome Shares Value
-                <Tooltip text="Example" position="top">
+                <Tooltip
+                  text="You are given outcome shares on uneven market prices"
+                  position="top"
+                >
                   <InfoIcon />
                 </Tooltip>
               </Text>
