@@ -1,12 +1,11 @@
-import Toast from '../Toast';
+import Alert from '../Alert';
 
 function LiquidityFormInfo() {
   return (
     <div className="pm-c-liquidity-form__info">
-      <Toast
-        variant="info"
-        title="Liquidity information"
-        description="By adding liquidity you’ll earn 0.3% of all trades on this pair proportional to your share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity."
+      <Alert
+        variant="warning"
+        description="When adding liquidity on a market with uneven prices, you’ll get part of your stake as outcome shares."
       />
     </div>
   );

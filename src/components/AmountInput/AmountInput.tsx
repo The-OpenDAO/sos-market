@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { WalletIcon } from 'assets/icons';
 
-// import StepSlider from '../StepSlider';
+import StepSlider from '../StepSlider';
 import Text from '../Text';
 
 type AmountInputProps = {
@@ -17,35 +17,43 @@ function round(value) {
 }
 
 function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
-  const [amount, setAmount] = useState(max);
+  const [amount, setAmount] = useState<number | undefined>(0);
+  const [stepAmount, setStepAmount] = useState<number>(0);
 
   useEffect(() => {
-    onChange(max);
-    setAmount(max);
-  }, [max, onChange]);
+    onChange(0);
+    setAmount(0);
+    setStepAmount(0);
+  }, [max]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
     const { value } = event.currentTarget;
 
-    const roundedAmount = round(parseFloat(value) || 0);
+    const newAmount = value ? parseFloat(value) : undefined;
 
-    setAmount(roundedAmount);
-    onChange(roundedAmount);
+    setAmount(newAmount);
+    setStepAmount(100 * ((newAmount || 0) / max));
+    onChange(newAmount || 0);
   }
 
   function handleSetMaxAmount() {
     const roundedMax = round(max);
 
     setAmount(roundedMax);
+    setStepAmount(100);
     onChange(roundedMax);
   }
 
-  // function handleChangeSlider(value: number) {
-  //   const percentage = value / 100;
+  function handleChangeSlider(value: number) {
+    const percentage = value / 100;
 
-  //   setAmount(round(percentage * amount));
-  // }
+    const newAmount = round(max * percentage);
+
+    setAmount(newAmount);
+    onChange(newAmount);
+    setStepAmount(value);
+  }
 
   return (
     <form className="pm-c-amount-input">
@@ -75,6 +83,7 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
           min={0}
           max={max}
           onChange={event => handleChangeAmount(event)}
+          onWheel={event => event.currentTarget.blur()}
         />
         <div className="pm-c-amount-input__actions">
           <button type="button" onClick={handleSetMaxAmount}>
@@ -92,7 +101,10 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
           </div>
         </div>
       </div>
-      {/* <StepSlider onChange={value => handleChangeSlider(value)} /> */}
+      <StepSlider
+        currentValue={stepAmount}
+        onChange={value => handleChangeSlider(value)}
+      />
     </form>
   );
 }

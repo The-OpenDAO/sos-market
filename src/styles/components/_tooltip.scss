@@ -1,122 +1,14 @@
 .pm-c-tooltip {
-  position: relative;
-  display: inline-block;
+  padding: 0.55rem 1rem;
 
-  &__text {
-    visibility: hidden;
-    position: absolute;
-    z-index: 9999;
+  color: $gray-100;
+  @extend .caption, .semibold;
 
-    padding: 0.55rem 1rem;
-
-    color: $gray-100;
-    @extend .caption, .semibold;
-
-    background-color: $gray-500;
-    border-radius: 0.6rem;
-
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  &:hover {
-    .pm-c-tooltip__text {
-      visibility: visible;
-
-      @include flex-row(flex-start, center);
-      width: max-content;
-      opacity: 1;
-    }
-  }
+  background-color: $gray-500;
+  border-radius: 0.6rem;
 }
 
 .pm-c-tooltip--disabled {
-  &:hover {
-    .pm-c-tooltip__text {
-      visibility: hidden;
-      opacity: 0;
-    }
-  }
-}
-
-.pm-c-tooltip--right {
   @extend .pm-c-tooltip;
-
-  .pm-c-tooltip__text {
-    top: 1.3rem;
-    left: 180%;
-
-    &::after {
-      content: ' ';
-      position: absolute;
-      top: 50%;
-      right: 100%;
-      margin-top: -0.5rem;
-      border-width: 0.5rem;
-      border-style: solid;
-      border-color: transparent $gray-500 transparent transparent;
-    }
-  }
-}
-
-.pm-c-tooltip--left {
-  @extend .pm-c-tooltip;
-
-  .pm-c-tooltip__text {
-    top: -0.5rem;
-    right: 105%;
-
-    &::after {
-      content: ' ';
-      position: absolute;
-      top: 50%;
-      left: 100%;
-      margin-top: -0.5rem;
-      border-width: 0.5rem;
-      border-style: solid;
-      border-color: transparent transparent transparent $gray-500;
-    }
-  }
-}
-
-.pm-c-tooltip--top {
-  @extend .pm-c-tooltip;
-
-  .pm-c-tooltip__text {
-    bottom: 100%;
-    left: 50%;
-    margin-left: -6rem;
-
-    &::after {
-      content: ' ';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -0.5rem;
-      border-width: 0.5rem;
-      border-style: solid;
-      border-color: $gray-500 transparent transparent transparent;
-    }
-  }
-}
-
-.pm-c-tooltip--bottom {
-  @extend .pm-c-tooltip;
-
-  .pm-c-tooltip__text {
-    top: 120%;
-    left: 50%;
-    margin-left: -9rem;
-
-    &::after {
-      content: ' ';
-      position: absolute;
-      bottom: 100%;
-      left: 80%;
-      margin-left: -0.5rem;
-      border-width: 0.5rem;
-      border-style: solid;
-      border-color: transparent transparent $gray-500 transparent;
-    }
-  }
+  display: none;
 }

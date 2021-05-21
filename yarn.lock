@@ -1632,7 +1632,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.7.6":
+"@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.13.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.7.6":
   version "7.14.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
   integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
@@ -2170,7 +2170,7 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@popperjs/core@^2.5.4", "@popperjs/core@^2.6.0":
+"@popperjs/core@^2.5.4", "@popperjs/core@^2.6.0", "@popperjs/core@^2.8.3":
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
   integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
@@ -14058,6 +14058,15 @@ react-popper-tooltip@^3.1.1:
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@popperjs/core" "^2.5.4"
+    react-popper "^2.2.4"
+
+react-popper-tooltip@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-popper-tooltip/-/react-popper-tooltip-4.2.0.tgz#33ae2658506a1ddf11fffa6021e8ab4849634053"
+  integrity sha512-FmfIjqzu00PsCKkCs6I3t0GFmTZfh1H10fzsQ8VZkzLC4ddhLXeQkzpmG9cGc+B0LuJWUvGbN8Mmvqj1UGwxbg==
+  dependencies:
+    "@babel/runtime" "^7.13.2"
+    "@popperjs/core" "^2.8.3"
     react-popper "^2.2.4"
 
 react-popper@^2.2.4:

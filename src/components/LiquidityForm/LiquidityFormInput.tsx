@@ -1,23 +1,32 @@
 import { useCallback, useEffect } from 'react';
 
-import { changeAmount, changeMaxAmount } from 'redux/ducks/liquidity';
+import {
+  changeAmount,
+  changeMaxAmount,
+  setLiquidityDetails
+} from 'redux/ducks/liquidity';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import AmountInput from '../AmountInput';
+import { calculateLiquidityDetails } from './utils';
 
 function LiquidityFormInput() {
   const dispatch = useAppDispatch();
   const transactionType = useAppSelector(
     state => state.liquidity.transactionType
   );
+  const market = useAppSelector(state => state.market.market);
   const marketId = useAppSelector(state => state.market.market.id);
 
   // buy and sell have different maxes
   const balance = useAppSelector(state => state.bepro.ethBalance);
   const portfolio = useAppSelector(state => state.bepro.portfolio);
   const currency = useCurrency();
+  const amount = useAppSelector(state => state.liquidity.amount);
+
+  const roundDown = (value: number) => Math.floor(value * 1e5) / 1e5;
 
   const max = useCallback(() => {
     let maxAmount = 0;
@@ -32,12 +41,23 @@ function LiquidityFormInput() {
     }
 
     // rounding (down) to 5 decimals
-    return Math.floor(maxAmount * 1e5) / 1e5;
+    return roundDown(maxAmount);
   }, [transactionType, balance, portfolio, marketId]);
 
   useEffect(() => {
     dispatch(changeMaxAmount(max()));
+    dispatch(changeAmount(0));
   }, [dispatch, max, transactionType]);
+
+  useEffect(() => {
+    const liquidityDetails = calculateLiquidityDetails(
+      transactionType,
+      market,
+      amount
+    );
+
+    dispatch(setLiquidityDetails(liquidityDetails));
+  }, [dispatch, transactionType, market, amount]);
 
   // TODO: improve this
   function currentCurrency() {
@@ -46,17 +66,19 @@ function LiquidityFormInput() {
       : { name: 'Shares', ticker: 'Shares' };
   }
 
-  function handleChangeAmount(amount: number) {
-    dispatch(changeAmount(amount));
+  function handleChangeAmount(liquidityAmount: number) {
+    dispatch(changeAmount(liquidityAmount));
   }
 
   return (
-    <AmountInput
-      label="Liquidity Amount"
-      max={max()}
-      onChange={amount => handleChangeAmount(amount)}
-      currency={currentCurrency()}
-    />
+    <div className="pm-c-liquidity-form__input">
+      <AmountInput
+        label="Liquidity Amount"
+        max={max()}
+        onChange={liquidityAmount => handleChangeAmount(liquidityAmount)}
+        currency={currentCurrency()}
+      />
+    </div>
   );
 }
 
