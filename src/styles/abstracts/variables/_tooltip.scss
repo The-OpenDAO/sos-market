@@ -1,0 +1,18 @@
+$tooltip-padding-y: 0.6rem;
+$tooltip-padding-x: 1rem;
+$tooltip-border-radius: 0.4rem;
+
+$tooltip-themes: (
+  light: (
+    tooltip-background-color: $gray-500,
+    tooltip-text-color: $gray-100,
+    tooltip-border-color: $gray-500,
+    tooltip-shadow: $light-shadow-lg
+  ),
+  dark: (
+    tooltip-background-color: $gray-500,
+    tooltip-text-color: $gray-100,
+    tooltip-border-color: $gray-500,
+    tooltip-shadow: $dark-shadow-lg
+  )
+);

@@ -1,14 +1,135 @@
 .pm-c-tooltip {
-  padding: 0.55rem 1rem;
+  @include flex-column;
+  z-index: 9999;
 
-  color: $gray-100;
+  padding: $tooltip-padding-y $tooltip-padding-x;
+  border-radius: $tooltip-border-radius;
+
   @extend .caption, .semibold;
+  @include themes($tooltip-themes) {
+    background-color: themed('tooltip-background-color');
+    color: themed('tooltip-text-color');
+    border: 0.1rem solid themed('tooltip-border-color');
+    filter: themed('tooltip-shadow');
+  }
 
-  background-color: $gray-500;
-  border-radius: 0.6rem;
+  transition: opacity 0.3s;
+
+  &[data-popper-interactive='false'] {
+    pointer-events: none;
+  }
 }
 
-.pm-c-tooltip--disabled {
-  @extend .pm-c-tooltip;
-  display: none;
+.pm-c-tooltip__arrow {
+  height: 1rem;
+  position: absolute;
+  width: 1rem;
+  pointer-events: none;
+
+  &::before {
+    border-style: solid;
+    content: '';
+    display: block;
+    height: 0;
+    margin: auto;
+    width: 0;
+  }
+
+  &::after {
+    border-style: solid;
+    content: '';
+    display: block;
+    height: 0;
+    margin: auto;
+    position: absolute;
+    width: 0;
+  }
+}
+
+.pm-c-tooltip {
+  &[data-popper-placement*='bottom'] .pm-c-tooltip__arrow {
+    left: 0;
+    margin-top: -0.4rem;
+    top: 0;
+
+    @include themes($tooltip-themes) {
+      &::before {
+        border-color: transparent transparent themed('tooltip-border-color')
+          transparent;
+        border-width: 0 0.5rem 0.4rem 0.5rem;
+        position: absolute;
+        top: -0.1rem;
+      }
+
+      &::after {
+        border-color: transparent transparent themed('tooltip-border-color')
+          transparent;
+        border-width: 0 0.5rem 0.4rem 0.5rem;
+      }
+    }
+  }
+
+  &[data-popper-placement*='top'] .pm-c-tooltip__arrow {
+    bottom: 0;
+    left: 0;
+    margin-bottom: -1rem;
+
+    @include themes($tooltip-themes) {
+      &::before {
+        border-color: themed('tooltip-border-color') transparent transparent
+          transparent;
+        border-width: 0.4rem 0.5rem 0 0.5rem;
+        position: absolute;
+        top: 0.1rem;
+      }
+
+      &::after {
+        border-color: themed('tooltip-border-color') transparent transparent
+          transparent;
+        border-width: 0.4rem 0.5rem 0 0.5rem;
+      }
+    }
+  }
+
+  &[data-popper-placement*='right'] .pm-c-tooltip__arrow {
+    left: 0;
+    margin-left: -0.7rem;
+
+    @include themes($tooltip-themes) {
+      &::before {
+        border-color: transparent themed('tooltip-border-color') transparent
+          transparent;
+        border-width: 0.5rem 0.4rem 0.5rem 0;
+      }
+
+      &::after {
+        border-color: transparent themed('tooltip-border-color') transparent
+          transparent;
+        border-width: 0.5rem 0.4rem 0.5rem 0;
+        left: 0.6rem;
+        top: 0;
+      }
+    }
+  }
+
+  &[data-popper-placement*='left'] .pm-c-tooltip__arrow {
+    margin-right: -0.7rem;
+    right: 0;
+
+    @include themes($tooltip-themes) {
+      &::before {
+        border-color: transparent transparent transparent
+          themed('tooltip-border-color');
+        border-width: 0.5rem 0 0.5rem 0.4em;
+      }
+
+      &::after {
+        border-color: transparent transparent transparent
+          themed('tooltip-border-color');
+        border-width: 0.5rem 0 0.5rem 0.4em;
+        left: 0.3rem;
+        top: 0;
+      }
+    }
+  }
 }
