@@ -1,6 +1,5 @@
 import React from 'react';
 import { usePopperTooltip } from 'react-popper-tooltip';
-import 'react-popper-tooltip/dist/styles.css';
 
 type TooltipPosition =
   | 'auto'
@@ -20,12 +19,24 @@ type TooltipPosition =
   | 'left-end';
 
 type TooltipProps = {
+  /**
+   * The position of the tooltip relative to the target
+   */
   position?: TooltipPosition;
+  /**
+   * The helper text shown in the tooltip
+   */
   text: string;
   children: React.ReactNode;
+  /**
+   * The tooltip is disabled or not
+   */
   disabled?: boolean;
 };
 
+/**
+ * A Tooltip is a small piece of contextual information about an element on the screen
+ */
 function Tooltip({
   position = 'top',
   text,
@@ -42,16 +53,16 @@ function Tooltip({
   return (
     <>
       <div ref={setTriggerRef}>{children}</div>
-      {visible && (
+      {!disabled && visible && (
         <div
           ref={setTooltipRef}
           {...getTooltipProps({
-            className: disabled ? 'pm-c-tooltip--disabled' : 'pm-c-tooltip'
+            className: 'pm-c-tooltip'
           })}
         >
           <div
             {...getArrowProps({
-              className: 'pm-c-tooltip-arrow'
+              className: 'pm-c-tooltip__arrow'
             })}
           />
           {text}

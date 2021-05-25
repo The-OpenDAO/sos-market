@@ -8,6 +8,7 @@ import store from 'redux/store';
 
 import { ScrollToTop } from 'components';
 
+import ThemeProvider from 'contexts/theme';
 import ViewportProvider from 'contexts/viewport';
 
 import App from './App';
@@ -20,14 +21,16 @@ login(store.dispatch);
 const render = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <Provider store={store}>
-        <ViewportProvider>
-          <Router>
-            <ScrollToTop />
-            <App />
-          </Router>
-        </ViewportProvider>
-      </Provider>
+      <ThemeProvider>
+        <Provider store={store}>
+          <ViewportProvider>
+            <Router>
+              <ScrollToTop />
+              <App />
+            </Router>
+          </ViewportProvider>
+        </Provider>
+      </ThemeProvider>
     </React.StrictMode>,
     document.getElementById('root')
   );
