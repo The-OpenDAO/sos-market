@@ -2,6 +2,7 @@ import Alert from './Alert';
 import AlertNotification from './AlertNotification';
 import AmountInput from './AmountInput';
 import AreaChart from './AreaChart';
+import Badge from './Badge';
 import Breadcrumb from './Breadcrumb';
 import { Button, ButtonText } from './Button';
 import ButtonGroup from './ButtonGroup';
@@ -51,6 +52,7 @@ export {
   AlertNotification,
   AmountInput,
   AreaChart,
+  Badge,
   Breadcrumb,
   Button,
   ButtonText,
