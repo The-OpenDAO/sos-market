@@ -1,0 +1,9 @@
+@mixin badge-normal-color($circle-color, $label-color) {
+  .pm-c-badge__circle {
+    background-color: $circle-color;
+  }
+
+  .pm-c-badge__label {
+    color: $label-color;
+  }
+}

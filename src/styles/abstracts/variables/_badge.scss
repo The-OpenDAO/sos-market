@@ -1,0 +1,44 @@
+$badge-gap: 0.8rem !default;
+
+$badge-normal-padding-y: 0rem !default;
+$badge-normal-padding-x: 0rem !default;
+
+$badge-filled-padding-y: 0.8rem !default;
+$badge-filled-padding-x: 1.2rem !default;
+$badge-filled-border-radius: 0.4rem !default;
+
+$badge-circle-height: 0.7rem !default;
+$badge-circle-width: 0.7rem !default;
+
+$badge-filled-circle-color: $gray-400 !default;
+
+$badge-themes: (
+  light: (
+    badge-label-color: $gray-700,
+    badge-filled-background-color: #eef0f7,
+    badge-normal-circle-colors: (
+      default: $gray-400,
+      primary: $primary-500,
+      success: $success-500,
+      warning: $warning-500,
+      danger: $danger-500,
+      pink: $alternative-colors-pink,
+      blue: $alternative-colors-blue,
+      purple: $alternative-colors-purple
+    )
+  ),
+  dark: (
+    badge-label-color: $gray-50,
+    badge-filled-background-color: $gray-600,
+    badge-normal-circle-colors: (
+      default: $gray-400,
+      primary: $primary-500,
+      success: $success-500,
+      warning: $warning-500,
+      danger: $danger-500,
+      pink: $alternative-colors-pink,
+      blue: $alternative-colors-blue,
+      purple: $alternative-colors-purple
+    )
+  )
+) !default;
