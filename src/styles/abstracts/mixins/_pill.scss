@@ -1,0 +1,23 @@
+@mixin pill-normal-color($color, $background) {
+  background-color: $background;
+
+  .pm-c-pill__badge {
+    background-color: rgba($color, 0.3);
+  }
+
+  .pm-c-pill__text {
+    color: $color;
+  }
+}
+
+@mixin pill-subtle-color($color, $background) {
+  background-color: $background;
+
+  .pm-c-pill__badge {
+    background-color: rgba($color, 0.3);
+  }
+
+  .pm-c-pill__text {
+    color: $color;
+  }
+}
