@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Text from '../Text';
 
 type BadgeVariant = 'normal' | 'filled';
@@ -16,9 +18,15 @@ type BadgeProps = {
   variant?: BadgeVariant;
   color?: BadgeColor;
   label?: string;
+  style?: React.CSSProperties;
 };
 
-function Badge({ variant = 'normal', color = 'default', label }: BadgeProps) {
+function Badge({
+  variant = 'normal',
+  color = 'default',
+  label,
+  style
+}: BadgeProps) {
   return (
     <div
       className={
@@ -26,6 +34,7 @@ function Badge({ variant = 'normal', color = 'default', label }: BadgeProps) {
           ? `pm-c-badge-${variant}--${color}`
           : `pm-c-badge-${variant}`
       }
+      style={style}
     >
       <div className="pm-c-badge__circle" />
       {label ? (
