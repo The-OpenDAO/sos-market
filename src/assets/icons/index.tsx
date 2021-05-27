@@ -33,6 +33,7 @@ import PortfolioIcon from './PortifolioIcon';
 import RemoveIcon from './RemoveIcon';
 import SearchIcon from './SearchIcon';
 import SettingsIcon from './SettingsIcon';
+import ShareIcon from './ShareIcon';
 import SoccerBallIcon from './SoccerBallIcon';
 import SunFogIcon from './SunFogIcon';
 import TelegramIcon from './TelegramIcon';
@@ -78,6 +79,7 @@ export {
   PopcornIcon,
   PortfolioIcon,
   RemoveIcon,
+  ShareIcon,
   SearchIcon,
   SettingsIcon,
   SoccerBallIcon,
