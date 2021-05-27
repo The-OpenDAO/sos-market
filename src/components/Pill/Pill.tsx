@@ -15,8 +15,8 @@ type PillColor =
   | 'purple';
 
 type PillProps = {
-  variant?: PillVariant;
-  color?: PillColor;
+  variant?: PillVariant | string;
+  color?: PillColor | string;
   badge?: boolean;
   children: React.ReactNode;
 };
