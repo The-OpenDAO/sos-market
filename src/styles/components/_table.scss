@@ -1,45 +1,64 @@
-.table {
-  width: 100%;
-  border: 0.1rem solid $gray-600;
+.pm-c-table {
+  @include themes($table-themes) {
+    width: 100%;
+    border: 0.1rem solid themed('table-border-color');
 
-  &__header {
-    background-color: $gray-700;
+    transition: $table-transitions;
 
-    &-item {
-      padding: 1.2rem 2.4rem;
-      vertical-align: middle;
+    &__header {
+      &-item {
+        height: 4.2rem;
 
-      @extend .tiny, .bold;
-      text-align: center;
-      color: $gray-400;
+        padding: $table-header-item-padding-y $table-header-item-padding-x;
+        background-color: themed('table-header-item-background-color');
 
-      &:first-of-type {
-        text-align: left;
-      }
-
-      &:last-of-type {
-        text-align: right;
+        @extend .tiny, .bold;
+        color: themed('table-header-item-color');
+        vertical-align: middle;
+        transition: $table-header-item-transitions;
       }
     }
-  }
 
-  &__row {
-    background-color: $gray-1000;
-    border-top: 0.1rem solid $gray-600;
+    &__row {
+      background-color: themed('table-row-item-background-color');
+      border-top: 0.1rem solid themed('table-border-color');
 
-    &-item {
-      padding: 3.1rem 2.4rem;
-      vertical-align: middle;
+      &:hover {
+        background-color: themed('table-row-item-background-color-hover');
+      }
 
-      @extend .caption, .semibold;
-      text-align: center;
-      color: $gray-100;
+      transition: $table-row-item-transitions;
 
-      &:first-of-type {
+      &-item {
+        padding: $table-row-item-padding-y $table-row-item-padding-x;
+
+        @extend .caption, .semibold;
+        color: themed('table-row-item-color');
+        vertical-align: middle;
+        white-space: normal;
+
+        transition: $table-row-item-transitions;
+
+        strong {
+          color: themed('table-row-item-secondary-color');
+        }
+
+        svg {
+          fill: themed('table-row-item-secondary-color');
+        }
+      }
+    }
+
+    &__item {
+      &--left {
         text-align: left;
       }
 
-      &:last-of-type {
+      &--center {
+        text-align: center;
+      }
+
+      &--right {
         text-align: right;
       }
     }
