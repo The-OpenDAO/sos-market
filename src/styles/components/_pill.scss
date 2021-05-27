@@ -1,8 +1,12 @@
 .pm-c-pill {
-  @include flex-row(flex-start, center);
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+
   gap: 0.4rem;
 
   width: fit-content;
+  margin: 0rem;
 
   padding: $pill-padding-y $pill-padding-x;
   border-radius: $pill-border-radius;
