@@ -93,22 +93,24 @@ function formatMarketPositions(actions: [], market: Market, ticker: string) {
     const date = fromTimestampToDate(action.timestamp * 1000).format(
       'YYYY/MM/DD'
     );
-    const utcTime = fromTimestampToDate(action.timestamp * 1000)
-      .utc()
-      .format('h:mm A');
+    const utcTime = fromTimestampToDate(action.timestamp * 1000).format(
+      'h:mm A'
+    );
     const actionColor = actionColorReducer(action.action);
     const price = `${roundNumber(action.value / action.shares, 3)}`;
     const shares = roundNumber(action.shares, 3);
     const value = `${roundNumber(action.value, 3)}`;
     const tradeType = action.action;
-    const transactionHash = '';
+    const { transactionHash } = action;
 
     return {
       key,
       outcome: {
         value: outcome ? (
           <Badge
-            color={market.outcomes[0].id === action.outcomeId ? 'blue' : 'pink'}
+            color={
+              market.outcomes[0].id === action.outcomeId ? 'purple' : 'pink'
+            }
             label={`${outcome}`}
           />
         ) : null,
@@ -124,7 +126,7 @@ function formatMarketPositions(actions: [], market: Market, ticker: string) {
           >
             {date}
             <Text as="strong" scale="caption" fontWeight="semibold">
-              {`${utcTime} - UTC`}
+              {utcTime}
             </Text>
           </Text>
         ),
