@@ -2,6 +2,7 @@ import Alert from './Alert';
 import AlertNotification from './AlertNotification';
 import AmountInput from './AmountInput';
 import AreaChart from './AreaChart';
+import Badge from './Badge';
 import Breadcrumb from './Breadcrumb';
 import { Button, ButtonText } from './Button';
 import ButtonGroup from './ButtonGroup';
@@ -26,6 +27,7 @@ import MiniTable from './MiniTable';
 import ModalNotification from './ModalNotification';
 import NavBar from './NavBar';
 import NetworkInfo from './NetworkInfo';
+import Pill from './Pill';
 import PortfolioLiquidityTable from './PortfolioLiquidityTable';
 import PortfolioMarketTable from './PortfolioMarketTable';
 import PredictionCard from './PredictionCard';
@@ -50,6 +52,7 @@ export {
   AlertNotification,
   AmountInput,
   AreaChart,
+  Badge,
   Breadcrumb,
   Button,
   ButtonText,
@@ -76,6 +79,7 @@ export {
   ModalNotification,
   NavBar,
   NetworkInfo,
+  Pill,
   PortfolioLiquidityTable,
   PortfolioMarketTable,
   PredictionCard,

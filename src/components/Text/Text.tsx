@@ -46,6 +46,7 @@ type TextColor =
   | 'black'
   | 'gray'
   | 'lighter-gray-50'
+  | 'lighter-gray-100'
   | 'lighter-gray'
   | 'light-gray'
   | 'dark-gray';

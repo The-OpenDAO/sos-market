@@ -1,0 +1,56 @@
+$pill-padding-y: 0.2rem !default;
+$pill-padding-x: 0.6rem !default;
+$pill-border-radius: 1.6rem !default;
+
+$pill-themes: (
+  light: (
+    pill-normal-text-color: $neutral-white,
+    pill-normal-badge-color: rgba($neutral-white, 0.3),
+    pill-normal-colors: (
+      default: $gray-500,
+      primary: $primary-500,
+      success: $success-500,
+      warning: $warning-500,
+      danger: $danger-500,
+      pink: $alternative-colors-pink,
+      blue: $alternative-colors-blue,
+      purple: $alternative-colors-purple
+    ),
+    pill-subtle-badge-color: rgba($neutral-white, 0.3),
+    pill-subtle-colors: (
+      default: mix($neutral-white, $gray-400, 85%),
+      primary: mix($neutral-white, $primary-500, 85%),
+      success: mix($neutral-white, $success-500, 85%),
+      warning: mix($neutral-white, $warning-500, 85%),
+      danger: mix($neutral-white, $danger-500, 90%),
+      pink: mix($neutral-white, $alternative-colors-pink, 85%),
+      blue: mix($neutral-white, $alternative-colors-blue, 85%),
+      purple: mix($neutral-white, $alternative-colors-purple, 85%)
+    )
+  ),
+  dark: (
+    pill-normal-text-color: $neutral-white,
+    pill-normal-badge-color: rgba($neutral-white, 0.3),
+    pill-normal-colors: (
+      default: $gray-500,
+      primary: $primary-500,
+      success: $success-500,
+      warning: $warning-500,
+      danger: $danger-500,
+      pink: $alternative-colors-pink,
+      blue: $alternative-colors-blue,
+      purple: $alternative-colors-purple
+    ),
+    pill-subtle-badge-color: rgba($neutral-white, 0.3),
+    pill-subtle-colors: (
+      default: mix($neutral-black, $gray-400, 80%),
+      primary: mix($neutral-black, $primary-500, 75%),
+      success: mix($neutral-black, $success-500, 75%),
+      warning: mix($neutral-black, $warning-500, 85%),
+      danger: mix($neutral-black, $danger-500, 75%),
+      pink: mix($neutral-black, $alternative-colors-pink, 75%),
+      blue: mix($neutral-black, $alternative-colors-blue, 75%),
+      purple: mix($neutral-black, $alternative-colors-purple, 75%)
+    )
+  )
+);

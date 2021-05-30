@@ -1,0 +1,42 @@
+.pm-c-pill {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 0.4rem;
+
+  width: fit-content;
+  margin: 0rem;
+
+  padding: $pill-padding-y $pill-padding-x;
+  border-radius: $pill-border-radius;
+
+  &__badge {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 50%;
+  }
+
+  &__text {
+    @extend .tiny, .semibold;
+  }
+
+  @include themes($pill-themes) {
+    @each $color-variant, $color in themed('pill-normal-colors') {
+      &-normal--#{$color-variant} {
+        @extend .pm-c-pill;
+        @include pill-normal-color(themed('pill-normal-text-color'), $color);
+      }
+    }
+
+    @each $color-variant, $color in themed('pill-subtle-colors') {
+      &-subtle--#{$color-variant} {
+        @extend .pm-c-pill;
+        @include pill-subtle-color(
+          map-get(themed('pill-normal-colors'), $color-variant),
+          $color
+        );
+      }
+    }
+  }
+}

@@ -16,7 +16,7 @@ import MarketChart from './MarketChart';
 import MarketChartViewSelector from './MarketChartViewSelector';
 import MarketHead from './MarketHead';
 import MarketStats from './MarketStats';
-import { formatMarketActions, generateMarketChartRandomData } from './utils';
+import { formatMarketPositions } from './utils';
 
 type Params = {
   marketId: string;
@@ -24,7 +24,7 @@ type Params = {
 
 const Market = () => {
   const dispatch = useAppDispatch();
-  const { ticker } = useCurrency();
+  const { symbol, ticker } = useCurrency();
   const { marketId } = useParams<Params>();
   const { market, isLoading } = useAppSelector(state => state.market);
   const actions = useAppSelector(state => state.bepro.actions);
@@ -43,11 +43,10 @@ const Market = () => {
       </div>
     );
 
-  const marketLastWeek = generateMarketChartRandomData(10);
-  const tableItems = formatMarketActions(
+  const tableItems = formatMarketPositions(
     (actions as any).filter(action => action.marketId === market?.id),
     market,
-    ticker
+    symbol || ticker
   );
 
   return (
