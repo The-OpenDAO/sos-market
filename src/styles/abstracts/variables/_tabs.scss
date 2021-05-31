@@ -1,0 +1,14 @@
+$tabs-themes: (
+  light: (
+    tabs-item-color: #a7b0bd,
+    tabs-item-color-hover: #171b23,
+    tabs-item-active-color: #171b23
+  ),
+  dark: (
+    tabs-item-color: $gray-500,
+    tabs-item-color-hover: $gray-50,
+    tabs-item-active-color: $gray-50
+  )
+) !default;
+
+$tabs-item-transitions: color 0.3s ease 0s !default;
