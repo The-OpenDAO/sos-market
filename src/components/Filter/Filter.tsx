@@ -98,22 +98,24 @@ function Filter({
             >
               {option.name}
             </button>
-            <div className="pm-c-filter__optional-triggers">
-              {option.optionalTriggers?.map(trigger => (
-                <button
-                  key={trigger.name}
-                  type="button"
-                  className={
-                    selectedOptionalTrigger?.name === trigger.name
-                      ? 'pm-c-filter__optional-trigger--active'
-                      : 'pm-c-filter__optional-trigger'
-                  }
-                  onClick={() => handleChangeOptionalTrigger(option, trigger)}
-                >
-                  {trigger.icon}
-                </button>
-              ))}
-            </div>
+            {selectedOption.value === option.value ? (
+              <div className="pm-c-filter__optional-triggers">
+                {option.optionalTriggers?.map(trigger => (
+                  <button
+                    key={trigger.name}
+                    type="button"
+                    className={
+                      selectedOptionalTrigger?.name === trigger.name
+                        ? 'pm-c-filter__optional-trigger--active'
+                        : 'pm-c-filter__optional-trigger'
+                    }
+                    onClick={() => handleChangeOptionalTrigger(option, trigger)}
+                  >
+                    {trigger.icon}
+                  </button>
+                ))}
+              </div>
+            ) : null}
           </div>
         ))}
       </div>
