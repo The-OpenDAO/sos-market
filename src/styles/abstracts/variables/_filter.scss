@@ -1,0 +1,20 @@
+$filter-content-padding-y: 1.6rem !default;
+$filter-content-padding-x: 1.6rem !default;
+$filter-content-border-radius: 0.4rem !default;
+
+$filter-themes: (
+  light: (
+    filter-label-color: #171b23,
+    filter-current-selected-item-color: #a7b0bd,
+    filter-content-background-color: #edeff2,
+    filter-item-color: #a7b0bd,
+    filter-item-color-hover: #171b23
+  ),
+  dark: (
+    filter-label-color: $gray-50,
+    filter-current-selected-item-color: $gray-500,
+    filter-content-background-color: #181b24,
+    filter-item-color: $gray-500,
+    filter-item-color-hover: $gray-50
+  )
+) !default;
