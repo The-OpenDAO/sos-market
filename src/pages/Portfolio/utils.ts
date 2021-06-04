@@ -37,14 +37,14 @@ function generateChartRandomData(reverse = false) {
 
 function formatMarketPositions(portfolio: Object, markets: Market[]) {
   const headers = [
-    'Market',
-    'Outcome',
-    'Price (24h)',
-    'Profit/Loss',
-    'Shares',
-    'Value',
-    'Max. Payout',
-    ''
+    { title: 'Market', key: 'market', align: 'left' },
+    { title: 'Outcome', key: 'outcome', align: 'right' },
+    { title: 'Price (24h)', key: 'price', align: 'right' },
+    { title: 'Profit/Loss', key: 'profit', align: 'right' },
+    { title: 'Shares', key: 'shares', align: 'center' },
+    { title: 'Value', key: 'value', align: 'right' },
+    { title: 'Max. Payout', key: 'maxPayout', align: 'right' },
+    { title: 'Status', key: 'result', align: 'right' }
   ];
 
   const rows: any[] = [];
