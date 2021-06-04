@@ -1,0 +1,103 @@
+.pm-c-filter {
+  @include themes($filter-themes) {
+    position: relative;
+    display: inline-block;
+
+    &__label {
+      color: themed('filter-label-color');
+    }
+
+    &__button {
+      @extend .button-normal--noborder;
+      @extend .caption, .semibold;
+      color: themed('filter-current-selected-item-color');
+
+      svg {
+        margin-top: 0.2rem;
+        fill: themed('filter-current-selected-item-color');
+      }
+    }
+
+    &__header {
+      @include flex-row;
+      gap: 0.4rem;
+    }
+
+    &__content {
+      display: none;
+      position: absolute;
+      z-index: 1;
+
+      @include breakpoint-to('sm') {
+        right: 0;
+      }
+
+      padding: $filter-content-padding-y $filter-content-padding-x;
+      background-color: themed('filter-content-background-color');
+
+      border-radius: $filter-content-border-radius;
+    }
+
+    &__group {
+      @include flex-row;
+      gap: 0.8rem;
+
+      &:hover {
+        .pm-c-filter__item {
+          color: themed('filter-item-color-hover');
+        }
+      }
+    }
+
+    &__item {
+      @extend .button-normal--noborder;
+      @extend .caption, .semibold;
+      color: themed('filter-item-color');
+
+      &:hover {
+        color: themed('filter-item-color-hover');
+      }
+
+      &--active {
+        @extend .pm-c-filter__item;
+        color: themed('filter-item-color-hover');
+      }
+    }
+
+    &__optional-triggers {
+      @include flex-row;
+      gap: 0rem;
+    }
+
+    &__optional-trigger {
+      @extend .button-normal--noborder;
+
+      svg {
+        fill: themed('filter-item-color');
+
+        &:hover {
+          fill: themed('filter-item-color-hover');
+        }
+      }
+
+      &--active {
+        @extend .pm-c-filter__optional-trigger;
+
+        svg {
+          fill: themed('filter-item-color-hover');
+        }
+      }
+    }
+
+    &:hover {
+      .pm-c-filter {
+        background-color: #3e8e41;
+      }
+
+      .pm-c-filter__content {
+        @include flex-column(center, flex-start);
+        gap: 0.8rem;
+      }
+    }
+  }
+}
