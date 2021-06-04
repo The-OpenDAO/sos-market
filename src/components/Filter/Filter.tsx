@@ -63,7 +63,8 @@ function Filter({
         optionalTrigger: selectedOptionalTrigger?.name
       });
     }
-  }, [selectedOption, selectedOptionalTrigger, onChange]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedOption, selectedOptionalTrigger]);
 
   if (!selectedOption) return null;
 
