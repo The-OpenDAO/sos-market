@@ -95,10 +95,18 @@ export const filteredMarketsSelector = (
   const regExpFromFilter = new RegExp(state.filter, 'i');
   const regExpFullFilter = new RegExp(`^${state.filter}$`, 'i');
 
+  function sorted(markets) {
+    if (state.sorter.sortBy) {
+      return orderBy(markets, [state.sorter.value], [state.sorter.sortBy]);
+    }
+
+    return markets;
+  }
+
   if (categories.some(category => category.title.match(regExpFullFilter))) {
     // filter fully matches category, filtering by category
-    return state.markets.filter(({ category }) =>
-      category.match(regExpFullFilter)
+    return sorted(
+      state.markets.filter(({ category }) => category.match(regExpFullFilter))
     );
   }
 
@@ -111,14 +119,7 @@ export const filteredMarketsSelector = (
 
   if (state.sorter.value === 'featured') return filteredMarkets;
 
-  if (state.sorter.sortBy)
-    return orderBy(
-      filteredMarkets,
-      [state.sorter.value],
-      [state.sorter.sortBy]
-    );
-
-  return filteredMarkets;
+  return sorted(filteredMarkets);
 };
 
 export function getMarkets() {
