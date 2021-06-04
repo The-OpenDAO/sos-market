@@ -3,10 +3,6 @@ import { ArrowDownSmallestIcom, ArrowUpSmallestIcon } from 'assets/icons';
 
 const filters = [
   {
-    value: 'featured',
-    name: 'Featured'
-  },
-  {
     value: 'expiresAt',
     name: 'Expiration Date',
     optionalTriggers: [

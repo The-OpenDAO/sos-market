@@ -18,6 +18,7 @@ type Option = {
 type FilterProps = {
   description: string;
   defaultOption: string;
+  defaultTrigger: string | undefined;
   options: Option[];
   onChange: any;
 };
@@ -25,6 +26,7 @@ type FilterProps = {
 function Filter({
   description,
   defaultOption,
+  defaultTrigger,
   options,
   onChange
 }: FilterProps) {
@@ -38,8 +40,17 @@ function Filter({
       option => option.value === defaultOption
     );
 
+    const defaultSelectedTrigger = defaultSelectedOption?.optionalTriggers?.find(
+      trigger => trigger.name === defaultTrigger
+    );
+
     setSelectedOption(defaultSelectedOption);
-  }, [defaultOption, options]);
+    if (defaultSelectedTrigger) {
+      setSelectedOptionalTrigger(defaultSelectedTrigger);
+    } else {
+      setSelectedOptionalTrigger(undefined);
+    }
+  }, [defaultOption, defaultTrigger, options]);
 
   function handleChangeOption(option: Option) {
     setSelectedOption(option);
