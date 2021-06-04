@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import orderBy from 'lodash/orderBy';
 import { Category } from 'models/category';
 import { Market } from 'models/market';
 import * as marketService from 'services/Polkamarkets/market';
@@ -8,13 +9,21 @@ export interface MarketsIntialState {
   isLoading: boolean;
   error: any;
   filter: string;
+  sorter: {
+    value: string;
+    sortBy: any | undefined;
+  };
 }
 
 const initialState: MarketsIntialState = {
   markets: [],
   isLoading: false,
   error: null,
-  filter: ''
+  filter: '',
+  sorter: {
+    value: 'featured',
+    sortBy: undefined
+  }
 };
 
 const marketsSlice = createSlice({
@@ -41,6 +50,13 @@ const marketsSlice = createSlice({
       ...state,
       filter: action.payload
     }),
+    setSorter: (state, action) => ({
+      ...state,
+      sorter: {
+        value: action.payload.value,
+        sortBy: action.payload.sortBy
+      }
+    }),
     changeMarketOutcomePrice: (state, action) => ({
       ...state,
       markets: state.markets.map(market =>
@@ -66,10 +82,11 @@ const {
   success,
   error,
   setFilter,
+  setSorter,
   changeMarketOutcomePrice
 } = marketsSlice.actions;
 
-export { setFilter, changeMarketOutcomePrice };
+export { setFilter, setSorter, changeMarketOutcomePrice };
 
 export const filteredMarketsSelector = (
   state: MarketsIntialState,
@@ -85,12 +102,23 @@ export const filteredMarketsSelector = (
     );
   }
 
-  return state.markets.filter(
+  const filteredMarkets = state.markets.filter(
     ({ category, subcategory, title }) =>
       category.match(regExpFromFilter) ||
       subcategory.match(regExpFromFilter) ||
       title.match(regExpFromFilter)
   );
+
+  if (state.sorter.value === 'featured') return filteredMarkets;
+
+  if (state.sorter.sortBy)
+    return orderBy(
+      filteredMarkets,
+      [state.sorter.value],
+      [state.sorter.sortBy]
+    );
+
+  return filteredMarkets;
 };
 
 export function getMarkets() {
