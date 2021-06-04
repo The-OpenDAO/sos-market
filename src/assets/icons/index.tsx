@@ -2,9 +2,12 @@ import AddIcon from './AddIcon';
 import AlienIcon from './AlienIcon';
 import ArrowBackIcon from './ArrowBackIcon';
 import ArrowDownIcon from './ArrowDownIcon';
+import ArrowDownSmallestIcom from './ArrowDownSmallestIcon';
+import ArrowDownSmallIcon from './ArrowDownSmallIcon';
 import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowRightIcon from './ArrowRightIcon';
 import ArrowUpIcon from './ArrowUpIcon';
+import ArrowUpSmallestIcon from './ArrowUpSmallestIcon';
 import BitcoinIcon from './BitcoinIcon';
 import CandleStickChartIcon from './CandleStickChartIcon';
 import CaretDownIcon from './CaretDownIcon';
@@ -50,6 +53,9 @@ export {
   AlienIcon,
   ArrowBackIcon,
   ArrowDownIcon,
+  ArrowDownSmallIcon,
+  ArrowUpSmallestIcon,
+  ArrowDownSmallestIcom,
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpIcon,
