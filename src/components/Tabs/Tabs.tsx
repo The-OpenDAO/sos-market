@@ -48,13 +48,22 @@ type TabsProps = {
    * Id of the default active tab pane
    */
   defaultActiveId?: string;
+  /**
+   * Custom filter component
+   */
+  filter?: React.ReactNode;
   children?: React.ReactNode;
 };
 
 /**
  * Tabs to switch between different views
  */
-function Tabs({ direction = 'row', defaultActiveId, children }: TabsProps) {
+function Tabs({
+  direction = 'row',
+  defaultActiveId,
+  filter,
+  children
+}: TabsProps) {
   const [activeTab, setActiveTab] = useState<string | undefined>(undefined);
 
   const tabs = useMemo(() => getChildrenTabs(children), [children]);
@@ -66,30 +75,33 @@ function Tabs({ direction = 'row', defaultActiveId, children }: TabsProps) {
   if (!activeTab || !children) return null;
 
   return (
-    <div className="tabs">
-      <ul className={`tabs__list--${direction}`}>
-        {tabs?.map((tab, index) => (
-          <li
-            key={tab.id}
-            tabIndex={index}
-            className={classNames({
-              tabs__item: true,
-              active: activeTab === tab.id
-            })}
-          >
-            <button
-              type="button"
-              name={tab.name}
-              onClick={() => setActiveTab(tab.id)}
+    <div className="pm-c-tabs">
+      <div className="pm-c-tabs__header">
+        <ul className={`pm-c-tabs__list--${direction}`}>
+          {tabs?.map((tab, index) => (
+            <li
+              key={tab.id}
+              tabIndex={index}
+              className={classNames({
+                'pm-c-tabs__item': true,
+                active: activeTab === tab.id
+              })}
             >
-              {tab.name}
-            </button>
-          </li>
-        ))}
-      </ul>
+              <button
+                type="button"
+                name={tab.name}
+                onClick={() => setActiveTab(tab.id)}
+              >
+                {tab.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+        {filter || null}
+      </div>
 
       <ActiveTabContext.Provider value={activeTab}>
-        <div className="tabs__content">{children}</div>
+        <div className="pm-c-tabs__content">{children}</div>
       </ActiveTabContext.Provider>
     </div>
   );

@@ -12,6 +12,7 @@ import { Category, CategoryDisabled, CategoryAnalytics } from './Category';
 import ChartHeader from './ChartHeader';
 import Checkbox from './Checkbox';
 import FeaturedCard from './FeaturedCard';
+import Filter from './Filter';
 import Grid from './Grid';
 import Input from './Input';
 import Label from './Label';
@@ -65,6 +66,7 @@ export {
   Checkbox,
   FeaturedCard,
   Grid,
+  Filter,
   Input,
   Label,
   Layout,
