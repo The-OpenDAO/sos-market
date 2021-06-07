@@ -21,15 +21,15 @@ function PortfolioTabs() {
 
   const dispatch = useAppDispatch();
 
-  const { markets } = useAppSelector(state => state.markets);
+  const markets = useAppSelector(state => state.markets.markets);
   const portfolio = useAppSelector(state => state.bepro.portfolio);
+
+  const marketPositions = formatMarketPositions(portfolio, markets);
+  const liquidityPositions = formatLiquidityPositions(portfolio, markets);
 
   function handleChangeFilter(newFilter: { value: string; name: string }) {
     dispatch(setFilter(newFilter.value));
   }
-
-  const marketPositions = formatMarketPositions(portfolio, markets);
-  const liquidityPositions = formatLiquidityPositions(portfolio, markets);
 
   return (
     <>
