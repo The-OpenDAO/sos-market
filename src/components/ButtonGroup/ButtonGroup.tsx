@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
@@ -36,9 +36,18 @@ type ButtonGroupProps = {
    * The callback function triggered when click on button
    */
   onChange: (id: string) => void;
+  /**
+   * Aditional styles
+   */
+  style?: React.CSSProperties;
 };
 
-function ButtonGroup({ defaultActiveId, buttons, onChange }: ButtonGroupProps) {
+function ButtonGroup({
+  defaultActiveId,
+  buttons,
+  onChange,
+  style
+}: ButtonGroupProps) {
   const initialState =
     buttons.find(button => button.id === defaultActiveId) || buttons[0];
 
@@ -52,7 +61,7 @@ function ButtonGroup({ defaultActiveId, buttons, onChange }: ButtonGroupProps) {
   }
 
   return (
-    <div className={`pm-c-button-group--${activeButton.color}`}>
+    <div className={`pm-c-button-group--${activeButton.color}`} style={style}>
       {buttons?.map(button => (
         <button
           type="button"
