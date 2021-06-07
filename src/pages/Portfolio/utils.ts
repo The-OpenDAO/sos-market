@@ -131,12 +131,12 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
 
 function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
   const headers = [
-    'Market',
-    'Shares',
-    'Value',
-    'Pool Share',
-    'Fees Earned',
-    ''
+    { title: 'Market', key: 'market', align: 'left' },
+    { title: 'Shares', key: 'shares', align: 'center' },
+    { title: 'Value', key: 'value', align: 'right' },
+    { title: 'Pool Share', key: 'poolShare', align: 'right' },
+    { title: 'Fees Earned', key: 'fees', align: 'right' },
+    { title: 'Status', key: 'status', align: 'right' }
   ];
 
   const rows: any[] = [];

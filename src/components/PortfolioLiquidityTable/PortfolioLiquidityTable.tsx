@@ -1,13 +1,18 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
+import classnames from 'classnames';
 import { roundNumber } from 'helpers/math';
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
+import { ArrowDownIcon, ArrowUpIcon } from 'assets/icons';
 
-import { useAppDispatch } from 'hooks';
+import { Pill } from 'components';
+
+import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import { Button } from '../Button';
@@ -20,7 +25,9 @@ type MarketTableProps = {
 
 const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
   const dispatch = useAppDispatch();
-  const { ticker } = useCurrency();
+  const history = useHistory();
+  const { ticker, symbol } = useCurrency();
+  const filter = useAppSelector(state => state.portfolio.filter);
 
   const [isLoadingClaimLiquidity, setIsLoadingClaimLiquidity] = useState({});
 
@@ -46,33 +53,95 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
     }
   }
 
+  function redirectTo(marketSlug) {
+    return history.push(`/markets/${marketSlug}`);
+  }
+
+  const resolvedMarket = row => row.market.state === 'resolved';
+
+  const filteredRows = rows.filter(row =>
+    filter === 'resolved' ? resolvedMarket(row) : !resolvedMarket(row)
+  );
+
   return (
-    <table className="market-table">
+    <table className="pm-c-table">
       <tbody>
-        <tr className="market-table__header">
+        <tr className="pm-c-table__header">
           {headers?.map(header => (
-            <th className="market-table__header-item" key={header}>
-              {header}
+            <th
+              className={classnames({
+                'pm-c-table__header-item': true,
+                [`pm-c-table__item--${header.align}`]: true
+              })}
+              id={header.key}
+              key={header.key}
+              scope="col"
+            >
+              {header.title}
             </th>
           ))}
         </tr>
-        {rows?.map(
+        {filteredRows?.map(
           ({ market, value, shares, poolShare, feesEarned, result }) => (
-            <tr className="market-table__row" key={market.id}>
-              <td id="market" className="market-table__row-item">
-                <img
-                  className="market-table__row-item__image"
-                  src={market.imageUrl}
-                  alt={market.id}
-                />
-                {market.title}
+            <tr className="pm-c-table__row" key={market.id}>
+              <td
+                id="market"
+                className={classnames({
+                  'pm-c-table__row-item': true,
+                  'pm-c-table__item--left': true
+                })}
+                onClick={() => redirectTo(market.slug)}
+                style={{ cursor: 'pointer' }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: '1.6rem',
+                    alignItems: 'center'
+                  }}
+                >
+                  <img
+                    src={market.imageUrl}
+                    alt={market.id}
+                    height={32}
+                    width={32}
+                    style={{ borderRadius: '50%' }}
+                  />
+                  {market.title}
+                </div>
               </td>
-              <td id="shares" className="market-table__row-item">
+              <td
+                id="shares"
+                className={classnames({
+                  'pm-c-table__row-item': true,
+                  'pm-c-table__item--center': true
+                })}
+              >
                 {roundNumber(shares, 3)}
               </td>
-              <td id="value" className="market-table__row-item">
+              <td
+                id="value"
+                className={classnames({
+                  'pm-c-table__row-item': true,
+                  'pm-c-table__item--right': true
+                })}
+              >
                 <div className="market-table__row-item__group">
-                  {`${roundNumber(value.value, 3)} ${ticker}`}
+                  <Text
+                    as="span"
+                    scale="caption"
+                    fontWeight="semibold"
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      gap: '0.5rem'
+                    }}
+                  >
+                    {`${roundNumber(value.value, 3)} `}
+                    <Text as="strong" scale="caption" fontWeight="semibold">
+                      {` ${symbol || ticker}`}
+                    </Text>
+                  </Text>
                   <Text
                     className={`market-table__row-item__change--${value.change.type}`}
                     as="span"
@@ -80,29 +149,51 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
                     fontWeight="bold"
                   >
                     {value.change.type === 'up' ? (
-                      <CaretUpIcon />
+                      <ArrowUpIcon />
                     ) : (
-                      <CaretDownIcon />
+                      <ArrowDownIcon />
                     )}
                     {`${roundNumber(value.change.value * 100, 2)}%`}
                   </Text>
                 </div>
               </td>
-              <td id="poolShare" className="market-table__row-item">
+              <td
+                id="poolShare"
+                className={classnames({
+                  'pm-c-table__row-item': true,
+                  'pm-c-table__item--right': true
+                })}
+              >
                 {`${roundNumber(poolShare * 100, 3)}%`}
               </td>
-              <td id="feesEarned" className="market-table__row-item">
-                <Text scale="caption" color="warning">
+              <td
+                id="feesEarned"
+                className={classnames({
+                  'pm-c-table__row-item': true,
+                  'pm-c-table__item--right': true
+                })}
+              >
+                <Pill variant="subtle" color="warning">
                   {feesEarned}
-                </Text>
+                </Pill>
               </td>
-              <td id="trade" className="market-table__row-item">
+              <td
+                id="trade"
+                className={classnames({
+                  'pm-c-table__row-item': true,
+                  'pm-c-table__item--right': true
+                })}
+              >
                 {result.type === 'pending' ? (
-                  <Link to={`/markets/${market.slug}`}>
-                    <Button size="sm" variant="dark" color="default" fullWidth>
-                      Trade
-                    </Button>
-                  </Link>
+                  <Button
+                    size="sm"
+                    variant="dark"
+                    color="default"
+                    fullWidth
+                    onClick={() => redirectTo(market.slug)}
+                  >
+                    Trade
+                  </Button>
                 ) : null}
                 {result.type === 'awaiting_claim' ? (
                   <Button
@@ -117,30 +208,14 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
                   </Button>
                 ) : null}
                 {result.type === 'awaiting_resolution' ? (
-                  <Button
-                    size="sm"
-                    variant="dark"
-                    color="primary"
-                    fullWidth
-                    disabled
-                  >
-                    <Text scale="caption" fontWeight="semibold" color="primary">
-                      Awaiting Resolution
-                    </Text>
-                  </Button>
+                  <Pill variant="subtle" color="warning">
+                    Awaiting Resolution
+                  </Pill>
                 ) : null}
                 {result.type === 'claimed' ? (
-                  <Button
-                    size="sm"
-                    variant="dark"
-                    color="primary"
-                    fullWidth
-                    disabled
-                  >
-                    <Text scale="caption" fontWeight="semibold" color="primary">
-                      Withdrawn
-                    </Text>
-                  </Button>
+                  <Pill variant="subtle" color="primary">
+                    Withdrawn
+                  </Pill>
                 ) : null}
               </td>
             </tr>
