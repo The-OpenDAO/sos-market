@@ -284,6 +284,7 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
                     color="success"
                     onClick={() => handleClaimWinnings(market.id)}
                     loading={isLoadingClaimWinnings[market.id] || false}
+                    style={{ marginLeft: 'auto' }}
                   >
                     Claim Winnings
                   </Button>
