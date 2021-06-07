@@ -10,7 +10,7 @@ import { BeproService } from 'services';
 
 import { ArrowDownIcon, ArrowUpIcon } from 'assets/icons';
 
-import { useAppDispatch } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import Badge from '../Badge';
@@ -27,6 +27,7 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const { ticker, symbol } = useCurrency();
+  const filter = useAppSelector(state => state.portfolio.filter);
 
   const [isLoadingClaimWinnings, setIsLoadingClaimWinnings] = useState({});
 
@@ -56,6 +57,12 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
     return history.push(`/markets/${marketSlug}`);
   }
 
+  const resolvedMarket = row => row.market.state === 'resolved';
+
+  const filteredRows = rows.filter(row =>
+    filter === 'resolved' ? resolvedMarket(row) : !resolvedMarket(row)
+  );
+
   return (
     <table className="pm-c-table">
       <tbody>
@@ -74,7 +81,7 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
             </th>
           ))}
         </tr>
-        {rows?.map(
+        {filteredRows?.map(
           ({
             market,
             outcome,
