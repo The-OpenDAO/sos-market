@@ -4,23 +4,14 @@ import { getMarkets } from 'redux/ducks/markets';
 import { getPortfolio } from 'redux/ducks/portfolio';
 import { closeRightSidebar } from 'redux/ducks/ui';
 
-import {
-  CategoryAnalytics,
-  PortfolioLiquidityTable,
-  PortfolioMarketTable,
-  Tabs,
-  Text
-} from 'components';
+import { CategoryAnalytics } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import PortfolioChart from './PortfolioChart';
-import {
-  formatLiquidityPositions,
-  formatMarketPositions,
-  formatPortfolioAnalytics
-} from './utils';
+import PortfolioTabs from './PortfolioTabs';
+import { formatPortfolioAnalytics } from './utils';
 
 const PortfolioPage = () => {
   const dispatch = useAppDispatch();
@@ -28,10 +19,8 @@ const PortfolioPage = () => {
   const rightSidebarIsVisible = useAppSelector(
     state => state.ui.rightSidebar.visible
   );
-  const { markets, isLoading, error } = useAppSelector(state => state.markets);
+
   const ethAddress = useAppSelector(state => state.bepro.ethAddress);
-  // portfolio data fetched from wallet
-  const portfolio = useAppSelector(state => state.bepro.portfolio);
   // portfolio stats fetched from api
   const apiPortfolio = useAppSelector(state => state.portfolio.portfolio);
 
@@ -49,8 +38,6 @@ const PortfolioPage = () => {
   }, [ethAddress, dispatch]);
 
   const analytics = formatPortfolioAnalytics(apiPortfolio, ticker);
-  const marketPositions = formatMarketPositions(portfolio, markets);
-  const liquidityPositions = formatLiquidityPositions(portfolio, markets);
 
   return (
     <div className="portfolio-page">
@@ -69,23 +56,8 @@ const PortfolioPage = () => {
           )
         )}
       </ul>
-
       <PortfolioChart />
-
-      <Tabs defaultActiveId="positions">
-        <Tabs.TabPane tab="Market Positions" id="positions">
-          <PortfolioMarketTable
-            rows={marketPositions.rows}
-            headers={marketPositions.headers}
-          />
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="Liquidity Positions" id="news">
-          <PortfolioLiquidityTable
-            rows={liquidityPositions.rows}
-            headers={liquidityPositions.headers}
-          />
-        </Tabs.TabPane>
-      </Tabs>
+      <PortfolioTabs />
     </div>
   );
 };
