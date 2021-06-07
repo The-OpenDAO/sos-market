@@ -194,7 +194,6 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
                     size="sm"
                     variant="normal"
                     color="primary"
-                    fullWidth
                     onClick={() => handleClaimLiquidity(market.id)}
                     loading={isLoadingClaimLiquidity[market.id] || false}
                   >
