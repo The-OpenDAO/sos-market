@@ -52,7 +52,7 @@ function PortfolioTabs() {
           style={{ width: 'fit-content' }}
         />
         <Filter
-          description="Sort by"
+          description="Filter by"
           defaultOption={defaultFilterId}
           options={[
             { value: 'open', name: 'Open' },
