@@ -63,3 +63,11 @@
     }
   }
 }
+
+.portfolio-tabs {
+  @include flex-row(space-between, center);
+
+  &__content {
+    width: 100%;
+  }
+}
