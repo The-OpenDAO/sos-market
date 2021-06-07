@@ -196,6 +196,7 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
                     color="primary"
                     onClick={() => handleClaimLiquidity(market.id)}
                     loading={isLoadingClaimLiquidity[market.id] || false}
+                    style={{ marginLeft: 'auto' }}
                   >
                     Withdraw
                   </Button>
