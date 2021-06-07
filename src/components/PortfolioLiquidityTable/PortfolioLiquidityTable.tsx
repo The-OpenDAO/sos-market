@@ -185,15 +185,9 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
                 })}
               >
                 {result.type === 'pending' ? (
-                  <Button
-                    size="sm"
-                    variant="dark"
-                    color="default"
-                    fullWidth
-                    onClick={() => redirectTo(market.slug)}
-                  >
-                    Trade
-                  </Button>
+                  <Pill variant="subtle" color="default">
+                    Ongoing
+                  </Pill>
                 ) : null}
                 {result.type === 'awaiting_claim' ? (
                   <Button
