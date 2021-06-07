@@ -43,6 +43,20 @@ const filters = [
         icon: <ArrowDownSmallestIcom />
       }
     ]
+  },
+  {
+    value: 'id',
+    name: 'Newest',
+    optionalTriggers: [
+      {
+        name: 'asc',
+        icon: <ArrowUpSmallestIcon />
+      },
+      {
+        name: 'desc',
+        icon: <ArrowDownSmallestIcom />
+      }
+    ]
   }
 ];
 
