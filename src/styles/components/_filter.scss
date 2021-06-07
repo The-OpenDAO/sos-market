@@ -39,8 +39,10 @@
     }
 
     &__group {
-      @include flex-row;
+      @include flex-row(space-between, center);
       gap: 0.8rem;
+
+      width: 100%;
 
       &:hover {
         .pm-c-filter__item {
@@ -97,6 +99,8 @@
       .pm-c-filter__content {
         @include flex-column(center, flex-start);
         gap: 0.8rem;
+
+        min-width: 17rem;
       }
     }
   }
