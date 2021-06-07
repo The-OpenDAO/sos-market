@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import classnames from 'classnames';
 import { roundNumber } from 'helpers/math';
@@ -282,7 +282,6 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
                     size="sm"
                     variant="normal"
                     color="success"
-                    fullWidth
                     onClick={() => handleClaimWinnings(market.id)}
                     loading={isLoadingClaimWinnings[market.id] || false}
                   >
