@@ -1,25 +1,42 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 import { setFilter } from 'redux/ducks/portfolio';
 
 import {
   ButtonGroup,
-  Filter,
   PortfolioLiquidityTable,
-  PortfolioMarketTable
+  PortfolioMarketTable,
+  Filter
 } from 'components';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppSelector, useAppDispatch } from 'hooks';
 
 import { formatLiquidityPositions, formatMarketPositions } from './utils';
 
-const defaultTabId = 'marketPositions';
-const defaultFilterId = 'open';
+function TabsFilter() {
+  const dispatch = useAppDispatch();
+
+  function handleChangeFilter(newFilter: { value: string; name: string }) {
+    dispatch(setFilter(newFilter.value));
+  }
+
+  return (
+    <Filter
+      description="Filter by"
+      defaultOption="open"
+      options={[
+        { value: 'open', name: 'Open' },
+        { value: 'resolved', name: 'Resolved' }
+      ]}
+      onChange={handleChangeFilter}
+    />
+  );
+}
+
+const PortfolioTabsFilter = memo(TabsFilter);
 
 function PortfolioTabs() {
-  const [currentTab, setCurrentTab] = useState(defaultTabId);
-
-  const dispatch = useAppDispatch();
+  const [currentTab, setCurrentTab] = useState('marketPositions');
 
   const markets = useAppSelector(state => state.markets.markets);
   const portfolio = useAppSelector(state => state.bepro.portfolio);
@@ -27,15 +44,11 @@ function PortfolioTabs() {
   const marketPositions = formatMarketPositions(portfolio, markets);
   const liquidityPositions = formatLiquidityPositions(portfolio, markets);
 
-  function handleChangeFilter(newFilter: { value: string; name: string }) {
-    dispatch(setFilter(newFilter.value));
-  }
-
   return (
-    <>
-      <div className="portfolio-tabs">
+    <div className="portfolio-tabs">
+      <div className="portfolio-tabs__header">
         <ButtonGroup
-          defaultActiveId={defaultTabId}
+          defaultActiveId="marketPositions"
           buttons={[
             {
               id: 'marketPositions',
@@ -51,15 +64,7 @@ function PortfolioTabs() {
           onChange={setCurrentTab}
           style={{ width: 'fit-content' }}
         />
-        <Filter
-          description="Filter by"
-          defaultOption={defaultFilterId}
-          options={[
-            { value: 'open', name: 'Open' },
-            { value: 'resolved', name: 'Resolved' }
-          ]}
-          onChange={handleChangeFilter}
-        />
+        <PortfolioTabsFilter />
       </div>
       <div className="portfolio-tabs__content">
         {currentTab === 'marketPositions' ? (
@@ -75,7 +80,7 @@ function PortfolioTabs() {
           />
         ) : null}
       </div>
-    </>
+    </div>
   );
 }
 
