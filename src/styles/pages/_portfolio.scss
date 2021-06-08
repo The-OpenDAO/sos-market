@@ -65,7 +65,12 @@
 }
 
 .portfolio-tabs {
-  @include flex-row(space-between, center);
+  @include flex-column;
+  gap: 1rem;
+
+  &__header {
+    @include flex-row(space-between, center);
+  }
 
   &__content {
     width: 100%;
