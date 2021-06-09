@@ -37,14 +37,14 @@ function generateChartRandomData(reverse = false) {
 
 function formatMarketPositions(portfolio: Object, markets: Market[]) {
   const headers = [
-    'Market',
-    'Outcome',
-    'Price (24h)',
-    'Profit/Loss',
-    'Shares',
-    'Value',
-    'Max. Payout',
-    ''
+    { title: 'Market', key: 'market', align: 'left' },
+    { title: 'Outcome', key: 'outcome', align: 'right' },
+    { title: 'Price (24h)', key: 'price', align: 'right' },
+    { title: 'Profit/Loss', key: 'profit', align: 'right' },
+    { title: 'Shares', key: 'shares', align: 'center' },
+    { title: 'Value', key: 'value', align: 'right' },
+    { title: 'Max. Payout', key: 'maxPayout', align: 'right' },
+    { title: 'Status', key: 'result', align: 'right' }
   ];
 
   const rows: any[] = [];
@@ -52,7 +52,8 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
     market.outcomes.forEach((outcome: Outcome) => {
-      if (portfolio[market.id]?.outcomes[outcome.id]?.shares) {
+      // ignoring zero balances
+      if (portfolio[market.id]?.outcomes[outcome.id]?.shares >= 0.0005) {
         const priceChart = outcome.priceCharts.find(
           chart => chart.timeframe === '24h'
         );
@@ -131,19 +132,20 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
 
 function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
   const headers = [
-    'Market',
-    'Shares',
-    'Value',
-    'Pool Share',
-    'Fees Earned',
-    ''
+    { title: 'Market', key: 'market', align: 'left' },
+    { title: 'Shares', key: 'shares', align: 'center' },
+    { title: 'Value', key: 'value', align: 'right' },
+    { title: 'Pool Share', key: 'poolShare', align: 'right' },
+    { title: 'Fees Earned', key: 'fees', align: 'right' },
+    { title: 'Status', key: 'status', align: 'right' }
   ];
 
   const rows: any[] = [];
 
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
-    if (portfolio[market.id]?.liquidity?.shares) {
+    // ignoring zero balances
+    if (portfolio[market.id]?.liquidity?.shares > 0.0005) {
       const shares = portfolio[market.id]?.liquidity?.shares;
       const buyPrice = portfolio[market.id]?.liquidity?.price;
       const poolShare = shares / market.liquidity;

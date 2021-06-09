@@ -133,4 +133,4 @@ function Filter({
 
 Filter.displayName = 'Filter';
 
-export default Filter;
+export default React.memo(Filter);

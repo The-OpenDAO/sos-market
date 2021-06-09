@@ -4,6 +4,7 @@ import * as portfolioService from 'services/Polkamarkets/portfolio';
 
 export interface PortfolioInitialState {
   portfolio: Portfolio;
+  filter: string;
   isLoading: boolean;
   error: any;
 }
@@ -22,6 +23,7 @@ const initialState: PortfolioInitialState = {
     liquidityFeesEarned: 0,
     holdingsChart: []
   },
+  filter: 'open',
   isLoading: false,
   error: null
 };
@@ -53,13 +55,19 @@ const portfolioSlice = createSlice({
       market: initialState.portfolio,
       isLoading: false,
       error: action.payload
+    }),
+    setFilter: (state, action) => ({
+      ...state,
+      filter: action.payload
     })
   }
 });
 
 export default portfolioSlice.reducer;
 
-const { request, success, error } = portfolioSlice.actions;
+const { request, success, error, setFilter } = portfolioSlice.actions;
+
+export { setFilter };
 
 export function getPortfolio(address: string) {
   return async dispatch => {
