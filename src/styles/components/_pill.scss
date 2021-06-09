@@ -19,6 +19,7 @@
 
   &__text {
     @extend .tiny, .semibold;
+    white-space: nowrap;
   }
 
   @include themes($pill-themes) {
