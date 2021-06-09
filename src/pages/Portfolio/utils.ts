@@ -52,7 +52,8 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
     market.outcomes.forEach((outcome: Outcome) => {
-      if (portfolio[market.id]?.outcomes[outcome.id]?.shares) {
+      // ignoring zero balances
+      if (portfolio[market.id]?.outcomes[outcome.id]?.shares >= 0.0005) {
         const priceChart = outcome.priceCharts.find(
           chart => chart.timeframe === '24h'
         );
@@ -143,7 +144,8 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
 
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
-    if (portfolio[market.id]?.liquidity?.shares) {
+    // ignoring zero balances
+    if (portfolio[market.id]?.liquidity?.shares > 0.0005) {
       const shares = portfolio[market.id]?.liquidity?.shares;
       const buyPrice = portfolio[market.id]?.liquidity?.price;
       const poolShare = shares / market.liquidity;
