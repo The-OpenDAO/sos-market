@@ -25,7 +25,6 @@ function HomeTabs({ openMarkets, closedMarkets, resolvedMarkets }) {
         <Filter
           description="Sort by"
           defaultOption="volume"
-          defaultTrigger="desc"
           options={filters}
           onChange={handleSelectedFilter}
         />

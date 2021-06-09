@@ -13,12 +13,12 @@ type Option = {
   value: string | number;
   name: string;
   optionalTriggers?: Trigger[];
+  defaultTrigger?: number | undefined;
 };
 
 type FilterProps = {
   description: string;
   defaultOption: string;
-  defaultTrigger: string | undefined;
   options: Option[];
   onChange: any;
 };
@@ -26,7 +26,6 @@ type FilterProps = {
 function Filter({
   description,
   defaultOption,
-  defaultTrigger,
   options,
   onChange
 }: FilterProps) {
@@ -40,23 +39,20 @@ function Filter({
       option => option.value === defaultOption
     );
 
-    const defaultSelectedTrigger = defaultSelectedOption?.optionalTriggers?.find(
-      trigger => trigger.name === defaultTrigger
-    );
+    const defaultTrigger = defaultSelectedOption?.defaultTrigger || 0;
+    const defaultSelectedTrigger =
+      defaultSelectedOption?.optionalTriggers?.[defaultTrigger];
 
     setSelectedOption(defaultSelectedOption);
-    if (defaultSelectedTrigger) {
-      setSelectedOptionalTrigger(defaultSelectedTrigger);
-    } else {
-      setSelectedOptionalTrigger(undefined);
-    }
-  }, [defaultOption, defaultTrigger, options]);
+    setSelectedOptionalTrigger(defaultSelectedTrigger || undefined);
+  }, [defaultOption, options]);
 
   function handleChangeOption(option: Option) {
     setSelectedOption(option);
 
     if (option.optionalTriggers) {
-      setSelectedOptionalTrigger(option.optionalTriggers[0]);
+      const defaultTrigger = option.defaultTrigger || 0;
+      setSelectedOptionalTrigger(option.optionalTriggers[defaultTrigger]);
     } else {
       setSelectedOptionalTrigger(undefined);
     }
