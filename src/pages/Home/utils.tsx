@@ -5,6 +5,7 @@ const filters = [
   {
     value: 'expiresAt',
     name: 'Expiration Date',
+    defaultTrigger: 0,
     optionalTriggers: [
       {
         name: 'asc',
@@ -19,6 +20,7 @@ const filters = [
   {
     value: 'volume',
     name: 'Volume',
+    defaultTrigger: 1,
     optionalTriggers: [
       {
         name: 'asc',
@@ -33,6 +35,7 @@ const filters = [
   {
     value: 'liquidity',
     name: 'Liquidity',
+    defaultTrigger: 1,
     optionalTriggers: [
       {
         name: 'asc',
@@ -47,6 +50,7 @@ const filters = [
   {
     value: 'id',
     name: 'Newest',
+    defaultTrigger: 1,
     optionalTriggers: [
       {
         name: 'asc',
