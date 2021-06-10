@@ -37,14 +37,49 @@ function generateChartRandomData(reverse = false) {
 
 function formatMarketPositions(portfolio: Object, markets: Market[]) {
   const headers = [
-    { title: 'Market', key: 'market', align: 'left' },
-    { title: 'Outcome', key: 'outcome', align: 'right' },
-    { title: 'Price (24h)', key: 'price', align: 'right' },
-    { title: 'Profit/Loss', key: 'profit', align: 'right' },
-    { title: 'Shares', key: 'shares', align: 'center' },
-    { title: 'Value', key: 'value', align: 'right' },
-    { title: 'Max. Payout', key: 'maxPayout', align: 'right' },
-    { title: 'Status', key: 'result', align: 'right' }
+    {
+      title: 'Market',
+      key: 'market',
+      align: 'left',
+      sortBy: 'market.id'
+    },
+    {
+      title: 'Outcome',
+      key: 'outcome',
+      align: 'right',
+      sortBy: 'outcome.id'
+    },
+    {
+      title: 'Price (24h)',
+      key: 'price',
+      align: 'right',
+      sortBy: 'price.value'
+    },
+    {
+      title: 'Profit/Loss',
+      key: 'profit',
+      align: 'right',
+      sortBy: 'profit.value'
+    },
+    {
+      title: 'Shares',
+      key: 'shares',
+      align: 'center',
+      sortBy: 'shares'
+    },
+    { title: 'Value', key: 'value', align: 'right', sortBy: 'value' },
+    {
+      title: 'Max. Payout',
+      key: 'maxPayout',
+      align: 'right',
+      sortBy: 'maxPayout'
+    },
+    {
+      title: 'Status',
+      key: 'result',
+      align: 'right',
+      sortBy: 'result.type'
+    }
   ];
 
   const rows: any[] = [];
@@ -132,12 +167,17 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
 
 function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
   const headers = [
-    { title: 'Market', key: 'market', align: 'left' },
-    { title: 'Shares', key: 'shares', align: 'center' },
-    { title: 'Value', key: 'value', align: 'right' },
-    { title: 'Pool Share', key: 'poolShare', align: 'right' },
-    { title: 'Fees Earned', key: 'fees', align: 'right' },
-    { title: 'Status', key: 'status', align: 'right' }
+    { title: 'Market', key: 'market', align: 'left', sortBy: 'market.id' },
+    { title: 'Shares', key: 'shares', align: 'center', sortBy: 'shares' },
+    { title: 'Value', key: 'value', align: 'right', sortBy: 'value.value' },
+    {
+      title: 'Pool Share',
+      key: 'poolShare',
+      align: 'right',
+      sortBy: 'pollShare'
+    },
+    { title: 'Fees Earned', key: 'fees', align: 'right', sortBy: 'feesEarned' },
+    { title: 'Status', key: 'status', align: 'right', sortBy: 'result.type' }
   ];
 
   const rows: any[] = [];
