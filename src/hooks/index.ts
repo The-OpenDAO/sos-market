@@ -2,6 +2,7 @@ import useAppDispatch from './useAppDispatch';
 import useAppSelector from './useAppSelector';
 import useLocalStorage from './useLocalStorage';
 import useNetwork from './useNetwork';
+import useSortableData from './useSortableData';
 import useTheme from './useTheme';
 import useViewport from './useViewport';
 
@@ -11,5 +12,6 @@ export {
   useTheme,
   useViewport,
   useLocalStorage,
-  useNetwork
+  useNetwork,
+  useSortableData
 };
