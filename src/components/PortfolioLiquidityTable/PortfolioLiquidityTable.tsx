@@ -8,11 +8,16 @@ import { roundNumber } from 'helpers/math';
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { ArrowDownIcon, ArrowUpIcon } from 'assets/icons';
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  CaretDownIcon,
+  CaretUpIcon
+} from 'assets/icons';
 
 import { Pill } from 'components';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector, useSortableData } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import { Button } from '../Button';
@@ -63,25 +68,40 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
     filter === 'resolved' ? resolvedMarket(row) : !resolvedMarket(row)
   );
 
+  const { sortedItems, requestSort, key, sortDirection } = useSortableData(
+    filteredRows
+  );
+
+  const sortDirectionArrow = headerKey => {
+    if (!key || !sortDirection || (key && key !== headerKey)) return null;
+    if (sortDirection === 'ascending') return <CaretUpIcon />;
+    return <CaretDownIcon />;
+  };
+
   return (
     <table className="pm-c-table">
       <tbody>
         <tr className="pm-c-table__header">
           {headers?.map(header => (
             <th
-              className={classnames({
-                'pm-c-table__header-item': true,
-                [`pm-c-table__item--${header.align}`]: true
-              })}
               id={header.key}
               key={header.key}
+              className={classnames({
+                'pm-c-table__header-item': true,
+                [`pm-c-table__item--${header.align}`]: true,
+                'pm-c-table__item--button': true,
+                'pm-c-table__item--without-arrow':
+                  !key || (key && key !== header.sortBy)
+              })}
               scope="col"
+              onClick={() => requestSort(header.sortBy)}
             >
+              {sortDirectionArrow(header.sortBy)}
               {header.title}
             </th>
           ))}
         </tr>
-        {filteredRows?.map(
+        {sortedItems?.map(
           ({ market, value, shares, poolShare, feesEarned, result }) => (
             <tr className="pm-c-table__row" key={market.id}>
               <td
