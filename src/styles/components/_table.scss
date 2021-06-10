@@ -16,6 +16,13 @@
         color: themed('table-header-item-color');
         vertical-align: middle;
         transition: $table-header-item-transitions;
+        white-space: nowrap;
+
+        svg {
+          margin-bottom: 0.2rem;
+          margin-right: 0.4rem;
+          fill: themed('table-header-item-color');
+        }
       }
     }
 
@@ -60,6 +67,15 @@
 
       &--right {
         text-align: right;
+      }
+
+      &--button {
+        cursor: pointer;
+        touch-action: manipulation;
+      }
+
+      &--without-arrow {
+        padding-left: calc(#{$table-header-item-padding-x} + 1.1rem);
       }
     }
   }
