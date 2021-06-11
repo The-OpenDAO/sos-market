@@ -46,7 +46,7 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
     {
       title: 'Outcome',
       key: 'outcome',
-      align: 'right',
+      align: 'left',
       sortBy: 'outcome.title'
     },
     {

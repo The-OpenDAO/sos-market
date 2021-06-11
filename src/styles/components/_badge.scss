@@ -6,10 +6,12 @@
     height: $badge-circle-height;
     width: $badge-circle-width;
     border-radius: 50%;
+    flex-shrink: 0;
   }
 
   &__label {
     @extend .caption, .semibold;
+    text-align: left;
   }
 
   @include themes($badge-themes) {

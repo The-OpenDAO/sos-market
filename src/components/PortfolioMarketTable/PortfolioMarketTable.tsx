@@ -143,7 +143,7 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
                 id="outcome"
                 className={classnames({
                   'pm-c-table__row-item': true,
-                  'pm-c-table__item--right': true
+                  'pm-c-table__item--left': true
                 })}
               >
                 <Badge
