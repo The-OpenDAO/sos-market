@@ -41,13 +41,13 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
       title: 'Market',
       key: 'market',
       align: 'left',
-      sortBy: 'market.id'
+      sortBy: 'market.title'
     },
     {
       title: 'Outcome',
       key: 'outcome',
       align: 'right',
-      sortBy: 'outcome.id'
+      sortBy: 'outcome.title'
     },
     {
       title: 'Price (24h)',
