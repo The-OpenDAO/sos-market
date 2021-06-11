@@ -11,6 +11,7 @@
 
   &__label {
     @extend .caption, .semibold;
+    text-align: left;
   }
 
   @include themes($badge-themes) {
