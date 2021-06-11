@@ -10,12 +10,20 @@
         height: 4.2rem;
 
         padding: $table-header-item-padding-y $table-header-item-padding-x;
+        padding-left: calc(#{$table-header-item-padding-x} + 1.1rem);
         background-color: themed('table-header-item-background-color');
 
         @extend .tiny, .bold;
         color: themed('table-header-item-color');
         vertical-align: middle;
         transition: $table-header-item-transitions;
+        white-space: nowrap;
+
+        svg {
+          margin-bottom: 0.2rem;
+          margin-right: 0.4rem;
+          fill: themed('table-header-item-color');
+        }
       }
     }
 
@@ -60,6 +68,22 @@
 
       &--right {
         text-align: right;
+      }
+
+      &--button {
+        cursor: pointer;
+        touch-action: manipulation;
+      }
+
+      &--with-arrow {
+        padding-left: $table-header-item-padding-x;
+        color: themed('table-header-item-color-hover');
+
+        svg {
+          margin-bottom: 0.2rem;
+          margin-right: 0.4rem;
+          fill: themed('table-header-item-color-hover');
+        }
       }
     }
   }

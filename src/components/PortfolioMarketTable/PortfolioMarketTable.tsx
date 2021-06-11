@@ -8,15 +8,21 @@ import { roundNumber } from 'helpers/math';
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { ArrowDownIcon, ArrowUpIcon } from 'assets/icons';
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  CaretDownIcon,
+  CaretUpIcon
+} from 'assets/icons';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector, useSortableData } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import Badge from '../Badge';
 import { Button } from '../Button';
 import Pill from '../Pill';
 import Text from '../Text';
+import Tooltip from '../Tooltip';
 
 type MarketTableProps = {
   rows: any[];
@@ -63,25 +69,39 @@ const PortfolioMarketTable = ({ rows, headers }: MarketTableProps) => {
     filter === 'resolved' ? resolvedMarket(row) : !resolvedMarket(row)
   );
 
+  const { sortedItems, requestSort, key, sortDirection } = useSortableData(
+    filteredRows
+  );
+
+  const sortDirectionArrow = headerKey => {
+    if (!key || !sortDirection || (key && key !== headerKey)) return null;
+    if (sortDirection === 'ascending') return <CaretUpIcon />;
+    return <CaretDownIcon />;
+  };
+
   return (
     <table className="pm-c-table">
       <tbody>
         <tr className="pm-c-table__header">
           {headers?.map(header => (
             <th
-              className={classnames({
-                'pm-c-table__header-item': true,
-                [`pm-c-table__item--${header.align}`]: true
-              })}
               id={header.key}
               key={header.key}
+              className={classnames({
+                'pm-c-table__header-item': true,
+                [`pm-c-table__item--${header.align}`]: true,
+                'pm-c-table__item--button': true,
+                'pm-c-table__item--with-arrow': key && key === header.sortBy
+              })}
               scope="col"
+              onClick={() => requestSort(header.sortBy)}
             >
+              {sortDirectionArrow(header.sortBy)}
               {header.title}
             </th>
           ))}
         </tr>
-        {filteredRows?.map(
+        {sortedItems?.map(
           ({
             market,
             outcome,
