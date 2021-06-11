@@ -90,8 +90,7 @@ const PortfolioLiquidityTable = ({ rows, headers }: MarketTableProps) => {
                 'pm-c-table__header-item': true,
                 [`pm-c-table__item--${header.align}`]: true,
                 'pm-c-table__item--button': true,
-                'pm-c-table__item--without-arrow':
-                  !key || (key && key !== header.sortBy)
+                'pm-c-table__item--with-arrow': key && key === header.sortBy
               })}
               scope="col"
               onClick={() => requestSort(header.sortBy)}
