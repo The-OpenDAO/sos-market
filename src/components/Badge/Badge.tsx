@@ -2,9 +2,9 @@ import React from 'react';
 
 import Text from '../Text';
 
-type BadgeVariant = 'normal' | 'filled';
+export type BadgeVariant = 'normal' | 'filled';
 
-type BadgeColor =
+export type BadgeColor =
   | 'default'
   | 'primary'
   | 'success'
@@ -15,8 +15,19 @@ type BadgeColor =
   | 'purple';
 
 type BadgeProps = {
+  /**
+   * Variant to use
+   * @default 'normal'
+   */
   variant?: BadgeVariant;
+  /**
+   * Color of the circle
+   * @default 'default'
+   */
   color?: BadgeColor;
+  /**
+   * Label to show
+   */
   label?: string;
   style?: React.CSSProperties;
 };
@@ -45,7 +56,5 @@ function Badge({
     </div>
   );
 }
-
-Badge.displayName = 'Badge';
 
 export default Badge;
