@@ -1,27 +1,26 @@
 @mixin mini-table-item-color($color-variant, $color) {
   @if $color-variant == default {
-    span {
-      color: $gray-500;
-    }
+    @include themes($mini-table-themes) {
+      span {
+        color: themed('mini-table-item-title-color');
+      }
 
-    .fill-empty-space {
-      border-color: $gray-500;
-    }
+      strong {
+        color: themed('mini-table-item-value-color');
+      }
 
-    strong {
-      color: $gray-100;
+      .fill-empty-space {
+        border-color: themed('mini-table-item-title-color');
+      }
     }
   } @else {
-    span {
+    span,
+    strong {
       color: $color;
     }
 
     .fill-empty-space {
       border-color: $color;
-    }
-
-    strong {
-      color: $color;
     }
   }
 }
