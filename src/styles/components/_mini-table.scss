@@ -1,9 +1,11 @@
 .pm-c-mini-table {
-  @include flex-column;
+  display: flex;
+  flex-direction: column;
   gap: 0.4rem;
 
   &__item {
-    @include flex-row;
+    display: flex;
+    flex-direction: row;
     gap: 0.8rem;
 
     .fill-empty-space {
