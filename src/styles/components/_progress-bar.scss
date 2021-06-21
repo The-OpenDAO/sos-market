@@ -9,49 +9,39 @@
 .pm-c-progress-bar--blue {
   @extend .pm-c-progress-bar;
 
-  @include themes($progress-bar-themes) {
-    .rc-progress-line-path {
-      stroke: themed('progress-bar-path-color-blue');
-    }
+  .rc-progress-line-path {
+    stroke: $progress-bar-path-color-blue;
   }
 }
 
 .pm-c-progress-bar--pink {
   @extend .pm-c-progress-bar;
 
-  @include themes($progress-bar-themes) {
-    .rc-progress-line-path {
-      stroke: themed('progress-bar-path-color-pink');
-    }
+  .rc-progress-line-path {
+    stroke: $progress-bar-path-color-pink;
   }
 }
 
 .pm-c-progress-bar--success {
   @extend .pm-c-progress-bar;
 
-  @include themes($progress-bar-themes) {
-    .rc-progress-line-path {
-      stroke: themed('progress-bar-path-color-success');
-    }
+  .rc-progress-line-path {
+    stroke: $progress-bar-path-color-success;
   }
 }
 
 .pm-c-progress-bar--warning {
   @extend .pm-c-progress-bar;
 
-  @include themes($progress-bar-themes) {
-    .rc-progress-line-path {
-      stroke: themed('progress-bar-path-color-warning');
-    }
+  .rc-progress-line-path {
+    stroke: $progress-bar-path-color-warning;
   }
 }
 
 .pm-c-progress-bar--danger {
   @extend .pm-c-progress-bar;
 
-  @include themes($progress-bar-themes) {
-    .rc-progress-line-path {
-      stroke: themed('progress-bar-path-color-danger');
-    }
+  .rc-progress-line-path {
+    stroke: $progress-bar-path-color-danger;
   }
 }
