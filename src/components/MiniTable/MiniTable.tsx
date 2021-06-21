@@ -2,9 +2,9 @@ import React from 'react';
 
 import Text from '../Text';
 
-type MiniTableColor = 'default' | 'success' | 'danger' | 'warning';
+export type MiniTableColor = 'default' | 'success' | 'danger' | 'warning';
 
-type MiniTableRow = {
+export type MiniTableRow = {
   /**
    * Unique key of this row
    */
@@ -40,9 +40,9 @@ type MiniTableProps = {
  */
 function MiniTable({ rows, color = 'default', style }: MiniTableProps) {
   return (
-    <ul className="mini-table" style={style}>
+    <ul className="pm-c-mini-table" style={style}>
       {rows?.map(item => (
-        <li key={item.key} className={`mini-table__item--${color}`}>
+        <li key={item.key} className={`pm-c-mini-table__item--${color}`}>
           <Text as="span" scale="tiny-uppercase" fontWeight="bold">
             {item.title}
           </Text>
@@ -55,7 +55,5 @@ function MiniTable({ rows, color = 'default', style }: MiniTableProps) {
     </ul>
   );
 }
-
-MiniTable.displayName = 'MiniTable';
 
 export default MiniTable;
