@@ -1,0 +1,14 @@
+$progress-bar-path-color-blue: #6ab7ff !default;
+$progress-bar-path-color-pink: #ff83b0 !default;
+$progress-bar-path-color-success: #27ab83 !default;
+$progress-bar-path-color-warning: #f0b429 !default;
+$progress-bar-path-color-danger: #e12d39 !default;
+
+$progress-bar-themes: (
+  light: (
+    progress-bar-trail-color: #dfe1e6
+  ),
+  dark: (
+    progress-bar-trail-color: #26282d
+  )
+) !default;
