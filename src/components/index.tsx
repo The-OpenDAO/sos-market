@@ -28,10 +28,13 @@ import MiniTable from './MiniTable';
 import ModalNotification from './ModalNotification';
 import NavBar from './NavBar';
 import NetworkInfo from './NetworkInfo';
+import Outcome from './Outcome';
 import Pill from './Pill';
 import PortfolioLiquidityTable from './PortfolioLiquidityTable';
 import PortfolioMarketTable from './PortfolioMarketTable';
 import PredictionCard from './PredictionCard';
+import ProgressBar from './ProgressBar';
+import ReportForm from './ReportForm';
 import RightSidebar from './RightSidebar';
 import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
@@ -81,14 +84,17 @@ export {
   ModalNotification,
   NavBar,
   NetworkInfo,
+  Outcome,
   Pill,
   PortfolioLiquidityTable,
   PortfolioMarketTable,
   PredictionCard,
+  ProgressBar,
   ScrollToTop,
   SearchBar,
   Select,
   Sidebar,
+  ReportForm,
   RightSidebar,
   StepSlider,
   Table,
