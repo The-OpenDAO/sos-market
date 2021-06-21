@@ -44,6 +44,7 @@
   @extend .pm-c-outcome;
 
   @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-default');
     border-color: themed('outcome-border-color-default');
 
     .rc-progress-line-path {
@@ -65,6 +66,7 @@
   @extend .pm-c-outcome;
 
   @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-success');
     border-color: themed('outcome-border-color-success');
   }
 }
@@ -73,6 +75,7 @@
   @extend .pm-c-outcome;
 
   @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-error');
     border-color: themed('outcome-border-color-error');
   }
 }
@@ -81,6 +84,7 @@
   @extend .pm-c-outcome;
 
   @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-warning');
     border-color: themed('outcome-border-color-warning');
   }
 }
