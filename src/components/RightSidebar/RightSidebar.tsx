@@ -4,6 +4,7 @@ import { useAppSelector } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
 
 import LiquidityForm from '../LiquidityForm';
+import ReportForm from '../ReportForm';
 import TradeForm from '../TradeForm';
 
 function RightSidebar() {
@@ -22,6 +23,9 @@ function RightSidebar() {
   );
   const liquidityFormIsVisible = useAppSelector(
     state => state.ui.liquidityForm.visible
+  );
+  const reportFormIsVisible = useAppSelector(
+    state => state.ui.reportForm.visible
   );
 
   if (!rightSidebarIsVisible) return null;
@@ -52,9 +56,20 @@ function RightSidebar() {
       </div>
     );
 
+  if (reportFormIsVisible)
+    return (
+      <div
+        className={
+          hasAlertNotification
+            ? 'pm-l-right-sidebar--with-notification'
+            : 'pm-l-right-sidebar'
+        }
+      >
+        <ReportForm />
+      </div>
+    );
+
   return null;
 }
-
-RightSidebar.displayName = 'RightSidebar';
 
 export default RightSidebar;
