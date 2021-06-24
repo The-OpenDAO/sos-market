@@ -9,8 +9,6 @@ function ReportFormActions() {
 
   function handleCancel() {}
 
-  console.log(isSubmitting);
-
   return (
     <div className="pm-c-report-form-details__actions">
       <Button variant="dark" color="default" size="lg" onClick={handleCancel}>
