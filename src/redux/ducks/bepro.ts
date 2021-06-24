@@ -5,6 +5,7 @@ const initialState = {
   isLoggedIn: false,
   ethAddress: '',
   ethBalance: 0,
+  polkBalance: 10,
   portfolio: {},
   actions: []
 };
@@ -25,6 +26,10 @@ const beproSlice = createSlice({
       ...state,
       ethBalance: action.payload
     }),
+    changePolkBalance: (state, action: PayloadAction<number>) => ({
+      ...state,
+      polkBalance: action.payload
+    }),
     changePortfolio: (state, action: PayloadAction<Object>) => ({
       ...state,
       portfolio: action.payload
@@ -42,6 +47,7 @@ const {
   changeIsLoggedIn,
   changeEthAddress,
   changeEthBalance,
+  changePolkBalance,
   changePortfolio,
   changeActions
 } = beproSlice.actions;
@@ -83,6 +89,7 @@ export {
   changeIsLoggedIn,
   changeEthAddress,
   changeEthBalance,
+  changePolkBalance,
   changePortfolio,
   changeActions,
   login,
