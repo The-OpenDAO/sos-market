@@ -15,6 +15,7 @@ type ReportFormData = {
 };
 
 function ReportForm() {
+  const { isLoading } = useAppSelector(state => state.market);
   const marketId = useAppSelector(state => state.market.market.id);
 
   const initialData: ReportFormData = {
@@ -26,6 +27,8 @@ function ReportForm() {
   async function handleFormSubmit(values: ReportFormData) {
     console.log(values);
   }
+
+  if (isLoading) return null;
 
   return (
     <Formik
