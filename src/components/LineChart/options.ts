@@ -3,7 +3,7 @@ import { relativeTimeFromNow } from 'helpers/date';
 function generateCustomOptions(ticker: string) {
   return {
     chart: {
-      type: 'line',
+      type: 'line' as const,
       toolbar: {
         show: false
       },
@@ -56,7 +56,7 @@ function generateCustomOptions(ticker: string) {
       strokeDashArray: 0,
       fillOpacity: 1,
       discrete: [],
-      shape: 'circle',
+      shape: 'circle' as const,
       radius: 2,
       offsetX: 0,
       offsetY: 0,
@@ -72,11 +72,11 @@ function generateCustomOptions(ticker: string) {
       enabled: false
     },
     stroke: {
-      curve: 'smooth',
+      curve: 'smooth' as const,
       width: 2
     },
     xaxis: {
-      type: 'datetime',
+      type: 'datetime' as const,
       labels: {
         show: true,
         format: 'hh:mm TT',
@@ -112,7 +112,7 @@ function generateCustomOptions(ticker: string) {
       show: true,
       borderColor: '#252C3B',
       strokeDashArray: 5,
-      position: 'back',
+      position: 'back' as const,
       xaxis: {
         lines: {
           show: true

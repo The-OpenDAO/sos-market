@@ -3,11 +3,11 @@ export default {
     toolbar: {
       show: false
     },
-    type: 'candlestick',
+    type: 'candlestick' as const,
     height: 288
   },
   xaxis: {
-    type: 'datetime',
+    type: 'datetime' as const,
     tooltip: {
       enabled: false
     },
@@ -28,7 +28,7 @@ export default {
     show: true,
     borderColor: '#252C3B',
     strokeDashArray: 5,
-    position: 'back',
+    position: 'back' as const,
     xaxis: {
       lines: {
         show: true
