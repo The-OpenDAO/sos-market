@@ -5,13 +5,10 @@ function generateCustomOptions(strokeCurve, strokeWidth, color, gradientShade) {
       toolbar: {
         show: false
       },
-      type: 'area'
+      type: 'area' as const
     },
     tooltip: {
       enabled: false
-    },
-    markers: {
-      show: false
     },
     dataLabels: {
       enabled: false
@@ -22,7 +19,7 @@ function generateCustomOptions(strokeCurve, strokeWidth, color, gradientShade) {
       colors: color === '#FFFFFF' ? ['#FFFFFF57'] : undefined
     },
     xaxis: {
-      type: 'datetime',
+      type: 'datetime' as const,
       labels: {
         show: false
       },
@@ -52,7 +49,7 @@ function generateCustomOptions(strokeCurve, strokeWidth, color, gradientShade) {
     },
     colors: [color],
     fill: {
-      type: 'gradient',
+      type: 'gradient' as const,
       gradient: {
         shade: gradientShade,
         opacityFrom: 0.7,
