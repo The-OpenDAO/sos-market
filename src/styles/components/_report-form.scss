@@ -1,0 +1,115 @@
+.pm-c-report-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  gap: 2.4rem;
+
+  height: 100%;
+  width: 32rem;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.6rem;
+
+    width: 100%;
+  }
+
+  @media only screen and (max-height: 870px) {
+    & > :last-child {
+      padding-bottom: 2.4rem;
+    }
+  }
+}
+
+.pm-c-report-form-outcome-select {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  width: 100%;
+}
+
+.pm-c-report-form-details {
+  @include themes($report-form-themes) {
+    width: 100%;
+    margin-top: 1.2rem;
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__separator {
+      width: 100%;
+      margin: 1.2rem 0rem;
+
+      align-self: center;
+      border: none;
+      border-bottom: 0.1rem dashed themed('report-form-details-separator-color');
+    }
+
+    &__group-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      svg {
+        height: 1.2rem;
+        width: 1.2rem;
+
+        fill: themed('report-form-details-item-normal-color');
+      }
+    }
+
+    &__group-inline--new-bond {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      svg {
+        height: 0.8rem;
+        width: 0.8rem;
+
+        fill: themed('report-form-details-item-new-bond-color');
+      }
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &-title--normal,
+      &-value--normal,
+      .pm-c-badge__label {
+        @extend .tiny, .semibold;
+        color: themed('report-form-details-item-normal-color');
+      }
+
+      &-value--normal--new-bond {
+        @extend .tiny, .semibold;
+        color: themed('report-form-details-item-new-bond-color');
+      }
+
+      &-title--bold,
+      &-value--bold {
+        @extend .caption, .semibold;
+        color: themed('report-form-details-item-bold-color');
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    width: 100%;
+    margin-top: 1.2rem;
+  }
+}
