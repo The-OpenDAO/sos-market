@@ -111,7 +111,7 @@
       margin: 0rem 0.8rem;
 
       > span {
-        color: $gray-200;
+        color: themed('amount-input-currency-name-color');
       }
     }
   }
