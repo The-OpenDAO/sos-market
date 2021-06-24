@@ -23,7 +23,9 @@ const PortfolioPage = () => {
     if (rightSidebarIsVisible) {
       dispatch(closeRightSidebar());
     }
-    dispatch(getMarkets());
+    dispatch(getMarkets('open'));
+    dispatch(getMarkets('closed'));
+    dispatch(getMarkets('resolved'));
   }, [rightSidebarIsVisible, dispatch]);
 
   useEffect(() => {
