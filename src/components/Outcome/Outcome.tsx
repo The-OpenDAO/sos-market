@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useMemo } from 'react';
 
+import { useField } from 'formik';
 import { roundNumber } from 'helpers/math';
 import isUndefined from 'lodash/isUndefined';
 import reject from 'lodash/reject';
@@ -20,6 +22,10 @@ export type OutcomeState =
 
 type OutcomeProps = {
   /**
+   * Unique id of the outcome
+   */
+  id: string;
+  /**
    * Title of the outcome
    */
   title: string;
@@ -37,10 +43,6 @@ type OutcomeProps = {
    */
   shares?: number;
   /**
-   * Bond value
-   */
-  bond?: number;
-  /**
    * Currency ticker
    */
   ticker?: string;
@@ -53,18 +55,24 @@ type OutcomeProps = {
    * @default 'default'
    */
   state?: OutcomeState;
+  onSelect: (id: string) => void;
 };
 
 function Outcome({
+  id,
   title,
   color,
   helpText,
   shares,
-  bond,
   ticker = 'POLK',
   progress,
-  state = 'default'
+  state = 'default',
+  onSelect
 }: OutcomeProps) {
+  const [field] = useField('bond');
+
+  const bond = state === 'selected' ? field.value : 0;
+
   const miniTableRows = useMemo(() => {
     const rows = [
       !isUndefined(shares)
@@ -86,8 +94,18 @@ function Outcome({
     return reject(rows, isUndefined) as MiniTableRow[];
   }, [shares, bond, ticker]);
 
+  function handleSelectOutcome() {
+    onSelect(id);
+  }
+
   return (
-    <div className={`pm-c-outcome--${state}`}>
+    <div
+      className={`pm-c-outcome--${state}`}
+      role="button"
+      tabIndex={0}
+      onClick={handleSelectOutcome}
+      onKeyPress={handleSelectOutcome}
+    >
       <div className="pm-c-outcome__header">
         <div className="pm-c-outcome__row-group">
           <Badge variant="normal" label={title} color={color} />
