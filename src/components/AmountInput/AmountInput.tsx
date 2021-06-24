@@ -58,7 +58,7 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
   return (
     <form className="pm-c-amount-input">
       <div className="pm-c-amount-input__header">
-        <label className="tiny semibold text-light-gray" htmlFor={label}>
+        <label className="pm-c-amount-input__header-title" htmlFor={label}>
           {label}
         </label>
         <div className="pm-c-amount-input__header-wallet">
@@ -87,9 +87,7 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
         />
         <div className="pm-c-amount-input__actions">
           <button type="button" onClick={handleSetMaxAmount}>
-            <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
-              Max
-            </Text>
+            Max
           </button>
           <div className="pm-c-amount-input__logo">
             {currency.icon ? (

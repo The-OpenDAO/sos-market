@@ -1,0 +1,34 @@
+$amount-input-group-height: 5.2rem !default;
+$amount-input-group-padding: 1.2rem 0.8rem 1.2rem 1.6rem !default;
+$amount-input-group-border-radius: 0.4rem !default;
+$amount-input-margin: 0rem 0.8rem 0rem 0rem !default;
+$amount-input-padding: 0rem !default;
+$amount-input-action-margin-y: 0rem !default;
+$amount-input-action-margin-x: 0.4rem !default;
+$amount-input-action-button-padding-y: 0.6rem !default;
+$amount-input-action-button-padding-x: 0.6rem !default;
+$amount-input-action-button-border-radius: 0.4rem !default;
+$amount-input-action-button-transitions: 0.2s all ease-in-out !default;
+
+$amount-input-themes: (
+  light: (
+    amount-input-title-color: #637084,
+    amount-input-placeholder-color: #a7b0bd,
+    amount-input-value-color: #171b23,
+    amount-input-background-color: #f8faff,
+    amount-input-border-color: #e0e2e7,
+    amount-input-action-button-background-color: #f0f1f5,
+    amount-input-action-button-background-color-hover: #f8faff,
+    amount-input-action-button-color: #101219
+  ),
+  dark: (
+    amount-input-title-color: #c5cad3,
+    amount-input-placeholder-color: #637084,
+    amount-input-value-color: #f9fafb,
+    amount-input-background-color: #0e1016,
+    amount-input-border-color: #252c3b,
+    amount-input-action-button-background-color: #252c3b,
+    amount-input-action-button-background-color-hover: #637084,
+    amount-input-action-button-color: #f3f4f6
+  )
+) !default;
