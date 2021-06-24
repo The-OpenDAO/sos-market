@@ -33,6 +33,17 @@
   width: 100%;
 }
 
+.pm-c-report-form-input {
+  @include themes($report-form-themes) {
+    &__header {
+      &-time-left {
+        @extend .tiny, .semibold;
+        color: themed('report-form-input-time-left-color');
+      }
+    }
+  }
+}
+
 .pm-c-report-form-details {
   @include themes($report-form-themes) {
     width: 100%;
