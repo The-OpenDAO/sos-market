@@ -4,7 +4,6 @@ import { changePredictionsVisibility, selectOutcome } from 'redux/ducks/trade';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-import Toast from '../Toast';
 import TradeFormActions from './TradeFormActions';
 import TradeFormCharts from './TradeFormCharts';
 import TradeFormDetails from './TradeFormDetails';
@@ -17,7 +16,6 @@ import TradeFormTypeSelector from './TradeFormTypeSelector';
 function TradeForm() {
   const dispatch = useAppDispatch();
   const { id, outcomes } = useAppSelector(state => state.market.market);
-  const marketState = useAppSelector(state => state.market.market.state);
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId
   );
@@ -32,31 +30,15 @@ function TradeForm() {
   return (
     <div className="pm-c-trade-form">
       <div className="pm-c-trade-form__group" style={{ gap: '1.6rem' }}>
-        {marketState !== 'open' ? (
-          <Toast
-            variant="warning"
-            description="This market is closed. If you have any winnings to claim please check
-      your portfolio"
-            style={{ padding: '1.6rem', alignItems: 'center' }}
-          />
-        ) : null}
         <TradeFormCharts />
-        {marketState === 'open' ? (
-          <>
-            <TradeFormPredictions />
-            <TradeFormLiquidity />
-          </>
-        ) : null}
+        <TradeFormPredictions />
+        <TradeFormLiquidity />
       </div>
       <div className="pm-c-trade-form__group" style={{ gap: '2.4rem' }}>
-        {marketState === 'open' ? (
-          <>
-            <TradeFormTypeSelector />
-            <TradeFormInput />
-            <TradeFormDetails />
-            {/* <TradeFormTerms /> */}
-          </>
-        ) : null}
+        <TradeFormTypeSelector />
+        <TradeFormInput />
+        <TradeFormDetails />
+        {/* <TradeFormTerms /> */}
         <TradeFormActions />
       </div>
     </div>
