@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 
 import { WalletIcon } from 'assets/icons';
@@ -10,13 +11,20 @@ type AmountInputProps = {
   max: number;
   onChange: (value: number) => void;
   currency: any;
+  customHeaderItem?: React.ReactNode;
 };
 
 function round(value) {
   return Math.floor(value * 1e5) / 1e5;
 }
 
-function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
+function AmountInput({
+  label,
+  max,
+  onChange,
+  currency,
+  customHeaderItem
+}: AmountInputProps) {
   const [amount, setAmount] = useState<number | undefined>(0);
   const [stepAmount, setStepAmount] = useState<number>(0);
 
@@ -61,17 +69,19 @@ function AmountInput({ label, max, onChange, currency }: AmountInputProps) {
         <label className="pm-c-amount-input__header-title" htmlFor={label}>
           {label}
         </label>
-        <div className="pm-c-amount-input__header-wallet">
-          <figure aria-label="Wallet">
-            <WalletIcon />
-          </figure>
-          <Text as="strong" scale="tiny" fontWeight="semibold" color="light">
-            {max}
-          </Text>
-          <Text as="span" scale="tiny" fontWeight="semibold" color="gray">
-            {currency.ticker}
-          </Text>
-        </div>
+        {customHeaderItem || (
+          <div className="pm-c-amount-input__header-wallet">
+            <figure aria-label="Wallet">
+              <WalletIcon />
+            </figure>
+            <Text as="strong" scale="tiny" fontWeight="semibold" color="light">
+              {max}
+            </Text>
+            <Text as="span" scale="tiny" fontWeight="semibold" color="gray">
+              {currency.ticker}
+            </Text>
+          </div>
+        )}
       </div>
       <div className="pm-c-amount-input__group">
         <input
