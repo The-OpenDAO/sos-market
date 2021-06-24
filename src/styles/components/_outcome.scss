@@ -1,4 +1,7 @@
 .pm-c-outcome {
+  cursor: pointer;
+  touch-action: manipulation;
+
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
