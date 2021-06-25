@@ -1,0 +1,31 @@
+.pm-c-create-market-form {
+  @include themes($create-market-form-themes) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    width: 100%;
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+
+      width: 100%;
+      padding: $create-market-form-card-padding-y
+        $create-market-form-card-padding-x;
+
+      background-color: themed('create-market-form-card-background-color');
+      border: 0.1rem solid themed('create-market-form-card-border-color');
+      border-radius: $create-market-form-card-border-radius;
+
+      transition: $create-market-form-transitions;
+
+      &-title {
+        color: themed('create-market-form-card-title-color');
+
+        transition: $create-market-form-transitions;
+      }
+    }
+  }
+}
