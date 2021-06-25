@@ -7,9 +7,19 @@ async function getMarket(marketSlug: string) {
   return api.get<Market>(url);
 }
 
-async function getMarkets() {
+export type MarketState = 'open' | 'closed' | 'resolved';
+
+type MarketsFilters = {
+  state: MarketState;
+};
+
+async function getMarkets({ state }: MarketsFilters) {
   const url = `${polkamarketsApiUrl}/markets`;
-  return api.get<Market[]>(url);
+  return api.get<Market[]>(url, {
+    params: {
+      state
+    }
+  });
 }
 
 async function reloadMarket(marketSlug: string) {

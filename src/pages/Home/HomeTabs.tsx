@@ -31,13 +31,13 @@ function HomeTabs({ openMarkets, closedMarkets, resolvedMarkets }) {
       }
     >
       <Tabs.TabPane tab="Open" id="open">
-        <MarketList markets={openMarkets} />
+        <MarketList marketState="open" markets={openMarkets} />
       </Tabs.TabPane>
       <Tabs.TabPane tab="In-Reporting" id="in-reporting">
-        <MarketList markets={closedMarkets} />
+        <MarketList marketState="closed" markets={closedMarkets} />
       </Tabs.TabPane>
       <Tabs.TabPane tab="Resolved" id="resolved">
-        <MarketList markets={resolvedMarkets} />
+        <MarketList marketState="resolved" markets={resolvedMarkets} />
       </Tabs.TabPane>
     </Tabs>
   );
