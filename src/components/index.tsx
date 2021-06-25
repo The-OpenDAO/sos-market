@@ -18,6 +18,7 @@ import Input from './Input';
 import Label from './Label';
 import Layout from './Layout';
 import LineChart from './LineChart';
+import Link from './Link';
 import LiquidityForm from './LiquidityForm';
 import Market from './Market';
 import MarketList from './MarketList';
@@ -74,6 +75,7 @@ export {
   Label,
   Layout,
   LiquidityForm,
+  Link,
   LineChart,
   Market,
   MarketList,
