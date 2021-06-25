@@ -1,4 +1,4 @@
-import { Text } from 'components';
+import { Text, CreateMarketForm } from 'components';
 
 function CreateMarket() {
   return (
@@ -13,6 +13,7 @@ function CreateMarket() {
           Create New Market
         </Text>
       </div>
+      <CreateMarketForm />
     </div>
   );
 }
