@@ -69,9 +69,7 @@ function NavBarActions() {
         <a
           className="button-normal--default pm-c-navbar__actions-create-market"
           aria-label="Create market"
-          target="_blank"
-          href="https://docs.google.com/forms/d/1WA_WQ3Ma6iXr1HExs541cmquoI4n3SysI_DGuDyrRVQ/"
-          rel="noreferrer"
+          href="/market/create"
         >
           <AddIcon />
         </a>
