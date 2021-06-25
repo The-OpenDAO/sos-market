@@ -1,101 +1,60 @@
-.input {
-  height: 4.4rem;
+.pm-c-input {
+  @include themes($input-themes) {
+    margin: 0rem;
+    padding: $input-padding-y $input-padding-x;
 
-  margin: 0rem;
-  padding: 1.2rem;
+    outline: none;
+    border-radius: 0.4rem;
 
-  outline: none;
-  border-radius: 0.4rem;
-
-  font-size: 1.4rem;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: left;
-  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
-
-  &::placeholder {
-    color: $gray-500;
-  }
-
-  &__group {
-    display: flex;
-    flex-direction: column;
-
-    gap: 0.8rem;
-  }
-
-  &__label {
-    font-size: 1.3rem;
-    font-weight: 600;
+    @extend .caption, .medium;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
     text-align: left;
+    color: themed('input-value-color');
 
-    color: $gray-900;
-  }
+    &::placeholder {
+      color: themed('input-placeholder-color');
+    }
 
-  &__description {
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
+    background-color: transparent;
 
-    color: $gray-500;
-  }
-}
+    border-width: 0.1rem;
+    border-style: solid;
+    border-radius: $input-border-radius;
 
-.input--default {
-  @extend .input;
-  background-color: $gray-700;
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
 
-  border: 0.15rem solid $gray-300;
+    &__label {
+      @extend .caption, .medium;
+    }
 
-  &:focus {
-    color: $gray-500;
-    outline: 0 none;
-  }
-}
-
-.input--error {
-  @extend .input;
-  color: $gray-500;
-  background-color: $danger-100;
-
-  border: 0.15rem solid $danger-500;
-
-  &:focus {
-    color: $gray-900;
-
-    border: 0.15rem solid $danger-500;
-
-    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.075) inset,
-      0 0 0.8rem $danger-100;
-    outline: 0 none;
+    &__description {
+      @extend .tiny, .medium;
+    }
   }
 }
 
-.input--success {
-  @extend .input;
-  color: $gray-500;
-  background-color: $success-100;
+.pm-c-input--default {
+  @extend .pm-c-input;
+  @include themes($input-themes) {
+    border-color: themed('input-border-default-color');
+  }
+}
 
-  border: 0.15rem solid $success-500;
+.pm-c-input__label--default {
+  @extend .pm-c-input__label;
+  @include themes($input-themes) {
+    color: themed('input-label-default-color');
+  }
+}
 
-  &:focus {
-    color: $gray-900;
-
-    border: 0.15rem solid $success-500;
-
-    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.075) inset,
-      0 0 0.8rem $success-100;
-    outline: 0 none;
+.pm-c-input__description--default {
+  @extend .pm-c-input__description;
+  @include themes($input-themes) {
+    color: themed('input-description-default-color');
   }
 }
