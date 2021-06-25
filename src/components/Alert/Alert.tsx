@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 import { CheckIcon, InfoIcon, WarningIcon } from 'assets/icons';
 
@@ -26,7 +26,7 @@ type AlertProps = {
   /**
    * Additional content of Alert
    */
-  description?: string;
+  description?: ReactNode;
   /**
    * Aditional CSS styles
    */
