@@ -11,10 +11,11 @@ import Card from './Card';
 import { Category, CategoryDisabled, CategoryAnalytics } from './Category';
 import ChartHeader from './ChartHeader';
 import Checkbox from './Checkbox';
+import CreateMarketForm from './CreateMarketForm';
 import FeaturedCard from './FeaturedCard';
 import Filter from './Filter';
 import Grid from './Grid';
-import Input from './Input';
+import { Input } from './Input';
 import Label from './Label';
 import Layout from './Layout';
 import LineChart from './LineChart';
@@ -64,6 +65,7 @@ export {
   CategoryAnalytics,
   ChartHeader,
   Checkbox,
+  CreateMarketForm,
   FeaturedCard,
   Grid,
   Filter,
