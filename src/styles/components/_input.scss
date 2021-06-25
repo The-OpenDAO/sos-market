@@ -22,6 +22,8 @@
     border-style: solid;
     border-radius: $input-border-radius;
 
+    transition: $input-transitions;
+
     &__group {
       display: flex;
       flex-direction: column;
@@ -42,6 +44,10 @@
   @extend .pm-c-input;
   @include themes($input-themes) {
     border-color: themed('input-border-default-color');
+
+    &:focus {
+      border-color: themed('input-border-default-focus-color');
+    }
   }
 }
 
@@ -56,5 +62,50 @@
   @extend .pm-c-input__description;
   @include themes($input-themes) {
     color: themed('input-description-default-color');
+  }
+}
+
+.pm-c-outcome-input {
+  @include themes($input-themes) {
+    outline: none;
+    padding: 0rem;
+
+    width: 100%;
+
+    @extend .caption, .medium;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: left;
+    color: themed('input-value-color');
+
+    &::placeholder {
+      color: themed('input-placeholder-color');
+    }
+
+    background-color: transparent;
+    border: none;
+    transition: $input-transitions;
+
+    &__wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      margin: 0rem;
+      padding: $input-padding-y $input-padding-x;
+
+      background-color: transparent;
+
+      border-width: 0.1rem;
+      border-style: solid;
+      border-radius: $input-border-radius;
+      border-color: themed('input-border-default-color');
+
+      &:focus-within {
+        border-color: themed('input-border-default-focus-color');
+      }
+
+      transition: $input-transitions;
+    }
   }
 }
