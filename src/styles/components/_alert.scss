@@ -1,84 +1,107 @@
 .pm-c-alert {
-  @include flex-column(center, flex-start);
-  gap: 0.6rem;
+  @include themes($alert-themes) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.8rem;
 
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 
-  padding: 2.4rem;
+    padding: $alert-padding-y $alert-padding-x;
+    background-color: themed('alert-background-color');
 
-  background-color: $gray-1000;
-  border: 0.1rem solid $gray-600;
-  border-radius: 0rem 0.4rem 0.4rem 0rem;
+    border-width: $alert-border-width;
+    border-left-width: $alert-border-left-width;
+    border-style: solid;
+    border-color: themed('alert-border-color');
+    border-radius: $alert-border-radius;
 
-  filter: drop-shadow(0rem 0.4rem 2.4rem rgba($neutral-black, 0.4));
+    filter: themed('alert-shadow');
+    transition: $alert-transitions;
 
-  &__title {
-    @include flex-row(flex-start, center);
-    gap: 0.6rem;
+    &__group {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    svg {
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+
+    &__title {
+      text-align: left;
+      transition: $alert-transitions;
+    }
+
+    &__description {
+      text-align: left;
+      color: themed('alert-description-color');
+      transition: $alert-transitions;
+    }
   }
 }
 
 .pm-c-alert--information {
   @extend .pm-c-alert;
+  @include themes($alert-themes) {
+    border-left-color: themed('alert-color-information');
 
-  border-left: 0.3rem solid $primary-500;
-
-  .pm-c-alert__title {
     svg {
-      fill: $primary-500;
+      fill: themed('alert-color-information');
     }
 
-    span {
-      color: $primary-500;
+    .pm-c-alert__title {
+      color: themed('alert-color-information');
     }
   }
 }
 
 .pm-c-alert--success {
   @extend .pm-c-alert;
+  @include themes($alert-themes) {
+    border-left-color: themed('alert-color-success');
 
-  border-left: 0.3rem solid $success-500;
-
-  .pm-c-alert__title {
     svg {
-      fill: $success-500;
+      fill: themed('alert-color-success');
     }
 
-    span {
-      color: $success-500;
+    .pm-c-alert__title {
+      color: themed('alert-color-success');
     }
   }
 }
 
 .pm-c-alert--warning {
   @extend .pm-c-alert;
+  @include themes($alert-themes) {
+    border-left-color: themed('alert-color-warning');
 
-  border-left: 0.3rem solid $warning-500;
-
-  .pm-c-alert__title {
     svg {
-      fill: $warning-500;
+      fill: themed('alert-color-warning');
     }
 
-    span {
-      color: $warning-500;
+    .pm-c-alert__title {
+      color: themed('alert-color-warning');
     }
   }
 }
 
 .pm-c-alert--error {
   @extend .pm-c-alert;
+  @include themes($alert-themes) {
+    border-left-color: themed('alert-color-error');
 
-  border-left: 0.3rem solid $danger-500;
-
-  .pm-c-alert__title {
     svg {
-      fill: $danger-500;
+      fill: themed('alert-color-error');
     }
 
-    span {
-      color: $danger-500;
+    .pm-c-alert__title {
+      color: themed('alert-color-error');
     }
   }
 }

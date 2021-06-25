@@ -16,6 +16,7 @@ import TradeFormTypeSelector from './TradeFormTypeSelector';
 
 function TradeForm() {
   const dispatch = useAppDispatch();
+  const { isLoading } = useAppSelector(state => state.market);
   const { id, outcomes } = useAppSelector(state => state.market.market);
   const marketState = useAppSelector(state => state.market.market.state);
   const selectedMarketId = useAppSelector(
@@ -28,6 +29,8 @@ function TradeForm() {
       dispatch(selectOutcome(id, outcomes[0].id));
     }
   }, [dispatch, id, outcomes, selectedMarketId]);
+
+  if (isLoading) return null;
 
   return (
     <div className="pm-c-trade-form">

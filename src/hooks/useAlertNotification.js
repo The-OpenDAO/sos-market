@@ -3,11 +3,11 @@ import create from 'zustand';
 import shallow from 'zustand/shallow';
 
 const useAlertStore = create((set, get) => ({
-  alertList: new Set<string>(),
+  alertList: new Set(),
   show(alertId) {
-    const alertList = get().alertList as Set<string>;
+    const { alertList } = get();
 
-    const newAlertList = new Set<string>(alertList);
+    const newAlertList = new Set(alertList);
     newAlertList.add(alertId);
 
     set({
@@ -15,9 +15,9 @@ const useAlertStore = create((set, get) => ({
     });
   },
   close(alertId) {
-    const alertList = get().alertList as Set<string>;
+    const { alertList } = get();
 
-    const newAlertList = new Set<string>(alertList);
+    const newAlertList = new Set(alertList);
     newAlertList.delete(alertId);
 
     set({
@@ -25,7 +25,7 @@ const useAlertStore = create((set, get) => ({
     });
   },
   closeAll() {
-    const newAlertList = new Set<string>();
+    const newAlertList = new Set();
 
     set({
       alertList: newAlertList
@@ -36,10 +36,10 @@ const useAlertStore = create((set, get) => ({
 export default function useAlertNotification() {
   const controls = useAlertStore(
     store => ({
-      show: store.show as (alertId: string) => any,
-      close: store.close as (alertId: string) => any,
-      closeAll: store.closeAll as () => any,
-      alertList: store.alertList as Set<string>
+      show: store.show,
+      close: store.close,
+      closeAll: store.closeAll,
+      alertList: store.alertList
     }),
     shallow
   );

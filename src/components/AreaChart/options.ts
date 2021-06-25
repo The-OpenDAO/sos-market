@@ -6,7 +6,7 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       toolbar: {
         show: false
       },
-      type: 'area',
+      type: 'area' as const,
       zoom: {
         enabled: false
       }
@@ -42,7 +42,7 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       strokeDashArray: 0,
       fillOpacity: 1,
       discrete: [],
-      shape: 'circle',
+      shape: 'circle' as const,
       radius: 2,
       offsetX: 0,
       offsetY: 0,
@@ -58,11 +58,11 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       enabled: false
     },
     stroke: {
-      curve: 'smooth',
+      curve: 'smooth' as const,
       width: 1.7
     },
     xaxis: {
-      type: 'datetime',
+      type: 'datetime' as const,
       labels: {
         show: showGrid,
         format: 'hh:mm TT'
@@ -95,7 +95,7 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       show: showGrid,
       borderColor: '#252C3B',
       strokeDashArray: 5,
-      position: 'back',
+      position: 'back' as const,
       xaxis: {
         lines: {
           show: true
@@ -115,7 +115,7 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
     },
     colors: ['#5751FC'],
     fill: {
-      type: 'gradient',
+      type: 'gradient' as const,
       gradient: {
         shade: 'dark',
         opacityFrom: 0.85,

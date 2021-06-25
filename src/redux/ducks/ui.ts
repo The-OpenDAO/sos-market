@@ -12,6 +12,9 @@ const initialState = {
   },
   liquidityForm: {
     visible: false
+  },
+  reportForm: {
+    visible: false
   }
 };
 
@@ -34,7 +37,11 @@ const uiSlice = createSlice({
         collapsed: true
       },
       rightSidebar: {
-        visible: !!(state.tradeForm.visible || state.liquidityForm.visible)
+        visible: !!(
+          state.tradeForm.visible ||
+          state.liquidityForm.visible ||
+          state.reportForm.visible
+        )
       }
     }),
     closeRightSidebar: state => ({
@@ -50,6 +57,9 @@ const uiSlice = createSlice({
       },
       rightSidebar: {
         visible: true
+      },
+      reportForm: {
+        visible: false
       },
       tradeForm: {
         visible: true
@@ -81,28 +91,44 @@ const uiSlice = createSlice({
       tradeForm: {
         visible: true
       }
+    }),
+    openReportForm: state => ({
+      ...state,
+      liquidityForm: {
+        visible: false
+      },
+      tradeForm: {
+        visible: false
+      },
+      rightSidebar: {
+        visible: true
+      },
+      reportForm: {
+        visible: true
+      }
+    }),
+    closeReportForm: state => ({
+      ...state,
+      rightSidebar: {
+        visible: false
+      },
+      reportForm: {
+        visible: false
+      }
     })
   }
 });
 
 export default uiSlice.reducer;
 
-const {
+export const {
   openSidebar,
   closeSidebar,
   closeRightSidebar,
   openTradeForm,
   closeTradeForm,
   openLiquidityForm,
-  closeLiquidityForm
+  closeLiquidityForm,
+  openReportForm,
+  closeReportForm
 } = uiSlice.actions;
-
-export {
-  openSidebar,
-  closeSidebar,
-  closeRightSidebar,
-  openTradeForm,
-  closeTradeForm,
-  openLiquidityForm,
-  closeLiquidityForm
-};
