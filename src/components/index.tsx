@@ -19,7 +19,8 @@ import {
   Input,
   OutcomeInput,
   ProbabilityInput,
-  FileUploadInput
+  FileUploadInput,
+  SelectInput
 } from './Input';
 import Label from './Label';
 import Layout from './Layout';
@@ -105,6 +106,7 @@ export {
   ScrollToTop,
   SearchBar,
   Select,
+  SelectInput,
   Sidebar,
   ReportForm,
   RightSidebar,

@@ -14,7 +14,8 @@ $input-themes: (
     input-value-color: #171b23,
     input-placeholder-color: #a7b0bd,
     input-description-default-color: #a7b0bd,
-    input-error-color: #e12d39
+    input-error-color: #e12d39,
+    input-select-background-color: #ffffff
   ),
   dark: (
     input-label-default-color: #c5cad3,
@@ -27,7 +28,8 @@ $input-themes: (
     input-value-color: #f9fafb,
     input-placeholder-color: #637084,
     input-description-default-color: #637084,
-    input-error-color: #e12d39
+    input-error-color: #e12d39,
+    input-select-background-color: #171b23
   )
 ) !default;
 
