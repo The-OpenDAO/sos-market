@@ -20,7 +20,8 @@ import {
   OutcomeInput,
   ProbabilityInput,
   FileUploadInput,
-  SelectInput
+  SelectInput,
+  DateInput
 } from './Input';
 import Label from './Label';
 import Layout from './Layout';
@@ -76,6 +77,7 @@ export {
   ChartHeader,
   Checkbox,
   CreateMarketForm,
+  DateInput,
   FeaturedCard,
   Grid,
   Filter,
