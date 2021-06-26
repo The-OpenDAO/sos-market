@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
@@ -18,6 +19,7 @@ export type CreateMarketFormData = {
   };
   category: string;
   subcategory: string;
+  closingDate: string;
 };
 
 const initialData: CreateMarketFormData = {
@@ -35,7 +37,8 @@ const initialData: CreateMarketFormData = {
     isUploaded: false
   },
   category: '',
-  subcategory: ''
+  subcategory: '',
+  closingDate: ''
 };
 
 const validationSchema = Yup.object().shape({
@@ -61,7 +64,13 @@ const validationSchema = Yup.object().shape({
       .required('Outcome probability is required!')
   }),
   category: Yup.string().required('Category is required!'),
-  subcategory: Yup.string()
+  subcategory: Yup.string(),
+  closingDate: Yup.date()
+    .min(
+      dayjs().format('MM/DD/YYYY'),
+      `Closing date must be later than ${dayjs().format('MM/DD/YYYY')}`
+    )
+    .required('Closing date is required!')
 });
 
 function CreateMarketForm() {
