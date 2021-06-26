@@ -258,3 +258,33 @@
 .pm-c-select-input__label--error {
   @extend .pm-c-input__label--error;
 }
+
+.pm-c-date-input {
+  @extend .pm-c-input;
+
+  @include themes($input-themes) {
+    &__group {
+      @extend .pm-c-input__group;
+
+      ::-webkit-calendar-picker-indicator {
+        background-image: url('data:image/svg+xml;utf8,<svg width="16" height="17" viewBox="0 0 16 17" fill="%23637084" xmlns="http://www.w3.org/2000/svg"><path d="M15 2.5H13V0.5H10V2.5H6V0.5H3V2.5H1C0.448 2.5 0 2.948 0 3.5V15.5C0 16.052 0.448 16.5 1 16.5H15C15.552 16.5 16 16.052 16 15.5V3.5C16 2.948 15.552 2.5 15 2.5ZM14 14.5H2V7.5H14V14.5Z"/></svg>');
+      }
+    }
+  }
+}
+
+.pm-c-date-input--default {
+  @extend .pm-c-input--default;
+}
+
+.pm-c-date-input__label--default {
+  @extend .pm-c-input__label--default;
+}
+
+.pm-c-date-input--error {
+  @extend .pm-c-input--error;
+}
+
+.pm-c-date-input__label--error {
+  @extend .pm-c-input__label--error;
+}
