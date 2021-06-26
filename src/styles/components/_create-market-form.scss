@@ -2,6 +2,8 @@
   @include themes($create-market-form-themes) {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     gap: 2rem;
 
     width: 100%;
@@ -11,7 +13,7 @@
       flex-direction: column;
       gap: 2.4rem;
 
-      width: 100%;
+      width: 70rem;
       padding: $create-market-form-card-padding-y
         $create-market-form-card-padding-x;
 
@@ -25,6 +27,13 @@
         color: themed('create-market-form-card-title-color');
 
         transition: $create-market-form-transitions;
+      }
+
+      &-outcome-group--row {
+        display: grid;
+        grid-template-columns: 1fr 18.8rem;
+        grid-template-rows: auto;
+        grid-gap: 1.2rem;
       }
     }
   }

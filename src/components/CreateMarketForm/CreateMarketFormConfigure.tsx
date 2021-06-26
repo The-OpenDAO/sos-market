@@ -17,20 +17,24 @@ function CreateMarketFormConfigure() {
         label="Market Question"
         placeholder="What would you like to see the world predict?"
       />
-      <OutcomeInput
-        badgeColor="pink"
-        name="firstOutcome.name"
-        placeholder="Outcome..."
-      />
-      <OutcomeInput
-        badgeColor="blue"
-        name="secondOutcome.name"
-        placeholder="Outcome..."
-      />
-      <ProbabilityInput name="firstOutcome.probability" />
-      <ProbabilityInput name="secondOutcome.probability" />
 
-      <button type="submit">Submit</button>
+      <div className="pm-c-create-market-form__card-outcome-group--row">
+        <OutcomeInput
+          badgeColor="pink"
+          name="firstOutcome.name"
+          label="Outcome"
+          placeholder="Outcome..."
+        />
+        <ProbabilityInput name="firstOutcome.probability" label="Probability" />
+      </div>
+      <div className="pm-c-create-market-form__card-outcome-group--row">
+        <OutcomeInput
+          badgeColor="blue"
+          name="secondOutcome.name"
+          placeholder="Outcome..."
+        />
+        <ProbabilityInput name="secondOutcome.probability" />
+      </div>
     </div>
   );
 }
