@@ -66,6 +66,11 @@
     &:focus {
       border-color: themed('input-border-default-focus-color');
     }
+
+    &:disabled {
+      border-color: transparent;
+      background-color: themed('input-background-disabled-color');
+    }
   }
 }
 
