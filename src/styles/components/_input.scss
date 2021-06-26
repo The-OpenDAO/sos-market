@@ -197,3 +197,22 @@
     }
   }
 }
+
+.pm-c-file-upload-input {
+  @include themes($input-themes) {
+    &__label {
+      @extend .pm-c-input__label--default;
+    }
+
+    &__actions {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    &__status {
+      color: themed('input-description-default-color');
+    }
+  }
+}
