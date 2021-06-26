@@ -16,23 +16,27 @@ const OutcomeInput = React.forwardRef<
 >(({ name, badgeColor = 'default', ...props }, ref) => {
   const [field, meta] = useField(name);
 
+  const hasError = meta.touched && meta.error;
+
   return (
     <div className="pm-c-outcome-input--default__group">
       <div
         className={`pm-c-outcome-input--${
-          meta.error ? 'error' : 'default'
+          hasError ? 'error' : 'default'
         }__wrapper`}
       >
         <Badge color={badgeColor} />
         <input
           ref={ref}
-          className={`pm-c-outcome-input--${meta.error ? 'error' : 'default'}`}
+          className={`pm-c-outcome-input--${hasError ? 'error' : 'default'}`}
           id={name}
           {...field}
           {...props}
         />
       </div>
-      {meta.error ? <InputErrorMessage message={meta.error} /> : null}
+      {hasError && meta.error ? (
+        <InputErrorMessage message={meta.error} />
+      ) : null}
     </div>
   );
 });
