@@ -1,4 +1,9 @@
-import { Input, OutcomeInput, ProbabilityInput } from '../Input';
+import {
+  Input,
+  OutcomeInput,
+  ProbabilityInput,
+  FileUploadInput
+} from '../Input';
 import Text from '../Text';
 
 function CreateMarketFormConfigure() {
@@ -17,7 +22,6 @@ function CreateMarketFormConfigure() {
         label="Market Question"
         placeholder="What would you like to see the world predict?"
       />
-
       <div className="pm-c-create-market-form__card-outcome-group--row">
         <OutcomeInput
           badgeColor="pink"
@@ -35,6 +39,12 @@ function CreateMarketFormConfigure() {
         />
         <ProbabilityInput name="secondOutcome.probability" />
       </div>
+      <FileUploadInput
+        label="Market Thumbnail"
+        name="thumbnail"
+        notUploadedActionLabel="Select Image"
+        uploadedActionLabel="Upload New One"
+      />
     </div>
   );
 }
