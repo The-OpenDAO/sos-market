@@ -12,6 +12,10 @@ export type CreateMarketFormData = {
   question: string;
   firstOutcome: Outcome;
   secondOutcome: Outcome;
+  thumbnail: {
+    file: any;
+    isUploaded: boolean;
+  };
 };
 
 const initialData: CreateMarketFormData = {
@@ -23,6 +27,10 @@ const initialData: CreateMarketFormData = {
   secondOutcome: {
     name: '',
     probability: 50
+  },
+  thumbnail: {
+    file: undefined,
+    isUploaded: false
   }
 };
 
