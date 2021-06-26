@@ -2,6 +2,8 @@
   @include themes($create-market-page-themes) {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     gap: 2rem;
 
     &__header {
@@ -9,6 +11,8 @@
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+
+      width: 70rem;
 
       &-title {
         font-size: 2.6rem;
