@@ -2,7 +2,8 @@ import {
   Input,
   OutcomeInput,
   ProbabilityInput,
-  FileUploadInput
+  FileUploadInput,
+  SelectInput
 } from '../Input';
 import Text from '../Text';
 
@@ -45,6 +46,46 @@ function CreateMarketFormConfigure() {
         notUploadedActionLabel="Select Image"
         uploadedActionLabel="Upload New One"
       />
+      <div className="pm-c-create-market-form__card-categories-group--row">
+        <SelectInput
+          label="Category"
+          name="category"
+          placeholder="Select Category"
+          options={[
+            {
+              name: 'Crypto',
+              value: 'crypto'
+            },
+            {
+              name: 'Esports',
+              value: 'esports'
+            },
+            {
+              name: 'Sports',
+              value: 'sports'
+            },
+            {
+              name: 'Politics',
+              value: 'politics'
+            },
+            {
+              name: 'Weather',
+              value: 'weather'
+            },
+            {
+              name: 'Other',
+              value: 'other'
+            }
+          ]}
+        />
+        <SelectInput
+          label="Subcategory"
+          name="subcategory"
+          placeholder="Select Subcategory"
+          options={[]}
+          disabled
+        />
+      </div>
     </div>
   );
 }

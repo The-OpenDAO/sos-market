@@ -16,6 +16,8 @@ export type CreateMarketFormData = {
     file: any;
     isUploaded: boolean;
   };
+  category: string;
+  subcategory: string;
 };
 
 const initialData: CreateMarketFormData = {
@@ -31,7 +33,9 @@ const initialData: CreateMarketFormData = {
   thumbnail: {
     file: undefined,
     isUploaded: false
-  }
+  },
+  category: '',
+  subcategory: ''
 };
 
 const validationSchema = Yup.object().shape({
@@ -55,7 +59,9 @@ const validationSchema = Yup.object().shape({
         'The probability of the Outcome must be less or equal than 100!'
       )
       .required('Outcome probability is required!')
-  })
+  }),
+  category: Yup.string().required('Category is required!'),
+  subcategory: Yup.string()
 });
 
 function CreateMarketForm() {
