@@ -5,21 +5,27 @@ $input-border-radius: 0.4rem !default;
 $input-themes: (
   light: (
     input-label-default-color: #637084,
+    input-label-error-color: #e12d39,
     input-background-color: #f8faff,
     input-border-default-color: #e0e2e7,
+    input-border-error-color: #e12d39,
     input-border-default-focus-color: #c2cad6,
     input-value-color: #171b23,
     input-placeholder-color: #a7b0bd,
-    input-description-default-color: #a7b0bd
+    input-description-default-color: #a7b0bd,
+    input-error-color: #e12d39
   ),
   dark: (
     input-label-default-color: #c5cad3,
+    input-label-error-color: #e12d39,
     input-background-color: #0e1016,
     input-border-default-color: #252c3b,
+    input-border-error-color: #e12d39,
     input-border-default-focus-color: #637084,
     input-value-color: #f9fafb,
     input-placeholder-color: #637084,
-    input-description-default-color: #637084
+    input-description-default-color: #637084,
+    input-error-color: #e12d39
   )
 ) !default;
 

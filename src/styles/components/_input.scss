@@ -37,6 +37,24 @@
     &__description {
       @extend .tiny, .medium;
     }
+
+    &__error {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.8rem;
+
+      svg {
+        height: 1.2rem;
+        width: 1.2rem;
+
+        fill: themed('input-error-color');
+      }
+
+      &-message {
+        color: themed('input-error-color');
+      }
+    }
   }
 }
 
@@ -58,14 +76,28 @@
   }
 }
 
-.pm-c-input__description--default {
+.pm-c-input__description {
   @extend .pm-c-input__description;
   @include themes($input-themes) {
     color: themed('input-description-default-color');
   }
 }
 
-.pm-c-outcome-input {
+.pm-c-input--error {
+  @extend .pm-c-input;
+  @include themes($input-themes) {
+    border-color: themed('input-border-error-color');
+  }
+}
+
+.pm-c-input__label--error {
+  @extend .pm-c-input__label;
+  @include themes($input-themes) {
+    color: themed('input-label-error-color');
+  }
+}
+
+.pm-c-outcome-input--default {
   @include themes($input-themes) {
     outline: none;
     padding: 0rem;
@@ -85,6 +117,10 @@
     background-color: transparent;
     border: none;
     transition: $input-transitions;
+
+    &__group {
+      @extend .pm-c-input__group;
+    }
 
     &__wrapper {
       display: inline-flex;
@@ -106,6 +142,52 @@
       }
 
       transition: $input-transitions;
+    }
+  }
+}
+
+.pm-c-outcome-input--error {
+  @extend .pm-c-outcome-input--default;
+
+  @include themes($input-themes) {
+    &__wrapper {
+      @extend .pm-c-outcome-input--default__wrapper;
+      border-color: themed('input-border-error-color');
+
+      &:focus-within {
+        border-color: themed('input-border-error-color');
+      }
+    }
+  }
+}
+
+.pm-c-probability-input--default {
+  @extend .pm-c-outcome-input--default;
+
+  &__group {
+    @extend .pm-c-input__group;
+  }
+
+  &__wrapper {
+    @extend .pm-c-outcome-input--default__wrapper;
+  }
+}
+
+.pm-c-probability-input--error {
+  @extend .pm-c-outcome-input--default;
+
+  @include themes($input-themes) {
+    &__group {
+      @extend .pm-c-input__group;
+    }
+
+    &__wrapper {
+      @extend .pm-c-outcome-input--default__wrapper;
+      border-color: themed('input-border-error-color');
+
+      &:focus-within {
+        border-color: themed('input-border-error-color');
+      }
     }
   }
 }
