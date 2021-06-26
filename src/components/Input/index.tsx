@@ -1,4 +1,5 @@
 import Input from './Input';
 import OutcomeInput from './OutcomeInput';
+import ProbabilityInput from './ProbabilityInput';
 
-export { Input, OutcomeInput };
+export { Input, OutcomeInput, ProbabilityInput };

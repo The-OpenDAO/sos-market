@@ -15,7 +15,7 @@ import CreateMarketForm from './CreateMarketForm';
 import FeaturedCard from './FeaturedCard';
 import Filter from './Filter';
 import Grid from './Grid';
-import { Input, OutcomeInput } from './Input';
+import { Input, OutcomeInput, ProbabilityInput } from './Input';
 import Label from './Label';
 import Layout from './Layout';
 import LineChart from './LineChart';
@@ -94,6 +94,7 @@ export {
   PortfolioLiquidityTable,
   PortfolioMarketTable,
   PredictionCard,
+  ProbabilityInput,
   ProgressBar,
   ScrollToTop,
   SearchBar,
