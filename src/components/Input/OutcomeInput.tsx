@@ -7,19 +7,28 @@ import InputErrorMessage from './InputErrorMessage';
 
 type OutcomeInputProps = {
   name: string;
+  label?: string;
   badgeColor?: BadgeColor;
 };
 
 const OutcomeInput = React.forwardRef<
   HTMLInputElement,
   OutcomeInputProps & React.InputHTMLAttributes<HTMLInputElement>
->(({ name, badgeColor = 'default', ...props }, ref) => {
+>(({ name, label, badgeColor = 'default', ...props }, ref) => {
   const [field, meta] = useField(name);
 
   const hasError = meta.touched && meta.error;
 
   return (
     <div className="pm-c-outcome-input--default__group">
+      {label ? (
+        <label
+          htmlFor={name}
+          className={`pm-c-input__label--${hasError ? 'error' : 'default'}`}
+        >
+          {label}
+        </label>
+      ) : null}
       <div
         className={`pm-c-outcome-input--${
           hasError ? 'error' : 'default'
