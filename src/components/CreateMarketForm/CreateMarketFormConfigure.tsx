@@ -3,7 +3,8 @@ import {
   OutcomeInput,
   ProbabilityInput,
   FileUploadInput,
-  SelectInput
+  SelectInput,
+  DateInput
 } from '../Input';
 import Text from '../Text';
 
@@ -86,6 +87,7 @@ function CreateMarketFormConfigure() {
           disabled
         />
       </div>
+      <DateInput label="Closing Date - UTC" name="closingDate" />
     </div>
   );
 }
