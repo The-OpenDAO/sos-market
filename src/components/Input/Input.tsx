@@ -16,23 +16,27 @@ const Input = React.forwardRef<
 >(({ label, name, description, ...props }, ref) => {
   const [field, meta] = useField(name);
 
+  const hasError = meta.touched && meta.error;
+
   return (
     <div className="pm-c-input__group">
       <label
         htmlFor={name}
-        className={`pm-c-input__label--${meta.error ? 'error' : 'default'}`}
+        className={`pm-c-input__label--${hasError ? 'error' : 'default'}`}
       >
         {label}
       </label>
       <input
         ref={ref}
-        className={`pm-c-input--${meta.error ? 'error' : 'default'}`}
+        className={`pm-c-input--${hasError ? 'error' : 'default'}`}
         id={name}
         {...field}
         {...props}
       />
-      {meta.error ? <InputErrorMessage message={meta.error} /> : null}
-      {description && !meta.error ? (
+      {hasError && meta.error ? (
+        <InputErrorMessage message={meta.error} />
+      ) : null}
+      {description && !hasError ? (
         <span className="pm-c-input__description">{description}</span>
       ) : null}
     </div>
