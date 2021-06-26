@@ -15,7 +15,12 @@ import CreateMarketForm from './CreateMarketForm';
 import FeaturedCard from './FeaturedCard';
 import Filter from './Filter';
 import Grid from './Grid';
-import { Input, OutcomeInput, ProbabilityInput } from './Input';
+import {
+  Input,
+  OutcomeInput,
+  ProbabilityInput,
+  FileUploadInput
+} from './Input';
 import Label from './Label';
 import Layout from './Layout';
 import LineChart from './LineChart';
@@ -73,6 +78,7 @@ export {
   FeaturedCard,
   Grid,
   Filter,
+  FileUploadInput,
   Input,
   Label,
   Layout,
