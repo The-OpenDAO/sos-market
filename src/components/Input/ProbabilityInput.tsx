@@ -17,12 +17,13 @@ type OutcomeContext = {
 
 type ProbabilityInputProps = {
   name: string;
+  label?: string;
 };
 
 const ProbabilityInput = React.forwardRef<
   HTMLInputElement,
   ProbabilityInputProps & React.InputHTMLAttributes<HTMLInputElement>
->(({ name, ...props }, ref) => {
+>(({ name, label, ...props }, ref) => {
   const {
     values: { firstOutcome, secondOutcome },
     setFieldValue
@@ -49,6 +50,14 @@ const ProbabilityInput = React.forwardRef<
 
   return (
     <div className="pm-c-probability-input--default__group">
+      {label ? (
+        <label
+          htmlFor={name}
+          className={`pm-c-input__label--${meta.error ? 'error' : 'default'}`}
+        >
+          {label}
+        </label>
+      ) : null}
       <div
         className={`pm-c-probability-input--${
           meta.error ? 'error' : 'default'
@@ -59,6 +68,7 @@ const ProbabilityInput = React.forwardRef<
           className="pm-c-probability-input--default"
           id={name}
           type="number"
+          onWheel={event => event.currentTarget.blur()}
           {...field}
           {...props}
         />
