@@ -70,7 +70,7 @@ function CreateMarketFormFund() {
 
             <Text
               as="span"
-              scale="body"
+              scale="caption"
               fontWeight="semibold"
               className="pm-c-create-market-form__card-liquidity-details__liquidity-value__amount"
             >
