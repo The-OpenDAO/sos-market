@@ -1,4 +1,4 @@
-import Alert from './Alert';
+import { Alert, AlertMini } from './Alert';
 import AlertNotification from './AlertNotification';
 import AmountInput from './AmountInput';
 import AreaChart from './AreaChart';
@@ -62,6 +62,7 @@ import WalletInfo from './WalletInfo';
 
 export {
   Alert,
+  AlertMini,
   AlertNotification,
   AmountInput,
   AreaChart,
