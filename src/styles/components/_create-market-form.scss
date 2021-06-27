@@ -42,6 +42,48 @@
         grid-template-rows: auto;
         grid-gap: 2.4rem;
       }
+
+      &-liquidity-details {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      &-liquidity-details__group {
+        @extend .pm-c-liquidity-form__details-group;
+      }
+
+      &-liquidity-details__separator {
+        @extend .pm-c-liquidity-form__details-separator;
+      }
+
+      &-liquidity-details__liquidity-value,
+      &-liquidity-details__earn-trading-fee {
+        @extend .pm-c-liquidity-form__details-liquidity-value;
+
+        &__title,
+        &__amount {
+          color: themed(
+            'create-market-form-card-liquidity-details-text-primary-color'
+          );
+          svg {
+            fill: themed(
+              'create-market-form-card-liquidity-details-text-secondary-color'
+            );
+          }
+        }
+      }
+
+      &-liquidity-details__shares-added {
+        @extend .pm-c-liquidity-form__details-shares-added;
+
+        &__title,
+        &__amount {
+          color: themed(
+            'create-market-form-card-liquidity-details-text-secondary-color'
+          );
+        }
+      }
     }
   }
 }
