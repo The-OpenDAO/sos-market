@@ -21,6 +21,7 @@ export type CreateMarketFormData = {
   category: string;
   subcategory: string;
   closingDate: string;
+  liquidity: number;
 };
 
 const initialData: CreateMarketFormData = {
@@ -39,7 +40,8 @@ const initialData: CreateMarketFormData = {
   },
   category: '',
   subcategory: '',
-  closingDate: ''
+  closingDate: '',
+  liquidity: 0
 };
 
 const validationSchema = Yup.object().shape({
