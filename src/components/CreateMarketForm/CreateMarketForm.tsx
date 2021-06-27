@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
+import CreateMarketFormActions from './CreateMarketFormActions';
 import CreateMarketFormConfigure from './CreateMarketFormConfigure';
 import CreateMarketFormFund from './CreateMarketFormFund';
 
@@ -94,6 +95,7 @@ function CreateMarketForm() {
       <Form className="pm-c-create-market-form">
         <CreateMarketFormConfigure />
         <CreateMarketFormFund />
+        <CreateMarketFormActions />
       </Form>
     </Formik>
   );
