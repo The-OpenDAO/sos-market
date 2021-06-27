@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
 import CreateMarketFormConfigure from './CreateMarketFormConfigure';
+import CreateMarketFormFund from './CreateMarketFormFund';
 
 type Outcome = {
   name: string;
@@ -90,6 +91,7 @@ function CreateMarketForm() {
     >
       <Form className="pm-c-create-market-form">
         <CreateMarketFormConfigure />
+        <CreateMarketFormFund />
       </Form>
     </Formik>
   );
