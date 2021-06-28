@@ -5,7 +5,7 @@ const initialState = {
   isLoggedIn: false,
   ethAddress: '',
   ethBalance: 0,
-  polkBalance: 10,
+  polkBalance: 0,
   portfolio: {},
   actions: []
 };
@@ -67,6 +67,9 @@ const login = async (dispatch: any) => {
 
     const balance = await beproService.getBalance();
     dispatch(changeEthBalance(balance));
+
+    const polkBalance = await beproService.getERC20Balance();
+    dispatch(changePolkBalance(polkBalance));
   }
 };
 

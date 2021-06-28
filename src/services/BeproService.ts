@@ -4,8 +4,8 @@ export default class BeproService {
   // bepro app
   public bepro: any;
 
-  // smart contract bepro instance
-  public contract: any;
+  // bepro smart contract instances
+  public contracts: any = {};
 
   // indicates if user has already done a successful metamask login
   public loggedIn: boolean = false;
@@ -17,12 +17,30 @@ export default class BeproService {
     this.bepro = new beprojs.Application({ mainnet: false });
     this.bepro.start();
     // fetching contract
-    this.getContract();
+    this.getContracts();
   }
 
-  public getContract() {
-    this.contract = this.bepro.getPredictionMarketContract({
-      contractAddress: process.env.REACT_APP_CONTRACT_ADDRESS
+  public async getContracts() {
+    this.getPredictionMarketContract();
+    this.getRealitioERC20Contract();
+    this.getERC20Contract();
+  }
+
+  public getPredictionMarketContract() {
+    this.contracts.pm = this.bepro.getPredictionMarketContract({
+      contractAddress: process.env.REACT_APP_PREDICTION_MARKET_CONTRACT_ADDRESS
+    });
+  }
+
+  public getERC20Contract() {
+    this.contracts.erc20 = this.bepro.getERC20Contract({
+      contractAddress: process.env.REACT_APP_ERC20_CONTRACT_ADDRESS
+    });
+  }
+
+  public getRealitioERC20Contract() {
+    this.contracts.realitio = this.bepro.getRealitioERC20Contract({
+      contractAddress: process.env.REACT_APP_REALITIO_ERC20_CONTRACT_ADDRESS
     });
   }
 
@@ -41,8 +59,8 @@ export default class BeproService {
         this.address = await this.getAddress();
         // TODO: set this in bepro
         this.bepro.web3.eth.defaultAccount = this.address;
-        // re-fetching contract
-        this.getContract();
+        // re-fetching contracts
+        this.getContracts();
       }
     } catch (e) {
       // should be non-blocking
@@ -60,7 +78,7 @@ export default class BeproService {
     // ensuring user has wallet connected
     await this.login();
 
-    const response = await this.contract.buy({
+    const response = await this.contracts.pm.buy({
       marketId,
       outcomeId,
       ethAmount
@@ -77,7 +95,7 @@ export default class BeproService {
     // ensuring user has wallet connected
     await this.login();
 
-    const response = await this.contract.sell({
+    const response = await this.contracts.pm.sell({
       marketId,
       outcomeId,
       shares
@@ -90,7 +108,7 @@ export default class BeproService {
     // ensuring user has wallet connected
     await this.login();
 
-    const response = await this.contract.addLiquidity({
+    const response = await this.contracts.pm.addLiquidity({
       marketId,
       ethAmount
     });
@@ -102,7 +120,7 @@ export default class BeproService {
     // ensuring user has wallet connected
     await this.login();
 
-    const response = await this.contract.removeLiquidity({
+    const response = await this.contracts.pm.removeLiquidity({
       marketId,
       shares
     });
@@ -114,7 +132,7 @@ export default class BeproService {
     // ensuring user has wallet connected
     await this.login();
 
-    const response = await this.contract.claimWinnings({
+    const response = await this.contracts.pm.claimWinnings({
       marketId
     });
 
@@ -125,7 +143,7 @@ export default class BeproService {
     // ensuring user has wallet connected
     await this.login();
 
-    const response = await this.contract.claimLiquidity({
+    const response = await this.contracts.pm.claimLiquidity({
       marketId
     });
 
@@ -136,7 +154,7 @@ export default class BeproService {
     // ensuring user has wallet connected
     await this.login();
 
-    const response = await this.contract.getMarketPrices({ marketId });
+    const response = await this.contracts.pm.getMarketPrices({ marketId });
 
     return response;
   }
@@ -156,11 +174,24 @@ export default class BeproService {
     return parseFloat(balance) || 0;
   }
 
+  public async getERC20Balance(): Promise<number> {
+    if (!this.address) return 0;
+
+    // ensuring erc20 contract is initialized
+    // eslint-disable-next-line no-underscore-dangle
+    await this.contracts.erc20.__init__();
+
+    // returns user balance in ETH
+    const balance = await this.contracts.erc20.getTokenAmount(this.address);
+
+    return parseFloat(balance) || 0;
+  }
+
   public async getPortfolio(): Promise<Object> {
     // ensuring user has wallet connected
     if (!this.address) return {};
 
-    const response = await this.contract.getMyPortfolio();
+    const response = await this.contracts.pm.getMyPortfolio();
 
     return response;
   }
@@ -169,7 +200,23 @@ export default class BeproService {
     // ensuring user has wallet connected
     if (!this.address) return [];
 
-    const response = await this.contract.getMyActions();
+    const response = await this.contracts.pm.getMyActions();
+
+    return response;
+  }
+
+  public async approveERC20(address: string, amount: number): Promise<any[]> {
+    // ensuring user has wallet connected
+    await this.login();
+
+    // ensuring erc20 contract is initialized
+    // eslint-disable-next-line no-underscore-dangle
+    await this.contracts.erc20.__init__();
+
+    const response = await this.contracts.erc20.approve({
+      address,
+      amount
+    });
 
     return response;
   }
