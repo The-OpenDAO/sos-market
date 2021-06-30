@@ -36,6 +36,7 @@ export interface Market {
   liquidityPrice: number;
   expiresAt: string;
   state: string;
+  questionId: string;
   resolvedOutcomeId: number;
   oracleSource: string;
   outcomes: Outcome[];

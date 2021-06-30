@@ -29,6 +29,7 @@ const initialState: MarketInitialState = {
     liquidityPrice: 0,
     expiresAt: '',
     state: 'open',
+    questionId: '',
     resolvedOutcomeId: -1,
     oracleSource: '',
     outcomes: [
