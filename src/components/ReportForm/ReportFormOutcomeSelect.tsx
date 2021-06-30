@@ -32,7 +32,6 @@ function ReportFormOutcomeSelect() {
               : 'default'
           }
           onSelect={handleOutcomeSelect}
-          progress={50}
         />
       ))}
       <Outcome
@@ -44,7 +43,6 @@ function ReportFormOutcomeSelect() {
           field.value && field.value === 'invalid' ? 'selected' : 'default'
         }
         onSelect={handleOutcomeSelect}
-        progress={30}
       />
     </div>
   );
