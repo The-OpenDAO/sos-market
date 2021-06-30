@@ -23,9 +23,8 @@ function LiquidityFormActions() {
   const maxAmount = useAppSelector(state => state.liquidity.maxAmount);
 
   const [transactionSuccess, setTransactionSuccess] = useState(false);
-  const [transactionSuccessHash, setTransactionSuccessHash] = useState(
-    undefined
-  );
+  const [transactionSuccessHash, setTransactionSuccessHash] =
+    useState(undefined);
 
   // terms currently disabled
   const acceptedTerms = true;
@@ -111,15 +110,14 @@ function LiquidityFormActions() {
 
   return (
     <div className="pm-c-liquidity-form__actions">
-      <Button variant="dark" color="default" size="lg" onClick={handleCancel}>
+      <Button variant="dark" color="default" onClick={handleCancel}>
         Cancel
       </Button>
 
       {transactionType === 'add' ? (
         <Button
-          size="lg"
           color="primary"
-          fullWidth
+          fullwidth
           onClick={handleAddliquidity}
           disabled={!isValidAmount || !acceptedTerms || isLoading}
           loading={isLoading}
@@ -130,9 +128,8 @@ function LiquidityFormActions() {
 
       {transactionType === 'remove' ? (
         <Button
-          size="lg"
           color="primary"
-          fullWidth
+          fullwidth
           onClick={handleRemoveLiquidity}
           disabled={!isValidAmount || !acceptedTerms || isLoading}
           loading={isLoading}

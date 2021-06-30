@@ -18,14 +18,13 @@ function ReportFormActions() {
 
   return (
     <div className="pm-c-report-form-details__actions">
-      <Button variant="dark" color="default" size="lg" onClick={handleCancel}>
+      <Button variant="dark" color="default" onClick={handleCancel}>
         Cancel
       </Button>
       <Button
         type="submit"
-        size="lg"
         color="primary"
-        fullWidth
+        fullwidth
         disabled={!outcome.value || !bond.value || bond.value === 0}
         loading={isSubmitting}
       >

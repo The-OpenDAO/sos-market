@@ -8,7 +8,7 @@
     }
 
     &__button {
-      @extend .button-normal--noborder;
+      @extend .pm-c-button-normal--noborder;
       @extend .caption, .semibold;
       color: themed('filter-current-selected-item-color');
 
@@ -52,7 +52,7 @@
     }
 
     &__item {
-      @extend .button-normal--noborder;
+      @extend .pm-c-button-normal--noborder;
       @extend .caption, .semibold;
       color: themed('filter-item-color');
 
@@ -72,7 +72,7 @@
     }
 
     &__optional-trigger {
-      @extend .button-normal--noborder;
+      @extend .pm-c-button-normal--noborder;
 
       svg {
         fill: themed('filter-item-color');

@@ -11,7 +11,7 @@
     place-content: space-between;
 
     &-item {
-      @extend %button;
+      @extend .pm-c-button;
       padding: 0.4rem 0.8rem;
       min-width: 4.5rem;
 

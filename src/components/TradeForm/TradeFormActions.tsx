@@ -32,9 +32,8 @@ function TradeFormActions() {
   const ethAddress = useAppSelector(state => state.bepro.ethAddress);
 
   const [transactionSuccess, setTransactionSuccess] = useState(false);
-  const [transactionSuccessHash, setTransactionSuccessHash] = useState(
-    undefined
-  );
+  const [transactionSuccessHash, setTransactionSuccessHash] =
+    useState(undefined);
 
   const [isLoading, setIsLoading] = useState(false);
   const { show, close } = useToastNotification();
@@ -139,7 +138,7 @@ function TradeFormActions() {
     return (
       <div className="pm-c-trade-form-actions">
         <Link to="/portfolio" style={{ width: 'inherit' }}>
-          <Button color="primary" size="lg" fullWidth>
+          <Button color="primary" fullwidth>
             Go to Portfolio
           </Button>
         </Link>
@@ -150,15 +149,14 @@ function TradeFormActions() {
   return (
     <div className="pm-c-trade-form-actions">
       {showCharts ? (
-        <Button variant="dark" color="default" size="lg" onClick={handleCancel}>
+        <Button variant="dark" color="default" onClick={handleCancel}>
           Cancel
         </Button>
       ) : null}
       {type === 'buy' ? (
         <Button
-          size="lg"
           color="success"
-          fullWidth
+          fullwidth
           onClick={handleBuy}
           disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
           loading={isLoading}
@@ -168,9 +166,8 @@ function TradeFormActions() {
       ) : null}
       {type === 'sell' ? (
         <Button
-          size="lg"
           color="danger"
-          fullWidth
+          fullwidth
           onClick={handleSell}
           disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
           loading={isLoading}
