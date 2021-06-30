@@ -87,12 +87,7 @@ function PrivateBeta() {
               value={address}
               onChange={event => handleChangeAddress(event)}
             />
-            <Button
-              type="submit"
-              color="primary"
-              size="lg"
-              disabled={!isValidAddress}
-            >
+            <Button type="submit" color="primary" disabled={!isValidAddress}>
               <ArrowRightIcon />
             </Button>
           </form>

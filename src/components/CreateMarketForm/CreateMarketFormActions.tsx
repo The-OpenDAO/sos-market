@@ -14,10 +14,10 @@ function CreateMarketFormActions() {
 
   return (
     <div className="pm-c-create-market-form__actions">
-      <Button color="default" size="lg" onClick={handleCancel}>
+      <Button color="default" onClick={handleCancel}>
         Cancel
       </Button>
-      <Button color="primary" size="lg" type="submit" loading={isSubmitting}>
+      <Button color="primary" type="submit" loading={isSubmitting}>
         Create Market
       </Button>
     </div>

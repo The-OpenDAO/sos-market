@@ -7,7 +7,7 @@
   @include border(transparent);
 
   &__item {
-    @extend %button;
+    @extend .pm-c-button;
     flex-grow: 1;
     height: 3.7rem;
     padding: 0.8rem 2rem;

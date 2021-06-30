@@ -35,7 +35,7 @@ type ButtonTextProps = {
    * Fill available width
    * @default 'false'
    */
-  fullWidth?: boolean;
+  fullwidth?: boolean;
 };
 
 /**
@@ -46,7 +46,7 @@ const ButtonText = React.forwardRef<
   ButtonTextProps & React.ButtonHTMLAttributes<HTMLButtonElement>
 >(
   (
-    { color = 'default', size, fullWidth = false, children, onClick, ...props },
+    { color = 'default', size, fullwidth = false, children, onClick, ...props },
     ref
   ) => (
     <button
@@ -55,7 +55,7 @@ const ButtonText = React.forwardRef<
       className={classNames(
         `button-text--${color}`,
         size && `button-${size}`,
-        fullWidth && 'button-fullWidth'
+        fullwidth && 'button-fullwidth'
       )}
       onClick={onClick}
       {...props}
