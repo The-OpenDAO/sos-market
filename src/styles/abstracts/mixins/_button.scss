@@ -1,39 +1,43 @@
-@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-  padding: $padding-y $padding-x;
-  font-size: $font-size;
-  border-radius: $border-radius;
+@mixin button-size($size) {
+  @if $size == 'normal' {
+    @extend .body, .semibold;
+    padding: $button-padding-y $button-padding-x;
+    gap: $button-gap;
+  }
+
+  @if $size == 'sm' {
+    @extend .caption, .semibold;
+    padding: $button-sm-padding-y $button-sm-padding-x;
+    gap: $button-sm-gap;
+  }
+
+  @if $size == 'xs' {
+    @extend .tiny, .semibold;
+    padding: $button-xs-padding-y $button-xs-padding-x;
+    gap: $button-xs-gap;
+  }
 }
 
-@mixin button-normal-color(
-  $color,
-  $background,
-  $background-hover: darken($background, 10%)
-) {
-  color: $neutral-white;
-  background-color: $background;
-  border-width: 0.1rem;
-  border-style: solid;
-
-  svg {
-    fill: $neutral-white;
-  }
-
-  @if $color == default {
-    border-color: $gray-600;
-  } @else {
-    border-color: $background;
-  }
+@mixin button-normal-color($background-colors-map, $text-color) {
+  color: $text-color;
+  background-color: map-get($background-colors-map, 'background-color');
+  border-color: map-get($background-colors-map, 'background-color');
 
   &:hover,
   :focus {
-    @if $color != default {
-      border-color: $background-hover;
-    }
-    background-color: $background-hover;
+    background-color: map-get($background-colors-map, 'background-color-hover');
   }
 
   &:disabled {
-    opacity: 0.7;
+    background-color: map-get(
+      $background-colors-map,
+      'background-color-disabled'
+    );
+    border-color: map-get($background-colors-map, 'background-color-disabled');
+  }
+
+  svg {
+    fill: $text-color;
   }
 }
 
