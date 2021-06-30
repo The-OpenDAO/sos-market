@@ -1,0 +1,94 @@
+.pm-c-button {
+  cursor: pointer;
+  user-select: none;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  border-width: $button-border-width;
+  border-radius: $button-border-radius;
+  border-style: solid;
+
+  transition: $button-transitions;
+
+  svg {
+    transition: $button-transitions;
+  }
+
+  &:disabled {
+    cursor: unset;
+    touch-action: unset;
+    pointer-events: none;
+  }
+
+  &--normal {
+    @extend .pm-c-button;
+    @include button-size('normal');
+  }
+
+  &--sm {
+    @extend .pm-c-button;
+    @include button-size('sm');
+  }
+
+  &--xs {
+    @extend .pm-c-button;
+    @include button-size('xs');
+  }
+
+  &--fullwidth {
+    @extend .pm-c-button;
+    width: 100%;
+  }
+
+  @include themes($button-normal-themes) {
+    @each $color, $color-map in themed('background-colors') {
+      &-normal--#{$color} {
+        @extend .pm-c-button;
+        @include button-normal-color($color-map, themed('text-color'));
+      }
+    }
+  }
+}
+
+@each $color-variant, $color in $theme-dark-colors {
+  .pm-c-button-dark--#{$color-variant} {
+    @extend .pm-c-button;
+    @include button-dark-color($color-variant, $color);
+  }
+}
+
+@each $color-variant, $color in $theme-colors {
+  .pm-c-button-outline--#{$color-variant} {
+    @extend .pm-c-button;
+    @include button-outline-color($color-variant, $color);
+  }
+}
+
+.pm-c-button-normal--noborder {
+  @extend .pm-c-button;
+  padding: 0rem;
+  margin: 0rem;
+
+  background-color: unset;
+  border: none;
+}
+
+@each $color-variant, $color in $text-colors {
+  .pm-c-button-text--#{$color-variant} {
+    @extend .pm-c-button;
+    @include text-color($color);
+
+    transition: opacity 0.3s ease 0s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
