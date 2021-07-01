@@ -37,9 +37,8 @@
       gap: 1.6rem;
 
       padding: 1.6rem;
-      @include border($gray-600);
-
-      transition: all 0.3s ease;
+      @include border(themed('option-border-color'));
+      transition: all 0.2s ease-in-out 0s;
 
       &-prediction {
         @include flex-row(space-between, center);
