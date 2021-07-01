@@ -9,7 +9,6 @@
     padding: $navbar-padding-y $navbar-padding-x;
 
     background-color: themed('background-color');
-    border-bottom: 0.1rem solid themed('border-bottom-color');
     transition: $navbar-transitions;
 
     &__icon {
