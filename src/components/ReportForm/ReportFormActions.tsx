@@ -18,7 +18,7 @@ function ReportFormActions() {
 
   return (
     <div className="pm-c-report-form-details__actions">
-      <Button variant="dark" color="default" onClick={handleCancel}>
+      <Button variant="subtle" color="default" onClick={handleCancel}>
         Cancel
       </Button>
       <Button

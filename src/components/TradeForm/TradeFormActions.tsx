@@ -149,7 +149,7 @@ function TradeFormActions() {
   return (
     <div className="pm-c-trade-form-actions">
       {showCharts ? (
-        <Button variant="dark" color="default" onClick={handleCancel}>
+        <Button variant="subtle" color="default" onClick={handleCancel}>
           Cancel
         </Button>
       ) : null}
