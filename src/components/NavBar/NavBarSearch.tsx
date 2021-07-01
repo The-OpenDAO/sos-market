@@ -12,7 +12,7 @@ function NavBarSearch() {
   }
 
   return (
-    <div className="pm-c-navbar__search">
+    <div className="pm-l-navbar__search">
       <SearchBar
         name="SearchMarkets"
         placeholder="Search markets"
