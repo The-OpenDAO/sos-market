@@ -28,6 +28,7 @@ import MediumIcon from './MediumIcon';
 import MetaMaskIcon from './MetaMaskIcon';
 import MetaMaskIconSmall from './MetaMaskIconSmall';
 import MoonbeamIcon from './MoonbeamIcon';
+import MoonIcon from './MoonIcon';
 import PolkadotIcon from './PolkadotIcon';
 import PolkamarketsIcon from './PolkamarketsIcon';
 import PolkamarketsIconSmall from './PolkamarketsIconSmall';
@@ -40,6 +41,7 @@ import SettingsIcon from './SettingsIcon';
 import ShareIcon from './ShareIcon';
 import SoccerBallIcon from './SoccerBallIcon';
 import SunFogIcon from './SunFogIcon';
+import SunIcon from './SunIcon';
 import TelegramIcon from './TelegramIcon';
 import ToDoIcon from './ToDoIcon';
 import TwarningIcon from './TWarningIcon';
@@ -80,6 +82,7 @@ export {
   MetaMaskIcon,
   MetaMaskIconSmall,
   MoonbeamIcon,
+  MoonIcon,
   PolkadotIcon,
   PolkamarketsIcon,
   PolkamarketsIconSmall,
@@ -92,6 +95,7 @@ export {
   SettingsIcon,
   SoccerBallIcon,
   SunFogIcon,
+  SunIcon,
   TelegramIcon,
   ToDoIcon,
   TwarningIcon,
