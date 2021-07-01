@@ -13,6 +13,7 @@ $amount-input-action-button-transitions: 0.2s all ease-in-out !default;
 $amount-input-themes: (
   light: (
     amount-input-title-color: #637084,
+    amount-input-title-secondary-color: #b6bdc8,
     amount-input-placeholder-color: #a7b0bd,
     amount-input-value-color: #171b23,
     amount-input-border-color: #e0e2e7,
@@ -23,6 +24,7 @@ $amount-input-themes: (
   ),
   dark: (
     amount-input-title-color: #c5cad3,
+    amount-input-title-secondary-color: #637084,
     amount-input-placeholder-color: #637084,
     amount-input-value-color: #f9fafb,
     amount-input-border-color: #252c3b,
