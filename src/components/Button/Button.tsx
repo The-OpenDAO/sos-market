@@ -38,6 +38,11 @@ type ButtonProps = {
    */
   fullwidth?: boolean;
   /**
+   * Disable hover actions
+   * @default 'false'
+   */
+  noHover?: boolean;
+  /**
    * Loading state
    * @default 'false'
    */
@@ -58,6 +63,7 @@ const Button = React.forwardRef<
       color = 'default',
       size = 'normal',
       fullwidth = false,
+      noHover = false,
       loading = false,
       children,
       onClick,
@@ -71,7 +77,8 @@ const Button = React.forwardRef<
       className={classNames(
         `pm-c-button-${variant}--${color}`,
         `pm-c-button--${size}`,
-        fullwidth && 'pm-c-button--fullwidth'
+        fullwidth && 'pm-c-button--fullwidth',
+        noHover && 'pm-c-button--no-hover'
       )}
       onClick={onClick}
       {...props}
