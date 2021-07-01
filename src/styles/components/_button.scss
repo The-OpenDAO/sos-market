@@ -55,19 +55,30 @@
       }
     }
   }
-}
 
-@each $color-variant, $color in $theme-dark-colors {
-  .pm-c-button-dark--#{$color-variant} {
-    @extend .pm-c-button;
-    @include button-dark-color($color-variant, $color);
+  @include themes($button-outline-themes) {
+    @each $color, $color-map in themed('background-colors') {
+      &-outline--#{$color} {
+        @extend .pm-c-button;
+        @include button-outline-color(
+          map-get(themed('background-colors'), $color),
+          map-get(themed('border-colors'), $color),
+          map-get(themed('text-colors'), $color)
+        );
+      }
+    }
   }
-}
 
-@each $color-variant, $color in $theme-colors {
-  .pm-c-button-outline--#{$color-variant} {
-    @extend .pm-c-button;
-    @include button-outline-color($color-variant, $color);
+  @include themes($button-subtle-themes) {
+    @each $color, $color-map in themed('background-colors') {
+      &-subtle--#{$color} {
+        @extend .pm-c-button;
+        @include button-subtle-color(
+          map-get(themed('background-colors'), $color),
+          map-get(themed('text-colors'), $color)
+        );
+      }
+    }
   }
 }
 
