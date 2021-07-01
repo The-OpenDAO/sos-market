@@ -1,0 +1,15 @@
+$navbar-padding-y: 1.2rem !default;
+$navbar-padding-x: 2.4rem !default;
+
+$navbar-themes: (
+  light: (
+    background-color: #f8faff,
+    border-bottom-color: #e3e7f0
+  ),
+  dark: (
+    background-color: #0e1016,
+    border-bottom-color: #252c3b
+  )
+) !default;
+
+$navbar-transitions: all 0.2s ease-in-out 0s !default;
