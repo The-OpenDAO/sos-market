@@ -1,28 +1,31 @@
 .menu {
-  margin: 0rem;
-  padding: 0rem;
+  @include themes($menu-themes) {
+    margin: 0rem;
+    padding: 0rem;
 
-  &__item {
-    display: inline-block;
-    padding: 0rem 1.2rem;
+    &__item {
+      display: inline-block;
+      padding: 0rem 1.2rem;
 
-    > * {
-      color: $gray-500;
-      @extend .semibold;
+      > * {
+        color: themed('text-secondary-color');
+        @extend .semibold;
 
-      transition: color 0.3s ease 0s;
-    }
+        transition: all 0.2s ease-in-out 0s;
+      }
 
-    svg {
-      fill: $gray-500;
-      transition: fill 0.3s ease 0s;
-    }
+      svg {
+        fill: themed('text-secondary-color');
+        transition: all 0.2s ease-in-out 0s;
+      }
 
-    // Removed this because it was creating a weird visual bug on the sidebar item.
-    &:hover,
-    &:focus {
-      a {
-        color: $gray-100;
+      // Removed this because it was creating a weird visual bug on the sidebar item.
+      &:hover,
+      &:focus {
+        a {
+          color: themed('text-primary-color');
+          transition: all 0.2s ease-in-out 0s;
+        }
       }
     }
   }
