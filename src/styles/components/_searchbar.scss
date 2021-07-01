@@ -1,59 +1,60 @@
-.searchbar {
-  @include flex-row(flex-start, center);
+.pm-c-searchbar {
+  @include themes($searchbar-themes) {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
 
-  padding: 1.2rem;
-  transition: background-color 0.3s ease 0s;
-
-  background-color: $input-background-dark;
-
-  border: none;
-  border-radius: 0.4rem;
-
-  &__input {
     width: 100%;
-    margin: 0rem;
-    padding: 0rem;
+    padding: $searchbar-padding-y $searchbar-padding-x;
+    transition: $searchbar-transitions;
 
-    outline: none;
-    border: none;
-    box-sizing: border-box;
+    background-color: transparent;
 
-    background-color: unset;
+    border: 0.1rem solid themed('border-color');
+    border-radius: $searchbar-border-radius;
 
-    color: $neutral-white;
+    &__input {
+      width: 100%;
+      margin: 0rem;
+      padding: 0rem;
 
-    font-size: 1.6rem;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 600;
+      outline: none;
+      border: none;
+      box-sizing: border-box;
 
-    line-height: 1.4;
-    letter-spacing: normal;
-    text-align: left;
+      background-color: unset;
 
-    &::placeholder {
-      color: $gray-500;
+      font-size: 1.6rem;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: 600;
+
+      line-height: 1.4;
+      letter-spacing: normal;
+      text-align: left;
+      color: themed('text-color');
+
+      &::placeholder {
+        color: themed('placeholder-color');
+      }
     }
-  }
 
-  &__icon {
-    float: right;
+    &__icon {
+      float: right;
+      cursor: pointer;
+      touch-action: manipulation;
 
-    cursor: pointer;
-    touch-action: manipulation;
+      margin-left: 0.6rem;
+      padding: 0rem;
+      border: none;
+      background-color: unset;
 
-    margin-left: 0.6rem;
-    padding: 0rem;
+      svg {
+        display: inline-block;
+        vertical-align: middle;
 
-    border: none;
-
-    background-color: unset;
-
-    > svg {
-      display: inline-block;
-      vertical-align: middle;
-
-      fill: $gray-500;
+        fill: themed('icon-fill');
+      }
     }
   }
 }
