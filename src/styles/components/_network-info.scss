@@ -23,7 +23,10 @@
 
     &__title {
       color: themed('text-color');
+      transition: $network-info-transitions;
     }
+
+    transition: $network-info-transitions;
   }
 }
 
