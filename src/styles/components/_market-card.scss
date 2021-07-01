@@ -43,71 +43,84 @@
 
 .pm-c-market-options {
   @include flex-row(center, center);
-  gap: 1.6rem;
-
-  width: 100%;
-
-  @include breakpoint-to('sm') {
-    width: auto;
-  }
-
-  li {
-    flex-grow: 1;
-
-    @include breakpoint-to('sm') {
-      flex-grow: 0;
-    }
-  }
-
-  &__item {
-    pointer-events: none;
-    cursor: pointer;
-    touch-action: manipulation;
-
-    @include flex-row($align: center);
-    gap: 2.4rem;
-    padding: 1.6rem;
+  @include themes($market-themes) {
+    gap: 1.6rem;
 
     width: 100%;
 
-    @include breakpoint-to('md') {
-      pointer-events: all;
+    @include breakpoint-to('sm') {
       width: auto;
     }
 
-    background-color: $gray-900;
-    @include border($gray-900);
-
-    // transition: all 0.3s ease 0s;
-
-    &:hover {
-      @include border($gray-600);
-    }
-
-    &-group {
-      @include flex-column(center, flex-start);
-    }
-
-    &-chart {
-      display: none;
+    li {
+      flex-grow: 1;
 
       @include breakpoint-to('sm') {
-        display: inline-block;
+        flex-grow: 0;
       }
     }
 
-    &-odd {
-      @include flex-row(flex-start, center);
-      gap: 0.3rem;
-    }
+    &__item {
+      pointer-events: none;
+      cursor: pointer;
+      touch-action: manipulation;
 
-    &.active {
-      background: linear-gradient(
-        90deg,
-        rgba(87, 81, 252, 0.4) 0%,
-        rgba(87, 81, 252, 0.14) 100%
-      );
-      @include border($primary-500);
+      @include flex-row($align: center);
+      gap: 2.4rem;
+      padding: 1.6rem;
+
+      width: 100%;
+
+      @include breakpoint-to('md') {
+        pointer-events: all;
+        width: auto;
+      }
+
+      background-color: themed('option-background-color');
+      @include border(themed('option-border-color'));
+
+      transition: all 0.2s ease-in-out 0s;
+
+      &:hover {
+        @include border(themed('option-border-color'));
+      }
+
+      &-group {
+        @include flex-column(center, flex-start);
+
+        &__title {
+          color: themed('option-title-color');
+          transition: all 0.2s ease-in-out 0s;
+        }
+
+        &__odd {
+          color: themed('option-odd-color');
+          transition: all 0.2s ease-in-out 0s;
+        }
+
+        &__value {
+          color: themed('option-value-color');
+          transition: all 0.2s ease-in-out 0s;
+        }
+      }
+
+      &-chart {
+        display: none;
+
+        @include breakpoint-to('sm') {
+          display: inline-block;
+        }
+      }
+
+      &-odd {
+        @include flex-row(flex-start, center);
+        gap: 0.3rem;
+      }
+
+      &.active {
+        background: themed('option-background-color-active');
+        @include border(themed('option-border-color-active'));
+      }
     }
   }
 }
@@ -132,10 +145,12 @@
 
       span {
         color: themed('stats-text-secondary-color');
+        transition: all 0.2s ease-in-out 0s;
       }
 
       strong {
         color: themed('stats-text-primary-color');
+        transition: all 0.2s ease-in-out 0s;
       }
     }
   }

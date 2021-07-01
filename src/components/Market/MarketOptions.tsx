@@ -78,7 +78,12 @@ function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
       onClick={handleItemSelection}
     >
       <div className="pm-c-market-options__item-group">
-        <Text as="p" scale="caption" fontWeight="semibold" color="light">
+        <Text
+          as="p"
+          scale="caption"
+          fontWeight="semibold"
+          className="pm-c-market-options__item-group__title"
+        >
           {title}
         </Text>
         <div className="pm-c-market-options__item-odd">
@@ -86,11 +91,16 @@ function MarketOptionsItem({ market, option }: MarketOptionsItemProps) {
             as="p"
             scale="tiny-uppercase"
             fontWeight="medium"
-            color="white-50"
+            className="pm-c-market-options__item-group__odd"
           >
-            PRICE
+            ODD
           </Text>
-          <Text as="span" scale="tiny" fontWeight="medium" color="light">
+          <Text
+            as="span"
+            scale="tiny"
+            fontWeight="medium"
+            className="pm-c-market-options__item-group__value"
+          >
             {price.toFixed(3)}
           </Text>
           {marketPriceUp ? <ArrowUpIcon /> : <ArrowDownIcon />}
