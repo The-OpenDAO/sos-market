@@ -1,0 +1,14 @@
+$prediction-card-themes: (
+  light: (
+    body-background-color: #fbfcfe,
+    footer-background-color: #f4f6fa,
+    border-color: #e3e7f0,
+    shadow: $light-shadow-lg
+  ),
+  dark: (
+    body-background-color: #171b23,
+    footer-background-color: #12141c,
+    border-color: #252c3b,
+    shadow: $dark-shadow-lg
+  )
+) !default;
