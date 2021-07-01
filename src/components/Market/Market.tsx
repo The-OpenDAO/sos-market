@@ -20,7 +20,7 @@ function Market({ market }: MarketCardProps) {
             <Breadcrumb.Item>{`${category.toLowerCase()}`}</Breadcrumb.Item>
             <Breadcrumb.Item>{subcategory}</Breadcrumb.Item>
           </Breadcrumb>
-          <Text as="p" scale="body" fontWeight="medium" color="light">
+          <Text as="p" scale="body" fontWeight="medium">
             {title}
           </Text>
         </div>
