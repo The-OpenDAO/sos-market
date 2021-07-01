@@ -41,64 +41,78 @@
   }
 }
 
-@mixin button-dark-color(
-  $color,
-  $background,
-  $background-hover: darken($background, 5%)
+@mixin button-outline-color(
+  $background-colors-map,
+  $border-colors-map,
+  $text-colors-map
 ) {
-  color: $gray-100;
-  background-color: $background;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: $background;
+  color: map-get($text-colors-map, 'text-color');
+  background-color: map-get($background-colors-map, 'background-color');
+  border-color: map-get($border-colors-map, 'border-color');
 
   svg {
-    fill: $gray-100;
+    fill: map-get($text-colors-map, 'text-color');
   }
 
   &:hover,
   :focus {
-    border-color: $background-hover;
-    background-color: $background-hover;
+    color: map-get($text-colors-map, 'text-color-hover');
+    background-color: map-get($background-colors-map, 'background-color-hover');
+    border-color: map-get($border-colors-map, 'border-color-hover');
+
+    svg {
+      fill: map-get($text-colors-map, 'text-color-hover');
+    }
   }
 
   &:disabled {
-    opacity: 0.7;
+    color: map-get($text-colors-map, 'text-color-disabled');
+    background-color: map-get(
+      $background-colors-map,
+      'background-color-disabled'
+    );
+    border-color: map-get($border-colors-map, 'border-color-disabled');
+
+    svg {
+      fill: map-get($text-colors-map, 'text-color-disabled');
+    }
+
+    opacity: 0.5;
   }
 }
 
-@mixin button-outline-color($color, $background) {
-  color: $background;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: $background;
+@mixin button-subtle-color($background-colors-map, $text-colors-map) {
+  color: map-get($text-colors-map, 'text-color');
+  background-color: map-get($background-colors-map, 'background-color');
+  border-color: map-get($background-colors-map, 'background-color');
 
   svg {
-    fill: $background;
-  }
-
-  @if $color == default {
-    color: $gray-300;
-    border-color: $gray-600;
-
-    svg {
-      fill: $gray-300;
-    }
+    fill: map-get($text-colors-map, 'text-color');
   }
 
   &:hover,
   :focus {
-    @if $color != default {
-      color: $neutral-white;
+    color: map-get($text-colors-map, 'text-color-hover');
+    background-color: map-get($background-colors-map, 'background-color-hover');
+    border-color: map-get($background-colors-map, 'background-color-hover');
 
-      svg {
-        fill: $neutral-white;
-      }
+    svg {
+      fill: map-get($text-colors-map, 'text-color-hover');
     }
-    background-color: $background;
   }
 
   &:disabled {
-    opacity: 0.7;
+    color: map-get($text-colors-map, 'text-color-disabled');
+    background-color: map-get(
+      $background-colors-map,
+      'background-color-disabled'
+    );
+    border-color: map-get($background-colors-map, 'background-color-disabled');
+
+    svg {
+      fill: map-get($text-colors-map, 'text-color-disabled');
+    }
+
+    opacity: 0.5;
   }
 }

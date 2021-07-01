@@ -3,7 +3,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-type ButtonVariant = 'normal' | 'dark' | 'outline';
+type ButtonVariant = 'normal' | 'outline' | 'subtle';
 
 type ButtonColor =
   | 'default'
