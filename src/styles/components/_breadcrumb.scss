@@ -1,32 +1,33 @@
 .breadcrumb {
   @include flex-row(flex-start, center);
+  @include themes($breadcrumb-themes) {
+    span {
+      &:first-of-type {
+        display: none;
+      }
 
-  span {
-    &:first-of-type {
-      display: none;
+      &:last-of-type {
+        color: themed('text-primary-color');
+      }
     }
 
-    &:last-of-type {
-      color: $gray-100;
+    &__separator {
+      @extend .tiny-uppercase, .semibold;
+      margin: 0rem 0.4rem;
+      color: themed('separator-color');
     }
-  }
 
-  &__separator {
-    @extend .tiny-uppercase, .semibold;
-    margin: 0rem 0.4rem;
-    color: $gray-500;
-  }
+    &__item {
+      @extend .tiny-uppercase, .semibold;
+      color: themed('text-secondary-color');
 
-  &__item {
-    @extend .tiny-uppercase, .semibold;
-    color: $gray-500;
+      a {
+        color: themed('text-secondary-color');
+        transition: color 0.2s ease;
 
-    a {
-      color: $gray-500;
-      transition: color 0.2s ease;
-
-      &:hover {
-        color: $gray-100;
+        &:hover {
+          color: themed('text-primary-color');
+        }
       }
     }
   }
