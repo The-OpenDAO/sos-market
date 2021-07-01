@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 
-const ThemeContext = createContext({ theme: 'dark' });
+const ThemeContext = createContext({ theme: 'light' });
 const ThemeDispatchContext = createContext();
 
 const actions = {
@@ -21,7 +21,7 @@ function themeReducer(state, action) {
 // eslint-disable-next-line react/prop-types
 const ThemeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(themeReducer, {
-    theme: 'dark'
+    theme: 'light'
   });
   return (
     <ThemeContext.Provider value={state}>
