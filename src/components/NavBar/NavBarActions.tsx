@@ -56,16 +56,16 @@ function NavBarActions() {
         />
       ) : (
         <Button
-          className="button-normal--default button-sm"
+          variant="outline"
           color="default"
-          aria-label="Connect Wallet"
+          aria-label="Connect MetaMask"
           onClick={handleConnectWallet}
         >
           <MetaMaskIcon />
           Connect Wallet
         </Button>
       )}
-      <Tooltip text="Create Market" position="bottom">
+      {/* <Tooltip text="Create Market" position="bottom">
         <a
           className="button-normal--default pm-l-navbar__actions-create-market"
           aria-label="Create market"
@@ -73,7 +73,7 @@ function NavBarActions() {
         >
           <AddIcon />
         </a>
-      </Tooltip>
+      </Tooltip> */}
     </div>
   );
 }
