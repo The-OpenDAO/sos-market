@@ -6,6 +6,7 @@ import { setFilter } from 'redux/ducks/markets';
 import { PolkamarketsIcon } from 'assets/icons';
 
 import NavBarActions from './NavBarActions';
+import NavBarDropdownMenu from './NavBarDropdownMenu';
 import NavBarMenu from './NavBarMenu';
 import NavBarSearch from './NavBarSearch';
 
@@ -27,6 +28,7 @@ function NavBar() {
       <NavBarSearch />
       <NavBarMenu />
       <NavBarActions />
+      <NavBarDropdownMenu />
     </div>
   );
 }
