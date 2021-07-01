@@ -3,7 +3,6 @@ import React from 'react';
 import { MetaMaskIconSmall } from 'assets/icons';
 
 import { Button } from '../Button';
-import Text from '../Text';
 
 type WalletInfoProps = {
   balance: number;
@@ -14,10 +13,14 @@ type WalletInfoProps = {
 function WalletInfo({ balance, currencyIcon, address }: WalletInfoProps) {
   return (
     <div className="pm-c-wallet-info">
-      <Button color="default" aria-label="Balance">
-        <Text as="span" scale="caption" fontWeight="bold" color="lighter-gray">
-          {balance.toFixed(4)}
-        </Text>
+      <Button
+        variant="outline"
+        color="default"
+        size="sm"
+        noHover
+        aria-label="Balance"
+      >
+        {balance.toFixed(4)}
         {currencyIcon}
       </Button>
       <a
@@ -25,24 +28,22 @@ function WalletInfo({ balance, currencyIcon, address }: WalletInfoProps) {
         href={`https://kovan.etherscan.io/address/${address}`}
         rel="noreferrer"
       >
-        <Button color="default" aria-label="Address">
+        <Button
+          variant="outline"
+          color="default"
+          size="sm"
+          noHover
+          aria-label="Address"
+        >
           <MetaMaskIconSmall />
-          <Text
-            as="span"
-            scale="caption"
-            fontWeight="bold"
-            color="lighter-gray"
-          >
-            {`${address.substring(0, 4)}...${address.substring(
-              address.length - 4
-            )}`}
-          </Text>
+
+          {`${address.substring(0, 4)}...${address.substring(
+            address.length - 4
+          )}`}
         </Button>
       </a>
     </div>
   );
 }
-
-WalletInfo.displayName = 'WalletInfo';
 
 export default WalletInfo;
