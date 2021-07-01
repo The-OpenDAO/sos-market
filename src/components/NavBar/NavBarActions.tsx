@@ -78,6 +78,4 @@ function NavBarActions() {
   );
 }
 
-NavBarActions.displayName = 'NavBarActions';
-
 export default NavBarActions;
