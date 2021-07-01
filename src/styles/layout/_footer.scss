@@ -1,0 +1,21 @@
+.pm-l-footer {
+  @include themes($footer-themes) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding: $footer-padding-y $footer-padding-x;
+
+    &__credits {
+      color: themed('credits-text-color');
+    }
+
+    &__actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.6rem;
+    }
+  }
+}
