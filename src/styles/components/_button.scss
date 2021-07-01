@@ -47,6 +47,11 @@
     width: 100%;
   }
 
+  &--no-hover {
+    @extend .pm-c-button;
+    pointer-events: none;
+  }
+
   @include themes($button-normal-themes) {
     @each $color, $color-map in themed('background-colors') {
       &-normal--#{$color} {
