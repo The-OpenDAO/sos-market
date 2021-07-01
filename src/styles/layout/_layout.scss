@@ -1,32 +1,34 @@
 .pm-l-layout {
-  display: grid;
+  @include themes($layout-themes) {
+    display: grid;
 
-  grid-template-areas:
-    'nav header header'
-    'nav main aside';
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto 1fr;
+    grid-template-areas:
+      'nav header header'
+      'nav main aside';
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr;
 
-  background-color: $gray-1000;
+    background-color: themed('background-color');
 
-  &__header {
-    grid-area: header;
-    z-index: 1000;
+    &__header {
+      grid-area: header;
+      z-index: 1000;
 
-    background-color: $gray-1000;
-  }
+      background-color: themed('background-color');
+    }
 
-  &__nav {
-    grid-area: nav;
-  }
+    &__nav {
+      grid-area: nav;
+    }
 
-  &__main {
-    grid-area: main;
+    &__main {
+      grid-area: main;
 
-    padding: 2.4rem;
-  }
+      padding: 2.4rem;
+    }
 
-  &__aside {
-    grid-area: aside;
+    &__aside {
+      grid-area: aside;
+    }
   }
 }
