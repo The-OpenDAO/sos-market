@@ -1,36 +1,37 @@
 .market-head {
   @include flex-row;
+  @include themes($market-themes) {
+    padding: 0.8rem 0rem;
 
-  padding: 0.8rem 0rem;
+    &__image {
+      object-fit: cover;
+      border-radius: 50%;
 
-  &__image {
-    object-fit: cover;
-    border-radius: 50%;
+      height: 6.4rem;
+      width: 6.4rem;
 
-    height: 6.4rem;
-    width: 6.4rem;
-
-    margin-right: 2.4rem;
-  }
-
-  &__details {
-    @include flex-column(center, flex-start);
-    flex-grow: 1;
-
-    gap: 0.8rem;
-    margin-right: 3.2rem;
-
-    > p {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto;
-
-      color: $gray-100;
+      margin-right: 2.4rem;
     }
-  }
 
-  &__actions {
-    @include flex-row(center, center);
+    &__details {
+      @include flex-column(center, flex-start);
+      flex-grow: 1;
+
+      gap: 0.8rem;
+      margin-right: 3.2rem;
+
+      > p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+
+        color: themed('description-text-color');
+      }
+    }
+
+    &__actions {
+      @include flex-row(center, center);
+    }
   }
 }
 
