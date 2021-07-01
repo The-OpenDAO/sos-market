@@ -17,7 +17,7 @@ function TradeFormLiquidity() {
 
   return (
     <div className="pm-c-trade-form-liquidity">
-      <Button variant="dark" size="sm" fullwidth onClick={handleAddLiquidity}>
+      <Button variant="subtle" size="sm" fullwidth onClick={handleAddLiquidity}>
         <span>Add Liquidity</span>
         <InfoIcon />
       </Button>
