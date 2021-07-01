@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
@@ -15,7 +15,7 @@ type Button = {
   /**
    * Name of this button
    */
-  name: string;
+  name: string | ReactNode;
   /**
    * Color of the component
    * @default 'default'
@@ -81,7 +81,7 @@ function ButtonGroup({
           type="button"
           key={button.id}
           id={button.id}
-          name={button.name}
+          name={button.id}
           className={classNames({
             'pm-c-button-group__item': true,
             active: button.id === activeButton.id
