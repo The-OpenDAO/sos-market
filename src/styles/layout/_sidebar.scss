@@ -1,110 +1,119 @@
 .sidebar {
-  display: none;
+  @include themes($sidebar-themes) {
+    display: none;
 
-  @include breakpoint-to('md') {
-    @include flex-column;
-  }
-
-  flex-shrink: 0;
-  z-index: 1000;
-
-  height: 100vh;
-  width: 27.3rem;
-
-  padding: 2rem 2.8rem;
-
-  background-color: $gray-800;
-  transition: width 0.3s ease;
-
-  &__header {
-    padding-bottom: 2rem;
-
-    svg {
-      fill: $gray-500;
-
-      transition: fill 0.2s ease;
-
-      &:hover {
-        fill: $gray-200;
-      }
-    }
-  }
-
-  &__content {
-    @include flex-column;
-
-    padding-bottom: 2rem;
-    margin-bottom: auto;
-  }
-
-  &__separator {
-    margin: 1.1rem 0.6rem;
-
-    width: 0.8rem;
-
-    border-color: $gray-600;
-    border-style: solid;
-    border-radius: 5px;
-  }
-
-  &__link {
-    @include flex-row(flex-start, center);
-    gap: 2.4rem;
-
-    font-size: 1.4rem;
-    transition: color 0.2s ease;
-
-    &-title {
+    @include breakpoint-to('md') {
+      @include flex-column;
     }
 
-    &.active,
-    &:hover {
-      color: $gray-100;
+    flex-shrink: 0;
+    z-index: 1000;
+
+    height: 100vh;
+    width: 27.3rem;
+
+    padding: 2rem 2.8rem;
+
+    background-color: themed('background-color');
+    filter: themed('shadow');
+
+    transition: all 0.2s ease-in-out 0s;
+
+    &__header {
+      padding-bottom: 2rem;
 
       svg {
-        fill: $gray-100;
+        fill: themed('text-color');
+        transition: all 0.2s ease-in-out 0s;
+
+        &:hover {
+          fill: themed('text-color-hover');
+        }
+      }
+    }
+
+    &__content {
+      @include flex-column;
+
+      padding-bottom: 2rem;
+      margin-bottom: auto;
+    }
+
+    &__separator {
+      margin: 1.1rem 0.6rem;
+
+      width: 0.8rem;
+
+      border-color: themed('separator-color');
+      border-style: solid;
+      border-radius: 5px;
+      transition: all 0.2s ease-in-out 0s;
+    }
+
+    &__link {
+      @include flex-row(flex-start, center);
+      gap: 2.4rem;
+
+      font-size: 1.4rem;
+      transition: all 0.2s ease-in-out 0s;
+
+      &-title {
       }
 
-      .sidebar__link-counter {
-        @extend .label-normal--primary;
-      }
-    }
-
-    &-counter {
-      @extend .label-normal--default, .label-sm;
-      margin-left: auto;
-    }
-
-    &--lg {
-      @extend .sidebar__link;
-      font-size: 1.7rem;
-    }
-  }
-
-  &__footer {
-    @include flex-column(center, center);
-    gap: 2rem;
-
-    p {
-      display: inline;
-      overflow: hidden;
-      white-space: nowrap;
-
-      color: $gray-500;
-    }
-  }
-
-  .menu__item {
-    &:hover {
-      .sidebar__link {
-        color: $gray-100;
+      &.active,
+      &:hover {
+        color: themed('text-color-active');
+        transition: all 0.2s ease-in-out 0s;
 
         svg {
-          fill: $gray-100;
+          fill: themed('text-color-active');
+          transition: all 0.2s ease-in-out 0s;
         }
 
         .sidebar__link-counter {
           @extend .label-normal--primary;
+        }
+      }
+
+      &-counter {
+        @extend .label-normal--default, .label-sm;
+        margin-left: auto;
+      }
+
+      &--lg {
+        @extend .sidebar__link;
+        font-size: 1.7rem;
+      }
+    }
+
+    &__footer {
+      @include flex-column(center, center);
+      gap: 2rem;
+
+      p {
+        display: inline;
+        overflow: hidden;
+        white-space: nowrap;
+
+        color: themed('text-color');
+        transition: all 0.2s ease-in-out 0s;
+      }
+    }
+
+    .menu__item {
+      &:hover {
+        .sidebar__link {
+          color: themed('text-color-hover');
+          transition: all 0.2s ease-in-out 0s;
+
+          svg {
+            fill: themed('text-color-hover');
+            transition: all 0.2s ease-in-out 0s;
+          }
+
+          .sidebar__link-counter {
+            @extend .label-normal--primary;
+          }
         }
       }
     }
@@ -113,5 +122,7 @@
 
 .sidebar--collapsed {
   @extend .sidebar;
-  width: 8rem;
+  @include themes($sidebar-themes) {
+    width: 8rem;
+  }
 }
