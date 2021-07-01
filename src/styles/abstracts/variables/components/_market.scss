@@ -1,8 +1,12 @@
 $market-themes: (
   light: (
-    details-text-color: #313a4c
+    details-text-color: #313a4c,
+    stats-text-primary-color: #637084,
+    stats-text-secondary-color: #8193ae
   ),
   dark: (
-    details-text-color: #f9fafb
+    details-text-color: #f9fafb,
+    stats-text-primary-color: #c5cad3,
+    stats-text-secondary-color: #637084
   )
 ) !default;

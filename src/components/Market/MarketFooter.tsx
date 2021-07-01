@@ -33,37 +33,17 @@ function MarketFooter({ market, ticker }: MarketFooterProps) {
           </Text>
         ) : null}
         {expiresAt ? (
-          <Text
-            as="span"
-            scale="tiny-uppercase"
-            fontWeight="semibold"
-            color="gray"
-          >
+          <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
             {`Expiration: `}
-            <Text
-              as="strong"
-              scale="tiny-uppercase"
-              fontWeight="semibold"
-              color="lighter-gray"
-            >
+            <Text as="strong" scale="tiny-uppercase" fontWeight="semibold">
               {dayjs(expiresAt).format('YYYY-MM-DD')}
             </Text>
           </Text>
         ) : null}
         {liquidity ? (
-          <Text
-            as="span"
-            scale="tiny-uppercase"
-            fontWeight="semibold"
-            color="gray"
-          >
+          <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
             {`Liquidity: `}
-            <Text
-              as="strong"
-              scale="tiny-uppercase"
-              fontWeight="semibold"
-              color="lighter-gray"
-            >
+            <Text as="strong" scale="tiny-uppercase" fontWeight="semibold">
               {`${roundNumber(liquidity, 3)} ${ticker}`}
             </Text>
           </Text>

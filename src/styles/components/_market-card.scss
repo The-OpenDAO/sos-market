@@ -1,36 +1,41 @@
 .pm-c-market {
-  &__body {
-    @include flex-column(center, center);
-
-    @include breakpoint-to('md') {
-      @include flex-row;
-    }
-    gap: 2.4rem;
-
-    &-image {
-      object-fit: cover;
-      border-radius: 50%;
-
-      height: 6.4rem;
-      width: 6.4rem;
-    }
-
-    &-details {
+  @include themes($market-themes) {
+    &__body {
       @include flex-column(center, center);
 
       @include breakpoint-to('md') {
-        @include flex-column(center, flex-start);
+        @include flex-row;
+      }
+      gap: 2.4rem;
+
+      &-image {
+        object-fit: cover;
+        border-radius: 50%;
+
+        height: 6.4rem;
+        width: 6.4rem;
       }
 
-      gap: 0.8rem;
+      &-details {
+        @include flex-column(center, center);
 
-      p {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        word-break: break-word;
+        @include breakpoint-to('md') {
+          @include flex-column(center, flex-start);
+        }
+
+        gap: 0.8rem;
+
+        p {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          word-break: break-word;
+
+          color: themed('details-text-color');
+          transition: all 0.2s ease-in-out 0s;
+        }
       }
     }
   }
@@ -108,15 +113,30 @@
 }
 
 .pm-c-market-footer {
-  &__stats {
-    @include flex-row;
-    gap: 2.4rem;
+  @include themes($market-themes) {
+    &__stats {
+      @include flex-row;
+      gap: 2.4rem;
 
-    flex-wrap: wrap;
-    justify-content: center;
+      flex-wrap: wrap;
+      justify-content: center;
 
-    @include breakpoint-to('lg') {
-      justify-content: flex-start;
+      @include breakpoint-to('lg') {
+        justify-content: flex-start;
+      }
+
+      span,
+      strong {
+        transition: all 0.2s ease-in-out 0s;
+      }
+
+      span {
+        color: themed('stats-text-secondary-color');
+      }
+
+      strong {
+        color: themed('stats-text-primary-color');
+      }
     }
   }
 }
