@@ -33,12 +33,20 @@
     color: map-get($text-colors-map, 'text-color');
     background-color: map-get($background-colors-map, 'background-color');
 
+    svg {
+      fill: map-get($text-colors-map, 'text-color');
+    }
+
     &.active {
       color: map-get($text-colors-map, 'text-color-active');
       background-color: map-get(
         $background-colors-map,
         'background-color-active'
       );
+
+      svg {
+        fill: map-get($text-colors-map, 'text-color-active');
+      }
     }
   }
 }
