@@ -60,11 +60,19 @@
         align-items: center;
         gap: 0.2rem;
 
+        strong {
+          color: themed('amount-input-currency-name-color');
+        }
+
+        span {
+          color: themed('amount-input-title-secondary-color');
+        }
+
         figure {
           margin-right: 0.4rem;
 
           svg {
-            fill: $gray-500;
+            fill: themed('amount-input-title-secondary-color');
           }
         }
       }
