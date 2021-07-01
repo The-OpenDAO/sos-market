@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { AddIcon, MetaMaskIcon } from 'assets/icons';
+import { AddIcon, MetaMaskIconSmall } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
@@ -58,11 +58,12 @@ function NavBarActions() {
         <Button
           variant="outline"
           color="default"
+          size="sm"
           aria-label="Connect MetaMask"
           onClick={handleConnectWallet}
         >
-          <MetaMaskIcon />
-          Connect Wallet
+          <MetaMaskIconSmall />
+          Connect MetaMask
         </Button>
       )}
       {/* <Tooltip text="Create Market" position="bottom">
