@@ -1,29 +1,44 @@
-@mixin button-group-color(
-  $color-variant,
-  $color,
-  $background: rgba($color, 0.3)
-) {
-  @if $color-variant == default {
-    border-color: $gray-600;
-
+@mixin button-group-size($size) {
+  @if $size == 'normal' {
     .pm-c-button-group__item {
-      color: $gray-200;
-
-      &.active {
-        color: $gray-100;
-        background-color: $gray-600;
-      }
+      @extend .tiny, .semibold;
+      padding: $button-group-item-normal-padding-y
+        $button-group-item-normal-padding-x;
     }
-  } @else {
-    border-color: $background;
+  }
 
+  @if $size == 'sm' {
     .pm-c-button-group__item {
-      color: $color;
+      @extend .tiny, .semibold;
+      padding: $button-group-item-sm-padding-y $button-group-item-sm-padding-x;
+    }
+  }
 
-      &.active {
-        color: $gray-100;
-        background-color: $background;
-      }
+  @if $size == 'lg' {
+    .pm-c-button-group__item {
+      @extend .caption, .semibold;
+      padding: $button-group-item-lg-padding-y $button-group-item-lg-padding-x;
+    }
+  }
+}
+
+@mixin button-group-color(
+  $background-colors-map,
+  $text-colors-map,
+  $border-color
+) {
+  border-color: $border-color;
+
+  .pm-c-button-group__item {
+    color: map-get($text-colors-map, 'text-color');
+    background-color: map-get($background-colors-map, 'background-color');
+
+    &.active {
+      color: map-get($text-colors-map, 'text-color-active');
+      background-color: map-get(
+        $background-colors-map,
+        'background-color-active'
+      );
     }
   }
 }
