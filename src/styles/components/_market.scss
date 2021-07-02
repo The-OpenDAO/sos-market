@@ -1,6 +1,6 @@
 .market-head {
-  @include flex-row;
   @include themes($market-themes) {
+    @include flex-row;
     padding: 0.8rem 0rem;
 
     &__image {
@@ -20,12 +20,12 @@
       gap: 0.8rem;
       margin-right: 3.2rem;
 
-      > p {
+      p {
         overflow-wrap: break-word;
         word-wrap: break-word;
         hyphens: auto;
 
-        color: themed('description-text-color');
+        color: themed('details-text-color');
       }
     }
 
@@ -49,10 +49,6 @@
     &__header {
       @include flex-row(space-between, center);
 
-      &-title {
-        color: themed('chart-view-title-color');
-      }
-
       &-actions {
         @include flex-row;
       }
@@ -61,6 +57,10 @@
     &__view {
       &-selector {
         width: 27.3rem;
+      }
+
+      &-title {
+        color: themed('chart-view-title-color');
       }
     }
   }
