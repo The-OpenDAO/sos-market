@@ -2,7 +2,7 @@ import { createContext, useReducer } from 'react';
 
 import { useLocalStorage } from 'hooks';
 
-const ThemeContext = createContext({ theme: 'light' });
+const ThemeContext = createContext({ theme: 'dark' });
 const ThemeDispatchContext = createContext();
 
 const actions = {
@@ -24,7 +24,7 @@ function themeReducer(state, action) {
 const ThemeProvider = ({ children }) => {
   const [localStorageTheme] = useLocalStorage('theme');
   const [state, dispatch] = useReducer(themeReducer, {
-    theme: localStorageTheme || 'light'
+    theme: localStorageTheme || 'dark'
   });
   return (
     <ThemeContext.Provider value={state}>

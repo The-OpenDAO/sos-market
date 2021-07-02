@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React from 'react';
 
 import { actions, ThemeContext, ThemeDispatchContext } from 'contexts/theme';
