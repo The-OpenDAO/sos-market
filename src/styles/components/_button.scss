@@ -85,6 +85,18 @@
       }
     }
   }
+
+  @include themes($button-ghost-themes) {
+    @each $color, $color-map in themed('background-colors') {
+      &-ghost--#{$color} {
+        @extend .pm-c-button;
+        @include button-ghost-color(
+          map-get(themed('background-colors'), $color),
+          map-get(themed('text-colors'), $color)
+        );
+      }
+    }
+  }
 }
 
 .pm-c-button-normal--noborder {

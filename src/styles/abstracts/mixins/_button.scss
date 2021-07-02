@@ -116,3 +116,39 @@
     opacity: 0.5;
   }
 }
+
+@mixin button-ghost-color($background-colors-map, $text-colors-map) {
+  color: map-get($text-colors-map, 'text-color');
+  background-color: map-get($background-colors-map, 'background-color');
+  border-color: map-get($background-colors-map, 'background-color');
+
+  svg {
+    fill: map-get($text-colors-map, 'text-color');
+  }
+
+  &:hover,
+  :focus {
+    color: map-get($text-colors-map, 'text-color-hover');
+    background-color: map-get($background-colors-map, 'background-color-hover');
+    border-color: map-get($background-colors-map, 'background-color-hover');
+
+    svg {
+      fill: map-get($text-colors-map, 'text-color-hover');
+    }
+  }
+
+  &:disabled {
+    color: map-get($text-colors-map, 'text-color-disabled');
+    background-color: map-get(
+      $background-colors-map,
+      'background-color-disabled'
+    );
+    border-color: map-get($background-colors-map, 'background-color-disabled');
+
+    svg {
+      fill: map-get($text-colors-map, 'text-color-disabled');
+    }
+
+    opacity: 0.5;
+  }
+}
