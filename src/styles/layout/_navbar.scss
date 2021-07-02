@@ -40,6 +40,17 @@
       }
     }
 
+    &__divider--circle {
+      display: inline-block;
+
+      height: 0.4rem;
+      width: 0.4rem;
+      border-radius: 50%;
+
+      background-color: themed('divider-circle-color');
+      transition: $navbar-transitions;
+    }
+
     &__actions {
       display: none;
 
@@ -62,16 +73,17 @@
 .pm-l-navbar-dropdown-menu {
   @include themes($navbar-themes) {
     position: relative;
-    display: inline-block;
+    display: none;
+
+    @include breakpoint-to('lg') {
+      display: inline-block;
+    }
 
     &__content {
       display: none;
       position: absolute;
       z-index: 1;
-
-      @include breakpoint-to('sm') {
-        right: 0;
-      }
+      right: 0;
 
       padding: $navbar-dropdown-menu-padding-y $navbar-dropdown-menu-padding-x;
       background-color: themed('dropdown-menu-background-color');
