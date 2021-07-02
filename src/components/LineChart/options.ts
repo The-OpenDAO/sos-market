@@ -1,6 +1,6 @@
 import { relativeTimeFromNow } from 'helpers/date';
 
-function generateCustomOptions(ticker: string) {
+function generateCustomOptions(theme: string, ticker: string) {
   return {
     chart: {
       type: 'line' as const,
@@ -41,7 +41,7 @@ function generateCustomOptions(ticker: string) {
       fontFamily: 'Gilroy',
       fontWeight: 700,
       labels: {
-        colors: ['#F3F4F6']
+        colors: theme === 'dark' ? ['#F3F4F6'] : ['#313A4C']
       },
       onItemClick: {
         toggleDataSeries: false
@@ -110,7 +110,7 @@ function generateCustomOptions(ticker: string) {
     },
     grid: {
       show: true,
-      borderColor: '#252C3B',
+      borderColor: theme === 'dark' ? '#252C3B' : '#E3E7F0',
       strokeDashArray: 5,
       position: 'back' as const,
       xaxis: {

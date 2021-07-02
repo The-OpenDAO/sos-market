@@ -3,6 +3,8 @@ import ReactApexChart from 'react-apexcharts';
 
 import dayjs from 'dayjs';
 
+import { useTheme } from 'hooks';
+
 import generateCustomOptions from './options';
 
 type Event = {
@@ -22,7 +24,11 @@ type LineChartProps = {
 };
 
 function LineChart({ series, ticker, height = 200 }: LineChartProps) {
-  const customOptions = useMemo(() => generateCustomOptions(ticker), [ticker]);
+  const { theme } = useTheme();
+  const customOptions = useMemo(
+    () => generateCustomOptions(theme, ticker),
+    [theme, ticker]
+  );
 
   return (
     <ReactApexChart
