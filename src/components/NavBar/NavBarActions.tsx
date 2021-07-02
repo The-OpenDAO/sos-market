@@ -51,6 +51,7 @@ function NavBarActions() {
               target="_blank"
               href="//discord.gg/dfnvfHspe4"
               rel="noreferrer"
+              variant="warning"
             />
             {` is highly appreciated 🎉`}
           </>
