@@ -1,0 +1,12 @@
+$breadcrumb-themes: (
+  light: (
+    text-primary-color: #313a4c,
+    text-secondary-color: #8193ae,
+    separator-color: #8193ae
+  ),
+  dark: (
+    text-primary-color: #f9fafb,
+    text-secondary-color: #637084,
+    separator-color: #637084
+  )
+) !default;

@@ -1,29 +1,32 @@
 .prediction-card {
   @include flex-column;
+  @include themes($prediction-card-themes) {
+    background-color: themed('body-background-color');
+    box-shadow: themed('shadow');
 
-  background-color: $card-background-dark;
-  box-shadow: $card-shadow-dark;
+    border: 0.1rem solid themed('border-color');
+    border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
+    transition: all 0.2s ease-in-out 0s;
 
-  border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
-  transition: background-color 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
+    &__body {
+      @include flex-column(center, center);
+      gap: 2.4rem;
 
-  &__body {
-    @include flex-column(center, center);
-    gap: 2.4rem;
-
-    padding: 1.6rem;
-    padding-top: 3.2rem;
-
-    @include breakpoint-to('lg') {
-      @include flex-row(space-between, center);
       padding: 1.6rem;
+      padding-top: 3.2rem;
+
+      @include breakpoint-to('lg') {
+        @include flex-row(space-between, center);
+        padding: 1.6rem;
+      }
     }
-  }
 
-  &__footer {
-    padding: 1rem 1.6rem;
+    &__footer {
+      padding: 1rem 1.6rem;
 
-    background-color: $gray-900;
-    border-radius: 0rem 0rem 0.4rem 0.4rem;
+      background-color: themed('footer-background-color');
+      border-radius: 0rem 0rem 0.4rem 0.4rem;
+      transition: all 0.2s ease-in-out 0s;
+    }
   }
 }

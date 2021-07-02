@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
@@ -15,13 +15,15 @@ type Button = {
   /**
    * Name of this button
    */
-  name: string;
+  name: string | ReactNode;
   /**
    * Color of the component
    * @default 'default'
    */
   color: ButtonColor;
 };
+
+type ButtonGroupSize = 'normal' | 'sm' | 'lg';
 
 type ButtonGroupProps = {
   /**
@@ -35,6 +37,11 @@ type ButtonGroupProps = {
   /**
    * The callback function triggered when click on button
    */
+  /**
+   * Size of the buttons
+   * @default 'normal'
+   */
+  size?: ButtonGroupSize;
   onChange: (id: string) => void;
   /**
    * Aditional styles
@@ -45,6 +52,7 @@ type ButtonGroupProps = {
 function ButtonGroup({
   defaultActiveId,
   buttons,
+  size = 'normal',
   onChange,
   style
 }: ButtonGroupProps) {
@@ -61,13 +69,19 @@ function ButtonGroup({
   }
 
   return (
-    <div className={`pm-c-button-group--${activeButton.color}`} style={style}>
+    <div
+      className={classNames({
+        [`pm-c-button-group--${activeButton.color}`]: true,
+        [`pm-c-button-group--${size}`]: true
+      })}
+      style={style}
+    >
       {buttons?.map(button => (
         <button
           type="button"
           key={button.id}
           id={button.id}
-          name={button.name}
+          name={button.id}
           className={classNames({
             'pm-c-button-group__item': true,
             active: button.id === activeButton.id

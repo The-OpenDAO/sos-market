@@ -25,51 +25,54 @@
 
 .pm-c-trade-form-predictions {
   @include flex-column;
-  gap: 1.6rem;
-
-  width: 100%;
-
-  &__item {
-    cursor: pointer;
-
-    @include flex-column;
+  @include themes($market-themes) {
     gap: 1.6rem;
 
-    padding: 1.6rem;
-    @include border($gray-600);
+    width: 100%;
 
-    transition: all 0.3s ease;
+    &__item {
+      cursor: pointer;
 
-    &-prediction {
-      @include flex-row(space-between, center);
+      @include flex-column;
+      gap: 1.6rem;
 
-      p,
-      span,
-      strong {
-        font-size: 1.5rem;
+      padding: 1.6rem;
+      @include border(themed('option-border-color'));
+      transition: all 0.2s ease-in-out 0s;
+
+      &-prediction {
+        @include flex-row(space-between, center);
+
+        p,
+        span,
+        strong {
+          font-size: 1.5rem;
+        }
+
+        p {
+          color: themed('option-title-color');
+          transition: all 0.2s ease-in-out 0s;
+        }
+
+        span {
+          color: themed('option-odd-color');
+          transition: all 0.2s ease-in-out 0s;
+        }
+
+        strong {
+          color: themed('option-value-color');
+          transition: all 0.2s ease-in-out 0s;
+        }
       }
 
-      p,
-      strong {
-        color: $gray-100;
+      &:focus {
+        outline: 0;
       }
 
-      span {
-        color: $gray-500;
+      &.active {
+        background: themed('option-background-color-active');
+        @include border(themed('option-border-color-active'));
       }
-    }
-
-    &:focus {
-      outline: 0;
-    }
-
-    &.active {
-      background: linear-gradient(
-        90deg,
-        rgba(87, 81, 252, 0.4) 0%,
-        rgba(87, 81, 252, 0.14) 100%
-      );
-      @include border($primary-500);
     }
   }
 }

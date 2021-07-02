@@ -1,9 +1,9 @@
 import { relativeTimeFromNow } from 'helpers/date';
 
-function generateCustomOptions(ticker: string) {
+function generateCustomOptions(theme: string, ticker: string) {
   return {
     chart: {
-      type: 'line',
+      type: 'line' as const,
       toolbar: {
         show: false
       },
@@ -41,7 +41,7 @@ function generateCustomOptions(ticker: string) {
       fontFamily: 'Gilroy',
       fontWeight: 700,
       labels: {
-        colors: ['#F3F4F6']
+        colors: theme === 'dark' ? ['#F3F4F6'] : ['#313A4C']
       },
       onItemClick: {
         toggleDataSeries: false
@@ -56,7 +56,7 @@ function generateCustomOptions(ticker: string) {
       strokeDashArray: 0,
       fillOpacity: 1,
       discrete: [],
-      shape: 'circle',
+      shape: 'circle' as const,
       radius: 2,
       offsetX: 0,
       offsetY: 0,
@@ -72,11 +72,11 @@ function generateCustomOptions(ticker: string) {
       enabled: false
     },
     stroke: {
-      curve: 'smooth',
+      curve: 'smooth' as const,
       width: 2
     },
     xaxis: {
-      type: 'datetime',
+      type: 'datetime' as const,
       labels: {
         show: true,
         format: 'hh:mm TT',
@@ -110,9 +110,9 @@ function generateCustomOptions(ticker: string) {
     },
     grid: {
       show: true,
-      borderColor: '#252C3B',
+      borderColor: theme === 'dark' ? '#252C3B' : '#E3E7F0',
       strokeDashArray: 5,
-      position: 'back',
+      position: 'back' as const,
       xaxis: {
         lines: {
           show: true

@@ -1,101 +1,290 @@
-.input {
-  height: 4.4rem;
+.pm-c-input {
+  @include themes($input-themes) {
+    margin: 0rem;
+    padding: $input-padding-y $input-padding-x;
 
-  margin: 0rem;
-  padding: 1.2rem;
+    outline: none;
+    border-radius: 0.4rem;
 
-  outline: none;
-  border-radius: 0.4rem;
+    @extend .caption, .medium;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: left;
+    color: themed('input-value-color');
 
-  font-size: 1.4rem;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: left;
-  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    &::placeholder {
+      color: themed('input-placeholder-color');
+    }
 
-  &::placeholder {
-    color: $gray-500;
+    background-color: transparent;
+
+    border-width: 0.1rem;
+    border-style: solid;
+    border-radius: $input-border-radius;
+
+    transition: $input-transitions;
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    &__label {
+      @extend .caption, .medium;
+    }
+
+    &__description {
+      @extend .tiny, .medium;
+    }
+
+    &__error {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.8rem;
+
+      svg {
+        height: 1.2rem;
+        width: 1.2rem;
+        flex-shrink: 0;
+
+        fill: themed('input-error-color');
+      }
+
+      &-message {
+        color: themed('input-error-color');
+      }
+    }
   }
+}
+
+.pm-c-input--default {
+  @extend .pm-c-input;
+  @include themes($input-themes) {
+    border-color: themed('input-border-default-color');
+
+    &:focus {
+      border-color: themed('input-border-default-focus-color');
+    }
+
+    &:disabled {
+      border-color: transparent;
+      background-color: themed('input-background-disabled-color');
+    }
+  }
+}
+
+.pm-c-input__label--default {
+  @extend .pm-c-input__label;
+  @include themes($input-themes) {
+    color: themed('input-label-default-color');
+  }
+}
+
+.pm-c-input__description {
+  @extend .pm-c-input__description;
+  @include themes($input-themes) {
+    color: themed('input-description-default-color');
+  }
+}
+
+.pm-c-input--error {
+  @extend .pm-c-input;
+  @include themes($input-themes) {
+    border-color: themed('input-border-error-color');
+  }
+}
+
+.pm-c-input__label--error {
+  @extend .pm-c-input__label;
+  @include themes($input-themes) {
+    color: themed('input-label-error-color');
+  }
+}
+
+.pm-c-outcome-input--default {
+  @include themes($input-themes) {
+    outline: none;
+    padding: 0rem;
+
+    width: 100%;
+
+    @extend .caption, .medium;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: left;
+    color: themed('input-value-color');
+
+    &::placeholder {
+      color: themed('input-placeholder-color');
+    }
+
+    background-color: transparent;
+    border: none;
+    transition: $input-transitions;
+
+    &__group {
+      @extend .pm-c-input__group;
+    }
+
+    &__wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      margin: 0rem;
+      padding: $input-padding-y $input-padding-x;
+
+      background-color: transparent;
+
+      border-width: 0.1rem;
+      border-style: solid;
+      border-radius: $input-border-radius;
+      border-color: themed('input-border-default-color');
+
+      &:focus-within {
+        border-color: themed('input-border-default-focus-color');
+      }
+
+      transition: $input-transitions;
+    }
+  }
+}
+
+.pm-c-outcome-input--error {
+  @extend .pm-c-outcome-input--default;
+
+  @include themes($input-themes) {
+    &__wrapper {
+      @extend .pm-c-outcome-input--default__wrapper;
+      border-color: themed('input-border-error-color');
+
+      &:focus-within {
+        border-color: themed('input-border-error-color');
+      }
+    }
+  }
+}
+
+.pm-c-probability-input--default {
+  @extend .pm-c-outcome-input--default;
 
   &__group {
-    display: flex;
-    flex-direction: column;
-
-    gap: 0.8rem;
+    @extend .pm-c-input__group;
   }
 
-  &__label {
-    font-size: 1.3rem;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-
-    color: $gray-900;
-  }
-
-  &__description {
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-
-    color: $gray-500;
+  &__wrapper {
+    @extend .pm-c-outcome-input--default__wrapper;
   }
 }
 
-.input--default {
-  @extend .input;
-  background-color: $gray-700;
+.pm-c-probability-input--error {
+  @extend .pm-c-outcome-input--default;
 
-  border: 0.15rem solid $gray-300;
+  @include themes($input-themes) {
+    &__group {
+      @extend .pm-c-input__group;
+    }
 
-  &:focus {
-    color: $gray-500;
-    outline: 0 none;
+    &__wrapper {
+      @extend .pm-c-outcome-input--default__wrapper;
+      border-color: themed('input-border-error-color');
+
+      &:focus-within {
+        border-color: themed('input-border-error-color');
+      }
+    }
   }
 }
 
-.input--error {
-  @extend .input;
-  color: $gray-500;
-  background-color: $danger-100;
+.pm-c-file-upload-input {
+  @include themes($input-themes) {
+    &__label {
+      @extend .pm-c-input__label--default;
+    }
 
-  border: 0.15rem solid $danger-500;
+    &__actions {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.8rem;
+    }
 
-  &:focus {
-    color: $gray-900;
-
-    border: 0.15rem solid $danger-500;
-
-    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.075) inset,
-      0 0 0.8rem $danger-100;
-    outline: 0 none;
+    &__status {
+      color: themed('input-description-default-color');
+    }
   }
 }
 
-.input--success {
-  @extend .input;
-  color: $gray-500;
-  background-color: $success-100;
+.pm-c-select-input {
+  @extend .pm-c-input;
 
-  border: 0.15rem solid $success-500;
+  @include themes($input-themes) {
+    &__group {
+      @extend .pm-c-input__group;
 
-  &:focus {
-    color: $gray-900;
+      select {
+        option {
+          background-color: themed('input-select-background-color');
+          color: themed('input-value-color');
 
-    border: 0.15rem solid $success-500;
+          &[value=''][disabled] {
+            background-color: themed('input-background-color');
+            color: themed('input-placeholder-color');
+          }
+        }
 
-    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.075) inset,
-      0 0 0.8rem $success-100;
-    outline: 0 none;
+        &:not(:checked) {
+          color: themed('input-placeholder-color');
+        }
+      }
+    }
   }
+}
+
+.pm-c-select-input--default {
+  @extend .pm-c-input--default;
+}
+
+.pm-c-select-input__label--default {
+  @extend .pm-c-input__label--default;
+}
+
+.pm-c-select-input--error {
+  @extend .pm-c-input--error;
+}
+
+.pm-c-select-input__label--error {
+  @extend .pm-c-input__label--error;
+}
+
+.pm-c-date-input {
+  @extend .pm-c-input;
+
+  @include themes($input-themes) {
+    &__group {
+      @extend .pm-c-input__group;
+
+      ::-webkit-calendar-picker-indicator {
+        background-image: url('data:image/svg+xml;utf8,<svg width="16" height="17" viewBox="0 0 16 17" fill="%23637084" xmlns="http://www.w3.org/2000/svg"><path d="M15 2.5H13V0.5H10V2.5H6V0.5H3V2.5H1C0.448 2.5 0 2.948 0 3.5V15.5C0 16.052 0.448 16.5 1 16.5H15C15.552 16.5 16 16.052 16 15.5V3.5C16 2.948 15.552 2.5 15 2.5ZM14 14.5H2V7.5H14V14.5Z"/></svg>');
+      }
+    }
+  }
+}
+
+.pm-c-date-input--default {
+  @extend .pm-c-input--default;
+}
+
+.pm-c-date-input__label--default {
+  @extend .pm-c-input__label--default;
+}
+
+.pm-c-date-input--error {
+  @extend .pm-c-input--error;
+}
+
+.pm-c-date-input__label--error {
+  @extend .pm-c-input__label--error;
 }

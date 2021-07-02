@@ -1,21 +1,40 @@
 .pm-c-toast {
-  @include flex-column;
-  gap: 1.2rem;
-  padding: 2.4rem;
-
-  &__header {
-    @include flex-row(flex-start, center);
-    gap: 0.8rem;
-  }
-
-  &__body {
+  @include themes($toast-themes) {
     @include flex-column;
-    gap: 1.6rem;
-  }
+    gap: 1.2rem;
+    padding: 2.4rem;
 
-  &__actions {
-    @include flex-row(flex-start, center);
-    gap: 0.8rem;
+    background-color: themed('background-color');
+    @include border(themed('border-color'));
+    box-shadow: themed('shadow');
+
+    transition: $toast-transitions;
+
+    &__header {
+      @include flex-row(flex-start, center);
+      gap: 0.8rem;
+
+      &-title {
+        text-align: left;
+        transition: $toast-transitions;
+      }
+    }
+
+    &__body {
+      @include flex-column;
+      gap: 1.6rem;
+
+      &-description {
+        color: themed('text-color');
+        text-align: left;
+        transition: $toast-transitions;
+      }
+    }
+
+    &__actions {
+      @include flex-row(flex-start, center);
+      gap: 0.8rem;
+    }
   }
 }
 
@@ -26,10 +45,11 @@
     svg {
       fill: $danger-500;
     }
-  }
 
-  background-color: #201419;
-  @include border($danger-900);
+    .pm-c-toast__header-title {
+      color: $danger-500;
+    }
+  }
 }
 
 .pm-c-toast--warning {
@@ -39,10 +59,11 @@
     svg {
       fill: $warning-500;
     }
-  }
 
-  background-color: #211e17;
-  @include border($warning-900);
+    .pm-c-toast__header-title {
+      color: $warning-500;
+    }
+  }
 }
 
 .pm-c-toast--success {
@@ -52,10 +73,11 @@
     svg {
       fill: $success-500;
     }
-  }
 
-  background-color: #132020;
-  @include border($success-900);
+    .pm-c-toast__header-title {
+      color: $success-500;
+    }
+  }
 }
 
 .pm-c-toast--info {
@@ -65,8 +87,9 @@
     svg {
       fill: $primary-500;
     }
-  }
 
-  background-color: #090819;
-  @include border($primary-900);
+    .pm-c-toast__header-title {
+      color: $primary-500;
+    }
+  }
 }

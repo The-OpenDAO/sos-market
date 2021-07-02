@@ -4,7 +4,7 @@ import { changePredictionsVisibility, selectOutcome } from 'redux/ducks/trade';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-import Toast from '../Toast';
+import { AlertMini } from '../Alert';
 import TradeFormActions from './TradeFormActions';
 import TradeFormCharts from './TradeFormCharts';
 import TradeFormDetails from './TradeFormDetails';
@@ -16,6 +16,7 @@ import TradeFormTypeSelector from './TradeFormTypeSelector';
 
 function TradeForm() {
   const dispatch = useAppDispatch();
+  const { isLoading } = useAppSelector(state => state.market);
   const { id, outcomes } = useAppSelector(state => state.market.market);
   const marketState = useAppSelector(state => state.market.market.state);
   const selectedMarketId = useAppSelector(
@@ -29,15 +30,16 @@ function TradeForm() {
     }
   }, [dispatch, id, outcomes, selectedMarketId]);
 
+  if (isLoading) return null;
+
   return (
     <div className="pm-c-trade-form">
       <div className="pm-c-trade-form__group" style={{ gap: '1.6rem' }}>
         {marketState !== 'open' ? (
-          <Toast
+          <AlertMini
             variant="warning"
             description="This market is closed. If you have any winnings to claim please check
       your portfolio"
-            style={{ padding: '1.6rem', alignItems: 'center' }}
           />
         ) : null}
         <TradeFormCharts />

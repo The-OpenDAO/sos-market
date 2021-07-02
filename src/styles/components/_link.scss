@@ -1,0 +1,25 @@
+.pm-c-link {
+  text-decoration: underline;
+
+  @include themes($link-themes) {
+    &--information {
+      @extend .pm-c-link;
+      color: themed('link-color-information');
+    }
+
+    &--success {
+      @extend .pm-c-link;
+      color: themed('link-color-success');
+    }
+
+    &--warning {
+      @extend .pm-c-link;
+      color: themed('link-color-warning');
+    }
+
+    &--error {
+      @extend .pm-c-link;
+      color: themed('link-color-error');
+    }
+  }
+}

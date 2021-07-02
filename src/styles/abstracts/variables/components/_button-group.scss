@@ -1,0 +1,91 @@
+$button-group-item-normal-padding-y: 0.6rem !default;
+$button-group-item-normal-padding-x: 1.6rem !default;
+
+$button-group-item-sm-padding-y: 0.2rem !default;
+$button-group-item-sm-padding-x: 0.6rem !default;
+
+$button-group-item-lg-padding-y: 0.8rem !default;
+$button-group-item-lg-padding-x: 1.6rem !default;
+
+$button-group-border-radius: 0.4rem !default;
+
+$button-group-themes: (
+  light: (
+    border-color: #e0e2e7,
+    background-colors: (
+      default: (
+        background-color: transparent,
+        background-color-active: #8a96a8
+      ),
+      primary: (
+        background-color: transparent,
+        background-color-active: #5d55fa
+      ),
+      danger: (
+        background-color: transparent,
+        background-color-active: #e12d39
+      ),
+      success: (
+        background-color: transparent,
+        background-color-active: #27ab83
+      )
+    ),
+    text-colors: (
+      default: (
+        text-color: #a8b0bd,
+        text-color-active: #ffffff
+      ),
+      primary: (
+        text-color: #5d55fa,
+        text-color-active: #ffffff
+      ),
+      danger: (
+        text-color: #e12d39,
+        text-color-active: #ffffff
+      ),
+      success: (
+        text-color: #27ab83,
+        text-color-active: #ffffff
+      )
+    )
+  ),
+  dark: (
+    border-color: #252c3b,
+    background-colors: (
+      default: (
+        background-color: transparent,
+        background-color-active: #252c3b
+      ),
+      primary: (
+        background-color: transparent,
+        background-color-active: #2f2b7d
+      ),
+      danger: (
+        background-color: transparent,
+        background-color-active: #70161c
+      ),
+      success: (
+        background-color: transparent,
+        background-color-active: #145641
+      )
+    ),
+    text-colors: (
+      default: (
+        text-color: #637084,
+        text-color-active: #ffffff
+      ),
+      primary: (
+        text-color: #5d55fa,
+        text-color-active: #ffffff
+      ),
+      danger: (
+        text-color: #e12d39,
+        text-color-active: #ffffff
+      ),
+      success: (
+        text-color: #27ab83,
+        text-color-active: #ffffff
+      )
+    )
+  )
+) !default;

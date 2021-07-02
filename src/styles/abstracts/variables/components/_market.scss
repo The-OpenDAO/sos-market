@@ -1,0 +1,34 @@
+$market-themes: (
+  light: (
+    details-text-color: #313a4c,
+    stats-text-primary-color: #637084,
+    stats-text-secondary-color: #8193ae,
+    option-background-color: transparent,
+    option-background-color-active: mix(#ffffff, #5d55fa, 86%),
+    option-border-color: #e3e7f0,
+    option-border-color-active: #aeaafd,
+    option-title-color: #313a4c,
+    option-odd-color: #8193ae,
+    option-value-color: #637084,
+    chart-view-title-color: #313a4c,
+    chart-view-border-color: #e3e7f0,
+    analytics-text-color: #313a4c,
+    news-text-color: #313a4c
+  ),
+  dark: (
+    details-text-color: #f9fafb,
+    stats-text-primary-color: #c5cad3,
+    stats-text-secondary-color: #637084,
+    option-background-color: transparent,
+    option-background-color-active: mix(#000000, #5d55fa, 70%),
+    option-border-color: #252c3b,
+    option-border-color-active: #413caf,
+    option-title-color: #f9fafb,
+    option-odd-color: #637084,
+    option-value-color: #c5cad3,
+    chart-view-title-color: #f9fafb,
+    chart-view-border-color: #252c3b,
+    analytics-text-color: #f9fafb,
+    news-text-color: #f9fafb
+  )
+) !default;

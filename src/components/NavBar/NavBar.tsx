@@ -6,6 +6,7 @@ import { setFilter } from 'redux/ducks/markets';
 import { PolkamarketsIcon } from 'assets/icons';
 
 import NavBarActions from './NavBarActions';
+import NavBarDropdownMenu from './NavBarDropdownMenu';
 import NavBarMenu from './NavBarMenu';
 import NavBarSearch from './NavBarSearch';
 
@@ -18,15 +19,16 @@ function NavBar() {
   }
 
   return (
-    <div className="pm-c-navbar">
+    <div className="pm-l-navbar">
       <Link to="/home" aria-label="Home" onClick={handleNavigation}>
-        <figure className="pm-c-navbar__icon">
+        <figure className="pm-l-navbar__icon">
           <PolkamarketsIcon />
         </figure>
       </Link>
       <NavBarSearch />
       <NavBarMenu />
       <NavBarActions />
+      <NavBarDropdownMenu />
     </div>
   );
 }

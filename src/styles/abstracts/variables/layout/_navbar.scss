@@ -1,0 +1,25 @@
+$navbar-padding-y: 1.2rem !default;
+$navbar-padding-x: 2.4rem !default;
+
+$navbar-dropdown-menu-padding-y: 2.4rem !default;
+$navbar-dropdown-menu-padding-x: 2.4rem !default;
+$navbar-dropdown-menu-border-radius: 0.4rem !default;
+
+$navbar-themes: (
+  light: (
+    background-color: #f8faff,
+    border-bottom-color: #e3e7f0,
+    dropdown-menu-background-color: #f8faff,
+    dropdown-menu-border-color: #e3e7f0,
+    divider-circle-color: #d7dce4
+  ),
+  dark: (
+    background-color: #0e1016,
+    border-bottom-color: #252c3b,
+    dropdown-menu-background-color: #0e1016,
+    dropdown-menu-border-color: #252c3b,
+    divider-circle-color: #38404d
+  )
+) !default;
+
+$navbar-transitions: all 0.2s ease-in-out 0s !default;

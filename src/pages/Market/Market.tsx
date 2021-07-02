@@ -6,7 +6,7 @@ import { getMarket, setChartViewType } from 'redux/ducks/market';
 import { reset } from 'redux/ducks/trade';
 import { openTradeForm } from 'redux/ducks/ui';
 
-import { Tabs, Table, Text, ButtonGroup } from 'components';
+import { Tabs, Table, Text } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
@@ -96,7 +96,12 @@ const Market = () => {
           </Tabs.TabPane>
         ) : null */}
         <Tabs.TabPane tab="News" id="news">
-          <Text as="p" scale="body" fontWeight="medium" color="light">
+          <Text
+            as="p"
+            scale="body"
+            fontWeight="medium"
+            className="market-page__news"
+          >
             Coming Soon 🔥
           </Text>
         </Tabs.TabPane>

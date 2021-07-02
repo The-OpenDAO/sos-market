@@ -1,12 +1,55 @@
+$apexcharts-tooltip-themes: (
+  light: (
+    background-color: #f8faff,
+    border-color: #e3e7f0,
+    shadow: $light-shadow-lg,
+    text-primary-color: #171b23,
+    text-secondary-color: #8193ae
+  ),
+  dark: (
+    background-color: #0e1016,
+    border-color: #252c3b,
+    shadow: $dark-shadow-lg,
+    text-primary-color: #f3f4f6,
+    text-secondary-color: #a7b0bd
+  )
+) !default;
+
 .apexcharts-tooltip.apexcharts-theme-light {
-  padding: 2.4rem !important;
+  @include themes($apexcharts-tooltip-themes) {
+    padding: 2.4rem !important;
 
-  background-color: $gray-1000 !important;
+    background-color: themed('background-color') !important;
 
-  border: 0.1rem solid $gray-600 !important;
-  border-radius: 0.4rem !important;
+    border: 0.1rem solid themed('border-color') !important;
+    border-radius: 0.4rem !important;
 
-  box-shadow: none !important;
+    box-shadow: none !important;
+    filter: themed('shadow') !important;
+
+    .apexcharts-tooltip-title,
+    .apexcharts-tooltip-text-value,
+    .apexcharts-tooltip-text-y-label,
+    .apexcharts-tooltip-text-y-value {
+      font-family: 'Gilroy', sans-serif !important;
+      @extend .caption, .semibold;
+    }
+
+    .apexcharts-tooltip-title {
+      border-bottom: none !important;
+      background: transparent !important;
+      color: themed('text-primary-color') !important;
+    }
+
+    .apexcharts-tooltip-text-y-label {
+      color: themed('text-secondary-color') !important;
+    }
+
+    .apexcharts-tooltip-text-y-value,
+    .apexcharts-tooltip-text-value {
+      color: themed('text-primary-color') !important;
+    }
+  }
 }
 
 .apexcharts-tooltip-box {
@@ -16,18 +59,9 @@
 
 .apexcharts-xaxis-label,
 .apexcharts-yaxis-label,
-.apexcharts-tooltip-title,
 .apexcharts-tooltip-text-label,
-.apexcharts-tooltip-text-value,
 .apexcharts-tooltip-text-date {
   font-family: 'Gilroy', sans-serif !important;
-}
-
-.apexcharts-tooltip-title {
-  border-bottom: none !important;
-  background: transparent !important;
-
-  @extend .caption, .semibold, .text-light;
 }
 
 .apexcharts-tooltip-marker {

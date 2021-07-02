@@ -17,6 +17,7 @@
 @import 'layout/navbar';
 @import 'layout/sidebar';
 @import 'layout/right-sidebar';
+@import 'layout/footer';
 
 // 5. Components
 @import 'components/alert';
@@ -24,18 +25,20 @@
 @import 'components/amount-input';
 @import 'components/badge';
 @import 'components/breadcrumb';
-@import 'components/buttons';
+@import 'components/button';
 @import 'components/button-group';
 @import 'components/card';
 @import 'components/category';
 @import 'components/chart-header';
 @import 'components/checkbox';
+@import 'components/create-market-form';
 @import 'components/featured-card';
 @import 'components/input';
 @import 'components/filter';
 @import 'components/label';
 @import 'components/liquidity-form';
 @import 'components/grid';
+@import 'components/link';
 @import 'components/market';
 @import 'components/market-card';
 @import 'components/market-list';
@@ -45,8 +48,11 @@
 @import 'components/mini-table';
 @import 'components/modal-notification';
 @import 'components/network-info';
+@import 'components/outcome';
 @import 'components/pill';
 @import 'components/prediction-card';
+@import 'components/progress-bar';
+@import 'components/report-form';
 @import 'components/searchbar';
 @import 'components/select';
 @import 'components/step-slider';
@@ -67,5 +73,6 @@
 @import 'pages/portfolio';
 @import 'pages/private-beta';
 @import 'pages/wrong-network';
+@import 'pages/create-market';
 
 // 7. Themes

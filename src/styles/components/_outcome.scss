@@ -1,0 +1,93 @@
+.pm-c-outcome {
+  cursor: pointer;
+  touch-action: manipulation;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  width: 100%;
+  height: auto;
+
+  padding: $outcome-padding-y $outcome-padding-x;
+
+  border-width: 0.1rem;
+  border-style: solid;
+  border-radius: $outcome-border-radius;
+
+  &__row-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 0.4rem;
+  }
+
+  &__header {
+    display: inline-flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+
+    svg {
+      height: 1.2rem;
+      width: 1.2rem;
+
+      @include themes($outcome-themes) {
+        fill: themed('outcome-icon-color');
+      }
+    }
+  }
+
+  &__progress {
+    margin-top: 0.2rem;
+  }
+}
+
+.pm-c-outcome--default {
+  @extend .pm-c-outcome;
+
+  @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-default');
+    border-color: themed('outcome-border-color-default');
+
+    .rc-progress-line-path {
+      stroke: themed('outcome-progress-trail-color');
+    }
+  }
+}
+
+.pm-c-outcome--selected {
+  @extend .pm-c-outcome;
+
+  @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-selected');
+    border-color: themed('outcome-border-color-selected');
+  }
+}
+
+.pm-c-outcome--success {
+  @extend .pm-c-outcome;
+
+  @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-success');
+    border-color: themed('outcome-border-color-success');
+  }
+}
+
+.pm-c-outcome--error {
+  @extend .pm-c-outcome;
+
+  @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-error');
+    border-color: themed('outcome-border-color-error');
+  }
+}
+
+.pm-c-outcome--warning {
+  @extend .pm-c-outcome;
+
+  @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-warning');
+    border-color: themed('outcome-border-color-warning');
+  }
+}

@@ -61,7 +61,7 @@ function TradeFormPredictions() {
               {prediction.title}
             </Text>
             <Text as="span" fontWeight="semibold">
-              {`PRICE `}
+              {`ODD `}
               <Text as="strong" fontWeight="bold">
                 {prediction.price.toFixed(3)}
               </Text>
@@ -76,7 +76,12 @@ function TradeFormPredictions() {
                 key: 'yourShares',
                 title: 'Your Shares',
                 // eslint-disable-next-line prettier/prettier
-                value: roundNumber(portfolio[selectedMarketId]?.outcomes[prediction.id]?.shares, 3) || 0
+                value:
+                  roundNumber(
+                    portfolio[selectedMarketId]?.outcomes[prediction.id]
+                      ?.shares,
+                    3
+                  ) || 0
               }
             ]}
           />

@@ -1,104 +1,125 @@
 .pm-c-amount-input {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-
-  width: 100%;
-
-  &__group {
+  @include themes($amount-input-themes) {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.3rem;
 
-    height: 5.2rem;
-    padding: 1.2rem 0.8rem 1.2rem 1.6rem;
-
-    background-color: $gray-700;
-    border-radius: 0.4rem;
-  }
-
-  &__input {
     width: 100%;
-    margin: 0rem 0.8rem 0rem 0rem;
-    padding: 0rem;
 
-    outline: none;
-    border: none;
-    box-sizing: border-box;
+    &__group {
+      display: flex;
+      justify-content: space-between;
 
-    background-color: unset;
+      height: $amount-input-group-height;
+      padding: $amount-input-group-padding;
 
-    color: $gray-100;
-
-    font-size: 2rem;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 400;
-
-    line-height: 1.4;
-    letter-spacing: normal;
-    text-align: left;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &-wallet {
-      display: inline-flex;
-      align-items: center;
-
-      gap: 0.2rem;
-
-      figure {
-        margin-right: 0.4rem;
-
-        svg {
-          fill: $gray-500;
-        }
-      }
+      border: 0.1rem solid themed('amount-input-border-color');
+      border-radius: $amount-input-group-border-radius;
     }
-  }
 
-  &__actions {
-    display: flex;
+    &__input {
+      width: 100%;
+      margin: $amount-input-margin;
+      padding: $amount-input-padding;
 
-    button {
-      cursor: pointer;
-      touch-action: manipulation;
-
-      margin: 0rem 0.4rem;
-      padding: 0.4rem 0.6rem;
-      background-color: $gray-1000;
-
-      appearance: none;
       outline: none;
       border: none;
-      border-radius: 0.4rem;
+      box-sizing: border-box;
 
-      span {
-        color: $gray-300;
+      background-color: unset;
 
-        transition: color 0.2s ease;
+      font-size: 2rem;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: 400;
+
+      line-height: 1.4;
+      letter-spacing: normal;
+      text-align: left;
+
+      color: themed('amount-input-value-color');
+
+      ::placeholder {
+        color: themed('amount-input-placeholder-color');
+        opacity: 1;
+      }
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-title {
+        @extend .tiny, .bold;
+        color: themed('amount-input-title-color');
       }
 
-      &:hover {
+      &-wallet {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.2rem;
+
+        strong {
+          color: themed('amount-input-currency-name-color');
+        }
+
         span {
-          color: $gray-100;
+          color: themed('amount-input-title-secondary-color');
+        }
+
+        figure {
+          margin-right: 0.4rem;
+
+          svg {
+            fill: themed('amount-input-title-secondary-color');
+          }
         }
       }
     }
-  }
 
-  &__logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
+    &__actions {
+      display: flex;
 
-    margin: 0rem 0.8rem;
+      button {
+        display: inline-flex;
+        align-items: center;
 
-    > span {
-      color: $gray-200;
+        cursor: pointer;
+        touch-action: manipulation;
+        appearance: none;
+        outline: none;
+        border: none;
+
+        margin: $amount-input-action-margin-y $amount-input-action-margin-x;
+        padding: $amount-input-action-button-padding-y
+          $amount-input-action-button-padding-x;
+        background-color: themed('amount-input-action-button-background-color');
+
+        @extend .tiny-uppercase, .bold;
+        color: themed('amount-input-action-button-color');
+
+        border-radius: $amount-input-action-button-border-radius;
+        transition: $amount-input-action-button-transitions;
+
+        &:hover {
+          background-color: themed(
+            'amount-input-action-button-background-color-hover'
+          );
+        }
+      }
+    }
+
+    &__logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      margin: 0rem 0.8rem;
+
+      > span {
+        color: themed('amount-input-currency-name-color');
+      }
     }
   }
 }

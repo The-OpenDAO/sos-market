@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Footer from '../Footer';
 import NavBar from '../NavBar';
 import RightSidebar from '../RightSidebar';
 import Sidebar from '../Sidebar';
@@ -19,8 +20,12 @@ function Layout({ children }: LayoutProps) {
         <Sidebar />
       </nav>
       <main className="pm-l-layout__main">{children}</main>
+      {/* <footer className="pm-l-layout__footer">
+        <Footer />
+      </footer> */}
       <aside className="pm-l-layout__aside">
         <RightSidebar />
+        <div id="toast-notification-portal" />
       </aside>
     </div>
   );

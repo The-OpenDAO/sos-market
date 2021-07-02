@@ -1,9 +1,11 @@
-.mini-table {
-  @include flex-column;
+.pm-c-mini-table {
+  display: flex;
+  flex-direction: column;
   gap: 0.4rem;
 
   &__item {
-    @include flex-row;
+    display: flex;
+    flex-direction: row;
     gap: 0.8rem;
 
     .fill-empty-space {
@@ -17,8 +19,8 @@
 }
 
 @each $color-variant, $color in $theme-colors {
-  .mini-table__item--#{$color-variant} {
-    @extend .mini-table__item;
+  .pm-c-mini-table__item--#{$color-variant} {
+    @extend .pm-c-mini-table__item;
     @include mini-table-item-color($color-variant, $color);
   }
 }

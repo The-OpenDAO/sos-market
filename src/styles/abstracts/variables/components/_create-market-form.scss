@@ -1,0 +1,22 @@
+$create-market-form-card-padding-y: 2.4rem !default;
+$create-market-form-card-padding-x: 2.4rem !default;
+$create-market-form-card-border-radius: 0.4rem !default;
+
+$create-market-form-themes: (
+  light: (
+    create-market-form-card-background-color: #ffffff,
+    create-market-form-card-border-color: #e0e2e7,
+    create-market-form-card-title-color: #171b23,
+    create-market-form-card-liquidity-details-text-primary-color: #171b23,
+    create-market-form-card-liquidity-details-text-secondary-color: #a7b0bd
+  ),
+  dark: (
+    create-market-form-card-background-color: #171b23,
+    create-market-form-card-border-color: #252c3b,
+    create-market-form-card-title-color: #f9fafb,
+    create-market-form-card-liquidity-details-text-primary-color: #f9fafb,
+    create-market-form-card-liquidity-details-text-secondary-color: #637084
+  )
+) !default;
+
+$create-market-form-transitions: all 0.2s ease-in-out !default;

@@ -5,10 +5,11 @@ import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 
 import { ChartHeader, LineChart, Text } from 'components';
 
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useTheme } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 const MarketChart = () => {
+  const { theme } = useTheme();
   const { ticker } = useCurrency();
   const predictions = useAppSelector(state => state.market.market.outcomes);
   const { chartViewType } = useAppSelector(state => state.market);
@@ -45,7 +46,12 @@ const MarketChart = () => {
         {chartViewType === 'marketOverview' ? (
           <div style={{ padding: '2.4rem' }}>
             <div className="market-chart__header">
-              <Text as="h2" scale="body" fontWeight="semibold" color="light">
+              <Text
+                as="h2"
+                scale="body"
+                fontWeight="semibold"
+                className="market-chart__view-title"
+              >
                 Market Overview
               </Text>
               <div className="market-chart__header-actions">
@@ -64,7 +70,7 @@ const MarketChart = () => {
         ) : null}
         {chartViewType === 'tradingView' ? (
           <TradingViewWidget
-            theme={Themes.DARK}
+            theme={theme === 'dark' ? Themes.DARK : Themes.LIGHT}
             width="100%"
             height={454}
             symbol={tradingViewSymbol}

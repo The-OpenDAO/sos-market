@@ -1,12 +1,16 @@
 import { fromTimestampToDate } from 'helpers/date';
 
-function generateCustomOptions(ticker: string, showGrid: boolean) {
+function generateCustomOptions(
+  theme: string,
+  ticker: string,
+  showGrid: boolean
+) {
   return {
     chart: {
       toolbar: {
         show: false
       },
-      type: 'area',
+      type: 'area' as const,
       zoom: {
         enabled: false
       }
@@ -19,9 +23,8 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       custom({ series, seriesIndex, dataPointIndex, w }) {
         const currentValue = series[seriesIndex][dataPointIndex];
         const currentDate = w.globals.seriesX[seriesIndex][dataPointIndex];
-        const formatedDate = fromTimestampToDate(currentDate).format(
-          'MMMM D, YYYY'
-        );
+        const formatedDate =
+          fromTimestampToDate(currentDate).format('MMMM D, YYYY');
         const formatedTime = fromTimestampToDate(currentDate).format('h:mm A');
 
         return `<div class="apexcharts-tooltip-box">
@@ -42,7 +45,7 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       strokeDashArray: 0,
       fillOpacity: 1,
       discrete: [],
-      shape: 'circle',
+      shape: 'circle' as const,
       radius: 2,
       offsetX: 0,
       offsetY: 0,
@@ -58,11 +61,11 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       enabled: false
     },
     stroke: {
-      curve: 'smooth',
+      curve: 'smooth' as const,
       width: 1.7
     },
     xaxis: {
-      type: 'datetime',
+      type: 'datetime' as const,
       labels: {
         show: showGrid,
         format: 'hh:mm TT'
@@ -93,9 +96,9 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
     },
     grid: {
       show: showGrid,
-      borderColor: '#252C3B',
+      borderColor: theme === 'dark' ? '#252C3B' : '#E3E7F0',
       strokeDashArray: 5,
-      position: 'back',
+      position: 'back' as const,
       xaxis: {
         lines: {
           show: true
@@ -115,7 +118,7 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
     },
     colors: ['#5751FC'],
     fill: {
-      type: 'gradient',
+      type: 'gradient' as const,
       gradient: {
         shade: 'dark',
         opacityFrom: 0.85,

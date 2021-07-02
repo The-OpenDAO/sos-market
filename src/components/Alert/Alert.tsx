@@ -1,4 +1,4 @@
-import React from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 import { CheckIcon, InfoIcon, WarningIcon } from 'assets/icons';
 
@@ -11,31 +11,58 @@ const variants = {
   error: { title: 'Error', icon: <InfoIcon /> }
 };
 
-type AlertVariant = 'information' | 'success' | 'warning' | 'error';
+export type AlertVariant = 'information' | 'success' | 'warning' | 'error';
 
 type AlertProps = {
+  /**
+   * Variant of Alert styles
+   */
   variant: AlertVariant;
+  /**
+   * Title of Alert
+   * @default 'Variant'
+   */
   title?: string;
-  description: string;
-  style?: React.CSSProperties;
+  /**
+   * Additional content of Alert
+   */
+  description?: ReactNode;
+  /**
+   * Aditional CSS styles
+   */
+  style?: CSSProperties;
 };
 
+/**
+ *
+ * Alert show messages to users
+ */
 function Alert({ variant, title, description, style }: AlertProps) {
   return (
     <div className={`pm-c-alert--${variant}`} role="alert" style={style}>
-      <div className="pm-c-alert__title">
+      <div className="pm-c-alert__group">
         {variants[variant].icon}
-        <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
+        <Text
+          as="span"
+          scale="tiny-uppercase"
+          fontWeight="semibold"
+          className="pm-c-alert__title"
+        >
           {title || variants[variant].title}
         </Text>
       </div>
-      <Text as="p" scale="caption" fontWeight="medium" color="lighter-gray-50">
-        {description}
-      </Text>
+      {description ? (
+        <Text
+          as="p"
+          scale="caption"
+          fontWeight="medium"
+          className="pm-c-alert__description"
+        >
+          {description}
+        </Text>
+      ) : null}
     </div>
   );
 }
-
-Alert.displayName = 'Alert';
 
 export default Alert;
