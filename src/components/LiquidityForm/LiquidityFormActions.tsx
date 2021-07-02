@@ -8,7 +8,7 @@ import { BeproService, PolkamarketsApiService } from 'services';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useToastNotification from 'hooks/useToastNotification';
 
-import { Button, ButtonText } from '../Button';
+import { Button } from '../Button';
 import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 
@@ -155,9 +155,13 @@ function LiquidityFormActions() {
                   View on Explorer
                 </Button>
               </a>
-              <ButtonText color="white" onClick={() => close(transactionType)}>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => close(transactionType)}
+              >
                 Dismiss
-              </ButtonText>
+              </Button>
             </Toast.Actions>
           </Toast>
         </ToastNotification>

@@ -11,7 +11,7 @@ import { BeproService, PolkamarketsApiService } from 'services';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useToastNotification from 'hooks/useToastNotification';
 
-import { Button, ButtonText } from '../Button';
+import { Button } from '../Button';
 import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 
@@ -192,9 +192,9 @@ function TradeFormActions() {
                   View on Explorer
                 </Button>
               </a>
-              <ButtonText color="white" onClick={() => close(type)}>
+              <Button size="sm" variant="ghost" onClick={() => close(type)}>
                 Dismiss
-              </ButtonText>
+              </Button>
             </Toast.Actions>
           </Toast>
         </ToastNotification>
