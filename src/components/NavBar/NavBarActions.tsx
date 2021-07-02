@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-import { login, fetchAditionalData } from 'redux/ducks/bepro';
+import { login } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { AddIcon, MetaMaskIconSmall } from 'assets/icons';
+import { MetaMaskIconSmall } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
@@ -14,7 +14,6 @@ import { AlertInline } from '../Alert';
 import { Button } from '../Button';
 import Link from '../Link';
 import NetworkInfo from '../NetworkInfo';
-import Tooltip from '../Tooltip';
 import WalletInfo from '../WalletInfo';
 
 function NavBarActions() {
@@ -76,15 +75,6 @@ function NavBarActions() {
           Connect MetaMask
         </Button>
       )}
-      {/* <Tooltip text="Create Market" position="bottom">
-        <a
-          className="button-normal--default pm-l-navbar__actions-create-market"
-          aria-label="Create market"
-          href="/market/create"
-        >
-          <AddIcon />
-        </a>
-      </Tooltip> */}
     </div>
   );
 }
