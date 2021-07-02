@@ -1,13 +1,19 @@
 .market-page {
-  @include flex-column;
-  gap: 1.6rem;
-
-  width: 100%;
-
-  &__stats {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+  @include themes($market-themes) {
+    @include flex-column;
     gap: 1.6rem;
+
+    width: 100%;
+
+    &__stats {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 1.6rem;
+    }
+
+    &__news {
+      color: themed('news-text-color');
+    }
   }
 }
 
