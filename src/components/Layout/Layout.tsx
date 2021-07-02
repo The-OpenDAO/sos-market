@@ -25,6 +25,7 @@ function Layout({ children }: LayoutProps) {
       </footer> */}
       <aside className="pm-l-layout__aside">
         <RightSidebar />
+        <div id="toast-notification-portal" />
       </aside>
     </div>
   );
