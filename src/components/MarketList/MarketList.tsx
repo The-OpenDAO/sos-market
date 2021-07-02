@@ -35,7 +35,7 @@ const MarketList = ({ markets }) => {
             as="p"
             scale="tiny"
             fontWeight="semibold"
-            color="lighter-gray-50"
+            className="pm-c-market-list__empty-state__body-description"
           >
             Error fetching markets
           </Text>
@@ -58,7 +58,7 @@ const MarketList = ({ markets }) => {
             as="p"
             scale="tiny"
             fontWeight="semibold"
-            color="lighter-gray-50"
+            className="pm-c-market-list__empty-state__body-description"
           >
             There are no available markets for this category.
           </Text>

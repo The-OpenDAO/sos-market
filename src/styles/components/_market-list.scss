@@ -9,27 +9,35 @@
 }
 
 .pm-c-market-list__empty-state {
-  width: 100%;
-  height: auto;
+  @include themes($market-list-themes) {
+    width: 100%;
+    height: auto;
 
-  padding: 5.9rem 2rem;
+    padding: 5.9rem 2rem;
 
-  border: 0.1rem solid $gray-600;
-  border-radius: 0.4rem;
+    border: 0.1rem solid themed('state-info-border-color');
+    border-radius: 0.4rem;
+    transition: $market-list-transitions;
 
-  &__body {
-    @include flex-column(center, center);
-    gap: 1.2rem;
+    &__body {
+      @include flex-column(center, center);
+      gap: 1.2rem;
 
-    svg {
-      fill: $primary-500;
+      svg {
+        fill: $primary-500;
+        transition: $market-list-transitions;
+      }
+
+      &-description {
+        color: themed('state-info-description-text-color');
+        transition: $market-list-transitions;
+      }
     }
   }
 }
 
 .pm-c-market-list__error {
   @extend .pm-c-market-list__empty-state;
-
   &__body {
     @extend .pm-c-market-list__empty-state__body;
   }
