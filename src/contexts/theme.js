@@ -1,4 +1,6 @@
-import React, { createContext, useReducer } from 'react';
+import { createContext, useReducer } from 'react';
+
+import { useLocalStorage } from 'hooks';
 
 const ThemeContext = createContext({ theme: 'light' });
 const ThemeDispatchContext = createContext();
@@ -20,8 +22,9 @@ function themeReducer(state, action) {
 
 // eslint-disable-next-line react/prop-types
 const ThemeProvider = ({ children }) => {
+  const [localStorageTheme] = useLocalStorage('theme');
   const [state, dispatch] = useReducer(themeReducer, {
-    theme: 'light'
+    theme: localStorageTheme || 'light'
   });
   return (
     <ThemeContext.Provider value={state}>
