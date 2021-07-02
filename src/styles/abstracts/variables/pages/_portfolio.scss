@@ -1,0 +1,14 @@
+$portfolio-themes: (
+  light: (
+    chart-border-color: #e3e7f0,
+    text-primary-color: #171b23,
+    text-secondary-color: #8193ae
+  ),
+  dark: (
+    chart-border-color: #252c3b,
+    text-primary-color: #f3f4f6,
+    text-secondary-color: #a7b0bd
+  )
+) !default;
+
+$portfolio-transitions: all 0.2s ease-in-out 0s !default;
