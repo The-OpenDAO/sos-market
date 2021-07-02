@@ -15,7 +15,7 @@
     padding: 2rem 2.8rem;
 
     background-color: themed('background-color');
-    filter: themed('shadow');
+    box-shadow: themed('shadow');
 
     transition: all 0.2s ease-in-out 0s;
 
