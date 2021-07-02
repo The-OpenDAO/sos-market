@@ -11,7 +11,8 @@ $market-themes: (
     option-odd-color: #8193ae,
     option-value-color: #637084,
     chart-view-title-color: #313a4c,
-    chart-view-border-color: #e3e7f0
+    chart-view-border-color: #e3e7f0,
+    analytics-text-color: #313a4c
   ),
   dark: (
     details-text-color: #f9fafb,
@@ -25,6 +26,7 @@ $market-themes: (
     option-odd-color: #637084,
     option-value-color: #c5cad3,
     chart-view-title-color: #f9fafb,
-    chart-view-border-color: #252c3b
+    chart-view-border-color: #252c3b,
+    analytics-text-color: #f9fafb
   )
 ) !default;

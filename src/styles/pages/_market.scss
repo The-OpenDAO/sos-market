@@ -24,12 +24,18 @@
 }
 
 .pm-market {
-  &__stats {
-    @include flex-column;
-    gap: 1.6rem;
+  @include themes($market-themes) {
+    &__stats {
+      @include flex-column;
+      gap: 1.6rem;
 
-    &-item {
-      flex-grow: 1;
+      &-item {
+        flex-grow: 1;
+
+        &__price {
+          color: themed('analytics-text-color');
+        }
+      }
     }
   }
 }
