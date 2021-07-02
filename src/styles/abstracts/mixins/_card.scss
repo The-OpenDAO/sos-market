@@ -3,8 +3,10 @@
 }
 
 @mixin card-background-color($color-variant, $background) {
-  @if $color-variant == default {
-    @include border($gray-600);
+  @include themes($card-themes) {
+    @if $color-variant == default {
+      @include border(themed('border-color-default'));
+    }
+    background: $background;
   }
-  background: $background;
 }
