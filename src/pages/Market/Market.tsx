@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { getMarket, setChartViewType } from 'redux/ducks/market';
 import { reset } from 'redux/ducks/trade';
-import { openReportForm, openTradeForm } from 'redux/ducks/ui';
+import { openTradeForm } from 'redux/ducks/ui';
 
-import { Tabs, Table, Text, ButtonGroup } from 'components';
+import { Tabs, Table, Text } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
@@ -27,22 +27,14 @@ const Market = () => {
   const { symbol, ticker } = useCurrency();
   const { marketId } = useParams<Params>();
   const { market, isLoading } = useAppSelector(state => state.market);
-  const marketState = useAppSelector(state => state.market.market.state);
   const actions = useAppSelector(state => state.bepro.actions);
 
   useEffect(() => {
     dispatch(reset());
     dispatch(getMarket(marketId));
     dispatch(setChartViewType('marketOverview'));
+    dispatch(openTradeForm());
   }, [dispatch, marketId]);
-
-  useEffect(() => {
-    if (marketState !== 'open') {
-      dispatch(openReportForm());
-    } else {
-      dispatch(openTradeForm());
-    }
-  }, [dispatch, marketState]);
 
   if (!market || market.id === '' || isLoading)
     return (
