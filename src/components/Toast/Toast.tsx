@@ -27,7 +27,11 @@ function Toast({ variant, title, description, style, children }: ToastProps) {
     <div className={`pm-c-toast--${variant}`} style={style}>
       <div className="pm-c-toast__header">
         {icons[variant]}
-        <Text scale="body" fontWeight="semibold" color="light">
+        <Text
+          scale="tiny-uppercase"
+          fontWeight="semibold"
+          className="pm-c-toast__header-title"
+        >
           {title}
         </Text>
       </div>
@@ -36,8 +40,7 @@ function Toast({ variant, title, description, style, children }: ToastProps) {
           <Text
             scale="caption"
             fontWeight="medium"
-            color="light"
-            style={{ textAlign: 'center' }}
+            className="pm-c-toast__body-description"
           >
             {description}
           </Text>
