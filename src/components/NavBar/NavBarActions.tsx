@@ -10,8 +10,9 @@ import useAlertNotification from 'hooks/useAlertNotification';
 import useCurrency from 'hooks/useCurrency';
 import useNetwork, { defaultNetwork } from 'hooks/useNetwork';
 
-import AlertNotification from '../AlertNotification';
+import { AlertInline } from '../Alert';
 import { Button } from '../Button';
+import Link from '../Link';
 import NetworkInfo from '../NetworkInfo';
 import Tooltip from '../Tooltip';
 import WalletInfo from '../WalletInfo';
@@ -40,14 +41,23 @@ function NavBarActions() {
 
   return (
     <div className="pm-l-navbar__actions">
-      <AlertNotification
+      <AlertInline
         id="beta-testing"
         variant="warning"
-        description={`Welcome to Polkamarkets! You’re on ${network.name} and placing predictions with ${network.currency}.`}
+        description={
+          <>
+            {`Welcome to Polkamarkets! You’re on ${network.name} and placing predictions with ${network.currency}. Your `}
+            <Link
+              title="feedback"
+              target="_blank"
+              href="//discord.gg/dfnvfHspe4"
+              rel="noreferrer"
+            />
+            {` is highly appreciated 🎉`}
+          </>
+        }
       />
-
       {network ? <NetworkInfo name={network.name} slug={network.key} /> : null}
-
       {walletConnected ? (
         <WalletInfo
           balance={walletBalance}
