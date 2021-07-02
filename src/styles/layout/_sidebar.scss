@@ -57,11 +57,15 @@
       font-size: 1.4rem;
       transition: all 0.2s ease-in-out 0s;
 
+      opacity: 0.5;
+
       &-title {
       }
 
       &.active,
       &:hover {
+        opacity: 1;
+
         color: themed('text-color-active');
         transition: all 0.2s ease-in-out 0s;
 
