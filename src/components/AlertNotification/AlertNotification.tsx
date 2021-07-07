@@ -45,7 +45,7 @@ function AlertNotification({
               {icons[variant]}
               <Text as="p" scale="tiny" fontWeight="semibold" color="white">
                 {description} {'Your '}
-                <Link target="_blank" to="//discord.gg/dfnvfHspe4">
+                <Link target="_blank" to="//discord.gg/Szjn2EEf7w">
                   feedback
                 </Link>
                 {' is highly appreciated 🎉'}

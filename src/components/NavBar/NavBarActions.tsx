@@ -49,7 +49,7 @@ function NavBarActions() {
             <Link
               title="feedback"
               target="_blank"
-              href="//discord.gg/dfnvfHspe4"
+              href="//discord.gg/Szjn2EEf7w"
               rel="noreferrer"
               variant="warning"
             />
