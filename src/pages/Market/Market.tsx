@@ -86,7 +86,12 @@ const Market = () => {
       </Text>
       <Tabs defaultActiveId="positions">
         <Tabs.TabPane tab="Positions" id="positions">
-          <Table columns={tableItems.columns} rows={tableItems.rows} />
+          <Table
+            columns={tableItems.columns}
+            rows={tableItems.rows}
+            isLoadingData={isLoading}
+            emptyDataDescription="There are no market positions."
+          />
         </Tabs.TabPane>
         {/* market.description ? (
           <Tabs.TabPane tab="About market" id="about">
