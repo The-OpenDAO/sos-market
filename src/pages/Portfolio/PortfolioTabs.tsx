@@ -39,7 +39,12 @@ function PortfolioTabs() {
   const [currentTab, setCurrentTab] = useState('marketPositions');
 
   const markets = useAppSelector(state => state.markets.markets);
-  const isLoadingMarkets = useAppSelector(state => state.markets.isLoading);
+  const isLoadingMarketsSelector = useAppSelector(
+    state => state.markets.isLoading
+  );
+  const isLoadingMarkets = Object.values(isLoadingMarketsSelector).some(
+    value => value === true
+  );
 
   const portfolio = useAppSelector(state => state.bepro.portfolio);
   const isLoadingPortfolio = useAppSelector(
