@@ -39,7 +39,12 @@ function PortfolioTabs() {
   const [currentTab, setCurrentTab] = useState('marketPositions');
 
   const markets = useAppSelector(state => state.markets.markets);
+  const isLoadingMarkets = useAppSelector(state => state.markets.isLoading);
+
   const portfolio = useAppSelector(state => state.bepro.portfolio);
+  const isLoadingPortfolio = useAppSelector(
+    state => state.bepro.isLoading.portfolio
+  );
 
   const marketPositions = formatMarketPositions(portfolio, markets);
   const liquidityPositions = formatLiquidityPositions(portfolio, markets);
@@ -71,12 +76,14 @@ function PortfolioTabs() {
           <PortfolioMarketTable
             rows={marketPositions.rows}
             headers={marketPositions.headers}
+            isLoadingData={isLoadingMarkets || isLoadingPortfolio}
           />
         ) : null}
         {currentTab === 'liquidityPositions' ? (
           <PortfolioLiquidityTable
             rows={liquidityPositions.rows}
             headers={liquidityPositions.headers}
+            isLoadingData={isLoadingMarkets || isLoadingPortfolio}
           />
         ) : null}
       </div>
