@@ -1,3 +1,5 @@
+import { PolkamarketsIcon } from 'assets/icons';
+
 import { ModalNotification, Text, Link } from 'components';
 
 function RestrictedCountry() {
@@ -5,12 +7,26 @@ function RestrictedCountry() {
     <div className="pm-restricted-country">
       <ModalNotification visible>
         <div className="pm-restricted-country__card">
+          <PolkamarketsIcon />
+          <Text
+            as="h5"
+            scale="heading"
+            fontWeight="bold"
+            color="white"
+            style={{ textAlign: 'center' }}
+          >
+            Polkamarkets is not available in your country
+          </Text>
           <Text
             as="p"
             scale="body"
             fontWeight="medium"
             color="lighter-gray"
-            style={{ textAlign: 'center', paddingBottom: '1rem' }}
+            style={{
+              textAlign: 'center',
+              paddingBottom: '1rem',
+              whiteSpace: 'pre-line'
+            }}
           >
             <>
               {`At the moment, Polkamarkets is not available in your jurisdiction.
