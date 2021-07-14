@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
+
 import isEmpty from 'lodash/isEmpty';
+import { Market } from 'models/market';
 import { getMarkets } from 'redux/ducks/markets';
 import { useAppDispatch } from 'redux/store';
+import { MarketState } from 'services/Polkamarkets/market';
 
 import { InfoIcon } from 'assets/icons';
 
@@ -11,22 +15,31 @@ import { useAppSelector } from 'hooks';
 import PredictionCard from '../PredictionCard';
 import Text from '../Text';
 
-const MarketList = ({ markets }) => {
+type MarketListProps = {
+  marketState: MarketState;
+  markets: Market[];
+};
+
+const MarketList = ({ marketState, markets }: MarketListProps) => {
   const dispatch = useAppDispatch();
   const { isLoading, error } = useAppSelector(state => state.markets);
 
+  useEffect(() => {
+    dispatch(getMarkets(marketState));
+  }, [dispatch, marketState]);
+
   function refreshMarkets() {
-    dispatch(getMarkets());
+    dispatch(getMarkets(marketState));
   }
 
-  if (isLoading)
+  if (isLoading[marketState])
     return (
       <div className="pm-market__loading" style={{ paddingTop: '5rem' }}>
         <span className="spinner--primary" />
       </div>
     );
 
-  if (error) {
+  if (error[marketState]) {
     return (
       <div className="pm-c-market-list__error">
         <div className="pm-c-market-list__error__body">
