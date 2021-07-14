@@ -29,11 +29,10 @@ function RestrictedCountry() {
             }}
           >
             <>
-              {`At the moment, Polkamarkets is not available in your jurisdiction.
-            Please verify all excluded jurisdictions `}
+              {`At the moment Polkamarkets Services and POLK Token (POLK) are not available in `}
               <Link
-                href="https://www.polkamarkets.com/legal/privacy"
-                title="here"
+                href="https://www.polkamarkets.com/legal/terms-conditions"
+                title="Excluded Jurisdictions."
                 scale="body"
                 fontWeight="medium"
                 className="text-gray"
