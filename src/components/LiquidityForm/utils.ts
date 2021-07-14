@@ -62,7 +62,6 @@ function calculateLiquidityAdded(
   ethAmount: number
 ): LiquidityDetails {
   // TODO: move formulas to beprojs
-  // eslint-disable-next-line prettier/prettier
   const minOutcome = market.outcomes.reduce((prev, curr) => {
     return prev.shares < curr.shares ? prev : curr;
   });
@@ -95,18 +94,12 @@ function calculateLiquidityRemoved(
   sharesAmount: number
 ): LiquidityDetails {
   // TODO: move formulas to beprojs
-  // eslint-disable-next-line prettier/prettier
-  const minOutcome = market.outcomes.reduce((prev, curr) => {
-    return prev.shares < curr.shares ? prev : curr;
-  });
-
   const maxOutcome = market.outcomes.reduce((prev, curr) => {
     return prev.shares > curr.shares ? prev : curr;
   });
 
-  const liquidityRatio = (minOutcome.shares * sharesAmount) / market.liquidity;
   const liquidityShares = sharesAmount;
-  const liquidityStake = liquidityRatio * sharesAmount;
+  const liquidityStake = (market.liquidity / maxOutcome.shares) * sharesAmount;
 
   const totalStake = sharesAmount * market.liquidityPrice;
 
