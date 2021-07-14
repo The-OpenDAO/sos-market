@@ -90,7 +90,7 @@ const Market = () => {
             columns={tableItems.columns}
             rows={tableItems.rows}
             isLoadingData={isLoading}
-            emptyDataDescription="There are no market positions."
+            emptyDataDescription="You have no positions."
           />
         </Tabs.TabPane>
         {/* market.description ? (

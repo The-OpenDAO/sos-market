@@ -254,7 +254,7 @@ const PortfolioLiquidityTable = ({
           <AlertMini
             styles="outline"
             variant="information"
-            description="There are no liquidity positions."
+            description="You have no liquidity positions."
           />
         </div>
       ) : null}

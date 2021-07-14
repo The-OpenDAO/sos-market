@@ -352,7 +352,7 @@ const PortfolioMarketTable = ({
           <AlertMini
             styles="outline"
             variant="information"
-            description="There are no market positions."
+            description="You have no market positions."
           />
         </div>
       ) : null}
