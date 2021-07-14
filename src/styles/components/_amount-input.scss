@@ -53,6 +53,7 @@
       &-title {
         @extend .tiny, .bold;
         color: themed('amount-input-title-color');
+        text-transform: capitalize;
       }
 
       &-wallet {
