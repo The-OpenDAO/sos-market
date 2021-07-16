@@ -18,6 +18,10 @@
       background-color: map-get($background-colors-map, 'active');
       border-color: map-get($border-colors-map, 'active');
     }
+
+    &:disabled {
+      opacity: 0.5;
+    }
   } @else {
     background-color: $background-colors-map;
     border-color: $border-colors-map;
