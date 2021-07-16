@@ -2,9 +2,9 @@ import React from 'react';
 
 import Text from '../Text';
 
-type PillVariant = 'normal' | 'subtle';
+export type PillVariant = 'normal' | 'subtle';
 
-type PillColor =
+export type PillColor =
   | 'default'
   | 'primary'
   | 'success'
