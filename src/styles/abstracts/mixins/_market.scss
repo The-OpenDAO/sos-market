@@ -1,0 +1,43 @@
+@mixin market-outcomes-item(
+  $color,
+  $background-colors-map,
+  $border-colors-map,
+  $text-colors-map,
+  $details-color
+) {
+  @if $color == 'default' {
+    background-color: map-get($background-colors-map, 'normal');
+    border-color: map-get($border-colors-map, 'normal');
+
+    &:hover {
+      background-color: map-get($background-colors-map, 'hover');
+      border-color: map-get($border-colors-map, 'hover');
+    }
+
+    &.active {
+      background-color: map-get($background-colors-map, 'active');
+      border-color: map-get($border-colors-map, 'active');
+    }
+  } @else {
+    background-color: $background-colors-map;
+    border-color: $border-colors-map;
+  }
+
+  .pm-c-market-outcomes__item-title {
+    color: map-get($text-colors-map, 'primary');
+  }
+
+  .pm-c-market-outcomes__item-odd {
+    color: map-get($text-colors-map, 'tertiary');
+  }
+
+  .pm-c-market-outcomes__item-value {
+    color: map-get($text-colors-map, 'secondary');
+  }
+
+  .pm-c-market-outcomes__item-result {
+    svg {
+      fill: $details-color;
+    }
+  }
+}
