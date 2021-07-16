@@ -86,12 +86,12 @@ function MarketOutcomesItem({ market, outcome }: MarketOutcomesItemProps) {
     <button
       type="button"
       className={classNames({
-        'pm-c-market-outcomes__item--default': !isMarketResolved,
+        'pm-c-market-outcomes__item--default':
+          !isMarketResolved || !isWinningOutcome,
         'pm-c-market-outcomes__item--success': isWinningOutcome,
-        'pm-c-market-outcomes__item--danger':
-          isMarketResolved && !isWinningOutcome,
         active: isCurrentSelectedPrediction
       })}
+      disabled={isMarketResolved}
       onClick={handleItemSelection}
     >
       <div className="pm-c-market-outcomes__item-group--column">
@@ -123,11 +123,9 @@ function MarketOutcomesItem({ market, outcome }: MarketOutcomesItemProps) {
           {marketPriceUp ? <ArrowUpIcon /> : <ArrowDownIcon />}
         </div>
       </div>
-      {isMarketResolved ? (
+      {isMarketResolved && isWinningOutcome ? (
         <div className="pm-c-market-outcomes__item-result">
-          {isWinningOutcome
-            ? outcomeStates.success.icon
-            : outcomeStates.danger.icon}
+          {outcomeStates.success.icon}
         </div>
       ) : (
         <div className="pm-c-market-outcomes__item-chart">
