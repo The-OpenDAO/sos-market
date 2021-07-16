@@ -38,6 +38,11 @@ $market-outcome-padding-x: 1.6rem !default;
 $market-outcome-border-width: 0.1rem !default;
 $market-outcome-border-radius: 0.4rem !default;
 
+$market-outcome-transitions: background-color 0.2s ease-out,
+  border-color 0.2s ease-out !default;
+$market-outcome-text-transitions: color 0.2s ease-out !default;
+$market-outcome-details-transitions: fill 0.2s ease-out !default;
+
 $market-outcome-themes: (
   light: (
     background-colors: (
