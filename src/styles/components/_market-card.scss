@@ -41,85 +41,87 @@
   }
 }
 
-.pm-c-market-options {
-  @include flex-row(center, center);
-  @include themes($market-themes) {
-    gap: 1.6rem;
+.pm-c-market-outcomes {
+  @include flex-row(center, center, 1.6rem);
+  width: 100%;
 
-    width: 100%;
+  @include breakpoint-to('sm') {
+    width: auto;
+  }
+
+  li {
+    flex-grow: 1;
 
     @include breakpoint-to('sm') {
+      flex-grow: 0;
+    }
+  }
+
+  &__item {
+    pointer-events: none;
+    cursor: pointer;
+    touch-action: manipulation;
+    width: 100%;
+
+    @include breakpoint-to('md') {
+      pointer-events: all;
       width: auto;
     }
 
-    li {
-      flex-grow: 1;
+    @include flex-row(flex-start, center, 2.4rem);
+    padding: $market-outcome-padding-y $market-outcome-padding-x;
+    border-width: $market-outcome-border-width;
+    border-style: solid;
+    border-radius: $market-outcome-border-radius;
+
+    &-group--column {
+      @include flex-column(center, flex-start);
+    }
+
+    &-group--row {
+      @include flex-row(flex-start, center, 0.3rem);
+    }
+
+    &-title,
+    &-odd,
+    &-value {
+      transition: $market-outcome-text-transitions;
+    }
+
+    &-chart {
+      display: none;
 
       @include breakpoint-to('sm') {
-        flex-grow: 0;
+        display: inline-block;
       }
     }
 
-    &__item {
-      pointer-events: none;
-      cursor: pointer;
-      touch-action: manipulation;
+    &-result {
+      @include flex-row(center, center);
 
-      @include flex-row($align: center);
-      gap: 2.4rem;
-      padding: 1.6rem;
-
-      width: 100%;
-
-      @include breakpoint-to('md') {
-        pointer-events: all;
-        width: auto;
+      svg {
+        transition: $market-outcome-details-transitions;
       }
+    }
 
-      background-color: themed('option-background-color');
-      @include border(themed('option-border-color'));
+    transition: $market-outcome-transitions;
 
-      transition: all 0.2s ease-in-out 0s;
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
 
-      &:hover {
-        @include border(themed('option-border-color'));
-      }
-
-      &-group {
-        @include flex-column(center, flex-start);
-
-        &__title {
-          color: themed('option-title-color');
-          transition: all 0.2s ease-in-out 0s;
-        }
-
-        &__odd {
-          color: themed('option-odd-color');
-          transition: all 0.2s ease-in-out 0s;
-        }
-
-        &__value {
-          color: themed('option-value-color');
-          transition: all 0.2s ease-in-out 0s;
-        }
-      }
-
-      &-chart {
-        display: none;
-
-        @include breakpoint-to('sm') {
-          display: inline-block;
-        }
-      }
-
-      &-odd {
-        @include flex-row(flex-start, center);
-        gap: 0.3rem;
-      }
-
-      &.active {
-        background: themed('option-background-color-active');
-        @include border(themed('option-border-color-active'));
+  @include themes($market-outcome-themes) {
+    @each $color, $color-map in themed('background-colors') {
+      &__item--#{$color} {
+        @extend .pm-c-market-outcomes__item;
+        @include market-outcomes-item(
+          $color,
+          map-get(themed('background-colors'), $color),
+          map-get(themed('border-colors'), $color),
+          themed('text-colors'),
+          map-get(themed('details-colors'), $color)
+        );
       }
     }
   }
