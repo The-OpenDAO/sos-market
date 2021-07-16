@@ -16,6 +16,7 @@ import ChartGrowthIcon from './ChartGrowthIcon';
 import CheckIcon from './CheckIcon';
 import CloseIcon from './CloseIcon';
 import EthereumIcon from './EthereumIcon';
+import FavoriteIcon from './FavoriteIcon';
 import GamingConsoleIcon from './GamingConsoleIcon';
 import GitHubIcon from './GitHubIcon';
 import HamburguerMenuIcon from './HamburguerMenuIcon';
@@ -70,6 +71,7 @@ export {
   CheckIcon,
   CloseIcon,
   EthereumIcon,
+  FavoriteIcon,
   GamingConsoleIcon,
   GitHubIcon,
   InfoIcon,
