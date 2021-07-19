@@ -13,11 +13,13 @@ export interface MarketsIntialState {
     open: boolean;
     closed: boolean;
     resolved: boolean;
+    favorites: boolean;
   };
   error: {
     open: any;
     closed: any;
     resolved: any;
+    favorites: any;
   };
   filter: string;
   sorter: {
@@ -31,12 +33,14 @@ const initialState: MarketsIntialState = {
   isLoading: {
     open: false,
     closed: false,
-    resolved: false
+    resolved: false,
+    favorites: false
   },
   error: {
     open: null,
     closed: null,
-    resolved: null
+    resolved: null,
+    favorites: null
   },
   filter: '',
   sorter: {
@@ -58,7 +62,7 @@ const marketsSlice = createSlice({
     }),
     success: (
       state,
-      action: PayloadAction<{ type: MarketState; data: Market[] }>
+      action: PayloadAction<{ type: MarketState | string; data: Market[] }>
     ) => ({
       ...state,
       markets: uniqBy([...state.markets, ...action.payload.data], 'id'),
@@ -77,7 +81,8 @@ const marketsSlice = createSlice({
       isLoading: {
         open: false,
         closed: false,
-        resolved: false
+        resolved: false,
+        favorites: false
       },
       error: {
         ...state.error,
@@ -169,6 +174,19 @@ export function getMarkets(marketState: MarketState) {
       dispatch(success({ type: marketState, data }));
     } catch (err) {
       dispatch(error({ type: marketState, error: err }));
+    }
+  };
+}
+
+export function getFavoriteMarkets(ids: string[]) {
+  return async dispatch => {
+    dispatch(request('favorites'));
+    try {
+      const response = await marketService.getMarketsByIds(ids);
+      const { data } = response;
+      dispatch(success({ type: 'favorites', data }));
+    } catch (err) {
+      dispatch(error({ type: 'favorites', error: err }));
     }
   };
 }
