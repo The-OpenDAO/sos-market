@@ -1,12 +1,17 @@
 import { setSorter } from 'redux/ducks/markets';
 
-import { Tabs, MarketList, Filter } from 'components';
+import { Tabs, MarketList, MarketListAsync, Filter } from 'components';
 
 import { useAppDispatch } from 'hooks';
 
 import { filters } from './utils';
 
-function HomeTabs({ openMarkets, closedMarkets, resolvedMarkets }) {
+function HomeTabs({
+  openMarkets,
+  closedMarkets,
+  resolvedMarkets,
+  favoritesMarkets
+}) {
   const dispatch = useAppDispatch();
 
   function handleSelectedFilter(filter: {
@@ -31,13 +36,16 @@ function HomeTabs({ openMarkets, closedMarkets, resolvedMarkets }) {
       }
     >
       <Tabs.TabPane tab="Open" id="open">
-        <MarketList marketState="open" markets={openMarkets} />
+        <MarketListAsync marketState="open" markets={openMarkets} />
       </Tabs.TabPane>
       <Tabs.TabPane tab="In-Reporting" id="in-reporting">
-        <MarketList marketState="closed" markets={closedMarkets} />
+        <MarketListAsync marketState="closed" markets={closedMarkets} />
       </Tabs.TabPane>
       <Tabs.TabPane tab="Resolved" id="resolved">
-        <MarketList marketState="resolved" markets={resolvedMarkets} />
+        <MarketListAsync marketState="resolved" markets={resolvedMarkets} />
+      </Tabs.TabPane>
+      <Tabs.TabPane tab="Favorites" id="favorites">
+        <MarketList markets={favoritesMarkets} />
       </Tabs.TabPane>
     </Tabs>
   );
