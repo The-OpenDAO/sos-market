@@ -115,6 +115,10 @@ $market-outcome-themes: (
 $market-footer-themes: (
   light: (
     background-colors: (
+      divider: #bbc5d4,
+      share: (
+        default: #8193ae
+      ),
       favorite: (
         default: #8193ae,
         active: #f0b429
@@ -123,6 +127,10 @@ $market-footer-themes: (
   ),
   dark: (
     background-colors: (
+      divider: #3b4351,
+      share: (
+        default: #637084
+      ),
       favorite: (
         default: #637084,
         active: #f0b429
