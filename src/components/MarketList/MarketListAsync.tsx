@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 
 import isEmpty from 'lodash/isEmpty';
 import { Market } from 'models/market';
-import { getMarkets } from 'redux/ducks/markets';
 import { useAppDispatch } from 'redux/store';
-import { MarketState } from 'services/Polkamarkets/market';
 
 import { InfoIcon } from 'assets/icons';
 
@@ -16,30 +14,41 @@ import PredictionCard from '../PredictionCard';
 import Text from '../Text';
 
 type MarketListAsyncProps = {
-  marketState: MarketState;
+  id: string;
+  asyncAction: any;
+  filterBy: any;
   markets: Market[];
 };
 
-const MarketListAsync = ({ marketState, markets }: MarketListAsyncProps) => {
+const MarketListAsync = ({
+  id,
+  asyncAction,
+  filterBy,
+  markets
+}: MarketListAsyncProps) => {
   const dispatch = useAppDispatch();
   const { isLoading, error } = useAppSelector(state => state.markets);
 
   useEffect(() => {
-    dispatch(getMarkets(marketState));
-  }, [dispatch, marketState]);
+    if (!isEmpty(filterBy)) {
+      dispatch(asyncAction(filterBy));
+    }
+  }, [dispatch, asyncAction]);
 
   function refreshMarkets() {
-    dispatch(getMarkets(marketState));
+    if (!isEmpty(filterBy)) {
+      dispatch(asyncAction(filterBy));
+    }
   }
 
-  if (isLoading[marketState])
+  if (isLoading[id])
     return (
       <div className="pm-market__loading" style={{ paddingTop: '5rem' }}>
         <span className="spinner--primary" />
       </div>
     );
 
-  if (error[marketState]) {
+  if (error[id]) {
     return (
       <div className="pm-c-market-list__error">
         <div className="pm-c-market-list__error__body">
@@ -91,4 +100,4 @@ const MarketListAsync = ({ marketState, markets }: MarketListAsyncProps) => {
   );
 };
 
-export default MarketListAsync;
+export default memo(MarketListAsync);
