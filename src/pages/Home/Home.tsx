@@ -1,6 +1,6 @@
 import { filteredMarketsSelector } from 'redux/ducks/markets';
 
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useFavoriteMarkets } from 'hooks';
 import useCategories from 'hooks/useCategories';
 
 import HomeCategories from './HomeCategories';
@@ -13,9 +13,14 @@ function Home() {
     filteredMarketsSelector(state.markets, categories)
   );
 
+  const { favoriteMarkets } = useFavoriteMarkets();
+
   const openMarkets = markets.filter(market => market.state === 'open');
   const closedMarkets = markets.filter(market => market.state === 'closed');
   const resolvedMarkets = markets.filter(market => market.state === 'resolved');
+  const favoritesMarkets = markets.filter(market =>
+    favoriteMarkets.includes(market.id)
+  );
 
   return (
     <div className="pm-home">
@@ -26,6 +31,7 @@ function Home() {
           openMarkets={openMarkets}
           closedMarkets={closedMarkets}
           resolvedMarkets={resolvedMarkets}
+          favoritesMarkets={favoritesMarkets}
         />
       </div>
     </div>
