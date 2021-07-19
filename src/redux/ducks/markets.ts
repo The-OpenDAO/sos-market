@@ -81,7 +81,7 @@ const marketsSlice = createSlice({
       },
       error: {
         ...state.error,
-        [action.payload.type]: null
+        [action.payload.type]: action.payload.error
       }
     }),
     setFilter: (state, action: PayloadAction<string>) => ({
