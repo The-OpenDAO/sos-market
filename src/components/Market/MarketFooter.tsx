@@ -13,8 +13,11 @@ function MarketFooter({ market, ticker }: MarketFooterProps) {
   return (
     <div className="pm-c-market-footer">
       <MarketFooterStats market={market} ticker={ticker} />
-      <MarketFooterActions market={market} />
-      <MarketFooterTags market={market} />
+      <div className="pm-c-market-footer__group--row">
+        <MarketFooterActions market={market} />
+        <div className="pm-c-market-footer__divider--circle" />
+        <MarketFooterTags market={market} />
+      </div>
     </div>
   );
 }
