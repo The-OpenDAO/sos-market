@@ -38,44 +38,51 @@ function MarketFooterTags({ market }: MarketFooterTagsProps) {
   const isResolved = state === 'resolved';
 
   return (
-    <div className="pm-c-market-footer__tags">
-      {isAwaitingResolution ? (
-        <Pill
-          color={marketStates.awaitingResolution.color}
-          variant={marketStates.awaitingResolution.colorVariant}
-          badge
-        >
-          {marketStates.awaitingResolution.copy}
-        </Pill>
+    <>
+      {[isAwaitingResolution, isEndingSoon, isNew, isResolved].some(
+        item => item === true
+      ) ? (
+        <div className="pm-c-market-footer__divider--circle" />
       ) : null}
-      {isEndingSoon ? (
-        <Pill
-          color={marketStates.endingSoon.color}
-          variant={marketStates.endingSoon.colorVariant}
-          badge
-        >
-          {marketStates.endingSoon.copy}
-        </Pill>
-      ) : null}
-      {isNew ? (
-        <Pill
-          color={marketStates.new.color}
-          variant={marketStates.new.colorVariant}
-          badge
-        >
-          {marketStates.new.copy}
-        </Pill>
-      ) : null}
-      {isResolved ? (
-        <Pill
-          color={marketStates.resolved.color}
-          variant={marketStates.resolved.colorVariant}
-          badge
-        >
-          {marketStates.resolved.copy}
-        </Pill>
-      ) : null}
-    </div>
+      <div className="pm-c-market-footer__tags">
+        {isAwaitingResolution ? (
+          <Pill
+            color={marketStates.awaitingResolution.color}
+            variant={marketStates.awaitingResolution.colorVariant}
+            badge
+          >
+            {marketStates.awaitingResolution.copy}
+          </Pill>
+        ) : null}
+        {isEndingSoon ? (
+          <Pill
+            color={marketStates.endingSoon.color}
+            variant={marketStates.endingSoon.colorVariant}
+            badge
+          >
+            {marketStates.endingSoon.copy}
+          </Pill>
+        ) : null}
+        {isNew ? (
+          <Pill
+            color={marketStates.new.color}
+            variant={marketStates.new.colorVariant}
+            badge
+          >
+            {marketStates.new.copy}
+          </Pill>
+        ) : null}
+        {isResolved ? (
+          <Pill
+            color={marketStates.resolved.color}
+            variant={marketStates.resolved.colorVariant}
+            badge
+          >
+            {marketStates.resolved.copy}
+          </Pill>
+        ) : null}
+      </div>
+    </>
   );
 }
 
