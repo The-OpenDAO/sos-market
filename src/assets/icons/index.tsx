@@ -30,6 +30,7 @@ import MetaMaskIcon from './MetaMaskIcon';
 import MetaMaskIconSmall from './MetaMaskIconSmall';
 import MoonbeamIcon from './MoonbeamIcon';
 import MoonIcon from './MoonIcon';
+import NetworkCommunicationIcon from './NetworkCommunicationIcon';
 import PolkadotIcon from './PolkadotIcon';
 import PolkamarketsIcon from './PolkamarketsIcon';
 import PolkamarketsIconSmall from './PolkamarketsIconSmall';
@@ -85,6 +86,7 @@ export {
   MetaMaskIconSmall,
   MoonbeamIcon,
   MoonIcon,
+  NetworkCommunicationIcon,
   PolkadotIcon,
   PolkamarketsIcon,
   PolkamarketsIconSmall,
