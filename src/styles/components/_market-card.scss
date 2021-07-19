@@ -105,6 +105,10 @@
     }
 
     transition: $market-outcome-transitions;
+
+    &:disabled {
+      pointer-events: none;
+    }
   }
 
   @include themes($market-outcome-themes) {
