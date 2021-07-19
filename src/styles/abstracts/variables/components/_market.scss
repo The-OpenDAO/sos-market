@@ -111,3 +111,22 @@ $market-outcome-themes: (
     )
   )
 ) !default;
+
+$market-footer-themes: (
+  light: (
+    background-colors: (
+      favorite: (
+        default: #8193ae,
+        active: #f0b429
+      )
+    )
+  ),
+  dark: (
+    background-colors: (
+      favorite: (
+        default: #637084,
+        active: #f0b429
+      )
+    )
+  )
+) !default;
