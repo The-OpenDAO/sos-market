@@ -27,6 +27,7 @@ const initialState: MarketInitialState = {
     shares: 0,
     liquidity: 0,
     liquidityPrice: 0,
+    createdAt: '',
     expiresAt: '',
     state: 'open',
     resolvedOutcomeId: -1,

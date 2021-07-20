@@ -1,13 +1,15 @@
-@mixin flex-row($justify: flex-start, $align: stretch) {
+@mixin flex-row($justify: flex-start, $align: stretch, $gap: null) {
   display: flex;
   flex-direction: row;
   justify-content: $justify;
   align-items: $align;
+  gap: $gap;
 }
 
-@mixin flex-column($justify: flex-start, $align: stretch) {
+@mixin flex-column($justify: flex-start, $align: stretch, $gap: null) {
   display: flex;
   flex-direction: column;
   justify-content: $justify;
   align-items: $align;
+  gap: $gap;
 }
