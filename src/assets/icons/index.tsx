@@ -16,6 +16,7 @@ import ChartGrowthIcon from './ChartGrowthIcon';
 import CheckIcon from './CheckIcon';
 import CloseIcon from './CloseIcon';
 import EthereumIcon from './EthereumIcon';
+import FavoriteIcon from './FavoriteIcon';
 import GamingConsoleIcon from './GamingConsoleIcon';
 import GitHubIcon from './GitHubIcon';
 import HamburguerMenuIcon from './HamburguerMenuIcon';
@@ -29,6 +30,7 @@ import MetaMaskIcon from './MetaMaskIcon';
 import MetaMaskIconSmall from './MetaMaskIconSmall';
 import MoonbeamIcon from './MoonbeamIcon';
 import MoonIcon from './MoonIcon';
+import NetworkCommunicationIcon from './NetworkCommunicationIcon';
 import PolkadotIcon from './PolkadotIcon';
 import PolkamarketsIcon from './PolkamarketsIcon';
 import PolkamarketsIconSmall from './PolkamarketsIconSmall';
@@ -70,6 +72,7 @@ export {
   CheckIcon,
   CloseIcon,
   EthereumIcon,
+  FavoriteIcon,
   GamingConsoleIcon,
   GitHubIcon,
   InfoIcon,
@@ -83,6 +86,7 @@ export {
   MetaMaskIconSmall,
   MoonbeamIcon,
   MoonIcon,
+  NetworkCommunicationIcon,
   PolkadotIcon,
   PolkamarketsIcon,
   PolkamarketsIconSmall,

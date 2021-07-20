@@ -22,9 +22,18 @@ async function getMarkets({ state }: MarketsFilters) {
   });
 }
 
+async function getMarketsByIds(ids: string[]) {
+  const url = `${polkamarketsApiUrl}/markets`;
+  return api.get<Market[]>(url, {
+    params: {
+      id: ids.join(',')
+    }
+  });
+}
+
 async function reloadMarket(marketSlug: string) {
   const url = `${polkamarketsApiUrl}/markets/${marketSlug}/reload`;
   return api.post(url);
 }
 
-export { getMarkets, getMarket, reloadMarket };
+export { getMarkets, getMarket, getMarketsByIds, reloadMarket };
