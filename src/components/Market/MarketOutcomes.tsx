@@ -110,7 +110,7 @@ function MarketOutcomesItem({ market, outcome }: MarketOutcomesItemProps) {
             fontWeight="medium"
             className="pm-c-market-outcomes__item-odd"
           >
-            ODD
+            PRICE
           </Text>
           <Text
             as="span"
