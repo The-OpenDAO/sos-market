@@ -1,0 +1,29 @@
+.pm-c-ribbon {
+  @include themes($ribbon-themes) {
+    @include flex-row(flex-start, center, 0.6rem);
+    padding: $ribbon-padding;
+
+    svg {
+      fill: themed('details-color');
+    }
+
+    &__text {
+      color: themed('text-color');
+    }
+
+    &--pink {
+      @extend .pm-c-ribbon;
+      background-color: map-get(themed('background-colors'), 'pink');
+    }
+
+    &--blue {
+      @extend .pm-c-ribbon;
+      background-color: map-get(themed('background-colors'), 'blue');
+    }
+
+    &--purple {
+      @extend .pm-c-ribbon;
+      background-color: map-get(themed('background-colors'), 'purple');
+    }
+  }
+}
