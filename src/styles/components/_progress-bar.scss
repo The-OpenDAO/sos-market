@@ -3,6 +3,18 @@
     .rc-progress-line-trail {
       stroke: themed('progress-bar-trail-color');
     }
+
+    &__min {
+      color: map-get(themed('text-colors'), 'secondary');
+    }
+
+    &__current {
+      color: map-get(themed('text-colors'), 'primary');
+    }
+
+    &__max {
+      color: map-get(themed('text-colors'), 'secondary');
+    }
   }
 }
 
@@ -44,4 +56,14 @@
   .rc-progress-line-path {
     stroke: $progress-bar-path-color-danger;
   }
+}
+
+.pm-c-progress-bar__group--column {
+  @include flex-column(center, center, 0.2rem);
+  width: 100%;
+}
+
+.pm-c-progress-bar__group--row {
+  @include flex-row(space-between, center, 1rem);
+  width: 100%;
 }
