@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 
+import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 
 import Text from '../Text';
@@ -69,7 +70,12 @@ const FileUploadInput = React.forwardRef<
         <div className="pm-c-file-upload-input__actions">
           <label
             htmlFor={name}
-            className="button-normal--primary caption semibold"
+            className={classNames({
+              'pm-c-button-normal--primary': true,
+              'pm-c-button--sm': true,
+              caption: true,
+              semibold: true
+            })}
           >
             {field.value.isUploaded
               ? uploadedActionLabel
