@@ -6,3 +6,29 @@ $create-market-page-themes: (
     create-market-page-title-color: #f8faff
   )
 ) !default;
+
+$create-market-page-buy-polk-padding-y: 4rem !default;
+$create-market-page-buy-polk-padding-x: 4rem !default;
+$create-market-page-buy-polk-border-width: 0.1rem !default;
+$create-market-page-buy-polk-border-radius: 0.4rem !default;
+
+$create-market-page-buy-polk-themes: (
+  light: (
+    background-color: #f8faff,
+    border-color: #e3e7f0,
+    details-color: #f0b429,
+    text-colors: (
+      primary: #f0b429,
+      secondary: #0e1016
+    )
+  ),
+  dark: (
+    background-color: #0e1016,
+    border-color: #252c3b,
+    details-color: #f0b429,
+    text-colors: (
+      primary: #f0b429,
+      secondary: #ffffff
+    )
+  )
+) !default;
