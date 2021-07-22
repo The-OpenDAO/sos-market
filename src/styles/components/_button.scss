@@ -56,7 +56,10 @@
     @each $color, $color-map in themed('background-colors') {
       &-normal--#{$color} {
         @extend .pm-c-button;
-        @include button-normal-color($color-map, themed('text-color'));
+        @include button-normal-color(
+          $color-map,
+          map-get(themed('text-colors'), $color)
+        );
       }
     }
   }
