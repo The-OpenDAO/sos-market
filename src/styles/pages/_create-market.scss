@@ -35,6 +35,7 @@
     border: solid $create-market-page-buy-polk-border-width
       themed('border-color');
     border-radius: $create-market-page-buy-polk-border-radius;
+    box-shadow: themed('shadow');
 
     &__group--column {
       @include flex-column(center, center, 0.4rem);
