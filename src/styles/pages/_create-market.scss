@@ -21,3 +21,38 @@
     }
   }
 }
+
+.pm-p-create-market-buy-polk {
+  @include themes($create-market-page-buy-polk-themes) {
+    @include flex-column(center, center, 1.7rem);
+
+    width: 34.8rem;
+
+    padding: $create-market-page-buy-polk-padding-y
+      $create-market-page-buy-polk-padding-x;
+
+    background-color: themed('background-color');
+    border: solid $create-market-page-buy-polk-border-width
+      themed('border-color');
+    border-radius: $create-market-page-buy-polk-border-radius;
+
+    &__group--column {
+      @include flex-column(center, center, 0.4rem);
+    }
+
+    &__icon {
+      height: 1.6rem;
+      width: 1.6rem;
+      fill: themed('details-color');
+    }
+
+    &__title {
+      color: map-get(themed('text-colors'), 'secondary');
+      text-align: center;
+    }
+
+    &__amount {
+      color: map-get(themed('text-colors'), 'primary');
+    }
+  }
+}
