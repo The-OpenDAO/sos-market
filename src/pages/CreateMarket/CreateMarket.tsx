@@ -1,5 +1,7 @@
 import { Text, CreateMarketForm } from 'components';
 
+import CreateMarketBuyPolk from './CreateMarketBuyPolk';
+
 function CreateMarket() {
   return (
     <div className="pm-p-create-market">
@@ -13,6 +15,7 @@ function CreateMarket() {
           Create New Market
         </Text>
       </div>
+      <CreateMarketBuyPolk requiredPolkBalance={50} />
       <CreateMarketForm />
     </div>
   );
