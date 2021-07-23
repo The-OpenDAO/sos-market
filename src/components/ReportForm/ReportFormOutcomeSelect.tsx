@@ -7,7 +7,9 @@ import { BadgeColor } from '../Badge';
 import Outcome from '../Outcome';
 
 function ReportFormOutcomeSelect() {
-  const { outcomes } = useAppSelector(state => state.market.market);
+  const { outcomes, resolvedOutcomeId } = useAppSelector(
+    state => state.market.market
+  );
   const [field, meta, helpers] = useField('outcome');
 
   const getOutcomeColor = (outcome: MarketOutcome): BadgeColor =>
@@ -31,6 +33,7 @@ function ReportFormOutcomeSelect() {
               ? 'selected'
               : 'default'
           }
+          resolvedOutcomeId={resolvedOutcomeId}
           onSelect={handleOutcomeSelect}
         />
       ))}
@@ -43,6 +46,7 @@ function ReportFormOutcomeSelect() {
           field.value && field.value === 'invalid' ? 'selected' : 'default'
         }
         onSelect={handleOutcomeSelect}
+        resolvedOutcomeId={resolvedOutcomeId}
       />
     </div>
   );

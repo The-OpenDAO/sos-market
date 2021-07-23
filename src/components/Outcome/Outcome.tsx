@@ -6,11 +6,12 @@ import { roundNumber } from 'helpers/math';
 import isUndefined from 'lodash/isUndefined';
 import reject from 'lodash/reject';
 
-import { InfoIcon } from 'assets/icons';
+import { InfoIcon, TrophyIcon } from 'assets/icons';
 
 import Badge, { BadgeColor } from '../Badge';
 import MiniTable, { MiniTableRow } from '../MiniTable';
 import ProgressBar, { ProgressBarColor } from '../ProgressBar';
+import Ribbon, { RibbonColor } from '../Ribbon';
 import Tooltip from '../Tooltip';
 
 export type OutcomeState =
@@ -55,6 +56,7 @@ type OutcomeProps = {
    * @default 'default'
    */
   state?: OutcomeState;
+  resolvedOutcomeId: number;
   onSelect: (id: string) => void;
 };
 
@@ -67,11 +69,13 @@ function Outcome({
   ticker = 'POLK',
   progress,
   state = 'default',
+  resolvedOutcomeId,
   onSelect
 }: OutcomeProps) {
   const [field] = useField('bond');
 
   const bond = state === 'selected' ? field.value : 0;
+  const isWinningOutcome = resolvedOutcomeId.toString() === id;
 
   const miniTableRows = useMemo(() => {
     const rows = [
@@ -115,6 +119,13 @@ function Outcome({
             </Tooltip>
           ) : null}
         </div>
+        {isWinningOutcome ? (
+          <Ribbon
+            icon={<TrophyIcon />}
+            text={title}
+            color={color as RibbonColor}
+          />
+        ) : null}
       </div>
       <MiniTable rows={miniTableRows} />
       {progress ? (
