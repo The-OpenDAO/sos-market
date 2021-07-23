@@ -37,6 +37,7 @@ export interface Market {
   createdAt: string;
   expiresAt: string;
   state: string;
+  verified: boolean;
   resolvedOutcomeId: number;
   oracleSource: string;
   outcomes: Outcome[];

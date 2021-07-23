@@ -22,6 +22,7 @@ export interface MarketsIntialState {
     favorites: any;
   };
   filter: string;
+  filterByVerified: boolean;
   sorter: {
     value: string;
     sortBy: any | undefined;
@@ -43,6 +44,7 @@ const initialState: MarketsIntialState = {
     favorites: null
   },
   filter: '',
+  filterByVerified: false,
   sorter: {
     value: 'featured',
     sortBy: undefined
@@ -93,6 +95,10 @@ const marketsSlice = createSlice({
       ...state,
       filter: action.payload
     }),
+    setFilterByVerified: (state, action: PayloadAction<boolean>) => ({
+      ...state,
+      filterByVerified: action.payload
+    }),
     setSorter: (state, action) => ({
       ...state,
       sorter: {
@@ -125,11 +131,12 @@ const {
   success,
   error,
   setFilter,
+  setFilterByVerified,
   setSorter,
   changeMarketOutcomePrice
 } = marketsSlice.actions;
 
-export { setFilter, setSorter, changeMarketOutcomePrice };
+export { setFilter, setFilterByVerified, setSorter, changeMarketOutcomePrice };
 
 export const filteredMarketsSelector = (
   state: MarketsIntialState,
@@ -137,6 +144,8 @@ export const filteredMarketsSelector = (
 ) => {
   const regExpFromFilter = new RegExp(state.filter, 'i');
   const regExpFullFilter = new RegExp(`^${state.filter}$`, 'i');
+  const verifiedFilter = verified =>
+    state.filterByVerified ? state.filterByVerified && verified : true;
 
   function sorted(markets) {
     if (state.sorter.sortBy) {
@@ -154,10 +163,11 @@ export const filteredMarketsSelector = (
   }
 
   const filteredMarkets = state.markets.filter(
-    ({ category, subcategory, title }) =>
-      category.match(regExpFromFilter) ||
-      subcategory.match(regExpFromFilter) ||
-      title.match(regExpFromFilter)
+    ({ category, subcategory, title, verified }) =>
+      (category.match(regExpFromFilter) ||
+        subcategory.match(regExpFromFilter) ||
+        title.match(regExpFromFilter)) &&
+      verifiedFilter(verified)
   );
 
   if (state.sorter.value === 'featured') return filteredMarkets;
