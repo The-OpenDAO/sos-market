@@ -1,6 +1,11 @@
-import { getFavoriteMarkets, getMarkets, setSorter } from 'redux/ducks/markets';
+import {
+  getFavoriteMarkets,
+  getMarkets,
+  setFilterByVerified,
+  setSorter
+} from 'redux/ducks/markets';
 
-import { Tabs, MarketListAsync, Filter } from 'components';
+import { Tabs, MarketListAsync, FilterInline, Filter } from 'components';
 
 import { useAppDispatch, useFavoriteMarkets } from 'hooks';
 
@@ -15,6 +20,10 @@ function HomeTabs({
   const dispatch = useAppDispatch();
   const { favoriteMarkets } = useFavoriteMarkets();
 
+  function handleChangeFilterInline(filterByVerifiedMarkets: boolean) {
+    dispatch(setFilterByVerified(filterByVerifiedMarkets));
+  }
+
   function handleSelectedFilter(filter: {
     value: string | number;
     optionalTrigger?: string;
@@ -27,14 +36,20 @@ function HomeTabs({
   return (
     <Tabs
       defaultActiveId="open"
-      filter={
+      filters={[
+        <FilterInline
+          key="filterByVerifiedMarkets"
+          label="Featured markets"
+          onChange={handleChangeFilterInline}
+        />,
         <Filter
+          key="sortBy"
           description="Sort by"
           defaultOption="volume"
           options={filters}
           onChange={handleSelectedFilter}
         />
-      }
+      ]}
     >
       <Tabs.TabPane tab="Open" id="open">
         <MarketListAsync
