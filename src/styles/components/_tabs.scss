@@ -12,6 +12,14 @@
       gap: 1rem;
     }
 
+    &__filters {
+      @include flex-row(flex-end, center, 1.6rem);
+
+      .pm-c-divider--circle:last-of-type {
+        display: none;
+      }
+    }
+
     &__list {
       gap: 2.4rem;
 

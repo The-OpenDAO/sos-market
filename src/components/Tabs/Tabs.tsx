@@ -7,6 +7,10 @@ import React, {
 } from 'react';
 
 import classNames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
+import isUndefined from 'lodash/isUndefined';
+
+import Divider from '../Divider';
 
 const ActiveTabContext = createContext({});
 
@@ -51,7 +55,7 @@ type TabsProps = {
   /**
    * Custom filter component
    */
-  filter?: React.ReactNode;
+  filters?: React.ReactNode[];
   children?: React.ReactNode;
 };
 
@@ -61,7 +65,7 @@ type TabsProps = {
 function Tabs({
   direction = 'row',
   defaultActiveId,
-  filter,
+  filters,
   children
 }: TabsProps) {
   const [activeTab, setActiveTab] = useState<string | undefined>(undefined);
@@ -97,7 +101,16 @@ function Tabs({
             </li>
           ))}
         </ul>
-        {filter || null}
+        {!isUndefined(filters) && !isEmpty(filters) ? (
+          <div className="pm-c-tabs__filters">
+            {filters.map(filter => (
+              <>
+                {filter}
+                <Divider variant="circle" />
+              </>
+            ))}
+          </div>
+        ) : null}
       </div>
 
       <ActiveTabContext.Provider value={activeTab}>
