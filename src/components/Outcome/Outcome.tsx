@@ -122,7 +122,7 @@ function Outcome({
         {isWinningOutcome ? (
           <Ribbon
             icon={<TrophyIcon />}
-            text={title}
+            text="WINNING"
             color={color as RibbonColor}
           />
         ) : null}
