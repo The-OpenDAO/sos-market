@@ -1,0 +1,13 @@
+$divider-circle-height: 0.4rem !default;
+$divider-circle-width: 0.4rem !default;
+
+$divider-themes: (
+  light: (
+    background-color: #bbc5d4
+  ),
+  dark: (
+    background-color: #3a4250
+  )
+) !default;
+
+$divider-transitions: background-color 0.2s ease-out !default;

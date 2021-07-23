@@ -12,6 +12,7 @@ import { Category, CategoryDisabled, CategoryAnalytics } from './Category';
 import ChartHeader from './ChartHeader';
 import Checkbox from './Checkbox';
 import CreateMarketForm from './CreateMarketForm';
+import Divider from './Divider';
 import FeaturedCard from './FeaturedCard';
 import Filter from './Filter';
 import Footer from './Footer';
@@ -80,6 +81,7 @@ export {
   ChartHeader,
   Checkbox,
   CreateMarketForm,
+  Divider,
   DateInput,
   FeaturedCard,
   Grid,
