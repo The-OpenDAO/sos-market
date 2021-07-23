@@ -18,3 +18,12 @@ $filter-themes: (
     filter-item-color-hover: $gray-50
   )
 ) !default;
+
+$filter-inline-themes: (
+  light: (
+    text-color: #313a4c
+  ),
+  dark: (
+    text-color: #f9fafb
+  )
+) !default;

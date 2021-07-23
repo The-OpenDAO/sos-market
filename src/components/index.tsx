@@ -14,7 +14,7 @@ import Checkbox from './Checkbox';
 import CreateMarketForm from './CreateMarketForm';
 import Divider from './Divider';
 import FeaturedCard from './FeaturedCard';
-import Filter from './Filter';
+import { Filter, FilterInline } from './Filter';
 import Footer from './Footer';
 import Grid from './Grid';
 import {
@@ -86,6 +86,7 @@ export {
   FeaturedCard,
   Grid,
   Filter,
+  FilterInline,
   Footer,
   FileUploadInput,
   Input,
