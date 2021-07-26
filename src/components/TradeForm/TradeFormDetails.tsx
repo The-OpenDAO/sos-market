@@ -12,9 +12,8 @@ function TradeFormDetails() {
     state => state.trade.selectedOutcomeId
   );
   const { id, outcomes } = market;
-  const { type, shares, price, maxROI, totalStake, maxStake } = useAppSelector(
-    state => state.trade
-  );
+  const { type, shares, price, maxROI, totalStake, maxStake, fee } =
+    useAppSelector(state => state.trade);
 
   const miniTableItems = formatMiniTableItems(
     type,
@@ -25,7 +24,8 @@ function TradeFormDetails() {
     shares,
     price,
     maxROI,
-    totalStake
+    totalStake,
+    fee
   );
 
   return (

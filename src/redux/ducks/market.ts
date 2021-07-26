@@ -58,7 +58,8 @@ const initialState: MarketInitialState = {
         shares: 0
       }
     ],
-    tradingViewSymbol: null
+    tradingViewSymbol: null,
+    fee: 0
   },
   chartViews: chartViewsEnum,
   chartViewType: 'marketOverview',

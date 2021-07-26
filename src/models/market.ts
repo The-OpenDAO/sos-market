@@ -41,4 +41,5 @@ export interface Market {
   oracleSource: string;
   outcomes: Outcome[];
   tradingViewSymbol: any;
+  fee: number;
 }

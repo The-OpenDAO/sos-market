@@ -11,7 +11,8 @@ function formatMiniTableItems(
   shares,
   price,
   maxROI,
-  totalStake
+  totalStake,
+  fee
 ) {
   const selectedPredictionObj = predictions.find(
     prediction =>
@@ -35,6 +36,11 @@ function formatMiniTableItems(
       key: 'shares',
       title: action === 'buy' ? 'Est. Shares bought' : 'Shares sold',
       value: roundNumber(shares, 3)
+    },
+    {
+      key: 'fee',
+      title: 'Fee',
+      value: roundNumber(fee, 3)
     }
   ];
 
@@ -63,21 +69,27 @@ function calculateSharesBought(
   ethAmount: number
 ): TradeDetails {
   // TODO: move formulas to beprojs
-  // eslint-disable-next-line prettier/prettier
-  const newOutcomeShares = market.liquidity ** 2 / (market.liquidity ** 2 / outcome.shares + ethAmount);
 
-  const shares = outcome.shares - newOutcomeShares + ethAmount || 0;
-  const price = ethAmount / shares || 0;
+  // taking fee of ethAmount
+  const fee = market.fee * ethAmount;
+  const amount = ethAmount - fee;
+
+  // eslint-disable-next-line prettier/prettier
+  const newOutcomeShares = market.liquidity ** 2 / (market.liquidity ** 2 / outcome.shares + amount);
+
+  const shares = outcome.shares - newOutcomeShares + amount || 0;
+  const price = amount / shares || 0;
   const maxROI = shares > 0 ? (1 / price - 1) * 100 : 0;
   const totalStake = ethAmount;
-  const maxStake = shares - ethAmount;
+  const maxStake = shares - amount;
 
   return {
     price,
     shares,
     maxROI,
     totalStake,
-    maxStake
+    maxStake,
+    fee
   };
 }
 
@@ -108,13 +120,15 @@ function calculateEthAmountSold(market, outcome, shares): TradeDetails {
   // ROI is not relevant on sell
   const maxROI = 1;
   const maxStake = 0;
+  const fee = totalStake * market.fee;
 
   return {
     price,
     shares,
     maxROI,
     totalStake,
-    maxStake
+    maxStake,
+    fee
   };
 }
 
