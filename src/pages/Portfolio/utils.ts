@@ -264,7 +264,7 @@ function formatPortfolioAnalytics(portfolio: Portfolio, ticker: string) {
     },
     {
       title: 'Liquidity earnings',
-      value: 'In Progress',
+      value: `${roundNumber(portfolio.liquidityFeesEarned, 3)} ${ticker}`,
       change: {
         type: 'up',
         amount: 2.58
