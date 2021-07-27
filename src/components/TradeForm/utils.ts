@@ -5,6 +5,7 @@ import { TradeDetails } from 'redux/ducks/trade';
 function formatMiniTableItems(
   action,
   ticker,
+  market,
   predictions,
   selectedPredictionId,
   selectedMarketId,
@@ -39,7 +40,7 @@ function formatMiniTableItems(
     },
     {
       key: 'fee',
-      title: 'Fee',
+      title: `Fee (${roundNumber(market.fee * 100, 0)}%)`,
       value: roundNumber(fee, 3)
     }
   ];

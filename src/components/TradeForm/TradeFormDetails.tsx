@@ -18,6 +18,7 @@ function TradeFormDetails() {
   const miniTableItems = formatMiniTableItems(
     type,
     ticker,
+    market,
     outcomes,
     selectedOutcomeId,
     id,
