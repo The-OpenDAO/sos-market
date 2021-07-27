@@ -17,21 +17,11 @@ function LiquidityFormDetails() {
     state => state.liquidity.transactionType
   );
   const market = useAppSelector(state => state.market.market);
+  const portfolio = useAppSelector(state => state.bepro.portfolio);
+  const feesEarned = portfolio[market.id]?.claimStatus.liquidityFees || 0;
 
   return (
     <div className="pm-c-liquidity-form__details">
-      <div className="pm-c-liquidity-form__details-total-stake">
-        <Text as="span" scale="body" fontWeight="semibold">
-          Total Stake
-        </Text>
-
-        <Text as="span" scale="body" fontWeight="semibold">
-          {`${roundNumber(liquidityDetails.totalStake, 3)} ${currency.symbol}`}
-        </Text>
-      </div>
-
-      <hr className="pm-c-liquidity-form__details-separator" />
-
       <div className="pm-c-liquidity-form__details-group">
         <div className="pm-c-liquidity-form__details-liquidity-value">
           <Text as="span" scale="caption" fontWeight="semibold">
@@ -67,6 +57,25 @@ function LiquidityFormDetails() {
           </Text>
         </div>
       </div>
+
+      {transactionType === 'remove' ? (
+        <div className="pm-c-liquidity-form__details-group">
+          <div className="pm-c-liquidity-form__details-liquidity-value">
+            <Text as="span" scale="caption" fontWeight="semibold">
+              Fees Earned
+            </Text>
+
+            <Text as="span" scale="body" fontWeight="semibold">
+              {
+                // eslint-disable-next-line prettier/prettier
+                `${roundNumber(feesEarned, 3)} ${
+                  currency.symbol
+                }`
+              }
+            </Text>
+          </div>
+        </div>
+      ) : null}
 
       {liquidityDetails.outcomeDetails.map(outcomeDetails => {
         const outcomeColorCondition =
@@ -128,6 +137,18 @@ function LiquidityFormDetails() {
           </div>
         ];
       })}
+
+      <hr className="pm-c-liquidity-form__details-separator" />
+
+      <div className="pm-c-liquidity-form__details-total-stake">
+        <Text as="span" scale="body" fontWeight="semibold">
+          Total Stake
+        </Text>
+
+        <Text as="span" scale="body" fontWeight="semibold">
+          {`${roundNumber(liquidityDetails.totalStake, 3)} ${currency.symbol}`}
+        </Text>
+      </div>
     </div>
   );
 }
