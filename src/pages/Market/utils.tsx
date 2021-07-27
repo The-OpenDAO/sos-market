@@ -48,7 +48,7 @@ type Row = {
   outcome: { value: React.ReactNode; align: ItemAlign };
   date: { value: React.ReactNode; align: ItemAlign };
   price: { value: React.ReactNode; align: ItemAlign };
-  shares: { value: number; align: ItemAlign };
+  shares: { value: number | null; align: ItemAlign };
   value: { value: React.ReactNode; align: ItemAlign };
   tradeType: { value: React.ReactNode; align: ItemAlign };
   transactionHash: { value: React.ReactNode; align: ItemAlign };
@@ -97,8 +97,12 @@ function formatMarketPositions(actions: [], market: Market, ticker: string) {
       'h:mm A'
     );
     const actionColor = actionColorReducer(action.action);
-    const price = `${roundNumber(action.value / action.shares, 3)}`;
-    const shares = roundNumber(action.shares, 3);
+    const price =
+      action.action === 'Claim Fees'
+        ? null
+        : `${roundNumber(action.value / action.shares, 3)}`;
+    const shares =
+      action.action === 'Claim Fees' ? null : roundNumber(action.shares, 3);
     const value = `${roundNumber(action.value, 3)}`;
     const tradeType = action.action;
     const { transactionHash } = action;
@@ -136,9 +140,11 @@ function formatMarketPositions(actions: [], market: Market, ticker: string) {
         value: (
           <Text as="span" scale="caption" fontWeight="semibold">
             {price}
-            <Text as="strong" scale="caption" fontWeight="semibold">
-              {` ${ticker}`}
-            </Text>
+            {price ? (
+              <Text as="strong" scale="caption" fontWeight="semibold">
+                {` ${ticker}`}
+              </Text>
+            ) : null }
           </Text>
         ),
         align: 'right'
