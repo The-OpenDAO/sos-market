@@ -198,9 +198,23 @@ const PortfolioLiquidityTable = ({
                     'pm-c-table__item--right': true
                   })}
                 >
-                  <Pill variant="subtle" color="warning">
-                    {feesEarned}
-                  </Pill>
+                  <div className="market-table__row-item__group">
+                    <Text
+                      as="span"
+                      scale="caption"
+                      fontWeight="semibold"
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: '0.5rem'
+                      }}
+                    >
+                      {`${roundNumber(feesEarned, 3)} `}
+                      <Text as="strong" scale="caption" fontWeight="semibold">
+                        {` ${symbol || ticker}`}
+                      </Text>
+                    </Text>
+                  </div>
                 </td>
                 <td
                   id="trade"
