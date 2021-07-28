@@ -12,7 +12,7 @@ const Home = lazy(() => import('pages/Home'));
 const Market = lazy(() => import('pages/Market'));
 const Portfolio = lazy(() => import('pages/Portfolio'));
 const WrongNetwork = lazy(() => import('pages/WrongNetwork'));
-// const CreateMarket = lazy(() => import('pages/CreateMarket'));
+const CreateMarket = lazy(() => import('pages/CreateMarket'));
 
 const { REACT_APP_NETWORK_ID } = process.env;
 
@@ -46,7 +46,7 @@ const AppRoutes = () => {
           <Route component={Home} path="/home" />
           <Route component={Market} path="/markets" />
           <Route component={Portfolio} path="/portfolio" />
-          {/* <Route component={CreateMarket} path="/market/create" /> */}
+          <Route component={CreateMarket} path="/market/create" />
         </Switch>
       </Suspense>
     </Layout>
