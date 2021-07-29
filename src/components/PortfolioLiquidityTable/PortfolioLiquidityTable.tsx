@@ -167,7 +167,7 @@ const PortfolioLiquidityTable = ({
                         {` ${symbol || ticker}`}
                       </Text>
                     </Text>
-                    <Text
+                    {/* <Text
                       className={`market-table__row-item__change--${value.change.type}`}
                       as="span"
                       scale="caption"
@@ -179,7 +179,7 @@ const PortfolioLiquidityTable = ({
                         <ArrowDownIcon />
                       )}
                       {`${roundNumber(value.change.value * 100, 2)}%`}
-                    </Text>
+                    </Text> */}
                   </div>
                 </td>
                 <td
