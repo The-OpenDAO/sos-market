@@ -9,7 +9,7 @@ import {
   changeChartsVisibility,
   changePredictionsVisibility
 } from 'redux/ducks/trade';
-import { closeTradeForm, openTradeForm } from 'redux/ducks/ui';
+import { closeTradeForm, openReportForm, openTradeForm } from 'redux/ducks/ui';
 
 import {
   ArrowDownIcon,
@@ -69,7 +69,11 @@ function MarketOutcomesItem({ market, outcome }: MarketOutcomesItemProps) {
   );
 
   function handleItemSelection() {
-    dispatch(openTradeForm());
+    if (market.state === 'closed') {
+      dispatch(openReportForm());
+    } else {
+      dispatch(openTradeForm());
+    }
     dispatch(marketSelected(market));
     dispatch(changePredictionsVisibility(false));
     dispatch(changeChartsVisibility(true));

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { changePredictionsVisibility, selectOutcome } from 'redux/ducks/trade';
+import { openReportForm } from 'redux/ducks/ui';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -22,6 +23,12 @@ function TradeForm() {
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId
   );
+
+  useEffect(() => {
+    if (marketState === 'closed') {
+      dispatch(openReportForm());
+    }
+  }, [dispatch, marketState]);
 
   useEffect(() => {
     if (id !== '' && id !== selectedMarketId) {
