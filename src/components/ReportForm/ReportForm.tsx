@@ -10,17 +10,18 @@ import ReportFormOutcomeSelect from './ReportFormOutcomeSelect';
 
 type ReportFormData = {
   market: string;
-  outcome?: number;
+  outcome?: string | number;
   bond: number;
 };
 
 function ReportForm() {
   const { isLoading } = useAppSelector(state => state.market);
   const marketId = useAppSelector(state => state.market.market.id);
+  const outcomes = useAppSelector(state => state.market.market.outcomes);
 
   const initialData: ReportFormData = {
     market: marketId,
-    outcome: undefined,
+    outcome: outcomes[0].id.toString(),
     bond: 0
   };
 
