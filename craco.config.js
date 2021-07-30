@@ -12,6 +12,15 @@ module.exports = {
           path.join(__dirname, './src/styles/abstracts/variables/*.scss'),
           path.join(__dirname, './src/styles/abstracts/mixins/*.scss'),
           path.join(__dirname, './src/styles/abstracts/functions/*.scss'),
+          path.join(
+            __dirname,
+            './src/styles/abstracts/variables/layout/*.scss'
+          ),
+          path.join(__dirname, './src/styles/abstracts/variables/pages/*.scss'),
+          path.join(
+            __dirname,
+            './src/styles/abstracts/variables/components/*.scss'
+          ),
           path.join(__dirname, './src/styles/themes/*.scss')
         ],
         styleType: 'scss'

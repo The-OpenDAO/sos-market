@@ -1,29 +1,43 @@
 .pm-c-button-group {
-  @include flex-row;
+  display: flex;
+  flex-direction: row;
+
   width: 100%;
   padding: 0.2rem;
   margin-bottom: 1rem;
 
-  @include border(transparent);
+  border-radius: $button-group-border-radius;
+  border-width: 0.1rem;
+  border-style: solid;
 
   &__item {
-    @extend %button;
-    flex-grow: 1;
-    height: 3.7rem;
-    padding: 0.8rem 2rem;
-
-    font-size: 1.4rem;
-    line-height: 0rem;
-
-    background-color: unset;
+    @extend .pm-c-button;
     border: none;
-    transition: all 0.3s ease 0s;
+    flex-grow: 1;
   }
-}
 
-@each $color-variant, $color in $theme-colors {
-  .pm-c-button-group--#{$color-variant} {
-    @extend .pm-c-button-group;
-    @include button-group-color($color-variant, $color);
+  &--normal {
+    @include button-group-size('normal');
+  }
+
+  &--sm {
+    @include button-group-size('sm');
+  }
+
+  &--lg {
+    @include button-group-size('lg');
+  }
+
+  @include themes($button-group-themes) {
+    @each $color, $color-map in themed('background-colors') {
+      &--#{$color} {
+        @extend .pm-c-button-group;
+        @include button-group-color(
+          map-get(themed('background-colors'), $color),
+          map-get(themed('text-colors'), $color),
+          themed('border-color')
+        );
+      }
+    }
   }
 }

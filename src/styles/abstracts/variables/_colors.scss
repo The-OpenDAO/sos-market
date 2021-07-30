@@ -114,7 +114,7 @@ $warning-dark: rgba($warning-900, 0.5) !default;
 $danger-dark: rgba($danger-900, 0.5) !default;
 
 $theme-colors: (
-  'default': $default,
+  'default': transparent,
   'primary': $primary,
   'secondary': $secondary,
   'success': $success,

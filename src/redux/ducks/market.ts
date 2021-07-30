@@ -27,6 +27,7 @@ const initialState: MarketInitialState = {
     shares: 0,
     liquidity: 0,
     liquidityPrice: 0,
+    createdAt: '',
     expiresAt: '',
     state: 'open',
     questionId: '',
@@ -58,7 +59,8 @@ const initialState: MarketInitialState = {
         shares: 0
       }
     ],
-    tradingViewSymbol: null
+    tradingViewSymbol: null,
+    fee: 0
   },
   chartViews: chartViewsEnum,
   chartViewType: 'marketOverview',

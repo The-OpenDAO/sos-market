@@ -1,6 +1,10 @@
 import { fromTimestampToDate } from 'helpers/date';
 
-function generateCustomOptions(ticker: string, showGrid: boolean) {
+function generateCustomOptions(
+  theme: string,
+  ticker: string,
+  showGrid: boolean
+) {
   return {
     chart: {
       toolbar: {
@@ -19,9 +23,8 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
       custom({ series, seriesIndex, dataPointIndex, w }) {
         const currentValue = series[seriesIndex][dataPointIndex];
         const currentDate = w.globals.seriesX[seriesIndex][dataPointIndex];
-        const formatedDate = fromTimestampToDate(currentDate).format(
-          'MMMM D, YYYY'
-        );
+        const formatedDate =
+          fromTimestampToDate(currentDate).format('MMMM D, YYYY');
         const formatedTime = fromTimestampToDate(currentDate).format('h:mm A');
 
         return `<div class="apexcharts-tooltip-box">
@@ -93,7 +96,7 @@ function generateCustomOptions(ticker: string, showGrid: boolean) {
     },
     grid: {
       show: showGrid,
-      borderColor: '#252C3B',
+      borderColor: theme === 'dark' ? '#252C3B' : '#E3E7F0',
       strokeDashArray: 5,
       position: 'back' as const,
       xaxis: {

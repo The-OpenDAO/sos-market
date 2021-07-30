@@ -1,52 +1,104 @@
-.pm-c-navbar {
-  @include flex-row(space-between, center);
-  gap: 1.6rem;
+.pm-l-navbar {
+  @include themes($navbar-themes) {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.6rem;
 
-  padding: 1.6rem 2.4rem;
-  background-color: $background-dark;
-  transition: background-color 0.3s ease 0s;
+    width: 100%;
+    padding: $navbar-padding-y $navbar-padding-x;
 
-  border-bottom: 1px solid $gray-700;
+    background-color: themed('background-color');
+    transition: $navbar-transitions;
 
-  &__icon {
-    zoom: 1;
+    &__icon {
+      zoom: 1;
 
-    @include flex-row(flex-start, center);
-    padding: 0.65rem 0rem;
-    margin-right: 0.8rem;
-  }
-
-  &__search {
-    display: none;
-    flex-grow: 1;
-
-    @include breakpoint-to('sm') {
-      display: inline;
-    }
-  }
-
-  &__menu {
-    display: none;
-
-    @include breakpoint-to('sm') {
       display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      padding: 0.65rem 0rem;
+      margin-right: 0.8rem;
+    }
+
+    &__search {
+      display: none;
+      flex-grow: 1;
+
+      @include breakpoint-to('sm') {
+        display: inline;
+      }
+    }
+
+    &__menu {
+      display: none;
+
+      @include breakpoint-to('sm') {
+        display: flex;
+      }
+    }
+
+    &__divider--circle {
+      display: inline-block;
+
+      height: 0.4rem;
+      width: 0.4rem;
+      border-radius: 50%;
+
+      background-color: themed('divider-circle-color');
+      transition: $navbar-transitions;
+    }
+
+    &__actions {
+      display: none;
+
+      @include breakpoint-to('lg') {
+        display: flex;
+        gap: 1.6rem;
+      }
+
+      &-create-market {
+        height: 100%;
+
+        &:hover {
+          background-color: $gray-500 !important;
+        }
+      }
     }
   }
+}
 
-  &__actions {
+.pm-l-navbar-dropdown-menu {
+  @include themes($navbar-themes) {
+    position: relative;
     display: none;
 
     @include breakpoint-to('lg') {
-      display: flex;
-      gap: 1.6rem;
+      display: inline-block;
     }
 
-    //TODO: create link button
-    &-create-market {
-      height: 100%;
+    &__content {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      right: 0;
 
-      &:hover {
-        background-color: $gray-500 !important;
+      padding: $navbar-dropdown-menu-padding-y $navbar-dropdown-menu-padding-x;
+      background-color: themed('dropdown-menu-background-color');
+      border: 0.1rem solid themed('dropdown-menu-border-color');
+      border-radius: $navbar-dropdown-menu-border-radius;
+    }
+
+    &:hover {
+      .pm-l-navbar-dropdown-menu__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        min-width: 29rem;
       }
     }
   }

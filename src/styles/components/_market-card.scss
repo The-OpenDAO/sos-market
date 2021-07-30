@@ -1,45 +1,48 @@
 .pm-c-market {
-  &__body {
-    @include flex-column(center, center);
-
-    @include breakpoint-to('md') {
-      @include flex-row;
-    }
-    gap: 2.4rem;
-
-    &-image {
-      object-fit: cover;
-      border-radius: 50%;
-
-      height: 6.4rem;
-      width: 6.4rem;
-    }
-
-    &-details {
+  @include themes($market-themes) {
+    &__body {
       @include flex-column(center, center);
 
       @include breakpoint-to('md') {
-        @include flex-column(center, flex-start);
+        @include flex-row;
+      }
+      gap: 2.4rem;
+
+      &-image {
+        object-fit: cover;
+        border-radius: 50%;
+
+        height: 6.4rem;
+        width: 6.4rem;
       }
 
-      gap: 0.8rem;
+      &-details {
+        @include flex-column(center, center);
 
-      p {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        word-break: break-word;
+        @include breakpoint-to('md') {
+          @include flex-column(center, flex-start);
+        }
+
+        gap: 0.8rem;
+
+        p {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          word-break: break-word;
+
+          color: themed('details-text-color');
+          transition: all 0.2s ease-in-out 0s;
+        }
       }
     }
   }
 }
 
-.pm-c-market-options {
-  @include flex-row(center, center);
-  gap: 1.6rem;
-
+.pm-c-market-outcomes {
+  @include flex-row(center, center, 1.6rem);
   width: 100%;
 
   @include breakpoint-to('sm') {
@@ -58,11 +61,6 @@
     pointer-events: none;
     cursor: pointer;
     touch-action: manipulation;
-
-    @include flex-row($align: center);
-    gap: 2.4rem;
-    padding: 1.6rem;
-
     width: 100%;
 
     @include breakpoint-to('md') {
@@ -70,17 +68,24 @@
       width: auto;
     }
 
-    background-color: $gray-900;
-    @include border($gray-900);
+    @include flex-row(flex-start, center, 2.4rem);
+    padding: $market-outcome-padding-y $market-outcome-padding-x;
+    border-width: $market-outcome-border-width;
+    border-style: solid;
+    border-radius: $market-outcome-border-radius;
 
-    // transition: all 0.3s ease 0s;
-
-    &:hover {
-      @include border($gray-600);
+    &-group--column {
+      @include flex-column(center, flex-start);
     }
 
-    &-group {
-      @include flex-column(center, flex-start);
+    &-group--row {
+      @include flex-row(flex-start, center, 0.3rem);
+    }
+
+    &-title,
+    &-odd,
+    &-value {
+      transition: $market-outcome-text-transitions;
     }
 
     &-chart {
@@ -91,32 +96,124 @@
       }
     }
 
-    &-odd {
-      @include flex-row(flex-start, center);
-      gap: 0.3rem;
+    &-result {
+      @include flex-row(center, center);
+
+      svg {
+        transition: $market-outcome-details-transitions;
+      }
     }
 
-    &.active {
-      background: linear-gradient(
-        90deg,
-        rgba(87, 81, 252, 0.4) 0%,
-        rgba(87, 81, 252, 0.14) 100%
-      );
-      @include border($primary-500);
+    transition: $market-outcome-transitions;
+
+    &:disabled {
+      pointer-events: none;
+    }
+  }
+
+  @include themes($market-outcome-themes) {
+    @each $color, $color-map in themed('background-colors') {
+      &__item--#{$color} {
+        @extend .pm-c-market-outcomes__item;
+        @include market-outcomes-item(
+          $color,
+          map-get(themed('background-colors'), $color),
+          map-get(themed('border-colors'), $color),
+          themed('text-colors'),
+          map-get(themed('details-colors'), $color)
+        );
+      }
     }
   }
 }
 
 .pm-c-market-footer {
-  &__stats {
-    @include flex-row;
-    gap: 2.4rem;
-
-    flex-wrap: wrap;
-    justify-content: center;
+  @include themes($market-themes) {
+    @include flex-row(center, center, 1rem);
 
     @include breakpoint-to('lg') {
-      justify-content: flex-start;
+      @include flex-row(space-between, center, 1rem);
     }
+
+    flex-wrap: wrap;
+
+    &__group--row {
+      display: none;
+
+      @include breakpoint-to('md') {
+        @include flex-row(flex-end, center, 1.2rem);
+      }
+    }
+
+    &__stats {
+      @include flex-row;
+      gap: 2.4rem;
+
+      flex-wrap: wrap;
+      justify-content: center;
+
+      @include breakpoint-to('lg') {
+        justify-content: flex-start;
+      }
+
+      span,
+      strong {
+        transition: all 0.2s ease-in-out 0s;
+      }
+
+      span {
+        color: themed('stats-text-secondary-color');
+        transition: all 0.2s ease-in-out 0s;
+      }
+
+      strong {
+        color: themed('stats-text-primary-color');
+        transition: all 0.2s ease-in-out 0s;
+      }
+    }
+
+    &__actions,
+    &__tags {
+      @include flex-row(flex-end, center, 0.8rem);
+    }
+
+    &__tags {
+      @include flex-row(flex-end, center, 0.8rem);
+    }
+
+    &__actions {
+      @include flex-row(flex-end, end, 1.2rem);
+      padding-top: 0.3rem;
+    }
+  }
+}
+
+.pm-c-market-footer__divider--circle {
+  @include themes($market-footer-themes) {
+    display: inline-block;
+
+    height: 0.4rem;
+    width: 0.4rem;
+    border-radius: 50%;
+
+    background-color: map-get(themed('background-colors'), 'divider');
+  }
+}
+
+.pm-c-market-footer__actions-share--default {
+  @include themes($market-footer-themes) {
+    fill: map-get(map-get(themed('background-colors'), 'share'), 'default');
+  }
+}
+
+.pm-c-market-footer__actions-favorite--default {
+  @include themes($market-footer-themes) {
+    fill: map-get(map-get(themed('background-colors'), 'favorite'), 'default');
+  }
+}
+
+.pm-c-market-footer__actions-favorite--active {
+  @include themes($market-footer-themes) {
+    fill: map-get(map-get(themed('background-colors'), 'favorite'), 'active');
   }
 }

@@ -17,39 +17,14 @@ function LiquidityFormDetails() {
     state => state.liquidity.transactionType
   );
   const market = useAppSelector(state => state.market.market);
+  const portfolio = useAppSelector(state => state.bepro.portfolio);
+  const feesEarned = portfolio[market.id]?.claimStatus.liquidityFees || 0;
 
   return (
     <div className="pm-c-liquidity-form__details">
-      <div className="pm-c-liquidity-form__details-total-stake">
-        <Text
-          as="span"
-          scale="body"
-          fontWeight="semibold"
-          color="lighter-gray-50"
-        >
-          Total Stake
-        </Text>
-
-        <Text
-          as="span"
-          scale="body"
-          fontWeight="semibold"
-          color="lighter-gray-50"
-        >
-          {`${roundNumber(liquidityDetails.totalStake, 3)} ${currency.symbol}`}
-        </Text>
-      </div>
-
-      <hr className="pm-c-liquidity-form__details-separator" />
-
       <div className="pm-c-liquidity-form__details-group">
         <div className="pm-c-liquidity-form__details-liquidity-value">
-          <Text
-            as="span"
-            scale="caption"
-            fontWeight="semibold"
-            color="lighter-gray-50"
-          >
+          <Text as="span" scale="caption" fontWeight="semibold">
             Liquidity Value
             <Tooltip
               text={
@@ -63,28 +38,44 @@ function LiquidityFormDetails() {
             </Tooltip>
           </Text>
 
-          <Text
-            as="span"
-            scale="body"
-            fontWeight="semibold"
-            color="lighter-gray-50"
-          >
+          <Text as="span" scale="body" fontWeight="semibold">
             {
               // eslint-disable-next-line prettier/prettier
-              `${roundNumber(liquidityDetails.liquidityStake, 3)} ${currency.symbol}`
+              `${roundNumber(liquidityDetails.liquidityStake, 3)} ${
+                currency.symbol
+              }`
             }
           </Text>
         </div>
         <div className="pm-c-liquidity-form__details-shares-added">
-          <Text as="span" scale="tiny" fontWeight="semibold" color="gray">
+          <Text as="span" scale="tiny" fontWeight="semibold">
             Est. Liquidity Shares
           </Text>
 
-          <Text as="span" scale="tiny" fontWeight="semibold" color="gray">
+          <Text as="span" scale="tiny" fontWeight="semibold">
             {roundNumber(liquidityDetails.liquidityShares, 3)}
           </Text>
         </div>
       </div>
+
+      {transactionType === 'remove' ? (
+        <div className="pm-c-liquidity-form__details-group">
+          <div className="pm-c-liquidity-form__details-liquidity-value">
+            <Text as="span" scale="caption" fontWeight="semibold">
+              Fees Earned
+            </Text>
+
+            <Text as="span" scale="body" fontWeight="semibold">
+              {
+                // eslint-disable-next-line prettier/prettier
+                `${roundNumber(feesEarned, 3)} ${
+                  currency.symbol
+                }`
+              }
+            </Text>
+          </div>
+        </div>
+      ) : null}
 
       {liquidityDetails.outcomeDetails.map(outcomeDetails => {
         const outcomeColorCondition =
@@ -100,21 +91,11 @@ function LiquidityFormDetails() {
             key={`outcome-title-${outcomeDetails.outcome.id}`}
             className="pm-c-liquidity-form__details-outcome"
           >
-            <Text
-              as="span"
-              scale="caption"
-              fontWeight="semibold"
-              color="lighter-gray-50"
-            >
+            <Text as="span" scale="caption" fontWeight="semibold">
               Outcome
             </Text>
 
-            <Text
-              as="span"
-              scale="caption"
-              fontWeight="semibold"
-              color="lighter-gray-50"
-            >
+            <Text as="span" scale="caption" fontWeight="semibold">
               <div
                 className={`pm-c-liquidity-form__details-outcome-marker--${
                   outcomeColorCondition ? 'primary' : 'secondary'
@@ -129,12 +110,7 @@ function LiquidityFormDetails() {
             className="pm-c-liquidity-form__details-group"
           >
             <div className="pm-c-liquidity-form__details-outcome-shares-value">
-              <Text
-                as="span"
-                scale="caption"
-                fontWeight="semibold"
-                color="lighter-gray-50"
-              >
+              <Text as="span" scale="caption" fontWeight="semibold">
                 Outcome Shares Value
                 <Tooltip
                   text="You are given outcome shares on uneven market prices"
@@ -144,28 +120,37 @@ function LiquidityFormDetails() {
                 </Tooltip>
               </Text>
 
-              <Text
-                as="span"
-                scale="body"
-                fontWeight="semibold"
-                color="lighter-gray-50"
-              >
+              <Text as="span" scale="body" fontWeight="semibold">
                 {`${roundNumber(outcomeDetails.stake, 3)} ${currency.symbol}`}
               </Text>
             </div>
 
             <div className="pm-c-liquidity-form__details-shares-received">
-              <Text as="span" scale="tiny" fontWeight="semibold" color="gray">
+              <Text as="span" scale="tiny" fontWeight="semibold">
                 Est. Outcome Shares Received
               </Text>
 
-              <Text as="span" scale="tiny" fontWeight="semibold" color="gray">
+              <Text as="span" scale="tiny" fontWeight="semibold">
                 {roundNumber(outcomeDetails.shares, 3)}
               </Text>
             </div>
           </div>
         ];
       })}
+
+      <hr className="pm-c-liquidity-form__details-separator" />
+
+      <div className="pm-c-liquidity-form__details-total-stake">
+        <Text as="span" scale="body" fontWeight="semibold">
+          Total Stake
+        </Text>
+
+        <Text as="span" scale="body" fontWeight="semibold">
+          {`${roundNumber(liquidityDetails.totalStake + feesEarned, 3)} ${
+            currency.symbol
+          }`}
+        </Text>
+      </div>
     </div>
   );
 }

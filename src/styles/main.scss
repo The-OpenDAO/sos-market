@@ -17,6 +17,7 @@
 @import 'layout/navbar';
 @import 'layout/sidebar';
 @import 'layout/right-sidebar';
+@import 'layout/footer';
 
 // 5. Components
 @import 'components/alert';
@@ -24,12 +25,13 @@
 @import 'components/amount-input';
 @import 'components/badge';
 @import 'components/breadcrumb';
-@import 'components/buttons';
+@import 'components/button';
 @import 'components/button-group';
 @import 'components/card';
 @import 'components/category';
 @import 'components/chart-header';
 @import 'components/checkbox';
+@import 'components/create-market-form';
 @import 'components/featured-card';
 @import 'components/input';
 @import 'components/filter';
@@ -71,5 +73,6 @@
 @import 'pages/portfolio';
 @import 'pages/private-beta';
 @import 'pages/wrong-network';
+@import 'pages/create-market';
 
 // 7. Themes

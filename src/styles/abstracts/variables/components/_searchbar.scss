@@ -1,0 +1,22 @@
+$searchbar-padding-y: 1rem !default;
+$searchbar-padding-x: 1.2rem !default;
+$searchbar-border-radius: 0.4rem !default;
+
+$searchbar-themes: (
+  light: (
+    background-color: transparent,
+    text-color: #171b23,
+    placeholder-color: #b6bdc8,
+    border-color: #e3e7f0,
+    icon-fill: #637084
+  ),
+  dark: (
+    background-color: transparent,
+    text-color: #f9fafb,
+    placeholder-color: #637084,
+    border-color: #252c3b,
+    icon-fill: #637084
+  )
+) !default;
+
+$searchbar-transitions: all 0.2s ease-in-out 0s !default;

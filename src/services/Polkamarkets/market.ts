@@ -7,9 +7,28 @@ async function getMarket(marketSlug: string) {
   return api.get<Market>(url);
 }
 
-async function getMarkets() {
+export type MarketState = 'open' | 'closed' | 'resolved';
+
+type MarketsFilters = {
+  state: MarketState;
+};
+
+async function getMarkets({ state }: MarketsFilters) {
   const url = `${polkamarketsApiUrl}/markets`;
-  return api.get<Market[]>(url);
+  return api.get<Market[]>(url, {
+    params: {
+      state
+    }
+  });
+}
+
+async function getMarketsByIds(ids: string[]) {
+  const url = `${polkamarketsApiUrl}/markets`;
+  return api.get<Market[]>(url, {
+    params: {
+      id: ids.join(',')
+    }
+  });
 }
 
 async function reloadMarket(marketSlug: string) {
@@ -17,4 +36,4 @@ async function reloadMarket(marketSlug: string) {
   return api.post(url);
 }
 
-export { getMarkets, getMarket, reloadMarket };
+export { getMarkets, getMarket, getMarketsByIds, reloadMarket };

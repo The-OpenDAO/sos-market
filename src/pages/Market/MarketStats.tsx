@@ -49,7 +49,12 @@ function MarketStats({ market }: MarketStatsProps) {
           </Text>
         }
       >
-        <Text as="p" scale="body" fontWeight="semibold" color="light">
+        <Text
+          as="p"
+          scale="body"
+          fontWeight="semibold"
+          className="pm-market__stats-item__price"
+        >
           {`${outcomeStats[0].price} ${symbol}`}
         </Text>
       </Card>
@@ -94,7 +99,12 @@ function MarketStats({ market }: MarketStatsProps) {
           </Text>
         }
       >
-        <Text as="p" scale="body" fontWeight="semibold" color="light">
+        <Text
+          as="p"
+          scale="body"
+          fontWeight="semibold"
+          className="pm-market__stats-item__price"
+        >
           {`${outcomeStats[1].price} ${symbol}`}
         </Text>
       </Card>

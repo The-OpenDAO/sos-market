@@ -1,27 +1,29 @@
 .card {
-  @include flex-column(space-between, center);
-  gap: 0.8rem;
-  @include card-size($card-padding-y, $card-padding-x);
-  @include border(none);
+  @include themes($card-themes) {
+    @include flex-column(space-between, center);
+    gap: 0.8rem;
+    @include card-size($card-padding-y, $card-padding-x);
+    @include border(none);
 
-  height: 100%;
-
-  &__header {
-    @include flex-row(space-between, center);
-    width: 100%;
-
-    &-title {
-      color: $gray-500;
-    }
-
-    &-extra {
-      color: $gray-500;
-    }
-  }
-
-  &__body {
-    @include flex-column;
     height: 100%;
+
+    &__header {
+      @include flex-row(space-between, center);
+      width: 100%;
+
+      &-title {
+        color: themed('title-color');
+      }
+
+      &-extra {
+        color: themed('title-color');
+      }
+    }
+
+    &__body {
+      @include flex-column;
+      height: 100%;
+    }
   }
 }
 

@@ -76,7 +76,12 @@ function TradeFormPredictions() {
                 key: 'yourShares',
                 title: 'Your Shares',
                 // eslint-disable-next-line prettier/prettier
-                value: roundNumber(portfolio[selectedMarketId]?.outcomes[prediction.id]?.shares, 3) || 0
+                value:
+                  roundNumber(
+                    portfolio[selectedMarketId]?.outcomes[prediction.id]
+                      ?.shares,
+                    3
+                  ) || 0
               }
             ]}
           />

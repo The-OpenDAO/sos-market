@@ -1,0 +1,11 @@
+$footer-padding-y: 1.2rem !default;
+$footer-padding-x: 2.4rem !default;
+
+$footer-themes: (
+  light: (
+    credits-text-color: #b6bdc8
+  ),
+  dark: (
+    credits-text-color: #637084
+  )
+) !default;

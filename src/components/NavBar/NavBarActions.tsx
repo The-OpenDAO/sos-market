@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
 
-import { login, fetchAditionalData } from 'redux/ducks/bepro';
+import { login } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { AddIcon, MetaMaskIcon } from 'assets/icons';
+import { MetaMaskIconSmall } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
 import useCurrency from 'hooks/useCurrency';
 import useNetwork, { defaultNetwork } from 'hooks/useNetwork';
 
-import AlertNotification from '../AlertNotification';
+import { AlertInline } from '../Alert';
 import { Button } from '../Button';
+import Link from '../Link';
 import NetworkInfo from '../NetworkInfo';
-import Tooltip from '../Tooltip';
 import WalletInfo from '../WalletInfo';
 
 function NavBarActions() {
@@ -39,15 +39,25 @@ function NavBarActions() {
   };
 
   return (
-    <div className="pm-c-navbar__actions">
-      <AlertNotification
+    <div className="pm-l-navbar__actions">
+      <AlertInline
         id="beta-testing"
         variant="warning"
-        description={`Welcome to Polkamarkets! You’re on ${network.name} and placing predictions with ${network.currency}.`}
+        description={
+          <>
+            {`Welcome to Polkamarkets! You’re on ${network.name} and placing predictions with ${network.currency}. Your `}
+            <Link
+              title="feedback"
+              target="_blank"
+              href="//discord.gg/Szjn2EEf7w"
+              rel="noreferrer"
+              variant="warning"
+            />
+            {` is highly appreciated 🎉`}
+          </>
+        }
       />
-
       {network ? <NetworkInfo name={network.name} slug={network.key} /> : null}
-
       {walletConnected ? (
         <WalletInfo
           balance={walletBalance}
@@ -56,30 +66,18 @@ function NavBarActions() {
         />
       ) : (
         <Button
-          className="button-normal--default button-sm"
+          variant="outline"
           color="default"
-          aria-label="Connect Wallet"
+          size="sm"
+          aria-label="Connect MetaMask"
           onClick={handleConnectWallet}
         >
-          <MetaMaskIcon />
-          Connect Wallet
+          <MetaMaskIconSmall />
+          Connect MetaMask
         </Button>
       )}
-      <Tooltip text="Create Market" position="bottom">
-        <a
-          className="button-normal--default pm-c-navbar__actions-create-market"
-          aria-label="Create market"
-          target="_blank"
-          href="https://docs.google.com/forms/d/1WA_WQ3Ma6iXr1HExs541cmquoI4n3SysI_DGuDyrRVQ/"
-          rel="noreferrer"
-        >
-          <AddIcon />
-        </a>
-      </Tooltip>
     </div>
   );
 }
-
-NavBarActions.displayName = 'NavBarActions';
 
 export default NavBarActions;

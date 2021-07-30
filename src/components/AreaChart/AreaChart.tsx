@@ -3,6 +3,8 @@ import ReactApexChart from 'react-apexcharts';
 
 import dayjs from 'dayjs';
 
+import { useTheme } from 'hooks';
+
 import generateCustomOptions from './options';
 
 type Event = {
@@ -23,10 +25,11 @@ const AreaChart = ({
   height = 200,
   showGrid = true
 }: AreaChartProps) => {
-  const customOptions = useMemo(() => generateCustomOptions(ticker, showGrid), [
-    ticker,
-    showGrid
-  ]);
+  const { theme } = useTheme();
+  const customOptions = useMemo(
+    () => generateCustomOptions(theme, ticker, showGrid),
+    [theme, ticker, showGrid]
+  );
 
   return (
     <ReactApexChart

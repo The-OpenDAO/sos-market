@@ -3,7 +3,7 @@ import { Market as MarketInterface } from 'models/market';
 import Breadcrumb from '../Breadcrumb';
 import Text from '../Text';
 import MarketFooter from './MarketFooter';
-import MarketOptions from './MarketOptions';
+import MarketOutcomes from './MarketOutcomes';
 
 type MarketCardProps = {
   market: MarketInterface;
@@ -20,7 +20,7 @@ function Market({ market }: MarketCardProps) {
             <Breadcrumb.Item>{`${category.toLowerCase()}`}</Breadcrumb.Item>
             <Breadcrumb.Item>{subcategory}</Breadcrumb.Item>
           </Breadcrumb>
-          <Text as="p" scale="body" fontWeight="medium" color="light">
+          <Text as="p" scale="body" fontWeight="medium">
             {title}
           </Text>
         </div>
@@ -29,9 +29,7 @@ function Market({ market }: MarketCardProps) {
   );
 }
 
-Market.displayName = 'Market';
-
-Market.Options = MarketOptions;
+Market.Outcomes = MarketOutcomes;
 Market.Footer = MarketFooter;
 
 export default Market;

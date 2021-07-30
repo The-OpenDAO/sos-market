@@ -8,6 +8,7 @@ export interface TradeDetails {
   maxROI: number;
   totalStake: number;
   maxStake: number;
+  fee: number;
 }
 
 const initialState = {
@@ -23,6 +24,7 @@ const initialState = {
   maxROI: 0,
   totalStake: 0,
   maxStake: 0,
+  fee: 0,
   acceptRules: false,
   acceptOddChanges: false
 };
@@ -62,7 +64,8 @@ const tradeSlice = createSlice({
       price: action.payload.price,
       maxROI: action.payload.maxROI,
       totalStake: action.payload.totalStake,
-      maxStake: action.payload.maxStake
+      maxStake: action.payload.maxStake,
+      fee: action.payload.fee
     }),
     toggleAcceptRules: (state, action: PayloadAction<boolean>) => ({
       ...state,

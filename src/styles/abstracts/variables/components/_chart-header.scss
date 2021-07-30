@@ -1,0 +1,18 @@
+$chart-header-themes: (
+  light: (
+    item-background-color: transparent,
+    item-background-color-active: #e3e7f0,
+    item-border-color: #e3e7f0,
+    item-text-color: #8193ae,
+    item-text-color-active: #313a4c
+  ),
+  dark: (
+    item-background-color: transparent,
+    item-background-color-active: #252c3b,
+    item-border-color: #252c3b,
+    item-text-color: #637084,
+    item-text-color-active: #f9fafb
+  )
+) !default;
+
+$chart-header-transitions: all 0.2s ease-in-out 0s !default;

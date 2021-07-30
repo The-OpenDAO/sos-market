@@ -31,6 +31,8 @@
     svg {
       height: 1.6rem;
       width: 1.6rem;
+
+      flex-shrink: 0;
     }
 
     &__title {
@@ -102,6 +104,247 @@
 
     .pm-c-alert__title {
       color: themed('alert-color-error');
+    }
+  }
+}
+
+.pm-c-alert-mini {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+
+  width: 100%;
+  height: auto;
+
+  padding: $alert-mini-padding-y $alert-mini-padding-x;
+
+  border-width: $alert-border-width;
+  border-style: solid;
+  border-radius: $alert-mini-border-radius;
+  transition: $alert-transitions;
+
+  svg {
+    height: 1.6rem;
+    width: 1.6rem;
+
+    flex-shrink: 0;
+  }
+
+  &__description {
+    text-align: center;
+    transition: $alert-transitions;
+  }
+}
+
+.pm-c-alert-mini-subtle--default {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    background-color: themed('alert-mini-subtle-default-background-color');
+    border-color: themed('alert-mini-subtle-default-background-color');
+
+    svg {
+      fill: themed('alert-color-default');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-mini-subtle--information {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    background-color: themed('alert-mini-subtle-information-background-color');
+    border-color: themed('alert-mini-subtle-information-background-color');
+
+    svg {
+      fill: themed('alert-color-information');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-mini-subtle--success {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    background-color: themed('alert-mini-subtle-success-background-color');
+    border-color: themed('alert-mini-subtle-success-background-color');
+
+    svg {
+      fill: themed('alert-color-success');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-mini-subtle--warning {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    background-color: themed('alert-mini-subtle-warning-background-color');
+    border-color: themed('alert-mini-subtle-warning-background-color');
+
+    svg {
+      fill: themed('alert-color-warning');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-mini-subtle--error {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    background-color: themed('alert-mini-subtle-error-background-color');
+    border-color: themed('alert-mini-subtle-error-background-color');
+
+    svg {
+      fill: themed('alert-color-error');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-mini-outline--default {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    border-color: themed('alert-border-color');
+
+    svg {
+      fill: themed('alert-color-default');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-mini-outline--information {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    border-color: themed('alert-border-color');
+
+    svg {
+      fill: themed('alert-color-information');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-mini-outline--success {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    border-color: themed('alert-border-color');
+
+    svg {
+      fill: themed('alert-color-success');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-mini-outline--warning {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    border-color: themed('alert-border-color');
+
+    svg {
+      fill: themed('alert-color-warning');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-mini-outline--error {
+  @extend .pm-c-alert-mini;
+  @include themes($alert-themes) {
+    border-color: themed('alert-border-color');
+
+    svg {
+      fill: themed('alert-color-error');
+    }
+
+    .pm-c-alert-mini__description {
+      color: themed('alert-description-color');
+    }
+  }
+}
+
+.pm-c-alert-inline {
+  @include themes($alert-inline-subtle-themes) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    width: 100%;
+    padding: $alert-inline-padding-y $alert-inline-padding-x;
+
+    > svg {
+      height: 1.2rem;
+      width: 1.2rem;
+
+      flex-shrink: 0;
+    }
+
+    &__actions {
+      margin-left: auto;
+
+      button > svg {
+        height: 0.788rem;
+        width: 0.788rem;
+
+        flex-shrink: 0;
+
+        fill: themed('remove-icon-color');
+      }
+    }
+
+    &--left-align {
+      @extend .pm-c-alert-inline;
+      justify-content: flex-start;
+    }
+
+    &--center-align {
+      @extend .pm-c-alert-inline;
+      justify-content: center;
+    }
+
+    &--right-align {
+      @extend .pm-c-alert-inline;
+      justify-content: flex-end;
+    }
+
+    @each $color, $color-map in themed('background-colors') {
+      &-subtle--#{$color} {
+        @extend .pm-c-alert-inline;
+        @include alert-inline-subtle-color(
+          map-get(themed('background-colors'), $color),
+          map-get(themed('text-colors'), $color)
+        );
+      }
     }
   }
 }

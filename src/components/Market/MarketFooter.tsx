@@ -1,8 +1,8 @@
-import dayjs from 'dayjs';
-import { roundNumber } from 'helpers/math';
 import { Market } from 'models/market';
 
-import Text from '../Text';
+import MarketFooterActions from './MarketFooterActions';
+import MarketFooterStats from './MarketFooterStats';
+import MarketFooterTags from './MarketFooterTags';
 
 type MarketFooterProps = {
   market: Market;
@@ -10,64 +10,12 @@ type MarketFooterProps = {
 };
 
 function MarketFooter({ market, ticker }: MarketFooterProps) {
-  const { volume, expiresAt, liquidity } = market;
   return (
     <div className="pm-c-market-footer">
-      <div className="pm-c-market-footer__stats">
-        {volume ? (
-          <Text
-            as="span"
-            scale="tiny-uppercase"
-            fontWeight="semibold"
-            color="gray"
-          >
-            {`Volume: `}
-            <Text
-              as="strong"
-              scale="tiny-uppercase"
-              fontWeight="semibold"
-              color="lighter-gray"
-            >
-              {`${roundNumber(volume, 3)} ${ticker}`}
-            </Text>
-          </Text>
-        ) : null}
-        {expiresAt ? (
-          <Text
-            as="span"
-            scale="tiny-uppercase"
-            fontWeight="semibold"
-            color="gray"
-          >
-            {`Expiration: `}
-            <Text
-              as="strong"
-              scale="tiny-uppercase"
-              fontWeight="semibold"
-              color="lighter-gray"
-            >
-              {dayjs(expiresAt).format('YYYY-MM-DD')}
-            </Text>
-          </Text>
-        ) : null}
-        {liquidity ? (
-          <Text
-            as="span"
-            scale="tiny-uppercase"
-            fontWeight="semibold"
-            color="gray"
-          >
-            {`Liquidity: `}
-            <Text
-              as="strong"
-              scale="tiny-uppercase"
-              fontWeight="semibold"
-              color="lighter-gray"
-            >
-              {`${roundNumber(liquidity, 3)} ${ticker}`}
-            </Text>
-          </Text>
-        ) : null}
+      <MarketFooterStats market={market} ticker={ticker} />
+      <div className="pm-c-market-footer__group--row">
+        <MarketFooterActions market={market} />
+        <MarketFooterTags market={market} />
       </div>
     </div>
   );

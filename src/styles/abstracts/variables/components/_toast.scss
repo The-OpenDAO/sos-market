@@ -1,0 +1,16 @@
+$toast-themes: (
+  light: (
+    background-color: #f8faff,
+    border-color: #e0e2e7,
+    shadow: $card-shadow-light,
+    text-color: #c5cad3
+  ),
+  dark: (
+    background-color: #0e1016,
+    border-color: #252c3b,
+    shadow: $card-shadow-dark,
+    text-color: #637084
+  )
+) !default;
+
+$toast-transitions: all 0.2s ease-in-out 0s !default;

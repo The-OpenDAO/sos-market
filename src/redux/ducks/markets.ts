@@ -1,13 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import orderBy from 'lodash/orderBy';
+import uniqBy from 'lodash/uniqBy';
 import { Category } from 'models/category';
 import { Market } from 'models/market';
 import * as marketService from 'services/Polkamarkets/market';
 
+import { MarketState } from '../../services/Polkamarkets/market';
+
 export interface MarketsIntialState {
   markets: Market[];
-  isLoading: boolean;
-  error: any;
+  isLoading: {
+    open: boolean;
+    closed: boolean;
+    resolved: boolean;
+    favorites: boolean;
+  };
+  error: {
+    open: any;
+    closed: any;
+    resolved: any;
+    favorites: any;
+  };
   filter: string;
   sorter: {
     value: string;
@@ -17,8 +30,18 @@ export interface MarketsIntialState {
 
 const initialState: MarketsIntialState = {
   markets: [],
-  isLoading: false,
-  error: null,
+  isLoading: {
+    open: false,
+    closed: false,
+    resolved: false,
+    favorites: false
+  },
+  error: {
+    open: null,
+    closed: null,
+    resolved: null,
+    favorites: null
+  },
   filter: '',
   sorter: {
     value: 'featured',
@@ -30,21 +53,41 @@ const marketsSlice = createSlice({
   name: 'markets',
   initialState,
   reducers: {
-    request: state => ({
+    request: (state, action) => ({
       ...state,
-      isLoading: true
+      isLoading: {
+        ...state.isLoading,
+        [action.payload]: true
+      }
     }),
-    success: (state, action: PayloadAction<Market[]>) => ({
+    success: (
+      state,
+      action: PayloadAction<{ type: MarketState | string; data: Market[] }>
+    ) => ({
       ...state,
-      markets: action.payload,
-      isLoading: false,
-      error: null
+      markets: uniqBy([...state.markets, ...action.payload.data], 'id'),
+      isLoading: {
+        ...state.isLoading,
+        [action.payload.type]: false
+      },
+      error: {
+        ...state.error,
+        [action.payload.type]: null
+      }
     }),
     error: (state, action) => ({
       ...state,
       markets: [],
-      isLoading: false,
-      error: action.payload
+      isLoading: {
+        open: false,
+        closed: false,
+        resolved: false,
+        favorites: false
+      },
+      error: {
+        ...state.error,
+        [action.payload.type]: action.payload.error
+      }
     }),
     setFilter: (state, action: PayloadAction<string>) => ({
       ...state,
@@ -122,15 +165,28 @@ export const filteredMarketsSelector = (
   return sorted(filteredMarkets);
 };
 
-export function getMarkets() {
+export function getMarkets(marketState: MarketState) {
   return async dispatch => {
-    dispatch(request());
+    dispatch(request(marketState));
     try {
-      const response = await marketService.getMarkets();
+      const response = await marketService.getMarkets({ state: marketState });
       const { data } = response;
-      dispatch(success(data));
+      dispatch(success({ type: marketState, data }));
     } catch (err) {
-      dispatch(error(err));
+      dispatch(error({ type: marketState, error: err }));
+    }
+  };
+}
+
+export function getFavoriteMarkets(ids: string[]) {
+  return async dispatch => {
+    dispatch(request('favorites'));
+    try {
+      const response = await marketService.getMarketsByIds(ids);
+      const { data } = response;
+      dispatch(success({ type: 'favorites', data }));
+    } catch (err) {
+      dispatch(error({ type: 'favorites', error: err }));
     }
   };
 }

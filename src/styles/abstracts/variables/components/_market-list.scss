@@ -1,0 +1,12 @@
+$market-list-themes: (
+  light: (
+    state-info-border-color: #e3e7f0,
+    state-info-description-text-color: #171b23
+  ),
+  dark: (
+    state-info-border-color: #252c3b,
+    state-info-description-text-color: #f9fafb
+  )
+) !default;
+
+$market-list-transitions: all 0.2s ease-in-out !default;

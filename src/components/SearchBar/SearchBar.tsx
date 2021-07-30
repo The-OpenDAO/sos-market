@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 
 import { SearchIcon } from 'assets/icons';
 
@@ -23,35 +23,37 @@ type SearchBarProps = {
 function SearchBar({ name, placeholder, onSearch }: SearchBarProps) {
   const [searchText, setSearchText] = useState('');
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const { value } = event.currentTarget;
 
     setSearchText(value);
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     onSearch(searchText);
   }
 
   return (
-    <form className="searchbar" onSubmit={handleSubmit}>
+    <form className="pm-c-searchbar" onSubmit={handleSubmit}>
       <input
         type="text"
-        className="searchbar__input"
+        className="pm-c-searchbar__input"
         id={name}
         name={name}
         placeholder={placeholder}
         onChange={handleChange}
       />
-      <button className="searchbar__icon" type="submit" aria-label="Search">
+      <button
+        className="pm-c-searchbar__icon"
+        type="submit"
+        aria-label="Search"
+      >
         <SearchIcon />
       </button>
     </form>
   );
 }
-
-SearchBar.displayName = 'SearchBar';
 
 export default SearchBar;

@@ -1,4 +1,4 @@
-import Alert from '../Alert';
+import { Alert } from '../Alert';
 import Link from '../Link';
 
 function ReportFormInfo() {

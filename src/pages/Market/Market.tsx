@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { getMarket, setChartViewType } from 'redux/ducks/market';
 import { reset } from 'redux/ducks/trade';
-import { openReportForm, openTradeForm } from 'redux/ducks/ui';
+import { openTradeForm } from 'redux/ducks/ui';
 
-import { Tabs, Table, Text, ButtonGroup } from 'components';
+import { Tabs, Table, Text } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
@@ -27,22 +27,14 @@ const Market = () => {
   const { symbol, ticker } = useCurrency();
   const { marketId } = useParams<Params>();
   const { market, isLoading } = useAppSelector(state => state.market);
-  const marketState = useAppSelector(state => state.market.market.state);
   const actions = useAppSelector(state => state.bepro.actions);
 
   useEffect(() => {
     dispatch(reset());
     dispatch(getMarket(marketId));
     dispatch(setChartViewType('marketOverview'));
+    dispatch(openTradeForm());
   }, [dispatch, marketId]);
-
-  useEffect(() => {
-    if (marketState !== 'open') {
-      dispatch(openReportForm());
-    } else {
-      dispatch(openTradeForm());
-    }
-  }, [dispatch, marketState]);
 
   if (!market || market.id === '' || isLoading)
     return (
@@ -94,7 +86,12 @@ const Market = () => {
       </Text>
       <Tabs defaultActiveId="positions">
         <Tabs.TabPane tab="Positions" id="positions">
-          <Table columns={tableItems.columns} rows={tableItems.rows} />
+          <Table
+            columns={tableItems.columns}
+            rows={tableItems.rows}
+            isLoadingData={isLoading}
+            emptyDataDescription="You have no positions."
+          />
         </Tabs.TabPane>
         {/* market.description ? (
           <Tabs.TabPane tab="About market" id="about">
@@ -104,7 +101,12 @@ const Market = () => {
           </Tabs.TabPane>
         ) : null */}
         <Tabs.TabPane tab="News" id="news">
-          <Text as="p" scale="body" fontWeight="medium" color="light">
+          <Text
+            as="p"
+            scale="body"
+            fontWeight="medium"
+            className="market-page__news"
+          >
             Coming Soon 🔥
           </Text>
         </Tabs.TabPane>

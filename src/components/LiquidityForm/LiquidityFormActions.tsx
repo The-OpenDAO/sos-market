@@ -8,7 +8,7 @@ import { BeproService, PolkamarketsApiService } from 'services';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useToastNotification from 'hooks/useToastNotification';
 
-import { Button, ButtonText } from '../Button';
+import { Button } from '../Button';
 import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 
@@ -23,9 +23,8 @@ function LiquidityFormActions() {
   const maxAmount = useAppSelector(state => state.liquidity.maxAmount);
 
   const [transactionSuccess, setTransactionSuccess] = useState(false);
-  const [transactionSuccessHash, setTransactionSuccessHash] = useState(
-    undefined
-  );
+  const [transactionSuccessHash, setTransactionSuccessHash] =
+    useState(undefined);
 
   // terms currently disabled
   const acceptedTerms = true;
@@ -111,15 +110,14 @@ function LiquidityFormActions() {
 
   return (
     <div className="pm-c-liquidity-form__actions">
-      <Button variant="dark" color="default" size="lg" onClick={handleCancel}>
+      <Button variant="subtle" color="default" onClick={handleCancel}>
         Cancel
       </Button>
 
       {transactionType === 'add' ? (
         <Button
-          size="lg"
           color="primary"
-          fullWidth
+          fullwidth
           onClick={handleAddliquidity}
           disabled={!isValidAmount || !acceptedTerms || isLoading}
           loading={isLoading}
@@ -130,9 +128,8 @@ function LiquidityFormActions() {
 
       {transactionType === 'remove' ? (
         <Button
-          size="lg"
           color="primary"
-          fullWidth
+          fullwidth
           onClick={handleRemoveLiquidity}
           disabled={!isValidAmount || !acceptedTerms || isLoading}
           loading={isLoading}
@@ -154,11 +151,17 @@ function LiquidityFormActions() {
                 href={`https://kovan.etherscan.io/tx/${transactionSuccessHash}`}
                 rel="noreferrer"
               >
-                <Button color="success">View on Explorer</Button>
+                <Button size="sm" color="success">
+                  View on Explorer
+                </Button>
               </a>
-              <ButtonText color="white" onClick={() => close(transactionType)}>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => close(transactionType)}
+              >
                 Dismiss
-              </ButtonText>
+              </Button>
             </Toast.Actions>
           </Toast>
         </ToastNotification>

@@ -104,12 +104,12 @@ function TradeFormInput() {
   }
 
   return (
-    <form className="pm-c-trade-form-input">
-      <div className="pm-c-trade-form-input__header">
-        <label className="pm-c-trade-form-input__header-label" htmlFor={label}>
+    <form className="pm-c-amount-input">
+      <div className="pm-c-amount-input__header">
+        <label className="pm-c-amount-input__header-title" htmlFor={label}>
           {label}
         </label>
-        <div className="pm-c-trade-form-input__header-wallet">
+        <div className="pm-c-amount-input__header-wallet">
           <figure aria-label="Wallet icon">
             <WalletIcon />
           </figure>
@@ -121,9 +121,9 @@ function TradeFormInput() {
           </Text>
         </div>
       </div>
-      <div className="pm-c-trade-form-input__group">
+      <div className="pm-c-amount-input__group">
         <input
-          className="pm-c-trade-form-input__input"
+          className="pm-c-amount-input__input"
           type="number"
           id={label}
           value={amount}
@@ -134,14 +134,14 @@ function TradeFormInput() {
           onChange={event => handleChangeAmount(event)}
           onWheel={event => event.currentTarget.blur()}
         />
-        <div className="pm-c-trade-form-input__actions">
+        <div className="pm-c-amount-input__actions">
           <button type="button" onClick={handleSetMaxAmount}>
             <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
               Max
             </Text>
           </button>
           {type === 'buy' ? (
-            <div className="pm-c-trade-form-input__logo">
+            <div className="pm-c-amount-input__logo">
               <figure aria-label={name}>{icon}</figure>
               <Text as="span" scale="caption" fontWeight="bold">
                 {ticker}
@@ -149,7 +149,7 @@ function TradeFormInput() {
             </div>
           ) : null}
           {type === 'sell' ? (
-            <div className="pm-c-trade-form-input__logo">
+            <div className="pm-c-amount-input__logo">
               <Text as="span" scale="caption" fontWeight="bold">
                 Shares
               </Text>

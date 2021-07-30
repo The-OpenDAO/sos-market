@@ -1,0 +1,11 @@
+@mixin alert-inline-subtle-color($background-color, $text-color) {
+  background-color: $background-color;
+
+  > svg {
+    fill: $text-color;
+  }
+
+  .pm-c-alert-inline__description {
+    color: $text-color;
+  }
+}

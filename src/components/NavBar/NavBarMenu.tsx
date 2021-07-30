@@ -4,7 +4,7 @@ import Menu from '../Menu';
 
 function NavBarMenu() {
   return (
-    <div className="pm-c-navbar__menu">
+    <div className="pm-l-navbar__menu">
       <Menu>
         <Menu.Item key="howitworks">
           <Link
@@ -18,7 +18,5 @@ function NavBarMenu() {
     </div>
   );
 }
-
-NavBarMenu.displayName = 'NavBarMenu';
 
 export default NavBarMenu;
