@@ -1,0 +1,23 @@
+$ribbon-padding: 0.2rem 1.2rem 0.2rem 1.2rem !default;
+$ribbon-margin-right: -1.6rem !default;
+
+$ribbon-themes: (
+  light: (
+    background-colors: (
+      pink: #ff83b0,
+      blue: #6ab7ff,
+      purple: #9f7eff
+    ),
+    text-color: #0e1016,
+    details-color: #0e1016
+  ),
+  dark: (
+    background-colors: (
+      pink: #ff83b0,
+      blue: #6ab7ff,
+      purple: #9f7eff
+    ),
+    text-color: #0e1016,
+    details-color: #0e1016
+  )
+) !default;

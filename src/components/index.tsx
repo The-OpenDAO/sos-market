@@ -45,6 +45,7 @@ import PortfolioMarketTable from './PortfolioMarketTable';
 import PredictionCard from './PredictionCard';
 import ProgressBar from './ProgressBar';
 import ReportForm from './ReportForm';
+import Ribbon from './Ribbon';
 import RightSidebar from './RightSidebar';
 import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
@@ -116,6 +117,7 @@ export {
   SelectInput,
   Sidebar,
   ReportForm,
+  Ribbon,
   RightSidebar,
   StepSlider,
   Table,
