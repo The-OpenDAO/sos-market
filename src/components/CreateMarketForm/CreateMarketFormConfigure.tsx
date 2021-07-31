@@ -41,7 +41,7 @@ function CreateMarketFormConfigure() {
         style={{ gridTemplateColumns: '1fr' }}
       >
         <OutcomeInput
-          badgeColor="blue"
+          badgeColor="purple"
           name="secondOutcome.name"
           placeholder="Outcome..."
         />
