@@ -84,13 +84,12 @@ function CreateMarketFormConfigure() {
               value: 'other'
             }
           ]}
+          style={{ height: '100%' }}
         />
-        <SelectInput
+        <Input
           label="Subcategory"
           name="subcategory"
-          placeholder="Select Subcategory"
-          options={[]}
-          disabled
+          placeholder="Subcategory"
         />
       </div>
       <DateInput label="Closing Date - UTC" name="closingDate" />
