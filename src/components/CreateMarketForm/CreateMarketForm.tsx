@@ -8,7 +8,7 @@ import CreateMarketFormFund from './CreateMarketFormFund';
 
 type Outcome = {
   name: string;
-  probability: number;
+  // probability: number;
 };
 
 export type CreateMarketFormData = {
@@ -28,12 +28,12 @@ export type CreateMarketFormData = {
 const initialData: CreateMarketFormData = {
   question: '',
   firstOutcome: {
-    name: '',
-    probability: 50
+    name: ''
+    // probability: 50
   },
   secondOutcome: {
-    name: '',
-    probability: 50
+    name: ''
+    // probability: 50
   },
   thumbnail: {
     file: undefined,
@@ -48,24 +48,24 @@ const initialData: CreateMarketFormData = {
 const validationSchema = Yup.object().shape({
   question: Yup.string().required('Market Question is required!'),
   firstOutcome: Yup.object().shape({
-    name: Yup.string().required('Outcome name is required!'),
-    probability: Yup.number()
-      .min(0, 'The probability of the Outcome must be greater or equal than 0!')
-      .max(
-        100,
-        'The probability of the Outcome must be less or equal than 100!'
-      )
-      .required('Outcome probability is required!')
+    name: Yup.string().required('Outcome name is required!')
+    // probability: Yup.number()
+    //   .min(0, 'The probability of the Outcome must be greater or equal than 0!')
+    //   .max(
+    //     100,
+    //     'The probability of the Outcome must be less or equal than 100!'
+    //   )
+    //   .required('Outcome probability is required!')
   }),
   secondOutcome: Yup.object().shape({
-    name: Yup.string().required('Outcome name is required!'),
-    probability: Yup.number()
-      .min(0, 'The probability of the Outcome must be greater or equal than 0!')
-      .max(
-        100,
-        'The probability of the Outcome must be less or equal than 100!'
-      )
-      .required('Outcome probability is required!')
+    name: Yup.string().required('Outcome name is required!')
+    // probability: Yup.number()
+    //   .min(0, 'The probability of the Outcome must be greater or equal than 0!')
+    //   .max(
+    //     100,
+    //     'The probability of the Outcome must be less or equal than 100!'
+    //   )
+    //   .required('Outcome probability is required!')
   }),
   category: Yup.string().required('Category is required!'),
   subcategory: Yup.string(),
