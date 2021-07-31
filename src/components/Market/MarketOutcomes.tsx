@@ -4,11 +4,7 @@ import classNames from 'classnames';
 import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 import { Market, Outcome } from 'models/market';
 import { marketSelected } from 'redux/ducks/market';
-import {
-  selectOutcome,
-  changeChartsVisibility,
-  changePredictionsVisibility
-} from 'redux/ducks/trade';
+import { selectOutcome } from 'redux/ducks/trade';
 import { closeTradeForm, openReportForm, openTradeForm } from 'redux/ducks/ui';
 
 import {
@@ -75,8 +71,6 @@ function MarketOutcomesItem({ market, outcome }: MarketOutcomesItemProps) {
       dispatch(openTradeForm());
     }
     dispatch(marketSelected(market));
-    dispatch(changePredictionsVisibility(false));
-    dispatch(changeChartsVisibility(true));
 
     if (!isCurrentSelectedPrediction) {
       dispatch(selectOutcome(market.id, outcome.id));
