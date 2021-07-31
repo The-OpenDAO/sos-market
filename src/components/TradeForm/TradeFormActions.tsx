@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { changeOutcomePrice } from 'redux/ducks/market';
@@ -16,8 +16,9 @@ import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 
 function TradeFormActions() {
+  const location = useLocation();
   const dispatch = useAppDispatch();
-  const showCharts = useAppSelector(state => state.trade.showCharts);
+
   const type = useAppSelector(state => state.trade.type);
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
   const marketState = useAppSelector(state => state.market.market.state);
@@ -30,6 +31,8 @@ function TradeFormActions() {
     state => state.trade.acceptOddChanges
   );
   const ethAddress = useAppSelector(state => state.bepro.ethAddress);
+
+  const isMarketPage = location.pathname === `/markets/${marketSlug}`;
 
   const [transactionSuccess, setTransactionSuccess] = useState(false);
   const [transactionSuccessHash, setTransactionSuccessHash] =
@@ -148,7 +151,7 @@ function TradeFormActions() {
 
   return (
     <div className="pm-c-trade-form-actions">
-      {showCharts ? (
+      {!isMarketPage ? (
         <Button variant="subtle" color="default" onClick={handleCancel}>
           Cancel
         </Button>

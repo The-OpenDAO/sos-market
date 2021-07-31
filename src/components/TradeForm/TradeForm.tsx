@@ -1,28 +1,29 @@
 import { useEffect } from 'react';
 
-import { changePredictionsVisibility, selectOutcome } from 'redux/ducks/trade';
+import { selectOutcome } from 'redux/ducks/trade';
 import { openReportForm } from 'redux/ducks/ui';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-import { AlertMini } from '../Alert';
 import TradeFormActions from './TradeFormActions';
 import TradeFormCharts from './TradeFormCharts';
 import TradeFormDetails from './TradeFormDetails';
 import TradeFormInput from './TradeFormInput';
 import TradeFormLiquidity from './TradeFormLiquidity';
 import TradeFormPredictions from './TradeFormPredictions';
-import TradeFormTerms from './TradeFormTerms';
 import TradeFormTypeSelector from './TradeFormTypeSelector';
 
 function TradeForm() {
   const dispatch = useAppDispatch();
-  const { isLoading } = useAppSelector(state => state.market);
+
   const { id, outcomes } = useAppSelector(state => state.market.market);
   const marketState = useAppSelector(state => state.market.market.state);
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId
   );
+  const isLoadingMarket = useAppSelector(state => state.market.isLoading);
+
+  const isCurrentSelectedMarket = id && id === selectedMarketId;
 
   useEffect(() => {
     if (marketState === 'closed') {
@@ -31,47 +32,28 @@ function TradeForm() {
   }, [dispatch, marketState]);
 
   useEffect(() => {
-    if (id !== '' && id !== selectedMarketId) {
-      dispatch(changePredictionsVisibility(true));
+    if (!isCurrentSelectedMarket) {
       dispatch(selectOutcome(id, outcomes[0].id));
     }
-  }, [dispatch, id, outcomes, selectedMarketId]);
+  }, [isCurrentSelectedMarket, dispatch, id, outcomes]);
 
-  if (isLoading) return null;
+  if (isLoadingMarket) return null;
 
   return (
     <div className="pm-c-trade-form">
       <div className="pm-c-trade-form__group" style={{ gap: '1.6rem' }}>
-        {marketState !== 'open' ? (
-          <AlertMini
-            variant="warning"
-            description="This market is closed. If you have any winnings to claim please check
-      your portfolio"
-          />
-        ) : null}
         <TradeFormCharts />
-        {marketState === 'open' ? (
-          <>
-            <TradeFormPredictions />
-            <TradeFormLiquidity />
-          </>
-        ) : null}
+        <TradeFormPredictions />
+        <TradeFormLiquidity />
       </div>
       <div className="pm-c-trade-form__group" style={{ gap: '2.4rem' }}>
-        {marketState === 'open' ? (
-          <>
-            <TradeFormTypeSelector />
-            <TradeFormInput />
-            <TradeFormDetails />
-            {/* <TradeFormTerms /> */}
-          </>
-        ) : null}
+        <TradeFormTypeSelector />
+        <TradeFormInput />
+        <TradeFormDetails />
         <TradeFormActions />
       </div>
     </div>
   );
 }
-
-TradeForm.displayName = 'TradeForm';
 
 export default TradeForm;

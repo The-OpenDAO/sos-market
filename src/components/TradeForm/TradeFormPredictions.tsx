@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import classNames from 'classnames';
 import { roundNumber } from 'helpers/math';
-import { changePredictionsVisibility, selectOutcome } from 'redux/ducks/trade';
+import { selectOutcome } from 'redux/ducks/trade';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
@@ -16,7 +15,6 @@ function TradeFormPredictions() {
   const dispatch = useAppDispatch();
   const { symbol } = useCurrency();
 
-  const showPredictions = useAppSelector(state => state.trade.showPredictions);
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId
   );
@@ -24,17 +22,12 @@ function TradeFormPredictions() {
     state => state.trade.selectedOutcomeId
   );
   const outcomes = useAppSelector(state => state.market.market.outcomes);
+  const marketSlug = useAppSelector(state => state.market.market.slug);
   const portfolio = useAppSelector(state => state.bepro.portfolio);
 
-  useEffect(() => {
-    if (location.pathname === '/home') {
-      dispatch(changePredictionsVisibility(false));
-    } else {
-      dispatch(changePredictionsVisibility(true));
-    }
-  }, [showPredictions, location, dispatch]);
+  const isMarketPage = location.pathname === `/markets/${marketSlug}`;
 
-  if (!showPredictions) return null;
+  if (!isMarketPage) return null;
 
   function handleChangeSelectedPrediction(id: string | number) {
     dispatch(selectOutcome(selectedMarketId, id));
