@@ -1,18 +1,22 @@
 import { useHistory } from 'react-router-dom';
 
+import { closeRightSidebar } from 'redux/ducks/ui';
+
 import { MoonIcon, SettingsIcon, SunIcon } from 'assets/icons';
 
-import { useTheme } from 'hooks';
+import { useAppDispatch, useTheme } from 'hooks';
 
 import { Button } from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
 function NavBarDropdownMenu() {
   const { theme, setTheme } = useTheme();
+  const dispatch = useAppDispatch();
   const history = useHistory();
 
   function handleCreateMarket() {
-    history.push('market/create');
+    dispatch(closeRightSidebar());
+    history.push('/market/create');
   }
 
   return (
