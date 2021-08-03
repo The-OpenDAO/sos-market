@@ -30,7 +30,7 @@ import LineChart from './LineChart';
 import Link from './Link';
 import LiquidityForm from './LiquidityForm';
 import Market from './Market';
-import MarketList from './MarketList';
+import { MarketList, MarketListAsync } from './MarketList';
 import MarketSelect from './MarketSelect';
 import Menu from './Menu';
 import MiniAreaChart from './MiniAreaChart';
@@ -94,6 +94,7 @@ export {
   LineChart,
   Market,
   MarketList,
+  MarketListAsync,
   MarketSelect,
   Menu,
   MiniAreaChart,

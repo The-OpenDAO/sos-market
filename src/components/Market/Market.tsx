@@ -3,7 +3,7 @@ import { Market as MarketInterface } from 'models/market';
 import Breadcrumb from '../Breadcrumb';
 import Text from '../Text';
 import MarketFooter from './MarketFooter';
-import MarketOptions from './MarketOptions';
+import MarketOutcomes from './MarketOutcomes';
 
 type MarketCardProps = {
   market: MarketInterface;
@@ -29,9 +29,7 @@ function Market({ market }: MarketCardProps) {
   );
 }
 
-Market.displayName = 'Market';
-
-Market.Options = MarketOptions;
+Market.Outcomes = MarketOutcomes;
 Market.Footer = MarketFooter;
 
 export default Market;

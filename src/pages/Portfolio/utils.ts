@@ -189,7 +189,7 @@ function formatLiquidityPositions(portfolio: Object, markets: Market[]) {
       const shares = portfolio[market.id]?.liquidity?.shares;
       const buyPrice = portfolio[market.id]?.liquidity?.price;
       const poolShare = shares / market.liquidity;
-      const feesEarned = 'In Progress';
+      const feesEarned = portfolio[market.id]?.claimStatus.liquidityFees;
       let result = { type: 'pending' };
       const value = {
         value: shares * market.liquidityPrice,
@@ -264,7 +264,7 @@ function formatPortfolioAnalytics(portfolio: Portfolio, ticker: string) {
     },
     {
       title: 'Liquidity earnings',
-      value: 'In Progress',
+      value: `${roundNumber(portfolio.liquidityFeesEarned, 3)} ${ticker}`,
       change: {
         type: 'up',
         amount: 2.58

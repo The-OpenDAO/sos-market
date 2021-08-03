@@ -34,10 +34,12 @@ export interface Market {
   shares: number;
   liquidity: number;
   liquidityPrice: number;
+  createdAt: string;
   expiresAt: string;
   state: string;
   resolvedOutcomeId: number;
   oracleSource: string;
   outcomes: Outcome[];
   tradingViewSymbol: any;
+  fee: number;
 }

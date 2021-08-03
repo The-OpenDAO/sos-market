@@ -36,7 +36,7 @@ function PredictionCard({ market }: PredictionCardProps) {
         <Link to={`/markets/${slug}`} onClick={handleNavigation}>
           <Market market={market} />
         </Link>
-        <Market.Options market={market} />
+        <Market.Outcomes market={market} />
       </div>
       <div className="prediction-card__footer">
         <Market.Footer market={market} ticker={ticker} />
