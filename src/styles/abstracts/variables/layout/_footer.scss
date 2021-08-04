@@ -3,9 +3,17 @@ $footer-padding-x: 2.4rem !default;
 
 $footer-themes: (
   light: (
-    credits-text-color: #b6bdc8
+    credits-text-color: #b6bdc8,
+    text-colors: (
+      primary: #313a4c,
+      secondary: #8193ae
+    )
   ),
   dark: (
-    credits-text-color: #637084
+    credits-text-color: #637084,
+    text-colors: (
+      primary: #f9fafb,
+      secondary: #637084
+    )
   )
 ) !default;
