@@ -10,10 +10,11 @@ import { BadgeColor } from '../Badge';
 import Outcome from '../Outcome';
 
 function ReportFormOutcomeSelect() {
-  const { outcomes, resolvedOutcomeId } = useAppSelector(
+  const { outcomes, resolvedOutcomeId, questionId } = useAppSelector(
     state => state.market.market
   );
-  const { questionId } = useAppSelector(state => state.market.market);
+  const marketId = useAppSelector(state => state.market.market.id);
+  const { portfolio, ethAddress } = useAppSelector(state => state.bepro);
   const [field, meta, helpers] = useField('outcome');
   const [bonds, setBonds] = useState({});
 
@@ -26,16 +27,20 @@ function ReportFormOutcomeSelect() {
 
   // TODO: get data from api
   async function getOutcomesBonds() {
-    const beproService = new BeproService();
-    // await beproService.login();
+    if (!ethAddress) return;
 
-    const response = await beproService.getQuestionBonds(questionId);
+    const beproService = new BeproService();
+    const response = await beproService.getQuestionBonds(
+      questionId,
+      ethAddress
+    );
+
     setBonds(response);
   }
 
   useEffect(() => {
     getOutcomesBonds();
-  }, []);
+  }, [ethAddress]);
 
   return (
     <div className="pm-c-report-form-outcome-select">
@@ -44,7 +49,7 @@ function ReportFormOutcomeSelect() {
           key={outcome.id}
           id={`${outcome.id}`}
           title={outcome.title}
-          shares={outcome.shares}
+          shares={portfolio[marketId]?.outcomes[outcome.id]?.shares || 0}
           bond={bonds[outcome.id] || 0}
           color={getOutcomeColor(outcome)}
           state={
