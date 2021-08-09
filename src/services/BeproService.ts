@@ -248,4 +248,24 @@ export default class BeproService {
 
     return bonds;
   }
+
+  public async placeBond(
+    questionId: string,
+    outcomeId: string | number,
+    amount: number
+  ) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    // translating outcome id to answerId
+    const answerId = realitioLib.answerToBytes32(outcomeId, { type: 'int' });
+
+    const response = await this.contracts.realitio.submitAnswerERC20({
+      questionId,
+      answerId,
+      amount
+    });
+
+    return response;
+  }
 }

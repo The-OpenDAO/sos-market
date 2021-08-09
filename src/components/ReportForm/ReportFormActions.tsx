@@ -1,12 +1,17 @@
 import { useField, useFormikContext } from 'formik';
 import { closeReportForm } from 'redux/ducks/ui';
+import { BeproService, PolkamarketsApiService } from 'services';
 
-import { useAppDispatch } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 import { Button } from '../Button';
 
 function ReportFormActions() {
   const dispatch = useAppDispatch();
+
+  const { questionId } = useAppSelector(
+    state => state.market.market
+  );
 
   const [outcome] = useField('outcome');
   const [bond] = useField('bond');
@@ -14,6 +19,19 @@ function ReportFormActions() {
 
   function handleCancel() {
     dispatch(closeReportForm());
+  }
+
+  async function handleBond() {
+    const beproService = new BeproService();
+
+    try {
+      // performing buy action on smart contract
+      const response = await beproService.placeBond(questionId, outcome.value, bond.value);
+
+      const { status, transactionHash } = response;
+    } catch (error) {
+      // TODO:
+    }
   }
 
   return (
@@ -25,6 +43,7 @@ function ReportFormActions() {
         type="submit"
         color="primary"
         fullwidth
+        onClick={handleBond}
         disabled={!outcome.value || !bond.value || bond.value === 0}
         loading={isSubmitting}
       >
