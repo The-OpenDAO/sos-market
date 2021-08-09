@@ -44,6 +44,10 @@ type OutcomeProps = {
    */
   shares?: number;
   /**
+   * Bond value
+   */
+  bond?: number;
+  /**
    * Currency ticker
    */
   ticker?: string;
@@ -70,11 +74,10 @@ function Outcome({
   progress,
   state = 'default',
   resolvedOutcomeId,
+  bond = 0,
   onSelect
 }: OutcomeProps) {
   const [field] = useField('bond');
-
-  const bond = state === 'selected' ? field.value : 0;
   const isWinningOutcome = resolvedOutcomeId.toString() === id;
 
   const miniTableRows = useMemo(() => {

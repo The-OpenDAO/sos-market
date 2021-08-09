@@ -1,3 +1,4 @@
+import * as realitioLib from '@reality.eth/reality-eth-lib/formatters/question';
 import * as beprojs from 'bepro-js';
 
 export default class BeproService {
@@ -69,6 +70,23 @@ export default class BeproService {
 
     return this.loggedIn;
   }
+
+  public async getAddress(): Promise<string> {
+    if (this.address) return this.address;
+
+    return this.bepro.getAddress() || '';
+  }
+
+  public async getBalance(): Promise<number> {
+    if (!this.address) return 0;
+
+    // returns user balance in ETH
+    const balance = await this.bepro.getETHBalance();
+
+    return parseFloat(balance) || 0;
+  }
+
+  // PredictionMarket contract functions
 
   public async buy(
     marketId: string | number,
@@ -159,34 +177,6 @@ export default class BeproService {
     return response;
   }
 
-  public async getAddress(): Promise<string> {
-    if (this.address) return this.address;
-
-    return this.bepro.getAddress() || '';
-  }
-
-  public async getBalance(): Promise<number> {
-    if (!this.address) return 0;
-
-    // returns user balance in ETH
-    const balance = await this.bepro.getETHBalance();
-
-    return parseFloat(balance) || 0;
-  }
-
-  public async getERC20Balance(): Promise<number> {
-    if (!this.address) return 0;
-
-    // ensuring erc20 contract is initialized
-    // eslint-disable-next-line no-underscore-dangle
-    await this.contracts.erc20.__init__();
-
-    // returns user balance in ETH
-    const balance = await this.contracts.erc20.getTokenAmount(this.address);
-
-    return parseFloat(balance) || 0;
-  }
-
   public async getPortfolio(): Promise<Object> {
     // ensuring user has wallet connected
     if (!this.address) return {};
@@ -205,6 +195,21 @@ export default class BeproService {
     return response;
   }
 
+  // ERC20 contract functions
+
+  public async getERC20Balance(): Promise<number> {
+    if (!this.address) return 0;
+
+    // TODO improve this: ensuring erc20 contract is initialized
+    // eslint-disable-next-line no-underscore-dangle
+    await this.contracts.erc20.__init__();
+
+    // returns user balance in ETH
+    const balance = await this.contracts.erc20.getTokenAmount(this.address);
+
+    return parseFloat(balance) || 0;
+  }
+
   public async approveERC20(address: string, amount: number): Promise<any[]> {
     // ensuring user has wallet connected
     await this.login();
@@ -219,5 +224,28 @@ export default class BeproService {
     });
 
     return response;
+  }
+
+  // Realitio contract functions
+
+  public async getQuestionBonds(
+    questionId: string,
+    user: string | null = null
+  ) {
+    const bonds = await this.contracts.realitio.getQuestionBondsByAnswer({
+      questionId,
+      user
+    });
+
+    // mapping answer ids to outcome ids
+    Object.keys(bonds).forEach(answerId => {
+      const outcomeId = Number(
+        realitioLib.bytes32ToString(answerId, { type: 'int' })
+      );
+      bonds[outcomeId] = bonds[answerId];
+      delete bonds[answerId];
+    });
+
+    return bonds;
   }
 }
