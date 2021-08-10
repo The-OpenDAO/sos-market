@@ -1,4 +1,5 @@
 import { useField, useFormikContext } from 'formik';
+import isUndefined from 'lodash/isUndefined';
 import { closeReportForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
@@ -9,7 +10,7 @@ import { Button } from '../Button';
 function ReportFormActions() {
   const dispatch = useAppDispatch();
 
-  const { questionId } = useAppSelector(
+  const { questionId, minimumBond } = useAppSelector(
     state => state.market.market
   );
 
@@ -26,7 +27,11 @@ function ReportFormActions() {
 
     try {
       // performing buy action on smart contract
-      const response = await beproService.placeBond(questionId, outcome.value, bond.value);
+      const response = await beproService.placeBond(
+        questionId,
+        outcome.value,
+        bond.value
+      );
 
       const { status, transactionHash } = response;
     } catch (error) {
@@ -44,7 +49,13 @@ function ReportFormActions() {
         color="primary"
         fullwidth
         onClick={handleBond}
-        disabled={!outcome.value || !bond.value || bond.value === 0}
+        disabled={
+          !outcome.value ||
+          !bond.value ||
+          bond.value === 0 ||
+          isUndefined(minimumBond) ||
+          bond.value < minimumBond
+        }
         loading={isSubmitting}
       >
         Bond

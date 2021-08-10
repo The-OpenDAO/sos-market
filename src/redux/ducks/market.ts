@@ -60,7 +60,8 @@ const initialState: MarketInitialState = {
       }
     ],
     tradingViewSymbol: null,
-    fee: 0
+    fee: 0,
+    minimumBond: 0
   },
   chartViews: chartViewsEnum,
   chartViewType: 'marketOverview',
@@ -135,6 +136,13 @@ const marketSlice = createSlice({
             : outcome
         )
       }
+    }),
+    changeMinimumBond: (state, action) => ({
+      ...state,
+      market: {
+        ...state.market,
+        minimumBond: action.payload
+      }
     })
   }
 });
@@ -148,10 +156,17 @@ const {
   marketSelected,
   clearMarket,
   changeOutcomePrice,
+  changeMinimumBond,
   setChartViewType
 } = marketSlice.actions;
 
-export { marketSelected, clearMarket, changeOutcomePrice, setChartViewType };
+export {
+  marketSelected,
+  clearMarket,
+  changeOutcomePrice,
+  changeMinimumBond,
+  setChartViewType
+};
 
 export function getMarket(marketSlug: string) {
   return async dispatch => {

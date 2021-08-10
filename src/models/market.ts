@@ -43,4 +43,5 @@ export interface Market {
   outcomes: Outcome[];
   tradingViewSymbol: any;
   fee: number;
+  minimumBond: number;
 }
