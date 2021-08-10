@@ -1,28 +1,36 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { MetaMaskIconSmall } from 'assets/icons';
 
 import { Button } from '../Button';
 
-type WalletInfoProps = {
+type Wallet = {
+  id: string;
   balance: number;
-  currencyIcon: React.ReactNode;
+  currencyIcon: ReactNode;
+};
+
+type WalletInfoProps = {
+  wallets: Wallet[];
   address: string;
 };
 
-function WalletInfo({ balance, currencyIcon, address }: WalletInfoProps) {
+function WalletInfo({ wallets, address }: WalletInfoProps) {
   return (
     <div className="pm-c-wallet-info">
-      <Button
-        variant="outline"
-        color="default"
-        size="sm"
-        noHover
-        aria-label="Balance"
-      >
-        {balance.toFixed(4)}
-        {currencyIcon}
-      </Button>
+      {wallets.map(wallet => (
+        <Button
+          key={wallet.id}
+          variant="outline"
+          color="default"
+          size="sm"
+          noHover
+          aria-label="ETH Balance"
+        >
+          {wallet.balance.toFixed(4)}
+          {wallet.currencyIcon}
+        </Button>
+      ))}
       <a
         target="_blank"
         href={`https://kovan.etherscan.io/address/${address}`}
