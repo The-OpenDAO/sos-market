@@ -3,11 +3,14 @@ import { useEffect } from 'react';
 import { login } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { MetaMaskIconSmall } from 'assets/icons';
+import {
+  EthereumIcon,
+  MetaMaskIconSmall,
+  PolkamarketsIconSmall
+} from 'assets/icons';
 
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
-import useCurrency from 'hooks/useCurrency';
 import useNetwork, { defaultNetwork } from 'hooks/useNetwork';
 
 import { AlertInline } from '../Alert';
@@ -18,15 +21,15 @@ import WalletInfo from '../WalletInfo';
 
 function NavBarActions() {
   const { show } = useAlertNotification();
-  const { icon } = useCurrency();
   const dispatch = useAppDispatch();
   const network = useNetwork() || defaultNetwork();
 
   const beproService = new BeproService();
 
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
+  const ethBalance = useAppSelector(state => state.bepro.ethBalance);
+  const polkBalance = useAppSelector(state => state.bepro.polkBalance);
   const walletAddress = useAppSelector(state => state.bepro.ethAddress);
-  const walletBalance = useAppSelector(state => state.bepro.ethBalance);
 
   // Example
   useEffect(() => {
@@ -60,8 +63,18 @@ function NavBarActions() {
       {network ? <NetworkInfo name={network.name} slug={network.key} /> : null}
       {walletConnected ? (
         <WalletInfo
-          balance={walletBalance}
-          currencyIcon={icon}
+          wallets={[
+            {
+              id: 'eth',
+              balance: ethBalance,
+              currencyIcon: <EthereumIcon />
+            },
+            {
+              id: 'polk',
+              balance: polkBalance,
+              currencyIcon: <PolkamarketsIconSmall />
+            }
+          ]}
           address={walletAddress}
         />
       ) : (
