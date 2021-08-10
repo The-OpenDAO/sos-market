@@ -10,9 +10,10 @@ import { Button } from '../Button';
 function ReportFormActions() {
   const dispatch = useAppDispatch();
 
-  const { questionId, minimumBond } = useAppSelector(
-    state => state.market.market
-  );
+  const { questionId } = useAppSelector(state => state.market.market);
+  // bond must be doubled in every tx
+  const marketBond = useAppSelector(state => state.market.market.question.bond);
+  const minimumBond = marketBond * 2;
 
   const [outcome] = useField('outcome');
   const [bond] = useField('bond');

@@ -234,6 +234,14 @@ export default class BeproService {
     return minimumBond;
   }
 
+  public async getQuestionBestAnswer(questionId: string) {
+    const bestAnswer = await this.contracts.realitio.getQuestionBestAnswer({
+      questionId
+    });
+
+    return Number(realitioLib.bytes32ToString(bestAnswer, { type: 'int' }));
+  }
+
   // Realitio contract functions
 
   public async getQuestionBonds(

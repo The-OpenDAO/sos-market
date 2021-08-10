@@ -23,6 +23,14 @@ export interface Outcome {
   shares: number;
 }
 
+export interface Question {
+  id: string;
+  bond: number;
+  bestAnswer: string;
+  isFinalized: boolean;
+  finalizeTs: number;
+}
+
 export interface Market {
   id: string;
   slug: string;
@@ -43,5 +51,5 @@ export interface Market {
   outcomes: Outcome[];
   tradingViewSymbol: any;
   fee: number;
-  minimumBond: number;
+  question: Question;
 }
