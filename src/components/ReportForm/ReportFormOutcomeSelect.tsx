@@ -62,13 +62,12 @@ function ReportFormOutcomeSelect() {
         />
       ))}
       <Outcome
-        id="invalid"
+        id="-1"
         title="Invalid"
         helpText="Help text"
         color="warning"
-        state={
-          field.value && field.value === 'invalid' ? 'selected' : 'default'
-        }
+        state={field.value && field.value === '-1' ? 'selected' : 'default'}
+        bond={bonds[-1] || 0}
         onSelect={handleOutcomeSelect}
         resolvedOutcomeId={resolvedOutcomeId}
       />
