@@ -244,6 +244,23 @@ export default class BeproService {
 
   // Realitio contract functions
 
+  public async isRealitioERC20Approved(): Promise<boolean> {
+    if (!this.address) return false;
+
+    // TODO improve this: ensuring erc20 contract is initialized
+    // eslint-disable-next-line no-underscore-dangle
+    await this.contracts.erc20.__init__();
+
+    // returns user balance in ETH
+    const isApproved = await this.contracts.erc20.isApproved({
+      address: this.address,
+      amount: 1,
+      spenderAddress: this.contracts.realitio.getAddress()
+    });
+
+    return isApproved;
+  }
+
   public async getQuestionBonds(
     questionId: string,
     user: string | null = null
