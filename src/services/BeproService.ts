@@ -14,6 +14,11 @@ export default class BeproService {
   // user eth address
   public address: string = '';
 
+  // util function
+  static bytes32ToInt(bytes32Str: string): number {
+    return Number(realitioLib.bytes32ToString(bytes32Str, { type: 'int' }));
+  }
+
   constructor() {
     this.bepro = new beprojs.Application({ mainnet: false });
     this.bepro.start();
