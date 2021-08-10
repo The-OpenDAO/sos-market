@@ -10,13 +10,15 @@ import { BadgeColor } from '../Badge';
 import Outcome from '../Outcome';
 
 function ReportFormOutcomeSelect() {
-  const { outcomes, resolvedOutcomeId, questionId } = useAppSelector(
-    state => state.market.market
-  );
+  const { outcomes, questionId } = useAppSelector(state => state.market.market);
   const marketId = useAppSelector(state => state.market.market.id);
   const { portfolio, ethAddress } = useAppSelector(state => state.bepro);
   const [field, meta, helpers] = useField('outcome');
   const [bonds, setBonds] = useState({});
+
+  const { bestAnswer } = useAppSelector(state => state.market.market.question);
+  // converting bytes32 to int
+  const resolvedOutcomeId = BeproService.bytes32ToInt(bestAnswer);
 
   const getOutcomeColor = (outcome: MarketOutcome): BadgeColor =>
     outcomes.indexOf(outcome) === 0 ? 'blue' : 'pink';
