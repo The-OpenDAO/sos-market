@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import Text from '../Text';
 
-export type RibbonColor = 'pink' | 'blue' | 'purple';
+export type RibbonColor = 'pink' | 'blue' | 'purple' | 'warning';
 
 type RibbonProps = {
   color?: RibbonColor;
