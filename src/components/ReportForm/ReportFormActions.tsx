@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 import { useField, useFormikContext } from 'formik';
 import isUndefined from 'lodash/isUndefined';
 import { closeReportForm } from 'redux/ducks/ui';
@@ -8,8 +10,10 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 import { Button } from '../Button';
 
 function ReportFormActions() {
+  const location = useLocation();
   const dispatch = useAppDispatch();
 
+  const marketSlug = useAppSelector(state => state.market.market.slug);
   const { questionId } = useAppSelector(state => state.market.market);
   // bond must be doubled in every tx
   const marketBond = useAppSelector(state => state.market.market.question.bond);
@@ -18,6 +22,8 @@ function ReportFormActions() {
   const [outcome] = useField('outcome');
   const [bond] = useField('bond');
   const { isSubmitting } = useFormikContext();
+
+  const isMarketPage = location.pathname === `/markets/${marketSlug}`;
 
   function handleCancel() {
     dispatch(closeReportForm());
@@ -42,9 +48,11 @@ function ReportFormActions() {
 
   return (
     <div className="pm-c-report-form-details__actions">
-      <Button variant="subtle" color="default" onClick={handleCancel}>
-        Cancel
-      </Button>
+      {!isMarketPage ? (
+        <Button variant="subtle" color="default" onClick={handleCancel}>
+          Cancel
+        </Button>
+      ) : null}
       <Button
         type="submit"
         color="primary"
