@@ -6,5 +6,8 @@ function roundNumber(value: number, decimals: number) {
   return Math.round(value * 10 ** decimals) / 10 ** decimals;
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export { roundNumber, floorNumber };
+function formatNumberToString(number: number | string) {
+  return `${number}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+}
+
+export { roundNumber, floorNumber, formatNumberToString };
