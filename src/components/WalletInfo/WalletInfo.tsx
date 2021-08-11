@@ -6,7 +6,7 @@ import { Button } from '../Button';
 
 type Wallet = {
   id: string;
-  balance: number;
+  balance: number | string;
   currencyIcon: ReactNode;
 };
 
@@ -27,7 +27,7 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
           noHover
           aria-label="ETH Balance"
         >
-          {wallet.balance.toFixed(4)}
+          {wallet.balance}
           {wallet.currencyIcon}
         </Button>
       ))}
