@@ -231,22 +231,6 @@ export default class BeproService {
     return response;
   }
 
-  public async getQuestionMinimumBond(questionId: string) {
-    const minimumBond = await this.contracts.realitio.getQuestionMinimumBond({
-      questionId
-    });
-
-    return minimumBond;
-  }
-
-  public async getQuestionBestAnswer(questionId: string) {
-    const bestAnswer = await this.contracts.realitio.getQuestionBestAnswer({
-      questionId
-    });
-
-    return Number(realitioLib.bytes32ToString(bestAnswer, { type: 'int' }));
-  }
-
   // Realitio contract functions
 
   public async isRealitioERC20Approved(): Promise<boolean> {
@@ -264,6 +248,19 @@ export default class BeproService {
     });
 
     return isApproved;
+  }
+
+  public async approveRealitioERC20(): Promise<any> {
+    if (!this.address) return false;
+
+    // TODO improve this: ensuring erc20 contract is initialized
+    // eslint-disable-next-line no-underscore-dangle
+    await this.contracts.erc20.__init__();
+
+    return this.approveERC20(
+      this.contracts.realitio.getAddress(),
+      2 ** 128 - 1
+    );
   }
 
   public async getQuestionBonds(
