@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { formatNumberToString } from 'helpers/math';
 import { login } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
@@ -66,12 +67,12 @@ function NavBarActions() {
           wallets={[
             {
               id: 'eth',
-              balance: ethBalance,
+              balance: ethBalance.toFixed(4),
               currencyIcon: <EthereumIcon />
             },
             {
               id: 'polk',
-              balance: polkBalance,
+              balance: formatNumberToString(polkBalance),
               currencyIcon: <PolkamarketsIconSmall />
             }
           ]}
