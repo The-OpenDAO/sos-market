@@ -200,6 +200,17 @@ export default class BeproService {
     return response;
   }
 
+  public async resolveMarket(marketId: string | number) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contracts.pm.resolveMarketOutcome({
+      marketId
+    });
+
+    return response;
+  }
+
   // ERC20 contract functions
 
   public async getERC20Balance(): Promise<number> {
