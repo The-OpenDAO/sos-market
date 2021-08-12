@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { useField } from 'formik';
 import { Outcome as MarketOutcome } from 'models/market';
+import { selectOutcome } from 'redux/ducks/trade';
 import { BeproService } from 'services';
 
 import { useAppSelector } from 'hooks';
@@ -24,6 +25,7 @@ function ReportFormOutcomeSelect() {
     outcomes.indexOf(outcome) === 0 ? 'blue' : 'pink';
 
   function handleOutcomeSelect(id: string) {
+    selectOutcome(marketId, id);
     helpers.setValue(id);
   }
 
@@ -55,7 +57,7 @@ function ReportFormOutcomeSelect() {
           bond={bonds[outcome.id] || 0}
           color={getOutcomeColor(outcome)}
           state={
-            field.value && field.value === `${outcome.id}`
+            field.value && `${field.value}` === `${outcome.id}`
               ? 'selected'
               : 'default'
           }
@@ -68,7 +70,9 @@ function ReportFormOutcomeSelect() {
         title="Invalid"
         helpText="Help text"
         color="warning"
-        state={field.value && field.value === '-1' ? 'selected' : 'default'}
+        state={
+          field.value && `${field.value}` === '-1' ? 'selected' : 'default'
+        }
         bond={bonds[-1] || 0}
         onSelect={handleOutcomeSelect}
         resolvedOutcomeId={resolvedOutcomeId}
