@@ -50,6 +50,12 @@ function ReportFormActions({
     useState(undefined);
 
   const [isResolvingMarket, setIsResolvingMarket] = useState(false);
+  const [marketResolveTransactionSuccess, setMarketResolveTransactionSuccess] =
+    useState(false);
+  const [
+    marketResolveTransactionSuccessHash,
+    setMarketResolveTransactionSuccessHash
+  ] = useState(undefined);
 
   // Selectors
   const marketSlug = useAppSelector(state => state.market.market.slug);
@@ -123,7 +129,9 @@ function ReportFormActions({
       const { status, transactionHash } = response;
 
       if (status && transactionHash) {
-        // TODO: add transaction toast
+        setMarketResolveTransactionSuccess(status);
+        setMarketResolveTransactionSuccessHash(transactionHash);
+        show('marketResolve');
 
         // triggering cache reload action on api
         new PolkamarketsApiService().reloadMarket(marketSlug);
@@ -205,6 +213,35 @@ function ReportFormActions({
               </>
             }
           />
+        ) : null}
+        {marketResolveTransactionSuccess &&
+        marketResolveTransactionSuccessHash ? (
+          <ToastNotification id="marketResolve" duration={10000}>
+            <Toast
+              variant="success"
+              title="Success"
+              description="Your transaction is completed!"
+            >
+              <Toast.Actions>
+                <a
+                  target="_blank"
+                  href={`https://kovan.etherscan.io/tx/${marketResolveTransactionSuccessHash}`}
+                  rel="noreferrer"
+                >
+                  <Button size="sm" color="success">
+                    View on Explorer
+                  </Button>
+                </a>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => close('marketResolve')}
+                >
+                  Dismiss
+                </Button>
+              </Toast.Actions>
+            </Toast>
+          </ToastNotification>
         ) : null}
         <div className="pm-c-report-form-details__actions-group--row">
           {!isMarketPage ? (
