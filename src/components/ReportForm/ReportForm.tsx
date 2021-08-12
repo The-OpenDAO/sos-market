@@ -24,6 +24,9 @@ function ReportForm() {
     state => state.trade.selectedOutcomeId
   );
   const { outcomes } = useAppSelector(state => state.market.market);
+  const isMarketQuestionFinalized = useAppSelector(
+    state => state.market.market.question.isFinalized
+  );
 
   // Derivated state
   const minimumBond = marketBond * 2;
@@ -70,9 +73,15 @@ function ReportForm() {
           <ReportFormOutcomeSelect />
         </div>
         <div className="pm-c-report-form__group">
-          <ReportFormInput />
-          <ReportFormDetails />
-          <ReportFormActions />
+          {!isMarketQuestionFinalized ? (
+            <>
+              <ReportFormInput />
+              <ReportFormDetails />
+            </>
+          ) : null}
+          <ReportFormActions
+            marketQuestionFinalized={isMarketQuestionFinalized}
+          />
         </div>
       </Form>
     </Formik>
