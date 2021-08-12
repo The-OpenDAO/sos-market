@@ -11,11 +11,13 @@ $outcome-themes: (
     outcome-background-color-success: mix(#ffffff, #27ab83, 85%),
     outcome-background-color-error: mix(#ffffff, #e12d39, 90%),
     outcome-background-color-warning: mix(#ffffff, #f0b429, 85%),
+    outcome-background-color-won: #f8faff,
     outcome-border-color-default: #e0e2e7,
     outcome-border-color-selected: #bcb9fd,
     outcome-border-color-success: #83ceb7,
     outcome-border-color-error: #ef8b92,
-    outcome-border-color-warning: #f6d484
+    outcome-border-color-warning: #f6d484,
+    outcome-border-color-won: #27ab83
   ),
   dark: (
     outcome-text-color: #f9fafb,
@@ -25,10 +27,12 @@ $outcome-themes: (
     outcome-background-color-success: mix(#000000, #27ab83, 75%),
     outcome-background-color-error: mix(#000000, #e12d39, 75%),
     outcome-background-color-warning: mix(#000000, #f0b429, 85%),
+    outcome-background-color-won: #0e1016,
     outcome-border-color-default: #252c3b,
     outcome-border-color-selected: #3a359c,
     outcome-border-color-success: #186b52,
     outcome-border-color-error: #8c1c23,
-    outcome-border-color-warning: #8a6717
+    outcome-border-color-warning: #8a6717,
+    outcome-border-color-won: #27ab83
   )
 ) !default;

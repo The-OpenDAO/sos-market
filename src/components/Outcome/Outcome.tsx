@@ -19,7 +19,8 @@ export type OutcomeState =
   | 'selected'
   | 'success'
   | 'warning'
-  | 'error';
+  | 'error'
+  | 'won';
 
 type OutcomeProps = {
   /**
@@ -61,6 +62,7 @@ type OutcomeProps = {
    */
   state?: OutcomeState;
   resolvedOutcomeId: number;
+  marketQuestionFinalized: boolean;
   onSelect: (id: string) => void;
 };
 
@@ -74,6 +76,7 @@ function Outcome({
   progress,
   state = 'default',
   resolvedOutcomeId,
+  marketQuestionFinalized,
   bond = 0,
   onSelect
 }: OutcomeProps) {
@@ -112,6 +115,7 @@ function Outcome({
       tabIndex={0}
       onClick={handleSelectOutcome}
       onKeyPress={handleSelectOutcome}
+      style={{ pointerEvents: marketQuestionFinalized ? 'none' : 'all' }}
     >
       <div className="pm-c-outcome__header">
         <div className="pm-c-outcome__row-group">
@@ -125,8 +129,12 @@ function Outcome({
         {isWinningOutcome ? (
           <Ribbon
             icon={<TrophyIcon />}
-            text="WINNING"
-            color={color as RibbonColor}
+            text={marketQuestionFinalized ? 'WON' : 'WINNING'}
+            color={
+              marketQuestionFinalized
+                ? ('success' as RibbonColor)
+                : (color as RibbonColor)
+            }
           />
         ) : null}
       </div>
