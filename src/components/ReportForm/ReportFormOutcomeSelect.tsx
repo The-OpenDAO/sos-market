@@ -11,13 +11,19 @@ import { BadgeColor } from '../Badge';
 import Outcome from '../Outcome';
 
 function ReportFormOutcomeSelect() {
+  // Selectors
   const { outcomes, questionId } = useAppSelector(state => state.market.market);
   const marketId = useAppSelector(state => state.market.market.id);
+  const isMarketQuestionFinalized = useAppSelector(
+    state => state.market.market.question.isFinalized
+  );
+  const { bestAnswer } = useAppSelector(state => state.market.market.question);
   const { portfolio, ethAddress } = useAppSelector(state => state.bepro);
+
+  // Form state
   const [field, meta, helpers] = useField('outcome');
   const [bonds, setBonds] = useState({});
 
-  const { bestAnswer } = useAppSelector(state => state.market.market.question);
   // converting bytes32 to int
   const resolvedOutcomeId = BeproService.bytes32ToInt(bestAnswer);
 
@@ -46,6 +52,22 @@ function ReportFormOutcomeSelect() {
     getOutcomesBonds();
   }, [ethAddress]);
 
+  const isSelected = outcome =>
+    field.value && `${field.value}` === `${outcome.id}`;
+
+  const isWinningOutcome = outcome =>
+    `${resolvedOutcomeId}` === `${outcome.id}`;
+
+  const isWon = outcome =>
+    isMarketQuestionFinalized && isWinningOutcome(outcome);
+
+  const checkOutcomeState = outcome => {
+    if (isWon(outcome)) return 'won';
+    if (isMarketQuestionFinalized) return 'default';
+    if (isSelected(outcome)) return 'selected';
+    return 'default';
+  };
+
   return (
     <div className="pm-c-report-form-outcome-select">
       {outcomes.map(outcome => (
@@ -56,12 +78,9 @@ function ReportFormOutcomeSelect() {
           shares={portfolio[marketId]?.outcomes[outcome.id]?.shares || 0}
           bond={bonds[outcome.id] || 0}
           color={getOutcomeColor(outcome)}
-          state={
-            field.value && `${field.value}` === `${outcome.id}`
-              ? 'selected'
-              : 'default'
-          }
+          state={checkOutcomeState(outcome)}
           resolvedOutcomeId={resolvedOutcomeId}
+          marketQuestionFinalized={isMarketQuestionFinalized}
           onSelect={handleOutcomeSelect}
         />
       ))}
@@ -70,12 +89,11 @@ function ReportFormOutcomeSelect() {
         title="Invalid"
         helpText="Help text"
         color="warning"
-        state={
-          field.value && `${field.value}` === '-1' ? 'selected' : 'default'
-        }
+        state={checkOutcomeState({ id: '-1' })}
         bond={bonds[-1] || 0}
-        onSelect={handleOutcomeSelect}
         resolvedOutcomeId={resolvedOutcomeId}
+        marketQuestionFinalized={isMarketQuestionFinalized}
+        onSelect={handleOutcomeSelect}
       />
     </div>
   );
