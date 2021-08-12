@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { useField, useFormikContext } from 'formik';
-import isUndefined from 'lodash/isUndefined';
 import { login } from 'redux/ducks/bepro';
 import { closeReportForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
@@ -45,11 +44,8 @@ function ReportFormActions() {
   const marketSlug = useAppSelector(state => state.market.market.slug);
   const isPolkApproved = useAppSelector(state => state.bepro.polkApproved);
   const { questionId } = useAppSelector(state => state.market.market);
-  // bond must be doubled in every tx
-  const marketBond = useAppSelector(state => state.market.market.question.bond);
 
   // Derivated state
-  const minimumBond = marketBond * 2;
   const isMarketPage = location.pathname === `/markets/${marketSlug}`;
 
   async function handleApprovePolk() {
@@ -167,14 +163,7 @@ function ReportFormActions() {
             color="primary"
             fullwidth
             onClick={handleBond}
-            disabled={
-              !isPolkApproved ||
-              !outcome.value ||
-              !bond.value ||
-              bond.value === 0 ||
-              isUndefined(minimumBond) ||
-              bond.value < minimumBond
-            }
+            disabled={!isPolkApproved || bond.value === 0}
             loading={isSubmitting}
           >
             Bond
