@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 
+import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 
 import { WalletIcon } from 'assets/icons';
@@ -28,12 +29,14 @@ const AmountInput = React.forwardRef<
   HTMLInputElement,
   AmountInputProps & React.InputHTMLAttributes<HTMLInputElement>
 >(({ name, label, max, currency, customHeaderItem, ...props }, ref) => {
+  const [amount, setAmount] = useState<number | undefined>(0);
   const [stepAmount, setStepAmount] = useState<number>(0);
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext<AmountInputContext>();
 
   useEffect(() => {
     setFieldValue(name, meta.initialValue);
+    setAmount(meta.initialValue);
     setStepAmount(meta.initialValue);
   }, [max]);
 
@@ -44,6 +47,7 @@ const AmountInput = React.forwardRef<
     const newAmount = value ? parseFloat(value) : undefined;
 
     setFieldValue(name, newAmount || 0);
+    setAmount(newAmount);
     setStepAmount(100 * ((newAmount || 0) / max));
   }
 
@@ -52,6 +56,7 @@ const AmountInput = React.forwardRef<
 
     setFieldValue(name, roundedMax);
     setStepAmount(100);
+    setAmount(roundedMax);
   }
 
   function handleChangeSlider(value: number) {
@@ -60,6 +65,7 @@ const AmountInput = React.forwardRef<
     const newAmount = round(max * percentage);
 
     setFieldValue(name, newAmount);
+    setAmount(newAmount);
     setStepAmount(value);
   }
 
@@ -83,14 +89,19 @@ const AmountInput = React.forwardRef<
           </div>
         )}
       </div>
-      <div className="pm-c-amount-input__group">
+      <div
+        className={classNames({
+          'pm-c-amount-input__group': true,
+          'pm-c-amount-input__group--error': meta.error
+        })}
+      >
         <input
           className="pm-c-amount-input__input"
           type="number"
           ref={ref}
           id={label}
           step=".0001"
-          value={field.value}
+          value={amount}
           min={0}
           max={max}
           onChange={event => handleChangeAmount(event)}
@@ -111,6 +122,18 @@ const AmountInput = React.forwardRef<
           </div>
         </div>
       </div>
+      {meta.error ? (
+        <div className="pm-c-input__error">
+          <Text
+            as="span"
+            scale="tiny"
+            fontWeight="medium"
+            className="pm-c-input__error-message"
+          >
+            {meta.error}
+          </Text>
+        </div>
+      ) : null}
       <StepSlider
         currentValue={stepAmount}
         onChange={value => handleChangeSlider(value)}
