@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { useField, useFormikContext } from 'formik';
 import { login } from 'redux/ducks/bepro';
+import { selectOutcome } from 'redux/ducks/trade';
 import { closeReportForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
@@ -11,12 +12,20 @@ import { QuestionIcon } from 'assets/icons';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import useToastNotification from 'hooks/useToastNotification';
 
+import { Alert } from '../Alert';
 import { Button } from '../Button';
+import Link from '../Link';
 import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 import Tooltip from '../Tooltip';
 
-function ReportFormActions() {
+type ReportFormActionsProps = {
+  marketQuestionFinalized: boolean;
+};
+
+function ReportFormActions({
+  marketQuestionFinalized
+}: ReportFormActionsProps) {
   // Helpers
   const location = useLocation();
   const dispatch = useAppDispatch();
@@ -40,10 +49,12 @@ function ReportFormActions() {
   const [bondTransactionSuccessHash, setBondTransactionSuccessHash] =
     useState(undefined);
 
+  const [isResolvingMarket, setIsResolvingMarket] = useState(false);
+
   // Selectors
   const marketSlug = useAppSelector(state => state.market.market.slug);
   const isPolkApproved = useAppSelector(state => state.bepro.polkApproved);
-  const { questionId } = useAppSelector(state => state.market.market);
+  const { id, questionId } = useAppSelector(state => state.market.market);
 
   // Derivated state
   const isMarketPage = location.pathname === `/markets/${marketSlug}`;
@@ -72,6 +83,7 @@ function ReportFormActions() {
   }
 
   function handleCancel() {
+    dispatch(selectOutcome('', ''));
     dispatch(closeReportForm());
   }
 
@@ -101,10 +113,24 @@ function ReportFormActions() {
     }
   }
 
+  async function handleResolve() {
+    const beproService = new BeproService();
+
+    setIsResolvingMarket(true);
+    try {
+      await beproService.resolveMarket(id);
+
+      setIsResolvingMarket(false);
+    } catch (error) {
+      setIsResolvingMarket(false);
+      console.error(error);
+    }
+  }
+
   return (
     <div className="pm-c-report-form-details__actions">
       <div className="pm-c-report-form-details__actions-group--column">
-        {!isPolkApproved ? (
+        {!isPolkApproved && !marketQuestionFinalized ? (
           <Button
             color="primary"
             size="sm"
@@ -152,22 +178,55 @@ function ReportFormActions() {
             </Toast>
           </ToastNotification>
         ) : null}
+        {marketQuestionFinalized ? (
+          <Alert
+            variant="success"
+            title="Resolve market"
+            description={
+              <>
+                {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus elementum sit et facilisis. Risus vel eget senectus pellentesque risus viverra varius imperdiet hendrerit. Semper eu amet sit faucibus ultrices quis quam. Vestibulum lorem tortor vel convallis. `}
+                <Link
+                  title="Learn more"
+                  href="//www.polkamarkets.com"
+                  aria-label="Learn more"
+                  target="_blank"
+                  rel="noreferrer"
+                  variant="success"
+                />
+              </>
+            }
+          />
+        ) : null}
         <div className="pm-c-report-form-details__actions-group--row">
           {!isMarketPage ? (
             <Button variant="subtle" color="default" onClick={handleCancel}>
               Cancel
             </Button>
           ) : null}
-          <Button
-            type="submit"
-            color="primary"
-            fullwidth
-            onClick={handleBond}
-            disabled={!isPolkApproved || bond.value === 0}
-            loading={isSubmitting}
-          >
-            Bond
-          </Button>
+          {marketQuestionFinalized ? (
+            <Button
+              type="button"
+              color="success"
+              fullwidth
+              onClick={handleResolve}
+              disabled={isResolvingMarket}
+              loading={isResolvingMarket}
+            >
+              Resolve
+            </Button>
+          ) : (
+            <Button
+              type="submit"
+              color="primary"
+              fullwidth
+              onClick={handleBond}
+              disabled={!isPolkApproved || bond.value === 0}
+              loading={isSubmitting}
+            >
+              Bond
+            </Button>
+          )}
+
           {/* TODO: Create notifications by type (ex: Transaction completed) */}
           {bondTransactionSuccess && bondTransactionSuccessHash ? (
             <ToastNotification id="bond" duration={10000}>
