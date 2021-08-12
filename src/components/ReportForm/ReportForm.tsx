@@ -17,11 +17,17 @@ type ReportFormData = {
 function ReportForm() {
   const { isLoading } = useAppSelector(state => state.market);
   const marketId = useAppSelector(state => state.market.market.id);
+  const selectedOutcomeId = useAppSelector(
+    state => state.trade.selectedOutcomeId
+  );
   const { outcomes } = useAppSelector(state => state.market.market);
 
   const initialData: ReportFormData = {
     market: marketId,
-    outcome: outcomes[0].id.toString(),
+    outcome:
+      `${selectedOutcomeId}` !== `${outcomes[0].id}`
+        ? `${selectedOutcomeId}`
+        : `${outcomes[0].id}`,
     bond: 0
   };
 
