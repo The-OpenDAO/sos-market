@@ -37,8 +37,19 @@
   @include themes($report-form-themes) {
     &__header {
       &-time-left {
-        @extend .tiny, .semibold;
-        color: themed('report-form-input-time-left-color');
+        @include flex-row(flex-end, center, 0.5rem);
+
+        strong,
+        span {
+          @extend .tiny-uppercase, .semibold;
+        }
+
+        strong {
+          color: themed('report-form-input-time-left-primary-color');
+        }
+        span {
+          color: themed('report-form-input-time-left-secondary-color');
+        }
       }
     }
   }

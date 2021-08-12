@@ -1,6 +1,4 @@
-import dayjs from 'dayjs';
-import { useField } from 'formik';
-import { relativeTimeFromNow } from 'helpers/date';
+import { relativeTimeToX } from 'helpers/date';
 import { Currency } from 'models/currency';
 
 import { PolkamarketsIconSmall } from 'assets/icons';
@@ -21,21 +19,42 @@ function ReportFormInput() {
   const { polkBalance } = useAppSelector(state => state.bepro);
   const { finalizeTs } = useAppSelector(state => state.market.market.question);
 
-  // TO DO: create helper to format as 'dd mm ss'
-  const timeLeftUntilDecision = relativeTimeFromNow(
-    dayjs(finalizeTs * 1000).valueOf()
-  );
+  const isValidTimestamp = new Date(finalizeTs).getTime() > 0;
+  const timeLeftUntilDecision = relativeTimeToX(finalizeTs * 1000);
 
   return (
     <AmountInput
       name="bond"
-      label="Time left until market resolves"
+      label={isValidTimestamp ? 'Time left until market resolves' : ''}
       max={polkBalance}
       currency={POLK}
       customHeaderItem={
-        <Text as="strong" className="pm-c-report-form-input__header-time-left">
-          {timeLeftUntilDecision}
-        </Text>
+        isValidTimestamp ? (
+          <div className="pm-c-report-form-input__header-time-left">
+            {timeLeftUntilDecision.months > 0 ? (
+              <Text as="strong">
+                {timeLeftUntilDecision.months}
+                <Text as="span">M</Text>
+              </Text>
+            ) : null}
+            {timeLeftUntilDecision.days > 0 ? (
+              <Text as="strong">
+                {timeLeftUntilDecision.days}
+                <Text as="span">D</Text>
+              </Text>
+            ) : null}
+            <Text as="strong">
+              {timeLeftUntilDecision.hours}
+              <Text as="span">H</Text>
+            </Text>
+            <Text as="strong">
+              {timeLeftUntilDecision.minutes}
+              <Text as="span">M</Text>
+            </Text>
+          </div>
+        ) : (
+          <></>
+        )
       }
     />
   );
