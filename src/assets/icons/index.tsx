@@ -37,6 +37,7 @@ import PolkamarketsIconSmall from './PolkamarketsIconSmall';
 import PolkamarketsLogo from './PolkamarketsLogo';
 import PopcornIcon from './PopcornIcon';
 import PortfolioIcon from './PortifolioIcon';
+import QuestionIcon from './QuestionIcon';
 import RemoveIcon from './RemoveIcon';
 import SearchIcon from './SearchIcon';
 import SettingsIcon from './SettingsIcon';
@@ -94,6 +95,7 @@ export {
   PolkamarketsLogo,
   PopcornIcon,
   PortfolioIcon,
+  QuestionIcon,
   RemoveIcon,
   ShareIcon,
   SearchIcon,
