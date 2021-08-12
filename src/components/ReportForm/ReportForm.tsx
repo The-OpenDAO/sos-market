@@ -41,7 +41,10 @@ function ReportForm() {
     market: Yup.string().required('Market is required!'),
     outcome: Yup.string().required('Outcome is required!'),
     bond: Yup.number()
-      .min(minimumBond, `Bond must be greater or equal than ${minimumBond}!`)
+      .min(
+        minimumBond,
+        `The minimum amount to bound is ${minimumBond.toFixed(2)} POLK`
+      )
       .required('Bond is required!')
   });
 
