@@ -118,7 +118,16 @@ function ReportFormActions({
 
     setIsResolvingMarket(true);
     try {
-      await beproService.resolveMarket(id);
+      const response = await beproService.resolveMarket(id);
+
+      const { status, transactionHash } = response;
+
+      if (status && transactionHash) {
+        // TODO: add transaction toast
+
+        // triggering cache reload action on api
+        new PolkamarketsApiService().reloadMarket(marketSlug);
+      }
 
       setIsResolvingMarket(false);
     } catch (error) {
