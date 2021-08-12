@@ -1,4 +1,5 @@
 import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
 import { useAppSelector } from 'hooks';
 
@@ -10,17 +11,22 @@ import ReportFormOutcomeSelect from './ReportFormOutcomeSelect';
 
 type ReportFormData = {
   market: string;
-  outcome?: string | number;
+  outcome: string;
   bond: number;
 };
 
 function ReportForm() {
+  // Selectors
   const { isLoading } = useAppSelector(state => state.market);
   const marketId = useAppSelector(state => state.market.market.id);
+  const marketBond = useAppSelector(state => state.market.market.question.bond);
   const selectedOutcomeId = useAppSelector(
     state => state.trade.selectedOutcomeId
   );
   const { outcomes } = useAppSelector(state => state.market.market);
+
+  // Derivated state
+  const minimumBond = marketBond * 2;
 
   const initialData: ReportFormData = {
     market: marketId,
@@ -30,6 +36,14 @@ function ReportForm() {
         : `${outcomes[0].id}`,
     bond: 0
   };
+
+  const validationSchema = Yup.object().shape({
+    market: Yup.string().required('Market is required!'),
+    outcome: Yup.string().required('Outcome is required!'),
+    bond: Yup.number()
+      .min(minimumBond, `Bond must be greater or equal than ${minimumBond}!`)
+      .required('Bond is required!')
+  });
 
   async function handleFormSubmit(values: ReportFormData) {
     console.log(values);
@@ -45,6 +59,7 @@ function ReportForm() {
         await handleFormSubmit(values);
         actions.setSubmitting(false);
       }}
+      validationSchema={validationSchema}
     >
       <Form className="pm-c-report-form">
         <div className="pm-c-report-form__group">
