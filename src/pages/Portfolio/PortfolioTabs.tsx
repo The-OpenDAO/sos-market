@@ -6,12 +6,17 @@ import {
   ButtonGroup,
   PortfolioLiquidityTable,
   PortfolioMarketTable,
+  PortfolioReportTable,
   Filter
 } from 'components';
 
 import { useAppSelector, useAppDispatch } from 'hooks';
 
-import { formatLiquidityPositions, formatMarketPositions } from './utils';
+import {
+  formatLiquidityPositions,
+  formatMarketPositions,
+  formatReportPositions
+} from './utils';
 
 function TabsFilter() {
   const dispatch = useAppDispatch();
@@ -53,6 +58,7 @@ function PortfolioTabs() {
 
   const marketPositions = formatMarketPositions(portfolio, markets);
   const liquidityPositions = formatLiquidityPositions(portfolio, markets);
+  const reportPositions = formatReportPositions(portfolio, markets);
 
   return (
     <div className="portfolio-tabs">
@@ -68,6 +74,11 @@ function PortfolioTabs() {
             {
               id: 'liquidityPositions',
               name: 'Liquidity Positions',
+              color: 'default'
+            },
+            {
+              id: 'reportPositions',
+              name: 'Reports',
               color: 'default'
             }
           ]}
@@ -88,6 +99,13 @@ function PortfolioTabs() {
           <PortfolioLiquidityTable
             rows={liquidityPositions.rows}
             headers={liquidityPositions.headers}
+            isLoadingData={isLoadingMarkets || isLoadingPortfolio}
+          />
+        ) : null}
+        {currentTab === 'reportPositions' ? (
+          <PortfolioReportTable
+            rows={reportPositions.rows}
+            headers={reportPositions.headers}
             isLoadingData={isLoadingMarkets || isLoadingPortfolio}
           />
         ) : null}

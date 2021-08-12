@@ -42,6 +42,7 @@ import Outcome from './Outcome';
 import Pill from './Pill';
 import PortfolioLiquidityTable from './PortfolioLiquidityTable';
 import PortfolioMarketTable from './PortfolioMarketTable';
+import PortfolioReportTable from './PortfolioReportTable';
 import PredictionCard from './PredictionCard';
 import ProgressBar from './ProgressBar';
 import ReportForm from './ReportForm';
@@ -108,6 +109,7 @@ export {
   Pill,
   PortfolioLiquidityTable,
   PortfolioMarketTable,
+  PortfolioReportTable,
   PredictionCard,
   ProbabilityInput,
   ProgressBar,
