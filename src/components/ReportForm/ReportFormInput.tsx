@@ -19,8 +19,10 @@ function ReportFormInput() {
   const { polkBalance } = useAppSelector(state => state.bepro);
   const { finalizeTs } = useAppSelector(state => state.market.market.question);
 
-  const isValidTimestamp = new Date(finalizeTs).getTime() > 0;
+  const isValidTimestamp = new Date(finalizeTs * 1000).getTime() > new Date().getTime();
   const timeLeftUntilDecision = relativeTimeToX(finalizeTs * 1000);
+
+  // TODO: fetch question if now > finalizeTs
 
   return (
     <AmountInput
