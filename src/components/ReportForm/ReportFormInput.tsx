@@ -7,7 +7,7 @@ import { PolkamarketsIconSmall } from 'assets/icons';
 
 import { useAppSelector } from 'hooks';
 
-import AmountInput from '../AmountInput';
+import { AmountInput } from '../Input';
 import Text from '../Text';
 
 const POLK: Currency = {
@@ -18,7 +18,6 @@ const POLK: Currency = {
 };
 
 function ReportFormInput() {
-  const [field, meta, helpers] = useField('bond');
   const { polkBalance } = useAppSelector(state => state.bepro);
 
   const decisionAt = '2021-06-30T16:00:00.000+00:00';
@@ -28,16 +27,12 @@ function ReportFormInput() {
     dayjs(decisionAt).valueOf()
   );
 
-  function handleChangeAmount(amount: number) {
-    helpers.setValue(amount);
-  }
-
   return (
     <AmountInput
+      name="bond"
       label="Time left until decision"
       max={polkBalance}
       currency={POLK}
-      onChange={handleChangeAmount}
       customHeaderItem={
         <Text as="strong" className="pm-c-report-form-input__header-time-left">
           {timeLeftUntilDecision}
