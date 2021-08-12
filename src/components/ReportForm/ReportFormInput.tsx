@@ -19,18 +19,17 @@ const POLK: Currency = {
 
 function ReportFormInput() {
   const { polkBalance } = useAppSelector(state => state.bepro);
-
-  const decisionAt = '2021-06-30T16:00:00.000+00:00';
+  const { finalizeTs } = useAppSelector(state => state.market.market.question);
 
   // TO DO: create helper to format as 'dd mm ss'
   const timeLeftUntilDecision = relativeTimeFromNow(
-    dayjs(decisionAt).valueOf()
+    dayjs(finalizeTs * 1000).valueOf()
   );
 
   return (
     <AmountInput
       name="bond"
-      label="Time left until decision"
+      label="Time left until market resolves"
       max={polkBalance}
       currency={POLK}
       customHeaderItem={
