@@ -262,6 +262,9 @@ export default class BeproService {
   }
 
   public async approveRealitioERC20(): Promise<any> {
+    // ensuring user has wallet connected
+    await this.login();
+
     if (!this.address) return false;
 
     // TODO improve this: ensuring erc20 contract is initialized
