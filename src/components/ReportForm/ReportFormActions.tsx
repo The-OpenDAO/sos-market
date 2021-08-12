@@ -37,6 +37,10 @@ function ReportFormActions() {
     setApprovePolkTransactionSuccessHash
   ] = useState(undefined);
 
+  const [bondTransactionSuccess, setBondTransactionSuccess] = useState(false);
+  const [bondTransactionSuccessHash, setBondTransactionSuccessHash] =
+    useState(undefined);
+
   // Selectors
   const marketSlug = useAppSelector(state => state.market.market.slug);
   const isPolkApproved = useAppSelector(state => state.bepro.polkApproved);
@@ -77,6 +81,7 @@ function ReportFormActions() {
 
   async function handleBond() {
     const beproService = new BeproService();
+    const polkamarketsApiService = new PolkamarketsApiService();
 
     try {
       // performing buy action on smart contract
@@ -87,8 +92,16 @@ function ReportFormActions() {
       );
 
       const { status, transactionHash } = response;
+
+      if (status && transactionHash) {
+        setBondTransactionSuccess(status);
+        setBondTransactionSuccessHash(transactionHash);
+        show('bond');
+      }
+
+      await polkamarketsApiService.reloadMarket(marketSlug);
     } catch (error) {
-      // TODO:
+      console.error(error);
     }
   }
 
@@ -166,6 +179,35 @@ function ReportFormActions() {
           >
             Bond
           </Button>
+          {/* TODO: Create notifications by type (ex: Transaction completed) */}
+          {bondTransactionSuccess && bondTransactionSuccessHash ? (
+            <ToastNotification id="bond" duration={10000}>
+              <Toast
+                variant="success"
+                title="Success"
+                description="Your transaction is completed!"
+              >
+                <Toast.Actions>
+                  <a
+                    target="_blank"
+                    href={`https://kovan.etherscan.io/tx/${bondTransactionSuccessHash}`}
+                    rel="noreferrer"
+                  >
+                    <Button size="sm" color="success">
+                      View on Explorer
+                    </Button>
+                  </a>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => close('bond')}
+                  >
+                    Dismiss
+                  </Button>
+                </Toast.Actions>
+              </Toast>
+            </ToastNotification>
+          ) : null}
         </div>
       </div>
     </div>
