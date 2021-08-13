@@ -36,8 +36,6 @@
 
     &__footer {
       grid-area: footer;
-      position: sticky;
-      bottom: 0;
 
       width: 100%;
       background-color: themed('background-color');
