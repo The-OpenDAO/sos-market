@@ -326,4 +326,10 @@ export default class BeproService {
 
     return bonds;
   }
+
+  public async getQuestion(questionId: string): Promise<Object> {
+    const question = await this.contracts.realitio.getQuestion({ questionId });
+
+    return question;
+  }
 }

@@ -143,6 +143,13 @@ const marketSlice = createSlice({
             : outcome
         )
       }
+    }),
+    changeQuestion: (state, action) => ({
+      ...state,
+      market: {
+        ...state.market,
+        question: action.payload
+      }
     })
   }
 });
@@ -156,10 +163,17 @@ const {
   marketSelected,
   clearMarket,
   changeOutcomePrice,
+  changeQuestion,
   setChartViewType
 } = marketSlice.actions;
 
-export { marketSelected, clearMarket, changeOutcomePrice, setChartViewType };
+export {
+  marketSelected,
+  clearMarket,
+  changeOutcomePrice,
+  changeQuestion,
+  setChartViewType
+};
 
 export function getMarket(marketSlug: string) {
   return async dispatch => {
