@@ -35,7 +35,6 @@ function ReportFormActions({
   // Form state
   const [outcome] = useField('outcome');
   const [bond] = useField('bond');
-  const { isSubmitting } = useFormikContext();
 
   // Loading state
   const [isApprovingPolk, setIsApprovingPolk] = useState(false);
@@ -46,6 +45,7 @@ function ReportFormActions({
     setApprovePolkTransactionSuccessHash
   ] = useState(undefined);
 
+  const [isBonding, setIsBonding] = useState(false);
   const [bondTransactionSuccess, setBondTransactionSuccess] = useState(false);
   const [bondTransactionSuccessHash, setBondTransactionSuccessHash] =
     useState(undefined);
@@ -96,6 +96,9 @@ function ReportFormActions({
 
   async function handleBond() {
     const beproService = new BeproService();
+    const polkamarketApiService = new PolkamarketsApiService();
+
+    setIsBonding(true);
 
     try {
       // performing buy action on smart contract
@@ -104,6 +107,8 @@ function ReportFormActions({
         outcome.value,
         bond.value
       );
+
+      setIsBonding(false);
 
       const { status, transactionHash } = response;
 
@@ -114,16 +119,17 @@ function ReportFormActions({
       }
 
       // triggering cache reload action on api
-      new PolkamarketsApiService().reloadMarket(marketSlug);
+      await polkamarketApiService.reloadMarket(marketSlug);
 
       // updating wallet
-      login(dispatch);
-      fetchAditionalData(dispatch);
+      await login(dispatch);
+      await fetchAditionalData(dispatch);
 
       // updating question
       const question = await beproService.getQuestion(questionId);
       dispatch(changeQuestion(question));
     } catch (error) {
+      setIsBonding(false);
       console.error(error);
     }
   }
@@ -268,8 +274,8 @@ function ReportFormActions({
               color="primary"
               fullwidth
               onClick={handleBond}
-              disabled={!isPolkApproved || bond.value === 0}
-              loading={isSubmitting}
+              disabled={!isPolkApproved || bond.value === 0 || isBonding}
+              loading={isBonding}
             >
               Bond
             </Button>
