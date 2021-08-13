@@ -7,7 +7,10 @@ function roundNumber(value: number, decimals: number) {
 }
 
 function formatNumberToString(number: number | string) {
-  return `${number}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+  return `${parseFloat(`${number}`).toFixed(0)}`.replace(
+    /(\d)(?=(\d\d\d)+(?!\d))/g,
+    '$1,'
+  );
 }
 
 export { roundNumber, floorNumber, formatNumberToString };
