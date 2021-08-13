@@ -42,9 +42,11 @@ import Outcome from './Outcome';
 import Pill from './Pill';
 import PortfolioLiquidityTable from './PortfolioLiquidityTable';
 import PortfolioMarketTable from './PortfolioMarketTable';
+import PortfolioReportTable from './PortfolioReportTable';
 import PredictionCard from './PredictionCard';
 import ProgressBar from './ProgressBar';
 import ReportForm from './ReportForm';
+import Ribbon from './Ribbon';
 import RightSidebar from './RightSidebar';
 import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
@@ -107,6 +109,7 @@ export {
   Pill,
   PortfolioLiquidityTable,
   PortfolioMarketTable,
+  PortfolioReportTable,
   PredictionCard,
   ProbabilityInput,
   ProgressBar,
@@ -116,6 +119,7 @@ export {
   SelectInput,
   Sidebar,
   ReportForm,
+  Ribbon,
   RightSidebar,
   StepSlider,
   Table,

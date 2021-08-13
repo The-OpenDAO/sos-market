@@ -1,3 +1,4 @@
+import AmountInput from './AmountInput';
 import DateInput from './DateInput';
 import FileUploadInput from './FileUploadInput';
 import Input from './Input';
@@ -11,5 +12,6 @@ export {
   ProbabilityInput,
   FileUploadInput,
   SelectInput,
-  DateInput
+  DateInput,
+  AmountInput
 };

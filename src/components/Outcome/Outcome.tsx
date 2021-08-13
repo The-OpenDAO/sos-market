@@ -6,11 +6,12 @@ import { roundNumber } from 'helpers/math';
 import isUndefined from 'lodash/isUndefined';
 import reject from 'lodash/reject';
 
-import { InfoIcon } from 'assets/icons';
+import { InfoIcon, TrophyIcon } from 'assets/icons';
 
 import Badge, { BadgeColor } from '../Badge';
 import MiniTable, { MiniTableRow } from '../MiniTable';
 import ProgressBar, { ProgressBarColor } from '../ProgressBar';
+import Ribbon, { RibbonColor } from '../Ribbon';
 import Tooltip from '../Tooltip';
 
 export type OutcomeState =
@@ -18,7 +19,8 @@ export type OutcomeState =
   | 'selected'
   | 'success'
   | 'warning'
-  | 'error';
+  | 'error'
+  | 'won';
 
 type OutcomeProps = {
   /**
@@ -43,6 +45,10 @@ type OutcomeProps = {
    */
   shares?: number;
   /**
+   * Bond value
+   */
+  bond?: number;
+  /**
    * Currency ticker
    */
   ticker?: string;
@@ -55,6 +61,8 @@ type OutcomeProps = {
    * @default 'default'
    */
   state?: OutcomeState;
+  resolvedOutcomeId: number;
+  marketQuestionFinalized: boolean;
   onSelect: (id: string) => void;
 };
 
@@ -67,11 +75,13 @@ function Outcome({
   ticker = 'POLK',
   progress,
   state = 'default',
+  resolvedOutcomeId,
+  marketQuestionFinalized,
+  bond = 0,
   onSelect
 }: OutcomeProps) {
   const [field] = useField('bond');
-
-  const bond = state === 'selected' ? field.value : 0;
+  const isWinningOutcome = resolvedOutcomeId.toString() === id;
 
   const miniTableRows = useMemo(() => {
     const rows = [
@@ -105,6 +115,7 @@ function Outcome({
       tabIndex={0}
       onClick={handleSelectOutcome}
       onKeyPress={handleSelectOutcome}
+      style={{ pointerEvents: marketQuestionFinalized ? 'none' : 'all' }}
     >
       <div className="pm-c-outcome__header">
         <div className="pm-c-outcome__row-group">
@@ -115,6 +126,17 @@ function Outcome({
             </Tooltip>
           ) : null}
         </div>
+        {isWinningOutcome ? (
+          <Ribbon
+            icon={<TrophyIcon />}
+            // text={marketQuestionFinalized ? 'WON' : 'WINNING'} // text disabled
+            color={
+              marketQuestionFinalized
+                ? ('success' as RibbonColor)
+                : (color as RibbonColor)
+            }
+          />
+        ) : null}
       </div>
       <MiniTable rows={miniTableRows} />
       {progress ? (

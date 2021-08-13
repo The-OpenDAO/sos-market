@@ -30,6 +30,7 @@ const initialState: MarketInitialState = {
     createdAt: '',
     expiresAt: '',
     state: 'open',
+    questionId: '',
     resolvedOutcomeId: -1,
     oracleSource: '',
     outcomes: [
@@ -59,7 +60,15 @@ const initialState: MarketInitialState = {
       }
     ],
     tradingViewSymbol: null,
-    fee: 0
+    fee: 0,
+    question: {
+      id: '0x0000000000000000000000000000000000000000000000000000000000000000',
+      bond: 0,
+      bestAnswer:
+        '0x0000000000000000000000000000000000000000000000000000000000000000',
+      isFinalized: false,
+      finalizeTs: 0
+    }
   },
   chartViews: chartViewsEnum,
   chartViewType: 'marketOverview',
@@ -134,6 +143,13 @@ const marketSlice = createSlice({
             : outcome
         )
       }
+    }),
+    changeQuestion: (state, action) => ({
+      ...state,
+      market: {
+        ...state.market,
+        question: action.payload
+      }
     })
   }
 });
@@ -147,10 +163,17 @@ const {
   marketSelected,
   clearMarket,
   changeOutcomePrice,
+  changeQuestion,
   setChartViewType
 } = marketSlice.actions;
 
-export { marketSelected, clearMarket, changeOutcomePrice, setChartViewType };
+export {
+  marketSelected,
+  clearMarket,
+  changeOutcomePrice,
+  changeQuestion,
+  setChartViewType
+};
 
 export function getMarket(marketSlug: string) {
   return async dispatch => {

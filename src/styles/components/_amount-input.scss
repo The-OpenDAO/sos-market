@@ -17,6 +17,10 @@
       border-radius: $amount-input-group-border-radius;
     }
 
+    &__group--error {
+      border-color: themed('amount-input-border-color--error');
+    }
+
     &__input {
       width: 100%;
       margin: $amount-input-margin;

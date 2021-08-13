@@ -275,9 +275,49 @@ function formatPortfolioAnalytics(portfolio: Portfolio, ticker: string) {
   ];
 }
 
+function formatReportPositions(bonds: Object, markets: Market[]) {
+  const headers = [
+    { title: 'Market', key: 'market', align: 'left', sortBy: 'market.id' },
+    { title: 'Reported', key: 'value', align: 'center', sortBy: 'value' },
+    { title: 'Payout', key: 'payout', align: 'right', sortBy: 'maxPayout' },
+    { title: 'Status', key: 'status', align: 'right', sortBy: 'result.type' }
+  ];
+
+  const rows: any[] = [];
+
+  // looping through outcomes array and showing positions where user holds shares
+  markets.forEach((market: Market) => {
+    // ignoring zero balances
+    if (bonds[market.questionId]?.total > 0) {
+      const value = bonds[market.questionId]?.total;
+      const payout = 0; // TODO
+      const result = { type: 'awaiting_resolution' };
+
+      // TODO calculate states with bepro-js
+      // if (market.state === 'closed') {
+      //   result = { type: 'awaiting_resolution' };
+      // } else if (market.state === 'resolved') {
+      //   // user still has report tokens to claim
+      //   result = { type: 'awaiting_claim' };
+      // } else {
+      //   result = { type: 'claimed' };
+      // }
+
+      rows.push({
+        market,
+        value,
+        payout,
+        result
+      });
+    }
+  });
+
+  return { headers, rows };
+}
 export {
   formatMarketPositions,
   formatLiquidityPositions,
+  formatReportPositions,
   formatPortfolioAnalytics,
   generateRandomNumberBetween,
   generateChartRandomData

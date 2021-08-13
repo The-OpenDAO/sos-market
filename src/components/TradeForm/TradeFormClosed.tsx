@@ -1,19 +1,29 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import { Link } from 'react-router-dom';
 
-import Text from '../Text';
+import { AlertMini } from 'components/Alert';
+import { Button } from 'components/Button';
 
 function TradeFormClosed() {
   return (
-    <div className="pm-c-trade-form-liquidity">
-      <Text as="i" color="lighter-gray">
-        This market is closed. If you have any winnings to claim please check
-        your <Link to="/portfolio">portfolio</Link>
-      </Text>
+    <div className="pm-c-trade-form">
+      <div className="pm-c-trade-form__group" style={{ gap: '1.6rem' }}>
+        <AlertMini
+          variant="warning"
+          description="This market is closed. If you have any winnings to claim please check
+      your portfolio"
+        />
+      </div>
+      <div className="pm-c-trade-form__group" style={{ gap: '2.4rem' }}>
+        <div className="pm-c-trade-form-actions">
+          <Link to="/portfolio" style={{ width: 'inherit' }}>
+            <Button color="primary" fullwidth>
+              Go to Portfolio
+            </Button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
-
-TradeFormClosed.displayName = 'TradeFormClosed';
 
 export default TradeFormClosed;

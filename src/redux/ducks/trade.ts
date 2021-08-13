@@ -12,8 +12,6 @@ export interface TradeDetails {
 }
 
 const initialState = {
-  showCharts: false,
-  showPredictions: false,
   type: 'buy',
   selectedMarketId: '',
   selectedOutcomeId: '',
@@ -33,14 +31,6 @@ const tradeSlice = createSlice({
   name: 'trade',
   initialState,
   reducers: {
-    changeChartsVisibility: (state, action: PayloadAction<boolean>) => ({
-      ...state,
-      showCharts: action.payload
-    }),
-    changePredictionsVisibility: (state, action: PayloadAction<boolean>) => ({
-      ...state,
-      showPredictions: action.payload
-    }),
     changeTradeType: (state, action: PayloadAction<TradeType>) => ({
       ...state,
       type: action.payload
@@ -84,8 +74,6 @@ const tradeSlice = createSlice({
 export default tradeSlice.reducer;
 
 const {
-  changeChartsVisibility,
-  changePredictionsVisibility,
   changeTradeType,
   outcomeSelected,
   setTradeDetails,
@@ -97,8 +85,6 @@ const {
 } = tradeSlice.actions;
 
 export {
-  changeChartsVisibility,
-  changePredictionsVisibility,
   changeTradeType,
   outcomeSelected,
   setTradeDetails,

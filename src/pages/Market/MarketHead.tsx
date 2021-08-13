@@ -1,15 +1,8 @@
-import { Link, useHistory } from 'react-router-dom';
-
-import {
-  changeChartsVisibility,
-  changePredictionsVisibility
-} from 'redux/ducks/trade';
+import { useHistory } from 'react-router-dom';
 
 import { ArrowLeftIcon } from 'assets/icons';
 
 import { Breadcrumb, Button, Text } from 'components';
-
-import { useAppDispatch } from 'hooks';
 
 type MarketHeadProps = {
   section: string;
@@ -24,13 +17,10 @@ const MarketHead = ({
   imageUrl,
   description
 }: MarketHeadProps) => {
-  const dispatch = useAppDispatch();
   const history = useHistory();
 
   function handleNavigation() {
     history.push('/home');
-    dispatch(changeChartsVisibility(true));
-    dispatch(changePredictionsVisibility(false));
   }
 
   return (

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { changeOutcomePrice } from 'redux/ducks/market';
@@ -16,11 +16,11 @@ import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 
 function TradeFormActions() {
+  const location = useLocation();
   const dispatch = useAppDispatch();
-  const showCharts = useAppSelector(state => state.trade.showCharts);
+
   const type = useAppSelector(state => state.trade.type);
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
-  const marketState = useAppSelector(state => state.market.market.state);
   const marketSlug = useAppSelector(state => state.market.market.slug);
   const predictionId = useAppSelector(state => state.trade.selectedOutcomeId);
   const amount = useAppSelector(state => state.trade.amount);
@@ -30,6 +30,8 @@ function TradeFormActions() {
     state => state.trade.acceptOddChanges
   );
   const ethAddress = useAppSelector(state => state.bepro.ethAddress);
+
+  const isMarketPage = location.pathname === `/markets/${marketSlug}`;
 
   const [transactionSuccess, setTransactionSuccess] = useState(false);
   const [transactionSuccessHash, setTransactionSuccessHash] =
@@ -134,21 +136,9 @@ function TradeFormActions() {
   // terms currently disabled
   const hasAcceptedTerms = true;
 
-  if (marketState !== 'open') {
-    return (
-      <div className="pm-c-trade-form-actions">
-        <Link to="/portfolio" style={{ width: 'inherit' }}>
-          <Button color="primary" fullwidth>
-            Go to Portfolio
-          </Button>
-        </Link>
-      </div>
-    );
-  }
-
   return (
     <div className="pm-c-trade-form-actions">
-      {showCharts ? (
+      {!isMarketPage ? (
         <Button variant="subtle" color="default" onClick={handleCancel}>
           Cancel
         </Button>
