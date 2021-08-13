@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { changeOutcomePrice } from 'redux/ducks/market';
@@ -21,7 +21,6 @@ function TradeFormActions() {
 
   const type = useAppSelector(state => state.trade.type);
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
-  const marketState = useAppSelector(state => state.market.market.state);
   const marketSlug = useAppSelector(state => state.market.market.slug);
   const predictionId = useAppSelector(state => state.trade.selectedOutcomeId);
   const amount = useAppSelector(state => state.trade.amount);
@@ -136,18 +135,6 @@ function TradeFormActions() {
   const isValidAmount = amount > 0 && amount <= maxAmount;
   // terms currently disabled
   const hasAcceptedTerms = true;
-
-  if (marketState !== 'open') {
-    return (
-      <div className="pm-c-trade-form-actions">
-        <Link to="/portfolio" style={{ width: 'inherit' }}>
-          <Button color="primary" fullwidth>
-            Go to Portfolio
-          </Button>
-        </Link>
-      </div>
-    );
-  }
 
   return (
     <div className="pm-c-trade-form-actions">
