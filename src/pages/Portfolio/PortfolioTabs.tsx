@@ -51,6 +51,7 @@ function PortfolioTabs() {
     value => value === true
   );
 
+  const bonds = useAppSelector(state => state.bepro.bonds);
   const portfolio = useAppSelector(state => state.bepro.portfolio);
   const isLoadingPortfolio = useAppSelector(
     state => state.bepro.isLoading.portfolio
@@ -58,7 +59,7 @@ function PortfolioTabs() {
 
   const marketPositions = formatMarketPositions(portfolio, markets);
   const liquidityPositions = formatLiquidityPositions(portfolio, markets);
-  const reportPositions = formatReportPositions(portfolio, markets);
+  const reportPositions = formatReportPositions(bonds, markets);
 
   return (
     <div className="portfolio-tabs">

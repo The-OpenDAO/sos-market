@@ -9,6 +9,7 @@ const initialState = {
   polkApproved: false,
   portfolio: {},
   actions: [],
+  bonds: {},
   isLoading: {
     portfolio: false
   }
@@ -46,6 +47,10 @@ const beproSlice = createSlice({
       ...state,
       actions: action.payload
     }),
+    changeBonds: (state, action: PayloadAction<Object>) => ({
+      ...state,
+      bonds: action.payload
+    }),
     changeLoading: (
       state,
       action: PayloadAction<{ key: string; value: boolean }>
@@ -69,6 +74,7 @@ const {
   changePolkApproved,
   changePortfolio,
   changeActions,
+  changeBonds,
   changeLoading
 } = beproSlice.actions;
 
@@ -113,6 +119,9 @@ const fetchAditionalData = async (dispatch: any) => {
     const portfolio = await beproService.getPortfolio();
     dispatch(changePortfolio(portfolio));
 
+    const bonds = await beproService.getBonds();
+    dispatch(changeBonds(bonds));
+
     dispatch(
       changeLoading({
         key: 'portfolio',
@@ -133,6 +142,7 @@ export {
   changePolkApproved,
   changePortfolio,
   changeActions,
+  changeBonds,
   login,
   fetchAditionalData
 };

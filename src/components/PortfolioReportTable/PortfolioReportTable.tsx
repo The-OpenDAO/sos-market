@@ -9,12 +9,7 @@ import isEmpty from 'lodash/isEmpty';
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  CaretDownIcon,
-  CaretUpIcon
-} from 'assets/icons';
+import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector, useSortableData } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
@@ -192,7 +187,7 @@ const PortfolioReportTable = ({
                     loading={isLoadingClaimReport[market.id] || false}
                     style={{ marginLeft: 'auto' }}
                   >
-                    Withdraw
+                    Claim
                   </Button>
                 ) : null}
                 {result.type === 'awaiting_resolution' ? (
@@ -202,7 +197,7 @@ const PortfolioReportTable = ({
                 ) : null}
                 {result.type === 'claimed' ? (
                   <Pill variant="subtle" color="primary">
-                    Withdrawn
+                    Claimed
                   </Pill>
                 ) : null}
               </td>

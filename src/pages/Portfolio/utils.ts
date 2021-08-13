@@ -275,7 +275,7 @@ function formatPortfolioAnalytics(portfolio: Portfolio, ticker: string) {
   ];
 }
 
-function formatReportPositions(portfolio: Object, markets: Market[]) {
+function formatReportPositions(bonds: Object, markets: Market[]) {
   const headers = [
     { title: 'Market', key: 'market', align: 'left', sortBy: 'market.id' },
     { title: 'Reported', key: 'value', align: 'center', sortBy: 'value' },
@@ -288,8 +288,8 @@ function formatReportPositions(portfolio: Object, markets: Market[]) {
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
     // ignoring zero balances
-    if (portfolio[market.id]?.liquidity?.shares > 0.0005) {
-      const value = 123; // TODO
+    if (bonds[market.questionId] > 0) {
+      const value = bonds[market.questionId]; // TODO
       const maxPayout = 456; // TODO
       let result: any;
 

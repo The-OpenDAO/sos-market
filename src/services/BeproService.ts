@@ -317,4 +317,13 @@ export default class BeproService {
 
     return response;
   }
+
+  public async getBonds(): Promise<Object> {
+    // ensuring user has wallet connected
+    if (!this.address) return {};
+
+    const bonds = await this.contracts.realitio.getMyBonds();
+
+    return bonds;
+  }
 }
