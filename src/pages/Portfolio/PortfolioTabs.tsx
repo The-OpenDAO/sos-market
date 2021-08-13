@@ -51,8 +51,7 @@ function PortfolioTabs() {
     value => value === true
   );
 
-  const bonds = useAppSelector(state => state.bepro.bonds);
-  const portfolio = useAppSelector(state => state.bepro.portfolio);
+  const { bonds, portfolio } = useAppSelector(state => state.bepro);
   const isLoadingPortfolio = useAppSelector(
     state => state.bepro.isLoading.portfolio
   );

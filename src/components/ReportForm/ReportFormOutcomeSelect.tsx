@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import { useField } from 'formik';
 import { Outcome as MarketOutcome } from 'models/market';
 import { selectOutcome } from 'redux/ducks/trade';
@@ -18,11 +16,10 @@ function ReportFormOutcomeSelect() {
     state => state.market.market.question.isFinalized
   );
   const { bestAnswer } = useAppSelector(state => state.market.market.question);
-  const { portfolio, ethAddress } = useAppSelector(state => state.bepro);
+  const { bonds, portfolio } = useAppSelector(state => state.bepro);
 
   // Form state
   const [field, meta, helpers] = useField('outcome');
-  const [bonds, setBonds] = useState({});
 
   // converting bytes32 to int
   const resolvedOutcomeId = BeproService.bytes32ToInt(bestAnswer);
@@ -34,23 +31,6 @@ function ReportFormOutcomeSelect() {
     selectOutcome(marketId, id);
     helpers.setValue(id);
   }
-
-  // TODO: get data from api
-  async function getOutcomesBonds() {
-    if (!ethAddress) return;
-
-    const beproService = new BeproService();
-    const response = await beproService.getQuestionBonds(
-      questionId,
-      ethAddress
-    );
-
-    setBonds(response);
-  }
-
-  useEffect(() => {
-    getOutcomesBonds();
-  }, [ethAddress]);
 
   const isSelected = outcome =>
     field.value && `${field.value}` === `${outcome.id}`;
@@ -68,6 +48,14 @@ function ReportFormOutcomeSelect() {
     return 'default';
   };
 
+  const getOutcomeBond = outcomeId => {
+    const answerId = BeproService.intToBytes32(outcomeId);
+
+    if (!bonds[questionId]) return 0;
+
+    return bonds[questionId].answers[answerId] || 0;
+  };
+
   return (
     <div className="pm-c-report-form-outcome-select">
       {outcomes.map(outcome => (
@@ -76,7 +64,7 @@ function ReportFormOutcomeSelect() {
           id={`${outcome.id}`}
           title={outcome.title}
           shares={portfolio[marketId]?.outcomes[outcome.id]?.shares || 0}
-          bond={bonds[outcome.id] || 0}
+          bond={getOutcomeBond(outcome.id)}
           color={getOutcomeColor(outcome)}
           state={checkOutcomeState(outcome)}
           resolvedOutcomeId={resolvedOutcomeId}
@@ -90,7 +78,7 @@ function ReportFormOutcomeSelect() {
         helpText="Help text"
         color="warning"
         state={checkOutcomeState({ id: '-1' })}
-        bond={bonds[-1] || 0}
+        bond={getOutcomeBond(-1)}
         resolvedOutcomeId={resolvedOutcomeId}
         marketQuestionFinalized={isMarketQuestionFinalized}
         onSelect={handleOutcomeSelect}

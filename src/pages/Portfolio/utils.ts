@@ -288,8 +288,8 @@ function formatReportPositions(bonds: Object, markets: Market[]) {
   // looping through outcomes array and showing positions where user holds shares
   markets.forEach((market: Market) => {
     // ignoring zero balances
-    if (bonds[market.questionId] > 0) {
-      const value = bonds[market.questionId]; // TODO
+    if (bonds[market.questionId]?.total > 0) {
+      const value = bonds[market.questionId]?.total;
       const maxPayout = 456; // TODO
       let result: any;
 

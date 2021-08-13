@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { useField, useFormikContext } from 'formik';
-import { login } from 'redux/ducks/bepro';
+import { fetchAditionalData, login } from 'redux/ducks/bepro';
 import { selectOutcome } from 'redux/ducks/trade';
 import { closeReportForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
@@ -95,7 +95,6 @@ function ReportFormActions({
 
   async function handleBond() {
     const beproService = new BeproService();
-    const polkamarketsApiService = new PolkamarketsApiService();
 
     try {
       // performing buy action on smart contract
@@ -113,7 +112,12 @@ function ReportFormActions({
         show('bond');
       }
 
-      await polkamarketsApiService.reloadMarket(marketSlug);
+      // triggering cache reload action on api
+      new PolkamarketsApiService().reloadMarket(marketSlug);
+
+      // updating wallet
+      await login(dispatch);
+      await fetchAditionalData(dispatch);
     } catch (error) {
       console.error(error);
     }
