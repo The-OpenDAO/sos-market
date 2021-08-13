@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { useField, useFormikContext } from 'formik';
 import { fetchAditionalData, login } from 'redux/ducks/bepro';
+import { changeQuestion } from 'redux/ducks/market';
 import { selectOutcome } from 'redux/ducks/trade';
 import { closeReportForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
@@ -116,8 +117,12 @@ function ReportFormActions({
       new PolkamarketsApiService().reloadMarket(marketSlug);
 
       // updating wallet
-      await login(dispatch);
-      await fetchAditionalData(dispatch);
+      login(dispatch);
+      fetchAditionalData(dispatch);
+
+      // updating question
+      const question = await beproService.getQuestion(questionId);
+      dispatch(changeQuestion(question));
     } catch (error) {
       console.error(error);
     }

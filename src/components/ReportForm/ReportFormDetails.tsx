@@ -35,6 +35,7 @@ function ReportFormDetails() {
   const [outcome] = useField('outcome');
 
   const { outcomes, questionId } = useAppSelector(state => state.market.market);
+  const { finalizeTs } = useAppSelector(state => state.market.market.question);
   const [bonds, setBonds] = useState({});
   const [totalBond, setTotalBond] = useState(0);
 
@@ -60,7 +61,6 @@ function ReportFormDetails() {
     }
   ];
 
-  // TODO: get data from api
   async function getOutcomesBonds() {
     const beproService = new BeproService();
     // await beproService.login();
@@ -73,9 +73,10 @@ function ReportFormDetails() {
     setTotalBond(totalBondAmount);
   }
 
+  // UGLY WORKAROUND! TODO: get data from api
   useEffect(() => {
     getOutcomesBonds();
-  }, []);
+  }, [finalizeTs]);
 
   const totalBondItems: TotalBondItem[] = [
     {
