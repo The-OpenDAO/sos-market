@@ -101,7 +101,7 @@ const PortfolioReportTable = ({
               </th>
             ))}
           </tr>
-          {sortedItems?.map(({ market, value, maxPayout, result }) => (
+          {sortedItems?.map(({ market, value, payout, result }) => (
             <tr className="pm-c-table__row" key={market.id}>
               <td
                 id="market"
@@ -149,21 +149,27 @@ const PortfolioReportTable = ({
                 })}
               >
                 <div className="market-table__row-item__group">
-                  <Text
-                    as="span"
-                    scale="caption"
-                    fontWeight="semibold"
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      gap: '0.5rem'
-                    }}
-                  >
-                    {`${roundNumber(maxPayout, 3)} `}
-                    <Text as="strong" scale="caption" fontWeight="semibold">
-                      {` POLK`}
+                  {false ? (
+                    <Text
+                      as="span"
+                      scale="caption"
+                      fontWeight="semibold"
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: '0.5rem'
+                      }}
+                    >
+                      {`${roundNumber(payout, 3)} `}
+                      <Text as="strong" scale="caption" fontWeight="semibold">
+                        {` POLK`}
+                      </Text>
                     </Text>
-                  </Text>
+                  ) : (
+                    <Pill variant="subtle" color="default">
+                      Pending
+                    </Pill>
+                  )}
                 </div>
               </td>
               <td
