@@ -44,8 +44,7 @@ function ReportFormDetails() {
       key: 'bondAmount',
       title: 'Bond Amount',
       value: bond.value,
-      fontWeight: 'bold',
-      helpText: 'Help text'
+      fontWeight: 'bold'
     },
     {
       key: 'potentialProfit',
@@ -84,7 +83,7 @@ function ReportFormDetails() {
       title: 'Total Bond',
       value: totalBond + bond.value,
       fontWeight: 'bold',
-      helpText: 'Help text'
+      helpText: 'Total $POLK reported by all users'
     },
     {
       key: `${outcomes[0].id}`,

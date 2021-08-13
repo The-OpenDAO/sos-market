@@ -129,7 +129,7 @@ function Outcome({
         {isWinningOutcome ? (
           <Ribbon
             icon={<TrophyIcon />}
-            text={marketQuestionFinalized ? 'WON' : 'WINNING'}
+            // text={marketQuestionFinalized ? 'WON' : 'WINNING'} // text disabled
             color={
               marketQuestionFinalized
                 ? ('success' as RibbonColor)

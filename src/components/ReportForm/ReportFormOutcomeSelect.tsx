@@ -75,7 +75,7 @@ function ReportFormOutcomeSelect() {
       <Outcome
         id="-1"
         title="Invalid"
-        helpText="Help text"
+        helpText="A market is invalid when no outcome is correct"
         color="warning"
         state={checkOutcomeState({ id: '-1' })}
         bond={getOutcomeBond(-1)}

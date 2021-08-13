@@ -210,15 +210,8 @@ function ReportFormActions({
             title="Resolve market"
             description={
               <>
-                {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus elementum sit et facilisis. Risus vel eget senectus pellentesque risus viverra varius imperdiet hendrerit. Semper eu amet sit faucibus ultrices quis quam. Vestibulum lorem tortor vel convallis. `}
-                <Link
-                  title="Learn more"
-                  href="//www.polkamarkets.com"
-                  aria-label="Learn more"
-                  target="_blank"
-                  rel="noreferrer"
-                  variant="success"
-                />
+                {`You're one step away from claiming your winnings! Our smart contract needs to fetch the
+                 outcome reported by the community and calculate the market payouts. `}
               </>
             }
           />
