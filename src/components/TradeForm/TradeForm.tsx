@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 import TradeFormActions from './TradeFormActions';
 import TradeFormCharts from './TradeFormCharts';
+import TradeFormClosed from './TradeFormClosed';
 import TradeFormDetails from './TradeFormDetails';
 import TradeFormInput from './TradeFormInput';
 import TradeFormLiquidity from './TradeFormLiquidity';
@@ -38,6 +39,8 @@ function TradeForm() {
   }, [isCurrentSelectedMarket, dispatch, id, outcomes]);
 
   if (isLoadingMarket) return null;
+
+  if (marketState !== 'open') return <TradeFormClosed />;
 
   return (
     <div className="pm-c-trade-form">
