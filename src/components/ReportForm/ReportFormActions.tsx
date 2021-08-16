@@ -216,8 +216,8 @@ function ReportFormActions({
             title="Resolve market"
             description={
               <>
-                {`You're one step away from claiming your winnings! Our smart contract needs to fetch the
-                 outcome reported by the community and calculate the market payouts. `}
+                {`You're one step away from claiming your winnings! The smart contract needs to fetch the
+                 outcome reported by the reporters and calculate the market payouts. `}
               </>
             }
           />
