@@ -119,11 +119,11 @@ function ReportFormActions({
       }
 
       // triggering cache reload action on api
-      await polkamarketApiService.reloadMarket(marketSlug);
+      polkamarketApiService.reloadMarket(marketSlug);
 
       // updating wallet
-      await login(dispatch);
-      await fetchAditionalData(dispatch);
+      login(dispatch);
+      fetchAditionalData(dispatch);
 
       // updating question
       const question = await beproService.getQuestion(questionId);
