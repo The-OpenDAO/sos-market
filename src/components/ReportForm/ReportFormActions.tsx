@@ -175,7 +175,7 @@ function ReportFormActions({
             disabled={isApprovingPolk}
           >
             Allow Polkamarkets to use your POLK
-            <Tooltip text="Example">
+            <Tooltip text="You only have to do this once.">
               <QuestionIcon
                 style={{ width: '1.4rem', height: '1.4rem', opacity: 0.35 }}
               />
