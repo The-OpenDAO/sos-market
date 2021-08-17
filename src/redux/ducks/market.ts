@@ -67,6 +67,7 @@ const initialState: MarketInitialState = {
       bestAnswer:
         '0x0000000000000000000000000000000000000000000000000000000000000000',
       isFinalized: false,
+      isClaimed: false,
       finalizeTs: 0
     }
   },

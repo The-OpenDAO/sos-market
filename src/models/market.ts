@@ -28,6 +28,7 @@ export interface Question {
   bond: number;
   bestAnswer: string;
   isFinalized: boolean;
+  isClaimed: boolean;
   finalizeTs: number;
 }
 
