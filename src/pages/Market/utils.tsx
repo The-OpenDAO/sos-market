@@ -84,7 +84,7 @@ function formatMarketPositions(
       case 'Claim Winnings':
         return { color: 'success', variant: 'normal' };
       case 'Bond':
-        return { color: 'primary', variant: 'subtle' };
+        return { color: 'warning', variant: 'subtle' };
       default:
         return { color: 'default', variant: 'normal' };
     }
@@ -184,7 +184,7 @@ function formatMarketPositions(
             <Text as="span" scale="caption" fontWeight="semibold">
               {value}
               <Text as="strong" scale="caption" fontWeight="semibold">
-                {` ${ticker}`}
+                {` ${action.action === 'Bond' ? 'POLK' : ticker}`}
               </Text>
             </Text>
           ),
