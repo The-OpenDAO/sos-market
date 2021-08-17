@@ -294,7 +294,10 @@ function formatReportPositions(bonds: Object, markets: Market[]) {
       let result = { type: 'awaiting_resolution' };
 
       // TODO calculate states with bepro-js
-      if (bonds[market.questionId]?.withdrawn) {
+      if (
+        bonds[market.questionId]?.withdrawn ||
+        (market.question.isClaimed && payout === 0)
+      ) {
         // user still has report tokens to claim
         result = { type: 'claimed' };
       } else if (market.question.isFinalized) {
