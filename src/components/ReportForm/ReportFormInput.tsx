@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { fromTimestampToCustomFormatDate, relativeTimeToX } from 'helpers/date';
 import { Currency } from 'models/currency';
 import { changeQuestion } from 'redux/ducks/market';
+import { changeMarketQuestion } from 'redux/ducks/markets';
 import { useAppDispatch } from 'redux/store';
 import { BeproService, PolkamarketsApiService } from 'services';
 
@@ -36,6 +37,7 @@ function ReportFormInput() {
     const beproService = new BeproService();
     const question = await beproService.getQuestion(questionId);
     dispatch(changeQuestion(question));
+    dispatch(changeMarketQuestion({ marketId: id, question }));
     // triggering cache reload action on api
     new PolkamarketsApiService().reloadMarket(slug);
   }

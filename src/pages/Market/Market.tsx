@@ -27,7 +27,7 @@ const Market = () => {
   const { symbol, ticker } = useCurrency();
   const { marketId } = useParams<Params>();
   const { market, isLoading } = useAppSelector(state => state.market);
-  const actions = useAppSelector(state => state.bepro.actions);
+  const { actions, bondActions } = useAppSelector(state => state.bepro);
 
   useEffect(() => {
     dispatch(reset());
@@ -45,6 +45,9 @@ const Market = () => {
 
   const tableItems = formatMarketPositions(
     (actions as any).filter(action => action.marketId === market?.id),
+    (bondActions as any).filter(
+      action => action.questionId === market?.questionId
+    ),
     market,
     symbol || ticker
   );

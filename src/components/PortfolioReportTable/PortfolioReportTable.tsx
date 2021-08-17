@@ -6,8 +6,10 @@ import { useHistory } from 'react-router-dom';
 import classnames from 'classnames';
 import { roundNumber } from 'helpers/math';
 import isEmpty from 'lodash/isEmpty';
+import { Market } from 'models/market';
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
-import { BeproService } from 'services';
+import { changeMarketQuestion } from 'redux/ducks/markets';
+import { BeproService, PolkamarketsApiService } from 'services';
 
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
@@ -41,21 +43,27 @@ const PortfolioReportTable = ({
     setIsLoadingClaimReport({ ...isLoadingClaimReport, [id]: isLoading });
   }
 
-  async function handleClaimReport(marketId) {
+  async function handleClaimReport(market: Market) {
     const beproService = new BeproService();
 
-    handleChangeIsLoading(marketId, true);
+    handleChangeIsLoading(market.id, true);
 
     try {
-      // TODO: await beproService.claimReport(marketId);
+      await beproService.claimWinningsAndWithdraw(market.questionId);
+
+      // triggering cache reload action on api
+      new PolkamarketsApiService().reloadMarket(market.slug);
+
+      const question = await beproService.getQuestion(market.questionId);
+      dispatch(changeMarketQuestion({ marketId: market.id, question }));
 
       // updating wallet
-      await login(dispatch);
+      login(dispatch);
       await fetchAditionalData(dispatch);
 
-      handleChangeIsLoading(marketId, false);
+      handleChangeIsLoading(market.id, false);
     } catch (error) {
-      handleChangeIsLoading(marketId, false);
+      handleChangeIsLoading(market.id, false);
     }
   }
 
@@ -149,7 +157,7 @@ const PortfolioReportTable = ({
                 })}
               >
                 <div className="market-table__row-item__group">
-                  {false ? (
+                  {market.question.isClaimed ? (
                     <Text
                       as="span"
                       scale="caption"
@@ -189,7 +197,7 @@ const PortfolioReportTable = ({
                     size="sm"
                     variant="normal"
                     color="primary"
-                    onClick={() => handleClaimReport(market.id)}
+                    onClick={() => handleClaimReport(market)}
                     loading={isLoadingClaimReport[market.id] || false}
                     style={{ marginLeft: 'auto' }}
                   >

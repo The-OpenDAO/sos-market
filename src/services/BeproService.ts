@@ -322,6 +322,17 @@ export default class BeproService {
     return response;
   }
 
+  public async claimWinningsAndWithdraw(questionId: string) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contracts.realitio.claimWinningsAndWithdraw({
+      questionId
+    });
+
+    return response;
+  }
+
   public async getBonds(): Promise<Object> {
     // ensuring user has wallet connected
     if (!this.address) return {};
@@ -329,6 +340,15 @@ export default class BeproService {
     const bonds = await this.contracts.realitio.getMyBonds();
 
     return bonds;
+  }
+
+  public async getBondActions(): Promise<Object> {
+    // ensuring user has wallet connected
+    if (!this.address) return [];
+
+    const response = await this.contracts.realitio.getMyActions();
+
+    return response;
   }
 
   public async getQuestion(questionId: string): Promise<Object> {

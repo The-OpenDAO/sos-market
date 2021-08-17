@@ -7,6 +7,7 @@ import { roundNumber } from 'helpers/math';
 import reverse from 'lodash/reverse';
 import times from 'lodash/times';
 import { Market } from 'models/market';
+import { BeproService } from 'services';
 
 import { ShareIcon } from 'assets/icons';
 
@@ -54,7 +55,12 @@ type Row = {
   transactionHash: { value: React.ReactNode; align: ItemAlign };
 };
 
-function formatMarketPositions(actions: [], market: Market, ticker: string) {
+function formatMarketPositions(
+  actions: [],
+  bondActions: [],
+  market: Market,
+  ticker: string
+) {
   const columns: Column[] = [
     { title: 'Outcome', key: 'outcome', align: 'left' },
     { title: 'Date', key: 'date', align: 'right' },
@@ -77,115 +83,135 @@ function formatMarketPositions(actions: [], market: Market, ticker: string) {
         return { color: 'primary', variant: 'subtle' };
       case 'Claim Winnings':
         return { color: 'success', variant: 'normal' };
+      case 'Bond':
+        return { color: 'warning', variant: 'subtle' };
       default:
         return { color: 'default', variant: 'normal' };
     }
   };
 
-  const rows: Row[] = actions.reverse().map((action: any, index: number) => {
-    const key = index.toString();
-    const outcome =
-      action.action === 'Buy' ||
-      action.action === 'Sell' ||
-      action.action === 'Claim Winnings'
-        ? market.outcomes[action.outcomeId]?.title
-        : null;
-    const date = fromTimestampToDate(action.timestamp * 1000).format(
-      'YYYY/MM/DD'
-    );
-    const utcTime = fromTimestampToDate(action.timestamp * 1000).format(
-      'h:mm A'
-    );
-    const actionColor = actionColorReducer(action.action);
-    const price =
-      action.action === 'Claim Fees'
-        ? null
-        : `${roundNumber(action.value / action.shares, 3)}`;
-    const shares =
-      action.action === 'Claim Fees' ? null : roundNumber(action.shares, 3);
-    const value = `${roundNumber(action.value, 3)}`;
-    const tradeType = action.action;
-    const { transactionHash } = action;
+  const rows: Row[] = actions
+    .concat(bondActions)
+    .sort((x: any, y: any) => (x.timestamp > y.timestamp ? -1 : 1))
+    .map((action: any, index: number) => {
+      const key = index.toString();
+      let { outcomeId } = action;
+      let outcome =
+        action.action === 'Buy' ||
+        action.action === 'Sell' ||
+        action.action === 'Claim Winnings'
+          ? market.outcomes[outcomeId]?.title
+          : null;
 
-    return {
-      key,
-      outcome: {
-        value: outcome ? (
-          <Badge
-            color={
-              market.outcomes[0].id === action.outcomeId ? 'purple' : 'pink'
-            }
-            label={`${outcome}`}
-          />
-        ) : null,
-        align: 'center'
-      },
-      date: {
-        value: (
-          <Text
-            as="span"
-            scale="caption"
-            fontWeight="semibold"
-            style={{ display: 'flex', flexDirection: 'column' }}
-          >
-            {date}
-            <Text as="strong" scale="caption" fontWeight="semibold">
-              {utcTime}
-            </Text>
-          </Text>
-        ),
-        align: 'right'
-      },
-      price: {
-        value: (
-          <Text as="span" scale="caption" fontWeight="semibold">
-            {price}
-            {price ? (
-              <Text as="strong" scale="caption" fontWeight="semibold">
-                {` ${ticker}`}
-              </Text>
-            ) : null }
-          </Text>
-        ),
-        align: 'right'
-      },
-      shares: {
-        value: shares,
-        align: 'right'
-      },
-      value: {
-        value: (
-          <Text as="span" scale="caption" fontWeight="semibold">
-            {value}
-            <Text as="strong" scale="caption" fontWeight="semibold">
-              {` ${ticker}`}
-            </Text>
-          </Text>
-        ),
-        align: 'right'
-      },
-      tradeType: {
-        value: (
-          <Pill color={actionColor.color} variant={actionColor.variant}>
-            {tradeType}
-          </Pill>
-        ),
-        align: 'center'
-      },
-      transactionHash: {
-        value: (
-          <a
-            target="_blank"
-            href={`https://kovan.etherscan.io/tx/${transactionHash}`}
-            rel="noreferrer"
-          >
-            <ShareIcon />
-          </a>
-        ),
-        align: 'right'
+      if (action.answerId) {
+        // mapping realitio answer to outcome
+        outcomeId = BeproService.bytes32ToInt(action.answerId);
+        outcome =
+          outcomeId === -1 ? 'Invalid' : market.outcomes[outcomeId]?.title;
       }
-    };
-  });
+      const date = fromTimestampToDate(action.timestamp * 1000).format(
+        'YYYY/MM/DD'
+      );
+      const utcTime = fromTimestampToDate(action.timestamp * 1000).format(
+        'h:mm A'
+      );
+      const actionColor = actionColorReducer(action.action);
+      const price =
+        action.action === 'Claim Fees' || action.action === 'Bond'
+          ? null
+          : `${roundNumber(action.value / action.shares, 3)}`;
+      const shares =
+        action.action === 'Claim Fees' || action.action === 'Bond'
+          ? null
+          : roundNumber(action.shares, 3);
+      const value = `${roundNumber(action.value, 3)}`;
+      const tradeType = action.action;
+      const { transactionHash } = action;
+
+      return {
+        key,
+        outcome: {
+          value: outcome ? (
+            <Badge
+              color={
+                // eslint-disable-next-line no-nested-ternary
+                outcomeId === -1
+                  ? 'warning'
+                  : market.outcomes[0].id === outcomeId
+                  ? 'purple'
+                  : 'pink'
+              }
+              label={`${outcome}`}
+            />
+          ) : null,
+          align: 'center'
+        },
+        date: {
+          value: (
+            <Text
+              as="span"
+              scale="caption"
+              fontWeight="semibold"
+              style={{ display: 'flex', flexDirection: 'column' }}
+            >
+              {date}
+              <Text as="strong" scale="caption" fontWeight="semibold">
+                {utcTime}
+              </Text>
+            </Text>
+          ),
+          align: 'right'
+        },
+        price: {
+          value: (
+            <Text as="span" scale="caption" fontWeight="semibold">
+              {price}
+              {price ? (
+                <Text as="strong" scale="caption" fontWeight="semibold">
+                  {` ${ticker}`}
+                </Text>
+              ) : null}
+            </Text>
+          ),
+          align: 'right'
+        },
+        shares: {
+          value: shares,
+          align: 'right'
+        },
+        value: {
+          value: (
+            <Text as="span" scale="caption" fontWeight="semibold">
+              {value}
+              <Text as="strong" scale="caption" fontWeight="semibold">
+                {` ${action.action === 'Bond' ? 'POLK' : ticker}`}
+              </Text>
+            </Text>
+          ),
+          align: 'right'
+        },
+        tradeType: {
+          value: (
+            <Pill color={actionColor.color} variant={actionColor.variant}>
+              {tradeType}
+            </Pill>
+          ),
+          align: 'center'
+        },
+        transactionHash: {
+          value: (
+            <a
+              target="_blank"
+              href={`https://kovan.etherscan.io/tx/${transactionHash}`}
+              rel="noreferrer"
+            >
+              <ShareIcon />
+            </a>
+          ),
+          align: 'right'
+        }
+      };
+    });
 
   return { columns, rows };
 }

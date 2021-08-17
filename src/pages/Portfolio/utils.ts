@@ -290,18 +290,19 @@ function formatReportPositions(bonds: Object, markets: Market[]) {
     // ignoring zero balances
     if (bonds[market.questionId]?.total > 0) {
       const value = bonds[market.questionId]?.total;
-      const payout = 0; // TODO
-      const result = { type: 'awaiting_resolution' };
+      const payout = bonds[market.questionId]?.claimed;
+      let result = { type: 'awaiting_resolution' };
 
       // TODO calculate states with bepro-js
-      // if (market.state === 'closed') {
-      //   result = { type: 'awaiting_resolution' };
-      // } else if (market.state === 'resolved') {
-      //   // user still has report tokens to claim
-      //   result = { type: 'awaiting_claim' };
-      // } else {
-      //   result = { type: 'claimed' };
-      // }
+      if (
+        bonds[market.questionId]?.withdrawn ||
+        (market.question.isClaimed && payout === 0)
+      ) {
+        result = { type: 'claimed' };
+      } else if (market.question.isFinalized) {
+        // user still has report tokens to claim
+        result = { type: 'awaiting_claim' };
+      }
 
       rows.push({
         market,

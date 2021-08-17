@@ -114,6 +114,17 @@ const marketsSlice = createSlice({
             }
           : market
       )
+    }),
+    changeMarketQuestion: (state, action) => ({
+      ...state,
+      markets: state.markets.map(market =>
+        market.id === action.payload.marketId
+          ? {
+              ...market,
+              question: action.payload.question
+            }
+          : market
+      )
     })
   }
 });
@@ -126,10 +137,11 @@ const {
   error,
   setFilter,
   setSorter,
-  changeMarketOutcomePrice
+  changeMarketOutcomePrice,
+  changeMarketQuestion
 } = marketsSlice.actions;
 
-export { setFilter, setSorter, changeMarketOutcomePrice };
+export { setFilter, setSorter, changeMarketOutcomePrice, changeMarketQuestion };
 
 export const filteredMarketsSelector = (
   state: MarketsIntialState,
