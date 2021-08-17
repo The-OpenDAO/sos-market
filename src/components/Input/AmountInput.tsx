@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
+import omit from 'lodash/omit';
 
 import { WalletIcon } from 'assets/icons';
 
@@ -32,7 +33,10 @@ const AmountInput = React.forwardRef<
   const [amount, setAmount] = useState<number | undefined>(0);
   const [stepAmount, setStepAmount] = useState<number>(0);
   const [field, meta] = useField(name);
-  const { setFieldValue } = useFormikContext<AmountInputContext>();
+  const { setFieldValue, setFieldTouched } =
+    useFormikContext<AmountInputContext>();
+
+  const hasError = meta.touched && meta.error;
 
   useEffect(() => {
     setFieldValue(name, meta.initialValue);
@@ -60,6 +64,7 @@ const AmountInput = React.forwardRef<
   }
 
   function handleChangeSlider(value: number) {
+    setFieldTouched(name, true);
     const percentage = value / 100;
 
     const newAmount = round(max * percentage);
@@ -92,7 +97,7 @@ const AmountInput = React.forwardRef<
       <div
         className={classNames({
           'pm-c-amount-input__group': true,
-          'pm-c-amount-input__group--error': meta.error
+          'pm-c-amount-input__group--error': hasError && meta.error
         })}
       >
         <input
@@ -106,6 +111,7 @@ const AmountInput = React.forwardRef<
           max={max}
           onChange={event => handleChangeAmount(event)}
           onWheel={event => event.currentTarget.blur()}
+          {...omit(field, ['value', 'onChange'])}
           {...props}
         />
         <div className="pm-c-amount-input__actions">
@@ -122,7 +128,7 @@ const AmountInput = React.forwardRef<
           </div>
         </div>
       </div>
-      {meta.error ? (
+      {hasError && meta.error ? (
         <div className="pm-c-input__error">
           <Text
             as="span"
