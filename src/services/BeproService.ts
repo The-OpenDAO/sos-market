@@ -322,6 +322,17 @@ export default class BeproService {
     return response;
   }
 
+  public async claimWinningsAndWithdraw(questionId: string) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contracts.realitio.claimWinningsAndWithdraw({
+      questionId
+    });
+
+    return response;
+  }
+
   public async getBonds(): Promise<Object> {
     // ensuring user has wallet connected
     if (!this.address) return {};
