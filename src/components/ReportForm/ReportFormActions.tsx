@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { useField, useFormikContext } from 'formik';
+import has from 'lodash/has';
 import { fetchAditionalData, login } from 'redux/ducks/bepro';
 import { changeQuestion } from 'redux/ducks/market';
 import { selectOutcome } from 'redux/ducks/trade';
@@ -15,7 +16,6 @@ import useToastNotification from 'hooks/useToastNotification';
 
 import { Alert } from '../Alert';
 import { Button } from '../Button';
-import Link from '../Link';
 import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 import Tooltip from '../Tooltip';
@@ -31,6 +31,7 @@ function ReportFormActions({
   const location = useLocation();
   const dispatch = useAppDispatch();
   const { show, close } = useToastNotification();
+  const { errors } = useFormikContext();
 
   // Form state
   const [outcome] = useField('outcome');
@@ -274,7 +275,12 @@ function ReportFormActions({
               color="primary"
               fullwidth
               onClick={handleBond}
-              disabled={!isPolkApproved || bond.value === 0 || isBonding}
+              disabled={
+                !isPolkApproved ||
+                bond.value === 0 ||
+                isBonding ||
+                has(errors, 'bond')
+              }
               loading={isBonding}
             >
               Bond
