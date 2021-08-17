@@ -10,6 +10,7 @@ const initialState = {
   portfolio: {},
   actions: [],
   bonds: {},
+  bondActions: [],
   isLoading: {
     portfolio: false
   }
@@ -51,6 +52,10 @@ const beproSlice = createSlice({
       ...state,
       bonds: action.payload
     }),
+    changeBondActions: (state, action: PayloadAction<any>) => ({
+      ...state,
+      bondActions: action.payload
+    }),
     changeLoading: (
       state,
       action: PayloadAction<{ key: string; value: boolean }>
@@ -75,6 +80,7 @@ const {
   changePortfolio,
   changeActions,
   changeBonds,
+  changeBondActions,
   changeLoading
 } = beproSlice.actions;
 
@@ -131,6 +137,9 @@ const fetchAditionalData = async (dispatch: any) => {
 
     const actions = await beproService.getActions();
     dispatch(changeActions(actions));
+
+    const bondActions = await beproService.getBondActions();
+    dispatch(changeBondActions(bondActions));
   }
 };
 
@@ -143,6 +152,7 @@ export {
   changePortfolio,
   changeActions,
   changeBonds,
+  changeBondActions,
   login,
   fetchAditionalData
 };

@@ -342,6 +342,15 @@ export default class BeproService {
     return bonds;
   }
 
+  public async getBondActions(): Promise<Object> {
+    // ensuring user has wallet connected
+    if (!this.address) return [];
+
+    const response = await this.contracts.realitio.getMyActions();
+
+    return response;
+  }
+
   public async getQuestion(questionId: string): Promise<Object> {
     const question = await this.contracts.realitio.getQuestion({ questionId });
 
