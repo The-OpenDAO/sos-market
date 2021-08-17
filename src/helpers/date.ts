@@ -9,6 +9,11 @@ function fromTimestampToDate(timestamp: number) {
   return dayjs(timestamp);
 }
 
+function fromTimestampToCustomFormatDate(timestamp: number, format: string) {
+  dayjs.extend(utc);
+  return dayjs(timestamp).format(format);
+}
+
 function relativeTimeFromNow(timestamp: number) {
   dayjs.extend(relativeTime);
   dayjs.extend(updateLocale);
@@ -51,4 +56,9 @@ function relativeTimeToX(timestamp: number) {
   };
 }
 
-export { fromTimestampToDate, relativeTimeFromNow, relativeTimeToX };
+export {
+  fromTimestampToDate,
+  fromTimestampToCustomFormatDate,
+  relativeTimeFromNow,
+  relativeTimeToX
+};
