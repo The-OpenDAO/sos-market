@@ -15,7 +15,7 @@ function ReportFormOutcomeSelect() {
   const isMarketQuestionFinalized = useAppSelector(
     state => state.market.market.question.isFinalized
   );
-  const { bestAnswer } = useAppSelector(state => state.market.market.question);
+  const { bestAnswer, bond } = useAppSelector(state => state.market.market.question);
   const { bonds, portfolio } = useAppSelector(state => state.bepro);
 
   // Form state
@@ -23,6 +23,7 @@ function ReportFormOutcomeSelect() {
 
   // converting bytes32 to int
   const resolvedOutcomeId = BeproService.bytes32ToInt(bestAnswer);
+  const isStarted = bond > 0;
 
   const getOutcomeColor = (outcome: MarketOutcome): BadgeColor =>
     outcomes.indexOf(outcome) === 0 ? 'blue' : 'pink';
@@ -70,6 +71,7 @@ function ReportFormOutcomeSelect() {
           resolvedOutcomeId={resolvedOutcomeId}
           marketQuestionFinalized={isMarketQuestionFinalized}
           onSelect={handleOutcomeSelect}
+          isStarted={isStarted}
         />
       ))}
       <Outcome
@@ -82,6 +84,7 @@ function ReportFormOutcomeSelect() {
         resolvedOutcomeId={resolvedOutcomeId}
         marketQuestionFinalized={isMarketQuestionFinalized}
         onSelect={handleOutcomeSelect}
+        isStarted={isStarted}
       />
     </div>
   );
