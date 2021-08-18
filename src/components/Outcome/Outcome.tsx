@@ -63,6 +63,7 @@ type OutcomeProps = {
   state?: OutcomeState;
   resolvedOutcomeId: number;
   marketQuestionFinalized: boolean;
+  isStarted: boolean;
   onSelect: (id: string) => void;
 };
 
@@ -78,10 +79,11 @@ function Outcome({
   resolvedOutcomeId,
   marketQuestionFinalized,
   bond = 0,
-  onSelect
+  onSelect,
+  isStarted
 }: OutcomeProps) {
   const [field] = useField('bond');
-  const isWinningOutcome = resolvedOutcomeId.toString() === id;
+  const isWinningOutcome = isStarted && resolvedOutcomeId.toString() === id;
 
   const miniTableRows = useMemo(() => {
     const rows = [
