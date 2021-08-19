@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "10.x"
+    "node": "^14.15.0"
   },
   "dependencies": {
     "@craco/craco": "^6.1.1",
@@ -21,7 +21,7 @@
     "@types/react-window": "^1.8.2",
     "apexcharts": "^3.26.0",
     "axios": "^0.21.1",
-    "bepro-js": "bepronetwork/bepro-js#feature/prediction-markets",
+    "bepro-js": "bepronetwork/bepro-js#feature/prediction-markets-js-refactor",
     "classnames": "^2.2.6",
     "craco-plugin-style-resources-loader": "0.0.3",
     "dayjs": "^1.10.4",
