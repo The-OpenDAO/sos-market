@@ -23,6 +23,15 @@ export interface Outcome {
   shares: number;
 }
 
+export interface Question {
+  id: string;
+  bond: number;
+  bestAnswer: string;
+  isFinalized: boolean;
+  isClaimed: boolean;
+  finalizeTs: number;
+}
+
 export interface Market {
   id: string;
   slug: string;
@@ -38,8 +47,11 @@ export interface Market {
   expiresAt: string;
   state: string;
   verified: boolean;
+  questionId: string;
   resolvedOutcomeId: number;
   oracleSource: string;
   outcomes: Outcome[];
   tradingViewSymbol: any;
+  fee: number;
+  question: Question;
 }

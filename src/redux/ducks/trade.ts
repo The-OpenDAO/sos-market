@@ -8,11 +8,10 @@ export interface TradeDetails {
   maxROI: number;
   totalStake: number;
   maxStake: number;
+  fee: number;
 }
 
 const initialState = {
-  showCharts: false,
-  showPredictions: false,
   type: 'buy',
   selectedMarketId: '',
   selectedOutcomeId: '',
@@ -23,6 +22,7 @@ const initialState = {
   maxROI: 0,
   totalStake: 0,
   maxStake: 0,
+  fee: 0,
   acceptRules: false,
   acceptOddChanges: false
 };
@@ -31,14 +31,6 @@ const tradeSlice = createSlice({
   name: 'trade',
   initialState,
   reducers: {
-    changeChartsVisibility: (state, action: PayloadAction<boolean>) => ({
-      ...state,
-      showCharts: action.payload
-    }),
-    changePredictionsVisibility: (state, action: PayloadAction<boolean>) => ({
-      ...state,
-      showPredictions: action.payload
-    }),
     changeTradeType: (state, action: PayloadAction<TradeType>) => ({
       ...state,
       type: action.payload
@@ -62,7 +54,8 @@ const tradeSlice = createSlice({
       price: action.payload.price,
       maxROI: action.payload.maxROI,
       totalStake: action.payload.totalStake,
-      maxStake: action.payload.maxStake
+      maxStake: action.payload.maxStake,
+      fee: action.payload.fee
     }),
     toggleAcceptRules: (state, action: PayloadAction<boolean>) => ({
       ...state,
@@ -81,8 +74,6 @@ const tradeSlice = createSlice({
 export default tradeSlice.reducer;
 
 const {
-  changeChartsVisibility,
-  changePredictionsVisibility,
   changeTradeType,
   outcomeSelected,
   setTradeDetails,
@@ -94,8 +85,6 @@ const {
 } = tradeSlice.actions;
 
 export {
-  changeChartsVisibility,
-  changePredictionsVisibility,
   changeTradeType,
   outcomeSelected,
   setTradeDetails,

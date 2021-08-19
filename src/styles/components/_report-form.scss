@@ -37,8 +37,19 @@
   @include themes($report-form-themes) {
     &__header {
       &-time-left {
-        @extend .tiny, .semibold;
-        color: themed('report-form-input-time-left-color');
+        @include flex-row(flex-end, center, 0.5rem);
+
+        strong,
+        span {
+          @extend .tiny-uppercase, .semibold;
+        }
+
+        strong {
+          color: themed('report-form-input-time-left-primary-color');
+        }
+        span {
+          color: themed('report-form-input-time-left-secondary-color');
+        }
       }
     }
   }
@@ -116,11 +127,23 @@
   }
 
   &__actions {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-
     width: 100%;
     margin-top: 1.2rem;
+
+    &-question-icon {
+      height: 1.4rem;
+      width: 1.4rem;
+      opacity: 0.35;
+    }
+
+    &-group--row {
+      @include flex-row(flex-start, center, 1rem);
+      width: 100%;
+    }
+
+    &-group--column {
+      @include flex-column(flex-start, center, 2.4rem);
+      width: 100%;
+    }
   }
 }

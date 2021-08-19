@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { fromPriceChartToLineChartSeries } from 'helpers/chart';
-import { changeChartsVisibility } from 'redux/ducks/trade';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import ChartHeader from '../ChartHeader';
@@ -13,21 +12,14 @@ import LineChart from '../LineChart';
 function TradeFormCharts() {
   const { ticker } = useCurrency();
   const location = useLocation();
-  const dispatch = useAppDispatch();
-  const showCharts = useAppSelector(state => state.trade.showCharts);
   const predictions = useAppSelector(state => state.market.market.outcomes);
-
-  useEffect(() => {
-    if (location.pathname !== '/home') {
-      dispatch(changeChartsVisibility(false));
-    } else {
-      dispatch(changeChartsVisibility(true));
-    }
-  }, [showCharts, location, dispatch]);
+  const marketSlug = useAppSelector(state => state.market.market.slug);
 
   const [currentInterval, setCurrentInterval] = useState(24);
 
-  if (!showCharts) return null;
+  const isMarketPage = location.pathname === `/markets/${marketSlug}`;
+
+  if (isMarketPage) return null;
 
   const intervals = [
     { id: '24h', name: '24H', value: 24 },

@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import updateLocale from 'dayjs/plugin/updateLocale';
 import utc from 'dayjs/plugin/utc';
@@ -6,6 +7,11 @@ import utc from 'dayjs/plugin/utc';
 function fromTimestampToDate(timestamp: number) {
   dayjs.extend(utc);
   return dayjs(timestamp);
+}
+
+function fromTimestampToCustomFormatDate(timestamp: number, format: string) {
+  dayjs.extend(utc);
+  return dayjs(timestamp).format(format);
 }
 
 function relativeTimeFromNow(timestamp: number) {
@@ -35,4 +41,24 @@ function relativeTimeFromNow(timestamp: number) {
   return dayjs(date).fromNow();
 }
 
-export { fromTimestampToDate, relativeTimeFromNow };
+function relativeTimeToX(timestamp: number) {
+  const date = fromTimestampToDate(timestamp);
+  dayjs.extend(duration);
+
+  const timeToX = date.diff(dayjs());
+  const timeToXDuration = dayjs.duration(timeToX);
+
+  return {
+    months: timeToXDuration.months(),
+    days: timeToXDuration.days(),
+    hours: timeToXDuration.hours(),
+    minutes: timeToXDuration.minutes()
+  };
+}
+
+export {
+  fromTimestampToDate,
+  fromTimestampToCustomFormatDate,
+  relativeTimeFromNow,
+  relativeTimeToX
+};

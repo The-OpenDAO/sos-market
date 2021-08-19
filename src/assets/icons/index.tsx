@@ -37,6 +37,7 @@ import PolkamarketsIconSmall from './PolkamarketsIconSmall';
 import PolkamarketsLogo from './PolkamarketsLogo';
 import PopcornIcon from './PopcornIcon';
 import PortfolioIcon from './PortifolioIcon';
+import QuestionIcon from './QuestionIcon';
 import RemoveIcon from './RemoveIcon';
 import SearchIcon from './SearchIcon';
 import SettingsIcon from './SettingsIcon';
@@ -46,6 +47,7 @@ import SunFogIcon from './SunFogIcon';
 import SunIcon from './SunIcon';
 import TelegramIcon from './TelegramIcon';
 import ToDoIcon from './ToDoIcon';
+import TrophyIcon from './TrophyIcon';
 import TwarningIcon from './TWarningIcon';
 import TwitterIcon from './TwitterIcon';
 import UsersIcon from './UsersIcon';
@@ -93,6 +95,7 @@ export {
   PolkamarketsLogo,
   PopcornIcon,
   PortfolioIcon,
+  QuestionIcon,
   RemoveIcon,
   ShareIcon,
   SearchIcon,
@@ -104,6 +107,7 @@ export {
   ToDoIcon,
   TwarningIcon,
   TwitterIcon,
+  TrophyIcon,
   UsersIcon,
   WalletIcon,
   WarningIcon,

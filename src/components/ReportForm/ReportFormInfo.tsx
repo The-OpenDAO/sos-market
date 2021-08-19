@@ -7,10 +7,10 @@ function ReportFormInfo() {
       variant="information"
       description={
         <>
-          {`Earn $POLK by reporting the correct outcome. `}
+          {`Earn POLK by reporting the correct outcome. `}
           <Link
             title="Learn more"
-            href="//www.polkamarkets.com"
+            href="//polkamarkets.medium.com/polkamarkets-releases-decentralized-event-resolution-9d9a947b932e"
             aria-label="Learn more"
             target="_blank"
             rel="noreferrer"

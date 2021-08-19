@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { useField } from 'formik';
 import { roundNumber } from 'helpers/math';
+import { BeproService } from 'services';
 
 import { ArrowRightIcon, InfoIcon } from 'assets/icons';
 
@@ -33,54 +34,73 @@ function ReportFormDetails() {
   const [bond] = useField('bond');
   const [outcome] = useField('outcome');
 
-  const { outcomes } = useAppSelector(state => state.market.market);
+  const { outcomes, questionId } = useAppSelector(state => state.market.market);
+  const { finalizeTs } = useAppSelector(state => state.market.market.question);
+  const [bonds, setBonds] = useState({});
+  const [totalBond, setTotalBond] = useState(0);
 
   const currentBondItems: CurrentBondItem[] = [
     {
       key: 'bondAmount',
       title: 'Bond Amount',
       value: bond.value,
-      fontWeight: 'bold',
-      helpText: 'Help text'
+      fontWeight: 'bold'
     },
     {
       key: 'potentialProfit',
       title: 'Potential Profit',
-      value: 1,
+      value: totalBond - (bonds[outcome.value] || 0),
       fontWeight: 'normal'
     },
     {
       key: 'potentialLoss',
       title: 'Potential Loss',
-      value: 2,
+      value: bond.value,
       fontWeight: 'normal'
     }
   ];
+
+  async function getOutcomesBonds() {
+    const beproService = new BeproService();
+    // await beproService.login();
+
+    const response = await beproService.getQuestionBonds(questionId);
+    setBonds(response);
+
+    // TODO: improve this calculating total bond
+    const totalBondAmount = Object.values(response || {}).reduce((a: any, b: any) => a + b, 0) as number;
+    setTotalBond(totalBondAmount);
+  }
+
+  // UGLY WORKAROUND! TODO: get data from api
+  useEffect(() => {
+    getOutcomesBonds();
+  }, [finalizeTs]);
 
   const totalBondItems: TotalBondItem[] = [
     {
       key: 'totalBondAmount',
       title: 'Total Bond',
-      value: 0,
+      value: totalBond + bond.value,
       fontWeight: 'bold',
-      helpText: 'Help text'
+      helpText: 'Total POLK reported by all users'
     },
     {
       key: `${outcomes[0].id}`,
       title: <Badge color="blue" label={outcomes[0].title} />,
-      value: 1,
+      value: bonds[0] || 0,
       fontWeight: 'normal'
     },
     {
       key: `${outcomes[1].id}`,
       title: <Badge color="pink" label={outcomes[1].title} />,
-      value: 2,
+      value: bonds[1] || 0,
       fontWeight: 'normal'
     },
     {
       key: 'invalid',
       title: <Badge color="warning" label="Invalid" />,
-      value: 3,
+      value: bonds[-1] || 0,
       fontWeight: 'normal'
     }
   ];

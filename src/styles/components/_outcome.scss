@@ -91,3 +91,12 @@
     border-color: themed('outcome-border-color-warning');
   }
 }
+
+.pm-c-outcome--won {
+  @extend .pm-c-outcome;
+
+  @include themes($outcome-themes) {
+    background-color: themed('outcome-background-color-won');
+    border-color: themed('outcome-border-color-won');
+  }
+}

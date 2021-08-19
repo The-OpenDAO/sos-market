@@ -1,11 +1,20 @@
 .pm-l-footer {
   @include themes($footer-themes) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 1rem;
+    @include flex-row(center, center, 1rem);
 
     padding: $footer-padding-y $footer-padding-x;
+
+    &__terms {
+      @include flex-row(center, center);
+
+      &-text-primary {
+        color: map-get(themed('text-colors'), 'primary') !important;
+      }
+
+      &-text-secondary {
+        color: map-get(themed('text-colors'), 'secondary');
+      }
+    }
 
     &__credits {
       color: themed('credits-text-color');

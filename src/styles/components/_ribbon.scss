@@ -1,0 +1,24 @@
+.pm-c-ribbon {
+  @include themes($ribbon-themes) {
+    @include flex-row(flex-start, center, 0.6rem);
+    padding: $ribbon-padding;
+    margin-right: $ribbon-margin-right;
+
+    svg {
+      fill: themed('details-color');
+    }
+
+    &__text {
+      color: themed('text-color');
+    }
+
+    clip-path: polygon(100% 0, 100% 100%, 95% 100%, 0% 100%, 10% 50%, 0% 0%);
+
+    @each $color, $value in themed('background-colors') {
+      &--#{$color} {
+        @extend .pm-c-ribbon;
+        @include ribbon-color($value);
+      }
+    }
+  }
+}

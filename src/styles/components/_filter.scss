@@ -8,7 +8,7 @@
     }
 
     &__button {
-      @extend .pm-c-button-normal--noborder;
+      @extend .pm-c-button-normal--noborder, .pm-c-button--sm;
       @extend .caption, .semibold;
       color: themed('filter-current-selected-item-color');
 

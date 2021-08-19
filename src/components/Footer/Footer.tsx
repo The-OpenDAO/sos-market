@@ -1,11 +1,13 @@
 import Text from '../Text';
 import FooterLinks from './FooterLinks';
 import FooterMenu from './FooterMenu';
+import FooterTerms from './FooterTerms';
 
 function Footer() {
   return (
     <div className="pm-l-footer">
-      <Text
+      <FooterTerms />
+      {/* <Text
         as="p"
         scale="caption"
         fontWeight="semibold"
@@ -16,7 +18,7 @@ function Footer() {
       <div className="pm-l-footer__actions">
         <FooterMenu />
         <FooterLinks />
-      </div>
+      </div> */}
     </div>
   );
 }

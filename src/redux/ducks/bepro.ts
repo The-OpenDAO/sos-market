@@ -5,9 +5,12 @@ const initialState = {
   isLoggedIn: false,
   ethAddress: '',
   ethBalance: 0,
-  polkBalance: 10,
+  polkBalance: 0,
+  polkApproved: false,
   portfolio: {},
   actions: [],
+  bonds: {},
+  bondActions: [],
   isLoading: {
     portfolio: false
   }
@@ -33,6 +36,10 @@ const beproSlice = createSlice({
       ...state,
       polkBalance: action.payload
     }),
+    changePolkApproved: (state, action: PayloadAction<boolean>) => ({
+      ...state,
+      polkApproved: action.payload
+    }),
     changePortfolio: (state, action: PayloadAction<Object>) => ({
       ...state,
       portfolio: action.payload
@@ -40,6 +47,14 @@ const beproSlice = createSlice({
     changeActions: (state, action: PayloadAction<any>) => ({
       ...state,
       actions: action.payload
+    }),
+    changeBonds: (state, action: PayloadAction<Object>) => ({
+      ...state,
+      bonds: action.payload
+    }),
+    changeBondActions: (state, action: PayloadAction<any>) => ({
+      ...state,
+      bondActions: action.payload
     }),
     changeLoading: (
       state,
@@ -61,8 +76,11 @@ const {
   changeEthAddress,
   changeEthBalance,
   changePolkBalance,
+  changePolkApproved,
   changePortfolio,
   changeActions,
+  changeBonds,
+  changeBondActions,
   changeLoading
 } = beproSlice.actions;
 
@@ -81,6 +99,12 @@ const login = async (dispatch: any) => {
 
     const balance = await beproService.getBalance();
     dispatch(changeEthBalance(balance));
+
+    const polkBalance = await beproService.getERC20Balance();
+    dispatch(changePolkBalance(polkBalance));
+
+    const polkApproved = await beproService.isRealitioERC20Approved();
+    dispatch(changePolkApproved(polkApproved));
   }
 };
 
@@ -101,6 +125,9 @@ const fetchAditionalData = async (dispatch: any) => {
     const portfolio = await beproService.getPortfolio();
     dispatch(changePortfolio(portfolio));
 
+    const bonds = await beproService.getBonds();
+    dispatch(changeBonds(bonds));
+
     dispatch(
       changeLoading({
         key: 'portfolio',
@@ -110,6 +137,9 @@ const fetchAditionalData = async (dispatch: any) => {
 
     const actions = await beproService.getActions();
     dispatch(changeActions(actions));
+
+    const bondActions = await beproService.getBondActions();
+    dispatch(changeBondActions(bondActions));
   }
 };
 
@@ -118,8 +148,11 @@ export {
   changeEthAddress,
   changeEthBalance,
   changePolkBalance,
+  changePolkApproved,
   changePortfolio,
   changeActions,
+  changeBonds,
+  changeBondActions,
   login,
   fetchAditionalData
 };

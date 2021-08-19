@@ -167,7 +167,7 @@ const PortfolioLiquidityTable = ({
                         {` ${symbol || ticker}`}
                       </Text>
                     </Text>
-                    <Text
+                    {/* <Text
                       className={`market-table__row-item__change--${value.change.type}`}
                       as="span"
                       scale="caption"
@@ -179,7 +179,7 @@ const PortfolioLiquidityTable = ({
                         <ArrowDownIcon />
                       )}
                       {`${roundNumber(value.change.value * 100, 2)}%`}
-                    </Text>
+                    </Text> */}
                   </div>
                 </td>
                 <td
@@ -198,9 +198,23 @@ const PortfolioLiquidityTable = ({
                     'pm-c-table__item--right': true
                   })}
                 >
-                  <Pill variant="subtle" color="warning">
-                    {feesEarned}
-                  </Pill>
+                  <div className="market-table__row-item__group">
+                    <Text
+                      as="span"
+                      scale="caption"
+                      fontWeight="semibold"
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: '0.5rem'
+                      }}
+                    >
+                      {`${roundNumber(feesEarned, 3)} `}
+                      <Text as="strong" scale="caption" fontWeight="semibold">
+                        {` ${symbol || ticker}`}
+                      </Text>
+                    </Text>
+                  </div>
                 </td>
                 <td
                   id="trade"
