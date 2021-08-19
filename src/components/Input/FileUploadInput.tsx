@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
+import * as ipfsService from 'services/Polkamarkets/ipfs';
 
 import Text from '../Text';
 
@@ -32,10 +33,22 @@ const FileUploadInput = React.forwardRef<
     const { setFieldValue } = useFormikContext<ThumbnailContext>();
     const [field] = useField(name);
 
-    function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
+    async function handleFileUpload(
+      event: React.ChangeEvent<HTMLInputElement>
+    ) {
       const { files } = event.currentTarget;
 
       if (files) {
+        const response = await ipfsService.addFile(files[0]);
+
+        if (response.status !== 200) {
+          // TODO: display error toast
+          return;
+        }
+
+        // TODO: upload hash to smart contract
+        const { hash } = response.data;
+
         setFieldValue('thumbnail', {
           file: files[0],
           isUploaded: true
