@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { Formik, Form } from 'formik';
+import { BeproService } from 'services';
 import * as Yup from 'yup';
 
 import CreateMarketFormActions from './CreateMarketFormActions';
@@ -68,7 +69,7 @@ const validationSchema = Yup.object().shape({
     //   .required('Outcome probability is required!')
   }),
   category: Yup.string().required('Category is required!'),
-  subcategory: Yup.string(),
+  subcategory: Yup.string().required('Subcategory is required!'),
   closingDate: Yup.date()
     .min(
       dayjs().format('MM/DD/YYYY'),
@@ -79,7 +80,20 @@ const validationSchema = Yup.object().shape({
 
 function CreateMarketForm() {
   async function handleFormSubmit(values: CreateMarketFormData) {
-    console.log(values);
+    const beproService = new BeproService();
+    const closingDate = new Date(values.closingDate).getTime() / 1000; // TODO: move to dayjs
+    const outcomes = [values.firstOutcome.name, values.secondOutcome.name];
+    const category = `${values.category};${values.subcategory}`;
+
+    const response = await beproService.createMarket(
+      values.question,
+      closingDate,
+      outcomes,
+      category,
+      values.liquidity
+    );
+
+    // TODO: show toast
   }
 
   return (

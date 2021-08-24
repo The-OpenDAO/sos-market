@@ -97,6 +97,28 @@ export default class BeproService {
 
   // PredictionMarket contract functions
 
+  public async createMarket(
+    name: string,
+    duration: number,
+    outcomes: Array<string>,
+    category: string,
+    ethAmount: number
+  ) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contracts.pm.createMarket({
+      name,
+      duration,
+      outcomes,
+      category,
+      ethAmount,
+      oracleAddress: this.address
+    });
+
+    return response;
+  }
+
   public async buy(
     marketId: string | number,
     outcomeId: string | number,

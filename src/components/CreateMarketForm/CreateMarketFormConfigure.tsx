@@ -92,7 +92,7 @@ function CreateMarketFormConfigure() {
           placeholder="Subcategory"
         />
       </div>
-      <DateInput label="Closing Date - UTC" name="closingDate" />
+      <DateInput label="Closing Date - Local Time" name="closingDate" />
     </div>
   );
 }
