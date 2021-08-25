@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { Formik, Form } from 'formik';
 import { BeproService } from 'services';
+import * as marketService from 'services/Polkamarkets/market';
 import * as Yup from 'yup';
 
 import CreateMarketFormActions from './CreateMarketFormActions';
@@ -99,8 +100,12 @@ function CreateMarketForm() {
       values.liquidity
     );
 
-    // TODO: show toast
-    // TODO: call polkamarkets api
+    const { marketId } = response.events.MarketCreated.returnValues;
+
+    const res = await marketService.createMarket(marketId);
+
+    // TODO: redirect to market page and show "Market successfully created" toast after api call (use res.data.slug)
+    console.log(res.data.slug);
   }
 
   return (
