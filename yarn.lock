@@ -1229,11 +1229,6 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@cto.af/textdecoder@^0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@cto.af/textdecoder/-/textdecoder-0.0.0.tgz#e1e8d84c936c30a0f4619971f19ca41941af9fdc"
-  integrity sha512-sJpx3F5xcVV/9jNYJQtvimo4Vfld/nD3ph+ZWtQzZ03Zo8rJC7QKQTRcIGS13Rcz80DwFNthCWMrd58vpY4ZAQ==
-
 "@emotion/is-prop-valid@^0.8.2":
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
@@ -1965,21 +1960,21 @@
   integrity sha512-cUriqMauq1ylzP2TxePNdPqkwI7Le3Annh4K9rrpvKfSBB/bdW+Iu1ihBaTIABTAAJ85LmKL5SSPPL9ry8d1gQ==
 
 "@openzeppelin/truffle-upgrades@^1.7.0":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/truffle-upgrades/-/truffle-upgrades-1.8.1.tgz#a2b28a9ff2fa61a8a835bdd716df802d2b65855a"
-  integrity sha512-+xTjTDjQimGjHhhi4zz2XFC8Na93q8zjZ9UpUIf11ycsQW4jbU+xctFkQj9j2GTC3XJWVbh3RYIozwR0c1Lw2w==
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/truffle-upgrades/-/truffle-upgrades-1.9.0.tgz#bcbe45d911b37afb8a918504507bec1e66872f83"
+  integrity sha512-jswmcyI5D+o4V3aEQ5hsZpdETFv5jDxy0/HblyO7L4VZeGKsb574+T0UVZPMPM9k2t4gSX/ZOKihZTWZSn5Svw==
   dependencies:
-    "@openzeppelin/upgrades-core" "^1.8.0"
+    "@openzeppelin/upgrades-core" "^1.9.0"
     "@truffle/contract" "^4.3.26"
     solidity-ast "^0.4.15"
 
-"@openzeppelin/upgrades-core@^1.8.0":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/upgrades-core/-/upgrades-core-1.8.1.tgz#f7d3ce135e766657cff51a5303872854ad56a85b"
-  integrity sha512-txOl/VRi/QKywAKBck76jQHtbv8GJMlS7CO8DWmlTGAv7XcOvS0Kk0CyqBSPeOirk2gF0fM0vpNXa5U5ryHUyw==
+"@openzeppelin/upgrades-core@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/upgrades-core/-/upgrades-core-1.9.0.tgz#cc5c4fd71d6510559f02e94032ddd788eb651c10"
+  integrity sha512-dd2VhRItfMSUOJwhXh1OUR/74LqbVhmkCSShfqf9OjFJAJbMuWdbEi2Fy2SxLvMGwdzrpbjtlB74KI5y+YT2RA==
   dependencies:
     bn.js "^5.1.2"
-    cbor "^7.0.0"
+    cbor "^8.0.0"
     chalk "^4.1.0"
     compare-versions "^3.6.0"
     debug "^4.1.1"
@@ -4398,7 +4393,7 @@ bech32@1.1.4, bech32@^1.1.3:
 
 bepro-js@bepronetwork/bepro-js#feature/prediction-markets-js-refactor:
   version "1.1.7"
-  resolved "https://codeload.github.com/bepronetwork/bepro-js/tar.gz/9aa593d8e30b86cd1c3dab794ce5435e49811ba5"
+  resolved "https://codeload.github.com/bepronetwork/bepro-js/tar.gz/17e43088d1cf6c1894cbdfc20f111e47239b8aa9"
   dependencies:
     "@openzeppelin/contracts" "^3.2.0"
     "@openzeppelin/contracts-upgradeable" "^3.2.0"
@@ -5003,13 +4998,12 @@ cbor@^5.1.0:
     bignumber.js "^9.0.1"
     nofilter "^1.0.4"
 
-cbor@^7.0.0:
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/cbor/-/cbor-7.0.6.tgz#ce47d1d5f946760f199f848dbbcfe762cf492fd6"
-  integrity sha512-rgt2RFogHGDLFU5r0kSfyeBc+de55DwYHP73KxKsQxsR5b0CYuQPH6AnJaXByiohpLdjQqj/K0SFcOV+dXdhSA==
+cbor@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/cbor/-/cbor-8.0.0.tgz#51657d26a99a6a1866f8c3258e948576eb17d709"
+  integrity sha512-nMmaLWbj7+bC6MsApKRIig8h+yjgNLhPLXaCelq5+C7mpWsHgIcseZSdvgexSY5uE1Q3m2uPvIDZwSdxdo7qig==
   dependencies:
-    "@cto.af/textdecoder" "^0.0.0"
-    nofilter "^2.0.3"
+    nofilter "^3.0.2"
 
 center-align@^0.1.1:
   version "0.1.3"
@@ -11194,12 +11188,10 @@ nofilter@^1.0.4:
   resolved "https://registry.yarnpkg.com/nofilter/-/nofilter-1.0.4.tgz#78d6f4b6a613e7ced8b015cec534625f7667006e"
   integrity sha512-N8lidFp+fCz+TD51+haYdbDGrcBWwuHX40F5+z0qkUjMJ5Tp+rdSuAkMJ9N9eoolDlEVTf6u5icM+cNKkKW2mA==
 
-nofilter@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/nofilter/-/nofilter-2.0.3.tgz#f5460f3cb33147005883e3f5d4476239501fa187"
-  integrity sha512-FbuXC+lK+GU2+63D1kC1ETiZo+Z7SIi7B+mxKTCH1byrh6WFvfBCN/wpherFz0a0bjGd7EKTst/cz0yLeNngug==
-  dependencies:
-    "@cto.af/textdecoder" "^0.0.0"
+nofilter@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/nofilter/-/nofilter-3.0.3.tgz#3ff3b142efdccb403434ccae4a0c2c835cb9b522"
+  integrity sha512-TN/MCrQmXQk5DyUJ8TGUq1Il8rv4fTsjddLmMopV006QP8DMkglmGgYfQKD5620vXLRXfr8iGI6ZZ4/ZWld2cQ==
 
 normalize-package-data@^2.3.2, normalize-package-data@^2.5.0:
   version "2.5.0"
