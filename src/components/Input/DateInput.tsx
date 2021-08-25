@@ -30,7 +30,7 @@ const DateInput = React.forwardRef<
         ref={ref}
         className={`pm-c-input--${hasError ? 'error' : 'default'}`}
         id={name}
-        type="date"
+        type="datetime-local"
         {...field}
         {...props}
       />
