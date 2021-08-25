@@ -8,7 +8,8 @@ import * as ipfsService from 'services/Polkamarkets/ipfs';
 import Text from '../Text';
 
 type ThumbnailContext = {
-  thumbnail: {
+  image: {
+    hash: string;
     file: any;
     isUploaded: boolean;
   };
@@ -49,8 +50,9 @@ const FileUploadInput = React.forwardRef<
         // TODO: upload hash to smart contract
         const { hash } = response.data;
 
-        setFieldValue('thumbnail', {
+        setFieldValue('image', {
           file: files[0],
+          hash,
           isUploaded: true
         });
       }
@@ -58,8 +60,9 @@ const FileUploadInput = React.forwardRef<
 
     useEffect(() => {
       if (!field.value.file) {
-        setFieldValue('thumbnail', {
+        setFieldValue('image', {
           file: undefined,
+          hash: '',
           isUploaded: false
         });
       }

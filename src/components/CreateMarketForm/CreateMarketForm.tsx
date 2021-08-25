@@ -16,8 +16,9 @@ export type CreateMarketFormData = {
   question: string;
   firstOutcome: Outcome;
   secondOutcome: Outcome;
-  thumbnail: {
+  image: {
     file: any;
+    hash: string;
     isUploaded: boolean;
   };
   category: string;
@@ -36,8 +37,9 @@ const initialData: CreateMarketFormData = {
     name: ''
     // probability: 50
   },
-  thumbnail: {
+  image: {
     file: undefined,
+    hash: '',
     isUploaded: false
   },
   category: '',
@@ -68,6 +70,9 @@ const validationSchema = Yup.object().shape({
     //   )
     //   .required('Outcome probability is required!')
   }),
+  image: Yup.object().shape({
+    hash: Yup.string().required('Image is required!')
+  }),
   category: Yup.string().required('Category is required!'),
   subcategory: Yup.string().required('Subcategory is required!'),
   closingDate: Yup.date()
@@ -87,6 +92,7 @@ function CreateMarketForm() {
 
     const response = await beproService.createMarket(
       values.question,
+      values.image.hash,
       closingDate,
       outcomes,
       category,
@@ -94,6 +100,7 @@ function CreateMarketForm() {
     );
 
     // TODO: show toast
+    // TODO: call polkamarkets api
   }
 
   return (

@@ -49,7 +49,7 @@ function CreateMarketFormConfigure() {
       </div>
       <FileUploadInput
         label="Market Thumbnail"
-        name="thumbnail"
+        name="image"
         notUploadedActionLabel="Select Image"
         uploadedActionLabel="Upload New One"
       />

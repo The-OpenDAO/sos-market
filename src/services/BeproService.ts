@@ -99,6 +99,7 @@ export default class BeproService {
 
   public async createMarket(
     name: string,
+    image: string,
     duration: number,
     outcomes: Array<string>,
     category: string,
@@ -109,6 +110,7 @@ export default class BeproService {
 
     const response = await this.contracts.pm.createMarket({
       name,
+      image,
       duration,
       outcomes,
       category,
