@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { TwarningIcon } from 'assets/icons';
 
@@ -13,6 +14,7 @@ type CreateMarketBuyPolkProps = {
 function CreateMarketBuyPolk({
   requiredPolkBalance
 }: CreateMarketBuyPolkProps) {
+  const history = useHistory();
   const [isLoadingBuyPolk, setIsLoadingBuyPolk] = useState(false);
 
   const polkBalance = useAppSelector(state => state.bepro.polkBalance);
@@ -20,7 +22,8 @@ function CreateMarketBuyPolk({
   async function handleBuyPolk() {
     setIsLoadingBuyPolk(true);
 
-    console.log('Example');
+    const buyPolkUrl = `//app.uniswap.org/#/swap?outputCurrency=${process.env.REACT_APP_ERC20_CONTRACT_ADDRESS}&inputCurrency=ETH`;
+    history.push(buyPolkUrl);
 
     setIsLoadingBuyPolk(false);
   }
