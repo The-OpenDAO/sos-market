@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import dayjs from 'dayjs';
@@ -6,6 +7,11 @@ import { BeproService } from 'services';
 import * as marketService from 'services/Polkamarkets/market';
 import * as Yup from 'yup';
 
+import useToastNotification from 'hooks/useToastNotification';
+
+import { Button } from '../Button';
+import Toast from '../Toast';
+import ToastNotification from '../ToastNotification';
 import CreateMarketFormActions from './CreateMarketFormActions';
 import CreateMarketFormConfigure from './CreateMarketFormConfigure';
 import CreateMarketFormFund from './CreateMarketFormFund';
@@ -88,6 +94,7 @@ const validationSchema = Yup.object().shape({
 
 function CreateMarketForm() {
   const history = useHistory();
+  const { show, close } = useToastNotification();
 
   function redirectToMarketPage(marketSlug) {
     return history.push(`/markets/${marketSlug}`);
@@ -112,26 +119,45 @@ function CreateMarketForm() {
 
     const res = await marketService.createMarket(marketId);
 
-    // TODO: redirect to market page and show "Market successfully created" toast after api call (use res.data.slug)
     redirectToMarketPage(res.data.slug);
+    show('createMarket');
   }
 
   return (
-    <Formik
-      initialValues={initialData}
-      onSubmit={async (values, actions) => {
-        actions.setSubmitting(true);
-        await handleFormSubmit(values);
-        actions.setSubmitting(false);
-      }}
-      validationSchema={validationSchema}
-    >
-      <Form className="pm-c-create-market-form">
-        <CreateMarketFormConfigure />
-        <CreateMarketFormFund />
-        <CreateMarketFormActions />
-      </Form>
-    </Formik>
+    <>
+      <ToastNotification id="createMarket" duration={10000}>
+        <Toast
+          variant="success"
+          title="Success"
+          description="Market successfuly created!"
+        >
+          <Toast.Actions>
+            <Button
+              size="sm"
+              variant="subtle"
+              onClick={() => close('createMarket')}
+            >
+              Dismiss
+            </Button>
+          </Toast.Actions>
+        </Toast>
+      </ToastNotification>
+      <Formik
+        initialValues={initialData}
+        onSubmit={async (values, actions) => {
+          actions.setSubmitting(true);
+          await handleFormSubmit(values);
+          actions.setSubmitting(false);
+        }}
+        validationSchema={validationSchema}
+      >
+        <Form className="pm-c-create-market-form">
+          <CreateMarketFormConfigure />
+          <CreateMarketFormFund />
+          <CreateMarketFormActions />
+        </Form>
+      </Formik>
+    </>
   );
 }
 
