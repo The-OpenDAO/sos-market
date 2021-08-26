@@ -6,6 +6,7 @@ import { useField, useFormikContext } from 'formik';
 import * as ipfsService from 'services/Polkamarkets/ipfs';
 
 import Text from '../Text';
+import InputErrorMessage from './InputErrorMessage';
 
 type ThumbnailContext = {
   image: {
@@ -31,15 +32,19 @@ const FileUploadInput = React.forwardRef<
     { label, name, notUploadedActionLabel, uploadedActionLabel, ...props },
     ref
   ) => {
-    const { setFieldValue } = useFormikContext<ThumbnailContext>();
-    const [field] = useField(name);
+    const { setFieldValue, setFieldError } =
+      useFormikContext<ThumbnailContext>();
+    const [field, meta] = useField(name);
+
+    const isValidFile = fileType =>
+      ['image/png', 'image/jpg', 'image/jpeg'].includes(fileType);
 
     async function handleFileUpload(
       event: React.ChangeEvent<HTMLInputElement>
     ) {
       const { files } = event.currentTarget;
 
-      if (files) {
+      if (files && isValidFile(files[0].type)) {
         const response = await ipfsService.addFile(files[0]);
 
         if (response.status !== 200) {
@@ -55,6 +60,11 @@ const FileUploadInput = React.forwardRef<
           hash,
           isUploaded: true
         });
+      } else {
+        setFieldError(
+          'image',
+          'Format not supported. Please upload in jpg or png format'
+        );
       }
     }
 
@@ -78,6 +88,7 @@ const FileUploadInput = React.forwardRef<
         <input
           ref={ref}
           type="file"
+          accept="image/png, image/jpg, image/jpeg"
           id={name}
           {...props}
           onChange={handleFileUpload}
@@ -117,6 +128,9 @@ const FileUploadInput = React.forwardRef<
             </Text>
           )}
         </div>
+        {meta.error && typeof meta.error === 'string' ? (
+          <InputErrorMessage message={meta.error} />
+        ) : null}
       </div>
     );
   }
