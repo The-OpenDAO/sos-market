@@ -99,6 +99,13 @@ export default class BeproService {
 
   // PredictionMarket contract functions
 
+  public async getMinimumRequiredBalance(): Promise<number> {
+    // returns user balance in ETH
+    const requiredBalance = await this.contracts.pm.getMinimumRequiredBalance();
+
+    return requiredBalance;
+  }
+
   public async createMarket(
     name: string,
     image: string,

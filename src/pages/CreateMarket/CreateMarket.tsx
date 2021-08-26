@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+
+import { BeproService } from 'services';
+
 import { Text, CreateMarketForm } from 'components';
 
 import { useAppSelector } from 'hooks';
@@ -6,9 +10,20 @@ import CreateMarketBuyPolk from './CreateMarketBuyPolk';
 
 function CreateMarket() {
   const polkBalance = useAppSelector(state => state.bepro.polkBalance);
-  const requiredPolkBalance = 50;
+  const [requiredBalance, setRequiredBalance] = useState(0);
 
-  const needsBuyPolk = polkBalance < requiredPolkBalance;
+  const needsBuyPolk = polkBalance < requiredBalance;
+
+  async function getMinimumRequiredBalance() {
+    const beproService = new BeproService();
+
+    const response = await beproService.getMinimumRequiredBalance();
+    setRequiredBalance(response);
+  }
+
+  useEffect(() => {
+    getMinimumRequiredBalance();
+  }, [polkBalance]);
 
   return (
     <div className="pm-p-create-market">
@@ -25,7 +40,7 @@ function CreateMarket() {
       <div className="pm-p-create-market__notification-wrapper">
         {needsBuyPolk ? (
           <div className="pm-p-create-market__notification-overlay">
-            <CreateMarketBuyPolk requiredPolkBalance={50} />
+            <CreateMarketBuyPolk requiredPolkBalance={requiredBalance} />
           </div>
         ) : null}
         <CreateMarketForm />
