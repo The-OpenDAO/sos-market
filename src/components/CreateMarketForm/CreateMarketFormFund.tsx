@@ -1,8 +1,9 @@
 import { useField } from 'formik';
-import { roundNumber } from 'helpers/math';
+import { roundDown, roundNumber } from 'helpers/math';
 
 import { InfoIcon } from 'assets/icons';
 
+import { useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import { AlertMini } from '../Alert';
@@ -14,6 +15,8 @@ import Tooltip from '../Tooltip';
 function CreateMarketFormFund() {
   const currency = useCurrency();
   const [field, meta, helpers] = useField('liquidity');
+
+  const balance = useAppSelector(state => state.bepro.ethBalance);
 
   function handleChangeAmount(amount: number) {
     helpers.setValue(amount);
@@ -49,7 +52,7 @@ function CreateMarketFormFund() {
       />
       <AmountInput
         label="Add Liquidity"
-        max={100}
+        max={roundDown(balance)}
         currency={currency}
         onChange={handleChangeAmount}
       />
