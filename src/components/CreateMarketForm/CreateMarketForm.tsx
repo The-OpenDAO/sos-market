@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 import dayjs from 'dayjs';
 import { Formik, Form } from 'formik';
 import { BeproService } from 'services';
@@ -85,6 +87,12 @@ const validationSchema = Yup.object().shape({
 });
 
 function CreateMarketForm() {
+  const history = useHistory();
+
+  function redirectToMarketPage(marketSlug) {
+    return history.push(`/markets/${marketSlug}`);
+  }
+
   async function handleFormSubmit(values: CreateMarketFormData) {
     const beproService = new BeproService();
     const closingDate = new Date(values.closingDate).getTime() / 1000; // TODO: move to dayjs
@@ -105,7 +113,7 @@ function CreateMarketForm() {
     const res = await marketService.createMarket(marketId);
 
     // TODO: redirect to market page and show "Market successfully created" toast after api call (use res.data.slug)
-    console.log(res.data.slug);
+    redirectToMarketPage(res.data.slug);
   }
 
   return (
