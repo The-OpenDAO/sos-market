@@ -89,7 +89,8 @@ const validationSchema = Yup.object().shape({
       dayjs().format('MM/DD/YYYY'),
       `Closing date must be later than ${dayjs().format('MM/DD/YYYY')}`
     )
-    .required('Closing date is required!')
+    .required('Closing date is required!'),
+  liquidity: Yup.number().moreThan(0).required('Liquidity is required!')
 });
 
 function CreateMarketForm() {
