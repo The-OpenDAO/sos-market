@@ -77,7 +77,7 @@ function CreateMarketFormFund() {
               fontWeight="semibold"
               className="pm-c-create-market-form__card-liquidity-details__liquidity-value__amount"
             >
-              {`${roundNumber(0, 3)} ${currency.symbol}`}
+              {`${roundNumber(field.value, 3)} ${currency.symbol}`}
             </Text>
           </div>
           <div className="pm-c-create-market-form__card-liquidity-details__shares-added">
@@ -96,7 +96,7 @@ function CreateMarketFormFund() {
               fontWeight="semibold"
               className="pm-c-create-market-form__card-liquidity-details__shares-added__amount"
             >
-              {roundNumber(0, 3)}
+              {roundNumber(field.value, 3)}
             </Text>
           </div>
         </div>
