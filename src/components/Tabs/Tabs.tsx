@@ -102,14 +102,15 @@ function Tabs({
           ))}
         </ul>
         {!isUndefined(filters) && !isEmpty(filters) ? (
-          <div className="pm-c-tabs__filters">
-            {filters.map(filter => (
-              <>
+          <ul className="pm-c-tabs__filters">
+            {filters.map((filter, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={index}>
                 {filter}
                 <Divider variant="circle" />
-              </>
+              </li>
             ))}
-          </div>
+          </ul>
         ) : null}
       </div>
 
