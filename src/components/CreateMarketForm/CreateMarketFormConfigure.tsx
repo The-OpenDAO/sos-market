@@ -51,7 +51,7 @@ function CreateMarketFormConfigure() {
         label="Market Thumbnail"
         name="image"
         notUploadedActionLabel="Select Image"
-        uploadedActionLabel="Upload New One"
+        uploadedActionLabel="Re-Upload"
       />
       <div className="pm-c-create-market-form__card-categories-group--row">
         <SelectInput
