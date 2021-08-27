@@ -83,6 +83,9 @@ function FileUploadInput({
   const { setFieldValue, setFieldError } = useFormikContext<ThumbnailContext>();
   const [field, meta] = useField(name);
   const [isUploading, setIsUploading] = useState(false);
+  const [imagePreviewURL, setImagePreviewURL] = useState<undefined | string>(
+    undefined
+  );
 
   const isValidFile = fileType =>
     ['image/png', 'image/jpg', 'image/jpeg'].includes(fileType);
@@ -103,6 +106,8 @@ function FileUploadInput({
       // TODO: upload hash to smart contract
       const { hash } = response.data;
 
+      setImagePreviewURL(URL.createObjectURL(files[0]));
+
       setFieldValue('image', {
         file: files[0],
         hash,
@@ -111,6 +116,8 @@ function FileUploadInput({
 
       setIsUploading(false);
     } else {
+      setImagePreviewURL(undefined);
+
       setFieldError(
         'image',
         'Format not supported. Please upload in jpg or png format'
@@ -141,6 +148,7 @@ function FileUploadInput({
           {label}
         </label>
       ) : null}
+
       <input
         type="file"
         accept="image/png, image/jpg, image/jpeg"
@@ -150,6 +158,15 @@ function FileUploadInput({
         hidden
       />
       <div className="pm-c-file-upload-input__actions">
+        {imagePreviewURL ? (
+          <img
+            className="pm-c-market__body-image"
+            alt="Thumbnail"
+            src={imagePreviewURL}
+            width={66}
+            height={66}
+          />
+        ) : null}
         <FileUploadButton name={name} loading={isUploading}>
           {uploadActionLabel}
         </FileUploadButton>
