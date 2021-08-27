@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
 import classNames from 'classnames';
 
@@ -52,25 +52,33 @@ type ButtonProps = {
 /**
  * Button to trigger an operation
  */
-const Button = React.forwardRef<
-  HTMLButtonElement,
-  ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
->(
-  (
-    {
-      type = 'button',
-      variant = 'normal',
-      color = 'default',
-      size = 'normal',
-      fullwidth = false,
-      noHover = false,
-      loading = false,
-      children,
-      onClick,
-      ...props
-    },
-    ref
-  ) => (
+function Button({
+  type = 'button',
+  variant = 'normal',
+  color = 'default',
+  size = 'normal',
+  fullwidth = false,
+  noHover = false,
+  loading = false,
+  children,
+  onClick,
+  ...props
+}: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  const ref = useRef<HTMLButtonElement>(null);
+
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  React.useEffect(() => {
+    if (ref.current && ref.current.getBoundingClientRect().width) {
+      setWidth(ref.current.getBoundingClientRect().width);
+    }
+    if (ref.current && ref.current.getBoundingClientRect().height) {
+      setHeight(ref.current.getBoundingClientRect().height);
+    }
+  }, [children]);
+
+  return (
     <button
       ref={ref}
       type={type}
@@ -80,14 +88,20 @@ const Button = React.forwardRef<
         fullwidth && 'pm-c-button--fullwidth',
         noHover && 'pm-c-button--no-hover'
       )}
+      style={
+        loading
+          ? {
+              width: `${width}px`,
+              height: `${height}px`
+            }
+          : {}
+      }
       onClick={onClick}
       {...props}
     >
       {loading ? <span className="spinner" /> : children}
     </button>
-  )
-);
-
-Button.displayName = 'Button';
+  );
+}
 
 export default Button;
