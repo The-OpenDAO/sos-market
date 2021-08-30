@@ -40,6 +40,7 @@ function HomeTabs({
         <FilterInline
           key="filterByVerifiedMarkets"
           label="Verified markets"
+          helpText="Help text"
           onChange={handleChangeFilterInline}
         />,
         <Filter
