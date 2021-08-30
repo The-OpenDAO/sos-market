@@ -80,10 +80,14 @@ function FileUploadInput({
   uploadedActionLabel,
   ...props
 }: FileUploadInputProps & React.InputHTMLAttributes<HTMLInputElement>) {
-  const { setFieldValue, setFieldError } = useFormikContext<ThumbnailContext>();
+  const { setFieldValue, setFieldTouched } =
+    useFormikContext<ThumbnailContext>();
   const [field, meta] = useField(name);
   const [isUploading, setIsUploading] = useState(false);
   const [imagePreviewURL, setImagePreviewURL] = useState<undefined | string>(
+    undefined
+  );
+  const [invalidFileError, setInvalidFileError] = useState<undefined | string>(
     undefined
   );
 
@@ -94,48 +98,58 @@ function FileUploadInput({
     const { files } = event.currentTarget;
 
     setIsUploading(true);
+    setFieldTouched(name, true);
+    setInvalidFileError(undefined);
 
-    if (files && isValidFile(files[0].type)) {
-      const response = await ipfsService.addFile(files[0]);
+    if (files && files[0]) {
+      if (isValidFile(files[0].type)) {
+        const response = await ipfsService.addFile(files[0]);
 
-      if (response.status !== 200) {
-        // TODO: display error toast
-        return;
+        if (response.status !== 200) {
+          // TODO: display error toast
+          return;
+        }
+
+        // TODO: upload hash to smart contract
+        const { hash } = response.data;
+
+        setImagePreviewURL(URL.createObjectURL(files[0]));
+        setInvalidFileError(undefined);
+
+        setFieldValue(name, {
+          file: files[0],
+          hash,
+          isUploaded: true
+        });
+
+        setIsUploading(false);
+      } else {
+        setImagePreviewURL(undefined);
+
+        setFieldValue(name, {
+          file: undefined,
+          hash: '',
+          isUploaded: false
+        });
+
+        setInvalidFileError(
+          'Format not supported. Please upload in jpg or png format'
+        );
+
+        setIsUploading(false);
       }
-
-      // TODO: upload hash to smart contract
-      const { hash } = response.data;
-
-      setImagePreviewURL(URL.createObjectURL(files[0]));
-
-      setFieldValue('image', {
-        file: files[0],
-        hash,
-        isUploaded: true
-      });
-
-      setIsUploading(false);
     } else {
       setImagePreviewURL(undefined);
 
-      setFieldError(
-        'image',
-        'Format not supported. Please upload in jpg or png format'
-      );
-
-      setIsUploading(false);
-    }
-  }
-
-  useEffect(() => {
-    if (!field.value.file) {
-      setFieldValue('image', {
+      setFieldValue(name, {
         file: undefined,
         hash: '',
         isUploaded: false
       });
+
+      setIsUploading(false);
     }
-  }, [field.value.file, setFieldValue]);
+  }
 
   const uploadActionLabel = field.value.isUploaded
     ? uploadedActionLabel
@@ -190,8 +204,10 @@ function FileUploadInput({
           </Text>
         )}
       </div>
-      {meta.error && typeof meta.error === 'string' ? (
-        <InputErrorMessage message={meta.error} />
+      {!isUploading && meta.touched && (meta.error || invalidFileError) ? (
+        <InputErrorMessage
+          message={invalidFileError || (meta.error as any).hash}
+        />
       ) : null}
     </div>
   );
