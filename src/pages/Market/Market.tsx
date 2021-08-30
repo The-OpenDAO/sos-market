@@ -70,23 +70,6 @@ const Market = () => {
         <MarketChart />
         <MarketStats market={market} />
       </div>
-      <Text
-        as="p"
-        scale="tiny"
-        fontWeight="semibold"
-        style={{ margin: '0.8rem 0rem', alignSelf: 'center' }}
-        color="lighter-gray"
-      >
-        {`Resolution source: `}
-        <a
-          href={market.oracleSource}
-          target="_blank"
-          className="tiny semibold text-primary"
-          rel="noreferrer"
-        >
-          {market.oracleSource}
-        </a>
-      </Text>
       <Tabs defaultActiveId="positions">
         <Tabs.TabPane tab="Positions" id="positions">
           <Table
