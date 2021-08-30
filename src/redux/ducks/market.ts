@@ -33,7 +33,6 @@ const initialState: MarketInitialState = {
     verified: false,
     questionId: '',
     resolvedOutcomeId: -1,
-    oracleSource: '',
     outcomes: [
       {
         id: '-1',
