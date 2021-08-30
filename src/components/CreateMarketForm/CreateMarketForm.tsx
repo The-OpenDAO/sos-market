@@ -116,12 +116,13 @@ function CreateMarketForm() {
       values.liquidity
     );
 
+    show('createMarket');
+
     const { marketId } = response.events.MarketCreated.returnValues;
 
     const res = await marketService.createMarket(marketId);
 
     redirectToMarketPage(res.data.slug);
-    show('createMarket');
   }
 
   return (
