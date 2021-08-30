@@ -81,7 +81,7 @@ function CreateMarketFormFund() {
               className="pm-c-create-market-form__card-liquidity-details__liquidity-value__title"
             >
               Liquidity Value
-              <Tooltip text="Help text" position="top">
+              <Tooltip text="Amount added to liquidity pool" position="top">
                 <InfoIcon />
               </Tooltip>
             </Text>
