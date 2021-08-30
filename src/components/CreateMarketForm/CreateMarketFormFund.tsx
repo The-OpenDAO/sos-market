@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react';
+
 import { useField } from 'formik';
 import { roundDown, roundNumber } from 'helpers/math';
+import { BeproService } from 'services';
 
 import { InfoIcon } from 'assets/icons';
 
@@ -15,12 +18,24 @@ import Tooltip from '../Tooltip';
 function CreateMarketFormFund() {
   const currency = useCurrency();
   const [field, meta, helpers] = useField('liquidity');
+  const [fee, setFee] = useState(0);
 
   const balance = useAppSelector(state => state.bepro.ethBalance);
 
   function handleChangeAmount(amount: number) {
     helpers.setValue(amount);
   }
+
+  async function getMarketFee() {
+    const beproService = new BeproService();
+
+    const response = await beproService.getMarketFee();
+    setFee(response);
+  }
+
+  useEffect(() => {
+    getMarketFee();
+  }, []);
 
   return (
     <div className="pm-c-create-market-form__card">
@@ -109,8 +124,11 @@ function CreateMarketFormFund() {
             fontWeight="semibold"
             className="pm-c-create-market-form__card-liquidity-details__earn-trading-fee__title"
           >
-            Earn Trading Fee
-            <Tooltip text="Help text" position="top">
+            Trading Fee Earnings
+            <Tooltip
+              text="Fee given to liquidity providers on every buy/sell transaction"
+              position="top"
+            >
               <InfoIcon />
             </Tooltip>
           </Text>
@@ -121,7 +139,7 @@ function CreateMarketFormFund() {
             fontWeight="semibold"
             className="pm-c-create-market-form__card-liquidity-details__earn-trading-fee__amount"
           >
-            {`${roundNumber(0, 3)} %`}
+            {`${roundNumber(fee * 100, 3)} %`}
           </Text>
         </div>
       </div>

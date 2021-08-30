@@ -37,7 +37,7 @@ function CreateMarketBuyPolk({
           className="pm-p-create-market-buy-polk__title"
         >
           <>
-            {`You need more `}
+            {`You need an additional `}
             <Text
               as="strong"
               scale="body"
