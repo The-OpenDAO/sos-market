@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ChangeEvent } from 'react';
+import { ChangeEvent, memo } from 'react';
 
 import { InfoIcon } from 'assets/icons';
 
@@ -9,10 +9,16 @@ import Tooltip from '../Tooltip';
 type FilterInlineProps = {
   label: string;
   helpText: string;
+  isChecked: boolean;
   onChange: (checked: boolean) => void;
 };
 
-function FilterInline({ label, helpText, onChange }: FilterInlineProps) {
+function FilterInline({
+  label,
+  helpText,
+  isChecked,
+  onChange
+}: FilterInlineProps) {
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const { checked } = event.currentTarget;
     onChange(checked);
@@ -20,7 +26,11 @@ function FilterInline({ label, helpText, onChange }: FilterInlineProps) {
 
   return (
     <div className="pm-c-filter-inline">
-      <Checkbox label={label} onChange={event => handleChange(event)} />
+      <Checkbox
+        label={label}
+        onChange={event => handleChange(event)}
+        checked={isChecked}
+      />
       <Tooltip text={helpText} position="top">
         <InfoIcon />
       </Tooltip>
@@ -28,4 +38,4 @@ function FilterInline({ label, helpText, onChange }: FilterInlineProps) {
   );
 }
 
-export default FilterInline;
+export default memo(FilterInline);
