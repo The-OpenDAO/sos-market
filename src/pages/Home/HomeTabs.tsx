@@ -7,7 +7,7 @@ import {
 
 import { Tabs, MarketListAsync, FilterInline, Filter } from 'components';
 
-import { useAppDispatch, useFavoriteMarkets } from 'hooks';
+import { useAppDispatch, useAppSelector, useFavoriteMarkets } from 'hooks';
 
 import { filters } from './utils';
 
@@ -19,6 +19,9 @@ function HomeTabs({
 }) {
   const dispatch = useAppDispatch();
   const { favoriteMarkets } = useFavoriteMarkets();
+  const filterByVerified = useAppSelector(
+    state => state.markets.filterByVerified
+  );
 
   function handleChangeFilterInline(filterByVerifiedMarkets: boolean) {
     dispatch(setFilterByVerified(filterByVerifiedMarkets));
@@ -40,6 +43,7 @@ function HomeTabs({
         <FilterInline
           key="filterByVerifiedMarkets"
           label="Verified markets"
+          isChecked={filterByVerified}
           helpText="Curated list from trusted sources"
           onChange={handleChangeFilterInline}
         />,
