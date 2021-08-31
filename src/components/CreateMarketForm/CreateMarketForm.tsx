@@ -86,8 +86,8 @@ const validationSchema = Yup.object().shape({
   subcategory: Yup.string().required('Subcategory is required!'),
   closingDate: Yup.date()
     .min(
-      dayjs().format('MM/DD/YYYY'),
-      `Closing date must be later than ${dayjs().format('MM/DD/YYYY')}`
+      dayjs().format('MM/DD/YYYY HH:mm'),
+      `Closing date must be later than ${dayjs().format('DD/MM/YYYY HH:mm')}`
     )
     .required('Closing date is required!'),
   liquidity: Yup.number().moreThan(0).required('Liquidity is required!')
