@@ -30,10 +30,14 @@ const Market = () => {
   const { actions, bondActions } = useAppSelector(state => state.bepro);
 
   useEffect(() => {
-    dispatch(reset());
-    dispatch(getMarket(marketId));
-    dispatch(setChartViewType('marketOverview'));
-    dispatch(openTradeForm());
+    async function fetchMarket() {
+      dispatch(reset());
+      await dispatch(getMarket(marketId));
+      dispatch(setChartViewType('marketOverview'));
+      dispatch(openTradeForm());
+    }
+
+    fetchMarket();
   }, [dispatch, marketId]);
 
   if (!market || market.id === '' || isLoading)
