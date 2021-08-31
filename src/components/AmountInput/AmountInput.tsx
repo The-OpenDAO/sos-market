@@ -64,7 +64,7 @@ function AmountInput({
   }
 
   return (
-    <form className="pm-c-amount-input">
+    <div className="pm-c-amount-input">
       <div className="pm-c-amount-input__header">
         <label className="pm-c-amount-input__header-title" htmlFor={label}>
           {label}
@@ -89,7 +89,7 @@ function AmountInput({
           type="number"
           id={label}
           value={amount}
-          step=".0001"
+          step=".00001"
           min={0}
           max={max}
           onChange={event => handleChangeAmount(event)}
@@ -113,7 +113,7 @@ function AmountInput({
         currentValue={stepAmount}
         onChange={value => handleChangeSlider(value)}
       />
-    </form>
+    </div>
   );
 }
 

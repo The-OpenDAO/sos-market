@@ -6,9 +6,17 @@ $progress-bar-path-color-danger: #e12d39 !default;
 
 $progress-bar-themes: (
   light: (
-    progress-bar-trail-color: #dfe1e6
+    progress-bar-trail-color: #dfe1e6,
+    text-colors: (
+      primary: #313a4c,
+      secondary: #8193ae
+    )
   ),
   dark: (
-    progress-bar-trail-color: #26282d
+    progress-bar-trail-color: #26282d,
+    text-colors: (
+      primary: #f9fafb,
+      secondary: #637084
+    )
   )
 ) !default;

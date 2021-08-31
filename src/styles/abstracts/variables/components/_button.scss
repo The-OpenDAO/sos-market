@@ -44,7 +44,13 @@ $button-normal-themes: (
         background-color-disabled: mix(#ffffff, #27ab83, 85%)
       )
     ),
-    text-color: #ffffff
+    text-colors: (
+      default: #ffffff,
+      primary: #ffffff,
+      danger: #ffffff,
+      warning: #0e1016,
+      success: #ffffff
+    )
   ),
   dark: (
     background-colors: (
@@ -74,7 +80,13 @@ $button-normal-themes: (
         background-color-disabled: mix(#000000, #27ab83, 75%)
       )
     ),
-    text-color: #ffffff
+    text-colors: (
+      default: #ffffff,
+      primary: #ffffff,
+      danger: #ffffff,
+      warning: #0e1016,
+      success: #ffffff
+    )
   )
 ) !default;
 

@@ -1,0 +1,12 @@
+.pm-c-divider--circle {
+  @include themes($divider-themes) {
+    display: inline-block;
+
+    height: $divider-circle-height;
+    width: $divider-circle-width;
+    border-radius: 50%;
+
+    background-color: themed('background-color');
+    transition: $divider-transitions;
+  }
+}

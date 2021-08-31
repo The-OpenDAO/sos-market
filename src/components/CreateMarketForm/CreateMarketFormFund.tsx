@@ -1,8 +1,12 @@
+import { useState, useEffect } from 'react';
+
 import { useField } from 'formik';
-import { roundNumber } from 'helpers/math';
+import { roundDown, roundNumber } from 'helpers/math';
+import { BeproService } from 'services';
 
 import { InfoIcon } from 'assets/icons';
 
+import { useAppSelector } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
 
 import { AlertMini } from '../Alert';
@@ -14,10 +18,24 @@ import Tooltip from '../Tooltip';
 function CreateMarketFormFund() {
   const currency = useCurrency();
   const [field, meta, helpers] = useField('liquidity');
+  const [fee, setFee] = useState(0);
+
+  const balance = useAppSelector(state => state.bepro.ethBalance);
 
   function handleChangeAmount(amount: number) {
     helpers.setValue(amount);
   }
+
+  async function getMarketFee() {
+    const beproService = new BeproService();
+
+    const response = await beproService.getMarketFee();
+    setFee(response);
+  }
+
+  useEffect(() => {
+    getMarketFee();
+  }, []);
 
   return (
     <div className="pm-c-create-market-form__card">
@@ -49,7 +67,7 @@ function CreateMarketFormFund() {
       />
       <AmountInput
         label="Add Liquidity"
-        max={100}
+        max={roundDown(balance)}
         currency={currency}
         onChange={handleChangeAmount}
       />
@@ -63,7 +81,7 @@ function CreateMarketFormFund() {
               className="pm-c-create-market-form__card-liquidity-details__liquidity-value__title"
             >
               Liquidity Value
-              <Tooltip text="Help text" position="top">
+              <Tooltip text="Amount added to liquidity pool" position="top">
                 <InfoIcon />
               </Tooltip>
             </Text>
@@ -74,7 +92,7 @@ function CreateMarketFormFund() {
               fontWeight="semibold"
               className="pm-c-create-market-form__card-liquidity-details__liquidity-value__amount"
             >
-              {`${roundNumber(0, 3)} ${currency.symbol}`}
+              {`${roundNumber(field.value, 3)} ${currency.symbol}`}
             </Text>
           </div>
           <div className="pm-c-create-market-form__card-liquidity-details__shares-added">
@@ -93,7 +111,7 @@ function CreateMarketFormFund() {
               fontWeight="semibold"
               className="pm-c-create-market-form__card-liquidity-details__shares-added__amount"
             >
-              {roundNumber(0, 3)}
+              {roundNumber(field.value, 3)}
             </Text>
           </div>
         </div>
@@ -106,8 +124,11 @@ function CreateMarketFormFund() {
             fontWeight="semibold"
             className="pm-c-create-market-form__card-liquidity-details__earn-trading-fee__title"
           >
-            Earn Trading Fee
-            <Tooltip text="Help text" position="top">
+            Trading Fee Earnings
+            <Tooltip
+              text="Fee given to liquidity providers on every buy/sell transaction"
+              position="top"
+            >
               <InfoIcon />
             </Tooltip>
           </Text>
@@ -118,7 +139,7 @@ function CreateMarketFormFund() {
             fontWeight="semibold"
             className="pm-c-create-market-form__card-liquidity-details__earn-trading-fee__amount"
           >
-            {`${roundNumber(0, 3)} %`}
+            {`${roundNumber(fee * 100, 3)} %`}
           </Text>
         </div>
       </div>

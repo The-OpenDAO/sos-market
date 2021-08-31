@@ -1,12 +1,23 @@
+import { useHistory } from 'react-router-dom';
+
+import { closeRightSidebar } from 'redux/ducks/ui';
+
 import { MoonIcon, SettingsIcon, SunIcon } from 'assets/icons';
 
-import { useTheme } from 'hooks';
+import { useAppDispatch, useTheme } from 'hooks';
 
 import { Button } from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
 function NavBarDropdownMenu() {
   const { theme, setTheme } = useTheme();
+  const dispatch = useAppDispatch();
+  const history = useHistory();
+
+  function handleCreateMarket() {
+    dispatch(closeRightSidebar());
+    history.push('/market/create');
+  }
 
   return (
     <div className="pm-l-navbar-dropdown-menu">
@@ -32,15 +43,14 @@ function NavBarDropdownMenu() {
           onChange={newTheme => setTheme(newTheme)}
         />
         <br />
-        <a
-          className="pm-c-button-normal--primary pm-c-button--sm pm-c-button--fullwidth"
-          aria-label="Create market"
-          target="_blank"
-          href="https://docs.google.com/forms/d/1WA_WQ3Ma6iXr1HExs541cmquoI4n3SysI_DGuDyrRVQ/"
-          rel="noreferrer"
+        <Button
+          size="sm"
+          color="primary"
+          fullwidth
+          onClick={handleCreateMarket}
         >
           Create Market
-        </a>
+        </Button>
       </div>
     </div>
   );

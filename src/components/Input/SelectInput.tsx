@@ -42,12 +42,7 @@ const SelectInput = React.forwardRef<
         {...props}
         className={`pm-c-input--${hasError ? 'error' : 'default'}`}
       >
-        <option
-          value=""
-          disabled
-          selected
-          className="pm-c-select-input__option"
-        >
+        <option value="" disabled className="pm-c-select-input__option">
           {placeholder}
         </option>
         {options.map(option => (

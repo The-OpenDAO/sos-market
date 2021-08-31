@@ -46,9 +46,9 @@ export interface Market {
   createdAt: string;
   expiresAt: string;
   state: string;
+  verified: boolean;
   questionId: string;
   resolvedOutcomeId: number;
-  oracleSource: string;
   outcomes: Outcome[];
   tradingViewSymbol: any;
   fee: number;

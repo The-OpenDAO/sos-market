@@ -24,7 +24,9 @@ export default class BeproService {
   }
 
   constructor() {
-    this.bepro = new beprojs.Application({ mainnet: false });
+    this.bepro = new beprojs.Application({
+      web3Provider: process.env.REACT_APP_WEB3_PROVIDER
+    });
     this.bepro.start();
     // fetching contract
     this.getContracts();
@@ -96,6 +98,42 @@ export default class BeproService {
   }
 
   // PredictionMarket contract functions
+
+  public async getMinimumRequiredBalance(): Promise<number> {
+    const requiredBalance = await this.contracts.pm.getMinimumRequiredBalance();
+
+    return requiredBalance;
+  }
+
+  public async getMarketFee(): Promise<number> {
+    const fee = await this.contracts.pm.getFee();
+
+    return fee;
+  }
+
+  public async createMarket(
+    name: string,
+    image: string,
+    duration: number,
+    outcomes: Array<string>,
+    category: string,
+    ethAmount: number
+  ) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contracts.pm.createMarket({
+      name,
+      image,
+      duration,
+      outcomes,
+      category,
+      ethAmount,
+      oracleAddress: this.address
+    });
+
+    return response;
+  }
 
   public async buy(
     marketId: string | number,

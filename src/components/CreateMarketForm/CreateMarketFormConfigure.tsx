@@ -1,7 +1,7 @@
 import {
   Input,
   OutcomeInput,
-  ProbabilityInput,
+  // ProbabilityInput,
   FileUploadInput,
   SelectInput,
   DateInput
@@ -24,28 +24,34 @@ function CreateMarketFormConfigure() {
         label="Market Question"
         placeholder="What would you like to see the world predict?"
       />
-      <div className="pm-c-create-market-form__card-outcome-group--row">
+      <div
+        className="pm-c-create-market-form__card-outcome-group--row"
+        style={{ gridTemplateColumns: '1fr' }}
+      >
         <OutcomeInput
           badgeColor="pink"
           name="firstOutcome.name"
           label="Outcome"
           placeholder="Outcome..."
         />
-        <ProbabilityInput name="firstOutcome.probability" label="Probability" />
+        {/* <ProbabilityInput name="firstOutcome.probability" label="Probability" /> */}
       </div>
-      <div className="pm-c-create-market-form__card-outcome-group--row">
+      <div
+        className="pm-c-create-market-form__card-outcome-group--row"
+        style={{ gridTemplateColumns: '1fr' }}
+      >
         <OutcomeInput
-          badgeColor="blue"
+          badgeColor="purple"
           name="secondOutcome.name"
           placeholder="Outcome..."
         />
-        <ProbabilityInput name="secondOutcome.probability" />
+        {/* <ProbabilityInput name="secondOutcome.probability" /> */}
       </div>
       <FileUploadInput
         label="Market Thumbnail"
-        name="thumbnail"
+        name="image"
         notUploadedActionLabel="Select Image"
-        uploadedActionLabel="Upload New One"
+        uploadedActionLabel="Re-Upload"
       />
       <div className="pm-c-create-market-form__card-categories-group--row">
         <SelectInput
@@ -78,16 +84,15 @@ function CreateMarketFormConfigure() {
               value: 'other'
             }
           ]}
+          style={{ height: '100%' }}
         />
-        <SelectInput
+        <Input
           label="Subcategory"
           name="subcategory"
-          placeholder="Select Subcategory"
-          options={[]}
-          disabled
+          placeholder="Subcategory"
         />
       </div>
-      <DateInput label="Closing Date - UTC" name="closingDate" />
+      <DateInput label="Closing Date - Local Time" name="closingDate" />
     </div>
   );
 }

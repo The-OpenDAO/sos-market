@@ -105,3 +105,15 @@
     }
   }
 }
+
+.pm-c-filter-inline {
+  @include flex-row(center, center, 0.4rem);
+  svg {
+    height: 1.2rem;
+    width: 1.2rem;
+
+    @include themes($outcome-themes) {
+      fill: themed('outcome-icon-color');
+    }
+  }
+}
