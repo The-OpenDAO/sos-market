@@ -6,9 +6,11 @@
     width: 100%;
 
     &__stats {
-      display: grid;
-      grid-template-columns: 2fr minmax(15rem, 1fr);
-      gap: 1.6rem;
+      @include flex-row(center, center, 1.6rem);
+
+      & > div {
+        width: 100%;
+      }
     }
 
     &__news {
@@ -33,7 +35,10 @@
   @include themes($market-themes) {
     &__stats {
       @include flex-column;
+      flex-basis: 33%;
       gap: 1.6rem;
+
+      height: 42.6rem;
 
       &-item {
         flex-grow: 1;
