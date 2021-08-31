@@ -35,7 +35,7 @@
   @include themes($market-themes) {
     &__stats {
       @include flex-column;
-      flex-basis: 33%;
+      flex-basis: 25%;
       gap: 1.6rem;
 
       height: 42.6rem;

@@ -38,7 +38,7 @@
 .market-chart {
   @include themes($market-themes) {
     @include flex-column;
-    flex-basis: 77%;
+    flex-basis: 75%;
     gap: 1.2rem;
 
     width: 100%;
