@@ -1,12 +1,13 @@
 .pm-l-layout {
   @include themes($layout-themes) {
     display: grid;
+    max-width: 100%;
 
     grid-template-areas:
       'nav header header'
       'nav main aside'
       'nav footer aside';
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-rows: auto 1fr auto;
 
     background-color: themed('background-color');
