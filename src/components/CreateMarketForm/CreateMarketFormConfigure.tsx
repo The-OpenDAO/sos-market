@@ -64,8 +64,8 @@ function CreateMarketFormConfigure() {
               value: 'crypto'
             },
             {
-              name: 'Esports',
-              value: 'esports'
+              name: 'Gaming',
+              value: 'gaming'
             },
             {
               name: 'Sports',
@@ -74,10 +74,6 @@ function CreateMarketFormConfigure() {
             {
               name: 'Politics',
               value: 'politics'
-            },
-            {
-              name: 'Weather',
-              value: 'weather'
             },
             {
               name: 'Other',
