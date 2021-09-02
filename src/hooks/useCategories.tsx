@@ -5,7 +5,7 @@ import {
   GamingConsoleIcon,
   WhiteHouseIcon,
   BitcoinIcon,
-  SunFogIcon
+  ExploreIcon
 } from 'assets/icons';
 
 import { generateChartRandomData } from 'pages/Portfolio/utils';
@@ -52,9 +52,9 @@ const categories: Category[] = [
     }
   },
   {
-    title: 'Weather',
+    title: 'Other',
     backgroundColor: 'blue',
-    icon: <SunFogIcon />,
+    icon: <ExploreIcon />,
     chartData: generateChartRandomData(),
     change: {
       type: 'up',

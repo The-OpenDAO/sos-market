@@ -2,9 +2,8 @@ import {
   SoccerBallIcon,
   GamingConsoleIcon,
   WhiteHouseIcon,
-  ChartGrowthIcon,
+  ExploreIcon,
   BitcoinIcon,
-  SunFogIcon,
   TwitterIcon,
   MediumIcon,
   TelegramIcon,
@@ -41,10 +40,10 @@ const navigationLinks = {
         to: 'politics'
       },
       {
-        name: 'Weather',
+        name: 'Other',
         count: 9,
-        icon: <SunFogIcon />,
-        to: 'weather'
+        icon: <ExploreIcon />,
+        to: 'other'
       }
     ]
   }

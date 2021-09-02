@@ -42,8 +42,8 @@ const categories = [
     chartData: generateChartRandomData()
   },
   {
-    title: 'Weather',
-    route: 'weather',
+    title: 'Other',
+    route: 'other',
     change: {
       type: 'down',
       amount: 2.58
