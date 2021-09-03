@@ -106,7 +106,6 @@ export {
   Menu,
   MiniAreaChart,
   MiniTable,
-  Modal,
   ModalNotification,
   NavBar,
   NetworkInfo,
