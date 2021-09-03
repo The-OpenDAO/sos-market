@@ -1,0 +1,28 @@
+.pm-c-image-cropper {
+  @include themes($image-cropper-themes) {
+    @include flex-column(center, center, 1.6rem);
+    padding: $image-cropper-padding-y $image-cropper-padding-x;
+
+    &__wrapper {
+      position: relative;
+
+      width: 50rem;
+      height: 30rem;
+    }
+
+    &__zoom-slider {
+      @include flex-row(center, center, 1.6rem);
+      width: 100%;
+
+      span {
+        color: map-get(themed('text'), 'primary');
+      }
+    }
+
+    &__actions {
+      @include flex-row(flex-end, center, 1.6rem);
+      margin-top: 1rem;
+      width: 100%;
+    }
+  }
+}
