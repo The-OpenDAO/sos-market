@@ -1,1 +1,2 @@
-export { default } from './StepSlider';
+export { default, themes } from './StepSlider';
+export type { Theme } from './StepSlider';

@@ -11,7 +11,7 @@ const marks = {
   100: '100%'
 };
 
-type Theme = {
+export type Theme = {
   trackBackgroundColor: string;
   railBackgroundColor: string;
   dotBackgroundColor: string;
@@ -26,7 +26,7 @@ type Themes = {
   dark: Theme;
 };
 
-const themes: Themes = {
+export const themes: Themes = {
   light: {
     trackBackgroundColor: '#8B96A7',
     railBackgroundColor: '#E3E8F0',
