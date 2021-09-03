@@ -2,7 +2,7 @@ import {
   Input,
   OutcomeInput,
   // ProbabilityInput,
-  FileUploadInput,
+  ImageUploadInput,
   SelectInput,
   DateInput
 } from '../Input';
@@ -47,7 +47,7 @@ function CreateMarketFormConfigure() {
         />
         {/* <ProbabilityInput name="secondOutcome.probability" /> */}
       </div>
-      <FileUploadInput
+      <ImageUploadInput
         label="Market Thumbnail"
         name="image"
         notUploadedActionLabel="Select Image"
