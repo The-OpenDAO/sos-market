@@ -1,6 +1,6 @@
 import AmountInput from './AmountInput';
 import DateInput from './DateInput';
-import FileUploadInput from './FileUploadInput';
+import ImageUploadInput from './ImageUploadInput';
 import Input from './Input';
 import OutcomeInput from './OutcomeInput';
 import ProbabilityInput from './ProbabilityInput';
@@ -10,7 +10,7 @@ export {
   Input,
   OutcomeInput,
   ProbabilityInput,
-  FileUploadInput,
+  ImageUploadInput,
   SelectInput,
   DateInput,
   AmountInput

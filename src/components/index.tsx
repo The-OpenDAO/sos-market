@@ -17,11 +17,12 @@ import FeaturedCard from './FeaturedCard';
 import { Filter, FilterInline } from './Filter';
 import Footer from './Footer';
 import Grid from './Grid';
+import ImageCropper from './ImageCropper';
 import {
   Input,
   OutcomeInput,
   ProbabilityInput,
-  FileUploadInput,
+  ImageUploadInput,
   SelectInput,
   DateInput
 } from './Input';
@@ -90,7 +91,8 @@ export {
   Filter,
   FilterInline,
   Footer,
-  FileUploadInput,
+  ImageUploadInput,
+  ImageCropper,
   Input,
   Label,
   Layout,

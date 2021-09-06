@@ -1,0 +1,15 @@
+$image-cropper-padding-y: 1.6rem !default;
+$image-cropper-padding-x: 1.6rem !default;
+
+$image-cropper-themes: (
+  light: (
+    text: (
+      primary: #313a4c
+    )
+  ),
+  dark: (
+    text: (
+      primary: #f9fafb
+    )
+  )
+) !default;

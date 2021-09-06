@@ -1,0 +1,9 @@
+.pm-c-modal {
+  @include themes($modal-themes) {
+    padding: $modal-padding-y $modal-padding-x;
+
+    background-color: themed('background');
+    border: $modal-border-width solid themed('border');
+    box-shadow: $modal-shadow themed('shadow');
+  }
+}
