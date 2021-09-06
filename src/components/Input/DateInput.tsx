@@ -1,6 +1,7 @@
-import React from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
-import { useField } from 'formik';
+import { useField, useFormikContext } from 'formik';
 
 import InputErrorMessage from './InputErrorMessage';
 
@@ -10,11 +11,9 @@ type DateInputProps = {
   description?: string;
 };
 
-const DateInput = React.forwardRef<
-  HTMLInputElement,
-  DateInputProps & React.InputHTMLAttributes<HTMLInputElement>
->(({ label, name, description, ...props }, ref) => {
+function DateInput({ label, name, description }: DateInputProps) {
   const [field, meta] = useField(name);
+  const { setFieldValue } = useFormikContext();
 
   const hasError = meta.touched && meta.error;
 
@@ -26,13 +25,17 @@ const DateInput = React.forwardRef<
       >
         {label}
       </label>
-      <input
-        ref={ref}
-        className={`pm-c-input--${hasError ? 'error' : 'default'}`}
-        id={name}
-        type="datetime-local"
-        {...field}
-        {...props}
+      <DatePicker
+        className={`pm-c-input--${
+          hasError ? 'error' : 'default'
+        } pm-c-input--fullwidth`}
+        selected={field.value}
+        name={name}
+        placeholderText="DD/MM/YYYY, --:-- --"
+        dateFormat="dd/MM/yyyy, hh:mm aa"
+        showTimeSelect
+        timeIntervals={15}
+        onChange={date => setFieldValue(name, date)}
       />
       {hasError && meta.error ? (
         <InputErrorMessage message={meta.error} />
@@ -42,8 +45,6 @@ const DateInput = React.forwardRef<
       ) : null}
     </div>
   );
-});
-
-DateInput.displayName = 'DateInput';
+}
 
 export default DateInput;

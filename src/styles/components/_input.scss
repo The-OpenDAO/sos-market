@@ -288,3 +288,7 @@
 .pm-c-date-input__label--error {
   @extend .pm-c-input__label--error;
 }
+
+.pm-c-input--fullwidth {
+  width: 100%;
+}
