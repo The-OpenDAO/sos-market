@@ -173,24 +173,20 @@ export const filteredMarketsSelector = (
     return markets;
   }
 
-  if (categories.some(category => category.title.match(regExpFullFilter))) {
-    // filter fully matches category, filtering by category
-    return sorted(
-      state.markets.filter(({ category }) => category.match(regExpFullFilter))
-    );
-  }
-
-  const filteredMarkets = state.markets.filter(
-    ({ category, subcategory, title, verified }) =>
-      (category.match(regExpFromFilter) ||
-        subcategory.match(regExpFromFilter) ||
-        title.match(regExpFromFilter)) &&
-      verifiedFilter(verified)
+  return sorted(
+    categories.some(category => category.title.match(regExpFullFilter))
+      ? state.markets.filter(
+          ({ category, verified }) =>
+            category.match(regExpFullFilter) && verifiedFilter(verified)
+        )
+      : state.markets.filter(
+          ({ category, subcategory, title, verified }) =>
+            (category.match(regExpFromFilter) ||
+              subcategory.match(regExpFromFilter) ||
+              title.match(regExpFromFilter)) &&
+            verifiedFilter(verified)
+        )
   );
-
-  if (state.sorter.value === 'featured') return filteredMarkets;
-
-  return sorted(filteredMarkets);
 };
 
 export function getMarkets(marketState: MarketState) {
