@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import DayjsUtils from '@date-io/dayjs';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import Routes from 'routes';
 
 import CurrencyProvider from 'contexts/currency';
@@ -18,13 +20,15 @@ const App = () => {
 
   return (
     <div className={`theme--${localStorageTheme || theme}`}>
-      <ViewportProvider>
-        <CurrencyProvider>
-          <FavoriteMarketsProvider>
-            <Routes />
-          </FavoriteMarketsProvider>
-        </CurrencyProvider>
-      </ViewportProvider>
+      <MuiPickersUtilsProvider utils={DayjsUtils}>
+        <ViewportProvider>
+          <CurrencyProvider>
+            <FavoriteMarketsProvider>
+              <Routes />
+            </FavoriteMarketsProvider>
+          </CurrencyProvider>
+        </ViewportProvider>
+      </MuiPickersUtilsProvider>
     </div>
   );
 };

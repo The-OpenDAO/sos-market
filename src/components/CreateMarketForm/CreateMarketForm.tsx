@@ -53,7 +53,7 @@ const initialData: CreateMarketFormData = {
   },
   category: '',
   subcategory: '',
-  closingDate: '',
+  closingDate: dayjs().toString(),
   liquidity: 0
 };
 

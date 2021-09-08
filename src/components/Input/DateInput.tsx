@@ -1,8 +1,65 @@
-import React from 'react';
+/* eslint-disable no-nested-ternary */
+import 'react-datepicker/dist/react-datepicker.css';
+import { DateTimePicker } from '@material-ui/pickers';
+import { useField, useFormikContext } from 'formik';
+import styled from 'styled-components';
 
-import { useField } from 'formik';
+import { useTheme } from 'hooks';
 
 import InputErrorMessage from './InputErrorMessage';
+
+const StyledDateTimePicker = styled(DateTimePicker)`
+  .MuiOutlinedInput-input {
+    padding: 1.2rem;
+
+    font-family: 'Gilroy', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.014rem;
+
+    color: ${props => (props.theme === 'dark' ? '#f9fafb' : '#171b23')};
+    border: 0.1rem solid transparent;
+
+    &:hover,
+    &:focus {
+      border: 0.1rem solid transparent;
+    }
+  }
+
+  .MuiOutlinedInput-root {
+    outline: none;
+    border: 0.1rem solid
+      ${props =>
+        props.$hasError
+          ? '#e12d39'
+          : props.theme === 'dark'
+          ? '#252c3b'
+          : '#e0e2e7'};
+    transition: 0.2s border ease-out;
+
+    &:hover {
+      outline: none;
+      border: 0.1rem solid
+        ${props =>
+          props.$hasError
+            ? '#e12d39'
+            : props.theme === 'dark'
+            ? '#637084'
+            : '#c2cad6'};
+    }
+
+    &.Mui-focused fieldset {
+      outline: none;
+      border: none;
+    }
+
+    &.Mui-selected {
+      outline: none;
+      border: none;
+    }
+  }
+`;
 
 type DateInputProps = {
   label: string;
@@ -10,13 +67,16 @@ type DateInputProps = {
   description?: string;
 };
 
-const DateInput = React.forwardRef<
-  HTMLInputElement,
-  DateInputProps & React.InputHTMLAttributes<HTMLInputElement>
->(({ label, name, description, ...props }, ref) => {
+function DateInput({ label, name, description }: DateInputProps) {
+  const { theme } = useTheme();
   const [field, meta] = useField(name);
+  const { setFieldValue } = useFormikContext();
 
   const hasError = meta.touched && meta.error;
+
+  function handleChange(date) {
+    setFieldValue(name, new Date(date));
+  }
 
   return (
     <div className="pm-c-date-input__group">
@@ -26,13 +86,18 @@ const DateInput = React.forwardRef<
       >
         {label}
       </label>
-      <input
-        ref={ref}
-        className={`pm-c-input--${hasError ? 'error' : 'default'}`}
-        id={name}
-        type="datetime-local"
-        {...field}
-        {...props}
+      <StyledDateTimePicker
+        theme={theme}
+        $hasError={hasError}
+        inputVariant="outlined"
+        disablePast
+        error={false}
+        helperText={null}
+        ampm
+        format="DD/MM/YYYY, hh:mm a"
+        emptyLabel="DD/MM/YYYY, --:-- --"
+        value={field.value}
+        onChange={date => handleChange(date)}
       />
       {hasError && meta.error ? (
         <InputErrorMessage message={meta.error} />
@@ -42,8 +107,6 @@ const DateInput = React.forwardRef<
       ) : null}
     </div>
   );
-});
-
-DateInput.displayName = 'DateInput';
+}
 
 export default DateInput;
