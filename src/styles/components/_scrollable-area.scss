@@ -1,0 +1,17 @@
+.pm-c-scrollable-area {
+  float: left;
+
+  &__content {
+    overflow-y: scroll;
+    mask-image: linear-gradient(to top, transparent, black),
+      linear-gradient(to left, transparent 1.7rem, black 1.7rem);
+    mask-size: 100% 2000rem;
+    mask-position: left bottom;
+
+    transition: mask-position 0.3s;
+
+    &:hover {
+      mask-position: left top;
+    }
+  }
+}
