@@ -1,20 +1,14 @@
-import { useEffect, useState } from 'react';
-
 import { useAppSelector } from 'hooks';
-import useAlertNotification from 'hooks/useAlertNotification';
 
 import LiquidityForm from '../LiquidityForm';
 import ReportForm from '../ReportForm';
 import TradeForm from '../TradeForm';
 
-function RightSidebar() {
-  const { alertList } = useAlertNotification();
-  const [hasAlertNotification, setHasAlertNotification] = useState(false);
+type RightSidebarProps = {
+  hasAlertNotification: boolean;
+};
 
-  useEffect(() => {
-    setHasAlertNotification(alertList.size > 0);
-  }, [alertList]);
-
+function RightSidebar({ hasAlertNotification }: RightSidebarProps) {
   const rightSidebarIsVisible = useAppSelector(
     state => state.ui.rightSidebar.visible
   );
