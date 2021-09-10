@@ -1,15 +1,22 @@
-import React from 'react';
+import { ReactNode } from 'react';
+
+import useAlertNotification from 'hooks/useAlertNotification';
 
 import Footer from '../Footer';
 import NavBar from '../NavBar';
 import RightSidebar from '../RightSidebar';
+import ScrollableArea from '../ScrollableArea';
 import Sidebar from '../Sidebar';
 
 type LayoutProps = {
-  children: React.ReactNode | any;
+  children: ReactNode;
 };
 
 function Layout({ children }: LayoutProps) {
+  const { alertList } = useAlertNotification();
+
+  const hasAlertNotification = alertList.size > 0;
+
   return (
     <div className="pm-l-layout">
       <header className="pm-l-layout__header sticky">
@@ -19,18 +26,29 @@ function Layout({ children }: LayoutProps) {
       <nav className="pm-l-layout__nav">
         <Sidebar />
       </nav>
-      <main className="pm-l-layout__main">{children}</main>
-      <footer className="pm-l-layout__footer">
-        <Footer />
-      </footer>
-      <aside className="pm-l-layout__aside">
-        <RightSidebar />
-        <div id="toast-notification-portal" />
-      </aside>
+      <ScrollableArea
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: hasAlertNotification
+            ? 'calc(100vh - 11rem)'
+            : 'calc(100vh - 7.3rem)'
+        }}
+      >
+        <main className="pm-l-layout__main">{children}</main>
+        <footer className="pm-l-layout__footer">
+          <Footer />
+        </footer>
+      </ScrollableArea>
+      <ScrollableArea>
+        <aside className="pm-l-layout__aside">
+          <RightSidebar hasAlertNotification={hasAlertNotification} />
+          <div id="toast-notification-portal" />
+        </aside>
+      </ScrollableArea>
     </div>
   );
 }
-
-Layout.displayName = 'Layout';
 
 export default Layout;
