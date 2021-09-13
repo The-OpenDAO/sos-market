@@ -23,7 +23,9 @@ function TradeFormActions() {
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
   const marketSlug = useAppSelector(state => state.market.market.slug);
   const predictionId = useAppSelector(state => state.trade.selectedOutcomeId);
-  const amount = useAppSelector(state => state.trade.amount);
+  const { amount, shares, totalStake, fee } = useAppSelector(
+    state => state.trade
+  );
   const maxAmount = useAppSelector(state => state.trade.maxAmount);
   const acceptRules = useAppSelector(state => state.trade.acceptRules);
   const acceptOddChanges = useAppSelector(
@@ -67,8 +69,15 @@ function TradeFormActions() {
     setIsLoading(true);
 
     try {
+      // TODO: get values from smart contract
+      const minShares = shares * 0.999;
       // performing buy action on smart contract
-      const response = await beproService.buy(marketId, predictionId, amount);
+      const response = await beproService.buy(
+        marketId,
+        predictionId,
+        amount,
+        minShares
+      );
 
       setIsLoading(false);
 
@@ -104,8 +113,15 @@ function TradeFormActions() {
     setIsLoading(true);
 
     try {
+      // TODO: get values from smart contract
+      const ethAmount = (totalStake - fee) * 0.9999;
       // performing sell action on smart contract
-      const response = await beproService.sell(marketId, predictionId, amount);
+      const response = await beproService.sell(
+        marketId,
+        predictionId,
+        ethAmount,
+        shares
+      );
 
       setIsLoading(false);
 

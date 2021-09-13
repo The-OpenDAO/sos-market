@@ -138,7 +138,8 @@ export default class BeproService {
   public async buy(
     marketId: string | number,
     outcomeId: string | number,
-    ethAmount: number
+    ethAmount: number,
+    minOutcomeSharesToBuy: number
   ) {
     // ensuring user has wallet connected
     await this.login();
@@ -146,7 +147,8 @@ export default class BeproService {
     const response = await this.contracts.pm.buy({
       marketId,
       outcomeId,
-      ethAmount
+      ethAmount,
+      minOutcomeSharesToBuy
     });
 
     return response;
@@ -155,7 +157,8 @@ export default class BeproService {
   public async sell(
     marketId: string | number,
     outcomeId: string | number,
-    shares: number
+    ethAmount: number,
+    maxOutcomeSharesToSell: number
   ) {
     // ensuring user has wallet connected
     await this.login();
@@ -163,7 +166,8 @@ export default class BeproService {
     const response = await this.contracts.pm.sell({
       marketId,
       outcomeId,
-      shares
+      ethAmount,
+      maxOutcomeSharesToSell
     });
 
     return response;
