@@ -11,7 +11,8 @@ import { BeproService, PolkamarketsApiService } from 'services';
 
 import { QuestionIcon } from 'assets/icons';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
+import { defaultNetwork } from 'hooks/useNetwork';
 import useToastNotification from 'hooks/useToastNotification';
 
 import { Alert } from '../Alert';
@@ -32,6 +33,7 @@ function ReportFormActions({
   const dispatch = useAppDispatch();
   const { show, close } = useToastNotification();
   const { errors } = useFormikContext();
+  const network = useNetwork() || defaultNetwork();
 
   // Form state
   const [outcome] = useField('outcome');
@@ -193,7 +195,7 @@ function ReportFormActions({
               <Toast.Actions>
                 <a
                   target="_blank"
-                  href={`https://kovan.etherscan.io/tx/${approvePolkTransactionSuccessHash}`}
+                  href={`${network.explorerURL}/tx/${approvePolkTransactionSuccessHash}`}
                   rel="noreferrer"
                 >
                   <Button size="sm" color="success">
@@ -234,7 +236,7 @@ function ReportFormActions({
               <Toast.Actions>
                 <a
                   target="_blank"
-                  href={`https://kovan.etherscan.io/tx/${marketResolveTransactionSuccessHash}`}
+                  href={`${network.explorerURL}/tx/${marketResolveTransactionSuccessHash}`}
                   rel="noreferrer"
                 >
                   <Button size="sm" color="success">
@@ -298,7 +300,7 @@ function ReportFormActions({
                 <Toast.Actions>
                   <a
                     target="_blank"
-                    href={`https://kovan.etherscan.io/tx/${bondTransactionSuccessHash}`}
+                    href={`${network.explorerURL}/tx/${bondTransactionSuccessHash}`}
                     rel="noreferrer"
                   >
                     <Button size="sm" color="success">
