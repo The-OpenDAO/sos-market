@@ -64,6 +64,13 @@ const networks: {
     currency: 'DEV',
     explorerURL: 'https://etherscan.io'
   },
+  '0x505': {
+    id: '1285',
+    name: 'Moonriver',
+    key: 'moonriver',
+    currency: 'MOVR',
+    explorerURL: 'https://blockscout.moonriver.moonbeam.network'
+  },
   '0x507': {
     id: '1287',
     name: 'Moonbase Alpha',
