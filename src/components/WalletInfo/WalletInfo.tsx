@@ -2,6 +2,9 @@ import { ReactNode } from 'react';
 
 import { MetaMaskIconSmall } from 'assets/icons';
 
+import { useNetwork } from 'hooks';
+import { defaultNetwork } from 'hooks/useNetwork';
+
 import { Button } from '../Button';
 
 type Wallet = {
@@ -16,6 +19,8 @@ type WalletInfoProps = {
 };
 
 function WalletInfo({ wallets, address }: WalletInfoProps) {
+  const network = useNetwork() || defaultNetwork();
+
   return (
     <div className="pm-c-wallet-info">
       {wallets.map(wallet => (
@@ -33,7 +38,7 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
       ))}
       <a
         target="_blank"
-        href={`https://kovan.etherscan.io/address/${address}`}
+        href={`${network.explorerURL}/address/${address}`}
         rel="noreferrer"
       >
         <Button
