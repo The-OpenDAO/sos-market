@@ -8,7 +8,8 @@ import { selectOutcome } from 'redux/ducks/trade';
 import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
+import { defaultNetwork } from 'hooks/useNetwork';
 import useToastNotification from 'hooks/useToastNotification';
 
 import { Button } from '../Button';
@@ -18,6 +19,7 @@ import ToastNotification from '../ToastNotification';
 function TradeFormActions() {
   const location = useLocation();
   const dispatch = useAppDispatch();
+  const network = useNetwork() || defaultNetwork();
 
   const type = useAppSelector(state => state.trade.type);
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
@@ -175,7 +177,7 @@ function TradeFormActions() {
             <Toast.Actions>
               <a
                 target="_blank"
-                href={`https://kovan.etherscan.io/tx/${transactionSuccessHash}`}
+                href={`${network.explorerURL}/tx/${transactionSuccessHash}`}
                 rel="noreferrer"
               >
                 <Button size="sm" color="success">
