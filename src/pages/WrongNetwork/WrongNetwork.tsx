@@ -1,8 +1,41 @@
-import { ModalNotification, Text } from 'components';
+import { useState } from 'react';
+
+import { Button, ModalNotification, Text } from 'components';
 
 import { defaultNetwork } from 'hooks/useNetwork';
 
 function WrongNetwork() {
+  const [isAddingNetwork, setIsAddingNetwork] = useState(false);
+
+  async function handleAddNetwork() {
+    setIsAddingNetwork(true);
+
+    try {
+      await window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [
+          {
+            chainId: '0x505',
+            chainName: 'Moonriver',
+            nativeCurrency: {
+              name: 'MOVR',
+              symbol: 'MOVR',
+              decimals: 18
+            },
+            rpcUrls: ['https://rpc.moonriver.moonbeam.network'],
+            blockExplorerUrls: [
+              'https://blockscout.moonriver.moonbeam.network/'
+            ]
+          }
+        ]
+      });
+
+      setIsAddingNetwork(false);
+    } catch (error) {
+      setIsAddingNetwork(false);
+    }
+  }
+
   return (
     <div className="pm-wrong-network">
       <ModalNotification visible>
@@ -27,6 +60,14 @@ function WrongNetwork() {
             Change your MetaMask to
             {` ${defaultNetwork().name}`}
           </Text>
+          <Button
+            className="pm-wrong-network__action-button"
+            size="sm"
+            onClick={handleAddNetwork}
+            loading={isAddingNetwork}
+          >
+            Change Network
+          </Button>
         </div>
       </ModalNotification>
     </div>
