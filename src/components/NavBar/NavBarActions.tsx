@@ -4,11 +4,7 @@ import { formatNumberToString } from 'helpers/math';
 import { login } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import {
-  EthereumIcon,
-  MetaMaskIconSmall,
-  PolkamarketsIconSmall
-} from 'assets/icons';
+import { MetaMaskIconSmall, PolkamarketsIconSmall } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
@@ -65,9 +61,9 @@ function NavBarActions() {
         <WalletInfo
           wallets={[
             {
-              id: 'eth',
+              id: network.currency.name,
               balance: ethBalance.toFixed(4),
-              currencyIcon: <EthereumIcon />
+              currencyIcon: network.currency.icon
             },
             {
               id: 'polk',
