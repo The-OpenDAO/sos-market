@@ -29,7 +29,7 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
           color="default"
           size="sm"
           noHover
-          aria-label="ETH Balance"
+          aria-label={`${network.name} Balance`}
         >
           {wallet.balance}
           {wallet.currencyIcon}
