@@ -1,0 +1,29 @@
+.pm-c-scrollable-area {
+  @include scrollbar-color;
+  float: left;
+
+  &--normal {
+    @extend .pm-c-scrollable-area;
+    @include scrollbar-size('normal');
+  }
+
+  &--sm {
+    @extend .pm-c-scrollable-area;
+    @include scrollbar-size('sm');
+  }
+
+  &__content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    mask-image: linear-gradient(to top, transparent, black),
+      linear-gradient(to left, transparent 1.7rem, black 1.7rem);
+    mask-size: 100% 2000rem;
+    mask-position: left bottom;
+
+    transition: mask-position 0.3s;
+
+    &:hover {
+      mask-position: left top;
+    }
+  }
+}

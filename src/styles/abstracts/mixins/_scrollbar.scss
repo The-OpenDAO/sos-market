@@ -1,0 +1,33 @@
+@mixin scrollbar-size($size) {
+  @if $size == 'normal' {
+    ::-webkit-scrollbar {
+      width: $scrollbar-normal-width;
+    }
+  }
+
+  @if $size == 'sm' {
+    ::-webkit-scrollbar {
+      width: $scrollbar-sm-width;
+    }
+  }
+}
+
+@mixin scrollbar-color() {
+  @include themes($scrollbar-themes) {
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: map-get(themed('background-colors'), 'thumb')
+        map-get(themed('background-colors'), 'track');
+    }
+
+    ::-webkit-scrollbar-track {
+      background: map-get(themed('background-colors'), 'track');
+      border-radius: $scrollbar-track-border-radius;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: map-get(themed('background-colors'), 'thumb');
+      border-radius: $scrollbar-thumb-border-radius;
+    }
+  }
+}
