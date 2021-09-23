@@ -23,6 +23,8 @@ export function getDefaultNetwork(): Network {
   return NETWORKS[getDefaultNetworkHex()];
 }
 
+const defaultNetwork = getDefaultNetwork();
+
 async function getChainId(): Promise<string> {
   const chainId = await window.ethereum?.request({ method: 'eth_chainId' });
 
@@ -35,8 +37,7 @@ function fetchUserData() {
 }
 
 function useNetwork() {
-  const [network, setNetwork] = useState<Network>(getDefaultNetwork());
-  const defaultNetwork = getDefaultNetwork();
+  const [network, setNetwork] = useState<Network>(defaultNetwork);
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
 
   useEffect(() => {
@@ -63,7 +64,7 @@ function useNetwork() {
     }
 
     onAccountChange();
-  }, [defaultNetwork]);
+  }, []);
 
   useEffect(() => {
     function changeNetwork(chainId: string) {
@@ -81,7 +82,7 @@ function useNetwork() {
     }
 
     onChainChange();
-  }, [defaultNetwork]);
+  }, []);
 
   return network || defaultNetwork;
 }
