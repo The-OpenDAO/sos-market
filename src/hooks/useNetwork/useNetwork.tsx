@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { fetchAditionalData, login } from 'redux/ducks/bepro';
 import store from 'redux/store';
 
+import useCurrency from 'hooks/useCurrency';
+
 import useAppSelector from '../useAppSelector';
 import NETWORKS, { Network, REACT_APP_NETWORK_ID } from './networks';
 
@@ -31,6 +33,7 @@ function fetchUserData() {
 }
 
 function useNetwork() {
+  const { selectCurrency } = useCurrency();
   const [network, setNetwork] = useState<Network>(getDefaultNetwork());
   const defaultNetwork = getDefaultNetwork();
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
@@ -62,9 +65,15 @@ function useNetwork() {
   }, [defaultNetwork]);
 
   useEffect(() => {
+    function changeNetwork(chainId: string) {
+      const newNetwork = NETWORKS[chainId];
+      setNetwork(newNetwork);
+      selectCurrency(newNetwork.currency);
+    }
+
     function onChainChange() {
       window.ethereum?.on('chainChanged', chainId => {
-        setNetwork(NETWORKS[chainId]);
+        changeNetwork(chainId);
 
         if (NETWORKS[chainId] === defaultNetwork) {
           fetchUserData();
@@ -73,7 +82,7 @@ function useNetwork() {
     }
 
     onChainChange();
-  }, [defaultNetwork]);
+  }, [defaultNetwork, selectCurrency]);
 
   return network || defaultNetwork;
 }
