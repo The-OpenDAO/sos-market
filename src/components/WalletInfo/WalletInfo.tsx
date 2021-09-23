@@ -3,7 +3,6 @@ import { ReactNode } from 'react';
 import { MetaMaskIconSmall } from 'assets/icons';
 
 import { useNetwork } from 'hooks';
-import { defaultNetwork } from 'hooks/useNetwork';
 
 import { Button } from '../Button';
 
@@ -19,7 +18,7 @@ type WalletInfoProps = {
 };
 
 function WalletInfo({ wallets, address }: WalletInfoProps) {
-  const network = useNetwork() || defaultNetwork();
+  const network = useNetwork();
 
   return (
     <div className="pm-c-wallet-info">

@@ -10,7 +10,6 @@ import { Tabs, Table, Text } from 'components';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 import useCurrency from 'hooks/useCurrency';
-import { defaultNetwork } from 'hooks/useNetwork';
 
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
@@ -26,7 +25,7 @@ type Params = {
 const Market = () => {
   const dispatch = useAppDispatch();
   const { symbol, ticker } = useCurrency();
-  const network = useNetwork() || defaultNetwork();
+  const network = useNetwork();
   const { marketId } = useParams<Params>();
   const { market, isLoading } = useAppSelector(state => state.market);
   const { actions, bondActions } = useAppSelector(state => state.bepro);

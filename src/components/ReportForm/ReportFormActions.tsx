@@ -12,7 +12,6 @@ import { BeproService, PolkamarketsApiService } from 'services';
 import { QuestionIcon } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
-import { defaultNetwork } from 'hooks/useNetwork';
 import useToastNotification from 'hooks/useToastNotification';
 
 import { Alert } from '../Alert';
@@ -33,7 +32,7 @@ function ReportFormActions({
   const dispatch = useAppDispatch();
   const { show, close } = useToastNotification();
   const { errors } = useFormikContext();
-  const network = useNetwork() || defaultNetwork();
+  const network = useNetwork();
 
   // Form state
   const [outcome] = useField('outcome');

@@ -6,7 +6,6 @@ import { closeLiquidityForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
-import { defaultNetwork } from 'hooks/useNetwork';
 import useToastNotification from 'hooks/useToastNotification';
 
 import { Button } from '../Button';
@@ -33,7 +32,7 @@ function LiquidityFormActions() {
 
   const [isLoading, setIsLoading] = useState(false);
   const { show, close } = useToastNotification();
-  const network = useNetwork() || defaultNetwork();
+  const network = useNetwork();
 
   function handleCancel() {
     dispatch(closeLiquidityForm());

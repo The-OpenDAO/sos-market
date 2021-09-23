@@ -9,7 +9,6 @@ import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
-import { defaultNetwork } from 'hooks/useNetwork';
 import useToastNotification from 'hooks/useToastNotification';
 
 import { Button } from '../Button';
@@ -19,7 +18,7 @@ import ToastNotification from '../ToastNotification';
 function TradeFormActions() {
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const network = useNetwork() || defaultNetwork();
+  const network = useNetwork();
 
   const type = useAppSelector(state => state.trade.type);
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
