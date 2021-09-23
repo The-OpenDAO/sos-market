@@ -34,7 +34,7 @@ const AppRoutes = () => {
     if (isAllowedNetwork && walletConnected) {
       fetchAditionalData(store.dispatch);
     }
-  }, [isAllowedNetwork]);
+  }, [isAllowedNetwork, walletConnected]);
 
   useEffect(() => {
     async function fetchUserCountry() {
