@@ -47,12 +47,14 @@ function useNetwork() {
       if (walletConnected) {
         const chainId = await getChainId();
 
-        setNetwork(NETWORKS[chainId]);
+        const newNetwork = NETWORKS[chainId];
+        setNetwork(newNetwork);
+        selectCurrency(newNetwork.currency);
       }
     }
 
     onWalletChange();
-  }, [walletConnected, setNetwork]);
+  }, [walletConnected, setNetwork, selectCurrency]);
 
   useEffect(() => {
     async function onAccountChange() {
