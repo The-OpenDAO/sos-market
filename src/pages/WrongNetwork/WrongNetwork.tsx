@@ -2,10 +2,11 @@ import { useState } from 'react';
 
 import { Button, ModalNotification, Text } from 'components';
 
-import { defaultNetwork } from 'hooks/useNetwork';
+import { getDefaultNetwork } from 'hooks/useNetwork';
 
 function WrongNetwork() {
   const [isAddingNetwork, setIsAddingNetwork] = useState(false);
+  const defaultNetwork = getDefaultNetwork();
 
   async function handleAddNetwork() {
     setIsAddingNetwork(true);
@@ -58,7 +59,7 @@ function WrongNetwork() {
             style={{ textAlign: 'center', paddingBottom: '1rem' }}
           >
             Change your MetaMask to
-            {` ${defaultNetwork().name}`}
+            {` ${defaultNetwork.name}`}
           </Text>
           <Button
             className="pm-wrong-network__action-button"
