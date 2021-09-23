@@ -72,3 +72,11 @@
     background-color: #3099f2;
   }
 }
+
+.pm-c-network-info--moonriver {
+  @extend .pm-c-network-info;
+
+  .pm-c-network-info__dot {
+    background-color: #f0b705;
+  }
+}
