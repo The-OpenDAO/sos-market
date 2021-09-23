@@ -1,13 +1,14 @@
 import { roundNumber } from 'helpers/math';
-import { useAppSelector } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
+
+import { useAppSelector, useNetwork } from 'hooks';
 
 import MiniTable from '../MiniTable';
 import { formatMiniTableItems } from './utils';
 
 function TradeFormDetails() {
   const { market } = useAppSelector(state => state.market);
-  const { ticker } = useCurrency();
+  const { currency } = useNetwork();
+  const { ticker } = currency;
   const selectedOutcomeId = useAppSelector(
     state => state.trade.selectedOutcomeId
   );

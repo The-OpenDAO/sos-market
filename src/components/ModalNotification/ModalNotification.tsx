@@ -1,26 +1,17 @@
-import React, { useEffect } from 'react';
+import { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
 type ModalNotificationProps = {
   visible: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 function ModalNotification({
   visible = false,
   children
 }: ModalNotificationProps) {
-  useEffect(() => {
-    if (visible) {
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.body.style.overflow = 'visible';
-    };
-  }, [visible]);
-
   return createPortal(
     <AnimatePresence>
       {visible && (
@@ -40,7 +31,5 @@ function ModalNotification({
     document.querySelector('#modal-notification-portal') as Element
   );
 }
-
-ModalNotification.displayName = 'ModalNotification';
 
 export default ModalNotification;

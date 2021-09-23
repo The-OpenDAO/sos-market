@@ -5,7 +5,7 @@ import { reset } from 'redux/ducks/liquidity';
 import { closeLiquidityForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 import useToastNotification from 'hooks/useToastNotification';
 
 import { Button } from '../Button';
@@ -32,6 +32,7 @@ function LiquidityFormActions() {
 
   const [isLoading, setIsLoading] = useState(false);
   const { show, close } = useToastNotification();
+  const network = useNetwork();
 
   function handleCancel() {
     dispatch(closeLiquidityForm());
@@ -148,7 +149,7 @@ function LiquidityFormActions() {
             <Toast.Actions>
               <a
                 target="_blank"
-                href={`https://kovan.etherscan.io/tx/${transactionSuccessHash}`}
+                href={`${network.explorerURL}/tx/${transactionSuccessHash}`}
                 rel="noreferrer"
               >
                 <Button size="sm" color="success">
