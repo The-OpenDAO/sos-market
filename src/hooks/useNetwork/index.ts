@@ -1,1 +1,1 @@
-export { default, getDefaultNetwork } from './useNetwork';
+export { default, getDefaultNetwork, getDefaultNetworkHex } from './useNetwork';

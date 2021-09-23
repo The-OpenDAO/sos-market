@@ -14,11 +14,15 @@ declare global {
   }
 }
 
-export function getDefaultNetwork(): Network {
+export function getDefaultNetworkHex(): string {
   const networkId = Number(REACT_APP_NETWORK_ID) || 42;
   const networkIdHex = `0x${networkId.toString(16)}`;
 
-  return NETWORKS[networkIdHex];
+  return networkIdHex;
+}
+
+export function getDefaultNetwork(): Network {
+  return NETWORKS[getDefaultNetworkHex()];
 }
 
 async function getChainId(): Promise<string> {

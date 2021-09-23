@@ -4,7 +4,7 @@ import findKey from 'lodash/findKey';
 
 import { Button, ModalNotification, Text } from 'components';
 
-import { getDefaultNetwork } from 'hooks/useNetwork';
+import { getDefaultNetwork, getDefaultNetworkHex } from 'hooks/useNetwork';
 import NETWORKS from 'hooks/useNetwork/networks';
 
 function WrongNetwork() {
@@ -32,17 +32,15 @@ function WrongNetwork() {
             method: 'wallet_addEthereumChain',
             params: [
               {
-                chainId: '0x505',
-                chainName: 'Moonriver',
+                chainId: getDefaultNetworkHex(),
+                chainName: defaultNetwork.name,
                 nativeCurrency: {
-                  name: 'MOVR',
-                  symbol: 'MOVR',
-                  decimals: 18
+                  name: defaultNetwork.currency.ticker,
+                  symbol: defaultNetwork.currency.ticker,
+                  decimals: defaultNetwork.decimals
                 },
-                rpcUrls: ['https://rpc.moonriver.moonbeam.network'],
-                blockExplorerUrls: [
-                  'https://blockscout.moonriver.moonbeam.network/'
-                ]
+                rpcUrls: defaultNetwork.rpcUrls,
+                blockExplorerUrls: [defaultNetwork.explorerURL]
               }
             ]
           });
