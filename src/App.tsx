@@ -5,7 +5,6 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import Routes from 'routes';
 
 import FavoriteMarketsProvider from 'contexts/favoriteMarkets';
-import ViewportProvider from 'contexts/viewport';
 
 import { useLocalStorage, useTheme } from 'hooks';
 
@@ -20,11 +19,9 @@ const App = () => {
   return (
     <div className={`theme--${localStorageTheme || theme}`}>
       <MuiPickersUtilsProvider utils={DayjsUtils}>
-        <ViewportProvider>
-          <FavoriteMarketsProvider>
-            <Routes />
-          </FavoriteMarketsProvider>
-        </ViewportProvider>
+        <FavoriteMarketsProvider>
+          <Routes />
+        </FavoriteMarketsProvider>
       </MuiPickersUtilsProvider>
     </div>
   );
