@@ -6,8 +6,7 @@ import { BeproService } from 'services';
 
 import { InfoIcon } from 'assets/icons';
 
-import { useAppSelector } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
+import { useAppSelector, useNetwork } from 'hooks';
 
 import { AlertMini } from '../Alert';
 import AmountInput from '../AmountInput';
@@ -16,7 +15,7 @@ import Text from '../Text';
 import Tooltip from '../Tooltip';
 
 function CreateMarketFormFund() {
-  const currency = useCurrency();
+  const { currency } = useNetwork();
   const [field, meta, helpers] = useField('liquidity');
   const [fee, setFee] = useState(0);
 

@@ -14,7 +14,6 @@ import { BeproService, PolkamarketsApiService } from 'services';
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector, useSortableData } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
 
 import { AlertMini } from '../Alert';
 import { Button } from '../Button';
@@ -34,7 +33,6 @@ const PortfolioReportTable = ({
 }: MarketTableProps) => {
   const dispatch = useAppDispatch();
   const history = useHistory();
-  const { ticker, symbol } = useCurrency();
   const filter = useAppSelector(state => state.portfolio.filter);
 
   const [isLoadingClaimReport, setIsLoadingClaimReport] = useState({});

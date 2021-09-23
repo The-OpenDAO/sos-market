@@ -2,21 +2,17 @@ import dayjs from 'dayjs';
 import { roundNumber } from 'helpers/math';
 import { Market } from 'models/market';
 
-import { Card, MiniAreaChart, Text } from 'components';
+import { Card, Text } from 'components';
 
-import useCurrency from 'hooks/useCurrency';
-
-type PriceEvent = {
-  x: dayjs.Dayjs;
-  y: number;
-};
+import { useNetwork } from 'hooks';
 
 type MarketStatsProps = {
   market: Market;
 };
 
 function MarketStats({ market }: MarketStatsProps) {
-  const { symbol } = useCurrency();
+  const { currency } = useNetwork();
+  const { symbol } = currency;
   const outcomeStats = market.outcomes.map(outcome => {
     const chartData = outcome.priceCharts.find(
       chart => chart.timeframe === '24h'

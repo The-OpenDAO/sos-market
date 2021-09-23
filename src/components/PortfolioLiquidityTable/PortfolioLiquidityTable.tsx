@@ -9,15 +9,14 @@ import isEmpty from 'lodash/isEmpty';
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  CaretDownIcon,
-  CaretUpIcon
-} from 'assets/icons';
+import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
-import { useAppDispatch, useAppSelector, useSortableData } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useNetwork,
+  useSortableData
+} from 'hooks';
 
 import { AlertMini } from '../Alert';
 import { Button } from '../Button';
@@ -37,7 +36,8 @@ const PortfolioLiquidityTable = ({
 }: MarketTableProps) => {
   const dispatch = useAppDispatch();
   const history = useHistory();
-  const { ticker, symbol } = useCurrency();
+  const { currency } = useNetwork();
+  const { ticker, symbol } = currency;
   const filter = useAppSelector(state => state.portfolio.filter);
 
   const [isLoadingClaimLiquidity, setIsLoadingClaimLiquidity] = useState({});

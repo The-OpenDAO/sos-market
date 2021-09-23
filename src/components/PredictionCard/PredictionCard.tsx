@@ -4,8 +4,7 @@ import { Market as MarketInterface } from 'models/market';
 import { clearMarket } from 'redux/ducks/market';
 import { openTradeForm } from 'redux/ducks/ui';
 
-import { useAppDispatch } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
+import { useAppDispatch, useNetwork } from 'hooks';
 
 import Market from '../Market';
 
@@ -15,7 +14,8 @@ type PredictionCardProps = {
 
 function PredictionCard({ market }: PredictionCardProps) {
   const dispatch = useAppDispatch();
-  const { ticker } = useCurrency();
+  const { currency } = useNetwork();
+  const { ticker } = currency;
 
   const { slug } = market;
 

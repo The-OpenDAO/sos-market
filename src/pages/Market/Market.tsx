@@ -9,7 +9,6 @@ import { openTradeForm } from 'redux/ducks/ui';
 import { Tabs, Table, Text } from 'components';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
 
 import MarketAnalytics from './MarketAnalytics';
 import MarketChart from './MarketChart';
@@ -24,7 +23,8 @@ type Params = {
 
 const Market = () => {
   const dispatch = useAppDispatch();
-  const { symbol, ticker } = useCurrency();
+  const { currency } = useNetwork();
+  const { symbol, ticker } = currency;
   const network = useNetwork();
   const { marketId } = useParams<Params>();
   const { market, isLoading } = useAppSelector(state => state.market);

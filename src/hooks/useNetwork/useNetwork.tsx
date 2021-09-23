@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import { fetchAditionalData, login } from 'redux/ducks/bepro';
 import store from 'redux/store';
 
-import useCurrency from 'hooks/useCurrency';
-
 import useAppSelector from '../useAppSelector';
 import NETWORKS, { Network, REACT_APP_NETWORK_ID } from './networks';
 
@@ -37,7 +35,6 @@ function fetchUserData() {
 }
 
 function useNetwork() {
-  const { selectCurrency } = useCurrency();
   const [network, setNetwork] = useState<Network>(getDefaultNetwork());
   const defaultNetwork = getDefaultNetwork();
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
@@ -47,14 +44,12 @@ function useNetwork() {
       if (walletConnected) {
         const chainId = await getChainId();
 
-        const newNetwork = NETWORKS[chainId];
-        setNetwork(newNetwork);
-        selectCurrency(newNetwork.currency);
+        setNetwork(NETWORKS[chainId]);
       }
     }
 
     onWalletChange();
-  }, [walletConnected, setNetwork, selectCurrency]);
+  }, [walletConnected, setNetwork]);
 
   useEffect(() => {
     async function onAccountChange() {
@@ -72,9 +67,7 @@ function useNetwork() {
 
   useEffect(() => {
     function changeNetwork(chainId: string) {
-      const newNetwork = NETWORKS[chainId];
-      setNetwork(newNetwork);
-      selectCurrency(newNetwork.currency);
+      setNetwork(NETWORKS[chainId]);
     }
 
     function onChainChange() {
@@ -88,7 +81,7 @@ function useNetwork() {
     }
 
     onChainChange();
-  }, [defaultNetwork, selectCurrency]);
+  }, [defaultNetwork]);
 
   return network || defaultNetwork;
 }

@@ -2,14 +2,13 @@ import { roundNumber } from 'helpers/math';
 
 import { InfoIcon } from 'assets/icons';
 
-import { useAppSelector } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
+import { useAppSelector, useNetwork } from 'hooks';
 
 import Text from '../Text';
 import Tooltip from '../Tooltip';
 
 function LiquidityFormDetails() {
-  const currency = useCurrency();
+  const { currency } = useNetwork();
   const liquidityDetails = useAppSelector(
     state => state.liquidity.liquidityDetails
   );
@@ -68,9 +67,7 @@ function LiquidityFormDetails() {
             <Text as="span" scale="body" fontWeight="semibold">
               {
                 // eslint-disable-next-line prettier/prettier
-                `${roundNumber(feesEarned, 3)} ${
-                  currency.symbol
-                }`
+                `${roundNumber(feesEarned, 3)} ${currency.symbol}`
               }
             </Text>
           </div>
