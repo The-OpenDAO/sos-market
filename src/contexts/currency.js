@@ -1,16 +1,11 @@
 import { createContext, useReducer } from 'react';
 
-import { EthereumIcon } from 'assets/icons';
+import { ETH } from 'hooks/useCurrency/currencies';
 
 const CurrencyContext = createContext({});
 const CurrencyDispatchContext = createContext({});
 
-const initalState = {
-  name: 'Ethereum',
-  ticker: 'ETH',
-  symbol: 'Ξ',
-  icon: <EthereumIcon />
-};
+const initalState = ETH;
 
 const actions = {
   CURRENCY_SELECTED: 'currency/selected'
