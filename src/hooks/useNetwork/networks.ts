@@ -1,8 +1,11 @@
+import { Currency } from 'hooks/useCurrency';
+import { DEV, ETH, MOVR } from 'hooks/useCurrency/currencies';
+
 export type Network = {
   id: string;
   name: string;
   key: string;
-  currency: string;
+  currency: Currency;
   explorerURL: string;
 };
 
@@ -15,63 +18,63 @@ const NETWORKS: {
     id: '1',
     name: 'Ethereum Mainnet',
     key: 'mainnet',
-    currency: 'ETH',
+    currency: ETH,
     explorerURL: 'https://etherscan.io'
   },
   '0x3': {
     id: '3',
     name: 'Ropsten Testnet',
     key: 'ropsten',
-    currency: 'ETH',
+    currency: ETH,
     explorerURL: 'https://ropsten.etherscan.io'
   },
   '0x4': {
     id: '4',
     name: 'Rinkeby Testnet',
     key: 'rinkeby',
-    currency: 'ETH',
+    currency: ETH,
     explorerURL: 'https://rinkeby.etherscan.io'
   },
   '0x5': {
     id: '5',
     name: 'Goerli Testnet',
     key: 'goerli',
-    currency: 'ETH',
+    currency: ETH,
     explorerURL: 'https://goerli.etherscan.io'
   },
   '0x2a': {
     id: '42',
     name: 'Kovan Testnet',
     key: 'kovan',
-    currency: 'ETH',
+    currency: ETH,
     explorerURL: 'https://kovan.etherscan.io'
   },
   '0x501': {
     id: '1281',
     name: 'Moonbase Local',
     key: 'moonbase-local',
-    currency: 'DEV',
+    currency: DEV,
     explorerURL: 'https://etherscan.io'
   },
   '0x505': {
     id: '1285',
     name: 'Moonriver',
     key: 'moonriver',
-    currency: 'MOVR',
+    currency: MOVR,
     explorerURL: 'https://blockscout.moonriver.moonbeam.network'
   },
   '0x507': {
     id: '1287',
     name: 'Moonbase Alpha',
     key: 'moonbase-alpha',
-    currency: 'DEV',
+    currency: DEV,
     explorerURL: 'https://etherscan.io'
   },
   '0x539': {
     id: '1337',
     name: 'Local Testnet',
     key: 'local',
-    currency: 'ETH',
+    currency: ETH,
     explorerURL: 'https://etherscan.io'
   }
 };
