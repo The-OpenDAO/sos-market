@@ -59,7 +59,8 @@ function formatMarketPositions(
   actions: [],
   bondActions: [],
   market: Market,
-  ticker: string
+  ticker: string,
+  network
 ) {
   const columns: Column[] = [
     { title: 'Outcome', key: 'outcome', align: 'left' },
@@ -202,7 +203,7 @@ function formatMarketPositions(
           value: (
             <a
               target="_blank"
-              href={`https://kovan.etherscan.io/tx/${transactionHash}`}
+              href={`${network.explorerURL}/tx/${transactionHash}`}
               rel="noreferrer"
             >
               <ShareIcon />

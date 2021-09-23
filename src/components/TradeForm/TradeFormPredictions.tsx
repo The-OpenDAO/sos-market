@@ -4,8 +4,7 @@ import classNames from 'classnames';
 import { roundNumber } from 'helpers/math';
 import { selectOutcome } from 'redux/ducks/trade';
 
-import { useAppDispatch, useAppSelector } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
+import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 
 import MiniTable from '../MiniTable';
 import Text from '../Text';
@@ -13,7 +12,8 @@ import Text from '../Text';
 function TradeFormPredictions() {
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const { symbol } = useCurrency();
+  const { currency } = useNetwork();
+  const { symbol } = currency;
 
   const selectedMarketId = useAppSelector(
     state => state.trade.selectedMarketId

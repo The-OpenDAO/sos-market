@@ -50,6 +50,7 @@ import ProgressBar from './ProgressBar';
 import ReportForm from './ReportForm';
 import Ribbon from './Ribbon';
 import RightSidebar from './RightSidebar';
+import ScrollableArea from './ScrollableArea';
 import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
 import Select from './Select';
@@ -118,6 +119,7 @@ export {
   PredictionCard,
   ProbabilityInput,
   ProgressBar,
+  ScrollableArea,
   ScrollToTop,
   SearchBar,
   Select,

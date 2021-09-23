@@ -16,15 +16,18 @@ import {
   CaretUpIcon
 } from 'assets/icons';
 
-import { useAppDispatch, useAppSelector, useSortableData } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useNetwork,
+  useSortableData
+} from 'hooks';
 
 import { AlertMini } from '../Alert';
 import Badge from '../Badge';
 import { Button } from '../Button';
 import Pill from '../Pill';
 import Text from '../Text';
-import Tooltip from '../Tooltip';
 
 type MarketTableProps = {
   rows: any[];
@@ -39,7 +42,8 @@ const PortfolioMarketTable = ({
 }: MarketTableProps) => {
   const dispatch = useAppDispatch();
   const history = useHistory();
-  const { ticker, symbol } = useCurrency();
+  const { currency } = useNetwork();
+  const { ticker, symbol } = currency;
   const filter = useAppSelector(state => state.portfolio.filter);
 
   const [isLoadingClaimWinnings, setIsLoadingClaimWinnings] = useState({});

@@ -5,12 +5,12 @@ import { fromPriceChartToLineChartSeries } from 'helpers/chart';
 
 import { ChartHeader, LineChart, Text } from 'components';
 
-import { useAppSelector, useTheme } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
+import { useAppSelector, useNetwork, useTheme } from 'hooks';
 
 const MarketChart = () => {
   const { theme } = useTheme();
-  const { ticker } = useCurrency();
+  const { currency } = useNetwork();
+  const { ticker } = currency;
   const predictions = useAppSelector(state => state.market.market.outcomes);
   const { chartViewType } = useAppSelector(state => state.market);
   const { tradingViewSymbol } = useAppSelector(state => state.market.market);

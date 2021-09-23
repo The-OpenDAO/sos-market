@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import { MetaMaskIconSmall } from 'assets/icons';
 
+import { useNetwork } from 'hooks';
+
 import { Button } from '../Button';
 
 type Wallet = {
@@ -16,6 +18,8 @@ type WalletInfoProps = {
 };
 
 function WalletInfo({ wallets, address }: WalletInfoProps) {
+  const network = useNetwork();
+
   return (
     <div className="pm-c-wallet-info">
       {wallets.map(wallet => (
@@ -25,7 +29,7 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
           color="default"
           size="sm"
           noHover
-          aria-label="ETH Balance"
+          aria-label={`${network.name} Balance`}
         >
           {wallet.balance}
           {wallet.currencyIcon}
@@ -33,7 +37,7 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
       ))}
       <a
         target="_blank"
-        href={`https://kovan.etherscan.io/address/${address}`}
+        href={`${network.explorerURL}/address/${address}`}
         rel="noreferrer"
       >
         <Button

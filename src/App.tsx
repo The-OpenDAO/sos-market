@@ -4,9 +4,7 @@ import DayjsUtils from '@date-io/dayjs';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import Routes from 'routes';
 
-import CurrencyProvider from 'contexts/currency';
 import FavoriteMarketsProvider from 'contexts/favoriteMarkets';
-import ViewportProvider from 'contexts/viewport';
 
 import { useLocalStorage, useTheme } from 'hooks';
 
@@ -21,13 +19,9 @@ const App = () => {
   return (
     <div className={`theme--${localStorageTheme || theme}`}>
       <MuiPickersUtilsProvider utils={DayjsUtils}>
-        <ViewportProvider>
-          <CurrencyProvider>
-            <FavoriteMarketsProvider>
-              <Routes />
-            </FavoriteMarketsProvider>
-          </CurrencyProvider>
-        </ViewportProvider>
+        <FavoriteMarketsProvider>
+          <Routes />
+        </FavoriteMarketsProvider>
       </MuiPickersUtilsProvider>
     </div>
   );

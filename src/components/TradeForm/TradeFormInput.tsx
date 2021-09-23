@@ -8,15 +8,15 @@ import {
 
 import { WalletIcon } from 'assets/icons';
 
-import { useAppSelector, useAppDispatch } from 'hooks';
-import useCurrency from 'hooks/useCurrency';
+import { useAppSelector, useAppDispatch, useNetwork } from 'hooks';
 
 import StepSlider from '../StepSlider';
 import Text from '../Text';
 import { calculateTradeDetails } from './utils';
 
 function TradeFormInput() {
-  const { name, ticker, icon } = useCurrency();
+  const { currency } = useNetwork();
+  const { name, ticker, icon } = currency;
   const dispatch = useAppDispatch();
   const type = useAppSelector(state => state.trade.type);
   const label = `${type} shares`;

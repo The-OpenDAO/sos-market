@@ -1,0 +1,20 @@
+$scrollbar-normal-width: 0.7rem !default;
+$scrollbar-sm-width: 0.3rem !default;
+
+$scrollbar-track-border-radius: 4rem !default;
+$scrollbar-thumb-border-radius: 4rem !default;
+
+$scrollbar-themes: (
+  light: (
+    background-colors: (
+      track: #dfe1e6,
+      thumb: #b2b4b8
+    )
+  ),
+  dark: (
+    background-colors: (
+      track: #26282d,
+      thumb: #515357
+    )
+  )
+) !default;
