@@ -1,5 +1,4 @@
-import { Currency } from 'hooks/useCurrency';
-import { DEV, ETH, MOVR } from 'hooks/useCurrency/currencies';
+import { Currency, DEV, ETH, MOVR } from 'hooks/useNetwork/currencies';
 
 export type Network = {
   id: string;
