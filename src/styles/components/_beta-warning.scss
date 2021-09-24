@@ -1,0 +1,36 @@
+.pm-c-beta-warning {
+  @include themes($beta-warning-themes) {
+    @include flex-column(center, center, 3.2rem);
+    width: min(47.4rem, 100%);
+
+    &__description {
+      @include flex-column(center, center, 2.4rem);
+      width: 100%;
+
+      h5 {
+        text-align: center;
+        white-space: pre-line;
+        color: map-get(themed('text-colors'), 'primary');
+      }
+
+      a {
+        color: map-get(themed('action-colors'), 'warning');
+      }
+
+      p {
+        text-align: center;
+        white-space: pre-line;
+        color: map-get(themed('text-colors'), 'secondary');
+
+        a {
+          color: map-get(themed('text-colors'), 'secondary');
+        }
+      }
+    }
+
+    &__actions {
+      @include flex-column(center, center, 2.4rem);
+      width: 100%;
+    }
+  }
+}
