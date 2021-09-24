@@ -3,6 +3,7 @@ import AlertNotification from './AlertNotification';
 import AmountInput from './AmountInput';
 import AreaChart from './AreaChart';
 import Badge from './Badge';
+import BetaWarning from './BetaWarning';
 import Breadcrumb from './Breadcrumb';
 import { Button, ButtonText } from './Button';
 import ButtonGroup from './ButtonGroup';
@@ -37,6 +38,7 @@ import MarketSelect from './MarketSelect';
 import Menu from './Menu';
 import MiniAreaChart from './MiniAreaChart';
 import MiniTable from './MiniTable';
+import Modal from './Modal';
 import ModalNotification from './ModalNotification';
 import NavBar from './NavBar';
 import NetworkInfo from './NetworkInfo';
@@ -74,6 +76,7 @@ export {
   AmountInput,
   AreaChart,
   Badge,
+  BetaWarning,
   Breadcrumb,
   Button,
   ButtonText,
@@ -107,6 +110,7 @@ export {
   Menu,
   MiniAreaChart,
   MiniTable,
+  Modal,
   ModalNotification,
   NavBar,
   NetworkInfo,

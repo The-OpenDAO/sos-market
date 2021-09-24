@@ -1,9 +1,17 @@
 .pm-c-modal {
   @include themes($modal-themes) {
+    width: fit-content;
     padding: $modal-padding-y $modal-padding-x;
 
     background-color: themed('background');
     border: $modal-border-width solid themed('border');
+    border-radius: $modal-border-radius;
     box-shadow: $modal-shadow themed('shadow');
+
+    transition: all 0.2s ease-out;
+
+    &__content {
+      width: fit-content;
+    }
   }
 }
