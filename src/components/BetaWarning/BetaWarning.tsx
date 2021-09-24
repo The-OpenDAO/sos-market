@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 
 import { TwarningIcon } from 'assets/icons';
@@ -7,7 +8,11 @@ import Checkbox from '../Checkbox';
 import Link from '../Link';
 import Text from '../Text';
 
-function BetaWarning() {
+type BetaWarningProps = {
+  handleChangeModalVisibility: (visible: boolean) => void;
+};
+
+function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   return (
@@ -65,6 +70,7 @@ function BetaWarning() {
           color="warning"
           fullwidth
           disabled={!acceptedTerms}
+          onClick={() => handleChangeModalVisibility(false)}
         >
           Proceed
         </Button>

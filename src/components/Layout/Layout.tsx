@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 import useAlertNotification from 'hooks/useAlertNotification';
 
@@ -16,14 +16,17 @@ type LayoutProps = {
 
 function Layout({ children }: LayoutProps) {
   const { alertList } = useAlertNotification();
+  const [modalVisible, setModalVisible] = useState(true);
 
   const hasAlertNotification = alertList.size > 0;
 
   return (
     <>
-      <Modal>
-        <BetaWarning />
-      </Modal>
+      {modalVisible ? (
+        <Modal>
+          <BetaWarning handleChangeModalVisibility={setModalVisible} />
+        </Modal>
+      ) : null}
       <div className="pm-l-layout">
         <header className="pm-l-layout__header sticky">
           <div id="alert-notification-portal" />
