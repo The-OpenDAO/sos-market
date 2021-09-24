@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { TwarningIcon } from 'assets/icons';
+
 import { Button } from '../Button';
 import Checkbox from '../Checkbox';
 import Link from '../Link';
@@ -11,6 +13,12 @@ function BetaWarning() {
   return (
     <div className="pm-c-beta-warning">
       <div className="pm-c-beta-warning__description">
+        <div className="pm-c-beta-warning__header">
+          <TwarningIcon />
+          <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
+            Warning
+          </Text>
+        </div>
         <Text as="h5" scale="heading" fontWeight="medium">
           <>
             {`Polkamarkets is running in Beta is currently underdoing `}
