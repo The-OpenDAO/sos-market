@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { setFilter } from 'redux/ducks/markets';
 
-import { PolkamarketsIcon } from 'assets/icons';
+import { PolkamarketsBetaIcon } from 'assets/icons';
 
 import NavBarActions from './NavBarActions';
 import NavBarDropdownMenu from './NavBarDropdownMenu';
@@ -22,7 +22,7 @@ function NavBar() {
     <div className="pm-l-navbar">
       <Link to="/home" aria-label="Home" onClick={handleNavigation}>
         <figure className="pm-l-navbar__icon">
-          <PolkamarketsIcon />
+          <PolkamarketsBetaIcon />
         </figure>
       </Link>
       <NavBarSearch />
