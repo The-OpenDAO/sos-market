@@ -54,7 +54,7 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
                 title="Risks & Disclosure"
                 scale="caption"
                 fontWeight="medium"
-                href="https://www.polkamarkets.com/legal/terms-conditions"
+                href="https://docs.google.com/document/d/1TR8HYTBOhZeZOb0E5uAo8lbK4v0Oxv3JnQD_AdYENBY/edit"
                 target="_blank"
               />
             </>
