@@ -24,18 +24,16 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
             Warning
           </Text>
         </div>
-        <Text as="h5" scale="heading" fontWeight="medium">
-          <>
-            {`Polkamarkets is running in Beta is currently underdoing `}
-            <Link
-              title="auditing procedures"
-              scale="heading"
-              fontWeight="medium"
-              href="https://www.polkamarkets.com/legal/terms-conditions"
-              target="_blank"
-            />
-            .
-          </>
+        <Text as="h6" fontWeight="medium" scale="caption" color="white">
+          Polkamarkets Protocol is a 100% decentralized protocol for
+          informational and educational purposes only. POLKAMARKET OÜ does not
+          take any custody, profits or host over any markets.
+        </Text>
+        <Text as="h6" fontWeight="medium" scale="caption" color="white">
+          POLKAMARKET OÜ displays existing markets live on the Ethereum
+          blockchain (or sidechains) and is a graphical user interface for
+          visualizing data and interact with the Polkamarkets Protocol Smart
+          Contracts via your Web 3 injected wallet.
         </Text>
         <Checkbox
           label="text"
