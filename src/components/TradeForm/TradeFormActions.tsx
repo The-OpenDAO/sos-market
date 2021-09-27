@@ -73,8 +73,26 @@ function TradeFormActions() {
     setIsLoading(true);
 
     try {
-      // TODO: get values from smart contract
+      // adding a 1% slippage due to js floating numbers rounding
       const minShares = shares * 0.999;
+
+      // calculating shares amount from smart contract
+      const sharesToBuy = await beproService.calcBuyAmount(
+        marketId,
+        predictionId,
+        amount
+      );
+
+      // will refresh form if there's a slippage > 2%
+      if (Math.abs(sharesToBuy - minShares) / sharesToBuy > 0.02) {
+        setIsLoading(false);
+        // TODO: show price updated alert
+        // TODO: change button to "Refresh Prices"
+        // TODO: have a refreshPrices button that calls reloadMarketPrices() and changes button back to buy
+
+        return false;
+      }
+
       // performing buy action on smart contract
       const response = await beproService.buy(
         marketId,
@@ -106,6 +124,8 @@ function TradeFormActions() {
     } catch (error) {
       setIsLoading(false);
     }
+
+    return true;
   }
 
   async function handleSell() {
@@ -117,14 +137,33 @@ function TradeFormActions() {
     setIsLoading(true);
 
     try {
-      // TODO: get values from smart contract
-      const ethAmount = (totalStake - fee) * 0.9999;
+      // adding a 1% slippage due to js floating numbers rounding
+      const ethAmount = totalStake - fee;
+      const minShares = shares * 1.001;
+
+      // calculating shares amount from smart contract
+      const sharesToSell = await beproService.calcSellAmount(
+        marketId,
+        predictionId,
+        ethAmount
+      );
+
+      // will refresh form if there's a slippage > 2%
+      if (Math.abs(sharesToSell - minShares) / sharesToSell > 0.02) {
+        setIsLoading(false);
+        // TODO: show price updated alert
+        // TODO: change button to "Refresh Prices"
+        // TODO: have a refreshPrices button that calls reloadMarketPrices() and changes button back to buy
+
+        return false;
+      }
+
       // performing sell action on smart contract
       const response = await beproService.sell(
         marketId,
         predictionId,
         ethAmount,
-        shares
+        minShares
       );
 
       setIsLoading(false);
@@ -150,6 +189,8 @@ function TradeFormActions() {
     } catch (error) {
       setIsLoading(false);
     }
+
+    return true;
   }
 
   const isValidAmount = amount > 0 && amount <= maxAmount;
