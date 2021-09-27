@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
-import { changeOutcomePrice } from 'redux/ducks/market';
-import { changeMarketOutcomePrice } from 'redux/ducks/markets';
+import market, { changeOutcomeData, changeData } from 'redux/ducks/market';
+import { changeMarketOutcomeData, changeMarketData } from 'redux/ducks/markets';
 import { selectOutcome } from 'redux/ducks/trade';
 import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
@@ -49,15 +49,18 @@ function TradeFormActions() {
   }
 
   async function reloadMarketPrices() {
-    const marketPrices = await new BeproService().getMarketPrices(marketId);
+    const marketData = await new BeproService().getMarketData(marketId);
 
-    Object.keys(marketPrices.outcomes).forEach(key => {
-      const outcomeId = Number(key);
-      const outcomePrice = marketPrices.outcomes[outcomeId];
+    marketData.outcomes.forEach((outcomeData, outcomeId) => {
+      const data = { price: outcomeData.price, shares: outcomeData.shares };
 
       // updating both market/markets redux
-      dispatch(changeMarketOutcomePrice({ marketId, outcomeId, outcomePrice }));
-      dispatch(changeOutcomePrice({ outcomeId, outcomePrice }));
+      dispatch(changeMarketOutcomeData({ marketId, outcomeId, data }));
+      dispatch(changeOutcomeData({ outcomeId, data }));
+      dispatch(
+        changeMarketData({ marketId, outcomeId, data: marketData.liquidity })
+      );
+      dispatch(changeData({ outcomeId, data: marketData.liquidity }));
     });
   }
 
