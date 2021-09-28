@@ -8,10 +8,13 @@ import { selectOutcome } from 'redux/ducks/trade';
 import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
+import TWarningIcon from 'assets/icons/TWarningIcon';
+
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 import useToastNotification from 'hooks/useToastNotification';
 
 import { Button } from '../Button';
+import Text from '../Text';
 import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 
@@ -207,49 +210,73 @@ function TradeFormActions() {
   const hasAcceptedTerms = true;
 
   return (
-    <div className="pm-c-trade-form-actions">
-      {!isMarketPage ? (
-        <Button
-          variant="subtle"
-          color="default"
-          onClick={handleCancel}
-          disabled={isLoading}
-        >
-          Cancel
-        </Button>
-      ) : null}
+    <div className="pm-c-trade-form-actions__group--column">
+      <div className="pm-c-trade-form-actions">
+        {!isMarketPage ? (
+          <Button
+            variant="subtle"
+            color="default"
+            onClick={handleCancel}
+            disabled={isLoading}
+          >
+            Cancel
+          </Button>
+        ) : null}
+        {needsPricesRefresh ? (
+          <Button
+            color="default"
+            fullwidth
+            onClick={handlePricesRefresh}
+            disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+            loading={isLoading}
+          >
+            Refresh Prices
+          </Button>
+        ) : null}
+        {type === 'buy' && !needsPricesRefresh ? (
+          <Button
+            color="success"
+            fullwidth
+            onClick={handleBuy}
+            disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+            loading={isLoading}
+          >
+            Buy
+          </Button>
+        ) : null}
+        {type === 'sell' && !needsPricesRefresh ? (
+          <Button
+            color="danger"
+            fullwidth
+            onClick={handleSell}
+            disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+            loading={isLoading}
+          >
+            Sell
+          </Button>
+        ) : null}
+      </div>
       {needsPricesRefresh ? (
-        <Button
-          color="default"
-          fullwidth
-          onClick={handlePricesRefresh}
-          disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
-          loading={isLoading}
+        <Text
+          as="small"
+          scale="caption"
+          fontWeight="semibold"
+          style={{
+            display: 'inline-flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center'
+          }}
+          color="gray"
         >
-          Refresh Prices
-        </Button>
-      ) : null}
-      {type === 'buy' && !needsPricesRefresh ? (
-        <Button
-          color="success"
-          fullwidth
-          onClick={handleBuy}
-          disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
-          loading={isLoading}
-        >
-          Buy
-        </Button>
-      ) : null}
-      {type === 'sell' && !needsPricesRefresh ? (
-        <Button
-          color="danger"
-          fullwidth
-          onClick={handleSell}
-          disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
-          loading={isLoading}
-        >
-          Sell
-        </Button>
+          <TWarningIcon
+            style={{
+              height: '1.6rem',
+              width: '1.6rem',
+              marginRight: '0.5rem'
+            }}
+          />
+          Price Updated
+        </Text>
       ) : null}
       {transactionSuccess && transactionSuccessHash ? (
         <ToastNotification id={type} duration={10000}>
