@@ -143,7 +143,7 @@ function LiquidityFormDetails() {
         </Text>
 
         <Text as="span" scale="body" fontWeight="semibold">
-          {`${roundNumber(liquidityDetails.totalStake + feesEarned, 3)} ${
+          {`${roundNumber(liquidityDetails.totalStake + (transactionType === 'remove' ? feesEarned : 0), 3)} ${
             currency.symbol
           }`}
         </Text>

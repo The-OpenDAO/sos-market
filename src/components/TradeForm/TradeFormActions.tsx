@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
-import { changeOutcomePrice } from 'redux/ducks/market';
-import { changeMarketOutcomePrice } from 'redux/ducks/markets';
+import market, { changeOutcomeData, changeData } from 'redux/ducks/market';
+import { changeMarketOutcomeData, changeMarketData } from 'redux/ducks/markets';
 import { selectOutcome } from 'redux/ducks/trade';
 import { closeTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
@@ -24,7 +24,9 @@ function TradeFormActions() {
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
   const marketSlug = useAppSelector(state => state.market.market.slug);
   const predictionId = useAppSelector(state => state.trade.selectedOutcomeId);
-  const amount = useAppSelector(state => state.trade.amount);
+  const { amount, shares, totalStake, fee } = useAppSelector(
+    state => state.trade
+  );
   const maxAmount = useAppSelector(state => state.trade.maxAmount);
   const acceptRules = useAppSelector(state => state.trade.acceptRules);
   const acceptOddChanges = useAppSelector(
@@ -47,15 +49,18 @@ function TradeFormActions() {
   }
 
   async function reloadMarketPrices() {
-    const marketPrices = await new BeproService().getMarketPrices(marketId);
+    const marketData = await new BeproService().getMarketData(marketId);
 
-    Object.keys(marketPrices.outcomes).forEach(key => {
-      const outcomeId = Number(key);
-      const outcomePrice = marketPrices.outcomes[outcomeId];
+    marketData.outcomes.forEach((outcomeData, outcomeId) => {
+      const data = { price: outcomeData.price, shares: outcomeData.shares };
 
       // updating both market/markets redux
-      dispatch(changeMarketOutcomePrice({ marketId, outcomeId, outcomePrice }));
-      dispatch(changeOutcomePrice({ outcomeId, outcomePrice }));
+      dispatch(changeMarketOutcomeData({ marketId, outcomeId, data }));
+      dispatch(changeOutcomeData({ outcomeId, data }));
+      dispatch(
+        changeMarketData({ marketId, outcomeId, data: marketData.liquidity })
+      );
+      dispatch(changeData({ outcomeId, data: marketData.liquidity }));
     });
   }
 
@@ -68,8 +73,33 @@ function TradeFormActions() {
     setIsLoading(true);
 
     try {
+      // adding a 1% slippage due to js floating numbers rounding
+      const minShares = shares * 0.999;
+
+      // calculating shares amount from smart contract
+      const sharesToBuy = await beproService.calcBuyAmount(
+        marketId,
+        predictionId,
+        amount
+      );
+
+      // will refresh form if there's a slippage > 2%
+      if (Math.abs(sharesToBuy - minShares) / sharesToBuy > 0.02) {
+        setIsLoading(false);
+        // TODO: show price updated alert
+        // TODO: change button to "Refresh Prices"
+        // TODO: have a refreshPrices button that calls reloadMarketPrices() and changes button back to buy
+
+        return false;
+      }
+
       // performing buy action on smart contract
-      const response = await beproService.buy(marketId, predictionId, amount);
+      const response = await beproService.buy(
+        marketId,
+        predictionId,
+        amount,
+        minShares
+      );
 
       setIsLoading(false);
 
@@ -94,6 +124,8 @@ function TradeFormActions() {
     } catch (error) {
       setIsLoading(false);
     }
+
+    return true;
   }
 
   async function handleSell() {
@@ -105,8 +137,34 @@ function TradeFormActions() {
     setIsLoading(true);
 
     try {
+      // adding a 1% slippage due to js floating numbers rounding
+      const ethAmount = totalStake - fee;
+      const minShares = shares * 1.001;
+
+      // calculating shares amount from smart contract
+      const sharesToSell = await beproService.calcSellAmount(
+        marketId,
+        predictionId,
+        ethAmount
+      );
+
+      // will refresh form if there's a slippage > 2%
+      if (Math.abs(sharesToSell - minShares) / sharesToSell > 0.02) {
+        setIsLoading(false);
+        // TODO: show price updated alert
+        // TODO: change button to "Refresh Prices"
+        // TODO: have a refreshPrices button that calls reloadMarketPrices() and changes button back to buy
+
+        return false;
+      }
+
       // performing sell action on smart contract
-      const response = await beproService.sell(marketId, predictionId, amount);
+      const response = await beproService.sell(
+        marketId,
+        predictionId,
+        ethAmount,
+        minShares
+      );
 
       setIsLoading(false);
 
@@ -131,6 +189,8 @@ function TradeFormActions() {
     } catch (error) {
       setIsLoading(false);
     }
+
+    return true;
   }
 
   const isValidAmount = amount > 0 && amount <= maxAmount;

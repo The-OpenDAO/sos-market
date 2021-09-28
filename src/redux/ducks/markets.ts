@@ -106,7 +106,7 @@ const marketsSlice = createSlice({
         sortBy: action.payload.sortBy
       }
     }),
-    changeMarketOutcomePrice: (state, action) => ({
+    changeMarketOutcomeData: (state, action) => ({
       ...state,
       markets: state.markets.map(market =>
         market.id === action.payload.marketId
@@ -114,7 +114,7 @@ const marketsSlice = createSlice({
               ...market,
               outcomes: market.outcomes.map((outcome, outcomeIndex) =>
                 outcomeIndex === action.payload.outcomeId
-                  ? { ...outcome, price: action.payload.outcomePrice }
+                  ? { ...outcome, ...action.payload.data }
                   : outcome
               )
             }
@@ -131,6 +131,17 @@ const marketsSlice = createSlice({
             }
           : market
       )
+    }),
+    changeMarketData: (state, action) => ({
+      ...state,
+      markets: state.markets.map(market =>
+        market.id === action.payload.marketId
+          ? {
+              ...market,
+              ...action.payload.data
+            }
+          : market
+      )
     })
   }
 });
@@ -144,16 +155,18 @@ const {
   setFilter,
   setFilterByVerified,
   setSorter,
-  changeMarketOutcomePrice,
-  changeMarketQuestion
+  changeMarketOutcomeData,
+  changeMarketQuestion,
+  changeMarketData
 } = marketsSlice.actions;
 
 export {
   setFilter,
   setFilterByVerified,
   setSorter,
-  changeMarketOutcomePrice,
-  changeMarketQuestion
+  changeMarketOutcomeData,
+  changeMarketQuestion,
+  changeMarketData
 };
 
 export const filteredMarketsSelector = (

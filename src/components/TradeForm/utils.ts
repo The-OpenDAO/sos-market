@@ -94,7 +94,11 @@ function calculateSharesBought(
   };
 }
 
-function calculateEthAmountSold(market, outcome, shares): TradeDetails {
+function calculateEthAmountSold(
+  market: Market,
+  outcome: Outcome,
+  shares: number
+): TradeDetails {
   // TODO: move formulas to beprojs
   // x = 1/2 (-sqrt(a^2 - 2 a (y + z) + 4 b + (y + z)^2) + a + y + z)
   // x = ETH amount user will receive

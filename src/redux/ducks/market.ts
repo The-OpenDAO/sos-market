@@ -134,13 +134,13 @@ const marketSlice = createSlice({
       ...state,
       chartViewType: action.payload
     }),
-    changeOutcomePrice: (state, action) => ({
+    changeOutcomeData: (state, action) => ({
       ...state,
       market: {
         ...state.market,
         outcomes: state.market.outcomes.map((outcome, index) =>
           index === action.payload.outcomeId
-            ? { ...outcome, price: action.payload.outcomePrice }
+            ? { ...outcome, ...action.payload.data }
             : outcome
         )
       }
@@ -150,6 +150,13 @@ const marketSlice = createSlice({
       market: {
         ...state.market,
         question: action.payload
+      }
+    }),
+    changeData: (state, action) => ({
+      ...state,
+      market: {
+        ...state.market,
+        ...action.payload.data
       }
     })
   }
@@ -163,16 +170,18 @@ const {
   error,
   marketSelected,
   clearMarket,
-  changeOutcomePrice,
+  changeOutcomeData,
   changeQuestion,
+  changeData,
   setChartViewType
 } = marketSlice.actions;
 
 export {
   marketSelected,
   clearMarket,
-  changeOutcomePrice,
+  changeOutcomeData,
   changeQuestion,
+  changeData,
   setChartViewType
 };
 

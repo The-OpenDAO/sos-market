@@ -24,8 +24,12 @@ export default class BeproService {
   }
 
   constructor() {
+    const blockConfig = process.env.REACT_APP_WEB3_PROVIDER_BLOCK_CONFIG
+      ? JSON.parse(process.env.REACT_APP_WEB3_PROVIDER_BLOCK_CONFIG)
+      : null;
     this.bepro = new beprojs.Application({
-      web3Provider: process.env.REACT_APP_WEB3_PROVIDER
+      web3Provider: process.env.REACT_APP_WEB3_PROVIDER,
+      blockConfig
     });
     this.bepro.start();
     // fetching contract
@@ -138,7 +142,8 @@ export default class BeproService {
   public async buy(
     marketId: string | number,
     outcomeId: string | number,
-    ethAmount: number
+    ethAmount: number,
+    minOutcomeSharesToBuy: number
   ) {
     // ensuring user has wallet connected
     await this.login();
@@ -146,7 +151,8 @@ export default class BeproService {
     const response = await this.contracts.pm.buy({
       marketId,
       outcomeId,
-      ethAmount
+      ethAmount,
+      minOutcomeSharesToBuy
     });
 
     return response;
@@ -155,7 +161,8 @@ export default class BeproService {
   public async sell(
     marketId: string | number,
     outcomeId: string | number,
-    shares: number
+    ethAmount: number,
+    maxOutcomeSharesToSell: number
   ) {
     // ensuring user has wallet connected
     await this.login();
@@ -163,7 +170,8 @@ export default class BeproService {
     const response = await this.contracts.pm.sell({
       marketId,
       outcomeId,
-      shares
+      ethAmount,
+      maxOutcomeSharesToSell
     });
 
     return response;
@@ -213,6 +221,26 @@ export default class BeproService {
     });
 
     return response;
+  }
+
+  public async getMarketData(marketId: string | number) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const marketData = await this.contracts.pm.getMarketData({ marketId });
+
+    marketData.outcomes = await Promise.all(
+      marketData.outcomeIds.map(async outcomeId => {
+        const outcomeData = await this.contracts.pm.getOutcomeData({
+          marketId,
+          outcomeId
+        });
+
+        return outcomeData;
+      })
+    );
+
+    return marketData;
   }
 
   public async getMarketPrices(marketId: string | number) {
@@ -279,6 +307,34 @@ export default class BeproService {
     const response = await this.contracts.erc20.approve({
       address,
       amount
+    });
+
+    return response;
+  }
+
+  public async calcBuyAmount(
+    marketId: string | number,
+    outcomeId: string | number,
+    ethAmount: number
+  ): Promise<number> {
+    const response = await this.contracts.pm.calcBuyAmount({
+      marketId,
+      outcomeId,
+      ethAmount
+    });
+
+    return response;
+  }
+
+  public async calcSellAmount(
+    marketId: string | number,
+    outcomeId: string | number,
+    ethAmount: number
+  ): Promise<number> {
+    const response = await this.contracts.pm.calcSellAmount({
+      marketId,
+      outcomeId,
+      ethAmount
     });
 
     return response;
