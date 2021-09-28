@@ -1,0 +1,20 @@
+$beta-warning-themes: (
+  light: (
+    text-colors: (
+      primary: #313a4c,
+      secondary: #8193ae
+    ),
+    action-colors: (
+      warning: #f0b429
+    )
+  ),
+  dark: (
+    text-colors: (
+      primary: #f3f4f6,
+      secondary: #637084
+    ),
+    action-colors: (
+      warning: #f0b429
+    )
+  )
+) !default;

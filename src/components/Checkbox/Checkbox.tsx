@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type CheckboxProps = {
   /**
@@ -6,6 +6,7 @@ type CheckboxProps = {
    */
   label: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  children?: ReactNode;
 };
 
 /**
@@ -14,11 +15,12 @@ type CheckboxProps = {
  */
 function Checkbox({
   label,
+  children,
   ...props
 }: CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label className="pm-c-checkbox caption medium" htmlFor={label}>
-      {label}
+      {children || label}
       <input id={label} type="checkbox" {...props} />
       <span className="pm-c-checkbox__checkmark" />
     </label>

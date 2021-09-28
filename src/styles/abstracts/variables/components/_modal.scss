@@ -1,5 +1,5 @@
-$modal-padding-y: 2.4rem !default;
-$modal-padding-x: 2.4rem !default;
+$modal-padding-y: 3.2rem !default;
+$modal-padding-x: 3.2rem !default;
 
 $modal-border-width: 0.1rem !default;
 $modal-border-radius: 0.4rem !default;
@@ -8,11 +8,23 @@ $modal-shadow: 0rem 0.4rem 2.4rem !default;
 
 $modal-themes: (
   light: (
+    overlay-background-color:
+      linear-gradient(
+        180deg,
+        rgba(248, 250, 255, 0.82) 0%,
+        rgba(248, 250, 255, 0.88) 100%
+      ),
     background: #f8faff,
     border: #e3e7f0,
     shadow: rgba(137, 158, 198, 0.17)
   ),
   dark: (
+    overlay-background-color:
+      linear-gradient(
+        180deg,
+        rgba(14, 16, 22, 0.82) 0%,
+        rgba(14, 16, 22, 0.88) 100%
+      ),
     background: #0e1016,
     border: #252c3b,
     shadow: rgba(0, 0, 0, 0.4)

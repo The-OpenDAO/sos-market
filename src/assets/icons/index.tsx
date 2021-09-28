@@ -34,6 +34,7 @@ import MoonIcon from './MoonIcon';
 import MoonriverIcon from './MoonriverIcon';
 import NetworkCommunicationIcon from './NetworkCommunicationIcon';
 import PolkadotIcon from './PolkadotIcon';
+import PolkamarketsBetaIcon from './PolkamarketsBetaIcon';
 import PolkamarketsIcon from './PolkamarketsIcon';
 import PolkamarketsIconSmall from './PolkamarketsIconSmall';
 import PolkamarketsLogo from './PolkamarketsLogo';
@@ -94,6 +95,7 @@ export {
   MoonIcon,
   NetworkCommunicationIcon,
   PolkadotIcon,
+  PolkamarketsBetaIcon,
   PolkamarketsIcon,
   PolkamarketsIconSmall,
   PolkamarketsLogo,
