@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
@@ -41,6 +41,7 @@ function TradeFormActions() {
   const [transactionSuccess, setTransactionSuccess] = useState(false);
   const [transactionSuccessHash, setTransactionSuccessHash] =
     useState(undefined);
+  const [needsPricesRefresh, setNeedsPricesRefresh] = useState(false);
 
   function handleCancel() {
     dispatch(selectOutcome('', ''));
@@ -63,6 +64,17 @@ function TradeFormActions() {
     });
   }
 
+  useEffect(() => {
+    setNeedsPricesRefresh(false);
+  }, [type]);
+
+  async function handlePricesRefresh() {
+    setIsLoading(true);
+    await reloadMarketPrices();
+    setIsLoading(false);
+    setNeedsPricesRefresh(false);
+  }
+
   async function handleBuy() {
     setTransactionSuccess(false);
     setTransactionSuccessHash(undefined);
@@ -70,6 +82,7 @@ function TradeFormActions() {
     const beproService = new BeproService();
 
     setIsLoading(true);
+    setNeedsPricesRefresh(false);
 
     try {
       // adding a 1% slippage due to js floating numbers rounding
@@ -85,9 +98,7 @@ function TradeFormActions() {
       // will refresh form if there's a slippage > 2%
       if (Math.abs(sharesToBuy - minShares) / sharesToBuy > 0.02) {
         setIsLoading(false);
-        // TODO: show price updated alert
-        // TODO: change button to "Refresh Prices"
-        // TODO: have a refreshPrices button that calls reloadMarketPrices() and changes button back to buy
+        setNeedsPricesRefresh(true);
 
         return false;
       }
@@ -134,6 +145,7 @@ function TradeFormActions() {
     const beproService = new BeproService();
 
     setIsLoading(true);
+    setNeedsPricesRefresh(false);
 
     try {
       // adding a 1% slippage due to js floating numbers rounding
@@ -150,9 +162,7 @@ function TradeFormActions() {
       // will refresh form if there's a slippage > 2%
       if (Math.abs(sharesToSell - minShares) / sharesToSell > 0.02) {
         setIsLoading(false);
-        // TODO: show price updated alert
-        // TODO: change button to "Refresh Prices"
-        // TODO: have a refreshPrices button that calls reloadMarketPrices() and changes button back to buy
+        setNeedsPricesRefresh(true);
 
         return false;
       }
@@ -199,11 +209,27 @@ function TradeFormActions() {
   return (
     <div className="pm-c-trade-form-actions">
       {!isMarketPage ? (
-        <Button variant="subtle" color="default" onClick={handleCancel}>
+        <Button
+          variant="subtle"
+          color="default"
+          onClick={handleCancel}
+          disabled={isLoading}
+        >
           Cancel
         </Button>
       ) : null}
-      {type === 'buy' ? (
+      {needsPricesRefresh ? (
+        <Button
+          color="default"
+          fullwidth
+          onClick={handlePricesRefresh}
+          disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+          loading={isLoading}
+        >
+          Refresh Prices
+        </Button>
+      ) : null}
+      {type === 'buy' && !needsPricesRefresh ? (
         <Button
           color="success"
           fullwidth
@@ -214,7 +240,7 @@ function TradeFormActions() {
           Buy
         </Button>
       ) : null}
-      {type === 'sell' ? (
+      {type === 'sell' && !needsPricesRefresh ? (
         <Button
           color="danger"
           fullwidth
@@ -252,7 +278,5 @@ function TradeFormActions() {
     </div>
   );
 }
-
-TradeFormActions.displayName = 'TradeFormActions';
 
 export default TradeFormActions;
