@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
-import market, { changeOutcomeData, changeData } from 'redux/ducks/market';
+import { changeOutcomeData, changeData } from 'redux/ducks/market';
 import { changeMarketOutcomeData, changeMarketData } from 'redux/ducks/markets';
 import { selectOutcome } from 'redux/ducks/trade';
 import { closeTradeForm } from 'redux/ducks/ui';
@@ -16,10 +16,13 @@ import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 
 function TradeFormActions() {
+  // Helpers
   const location = useLocation();
   const dispatch = useAppDispatch();
   const network = useNetwork();
+  const { show, close } = useToastNotification();
 
+  // Market selectors
   const type = useAppSelector(state => state.trade.type);
   const marketId = useAppSelector(state => state.trade.selectedMarketId);
   const marketSlug = useAppSelector(state => state.market.market.slug);
@@ -28,20 +31,16 @@ function TradeFormActions() {
     state => state.trade
   );
   const maxAmount = useAppSelector(state => state.trade.maxAmount);
-  const acceptRules = useAppSelector(state => state.trade.acceptRules);
-  const acceptOddChanges = useAppSelector(
-    state => state.trade.acceptOddChanges
-  );
   const ethAddress = useAppSelector(state => state.bepro.ethAddress);
 
+  // Derivated state
   const isMarketPage = location.pathname === `/markets/${marketSlug}`;
 
+  // Local state
+  const [isLoading, setIsLoading] = useState(false);
   const [transactionSuccess, setTransactionSuccess] = useState(false);
   const [transactionSuccessHash, setTransactionSuccessHash] =
     useState(undefined);
-
-  const [isLoading, setIsLoading] = useState(false);
-  const { show, close } = useToastNotification();
 
   function handleCancel() {
     dispatch(selectOutcome('', ''));
