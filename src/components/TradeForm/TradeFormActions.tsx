@@ -223,15 +223,37 @@ function TradeFormActions() {
           </Button>
         ) : null}
         {needsPricesRefresh ? (
-          <Button
-            color="default"
-            fullwidth
-            onClick={handlePricesRefresh}
-            disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
-            loading={isLoading}
-          >
-            Refresh Prices
-          </Button>
+          <div className="pm-c-trade-form-actions__group--column">
+            <Button
+              color="default"
+              fullwidth
+              onClick={handlePricesRefresh}
+              disabled={!isValidAmount || !hasAcceptedTerms || isLoading}
+              loading={isLoading}
+            >
+              Refresh Prices
+            </Button>
+            <Text
+              as="small"
+              scale="caption"
+              fontWeight="semibold"
+              style={{
+                display: 'inline-flex',
+                justifyContent: 'flex-start',
+                alignItems: 'center'
+              }}
+              color="gray"
+            >
+              <TWarningIcon
+                style={{
+                  height: '1.6rem',
+                  width: '1.6rem',
+                  marginRight: '0.5rem'
+                }}
+              />
+              Price has updated
+            </Text>
+          </div>
         ) : null}
         {type === 'buy' && !needsPricesRefresh ? (
           <Button
@@ -256,28 +278,6 @@ function TradeFormActions() {
           </Button>
         ) : null}
       </div>
-      {needsPricesRefresh ? (
-        <Text
-          as="small"
-          scale="caption"
-          fontWeight="semibold"
-          style={{
-            display: 'inline-flex',
-            justifyContent: 'flex-start',
-            alignItems: 'center'
-          }}
-          color="gray"
-        >
-          <TWarningIcon
-            style={{
-              height: '1.6rem',
-              width: '1.6rem',
-              marginRight: '0.5rem'
-            }}
-          />
-          Price has updated
-        </Text>
-      ) : null}
       {transactionSuccess && transactionSuccessHash ? (
         <ToastNotification id={type} duration={10000}>
           <Toast
