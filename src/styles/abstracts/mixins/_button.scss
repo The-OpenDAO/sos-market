@@ -24,7 +24,7 @@
   border-color: map-get($background-colors-map, 'background-color');
 
   &:hover,
-  :focus {
+  &:focus {
     background-color: map-get($background-colors-map, 'background-color-hover');
   }
 
@@ -55,7 +55,7 @@
   }
 
   &:hover,
-  :focus {
+  &:focus {
     color: map-get($text-colors-map, 'text-color-hover');
     background-color: map-get($background-colors-map, 'background-color-hover');
     border-color: map-get($border-colors-map, 'border-color-hover');
@@ -91,7 +91,7 @@
   }
 
   &:hover,
-  :focus {
+  &:focus {
     color: map-get($text-colors-map, 'text-color-hover');
     background-color: map-get($background-colors-map, 'background-color-hover');
     border-color: map-get($background-colors-map, 'background-color-hover');
@@ -127,7 +127,7 @@
   }
 
   &:hover,
-  :focus {
+  &:focus {
     color: map-get($text-colors-map, 'text-color-hover');
     background-color: map-get($background-colors-map, 'background-color-hover');
     border-color: map-get($background-colors-map, 'background-color-hover');

@@ -6,6 +6,7 @@ import classNames from 'classnames';
 type ButtonVariant = 'normal' | 'outline' | 'subtle' | 'ghost';
 
 type ButtonColor =
+  | 'base'
   | 'default'
   | 'primary'
   | 'secondary'
