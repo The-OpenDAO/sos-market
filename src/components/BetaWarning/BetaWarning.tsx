@@ -40,10 +40,10 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
           scale="caption"
           className="pm-c-beta-warning__description--primary-text"
         >
-          POLKAMARKET OÜ displays existing markets live on the Ethereum
-          blockchain (or sidechains) and is a graphical user interface for
-          visualizing data and interact with the Polkamarkets Protocol Smart
-          Contracts via your Web 3 injected wallet.
+          POLKAMARKET OÜ displays existing markets live on EVMs or sidechains
+          and is a graphical user interface for visualizing data and interacting
+          with the Polkamarkets Protocol Smart Contracts via your Web 3 injected
+          wallet.
         </Text>
         <Checkbox
           label="text"
