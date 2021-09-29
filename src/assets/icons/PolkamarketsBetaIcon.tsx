@@ -1,6 +1,12 @@
 import { memo } from 'react';
 
+import { useTheme } from 'hooks';
+
 function PolkamarketsBetaIcon() {
+  const { theme } = useTheme();
+
+  const fillColor = theme === 'dark' ? '#000000' : '#FFFFFF';
+
   return (
     <svg
       width="80"
@@ -29,7 +35,7 @@ function PolkamarketsBetaIcon() {
       />
       <path
         d="M37.0459 17.5C37.0459 11.4249 41.9708 6.5 48.0459 6.5H68.0459C74.121 6.5 79.0459 11.4249 79.0459 17.5V17.5C79.0459 23.5751 74.121 28.5 68.0459 28.5H48.0459C41.9708 28.5 37.0459 23.5751 37.0459 17.5V17.5Z"
-        fill="black"
+        fill={fillColor}
         fillOpacity="0.85"
       />
       <path

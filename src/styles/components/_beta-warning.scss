@@ -24,7 +24,7 @@
       @include flex-column(center, center, 2.4rem);
       width: 100%;
 
-      h5 {
+      &--primary-text {
         text-align: left;
         white-space: pre-line;
         color: map-get(themed('text-colors'), 'primary');
