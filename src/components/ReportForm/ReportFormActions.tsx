@@ -4,9 +4,9 @@ import { useLocation } from 'react-router-dom';
 import { useField, useFormikContext } from 'formik';
 import has from 'lodash/has';
 import { fetchAditionalData, login } from 'redux/ducks/bepro';
-import { changeQuestion } from 'redux/ducks/market';
+import { changeData, changeQuestion } from 'redux/ducks/market';
 import { selectOutcome } from 'redux/ducks/trade';
-import { closeReportForm } from 'redux/ducks/ui';
+import { closeReportForm, openTradeForm } from 'redux/ducks/ui';
 import { BeproService, PolkamarketsApiService } from 'services';
 
 import { QuestionIcon } from 'assets/icons';
@@ -149,6 +149,14 @@ function ReportFormActions({
         setMarketResolveTransactionSuccess(status);
         setMarketResolveTransactionSuccessHash(transactionHash);
         show('marketResolve');
+        dispatch(
+          changeData({
+            data: {
+              state: 'resolved'
+            }
+          })
+        );
+        dispatch(openTradeForm());
 
         // triggering cache reload action on api
         new PolkamarketsApiService().reloadMarket(marketSlug);
