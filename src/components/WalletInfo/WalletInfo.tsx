@@ -22,12 +22,7 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
 
   return (
     <div className="pm-c-wallet-info">
-      <Button
-        variant="outline"
-        color="base"
-        size="sm"
-        style={{ padding: '0.5rem 1.4rem' }}
-      >
+      <Button variant="outline" color="base" size="sm">
         {wallets[0].balance}
         {wallets[0].currencyIcon}
       </Button>
@@ -35,7 +30,7 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
         variant="outline"
         color="base"
         size="sm"
-        style={{ padding: '0.5rem 1.4rem', paddingRight: '0.5rem' }}
+        style={{ padding: '0.4rem 1.4rem', paddingRight: '0.5rem' }}
       >
         {wallets[1].balance}
         {wallets[1].currencyIcon}
