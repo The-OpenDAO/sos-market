@@ -61,9 +61,12 @@ function TradeFormActions() {
       dispatch(changeMarketOutcomeData({ marketId, outcomeId, data }));
       dispatch(changeOutcomeData({ outcomeId, data }));
       dispatch(
-        changeMarketData({ marketId, outcomeId, data: marketData.liquidity })
+        changeMarketData({
+          marketId,
+          data: { liquidity: marketData.liquidity }
+        })
       );
-      dispatch(changeData({ outcomeId, data: marketData.liquidity }));
+      dispatch(changeData({ data: { liquidity: marketData.liquidity } }));
     });
   }
 
@@ -98,8 +101,8 @@ function TradeFormActions() {
         amount
       );
 
-      // will refresh form if there's a slippage > 2%
-      if (Math.abs(sharesToBuy - minShares) / sharesToBuy > 0.02) {
+      // will refresh form if there's a slippage > 1%
+      if (Math.abs(sharesToBuy - minShares) / sharesToBuy > 0.01) {
         setIsLoading(false);
         setNeedsPricesRefresh(true);
 
