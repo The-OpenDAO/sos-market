@@ -222,6 +222,11 @@
   gap: 0.8rem;
 
   width: 100%;
+
+  &__group--column {
+    @include flex-column(center, center, 1rem);
+    width: 100%;
+  }
 }
 
 .pm-c-trade-form-details {
