@@ -97,7 +97,8 @@ const NETWORKS: {
     currency: ETH,
     decimals: 18,
     explorerURL: 'https://etherscan.io',
-    rpcUrls: ['http://localhost:8545']
+    rpcUrls: ['http://localhost:8545'],
+    buyEc20Url: `//app.uniswap.org/#/swap?outputCurrency=${REACT_APP_ERC20_CONTRACT_ADDRESS}&inputCurrency=ETH`
   }
 };
 
