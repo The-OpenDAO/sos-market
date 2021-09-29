@@ -93,6 +93,11 @@ $button-normal-themes: (
 $button-outline-themes: (
   light: (
     background-colors: (
+      base: (
+        background-color: transparent,
+        background-color-hover: transparent,
+        background-color-disabled: transparent
+      ),
       default: (
         background-color: transparent,
         background-color-hover: #b6bdc8,
@@ -120,6 +125,11 @@ $button-outline-themes: (
       )
     ),
     border-colors: (
+      base: (
+        border-color: #e0e2e7,
+        border-color-hover: #e0e2e7,
+        border-color-disabled: #e0e2e7
+      ),
       default: (
         border-color: #e0e2e7,
         border-color-hover: #b6bdc8,
@@ -147,6 +157,11 @@ $button-outline-themes: (
       )
     ),
     text-colors: (
+      base: (
+        text-color: #637084,
+        text-color-hover: #637084,
+        text-color-disabled: #637084
+      ),
       default: (
         text-color: #637084,
         text-color-hover: #ffffff,
@@ -176,6 +191,11 @@ $button-outline-themes: (
   ),
   dark: (
     background-colors: (
+      base: (
+        background-color: transparent,
+        background-color-hover: transparent,
+        background-color-disabled: transparent
+      ),
       default: (
         background-color: transparent,
         background-color-hover: #8a96a7,
@@ -203,6 +223,11 @@ $button-outline-themes: (
       )
     ),
     border-colors: (
+      base: (
+        border-color: #252c3b,
+        border-color-hover: #252c3b,
+        border-color-disabled: #252c3b
+      ),
       default: (
         border-color: #252c3b,
         border-color-hover: #637084,
@@ -230,6 +255,11 @@ $button-outline-themes: (
       )
     ),
     text-colors: (
+      base: (
+        text-color: #f3f4f6,
+        text-color-hover: #f3f4f6,
+        text-color-disabled: #f3f4f6
+      ),
       default: (
         text-color: #f3f4f6,
         text-color-hover: #ffffff,

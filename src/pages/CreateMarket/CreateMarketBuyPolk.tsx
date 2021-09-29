@@ -4,7 +4,7 @@ import { TwarningIcon } from 'assets/icons';
 
 import { Text, ProgressBar, Button } from 'components';
 
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useNetwork } from 'hooks';
 
 type CreateMarketBuyPolkProps = {
   requiredPolkBalance: number;
@@ -17,11 +17,12 @@ function CreateMarketBuyPolk({
 
   const polkBalance = useAppSelector(state => state.bepro.polkBalance);
 
+  const { buyEc20Url } = useNetwork();
+
   async function handleBuyPolk() {
     setIsLoadingBuyPolk(true);
 
-    const buyPolkUrl = `//app.uniswap.org/#/swap?outputCurrency=${process.env.REACT_APP_ERC20_CONTRACT_ADDRESS}&inputCurrency=ETH`;
-    window.open(buyPolkUrl, '_blank');
+    window.open(buyEc20Url, '_blank');
 
     setIsLoadingBuyPolk(false);
   }

@@ -118,7 +118,9 @@ function MarketOutcomesItem({ market, outcome }: MarketOutcomesItemProps) {
           >
             {price.toFixed(3)}
           </Text>
-          {marketPriceUp ? <ArrowUpIcon /> : <ArrowDownIcon />}
+          {!isMarketResolved ? (
+            <>{marketPriceUp ? <ArrowUpIcon /> : <ArrowDownIcon />}</>
+          ) : null}
         </div>
       </div>
       {isMarketResolved ? (

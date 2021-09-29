@@ -24,7 +24,7 @@ function TradeForm() {
   );
   const isLoadingMarket = useAppSelector(state => state.market.isLoading);
 
-  const isCurrentSelectedMarket = id && id === selectedMarketId;
+  const isCurrentSelectedMarket = id === selectedMarketId;
 
   useEffect(() => {
     if (marketState === 'closed') {
