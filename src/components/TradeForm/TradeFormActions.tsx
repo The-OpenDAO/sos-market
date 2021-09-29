@@ -275,7 +275,7 @@ function TradeFormActions() {
               marginRight: '0.5rem'
             }}
           />
-          Price Updated
+          Price has updated
         </Text>
       ) : null}
       {transactionSuccess && transactionSuccessHash ? (
