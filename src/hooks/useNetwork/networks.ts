@@ -8,9 +8,10 @@ export type Network = {
   decimals: number;
   explorerURL: string;
   rpcUrls: Array<string>;
+  buyEc20Url?: string;
 };
 
-export const { REACT_APP_NETWORK_ID } = process.env;
+export const { REACT_APP_NETWORK_ID, REACT_APP_ERC20_CONTRACT_ADDRESS } = process.env;
 
 const NETWORKS: {
   [key: string]: Network;
@@ -58,7 +59,8 @@ const NETWORKS: {
     currency: ETH,
     decimals: 18,
     explorerURL: 'https://kovan.etherscan.io',
-    rpcUrls: []
+    rpcUrls: [],
+    buyEc20Url: `//app.uniswap.org/#/swap?outputCurrency=${REACT_APP_ERC20_CONTRACT_ADDRESS}&inputCurrency=ETH`
   },
   '0x501': {
     id: '1281',
@@ -76,7 +78,8 @@ const NETWORKS: {
     currency: MOVR,
     decimals: 18,
     explorerURL: 'https://blockscout.moonriver.moonbeam.network',
-    rpcUrls: ['https://rpc.moonriver.moonbeam.network']
+    rpcUrls: ['https://rpc.moonriver.moonbeam.network'],
+    buyEc20Url: `//app.sushi.com/swap?inputCurrency=&outputCurrency=${REACT_APP_ERC20_CONTRACT_ADDRESS}`
   },
   '0x507': {
     id: '1287',
