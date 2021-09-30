@@ -7,7 +7,7 @@ function FooterMenu() {
     <Menu>
       <Menu.Item key="howitworks">
         <Link
-          to="//polkamarkets.medium.com/mvp-pre-launch-whitelist-beta-testers-5424ce5fb32"
+          to="//help.polkamarkets.com/en/collections/3155287-getting-started"
           target="_blank"
         >
           How It Works
