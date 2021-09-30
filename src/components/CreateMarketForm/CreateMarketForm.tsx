@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import dayjs from 'dayjs';
@@ -97,6 +96,10 @@ function CreateMarketForm() {
   const history = useHistory();
   const { show, close } = useToastNotification();
 
+  function redirectToHomePage() {
+    return history.push('/home');
+  }
+
   function redirectToMarketPage(marketSlug) {
     return history.push(`/markets/${marketSlug}`);
   }
@@ -120,9 +123,12 @@ function CreateMarketForm() {
 
     const { marketId } = response.events.MarketCreated.returnValues;
 
-    const res = await marketService.createMarket(marketId);
-
-    redirectToMarketPage(res.data.slug);
+    try {
+      const res = await marketService.createMarket(marketId);
+      redirectToMarketPage(res.data.slug);
+    } catch (err) {
+      redirectToHomePage();
+    }
   }
 
   return (
