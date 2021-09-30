@@ -53,9 +53,9 @@ function Layout({ children }: LayoutProps) {
         <ScrollableArea>
           <aside className="pm-l-layout__aside">
             <RightSidebar hasAlertNotification={hasAlertNotification} />
-            <div id="toast-notification-portal" />
           </aside>
         </ScrollableArea>
+        <div id="toast-notification-portal" />
       </div>
     </>
   );
