@@ -42,6 +42,10 @@ type ButtonGroupProps = {
    * @default 'normal'
    */
   size?: ButtonGroupSize;
+  /**
+   * Shows a full width group
+   */
+  fullwidth?: boolean;
   onChange: (id: string) => void;
   /**
    * Aditional styles
@@ -53,6 +57,7 @@ function ButtonGroup({
   defaultActiveId,
   buttons,
   size = 'normal',
+  fullwidth = false,
   onChange,
   style
 }: ButtonGroupProps) {
@@ -72,7 +77,8 @@ function ButtonGroup({
     <div
       className={classNames({
         [`pm-c-button-group--${activeButton.color}`]: true,
-        [`pm-c-button-group--${size}`]: true
+        [`pm-c-button-group--${size}`]: true,
+        'pm-c-button-group--fullwidth': fullwidth
       })}
       style={style}
     >
