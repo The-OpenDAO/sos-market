@@ -26,6 +26,7 @@ function NavBarDropdownMenu() {
       </Button>
       <div className="pm-l-navbar-dropdown-menu__content">
         <ButtonGroup
+          fullwidth
           defaultActiveId={theme}
           size="lg"
           buttons={[

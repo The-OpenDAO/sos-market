@@ -16,6 +16,7 @@ function LiquidityFormTypeSelector() {
 
   return (
     <ButtonGroup
+      fullwidth
       defaultActiveId="add"
       buttons={[
         { id: 'add', name: 'Add Liquidity', color: 'default' },
