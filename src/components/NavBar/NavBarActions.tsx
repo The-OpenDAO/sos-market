@@ -56,7 +56,9 @@ function NavBarActions() {
           </>
         }
       />
-      {network ? <NetworkInfo name={network.name} slug={network.key} /> : null}
+      {network && network.key !== 'unknown' ? (
+        <NetworkInfo name={network.name} slug={network.key} />
+      ) : null}
       {walletConnected ? (
         <WalletInfo
           wallets={[
