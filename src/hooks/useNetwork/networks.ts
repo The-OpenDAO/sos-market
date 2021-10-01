@@ -11,7 +11,8 @@ export type Network = {
   buyEc20Url?: string;
 };
 
-export const { REACT_APP_NETWORK_ID, REACT_APP_ERC20_CONTRACT_ADDRESS } = process.env;
+export const { REACT_APP_NETWORK_ID, REACT_APP_ERC20_CONTRACT_ADDRESS } =
+  process.env;
 
 const NETWORKS: {
   [key: string]: Network;
@@ -99,6 +100,15 @@ const NETWORKS: {
     explorerURL: 'https://etherscan.io',
     rpcUrls: ['http://localhost:8545'],
     buyEc20Url: `//app.uniswap.org/#/swap?outputCurrency=${REACT_APP_ERC20_CONTRACT_ADDRESS}&inputCurrency=ETH`
+  },
+  '0x270f': {
+    id: '9999',
+    name: 'Unknown',
+    key: 'unknown',
+    currency: ETH,
+    decimals: 18,
+    explorerURL: 'https://etherscan.io',
+    rpcUrls: []
   }
 };
 
