@@ -8,6 +8,7 @@ import ArrowLeftIcon from './ArrowLeftIcon';
 import ArrowRightIcon from './ArrowRightIcon';
 import ArrowUpIcon from './ArrowUpIcon';
 import ArrowUpSmallestIcon from './ArrowUpSmallestIcon';
+import BetaTagIcon from './BetaTagIcon';
 import BitcoinIcon from './BitcoinIcon';
 import CandleStickChartIcon from './CandleStickChartIcon';
 import CaretDownIcon from './CaretDownIcon';
@@ -34,7 +35,6 @@ import MoonIcon from './MoonIcon';
 import MoonriverIcon from './MoonriverIcon';
 import NetworkCommunicationIcon from './NetworkCommunicationIcon';
 import PolkadotIcon from './PolkadotIcon';
-import PolkamarketsBetaIcon from './PolkamarketsBetaIcon';
 import PolkamarketsIcon from './PolkamarketsIcon';
 import PolkamarketsIconSmall from './PolkamarketsIconSmall';
 import PolkamarketsLogo from './PolkamarketsLogo';
@@ -69,6 +69,7 @@ export {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpIcon,
+  BetaTagIcon,
   BitcoinIcon,
   CandleStickChartIcon,
   CaretDownIcon,
@@ -95,7 +96,6 @@ export {
   MoonIcon,
   NetworkCommunicationIcon,
   PolkadotIcon,
-  PolkamarketsBetaIcon,
   PolkamarketsIcon,
   PolkamarketsIconSmall,
   PolkamarketsLogo,
