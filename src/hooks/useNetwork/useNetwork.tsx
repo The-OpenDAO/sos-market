@@ -45,7 +45,7 @@ function useNetwork() {
       if (walletConnected) {
         const chainId = await getChainId();
 
-        setNetwork(NETWORKS[chainId]);
+        setNetwork(NETWORKS[chainId] || NETWORKS['0x270f']);
       }
     }
 
@@ -68,7 +68,7 @@ function useNetwork() {
 
   useEffect(() => {
     function changeNetwork(chainId: string) {
-      setNetwork(NETWORKS[chainId]);
+      setNetwork(NETWORKS[chainId] || NETWORKS['0x270f']);
     }
 
     function onChainChange() {
