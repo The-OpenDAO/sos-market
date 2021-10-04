@@ -5,6 +5,8 @@ import { setFilter } from 'redux/ducks/markets';
 
 import { PolkamarketsIcon, BetaTagIcon } from 'assets/icons';
 
+import { useTheme } from 'hooks';
+
 import NavBarActions from './NavBarActions';
 import NavBarDropdownMenu from './NavBarDropdownMenu';
 import NavBarMenu from './NavBarMenu';
@@ -15,6 +17,7 @@ const RISK_DISCLOSURE_DOC_URL =
 
 function NavBar() {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
 
   function handleNavigation() {
     // clearing categories/search filter
@@ -28,7 +31,7 @@ function NavBar() {
           <PolkamarketsIcon />
         </Link>
         <a href={RISK_DISCLOSURE_DOC_URL} target="_blank" rel="noreferrer">
-          <BetaTagIcon />
+          <BetaTagIcon theme={theme} />
         </a>
       </figure>
       <NavBarSearch />
