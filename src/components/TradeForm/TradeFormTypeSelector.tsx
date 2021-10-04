@@ -17,6 +17,7 @@ function TradeFormTypeSelector() {
   return (
     <div className="pm-c-trade-form-type-selector">
       <ButtonGroup
+        fullwidth
         defaultActiveId="buy"
         buttons={[
           { id: 'buy', name: 'Buy', color: 'success' },
