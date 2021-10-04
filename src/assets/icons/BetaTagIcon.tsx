@@ -1,10 +1,10 @@
-import { memo } from 'react';
+import { SVGProps, memo } from 'react';
 
-import { useTheme } from 'hooks';
+type BetaTagIconProps = {
+  theme: string;
+};
 
-function BetaTagIcon() {
-  const { theme } = useTheme();
-
+function BetaTagIcon({ theme }: SVGProps<SVGSVGElement> & BetaTagIconProps) {
   const fillColor = theme === 'dark' ? '#000000' : '#FFFFFF';
 
   return (
