@@ -348,3 +348,28 @@
     }
   }
 }
+
+.pm-c-alert-minimal {
+  @include themes($alert-minimal-themes) {
+    @include flex-column(center, center);
+
+    width: 100%;
+    padding: $alert-minimal-padding-y $alert-minimal-padding-x;
+    border-width: $alert-minimal-border-width;
+    border-style: solid;
+    border-radius: $alert-minimal-border-radius;
+
+    transition: $alert-transitions;
+
+    @each $color, $color-map in themed('background-colors') {
+      &--#{$color} {
+        @extend .pm-c-alert-minimal;
+        @include alert-minimal-color(
+          map-get(themed('background-colors'), $color),
+          map-get(themed('border-colors'), $color),
+          map-get(themed('text-colors'), $color)
+        );
+      }
+    }
+  }
+}
