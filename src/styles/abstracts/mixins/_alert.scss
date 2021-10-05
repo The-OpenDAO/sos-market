@@ -9,3 +9,13 @@
     color: $text-color;
   }
 }
+
+@mixin alert-minimal-color($background-color, $border-color, $text-color) {
+  background-color: $background-color;
+  border-color: $border-color;
+
+  .pm-c-alert-minimal__description {
+    text-align: left;
+    color: $text-color;
+  }
+}
