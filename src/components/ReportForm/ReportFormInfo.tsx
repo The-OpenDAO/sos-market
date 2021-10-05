@@ -10,7 +10,7 @@ function ReportFormInfo() {
           {`Earn POLK by reporting the correct outcome. `}
           <Link
             title="Learn more"
-            href="//polkamarkets.medium.com/polkamarkets-releases-decentralized-event-resolution-9d9a947b932e"
+            href="https://help.polkamarkets.com/en/articles/5610525-how-market-resolution-works"
             aria-label="Learn more"
             target="_blank"
             rel="noreferrer"
