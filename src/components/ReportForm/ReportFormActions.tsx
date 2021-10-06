@@ -81,7 +81,8 @@ function ReportFormActions({
   const showCurrentOutcomeBondWarning =
     !marketQuestionFinalized &&
     isWinningOutcome(outcome.value) &&
-    bond.value > 0;
+    bond.value > 0 &&
+    questionBond > 0;
 
   async function handleApprovePolk() {
     const beproService = new BeproService();
@@ -241,7 +242,7 @@ function ReportFormActions({
             description={
               <>
                 {`Placing a bond on the winning outcome will restart the timer.
-                You will have to pay the previous answerer ${roundNumber(
+                You'll also pay the previous answerer ${roundNumber(
                   questionBond,
                   3
                 )} POLK. `}
