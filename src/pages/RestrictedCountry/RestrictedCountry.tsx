@@ -1,6 +1,6 @@
 import { PolkamarketsIcon } from 'assets/icons';
 
-import { ModalNotification, Text, Link } from 'components';
+import { Button, ModalNotification, Text, Link } from 'components';
 
 function RestrictedCountry() {
   return (
@@ -50,6 +50,17 @@ function RestrictedCountry() {
               />
             </>
           </Text>
+          <Button
+            color="primary"
+            size="sm"
+            onClick={() =>
+              window.open(
+                'https://help.polkamarkets.com/en/articles/5623718-ownership-architecture',
+                '_blank'
+              )}
+          >
+            Learn More
+          </Button>
         </div>
       </ModalNotification>
     </div>
