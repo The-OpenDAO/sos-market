@@ -47,9 +47,21 @@ const PortfolioMarketTable = ({
   const filter = useAppSelector(state => state.portfolio.filter);
 
   const [isLoadingClaimWinnings, setIsLoadingClaimWinnings] = useState({});
+  const [isLoadingClaimVoided, setIsLoadingClaimVoided] = useState({});
 
   function handleChangeIsLoading(id: string | number, isLoading: boolean) {
     setIsLoadingClaimWinnings({ ...isLoadingClaimWinnings, [id]: isLoading });
+  }
+
+  function handleChangeIsLoadingVoided(
+    marketId: string | number,
+    outcomeId: string | number,
+    isLoading: boolean
+  ) {
+    setIsLoadingClaimVoided({
+      ...isLoadingClaimVoided,
+      [`${marketId}-${outcomeId}`]: isLoading
+    });
   }
 
   async function handleClaimWinnings(marketId) {
@@ -67,6 +79,24 @@ const PortfolioMarketTable = ({
       handleChangeIsLoading(marketId, false);
     } catch (error) {
       handleChangeIsLoading(marketId, false);
+    }
+  }
+
+  async function handleClaimVoided(marketId, outcomeId) {
+    const beproService = new BeproService();
+
+    handleChangeIsLoadingVoided(marketId, outcomeId, true);
+
+    try {
+      await beproService.claimVoidedOutcomeShares(marketId, outcomeId);
+
+      // updating wallet
+      await login(dispatch);
+      await fetchAditionalData(dispatch);
+
+      handleChangeIsLoadingVoided(marketId, outcomeId, false);
+    } catch (error) {
+      handleChangeIsLoadingVoided(marketId, outcomeId, false);
     }
   }
 
@@ -323,6 +353,21 @@ const PortfolioMarketTable = ({
                       Claim Winnings
                     </Button>
                   ) : null}
+                  {result.type === 'awaiting_claim_voided' ? (
+                    <Button
+                      size="sm"
+                      variant="normal"
+                      color="warning"
+                      onClick={() => handleClaimVoided(market.id, outcome.id)}
+                      loading={
+                        isLoadingClaimVoided[`${market.id}-${outcome.id}`] ||
+                        false
+                      }
+                      style={{ marginLeft: 'auto' }}
+                    >
+                      Claim Shares
+                    </Button>
+                  ) : null}
                   {result.type === 'awaiting_resolution' ? (
                     <Pill variant="subtle" color="warning">
                       Awaiting Resolution
@@ -331,6 +376,11 @@ const PortfolioMarketTable = ({
                   {result.type === 'claimed' ? (
                     <Pill variant="subtle" color="success">
                       Winnings Claimed
+                    </Pill>
+                  ) : null}
+                  {result.type === 'claimed_voided' ? (
+                    <Pill variant="subtle" color="warning">
+                      Shares Claimed
                     </Pill>
                   ) : null}
                   {result.type === 'lost' ? (

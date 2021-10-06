@@ -47,6 +47,7 @@ export interface Market {
   expiresAt: string;
   state: string;
   verified: boolean;
+  voided: boolean;
   questionId: string;
   resolvedOutcomeId: number;
   outcomes: Outcome[];

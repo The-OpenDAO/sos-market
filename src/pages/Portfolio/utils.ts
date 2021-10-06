@@ -35,7 +35,11 @@ function generateChartRandomData(reverse = false) {
   return data;
 }
 
-function formatMarketPositions(portfolio: Object, markets: Market[]) {
+function formatMarketPositions(
+  portfolio: Object,
+  markets: Market[],
+  actions: any[]
+) {
   const headers = [
     {
       title: 'Market',
@@ -124,6 +128,22 @@ function formatMarketPositions(portfolio: Object, markets: Market[]) {
         let result = { type: 'pending' };
         if (market.state === 'closed') {
           result = { type: 'awaiting_resolution' };
+        } else if (
+          // user holds shares of voided outcome
+          market.voided === true &&
+          actions.find(
+            action =>
+              action.action === 'Claim Voided' &&
+              action.outcomeId === outcome.id &&
+              action.marketId === market.id
+          )
+        ) {
+          result = { type: 'claimed_voided' };
+        } else if (
+          // user already claimed winnings of voided outcome
+          market.voided === true
+        ) {
+          result = { type: 'awaiting_claim_voided' };
         } else if (
           // user holds shares of winning outcome
           market.state === 'resolved' &&

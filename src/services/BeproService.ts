@@ -212,6 +212,21 @@ export default class BeproService {
     return response;
   }
 
+  public async claimVoidedOutcomeShares(
+    marketId: string | number,
+    outcomeId: string | number
+  ) {
+    // ensuring user has wallet connected
+    await this.login();
+
+    const response = await this.contracts.pm.claimVoidedOutcomeShares({
+      marketId,
+      outcomeId
+    });
+
+    return response;
+  }
+
   public async claimLiquidity(marketId: string | number) {
     // ensuring user has wallet connected
     await this.login();
