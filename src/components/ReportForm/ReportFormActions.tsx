@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { useField, useFormikContext } from 'formik';
+import { roundNumber } from 'helpers/math';
 import has from 'lodash/has';
 import { fetchAditionalData, login } from 'redux/ducks/bepro';
 import { changeData, changeQuestion } from 'redux/ducks/market';
@@ -14,8 +15,9 @@ import { QuestionIcon } from 'assets/icons';
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 import useToastNotification from 'hooks/useToastNotification';
 
-import { Alert } from '../Alert';
+import { Alert, AlertMinimal } from '../Alert';
 import { Button } from '../Button';
+import Link from '../Link';
 import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 import Tooltip from '../Tooltip';
@@ -64,9 +66,22 @@ function ReportFormActions({
   const marketSlug = useAppSelector(state => state.market.market.slug);
   const isPolkApproved = useAppSelector(state => state.bepro.polkApproved);
   const { id, questionId } = useAppSelector(state => state.market.market);
+  const { bestAnswer } = useAppSelector(state => state.market.market.question);
+  const questionBond = useAppSelector(
+    state => state.market.market.question.bond
+  );
 
   // Derivated state
   const isMarketPage = location.pathname === `/markets/${marketSlug}`;
+  const resolvedOutcomeId = BeproService.bytes32ToInt(bestAnswer);
+
+  const isWinningOutcome = outcomeId =>
+    `${resolvedOutcomeId}` === `${outcomeId}`;
+
+  const showCurrentOutcomeBondWarning =
+    !marketQuestionFinalized &&
+    isWinningOutcome(outcome.value) &&
+    bond.value > 0;
 
   async function handleApprovePolk() {
     const beproService = new BeproService();
@@ -220,6 +235,29 @@ function ReportFormActions({
             </Toast>
           </ToastNotification>
         ) : null}
+        {showCurrentOutcomeBondWarning ? (
+          <AlertMinimal
+            variant="warning"
+            description={
+              <>
+                {`Placing a bond on the winning outcome will restart the timer.
+                You will have to pay the previous answerer ${roundNumber(
+                  questionBond,
+                  3
+                )} POLK. `}
+                <Link
+                  target="_blank"
+                  href="https://help.polkamarkets.com/en/articles/5610525-how-market-resolution-works"
+                  rel="noreferrer"
+                  variant="warning"
+                  scale="caption"
+                  fontWeight="semibold"
+                  title="Learn more"
+                />
+              </>
+            }
+          />
+        ) : null}
         {marketQuestionFinalized ? (
           <Alert
             variant="success"
@@ -281,7 +319,7 @@ function ReportFormActions({
           ) : (
             <Button
               type="submit"
-              color="primary"
+              color={showCurrentOutcomeBondWarning ? 'warning' : 'primary'}
               fullwidth
               onClick={handleBond}
               disabled={
