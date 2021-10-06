@@ -51,7 +51,7 @@ function MarketStats({ market }: MarketStatsProps) {
           fontWeight="semibold"
           className="pm-market__stats-item__price"
         >
-          {`${outcomeStats[0].price} ${symbol}`}
+          {`${roundNumber(outcomeStats[0].price, 3)} ${symbol}`}
         </Text>
       </Card>
       <Card
@@ -101,7 +101,7 @@ function MarketStats({ market }: MarketStatsProps) {
           fontWeight="semibold"
           className="pm-market__stats-item__price"
         >
-          {`${outcomeStats[1].price} ${symbol}`}
+          {`${roundNumber(outcomeStats[1].price, 3)} ${symbol}`}
         </Text>
       </Card>
       <Card

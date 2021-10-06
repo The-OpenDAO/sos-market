@@ -31,6 +31,7 @@ const initialState: MarketInitialState = {
     expiresAt: '',
     state: 'open',
     verified: false,
+    voided: false,
     questionId: '',
     resolvedOutcomeId: -1,
     outcomes: [
