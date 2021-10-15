@@ -6,7 +6,7 @@ import { getMarket, setChartViewType } from 'redux/ducks/market';
 import { reset } from 'redux/ducks/trade';
 import { openTradeForm } from 'redux/ducks/ui';
 
-import { Tabs, Table, Text } from 'components';
+import { Tabs, Table, Text, SEO } from 'components';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 
@@ -15,7 +15,7 @@ import MarketChart from './MarketChart';
 import MarketChartViewSelector from './MarketChartViewSelector';
 import MarketHead from './MarketHead';
 import MarketStats from './MarketStats';
-import { formatMarketPositions } from './utils';
+import { formatMarketPositions, formatSEODescription } from './utils';
 
 type Params = {
   marketId: string;
@@ -60,6 +60,14 @@ const Market = () => {
 
   return (
     <div className="market-page">
+      <SEO
+        title={market.title}
+        description={formatSEODescription(
+          market.category,
+          market.subcategory,
+          market.expiresAt
+        )}
+      />
       <MarketAnalytics
         liquidity={market.liquidity}
         volume={market.volume}
