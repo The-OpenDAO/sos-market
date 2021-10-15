@@ -10,6 +10,8 @@ import FavoriteMarketsProvider from 'contexts/favoriteMarkets';
 
 import { useLocalStorage, useTheme } from 'hooks';
 
+const POLKAMARKETS_DEFAULT_BANNER = `${process.env.PUBLIC_URL}/polkamarkets_meta.jpg`;
+
 const App = () => {
   const { theme } = useTheme();
   const [localStorageTheme, setLocalStorageTheme] = useLocalStorage('theme');
@@ -23,6 +25,7 @@ const App = () => {
       <SEO
         title="Polkamarkets - Gamified Prediction Markets"
         description="Polkamarkets is a DeFi-Powered Prediction Market built for cross-chain information exchange, based on Polkadot."
+        imageUrl={POLKAMARKETS_DEFAULT_BANNER}
       />
       <MuiPickersUtilsProvider utils={DayjsUtils}>
         <FavoriteMarketsProvider>
