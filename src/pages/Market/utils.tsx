@@ -4,6 +4,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { fromTimestampToDate } from 'helpers/date';
 import { roundNumber } from 'helpers/math';
+import { capitalize } from 'helpers/string';
 import reverse from 'lodash/reverse';
 import times from 'lodash/times';
 import { Market } from 'models/market';
@@ -217,4 +218,20 @@ function formatMarketPositions(
   return { columns, rows };
 }
 
-export { formatMarketPositions, generateMarketChartRandomData };
+function formatSEODescription(
+  category: string,
+  subcategory: string,
+  expiresAt: string
+) {
+  return `${capitalize(category)} / ${capitalize(
+    subcategory
+  )} - Market closes at ${dayjs(expiresAt).format('YYYY/MM/DD')} ${dayjs(
+    expiresAt
+  ).format('h:mm A')}`;
+}
+
+export {
+  formatMarketPositions,
+  generateMarketChartRandomData,
+  formatSEODescription
+};
