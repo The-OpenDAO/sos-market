@@ -56,6 +56,7 @@ import ScrollableArea from './ScrollableArea';
 import ScrollToTop from './ScrollToTop';
 import SearchBar from './SearchBar';
 import Select from './Select';
+import SEO from './SEO';
 import Sidebar from './Sidebar';
 import StepSlider from './StepSlider';
 import Table from './Table';
@@ -129,6 +130,7 @@ export {
   SearchBar,
   Select,
   SelectInput,
+  SEO,
   Sidebar,
   ReportForm,
   Ribbon,
