@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import dayjs from 'dayjs';
 import { getMarket, setChartViewType } from 'redux/ducks/market';
 import { reset } from 'redux/ducks/trade';
 import { openTradeForm } from 'redux/ducks/ui';
 
-import { Tabs, Table, Text } from 'components';
+import { ArrowLeftIcon } from 'assets/icons';
+
+import { Tabs, Table, Text, Button } from 'components';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 
@@ -23,6 +25,7 @@ type Params = {
 
 const Market = () => {
   const dispatch = useAppDispatch();
+  const history = useHistory();
   const { currency } = useNetwork();
   const { symbol, ticker } = currency;
   const network = useNetwork();
@@ -59,50 +62,69 @@ const Market = () => {
   );
 
   return (
-    <div className="market-page">
-      <MarketAnalytics
-        liquidity={market.liquidity}
-        volume={market.volume}
-        expiration={dayjs(market.expiresAt).format('YYYY-MM-DD')}
-      />
-      <MarketHead
-        section={market.category}
-        subsection={market.subcategory}
-        imageUrl={market.imageUrl}
-        description={market.title}
-      />
-      {market.tradingViewSymbol ? <MarketChartViewSelector /> : null}
-      <div className="market-page__stats">
+    <div className="pm-p-market">
+      <div className="pm-p-market__analytics">
+        <MarketAnalytics
+          liquidity={market.liquidity}
+          volume={market.volume}
+          expiration={dayjs(market.expiresAt).format('YYYY-MM-DD')}
+        />
+      </div>
+      <div className="pm-p-market__market">
+        <MarketHead
+          section={market.category}
+          subsection={market.subcategory}
+          imageUrl={market.imageUrl}
+          description={market.title}
+        />
+      </div>
+      <div className="pm-p-market__actions">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => history.push('/home')}
+          aria-label="Back to Markets"
+        >
+          <ArrowLeftIcon />
+          Back to Markets
+        </Button>
+      </div>
+      <div className="pm-p-market__charts">
+        {market.tradingViewSymbol ? <MarketChartViewSelector /> : null}
         <MarketChart />
+      </div>
+      <div className="pm-p-market__stats">
         <MarketStats market={market} />
       </div>
-      <Tabs defaultActiveId="positions">
-        <Tabs.TabPane tab="Positions" id="positions">
-          <Table
-            columns={tableItems.columns}
-            rows={tableItems.rows}
-            isLoadingData={isLoading}
-            emptyDataDescription="You have no positions."
-          />
-        </Tabs.TabPane>
-        {/* market.description ? (
+      <div className="pm-p-market__tabs">
+        <Tabs defaultActiveId="positions">
+          <Tabs.TabPane tab="Positions" id="positions">
+            <Table
+              columns={tableItems.columns}
+              rows={tableItems.rows}
+              isLoadingData={isLoading}
+              emptyDataDescription="You have no positions."
+            />
+          </Tabs.TabPane>
+          {/* market.description ? (
           <Tabs.TabPane tab="About market" id="about">
             <Text as="p" scale="body" fontWeight="medium" color="light">
               Coming Soon 🔥
             </Text>
           </Tabs.TabPane>
         ) : null */}
-        <Tabs.TabPane tab="News" id="news">
-          <Text
-            as="p"
-            scale="body"
-            fontWeight="medium"
-            className="market-page__news"
-          >
-            Coming Soon 🔥
-          </Text>
-        </Tabs.TabPane>
-      </Tabs>
+          <Tabs.TabPane tab="News" id="news">
+            <Text
+              as="p"
+              scale="body"
+              fontWeight="medium"
+              className="market-page__news"
+            >
+              Coming Soon 🔥
+            </Text>
+          </Tabs.TabPane>
+        </Tabs>
+      </div>
     </div>
   );
 };
