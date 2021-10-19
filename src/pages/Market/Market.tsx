@@ -118,7 +118,7 @@ const Market = () => {
               as="p"
               scale="body"
               fontWeight="medium"
-              className="market-page__news"
+              className="pm-p-market__news"
             >
               Coming Soon 🔥
             </Text>
