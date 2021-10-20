@@ -67,6 +67,7 @@ const Market = () => {
           market.subcategory,
           market.expiresAt
         )}
+        imageUrl={market.bannerUrl}
       />
       <MarketAnalytics
         liquidity={market.liquidity}
