@@ -38,6 +38,7 @@ export interface Market {
   category: string;
   subcategory: string;
   imageUrl: string;
+  bannerUrl: string;
   title: string;
   volume: number;
   shares: number;
