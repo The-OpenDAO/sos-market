@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { api } = require('./index');
 
 async function getMarket(marketSlug) {
