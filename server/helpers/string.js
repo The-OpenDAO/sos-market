@@ -15,6 +15,31 @@ function formatMarketMetadata({ title, category, subcategory, expiresAt }) {
   };
 }
 
+function replaceToMetadataTemplate({
+  htmlData,
+  url,
+  title,
+  description,
+  image
+}) {
+  return htmlData
+    .replace(
+      '<title>Polkamarkets - Gamified Prediction Markets</title>',
+      `<title>${title}</title>`
+    )
+    .replace('__META_TITLE__', title)
+    .replace('__META_DESCRIPTION__', description)
+    .replace('__META_OG_URL__', url)
+    .replace('__META_OG_TITLE__', title)
+    .replace('__META_OG_DESCRIPTION__', description)
+    .replace('__META_OG_IMAGE__', image)
+    .replace('__META_TWITTER_URL__', url)
+    .replace('__META_TWITTER_TITLE__', title)
+    .replace('__META_TWITTER_DESCRIPTION__', description)
+    .replace('__META_TWITTER_IMAGE__', image);
+}
+
 module.exports = {
-  formatMarketMetadata
+  formatMarketMetadata,
+  replaceToMetadataTemplate
 };
