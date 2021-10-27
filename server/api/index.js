@@ -1,6 +1,6 @@
-import { onResponse, onError } from './interceptors';
-
 const axios = require('axios');
+
+const { onResponse, onError } = require('./interceptors');
 
 const api = axios.create();
 
