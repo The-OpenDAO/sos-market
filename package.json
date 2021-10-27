@@ -30,6 +30,7 @@
     "classnames": "^2.2.6",
     "craco-plugin-style-resources-loader": "0.0.3",
     "dayjs": "^1.10.6",
+    "express": "^4.17.1",
     "formik": "^2.2.9",
     "framer-motion": "^3.10.5",
     "geoip-country": "^4.0.76",
