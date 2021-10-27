@@ -1,4 +1,4 @@
-const dayjs = require('dayjs');
+const { toUTC } = require('./datetime');
 
 function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
@@ -9,9 +9,7 @@ function formatMarketMetadata({ title, category, subcategory, expiresAt }) {
     title,
     description: `${capitalize(category)} / ${capitalize(
       subcategory
-    )} - Market closes at ${dayjs(expiresAt).format('YYYY/MM/DD')} ${dayjs(
-      expiresAt
-    ).format('h:mm A')}`
+    )} - Market closes at ${toUTC(expiresAt, 'YYYY/MM/DD h:mm A')} UTC`
   };
 }
 
