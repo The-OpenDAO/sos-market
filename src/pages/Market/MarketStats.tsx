@@ -30,9 +30,9 @@ function MarketStats({ market }: MarketStatsProps) {
   });
 
   return (
-    <div className="pm-market__stats">
+    <div className="pm-p-market__stats">
       <Card
-        className="pm-market__stats-item"
+        className="pm-p-market__stats-item"
         size="lg"
         title={
           <Text
@@ -49,13 +49,13 @@ function MarketStats({ market }: MarketStatsProps) {
           as="p"
           scale="body"
           fontWeight="semibold"
-          className="pm-market__stats-item__price"
+          className="pm-p-market__stats-item__price"
         >
           {`${roundNumber(outcomeStats[0].price, 3)} ${symbol}`}
         </Text>
       </Card>
       <Card
-        className="pm-market__stats-item"
+        className="pm-p-market__stats-item"
         size="lg"
         title={
           <Text
@@ -82,7 +82,7 @@ function MarketStats({ market }: MarketStatsProps) {
         </Text>
       </Card>
       <Card
-        className="pm-market__stats-item"
+        className="pm-p-market__stats-item"
         size="lg"
         title={
           <Text
@@ -99,13 +99,13 @@ function MarketStats({ market }: MarketStatsProps) {
           as="p"
           scale="body"
           fontWeight="semibold"
-          className="pm-market__stats-item__price"
+          className="pm-p-market__stats-item__price"
         >
           {`${roundNumber(outcomeStats[1].price, 3)} ${symbol}`}
         </Text>
       </Card>
       <Card
-        className="pm-market__stats-item"
+        className="pm-p-market__stats-item"
         size="lg"
         title={
           <Text
@@ -133,7 +133,5 @@ function MarketStats({ market }: MarketStatsProps) {
     </div>
   );
 }
-
-MarketStats.displayName = 'MarketStats';
 
 export default MarketStats;

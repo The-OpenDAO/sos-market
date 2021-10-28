@@ -28,10 +28,6 @@
         color: themed('details-text-color');
       }
     }
-
-    &__actions {
-      @include flex-row(center, center);
-    }
   }
 }
 
@@ -49,7 +45,11 @@
     border-radius: 0.4rem;
 
     &__header {
-      @include flex-row(space-between, center);
+      @include flex-column(center, flex-start, 1.6rem);
+
+      @include breakpoint-to('md') {
+        @include flex-row(space-between, center, 1.6rem);
+      }
 
       &-actions {
         @include flex-row;
