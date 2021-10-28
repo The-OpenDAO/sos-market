@@ -8,6 +8,13 @@ import { useAppSelector, useNetwork } from 'hooks';
 import ChartHeader from '../ChartHeader';
 import LineChart from '../LineChart';
 
+const intervals = [
+  { id: '24h', name: '24H', value: 24 },
+  { id: '7d', name: '7D', value: 168 },
+  { id: '30d', name: '30D', value: 720 },
+  { id: 'all', name: 'ALL', value: 1440 }
+];
+
 function TradeFormCharts() {
   const { currency } = useNetwork();
   const { ticker } = currency;
@@ -15,18 +22,11 @@ function TradeFormCharts() {
   const predictions = useAppSelector(state => state.market.market.outcomes);
   const marketSlug = useAppSelector(state => state.market.market.slug);
 
-  const [currentInterval, setCurrentInterval] = useState(24);
+  const [currentInterval, setCurrentInterval] = useState(1440);
 
   const isMarketPage = location.pathname === `/markets/${marketSlug}`;
 
   if (isMarketPage) return null;
-
-  const intervals = [
-    { id: '24h', name: '24H', value: 24 },
-    { id: '7d', name: '7D', value: 168 },
-    { id: '30d', name: '30D', value: 720 },
-    { id: 'all', name: 'ALL', value: 1440 }
-  ];
 
   const timeframe = intervals.find(
     interval => interval.value === currentInterval
@@ -48,7 +48,7 @@ function TradeFormCharts() {
     <div className="pm-c-trade-form-charts">
       <ChartHeader
         intervals={intervals}
-        defaultIntervalId="hour"
+        defaultIntervalId="all"
         onChangeInterval={(_interval, value) => setCurrentInterval(value)}
       />
       <LineChart series={series} ticker={ticker} height={180} />
