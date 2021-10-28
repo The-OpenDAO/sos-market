@@ -98,7 +98,7 @@ app.get('/markets/:slug', async (request, response) => {
         })
       );
     } catch (e) {
-      return response.sendFile(indexPath);
+      return response.send(defaultMetadataTemplate(request, htmlData));
     }
   });
 });
@@ -106,7 +106,7 @@ app.get('/markets/:slug', async (request, response) => {
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 app.get('*', (_request, response) => {
-  response.sendFile(indexPath);
+  response.redirect('/');
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
