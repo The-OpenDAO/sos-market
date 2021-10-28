@@ -4,12 +4,19 @@ function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
 }
 
-function formatMarketMetadata({ title, category, subcategory, expiresAt }) {
+function formatMarketMetadata({
+  title,
+  category,
+  subcategory,
+  expiresAt,
+  bannerUrl
+}) {
   return {
     title,
     description: `${capitalize(category)} / ${capitalize(
       subcategory
-    )} - Market closes at ${toUTC(expiresAt, 'YYYY/MM/DD h:mm A')} UTC`
+    )} - Market closes at ${toUTC(expiresAt, 'YYYY/MM/DD h:mm A')} UTC`,
+    image: bannerUrl
   };
 }
 

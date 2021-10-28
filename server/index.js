@@ -74,13 +74,15 @@ app.get('/markets/:slug', async (request, response) => {
 
     try {
       const market = await getMarket(marketSlug);
-      const { title, category, subcategory, expiresAt } = market.data;
+      const { title, category, subcategory, expiresAt, bannerUrl } =
+        market.data;
 
       const marketMetadata = formatMarketMetadata({
         title,
         category,
         subcategory,
-        expiresAt
+        expiresAt,
+        bannerUrl
       });
 
       return response.send(
@@ -89,9 +91,10 @@ app.get('/markets/:slug', async (request, response) => {
           url: `${request.headers['x-forwarded-proto'] || 'http'}://${
             request.headers.host
           }/markets/${request.params.slug}`,
-          title: marketMetadata.title,
-          description: marketMetadata.description,
-          image: defaultMetadata.image
+          title: marketMetadata.title || defaultMetadata.title,
+          description:
+            marketMetadata.description || defaultMetadata.description,
+          image: marketMetadata.bannerUrl || defaultMetadata.image
         })
       );
     } catch (e) {
