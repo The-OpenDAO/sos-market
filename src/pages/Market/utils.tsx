@@ -2,7 +2,7 @@
 import React from 'react';
 
 import dayjs from 'dayjs';
-import { fromTimestampToDate } from 'helpers/date';
+import { fromTimestampToDate, toUTC } from 'helpers/date';
 import { roundNumber } from 'helpers/math';
 import { capitalize } from 'helpers/string';
 import reverse from 'lodash/reverse';
@@ -225,9 +225,7 @@ function formatSEODescription(
 ) {
   return `${capitalize(category)} / ${capitalize(
     subcategory
-  )} - Market closes at ${dayjs(expiresAt).format('YYYY/MM/DD')} ${dayjs(
-    expiresAt
-  ).format('h:mm A')}`;
+  )} - Market closes at ${toUTC(expiresAt, 'YYYY/MM/DD h:mm A')} UTC`;
 }
 
 export {
