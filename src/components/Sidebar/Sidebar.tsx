@@ -54,11 +54,11 @@ const Sidebar = () => {
           <Tooltip text="Markets" position="right" disabled={!collapsed}>
             <Menu.Item key="markets" style={{ padding: '1.8rem 0rem' }}>
               <NavLink
-                to="/home"
+                to="/"
                 className="sidebar__link--lg"
                 activeClassName="sidebar__link--lg active"
                 isActive={(_match, location) => {
-                  return location.pathname === '/home' && filter === '';
+                  return location.pathname === '/' && filter === '';
                 }}
                 onClick={() => handleCategorySelected('')}
               >
@@ -110,12 +110,12 @@ const Sidebar = () => {
                 style={{ padding: '1.6rem 0rem' }}
               >
                 <NavLink
-                  to="/home"
+                  to="/"
                   className="sidebar__link"
                   activeClassName="sidebar__link active"
                   isActive={(_match, location) => {
                     return (
-                      location.pathname === '/home' && category.title === filter
+                      location.pathname === '/' && category.title === filter
                     );
                   }}
                   onClick={() => handleCategorySelected(category.title)}

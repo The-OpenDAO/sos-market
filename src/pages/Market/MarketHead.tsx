@@ -20,7 +20,7 @@ const MarketHead = ({
   const history = useHistory();
 
   function handleNavigation() {
-    history.push('/home');
+    history.push('/');
   }
 
   return (
