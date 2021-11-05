@@ -78,7 +78,7 @@ const NETWORKS: {
     key: 'moonriver',
     currency: MOVR,
     decimals: 18,
-    explorerURL: 'https://blockscout.moonriver.moonbeam.network',
+    explorerURL: 'https://moonriver.moonscan.io',
     rpcUrls: ['https://rpc.moonriver.moonbeam.network'],
     buyEc20Url: `//app.sushi.com/swap?inputCurrency=&outputCurrency=${REACT_APP_ERC20_CONTRACT_ADDRESS}`
   },
