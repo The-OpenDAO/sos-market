@@ -4930,7 +4930,7 @@ bech32@1.1.4, bech32@^1.1.3:
 
 bepro-js@bepronetwork/bepro-js#feature/prediction-markets:
   version "1.1.7"
-  resolved "https://codeload.github.com/bepronetwork/bepro-js/tar.gz/a8a189f4813cacf74750c68b85cc5e80e8d24970"
+  resolved "https://codeload.github.com/bepronetwork/bepro-js/tar.gz/99553c953d71fcc40aefc6dc6df3ecc3c4125ba2"
   dependencies:
     "@openzeppelin/contracts" "^3.2.0"
     "@openzeppelin/contracts-upgradeable" "^3.2.0"
