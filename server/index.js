@@ -30,7 +30,9 @@ const defaultMetadataTemplate = (request, htmlData) => {
     }${request.url}`,
     title: defaultMetadata.title,
     description: defaultMetadata.description,
-    image: defaultMetadata.image
+    image: `${request.headers['x-forwarded-proto'] || 'http'}://${
+      request.headers.host
+    }${defaultMetadata.image}`
   });
 };
 
@@ -94,7 +96,11 @@ app.get('/markets/:slug', async (request, response) => {
           title: marketMetadata.title || defaultMetadata.title,
           description:
             marketMetadata.description || defaultMetadata.description,
-          image: marketMetadata.bannerUrl || defaultMetadata.image
+          image:
+            marketMetadata.bannerUrl ||
+            `${request.headers['x-forwarded-proto'] || 'http'}://${
+              request.headers.host
+            }${defaultMetadata.image}`
         })
       );
     } catch (e) {
