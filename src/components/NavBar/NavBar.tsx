@@ -27,7 +27,7 @@ function NavBar() {
   return (
     <div className="pm-l-navbar">
       <figure className="pm-l-navbar__icon">
-        <Link to="/home" aria-label="Home" onClick={handleNavigation}>
+        <Link to="/" aria-label="Home" onClick={handleNavigation}>
           <PolkamarketsIcon />
         </Link>
         <a href={RISK_DISCLOSURE_DOC_URL} target="_blank" rel="noreferrer">

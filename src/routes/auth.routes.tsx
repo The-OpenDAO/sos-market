@@ -10,9 +10,7 @@ const AuthRoutes = () => {
 
   return (
     <Suspense fallback={null}>
-      <Switch>
-        {walletConnected ? <Redirect to="/home" /> : <PrivateBeta />}
-      </Switch>
+      <Switch>{walletConnected ? <Redirect to="/" /> : <PrivateBeta />}</Switch>
     </Suspense>
   );
 };

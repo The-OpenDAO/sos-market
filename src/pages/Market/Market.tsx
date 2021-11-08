@@ -8,7 +8,7 @@ import { openTradeForm } from 'redux/ducks/ui';
 
 import { ArrowLeftIcon } from 'assets/icons';
 
-import { Tabs, Table, Text, Button } from 'components';
+import { Tabs, Table, Text, Button, SEO } from 'components';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 
@@ -17,7 +17,7 @@ import MarketChart from './MarketChart';
 import MarketChartViewSelector from './MarketChartViewSelector';
 import MarketHead from './MarketHead';
 import MarketStats from './MarketStats';
-import { formatMarketPositions } from './utils';
+import { formatMarketPositions, formatSEODescription } from './utils';
 
 type Params = {
   marketId: string;
@@ -63,6 +63,15 @@ const Market = () => {
 
   return (
     <div className="pm-p-market">
+      <SEO
+        title={market.title}
+        description={formatSEODescription(
+          market.category,
+          market.subcategory,
+          market.expiresAt
+        )}
+        imageUrl={market.bannerUrl}
+      />
       <div className="pm-p-market__analytics">
         <MarketAnalytics
           liquidity={market.liquidity}
@@ -82,7 +91,7 @@ const Market = () => {
         <Button
           variant="outline"
           size="sm"
-          onClick={() => history.push('/home')}
+          onClick={() => history.push('/')}
           aria-label="Back to Markets"
         >
           <ArrowLeftIcon />

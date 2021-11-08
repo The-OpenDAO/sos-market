@@ -67,10 +67,7 @@ const AppRoutes = () => {
     <Layout>
       <Suspense fallback={null}>
         <Switch>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-          <Route component={Home} path="/home" />
+          <Route component={Home} exact path="/" />
           <Route component={Market} path="/markets" />
           <Route component={Portfolio} path="/portfolio" />
           <Route component={CreateMarket} path="/market/create" />

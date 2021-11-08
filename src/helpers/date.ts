@@ -14,6 +14,17 @@ function fromTimestampToCustomFormatDate(timestamp: number, format: string) {
   return dayjs(timestamp).format(format);
 }
 
+function toUTC(date: any, formatTemplate: string) {
+  dayjs.extend(utc);
+  const utcDate = dayjs(date).subtract(dayjs().utcOffset(), 'minutes');
+
+  if (formatTemplate) {
+    return utcDate.format(formatTemplate);
+  }
+
+  return utcDate;
+}
+
 function relativeTimeFromNow(timestamp: number) {
   dayjs.extend(relativeTime);
   dayjs.extend(updateLocale);
@@ -59,6 +70,7 @@ function relativeTimeToX(timestamp: number) {
 export {
   fromTimestampToDate,
   fromTimestampToCustomFormatDate,
+  toUTC,
   relativeTimeFromNow,
   relativeTimeToX
 };

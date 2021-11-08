@@ -22,6 +22,7 @@ const initialState: MarketInitialState = {
     category: '',
     subcategory: '',
     imageUrl: '',
+    bannerUrl: '',
     title: '',
     volume: 0,
     shares: 0,
