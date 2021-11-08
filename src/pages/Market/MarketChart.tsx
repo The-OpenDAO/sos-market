@@ -7,6 +7,13 @@ import { ChartHeader, LineChart, Text } from 'components';
 
 import { useAppSelector, useNetwork, useTheme } from 'hooks';
 
+const intervals = [
+  { id: '24h', name: '24H', value: 24 },
+  { id: '7d', name: '7D', value: 168 },
+  { id: '30d', name: '30D', value: 720 },
+  { id: 'all', name: 'ALL', value: 1440 }
+];
+
 const MarketChart = () => {
   const { theme } = useTheme();
   const { currency } = useNetwork();
@@ -15,14 +22,7 @@ const MarketChart = () => {
   const { chartViewType } = useAppSelector(state => state.market);
   const { tradingViewSymbol } = useAppSelector(state => state.market.market);
 
-  const [currentInterval, setCurrentInterval] = useState(24);
-
-  const intervals = [
-    { id: '24h', name: '24H', value: 24 },
-    { id: '7d', name: '7D', value: 168 },
-    { id: '30d', name: '30D', value: 720 },
-    { id: 'all', name: 'ALL', value: 1440 }
-  ];
+  const [currentInterval, setCurrentInterval] = useState(1440);
 
   const timeframe = intervals.find(
     interval => interval.value === currentInterval
@@ -57,7 +57,7 @@ const MarketChart = () => {
               <div className="market-chart__header-actions">
                 <ChartHeader
                   intervals={intervals}
-                  defaultIntervalId="hour"
+                  defaultIntervalId="all"
                   onChangeInterval={
                     (_interval, value) => setCurrentInterval(value)
                     // eslint-disable-next-line react/jsx-curly-newline

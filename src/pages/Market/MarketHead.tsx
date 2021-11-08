@@ -1,8 +1,4 @@
-import { useHistory } from 'react-router-dom';
-
-import { ArrowLeftIcon } from 'assets/icons';
-
-import { Breadcrumb, Button, Text } from 'components';
+import { Breadcrumb, Text } from 'components';
 
 type MarketHeadProps = {
   section: string;
@@ -17,12 +13,6 @@ const MarketHead = ({
   imageUrl,
   description
 }: MarketHeadProps) => {
-  const history = useHistory();
-
-  function handleNavigation() {
-    history.push('/');
-  }
-
   return (
     <div className="market-head">
       <img className="market-head__image" alt="market head" src={imageUrl} />
@@ -35,21 +25,8 @@ const MarketHead = ({
           {description}
         </Text>
       </div>
-      <div className="market-head__actions">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={handleNavigation}
-          aria-label="Back to Markets"
-        >
-          <ArrowLeftIcon />
-          Back to Markets
-        </Button>
-      </div>
     </div>
   );
 };
-
-MarketHead.displayName = 'Market head';
 
 export default MarketHead;

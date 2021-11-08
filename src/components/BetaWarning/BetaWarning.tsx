@@ -51,7 +51,7 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
         >
           <Text as="p" scale="caption" fontWeight="medium">
             <>
-              {`I Agree the `}
+              {`I Agree to the `}
               <Link
                 title="Terms & Service"
                 scale="caption"
