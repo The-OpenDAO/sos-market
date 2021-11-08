@@ -15,7 +15,7 @@ function formatMarketMetadata({
     title,
     description: `${capitalize(category)} / ${capitalize(
       subcategory
-    )} - Market closes at ${toUTC(expiresAt, 'YYYY/MM/DD h:mm A')} UTC`,
+    )} - Market closes at ${toUTC(expiresAt, 'YYYY/MM/DD')}`,
     image: bannerUrl
   };
 }

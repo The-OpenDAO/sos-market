@@ -225,7 +225,7 @@ function formatSEODescription(
 ) {
   return `${capitalize(category)} / ${capitalize(
     subcategory
-  )} - Market closes at ${toUTC(expiresAt, 'YYYY/MM/DD h:mm A')} UTC`;
+  )} - Market closes at ${toUTC(expiresAt, 'YYYY/MM/DD')}`;
 }
 
 export {
