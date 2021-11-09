@@ -97,7 +97,7 @@ app.get('/markets/:slug', async (request, response) => {
           description:
             marketMetadata.description || defaultMetadata.description,
           image:
-            marketMetadata.bannerUrl ||
+            marketMetadata.image ||
             `${request.headers['x-forwarded-proto'] || 'http'}://${
               request.headers.host
             }${defaultMetadata.image}`
