@@ -76,7 +76,7 @@ const Market = () => {
         <MarketAnalytics
           liquidity={market.liquidity}
           volume={market.volume}
-          expiration={dayjs(market.expiresAt).format('YYYY-MM-DD')}
+          expiration={dayjs(market.expiresAt).utc().format('YYYY-MM-DD HH:mm UTC')}
         />
       </div>
       <div className="pm-p-market__market">
