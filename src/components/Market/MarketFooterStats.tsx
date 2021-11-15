@@ -35,7 +35,7 @@ function MarketFooterStats({ market, ticker }: MarketFooterStatsProps) {
         <Text as="span" scale="tiny-uppercase" fontWeight="semibold">
           {`Expiration: `}
           <Text as="strong" scale="tiny-uppercase" fontWeight="semibold">
-            {dayjs(expiresAt).format('YYYY-MM-DD')}
+            {dayjs(expiresAt).utc().format('YYYY-MM-DD HH:mm UTC')}
           </Text>
         </Text>
       ) : null}
