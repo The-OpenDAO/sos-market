@@ -76,7 +76,9 @@ const Market = () => {
         <MarketAnalytics
           liquidity={market.liquidity}
           volume={market.volume}
-          expiration={dayjs(market.expiresAt).utc().format('YYYY-MM-DD HH:mm UTC')}
+          expiration={dayjs(market.expiresAt)
+            .utc()
+            .format('YYYY-MM-DD HH:mm UTC')}
         />
       </div>
       <div className="pm-p-market__market">
@@ -98,8 +100,10 @@ const Market = () => {
           Back to Markets
         </Button>
       </div>
-      <div className="pm-p-market__charts">
+      <div className="pm-p-market__view">
         {market.tradingViewSymbol ? <MarketChartViewSelector /> : null}
+      </div>
+      <div className="pm-p-market__charts">
         <MarketChart />
       </div>
       <div className="pm-p-market__stats">
