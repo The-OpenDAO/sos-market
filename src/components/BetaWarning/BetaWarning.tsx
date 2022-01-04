@@ -45,6 +45,15 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
           with the Polkamarkets Protocol Smart Contracts via your Web 3 injected
           wallet.
         </Text>
+        <Text
+          as="h6"
+          fontWeight="medium"
+          scale="caption"
+          className="pm-c-beta-warning__description--primary-text"
+        >
+          By entering the website I confirm I am not a citizen or resident in
+          the United States or its territories, nor a US person.
+        </Text>
         <Checkbox
           label="text"
           onChange={() => setAcceptedTerms(!acceptedTerms)}
