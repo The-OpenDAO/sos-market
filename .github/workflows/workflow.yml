@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: deploy-aws ci
+name: deploy sosMarket CI
 
 # Controls when the workflow will run
 on:
@@ -27,14 +27,22 @@ jobs:
 
         - name: Build
           run: yarn build
+#         - name: Deploy
+#           uses: reggionick/s3-deploy@v3
+#           with:
+#             folder: build
+#             bucket: opendao-sosmarket
+#             bucket-region: us-west-1
+#             invalidation: /
+#             delete-removed: true
+#             no-cache: true
+#             private: true
 
-        - name: Deploy
-          uses: reggionick/s3-deploy@v3
+        - name: setup aliyun oss
+          uses: manyuanrong/setup-ossutil@master
           with:
-            folder: build
-            bucket: opendao-sosmarket
-            bucket-region: us-west-1
-            invalidation: /
-            delete-removed: true
-            no-cache: true
-            private: true
+            endpoint: oss-us-west-1.aliyuncs.com
+            access-key-id: ${{ secrets.OSS_KEY_ID }}
+            access-key-secret: ${{ secrets.OSS_KEY_SECRET }}
+        - name: cp aliyun oss
+          run: ossutil cp -rf build/ oss://****/
