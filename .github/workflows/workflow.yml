@@ -1,24 +1,19 @@
-# This is a basic workflow to help you get started with Actions
-name: deploy sosMarket CI
+name: Deploy to OSS
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: 
       - main
   pull_request:
     branches: 
       - main
+
 env:
   CI: false
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
   run:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
         - uses: actions/checkout@v2
 
@@ -27,22 +22,13 @@ jobs:
 
         - name: Build
           run: yarn build
-#         - name: Deploy
-#           uses: reggionick/s3-deploy@v3
-#           with:
-#             folder: build
-#             bucket: opendao-sosmarket
-#             bucket-region: us-west-1
-#             invalidation: /
-#             delete-removed: true
-#             no-cache: true
-#             private: true
 
-        - name: setup aliyun oss
+        - name: Setup Aliyun OSS
           uses: manyuanrong/setup-ossutil@master
           with:
             endpoint: oss-us-west-1.aliyuncs.com
             access-key-id: ${{ secrets.OSS_KEY_ID }}
             access-key-secret: ${{ secrets.OSS_KEY_SECRET }}
-        - name: cp aliyun oss
-          run: ossutil cp -rf build/ oss://****/
+
+        - name: Sync to OSS
+          run: ossutil sync --delete build/ oss://opendao-sosmarket/
