@@ -38,12 +38,9 @@ function LiquidityFormDetails() {
           </Text>
 
           <Text as="span" scale="body" fontWeight="semibold">
-            {
-              // eslint-disable-next-line prettier/prettier
-              `${roundNumber(liquidityDetails.liquidityStake, 3)} ${
-                currency.symbol
-              }`
-            }
+            {`${roundNumber(liquidityDetails.liquidityStake, 3)} ${
+              currency.symbol
+            }`}
           </Text>
         </div>
         <div className="pm-c-liquidity-form__details-shares-added">
@@ -65,10 +62,7 @@ function LiquidityFormDetails() {
             </Text>
 
             <Text as="span" scale="body" fontWeight="semibold">
-              {
-                // eslint-disable-next-line prettier/prettier
-                `${roundNumber(feesEarned, 3)} ${currency.symbol}`
-              }
+              {`${roundNumber(feesEarned, 3)} ${currency.symbol}`}
             </Text>
           </div>
         </div>
@@ -143,9 +137,11 @@ function LiquidityFormDetails() {
         </Text>
 
         <Text as="span" scale="body" fontWeight="semibold">
-          {`${roundNumber(liquidityDetails.totalStake + (transactionType === 'remove' ? feesEarned : 0), 3)} ${
-            currency.symbol
-          }`}
+          {`${roundNumber(
+            liquidityDetails.totalStake +
+              (transactionType === 'remove' ? feesEarned : 0),
+            3
+          )} ${currency.symbol}`}
         </Text>
       </div>
     </div>

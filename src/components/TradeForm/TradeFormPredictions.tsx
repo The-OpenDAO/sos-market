@@ -68,7 +68,6 @@ function TradeFormPredictions() {
               {
                 key: 'yourShares',
                 title: 'Your Shares',
-                // eslint-disable-next-line prettier/prettier
                 value:
                   roundNumber(
                     portfolio[selectedMarketId]?.outcomes[prediction.id]

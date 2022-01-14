@@ -28,8 +28,10 @@ function formatMiniTableItems(
     {
       key: 'pricePerFraction',
       title: 'Price per share',
-      // eslint-disable-next-line prettier/prettier
-      value: `${roundNumber(price || selectedPredictionObj?.price || 0, 3)} ${ticker}`
+      value: `${roundNumber(
+        price || selectedPredictionObj?.price || 0,
+        3
+      )} ${ticker}`
     },
     {
       key: 'shares',

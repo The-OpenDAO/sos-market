@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
+// import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
 import Label from '../Label';
 import MiniAreaChart from '../MiniAreaChart';

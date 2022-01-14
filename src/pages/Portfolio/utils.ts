@@ -115,7 +115,6 @@ function formatMarketPositions(
           value: (outcome.price - buyPrice) * shares,
           change: {
             type: buyPrice <= outcome.price ? 'up' : 'down',
-            // eslint-disable-next-line prettier/prettier
             value: roundNumber(
               (Math.abs(outcome.price - buyPrice) / buyPrice) * 100,
               2

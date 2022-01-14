@@ -30,8 +30,10 @@ function formatMiniTableItems(
     {
       key: 'pricePerFraction',
       title: 'Price per share',
-      // eslint-disable-next-line prettier/prettier
-      value: `${roundNumber(price || selectedPredictionObj?.price || 0, 3)} ${ticker}`
+      value: `${roundNumber(
+        price || selectedPredictionObj?.price || 0,
+        3
+      )} ${ticker}`
     },
     {
       key: 'shares',
@@ -75,8 +77,8 @@ function calculateSharesBought(
   const fee = market.fee * ethAmount;
   const amount = ethAmount - fee;
 
-  // eslint-disable-next-line prettier/prettier
-  const newOutcomeShares = market.liquidity ** 2 / (market.liquidity ** 2 / outcome.shares + amount);
+  const newOutcomeShares =
+    market.liquidity ** 2 / (market.liquidity ** 2 / outcome.shares + amount);
 
   const shares = outcome.shares - newOutcomeShares + amount || 0;
   const price = amount / shares || 0;

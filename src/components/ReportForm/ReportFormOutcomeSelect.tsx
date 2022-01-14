@@ -15,10 +15,13 @@ function ReportFormOutcomeSelect() {
   const isMarketQuestionFinalized = useAppSelector(
     state => state.market.market.question.isFinalized
   );
-  const { bestAnswer, bond } = useAppSelector(state => state.market.market.question);
+  const { bestAnswer, bond } = useAppSelector(
+    state => state.market.market.question
+  );
   const { bonds, portfolio } = useAppSelector(state => state.bepro);
 
   // Form state
+  // @ts-ignore
   const [field, meta, helpers] = useField('outcome');
 
   // converting bytes32 to int
