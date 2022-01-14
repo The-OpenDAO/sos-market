@@ -31,7 +31,7 @@ jobs:
           uses: reggionick/s3-deploy@v3
           with:
             folder: build
-            bucket: sos-market.theopendao.com
+            bucket: opendao-sosmarket
             bucket-region: us-west-1
             invalidation: /
             delete-removed: true
