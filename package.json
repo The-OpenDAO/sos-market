@@ -2,9 +2,6 @@
   "name": "polkamarkets",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "^16"
-  },
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@date-io/dayjs": "1.x",

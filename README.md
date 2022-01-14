@@ -1,6 +1,6 @@
-# sosMarket
+# Polkamarkets
 
-sosMarket is an Autonomous Prediction Market Protocol built for cross-chain information exchange and trading, based on Polkadot.
+Polkamarkets is an Autonomous Prediction Market Protocol built for cross-chain information exchange and trading, based on Polkadot.
 
 ## Project Overview
 
@@ -8,7 +8,7 @@ Our web interface is built with React.
 
 The backend is being developed in partnership with [Bepro.network](https://github.com/bepronetwork), through [`bepro-js`](https://github.com/bepronetwork/bepro-js). You can have a look on our smart contract [here](https://github.com/bepronetwork/bepro-js/blob/feature/prediction-markets/contracts/PredictionMarket.sol).
 
-We're currently running in closed Beta on the Kovan testnet. You can access it at [https://app.sosMarket.com](https://app.sosMarket.com)
+We're currently running in closed Beta on the Kovan testnet. You can access it at [https://app.polkamarkets.com](https://app.polkamarkets.com)
 
 ## Project Setup
 
@@ -20,8 +20,8 @@ We're currently running in closed Beta on the Kovan testnet. You can access it a
 ### 2. Installing the app
 
 ```
-git clone https://github.com/sosMarket/sosMarket-web.git
-cd sosMarket-web
+git clone https://github.com/Polkamarkets/polkamarkets-web.git
+cd polkamarkets-web
 yarn install
 ```
 

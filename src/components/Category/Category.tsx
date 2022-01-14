@@ -24,12 +24,7 @@ type CategoryProps = {
   backgroundColor: BackgroundColor | string;
 };
 
-function Category({
-  title,
-  change,
-  chartData,
-  backgroundColor
-}: CategoryProps) {
+function Category({ title, chartData, backgroundColor }: CategoryProps) {
   const dispatch = useAppDispatch();
   const categories = useCategories();
   const filter = useAppSelector(state => state.markets.filter);
