@@ -31,4 +31,4 @@ jobs:
             access-key-secret: ${{ secrets.OSS_KEY_SECRET }}
 
         - name: Sync to OSS
-          run: ossutil sync --delete build/ oss://opendao-sosmarket/
+          run: ossutil sync --delete --update build/ oss://opendao-sosmarket/
