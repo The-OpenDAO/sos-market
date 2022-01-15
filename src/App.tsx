@@ -23,8 +23,8 @@ const App = () => {
   return (
     <div className={`theme--${localStorageTheme || theme}`}>
       <SEO
-        title="Polkamarkets - Autonomous Prediction Market Protocol"
-        description="Polkamarkets is a DeFi-Powered Prediction Market built for cross-chain information exchange, based on Polkadot."
+        title="SOSMarket - Autonomous Prediction Market Protocol"
+        description="SOSMarket is a DeFi-Powered Prediction Market built for cross-chain information exchange, based on Polkadot."
         imageUrl={POLKAMARKETS_DEFAULT_BANNER}
       />
       <MuiPickersUtilsProvider utils={DayjsUtils}>

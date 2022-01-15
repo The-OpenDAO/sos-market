@@ -30,9 +30,9 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
           scale="caption"
           className="pm-c-beta-warning__description--primary-text"
         >
-          Polkamarkets Protocol is a 100% decentralized protocol for
-          informational and educational purposes only. POLKAMARKET OÜ does not
-          take any custody, profits or host over any markets.
+          SOSMarket Protocol is a 100% decentralized protocol for informational
+          and educational purposes only. POLKAMARKET OÜ does not take any
+          custody, profits or host over any markets.
         </Text>
         <Text
           as="h6"
@@ -42,7 +42,7 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
         >
           POLKAMARKET OÜ displays existing markets live on EVMs or sidechains
           and is a graphical user interface for visualizing data and interacting
-          with the Polkamarkets Protocol Smart Contracts via your Web 3 injected
+          with the SOSMarket Protocol Smart Contracts via your Web 3 injected
           wallet.
         </Text>
         <Text

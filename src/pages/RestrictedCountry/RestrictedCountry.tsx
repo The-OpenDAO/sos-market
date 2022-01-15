@@ -29,7 +29,7 @@ function RestrictedCountry() {
             }}
           >
             <>
-              {`At the moment Polkamarkets Services and POLK Token (POLK) are not available in `}
+              {`At the moment SOSMarket Services and POLK Token (POLK) are not available in `}
               <Link
                 href="https://www.polkamarkets.com/legal/terms-conditions"
                 title="Excluded Jurisdictions."
@@ -57,7 +57,8 @@ function RestrictedCountry() {
               window.open(
                 'https://help.polkamarkets.com/en/articles/5623718-ownership-architecture',
                 '_blank'
-              )}
+              )
+            }
           >
             Learn More
           </Button>

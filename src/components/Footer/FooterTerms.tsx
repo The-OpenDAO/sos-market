@@ -16,7 +16,7 @@ function FooterTerms() {
         }}
       >
         <>
-          {`Polkamarkets Services and POLK Token (POLK) `}
+          {`SOSMarket Services and POLK Token (POLK) `}
           <Link
             title="are not available in Excluded Jurisdictions."
             scale="caption"

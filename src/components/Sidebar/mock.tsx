@@ -51,28 +51,28 @@ const navigationLinks = {
 
 const footerLinks = [
   {
-    name: 'Polkamarkets Twitter',
-    url: 'https://twitter.com/polkamarkets',
+    name: 'SOSMarket Twitter',
+    url: 'https://twitter.com/SOSMarket',
     icon: <TwitterIcon />
   },
   {
-    name: 'Polkamarkets Medium',
-    url: 'https://polkamarkets.medium.com/',
+    name: 'SOSMarket Medium',
+    url: 'https://SOSMarket.medium.com/',
     icon: <MediumIcon />
   },
   {
-    name: 'Polkamarkets Telegram',
-    url: 'https://t.me/polkamarkets',
+    name: 'SOSMarket Telegram',
+    url: 'https://t.me/SOSMarket',
     icon: <TelegramIcon />
   },
   {
-    name: 'Polkamarkets LinkedIn',
-    url: 'https://www.linkedin.com/company/polkamarkets',
+    name: 'SOSMarket LinkedIn',
+    url: 'https://www.linkedin.com/company/SOSMarket',
     icon: <LinkedInIcon />
   },
   {
-    name: 'Polkamarkets GitHub',
-    url: 'https://github.com/Polkamarkets',
+    name: 'SOSMarket GitHub',
+    url: 'https://github.com/SOSMarket',
     icon: <GitHubIcon />
   }
 ];

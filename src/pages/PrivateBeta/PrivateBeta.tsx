@@ -65,7 +65,7 @@ function PrivateBeta() {
             color="white"
             style={{ textAlign: 'center' }}
           >
-            Polkamarkets is on Private Beta
+            SOSMarket is on Private Beta
           </Text>
           <Text
             as="p"

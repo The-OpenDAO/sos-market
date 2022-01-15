@@ -13,7 +13,7 @@ function Footer() {
         fontWeight="semibold"
         className="pm-l-footer__credits"
       >
-        @ 2021 Polkamarkets
+        @ 2021 SOSMarket
       </Text>
       <div className="pm-l-footer__actions">
         <FooterMenu />

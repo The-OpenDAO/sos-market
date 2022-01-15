@@ -1,6 +1,6 @@
-# Polkamarkets
+# SOSMarket
 
-Polkamarkets is an Autonomous Prediction Market Protocol built for cross-chain information exchange and trading, based on Polkadot.
+SOSMarket is an Autonomous Prediction Market Protocol built for cross-chain information exchange and trading, based on Polkadot.
 
 ## Project Overview
 

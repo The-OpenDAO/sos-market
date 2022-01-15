@@ -16,23 +16,21 @@ const {
 const indexPath = path.resolve(__dirname, '..', 'build', 'index.html');
 
 const defaultMetadata = {
-  title: 'Polkamarkets - Autonomous Prediction Market Protocol',
+  title: 'SOSMarket - Autonomous Prediction Market Protocol',
   description:
-    'Polkamarkets is a DeFi-Powered Prediction Market built for cross-chain information exchange, based on Polkadot.',
+    'SOSMarket is a DeFi-Powered Prediction Market built for cross-chain information exchange, based on Polkadot.',
   image: '/polkamarkets_meta.jpg'
 };
 
 const defaultMetadataTemplate = (request, htmlData) => {
   return replaceToMetadataTemplate({
     htmlData,
-    url: `${request.headers['x-forwarded-proto'] || 'http'}://${
-      request.headers.host
-    }${request.url}`,
+    url: `${request.headers['x-forwarded-proto'] || 'http'}://${request.headers.host
+      }${request.url}`,
     title: defaultMetadata.title,
     description: defaultMetadata.description,
-    image: `${request.headers['x-forwarded-proto'] || 'http'}://${
-      request.headers.host
-    }${defaultMetadata.image}`
+    image: `${request.headers['x-forwarded-proto'] || 'http'}://${request.headers.host
+      }${defaultMetadata.image}`
   });
 };
 
@@ -90,16 +88,14 @@ app.get('/markets/:slug', async (request, response) => {
       return response.send(
         replaceToMetadataTemplate({
           htmlData,
-          url: `${request.headers['x-forwarded-proto'] || 'http'}://${
-            request.headers.host
-          }/markets/${request.params.slug}`,
+          url: `${request.headers['x-forwarded-proto'] || 'http'}://${request.headers.host
+            }/markets/${request.params.slug}`,
           title: marketMetadata.title || defaultMetadata.title,
           description:
             marketMetadata.description || defaultMetadata.description,
           image:
             marketMetadata.image ||
-            `${request.headers['x-forwarded-proto'] || 'http'}://${
-              request.headers.host
+            `${request.headers['x-forwarded-proto'] || 'http'}://${request.headers.host
             }${defaultMetadata.image}`
         })
       );
