@@ -7,6 +7,8 @@ RUN yarn
 COPY . .
 
 RUN yarn build
+RUN yarn cache clean
+RUN yarn install --production
 
-EXPOSE 3000
-CMD ["yarn", "start"]
+EXPOSE 5000
+CMD ["yarn", "server"]
