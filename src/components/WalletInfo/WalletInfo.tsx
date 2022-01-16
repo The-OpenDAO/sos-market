@@ -19,7 +19,6 @@ type WalletInfoProps = {
 
 function WalletInfo({ wallets, address }: WalletInfoProps) {
   const network = useNetwork();
-  console.log(network);
 
   return (
     <div className="pm-c-wallet-info">
@@ -33,8 +32,7 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
         size="sm"
         style={{
           padding: '0.4rem 1.4rem',
-          paddingRight: '0.5rem',
-          height: '100%'
+          paddingRight: '0.5rem'
         }}
       >
         {wallets[1].balance}

@@ -42,7 +42,9 @@ const NETWORKS: {
     currency: ETH,
     decimals: 18,
     explorerURL: 'https://rinkeby.etherscan.io',
-    rpcUrls: []
+    rpcUrls: [],
+    buyEc20Url: `//app.sushi.com/swap?inputCurrency=&outputCurrency=${REACT_APP_ERC20_CONTRACT_ADDRESS}`
+    // buyEc20Url: `//app.uniswap.org/#/swap?outputCurrency=${REACT_APP_ERC20_CONTRACT_ADDRESS}&inputCurrency=ETH`
   },
   '0x5': {
     id: '5',
