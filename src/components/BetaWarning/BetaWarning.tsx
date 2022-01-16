@@ -40,8 +40,8 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
           scale="caption"
           className="pm-c-beta-warning__description--primary-text"
         >
-          POLKAMARKET OÜ displays existing markets live on EVMs or sidechains
-          and is a graphical user interface for visualizing data and interacting
+          SOSMarket OÜ displays existing markets live on EVMs or sidechains and
+          is a graphical user interface for visualizing data and interacting
           with the SOSMarket Protocol Smart Contracts via your Web 3 injected
           wallet.
         </Text>
