@@ -16,6 +16,12 @@ const navigationLinks = {
     title: 'Markets',
     items: [
       {
+        name: 'NFT',
+        count: 9,
+        icon: <ExploreIcon />,
+        to: 'nft'
+      },
+      {
         name: 'Crypto',
         count: 27,
         icon: <BitcoinIcon />,
@@ -38,12 +44,6 @@ const navigationLinks = {
         count: 39,
         icon: <WhiteHouseIcon />,
         to: 'politics'
-      },
-      {
-        name: 'Other',
-        count: 9,
-        icon: <ExploreIcon />,
-        to: 'other'
       }
     ]
   }

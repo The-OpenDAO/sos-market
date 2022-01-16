@@ -2,6 +2,16 @@ import { generateChartRandomData } from 'pages/Portfolio/utils';
 
 const categories = [
   {
+    title: 'NFT',
+    route: 'nft',
+    change: {
+      type: 'down',
+      amount: 2.58
+    },
+    backgroundColor: 'blue',
+    chartData: generateChartRandomData()
+  },
+  {
     title: 'Crypto',
     route: 'crypto',
     change: {
@@ -39,16 +49,6 @@ const categories = [
       amount: 2.58
     },
     backgroundColor: 'green',
-    chartData: generateChartRandomData()
-  },
-  {
-    title: 'Other',
-    route: 'other',
-    change: {
-      type: 'down',
-      amount: 2.58
-    },
-    backgroundColor: 'blue',
     chartData: generateChartRandomData()
   }
 ];

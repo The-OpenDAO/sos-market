@@ -60,6 +60,10 @@ function CreateMarketFormConfigure() {
           placeholder="Select Category"
           options={[
             {
+              name: 'NFT',
+              value: 'nft'
+            },
+            {
               name: 'Crypto',
               value: 'crypto'
             },
@@ -74,10 +78,6 @@ function CreateMarketFormConfigure() {
             {
               name: 'Politics',
               value: 'politics'
-            },
-            {
-              name: 'Other',
-              value: 'other'
             }
           ]}
           style={{ height: '100%' }}

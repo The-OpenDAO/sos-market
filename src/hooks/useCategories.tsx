@@ -12,6 +12,16 @@ import { generateChartRandomData } from 'pages/Portfolio/utils';
 
 const categories: Category[] = [
   {
+    title: 'NFT',
+    backgroundColor: 'blue',
+    icon: <ExploreIcon />,
+    chartData: generateChartRandomData(),
+    change: {
+      type: 'up',
+      amount: 0
+    }
+  },
+  {
     title: 'Crypto',
     backgroundColor: 'yellow',
     icon: <BitcoinIcon />,
@@ -45,16 +55,6 @@ const categories: Category[] = [
     title: 'Politics',
     backgroundColor: 'green',
     icon: <WhiteHouseIcon />,
-    chartData: generateChartRandomData(),
-    change: {
-      type: 'up',
-      amount: 0
-    }
-  },
-  {
-    title: 'Other',
-    backgroundColor: 'blue',
-    icon: <ExploreIcon />,
     chartData: generateChartRandomData(),
     change: {
       type: 'up',

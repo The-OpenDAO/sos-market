@@ -48,7 +48,7 @@ function NavBarActions() {
             <Link
               title="feedback"
               target="_blank"
-              href="//discord.gg/Szjn2EEf7w"
+              href="//discord.gg/opendao"
               rel="noreferrer"
               variant="warning"
             />
