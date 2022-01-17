@@ -64,7 +64,7 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
                 title="Terms & Service"
                 scale="caption"
                 fontWeight="medium"
-                href="https://www.polkamarkets.com/legal/terms-conditions"
+                href="/legal/terms-conditions.html"
                 target="_blank"
               />
               {` & I am aware of the `}

@@ -31,7 +31,7 @@ function RestrictedCountry() {
             <>
               {`At the moment SOSMarket Services and POLK Token (POLK) are not available in `}
               <Link
-                href="https://www.polkamarkets.com/legal/terms-conditions"
+                href="/legal/terms-conditions.html"
                 title="Excluded Jurisdictions."
                 scale="body"
                 fontWeight="medium"
