@@ -44,7 +44,7 @@ function NavBarActions() {
         variant="warning"
         description={
           <>
-            {`Welcome Welcome to SOSMarkets! You’re on ${network.name} and placing predictions with ${network.currency.ticker}. Your `}
+            {`Welcome to SOSMarket! You’re on ${network.name} and placing predictions with ${network.currency.ticker}. Your `}
             <Link
               title="feedback"
               target="_blank"
