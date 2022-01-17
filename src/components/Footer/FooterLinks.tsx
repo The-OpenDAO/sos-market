@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { footerLinks } from 'components/Sidebar/mock';
 
 import { useAppSelector } from 'hooks';

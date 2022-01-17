@@ -45,7 +45,7 @@ function CreateMarketBuyPolk({
               fontWeight="semibold"
               className="pm-p-create-market-buy-polk__amount"
             >
-              {`${requiredPolkBalance - polkBalance} POLK`}
+              {`${requiredPolkBalance - polkBalance} SOS`}
             </Text>
             {` to create markets.`}
           </>
@@ -64,7 +64,7 @@ function CreateMarketBuyPolk({
         onClick={handleBuyPolk}
         loading={isLoadingBuyPolk}
       >
-        Buy $POLK
+        Buy $SOS
       </Button>
     </div>
   );

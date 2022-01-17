@@ -9,7 +9,7 @@ import { useTheme } from 'hooks';
 
 import NavBarActions from './NavBarActions';
 import NavBarDropdownMenu from './NavBarDropdownMenu';
-import NavBarMenu from './NavBarMenu';
+// import NavBarMenu from './NavBarMenu';
 import NavBarSearch from './NavBarSearch';
 
 const RISK_DISCLOSURE_DOC_URL =
@@ -35,7 +35,7 @@ function NavBar() {
         </a>
       </figure>
       <NavBarSearch />
-      <NavBarMenu />
+      {/* <NavBarMenu /> */}
       <NavBarActions />
       <NavBarDropdownMenu />
     </div>

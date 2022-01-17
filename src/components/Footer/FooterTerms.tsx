@@ -16,7 +16,7 @@ function FooterTerms() {
         }}
       >
         <>
-          {`SOSMarket Services and POLK Token (POLK) `}
+          {`SOSMarket Services and SOS Token (SOS) `}
           <Link
             title="are not available in Excluded Jurisdictions."
             scale="caption"
@@ -25,7 +25,7 @@ function FooterTerms() {
             style={{
               textDecoration: 'none'
             }}
-            href="https://www.polkamarkets.com/legal/terms-conditions"
+            href="/terms-conditions"
             target="_blank"
           />
           {` By accessing and using the interface you agree with our `}
@@ -33,7 +33,7 @@ function FooterTerms() {
             title="Terms & Conditions"
             scale="caption"
             fontWeight="medium"
-            href="https://www.polkamarkets.com/legal/terms-conditions"
+            href="/terms-conditions"
             target="_blank"
           />
         </>
