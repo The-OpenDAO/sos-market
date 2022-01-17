@@ -45,7 +45,7 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
             style={{ padding: '0.5rem 1rem' }}
             onClick={() => window.open(network.buyEc20Url, '_blank')}
           >
-            Buy $POLK
+            Buy $SOS
           </Button>
         ) : null}
       </Button>

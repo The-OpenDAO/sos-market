@@ -1,4 +1,4 @@
-import { PolkamarketsIcon } from 'assets/icons';
+import { SosmarketIcon } from 'assets/icons';
 
 import { Button, ModalNotification, Text, Link } from 'components';
 
@@ -7,7 +7,7 @@ function RestrictedCountry() {
     <div className="pm-restricted-country">
       <ModalNotification visible>
         <div className="pm-restricted-country__card">
-          <PolkamarketsIcon />
+          <SosmarketIcon />
           <Text
             as="h5"
             scale="heading"

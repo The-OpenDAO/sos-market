@@ -6,7 +6,7 @@ type SEOProps = {
   imageUrl?: string;
 };
 
-const POLKAMARKETS_DEFAULT_BANNER = `${process.env.PUBLIC_URL}/polkamarkets_meta.jpg`;
+const POLKAMARKETS_DEFAULT_BANNER = `${process.env.PUBLIC_URL}/sosmarket_meta.jpg`;
 
 function SEO({ title, description, imageUrl }: SEOProps) {
   const image = imageUrl || POLKAMARKETS_DEFAULT_BANNER;

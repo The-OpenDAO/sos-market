@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { setFilter } from 'redux/ducks/markets';
 
-import { PolkamarketsIcon, BetaTagIcon } from 'assets/icons';
+import { SosmarketIcon, BetaTagIcon } from 'assets/icons';
 
 import { useTheme } from 'hooks';
 
@@ -28,7 +28,7 @@ function NavBar() {
     <div className="pm-l-navbar">
       <figure className="pm-l-navbar__icon">
         <Link to="/" aria-label="Home" onClick={handleNavigation}>
-          <PolkamarketsIcon />
+          <SosmarketIcon />
         </Link>
         <a href={RISK_DISCLOSURE_DOC_URL} target="_blank" rel="noreferrer">
           <BetaTagIcon theme={theme} />

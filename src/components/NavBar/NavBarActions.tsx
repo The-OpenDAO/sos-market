@@ -4,7 +4,7 @@ import { formatNumberToString } from 'helpers/math';
 import { login } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { MetaMaskIconSmall, PolkamarketsIconSmall } from 'assets/icons';
+import { MetaMaskIconSmall, SosmarketIconSmall } from 'assets/icons';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
@@ -70,7 +70,7 @@ function NavBarActions() {
             {
               id: 'polk',
               balance: formatNumberToString(polkBalance),
-              currencyIcon: <PolkamarketsIconSmall />
+              currencyIcon: <SosmarketIconSmall />
             }
           ]}
           address={walletAddress}

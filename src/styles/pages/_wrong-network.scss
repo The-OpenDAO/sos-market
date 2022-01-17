@@ -32,7 +32,8 @@
       margin: 0rem;
       padding: 1.3rem 1.6rem;
 
-      @extend .body, .semibold;
+      @extend .body,
+      .semibold;
       text-align: left;
       color: $gray-100;
 
@@ -50,19 +51,20 @@
   }
 
   &__action-button {
-    @extend .pm-c-button-normal--primary, .pm-c-button--sm;
-    background-color: #5d55fa;
-    border-color: #5d55fa;
+    @extend .pm-c-button-normal--primary,
+    .pm-c-button--sm;
+    background-color: #4E7DD3;
+    border-color: #4E7DD3;
 
     &:hover,
     :focus {
-      background-color: #4d3df7;
-      border-color: #4d3df7;
+      background-color: #3068cf;
+      border-color: #3068cf;
     }
 
     &:disabled {
-      background-color: mix(#ffffff, #5d55fa, 86%);
-      border-color: mix(#ffffff, #5d55fa, 86%);
+      background-color: mix(#ffffff, #4E7DD3, 86%);
+      border-color: mix(#ffffff, #4E7DD3, 86%);
     }
 
     color: #ffffff;

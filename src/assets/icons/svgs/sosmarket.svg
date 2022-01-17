@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 319.67 319.65">
+    <defs>
+        <style>
+            .cls-1,
+            .cls-2,
+            .cls-3 {
+                fill-rule: evenodd;
+            }
+
+            .cls-1 {
+                fill: url(#linear-gradient);
+            }
+
+            .cls-2 {
+                fill: url(#linear-gradient-2);
+            }
+
+            .cls-3 {
+                fill: url(#linear-gradient-3);
+            }
+        </style>
+        <linearGradient id="linear-gradient" x1="538.45" y1="321.58" x2="682.03" y2="85.48"
+            gradientTransform="matrix(-1, 0, 0, 1, 796.66, 0)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#90f" />
+            <stop offset="1" stop-color="#0cf" />
+        </linearGradient>
+        <linearGradient id="linear-gradient-2" x1="845.78" y1="113.41" x2="687.19" y2="117.28"
+            gradientTransform="matrix(-1, 0, 0, 1, 796.66, 0)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#0cf" />
+            <stop offset="1" stop-color="#c3f" />
+        </linearGradient>
+        <linearGradient id="linear-gradient-3" x1="497.35" y1="219.19" x2="669.84" y2="43.81"
+            gradientTransform="matrix(-1, 0, 0, 1, 796.66, 0)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#0cf" />
+            <stop offset="0.18" stop-color="#00a7e7" />
+            <stop offset="0.45" stop-color="#0076c5" />
+            <stop offset="0.68" stop-color="#0051ad" />
+            <stop offset="0.88" stop-color="#003b9e" />
+            <stop offset="1" stop-color="#039" />
+        </linearGradient>
+    </defs>
+    <title>资源 1</title>
+    <g id="图层_2" data-name="图层 2">
+        <g id="图层_1-2" data-name="图层 1">
+            <path class="cls-1"
+                d="M319.67,159.83A159.84,159.84,0,1,1,159.84,0,159.82,159.82,0,0,1,319.67,159.83Zm-89.16,70h0Zm-33.31,5.14a109.49,109.49,0,0,0,33.27-5.14h0c1.22-.39,2.44-.81,3.65-1.24A80.94,80.94,0,1,0,91.44,154.46,109.75,109.75,0,0,0,197.2,234.93Z" />
+            <path class="cls-2"
+                d="M197.2,15.52a109.71,109.71,0,1,0,33.31,214.27A158.48,158.48,0,0,1,23.08,79.19c0-.72,0-1.44,0-2.18a159.91,159.91,0,0,1,236.72-41.9A109.25,109.25,0,0,0,197.2,15.52Z" />
+            <path class="cls-3"
+                d="M87.48,125.22A109.72,109.72,0,1,1,234.16,228.55,80.94,80.94,0,1,0,91.44,154.46,109.37,109.37,0,0,1,87.48,125.22Z" />
+        </g>
+    </g>
+</svg>

@@ -6,8 +6,8 @@ import {
   BitcoinIcon,
   TwitterIcon,
   MediumIcon,
-  TelegramIcon,
-  LinkedInIcon,
+  // TelegramIcon,
+  // LinkedInIcon,
   GitHubIcon
 } from 'assets/icons';
 

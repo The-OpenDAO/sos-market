@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import * as whitelistService from 'services/Polkamarkets/whitelist';
 
-import { ArrowRightIcon, PolkamarketsIcon } from 'assets/icons';
+import { ArrowRightIcon, SosmarketIcon } from 'assets/icons';
 
 import {
   Button,
@@ -57,7 +57,7 @@ function PrivateBeta() {
     <div className="pm-private-beta">
       <ModalNotification visible>
         <div className="pm-private-beta__card">
-          <PolkamarketsIcon />
+          <SosmarketIcon />
           <Text
             as="h5"
             scale="heading"
