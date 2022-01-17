@@ -10,7 +10,7 @@ import FavoriteMarketsProvider from 'contexts/favoriteMarkets';
 
 import { useLocalStorage, useTheme } from 'hooks';
 
-const POLKAMARKETS_DEFAULT_BANNER = `${process.env.PUBLIC_URL}/sosmarket_meta.jpg`;
+const POLKAMARKETS_DEFAULT_BANNER = `${process.env.PUBLIC_URL}/sosmarket_meta.jpeg`;
 
 const App = () => {
   const { theme } = useTheme();

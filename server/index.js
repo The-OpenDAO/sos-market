@@ -19,7 +19,7 @@ const defaultMetadata = {
   title: 'SOSMarket - Autonomous Prediction Market Protocol',
   description:
     'SOSMarket is a DeFi-Powered Prediction Market built for cross-chain information exchange, based on Polkadot.',
-  image: '/polkamarkets_meta.jpg'
+  image: '/sosmarket_meta.jpeg'
 };
 
 const defaultMetadataTemplate = (request, htmlData) => {
