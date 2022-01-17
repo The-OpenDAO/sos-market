@@ -110,7 +110,7 @@ function generateCustomOptions(theme: string, ticker: string) {
     },
     grid: {
       show: true,
-      borderColor: theme === 'dark' ? '#252C3B' : '#E3E7F0',
+      borderColor: theme === 'dark' ? '#26272C' : '#E3E7F0',
       strokeDashArray: 5,
       position: 'back' as const,
       xaxis: {

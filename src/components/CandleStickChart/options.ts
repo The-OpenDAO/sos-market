@@ -26,7 +26,7 @@ export default {
   },
   grid: {
     show: true,
-    borderColor: '#252C3B',
+    borderColor: '#26272C',
     strokeDashArray: 5,
     position: 'back' as const,
     xaxis: {

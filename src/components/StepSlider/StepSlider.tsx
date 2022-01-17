@@ -37,11 +37,11 @@ export const themes: Themes = {
     handleBorderColor: '#8B96A7'
   },
   dark: {
-    trackBackgroundColor: '#637084',
-    railBackgroundColor: '#252C3B',
-    dotBackgroundColor: '#252C3B',
+    trackBackgroundColor: '#929293',
+    railBackgroundColor: '#26272C',
+    dotBackgroundColor: '#26272C',
     dotBorderColor: '#0E1016',
-    activeDotBackgroundColor: '#637084',
+    activeDotBackgroundColor: '#929293',
     handleBackgroundColor: '#FFFFFF',
     handleBorderColor: '#3D455C'
   }

@@ -12,7 +12,7 @@ $amount-input-action-button-transitions: 0.2s all ease-in-out !default;
 
 $amount-input-themes: (
   light: (
-    amount-input-title-color: #637084,
+    amount-input-title-color: #929293,
     amount-input-title-secondary-color: #b6bdc8,
     amount-input-placeholder-color: #a7b0bd,
     amount-input-value-color: #171b23,
@@ -25,14 +25,14 @@ $amount-input-themes: (
   ),
   dark: (
     amount-input-title-color: #c5cad3,
-    amount-input-title-secondary-color: #637084,
-    amount-input-placeholder-color: #637084,
-    amount-input-value-color: #f9fafb,
-    amount-input-border-color: #252c3b,
+    amount-input-title-secondary-color: #929293,
+    amount-input-placeholder-color: #929293,
+    amount-input-value-color: #ffffff,
+    amount-input-border-color: #26272c,
     amount-input-border-color--error: #e12d39,
-    amount-input-action-button-background-color: #252c3b,
-    amount-input-action-button-background-color-hover: #637084,
+    amount-input-action-button-background-color: #26272c,
+    amount-input-action-button-background-color-hover: #929293,
     amount-input-action-button-color: #f3f4f6,
-    amount-input-currency-name-color: #f9fafb
+    amount-input-currency-name-color: #ffffff
   )
 ) !default;

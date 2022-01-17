@@ -1,35 +1,35 @@
 $market-themes: (
   light: (
     details-text-color: #313a4c,
-    stats-text-primary-color: #637084,
+    stats-text-primary-color: #929293,
     stats-text-secondary-color: #8193ae,
     option-background-color: transparent,
-    option-background-color-active: mix(#ffffff, #4E7DD3, 86%),
+    option-background-color-active: mix(#ffffff, #4e7dd3, 86%),
     option-border-color: #e3e7f0,
     option-border-color-active: #aeaafd,
     option-title-color: #313a4c,
     option-odd-color: #8193ae,
-    option-value-color: #637084,
+    option-value-color: #929293,
     chart-view-title-color: #313a4c,
     chart-view-border-color: #e3e7f0,
     analytics-text-color: #313a4c,
     news-text-color: #313a4c
   ),
   dark: (
-    details-text-color: #f9fafb,
+    details-text-color: #ffffff,
     stats-text-primary-color: #c5cad3,
-    stats-text-secondary-color: #637084,
+    stats-text-secondary-color: #929293,
     option-background-color: transparent,
-    option-background-color-active: mix(#000000, #4E7DD3, 70%),
-    option-border-color: #252c3b,
+    option-background-color-active: mix(#000000, #4e7dd3, 70%),
+    option-border-color: #26272c,
     option-border-color-active: #413caf,
-    option-title-color: #f9fafb,
-    option-odd-color: #637084,
+    option-title-color: #ffffff,
+    option-odd-color: #929293,
     option-value-color: #c5cad3,
-    chart-view-title-color: #f9fafb,
-    chart-view-border-color: #252c3b,
-    analytics-text-color: #f9fafb,
-    news-text-color: #f9fafb
+    chart-view-title-color: #ffffff,
+    chart-view-border-color: #26272c,
+    analytics-text-color: #ffffff,
+    news-text-color: #ffffff
   )
 ) !default;
 
@@ -49,7 +49,7 @@ $market-outcome-themes: (
       default: (
         normal: transparent,
         hover: transparent,
-        active: mix(#ffffff, #4E7DD3, 86%)
+        active: mix(#ffffff, #4e7dd3, 86%)
       ),
       success: mix(#ffffff, #27ab83, 85%),
       danger: transparent,
@@ -59,7 +59,7 @@ $market-outcome-themes: (
       default: (
         normal: #e3e7f0,
         hover: #e3e7f0,
-        active: mix(#ffffff, #4E7DD3, 50%)
+        active: mix(#ffffff, #4e7dd3, 50%)
       ),
       success: mix(#ffffff, #27ab83, 30%),
       danger: #e3e7f0,
@@ -67,7 +67,7 @@ $market-outcome-themes: (
     ),
     text-colors: (
       primary: #313a4c,
-      secondary: #637084,
+      secondary: #929293,
       tertiary: #8293ae
     ),
     details-colors: (
@@ -82,7 +82,7 @@ $market-outcome-themes: (
       default: (
         normal: transparent,
         hover: transparent,
-        active: mix(#000000, #4E7DD3, 75%)
+        active: mix(#000000, #4e7dd3, 75%)
       ),
       success: mix(#000000, #27ab83, 75%),
       danger: transparent,
@@ -90,18 +90,18 @@ $market-outcome-themes: (
     ),
     border-colors: (
       default: (
-        normal: #252c3b,
-        hover: #252c3b,
-        active: mix(#000000, #4E7DD3, 30%)
+        normal: #26272c,
+        hover: #26272c,
+        active: mix(#000000, #4e7dd3, 30%)
       ),
       success: mix(#000000, #27ab83, 30%),
-      danger: #252c3b,
+      danger: #26272c,
       warning: mix(#000000, #f0b429, 60%)
     ),
     text-colors: (
-      primary: #f9fafb,
+      primary: #ffffff,
       secondary: #c5cad3,
-      tertiary: #637084
+      tertiary: #929293
     ),
     details-colors: (
       default: transparent,
@@ -129,10 +129,10 @@ $market-footer-themes: (
     background-colors: (
       divider: #3b4351,
       share: (
-        default: #637084
+        default: #929293
       ),
       favorite: (
-        default: #637084,
+        default: #929293,
         active: #f0b429
       )
     )

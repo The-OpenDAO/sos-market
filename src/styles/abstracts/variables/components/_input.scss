@@ -4,7 +4,7 @@ $input-border-radius: 0.4rem !default;
 
 $input-themes: (
   light: (
-    input-label-default-color: #637084,
+    input-label-default-color: #929293,
     input-label-error-color: #e12d39,
     input-background-color: #f8faff,
     input-background-disabled-color: #eff1f4,
@@ -22,12 +22,12 @@ $input-themes: (
     input-label-error-color: #e12d39,
     input-background-color: #0e1016,
     input-background-disabled-color: #292d32,
-    input-border-default-color: #252c3b,
+    input-border-default-color: #26272c,
     input-border-error-color: #e12d39,
-    input-border-default-focus-color: #637084,
-    input-value-color: #f9fafb,
-    input-placeholder-color: #637084,
-    input-description-default-color: #637084,
+    input-border-default-focus-color: #929293,
+    input-value-color: #ffffff,
+    input-placeholder-color: #929293,
+    input-description-default-color: #929293,
     input-error-color: #e12d39,
     input-select-background-color: #171b23
   )

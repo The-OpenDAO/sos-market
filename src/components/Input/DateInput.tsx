@@ -18,7 +18,7 @@ const StyledDateTimePicker = styled(DateTimePicker)`
     line-height: 1.5;
     letter-spacing: -0.014rem;
 
-    color: ${props => (props.theme === 'dark' ? '#f9fafb' : '#171b23')};
+    color: ${props => (props.theme === 'dark' ? '#FFFFFF' : '#171b23')};
     border: 0.1rem solid transparent;
 
     &:hover,
@@ -34,7 +34,7 @@ const StyledDateTimePicker = styled(DateTimePicker)`
         props.$hasError
           ? '#e12d39'
           : props.theme === 'dark'
-          ? '#252c3b'
+          ? '#26272C'
           : '#e0e2e7'};
     transition: 0.2s border ease-out;
 
@@ -45,7 +45,7 @@ const StyledDateTimePicker = styled(DateTimePicker)`
           props.$hasError
             ? '#e12d39'
             : props.theme === 'dark'
-            ? '#637084'
+            ? '#929293'
             : '#c2cad6'};
     }
 
