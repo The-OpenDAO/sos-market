@@ -60,19 +60,19 @@ const footerLinks = [
     url: 'https://SOSMarket.medium.com/',
     icon: <MediumIcon />
   },
-  {
-    name: 'SOSMarket Telegram',
-    url: 'https://t.me/SOSMarket',
-    icon: <TelegramIcon />
-  },
-  {
-    name: 'SOSMarket LinkedIn',
-    url: 'https://www.linkedin.com/company/SOSMarket',
-    icon: <LinkedInIcon />
-  },
+  // {
+  //   name: 'SOSMarket Telegram',
+  //   url: 'https://t.me/SOSMarket',
+  //   icon: <TelegramIcon />
+  // },
+  // {
+  //   name: 'SOSMarket LinkedIn',
+  //   url: 'https://www.linkedin.com/company/SOSMarket',
+  //   icon: <LinkedInIcon />
+  // },
   {
     name: 'SOSMarket GitHub',
-    url: 'https://github.com/SOSMarket',
+    url: 'https://github.com/The-OpenDAO',
     icon: <GitHubIcon />
   }
 ];
