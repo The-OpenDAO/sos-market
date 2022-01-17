@@ -13,7 +13,7 @@ import NavBarDropdownMenu from './NavBarDropdownMenu';
 import NavBarSearch from './NavBarSearch';
 
 const RISK_DISCLOSURE_DOC_URL =
-  'https://docs.google.com/document/d/1TR8HYTBOhZeZOb0E5uAo8lbK4v0Oxv3JnQD_AdYENBY/edit';
+  'https://docs.google.com/document/d/1VoyCJ2feVyYtHF4hm3J8ReBzDrH9CO0egH21vYVY_t8/edit';
 
 function NavBar() {
   const dispatch = useDispatch();
