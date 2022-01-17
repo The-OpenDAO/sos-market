@@ -30,8 +30,8 @@ function BetaWarning({ handleChangeModalVisibility }: BetaWarningProps) {
           scale="caption"
           className="pm-c-beta-warning__description--primary-text"
         >
-          SOSMarket Protocol is a 100% decentralized protocol for informational
-          and educational purposes only. SOSMARKET does not take any custody,
+          SOSMarket is a 100% decentralized protocol for informational and
+          educational purposes only. SOSMarket does not take any custody,
           profits or host over any markets.
         </Text>
         <Text

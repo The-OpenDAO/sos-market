@@ -167,7 +167,7 @@ const Sidebar = () => {
         </Menu>
 
         <Text as="p" scale="caption" fontWeight="medium">
-          @ 2021 SOSMarket
+          @ 2022 SOSMarket
         </Text>
       </div>
     </div>
