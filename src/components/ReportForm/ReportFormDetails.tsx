@@ -68,13 +68,17 @@ function ReportFormDetails() {
     setBonds(response);
 
     // TODO: improve this calculating total bond
-    const totalBondAmount = Object.values(response || {}).reduce((a: any, b: any) => a + b, 0) as number;
+    const totalBondAmount = Object.values(response || {}).reduce(
+      (a: any, b: any) => a + b,
+      0
+    ) as number;
     setTotalBond(totalBondAmount);
   }
 
   // UGLY WORKAROUND! TODO: get data from api
   useEffect(() => {
     getOutcomesBonds();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [finalizeTs]);
 
   const totalBondItems: TotalBondItem[] = [

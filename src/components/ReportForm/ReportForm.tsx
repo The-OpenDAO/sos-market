@@ -52,6 +52,7 @@ function ReportForm() {
   });
 
   async function handleFormSubmit(values: ReportFormData) {
+    // eslint-disable-next-line no-console
     console.log(values);
   }
 

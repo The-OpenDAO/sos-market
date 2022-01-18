@@ -32,6 +32,7 @@ function AmountInput({
     onChange(0);
     setAmount(0);
     setStepAmount(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [max]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {

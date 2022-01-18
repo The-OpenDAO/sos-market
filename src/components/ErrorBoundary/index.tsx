@@ -1,8 +1,10 @@
-import React, { ErrorInfo } from 'react';
+import { Component, ErrorInfo } from 'react';
 import { Link } from 'react-router-dom';
+
 import store, { RootState } from 'redux/store';
 import styled from 'styled-components';
 import { getUserAgent } from 'utils/getUserAgent';
+
 import Text from '../Text';
 
 const FallbackWrapper = styled.div`
@@ -168,7 +170,7 @@ ${JSON.stringify(deviceData, null, 2)}
 `;
 }
 
-export default class ErrorBoundary extends React.Component<
+export default class ErrorBoundary extends Component<
   unknown,
   ErrorBoundaryState
 > {
@@ -182,9 +184,10 @@ export default class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    // eslint-disable-next-line no-console
     console.log(error);
+    // eslint-disable-next-line no-console
     console.log(errorInfo);
-
     // ReactGA.exception({
     //   ...error,
     //   ...errorInfo,

@@ -103,6 +103,7 @@ function ReportFormActions({
       setIsApprovingPolk(false);
     } catch (error) {
       setIsApprovingPolk(false);
+      // eslint-disable-next-line no-console
       console.error(error);
     }
   }
@@ -148,6 +149,7 @@ function ReportFormActions({
       dispatch(changeQuestion(question));
     } catch (error) {
       setIsBonding(false);
+      // eslint-disable-next-line no-console
       console.error(error);
     }
   }
@@ -181,6 +183,7 @@ function ReportFormActions({
       setIsResolvingMarket(false);
     } catch (error) {
       setIsResolvingMarket(false);
+      // eslint-disable-next-line no-console
       console.error(error);
     }
   }

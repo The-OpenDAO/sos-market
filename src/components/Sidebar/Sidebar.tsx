@@ -131,6 +131,7 @@ const Sidebar = () => {
                   </span>
                   {
                     // TODO: calculate categories market count
+                    // eslint-disable-next-line
                     false ? (
                       <span
                         className={classNames(

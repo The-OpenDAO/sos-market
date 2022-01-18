@@ -33,6 +33,7 @@ const MarketListAsync = ({
     if (!isEmpty(filterBy)) {
       dispatch(asyncAction(filterBy));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, asyncAction]);
 
   function refreshMarkets() {

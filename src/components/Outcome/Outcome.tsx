@@ -82,6 +82,7 @@ function Outcome({
   onSelect,
   isStarted
 }: OutcomeProps) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field] = useField('bond');
   const isWinningOutcome = isStarted && resolvedOutcomeId.toString() === id;
 

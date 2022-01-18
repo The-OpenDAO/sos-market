@@ -37,6 +37,7 @@ const ProbabilityInput = React.forwardRef<
         probability: 100 - secondOutcome.probability
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, secondOutcome, setFieldValue]);
 
   useEffect(() => {
@@ -46,6 +47,7 @@ const ProbabilityInput = React.forwardRef<
         probability: 100 - firstOutcome.probability
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, firstOutcome, setFieldValue]);
 
   return (

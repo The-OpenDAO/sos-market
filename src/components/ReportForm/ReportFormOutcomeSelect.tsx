@@ -21,8 +21,7 @@ function ReportFormOutcomeSelect() {
   const { bonds, portfolio } = useAppSelector(state => state.bepro);
 
   // Form state
-  // @ts-ignore
-  const [field, meta, helpers] = useField('outcome');
+  const [field, , helpers] = useField('outcome');
 
   // converting bytes32 to int
   const resolvedOutcomeId = BeproService.bytes32ToInt(bestAnswer);

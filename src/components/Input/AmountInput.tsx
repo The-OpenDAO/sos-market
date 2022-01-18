@@ -42,6 +42,7 @@ const AmountInput = React.forwardRef<
     setFieldValue(name, meta.initialValue);
     setAmount(meta.initialValue);
     setStepAmount(meta.initialValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [max]);
 
   function handleChangeAmount(event: React.ChangeEvent<HTMLInputElement>) {

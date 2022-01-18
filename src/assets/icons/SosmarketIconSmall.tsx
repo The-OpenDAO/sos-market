@@ -1,4 +1,5 @@
 import { memo } from 'react';
+
 import Sosmarket from './svgs/sos-logo.png';
 
 function SosmarketIconSmall() {

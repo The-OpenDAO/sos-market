@@ -14,6 +14,7 @@ type SearchBarProps = {
   /**
    * The callback function triggered when click or press Enter on search button
    */
+  // eslint-disable-next-line
   onSearch: (text: string) => void;
 };
 
