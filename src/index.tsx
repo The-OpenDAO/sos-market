@@ -7,6 +7,7 @@ import { login } from 'redux/ducks/bepro';
 import store from 'redux/store';
 
 import { ScrollToTop } from 'components';
+import ErrorBoundary from 'components/ErrorBoundary';
 
 import ThemeProvider from 'contexts/theme';
 
@@ -22,10 +23,12 @@ const render = () => {
     <React.StrictMode>
       <ThemeProvider>
         <Provider store={store}>
-          <Router>
-            <ScrollToTop />
-            <App />
-          </Router>
+          <ErrorBoundary>
+            <Router>
+              <ScrollToTop />
+              <App />
+            </Router>
+          </ErrorBoundary>
         </Provider>
       </ThemeProvider>
     </React.StrictMode>,

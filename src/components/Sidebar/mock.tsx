@@ -52,12 +52,12 @@ const navigationLinks = {
 const footerLinks = [
   {
     name: 'SOSMarket Twitter',
-    url: 'https://twitter.com/SOSMarket',
+    url: 'https://twitter.com/sosmarket_io',
     icon: <TwitterIcon />
   },
   {
-    name: 'SOSMarket Medium',
-    url: 'https://SOSMarket.medium.com/',
+    name: 'theopendao Medium',
+    url: 'https://theopendao.medium.com/',
     icon: <MediumIcon />
   },
   // {
