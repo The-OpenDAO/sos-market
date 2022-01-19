@@ -1,4 +1,4 @@
-export default class PolkarmarketsApiService {
+export default class SosmarketsApiService {
   public apiUrl: string = process.env.REACT_APP_POLKAMARKETS_API_URL!;
 
   public async getMarkets(): Promise<any[]> {

@@ -3,9 +3,9 @@ import orderBy from 'lodash/orderBy';
 import uniqBy from 'lodash/uniqBy';
 import { Category } from 'models/category';
 import { Market } from 'models/market';
-import * as marketService from 'services/Polkamarkets/market';
+import * as marketService from 'services/Sosmarkets/market';
 
-import { MarketState } from '../../services/Polkamarkets/market';
+import { MarketState } from '../../services/Sosmarkets/market';
 
 export interface MarketsIntialState {
   markets: Market[];

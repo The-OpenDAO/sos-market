@@ -3,7 +3,7 @@ import React, { ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
-import * as ipfsService from 'services/Polkamarkets/ipfs';
+import * as ipfsService from 'services/Sosmarkets/ipfs';
 
 import ImageCropper from 'components/ImageCropper';
 

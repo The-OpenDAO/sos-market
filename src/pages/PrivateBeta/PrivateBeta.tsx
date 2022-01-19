@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import isEmpty from 'lodash/isEmpty';
-import * as whitelistService from 'services/Polkamarkets/whitelist';
+import * as whitelistService from 'services/Sosmarkets/whitelist';
 
 import { ArrowRightIcon, SosmarketIcon } from 'assets/icons';
 

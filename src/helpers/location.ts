@@ -1,6 +1,6 @@
 import { UserGeolocation } from 'models/user';
 import * as publicIp from 'public-ip';
-import { getUserGeolocation } from 'services/Polkamarkets/user';
+import { getUserGeolocation } from 'services/Sosmarkets/user';
 
 async function getUserPublicIp() {
   try {

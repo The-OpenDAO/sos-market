@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { Formik, Form } from 'formik';
 import { BeproService } from 'services';
-import * as marketService from 'services/Polkamarkets/market';
+import * as marketService from 'services/Sosmarkets/market';
 import * as Yup from 'yup';
 
 import useToastNotification from 'hooks/useToastNotification';

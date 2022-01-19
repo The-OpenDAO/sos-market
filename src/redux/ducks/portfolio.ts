@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Portfolio } from 'models/portfolio';
-import * as portfolioService from 'services/Polkamarkets/portfolio';
+import * as portfolioService from 'services/Sosmarkets/portfolio';
 
 export interface PortfolioInitialState {
   portfolio: Portfolio;

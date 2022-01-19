@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Market } from 'models/market';
-import * as marketService from 'services/Polkamarkets/market';
+import * as marketService from 'services/Sosmarkets/market';
 
 const chartViewsEnum = [
   { id: 'marketOverview', name: 'Market Overview', color: 'default' },

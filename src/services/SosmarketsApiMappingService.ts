@@ -20,23 +20,23 @@ const MarketOutcomeMapping = {
   pricePerFraction: 'price'
 };
 
-export default class PolkamarketsApiMappingService {
+export default class SosmarketsApiMappingService {
   public static mapMarket(apiMarket) {
-    const market = PolkamarketsApiMappingService.mapApiObject(
+    const market = SosmarketsApiMappingService.mapApiObject(
       apiMarket,
       MarketMapping
     );
 
     // mapping outcomes
     market.options = apiMarket.outcomes.map(apiMarketOutcome => {
-      return PolkamarketsApiMappingService.mapMarketOutcome(apiMarketOutcome);
+      return SosmarketsApiMappingService.mapMarketOutcome(apiMarketOutcome);
     });
 
     return market;
   }
 
   public static mapMarketOutcome(apiMarketOutcome) {
-    const marketOutcome = PolkamarketsApiMappingService.mapApiObject(
+    const marketOutcome = SosmarketsApiMappingService.mapApiObject(
       apiMarketOutcome,
       MarketOutcomeMapping
     );
