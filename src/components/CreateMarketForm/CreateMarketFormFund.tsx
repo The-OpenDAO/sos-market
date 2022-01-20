@@ -138,7 +138,7 @@ function CreateMarketFormFund() {
             fontWeight="semibold"
             className="pm-c-create-market-form__card-liquidity-details__earn-trading-fee__amount"
           >
-            {`${roundNumber(fee * 100, 3)} %`}
+            {`${roundNumber((fee / 2) * 100, 3)} %`}
           </Text>
         </div>
       </div>
