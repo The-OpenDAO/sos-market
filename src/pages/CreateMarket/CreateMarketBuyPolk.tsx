@@ -47,7 +47,7 @@ function CreateMarketBuyPolk({
               fontWeight="semibold"
               className="pm-p-create-market-buy-polk__amount"
             >
-              {`${requiredGovernanceBalance - governanceBalance} POLK`}
+              {`${requiredGovernanceBalance - governanceBalance} SOS`}
             </Text>
             {` to create markets.`}
           </>
