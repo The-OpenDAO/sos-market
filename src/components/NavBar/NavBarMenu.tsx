@@ -8,7 +8,7 @@ function NavBarMenu() {
       <Menu>
         <Menu.Item key="howitworks">
           <Link
-            to="//help.polkamarkets.com/en/collections/3155287-getting-started"
+            to="//help.sosmarket.com/en/collections/3155287-getting-started"
             target="_blank"
           >
             How It Works

@@ -1,14 +1,14 @@
 import { Portfolio } from 'models/portfolio';
 
-import api, { polkamarketsApiUrl } from './api';
+import api, { sosmarketApiUrl } from './api';
 
 async function getPortfolio(address: string) {
-  const url = `${polkamarketsApiUrl}/portfolios/${address}`;
+  const url = `${sosmarketApiUrl}/portfolios/${address}`;
   return api.get<Portfolio>(url);
 }
 
 async function reloadPortfolio(address: string) {
-  const url = `${polkamarketsApiUrl}/portfolios/${address}/reload`;
+  const url = `${sosmarketApiUrl}/portfolios/${address}/reload`;
   return api.post(url);
 }
 

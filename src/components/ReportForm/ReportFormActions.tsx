@@ -8,7 +8,7 @@ import { fetchAditionalData, login } from 'redux/ducks/bepro';
 import { changeData, changeQuestion } from 'redux/ducks/market';
 import { selectOutcome } from 'redux/ducks/trade';
 import { closeReportForm, openTradeForm } from 'redux/ducks/ui';
-import { BeproService, PolkamarketsApiService } from 'services';
+import { BeproService, SosmarketsApiService } from 'services';
 
 import { QuestionIcon } from 'assets/icons';
 
@@ -115,7 +115,7 @@ function ReportFormActions({
 
   async function handleBond() {
     const beproService = new BeproService();
-    const polkamarketApiService = new PolkamarketsApiService();
+    const polkamarketApiService = new SosmarketsApiService();
 
     setIsBonding(true);
 
@@ -177,7 +177,7 @@ function ReportFormActions({
         dispatch(openTradeForm());
 
         // triggering cache reload action on api
-        new PolkamarketsApiService().reloadMarket(marketSlug);
+        new SosmarketsApiService().reloadMarket(marketSlug);
       }
 
       setIsResolvingMarket(false);
@@ -249,15 +249,15 @@ function ReportFormActions({
                   questionBond,
                   3
                 )} POLK. `}
-                <Link
+                {/* <Link
                   target="_blank"
-                  href="https://help.polkamarkets.com/en/articles/5610525-how-market-resolution-works"
+                  href="https://help.sosmarket.com/en/articles/5610525-how-market-resolution-works"
                   rel="noreferrer"
                   variant="warning"
                   scale="caption"
                   fontWeight="semibold"
                   title="Learn more"
-                />
+                /> */}
               </>
             }
           />

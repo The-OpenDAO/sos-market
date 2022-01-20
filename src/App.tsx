@@ -10,7 +10,7 @@ import FavoriteMarketsProvider from 'contexts/favoriteMarkets';
 
 import { useLocalStorage, useTheme } from 'hooks';
 
-const POLKAMARKETS_DEFAULT_BANNER = `${process.env.PUBLIC_URL}/sosmarket_meta.jpeg`;
+const SOSMARKET_DEFAULT_BANNER = `${process.env.PUBLIC_URL}/sosmarket_meta.jpeg`;
 
 const App = () => {
   const { theme } = useTheme();
@@ -25,7 +25,7 @@ const App = () => {
       <SEO
         title="SOSMarket - Autonomous Prediction Market Protocol"
         description="SOSMarket is a DeFi-Powered Prediction Market built for cross-chain information exchange, based on Polkadot."
-        imageUrl={POLKAMARKETS_DEFAULT_BANNER}
+        imageUrl={SOSMARKET_DEFAULT_BANNER}
       />
       <MuiPickersUtilsProvider utils={DayjsUtils}>
         <FavoriteMarketsProvider>

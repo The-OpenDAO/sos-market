@@ -11,6 +11,6 @@ api.interceptors.response.use(
 
 export default api;
 
-const { REACT_APP_POLKAMARKETS_API_URL } = process.env;
+const { REACT_APP_SOSMARKET_API_URL } = process.env;
 
-export { REACT_APP_POLKAMARKETS_API_URL as polkamarketsApiUrl };
+export { REACT_APP_SOSMARKET_API_URL as sosmarketApiUrl };

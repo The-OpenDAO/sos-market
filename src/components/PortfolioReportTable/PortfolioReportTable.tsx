@@ -9,7 +9,7 @@ import isEmpty from 'lodash/isEmpty';
 import { Market } from 'models/market';
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { changeMarketQuestion } from 'redux/ducks/markets';
-import { BeproService, PolkamarketsApiService } from 'services';
+import { BeproService, SosmarketsApiService } from 'services';
 
 import { CaretDownIcon, CaretUpIcon } from 'assets/icons';
 
@@ -50,7 +50,7 @@ const PortfolioReportTable = ({
       await beproService.claimWinningsAndWithdraw(market.questionId);
 
       // triggering cache reload action on api
-      new PolkamarketsApiService().reloadMarket(market.slug);
+      new SosmarketsApiService().reloadMarket(market.slug);
 
       const question = await beproService.getQuestion(market.questionId);
       dispatch(changeMarketQuestion({ marketId: market.id, question }));

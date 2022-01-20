@@ -1,7 +1,7 @@
-import api, { polkamarketsApiUrl } from './api';
+import api, { sosmarketApiUrl } from './api';
 
 async function getWhitelistStatus(address: string) {
-  const url = `${polkamarketsApiUrl}/whitelist/${address}`;
+  const url = `${sosmarketApiUrl}/whitelist/${address}`;
   return api.get<any>(url);
 }
 

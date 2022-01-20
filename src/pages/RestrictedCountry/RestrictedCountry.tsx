@@ -15,7 +15,7 @@ function RestrictedCountry() {
             color="white"
             style={{ textAlign: 'center' }}
           >
-            Polkamarkets is not available in your country
+            sosMarket is not available in your country
           </Text>
           <Text
             as="p"
@@ -29,7 +29,7 @@ function RestrictedCountry() {
             }}
           >
             <>
-              {`At the moment SOSMarket Services and POLK Token (POLK) are not available in `}
+              {`At the moment SOSMarket Services and SOS Token (SOS) are not available in `}
               <Link
                 href="/legal/terms-conditions.html"
                 title="Excluded Jurisdictions."
@@ -38,30 +38,29 @@ function RestrictedCountry() {
                 className="text-gray"
                 target="_blank"
               />
-              {`
-            For further information please contact us on `}
+              {/* {`For further information please contact us on `}
               <Link
-                href="mailto:general@polkamarkets.com"
-                title="general@polkamarkets.com"
+                href="mailto:general@sosmarket.com"
+                title="general@sosmarket.com"
                 scale="body"
                 fontWeight="medium"
                 className="text-gray"
                 target="_blank"
-              />
+              /> */}
             </>
           </Text>
-          <Button
+          {/* <Button
             color="primary"
             size="sm"
             onClick={() =>
               window.open(
-                'https://help.polkamarkets.com/en/articles/5623718-ownership-architecture',
+                'https://help.sosmarket.com/en/articles/5623718-ownership-architecture',
                 '_blank'
               )
             }
           >
             Learn More
-          </Button>
+          </Button> */}
         </div>
       </ModalNotification>
     </div>

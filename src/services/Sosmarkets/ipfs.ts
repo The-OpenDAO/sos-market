@@ -1,7 +1,7 @@
-import api, { polkamarketsApiUrl } from './api';
+import api, { sosmarketApiUrl } from './api';
 
 async function addFile(file: any) {
-  const url = `${polkamarketsApiUrl}/ipfs/add`;
+  const url = `${sosmarketApiUrl}/ipfs/add`;
 
   const form = new FormData();
   form.append('file', file);

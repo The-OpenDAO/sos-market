@@ -1,9 +1,9 @@
 import { Market } from 'models/market';
 
-import api, { polkamarketsApiUrl } from './api';
+import api, { sosmarketApiUrl } from './api';
 
 async function getMarket(marketSlug: string) {
-  const url = `${polkamarketsApiUrl}/markets/${marketSlug}`;
+  const url = `${sosmarketApiUrl}/markets/${marketSlug}`;
   return api.get<Market>(url);
 }
 
@@ -14,7 +14,7 @@ type MarketsFilters = {
 };
 
 async function getMarkets({ state }: MarketsFilters) {
-  const url = `${polkamarketsApiUrl}/markets`;
+  const url = `${sosmarketApiUrl}/markets`;
   return api.get<Market[]>(url, {
     params: {
       state
@@ -23,7 +23,7 @@ async function getMarkets({ state }: MarketsFilters) {
 }
 
 async function getMarketsByIds(ids: string[]) {
-  const url = `${polkamarketsApiUrl}/markets`;
+  const url = `${sosmarketApiUrl}/markets`;
   return api.get<Market[]>(url, {
     params: {
       id: ids.join(',')
@@ -32,12 +32,12 @@ async function getMarketsByIds(ids: string[]) {
 }
 
 async function reloadMarket(marketSlug: string) {
-  const url = `${polkamarketsApiUrl}/markets/${marketSlug}/reload`;
+  const url = `${sosmarketApiUrl}/markets/${marketSlug}/reload`;
   return api.post(url);
 }
 
 async function createMarket(marketId: string) {
-  const url = `${polkamarketsApiUrl}/markets/`;
+  const url = `${sosmarketApiUrl}/markets/`;
   return api.post(url, { id: marketId });
 }
 

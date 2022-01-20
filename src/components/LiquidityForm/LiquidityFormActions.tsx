@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { login, fetchAditionalData } from 'redux/ducks/bepro';
 import { reset } from 'redux/ducks/liquidity';
 import { closeLiquidityForm } from 'redux/ducks/ui';
-import { BeproService, PolkamarketsApiService } from 'services';
+import { BeproService, SosmarketsApiService } from 'services';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 import useToastNotification from 'hooks/useToastNotification';
@@ -62,8 +62,8 @@ function LiquidityFormActions() {
       }
 
       // triggering cache reload action on api
-      new PolkamarketsApiService().reloadMarket(marketSlug);
-      new PolkamarketsApiService().reloadPortfolio(ethAddress);
+      new SosmarketsApiService().reloadMarket(marketSlug);
+      new SosmarketsApiService().reloadPortfolio(ethAddress);
 
       // updating wallet
       await login(dispatch);
@@ -96,8 +96,8 @@ function LiquidityFormActions() {
       }
 
       // triggering cache reload action on api
-      new PolkamarketsApiService().reloadMarket(marketSlug);
-      new PolkamarketsApiService().reloadPortfolio(ethAddress);
+      new SosmarketsApiService().reloadMarket(marketSlug);
+      new SosmarketsApiService().reloadPortfolio(ethAddress);
 
       // updating wallet
       await login(dispatch);

@@ -6,10 +6,10 @@ type SEOProps = {
   imageUrl?: string;
 };
 
-const POLKAMARKETS_DEFAULT_BANNER = `${process.env.PUBLIC_URL}/sosmarket_meta.jpeg`;
+const SOSMARKET_DEFAULT_BANNER = `${process.env.PUBLIC_URL}/sosmarket_meta.jpeg`;
 
 function SEO({ title, description, imageUrl }: SEOProps) {
-  const image = imageUrl || POLKAMARKETS_DEFAULT_BANNER;
+  const image = imageUrl || SOSMARKET_DEFAULT_BANNER;
 
   return (
     <Helmet
@@ -26,7 +26,7 @@ function SEO({ title, description, imageUrl }: SEOProps) {
         },
         {
           property: 'og:url',
-          content: 'https://app.polkamarkets.com'
+          content: 'https://www.sosmarket.io/'
         },
         {
           property: 'og:type',

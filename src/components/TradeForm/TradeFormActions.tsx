@@ -6,7 +6,7 @@ import { changeOutcomeData, changeData } from 'redux/ducks/market';
 import { changeMarketOutcomeData, changeMarketData } from 'redux/ducks/markets';
 import { selectOutcome } from 'redux/ducks/trade';
 import { closeTradeForm } from 'redux/ducks/ui';
-import { BeproService, PolkamarketsApiService } from 'services';
+import { BeproService, SosmarketsApiService } from 'services';
 
 import TWarningIcon from 'assets/icons/TWarningIcon';
 
@@ -131,8 +131,8 @@ function TradeFormActions() {
       reloadMarketPrices();
 
       // triggering cache reload action on api
-      new PolkamarketsApiService().reloadMarket(marketSlug);
-      new PolkamarketsApiService().reloadPortfolio(ethAddress);
+      new SosmarketsApiService().reloadMarket(marketSlug);
+      new SosmarketsApiService().reloadPortfolio(ethAddress);
 
       // updating wallet
       await login(dispatch);
@@ -195,8 +195,8 @@ function TradeFormActions() {
       reloadMarketPrices();
 
       // triggering cache reload action on api
-      new PolkamarketsApiService().reloadMarket(marketSlug);
-      new PolkamarketsApiService().reloadPortfolio(ethAddress);
+      new SosmarketsApiService().reloadMarket(marketSlug);
+      new SosmarketsApiService().reloadPortfolio(ethAddress);
 
       // updating wallet
       await login(dispatch);

@@ -1,5 +1,5 @@
 export default class SosmarketsApiService {
-  public apiUrl: string = process.env.REACT_APP_POLKAMARKETS_API_URL!;
+  public apiUrl: string = process.env.REACT_APP_SOSMARKET_API_URL!;
 
   public async getMarkets(): Promise<any[]> {
     const url = `${this.apiUrl}/markets`;

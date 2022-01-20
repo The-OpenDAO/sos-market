@@ -5,7 +5,7 @@ import { Currency } from 'models/currency';
 import { changeQuestion } from 'redux/ducks/market';
 import { changeMarketQuestion } from 'redux/ducks/markets';
 import { useAppDispatch } from 'redux/store';
-import { BeproService, PolkamarketsApiService } from 'services';
+import { BeproService, SosmarketsApiService } from 'services';
 
 import { SosmarketIconSmall } from 'assets/icons';
 
@@ -39,7 +39,7 @@ function ReportFormInput() {
     dispatch(changeQuestion(question));
     dispatch(changeMarketQuestion({ marketId: id, question }));
     // triggering cache reload action on api
-    new PolkamarketsApiService().reloadMarket(slug);
+    new SosmarketsApiService().reloadMarket(slug);
   }
 
   useEffect(() => {
