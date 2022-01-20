@@ -24,6 +24,8 @@ function HomeTabs({
   );
 
   function handleChangeFilterInline(filterByVerifiedMarkets: boolean) {
+    console.log(filterByVerifiedMarkets);
+
     dispatch(setFilterByVerified(filterByVerifiedMarkets));
   }
 
