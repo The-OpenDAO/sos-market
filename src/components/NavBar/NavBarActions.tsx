@@ -4,7 +4,11 @@ import { formatNumberToString } from 'helpers/math';
 import { login } from 'redux/ducks/bepro';
 import { BeproService } from 'services';
 
-import { MetaMaskIconSmall, SosmarketIconSmall } from 'assets/icons';
+import {
+  MetaMaskIconSmall,
+  SosmarketIconSmall,
+  PolkamarketsIconSmall
+} from 'assets/icons';
 
 import { useAppDispatch, useAppSelector, useNetwork } from 'hooks';
 import useAlertNotification from 'hooks/useAlertNotification';
@@ -24,6 +28,7 @@ function NavBarActions() {
 
   const walletConnected = useAppSelector(state => state.bepro.isLoggedIn);
   const ethBalance = useAppSelector(state => state.bepro.ethBalance);
+  const polkBalance = useAppSelector(state => state.bepro.polkBalance);
   const governanceBalance = useAppSelector(
     state => state.bepro.governanceBalance
   );
@@ -70,9 +75,15 @@ function NavBarActions() {
               currencyIcon: network.currency.icon
             },
             {
-              id: 'polk',
+              id: 'sos',
               balance: formatNumberToString(governanceBalance),
               currencyIcon: <SosmarketIconSmall />
+            },
+
+            {
+              id: 'polk',
+              balance: formatNumberToString(polkBalance),
+              currencyIcon: <PolkamarketsIconSmall />
             }
           ]}
           address={walletAddress}
