@@ -7,7 +7,7 @@ import { changeMarketQuestion } from 'redux/ducks/markets';
 import { useAppDispatch } from 'redux/store';
 import { BeproService, SosmarketsApiService } from 'services';
 
-import { SosmarketIconSmall } from 'assets/icons';
+import { PolkamarketsIconSmall } from 'assets/icons';
 
 import { useAppSelector } from 'hooks';
 
@@ -18,7 +18,7 @@ import Tooltip from '../Tooltip';
 const POLK: Currency = {
   name: 'SOSMarket',
   ticker: 'POLK',
-  icon: <SosmarketIconSmall />,
+  icon: <PolkamarketsIconSmall />,
   symbol: 'P'
 };
 
