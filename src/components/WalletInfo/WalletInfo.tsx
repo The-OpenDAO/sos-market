@@ -49,6 +49,30 @@ function WalletInfo({ wallets, address }: WalletInfoProps) {
           </Button>
         ) : null}
       </Button>
+
+      <Button
+        variant="outline"
+        color="base"
+        size="sm"
+        style={{
+          padding: '0.4rem 1.4rem',
+          paddingRight: '0.5rem'
+        }}
+      >
+        {wallets[2].balance}
+        {wallets[2].currencyIcon}
+
+        {network.buyEc20Url ? (
+          <Button
+            color="primary"
+            size="sm"
+            style={{ padding: '0.5rem 1rem' }}
+            onClick={() => window.open(network.buyPolkEc20Url, '_blank')}
+          >
+            Buy $POLK
+          </Button>
+        ) : null}
+      </Button>
       <a
         target="_blank"
         href={`${network.explorerURL}/address/${address}`}
