@@ -17,7 +17,7 @@ import useToastNotification from 'hooks/useToastNotification';
 
 import { Alert, AlertMinimal } from '../Alert';
 import { Button } from '../Button';
-import Link from '../Link';
+// import Link from '../Link';
 import Toast from '../Toast';
 import ToastNotification from '../ToastNotification';
 import Tooltip from '../Tooltip';

@@ -10,7 +10,7 @@ import { useAppSelector, useNetwork } from 'hooks';
 
 import { AlertMini } from '../Alert';
 import AmountInput from '../AmountInput';
-import Link from '../Link';
+// import Link from '../Link';
 import Text from '../Text';
 import Tooltip from '../Tooltip';
 

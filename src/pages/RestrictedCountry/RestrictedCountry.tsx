@@ -1,6 +1,6 @@
 import { SosmarketIcon } from 'assets/icons';
 
-import { Button, ModalNotification, Text, Link } from 'components';
+import { ModalNotification, Text, Link } from 'components';
 
 function RestrictedCountry() {
   return (
