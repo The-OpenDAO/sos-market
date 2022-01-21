@@ -107,6 +107,7 @@ app.get('/markets/:slug', async (request, response) => {
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
+
 app.get('*', (_request, response) => {
   response.redirect('/');
 });
