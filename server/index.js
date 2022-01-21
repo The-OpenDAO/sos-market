@@ -34,6 +34,12 @@ const defaultMetadataTemplate = (request, htmlData) => {
   });
 };
 
+app.use((req, res, next) => {
+  req.secure
+    ? next()
+    : res.redirect('https://' + req.headers.host + req.url);
+})
+
 app.get('/', (request, response) => {
   fs.readFile(indexPath, 'utf8', async (error, htmlData) => {
     if (error) {
