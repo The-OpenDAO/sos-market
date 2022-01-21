@@ -1,5 +1,7 @@
 import { Market as MarketInterface } from 'models/market';
 
+import TemporaryImg from 'assets/images/temporary.png';
+
 import Breadcrumb from '../Breadcrumb';
 import Text from '../Text';
 import MarketFooter from './MarketFooter';
@@ -14,7 +16,16 @@ function Market({ market }: MarketCardProps) {
   return (
     <div className="pm-c-market">
       <div className="pm-c-market__body">
-        <img className="pm-c-market__body-image" src={imageUrl} alt="" />
+        {imageUrl ===
+        'https://ipfs.infura.io:5001/api/v0/cat?arg=QmQS2BCSqpszN5aDFXyrFjc8Hxr699ym3dQfTv8jcX2vFR' ? (
+          <img
+            className="market-head__image"
+            alt="market head"
+            src={TemporaryImg}
+          />
+        ) : (
+          <img className="pm-c-market__body-image" src={imageUrl} alt="" />
+        )}
         <div className="pm-c-market__body-details">
           <Breadcrumb>
             <Breadcrumb.Item>{`${category.toLowerCase()}`}</Breadcrumb.Item>
