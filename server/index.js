@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const fs = require('fs');
+const { default: sslRedirect } = require('heroku-ssl-redirect');
 const path = require('path');
 
 const { getMarket } = require('./api/market');
@@ -22,6 +23,10 @@ const defaultMetadata = {
   image: '/sosmarket_meta.jpeg'
 };
 
+if (process.env.HEROKU) {
+  app.use(sslRedirect());
+}
+
 const defaultMetadataTemplate = (request, htmlData) => {
   return replaceToMetadataTemplate({
     htmlData,
@@ -33,12 +38,6 @@ const defaultMetadataTemplate = (request, htmlData) => {
       }${defaultMetadata.image}`
   });
 };
-
-// app.use((req, res, next) => {
-//   req.secure
-//     ? next()
-//     : res.redirect('https://' + req.headers.host + req.url);
-// })
 
 app.get('/', (request, response) => {
   fs.readFile(indexPath, 'utf8', async (error, htmlData) => {
