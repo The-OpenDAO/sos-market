@@ -10,9 +10,27 @@ type MarketFooterStatsProps = {
 };
 
 function MarketFooterStats({ market, ticker }: MarketFooterStatsProps) {
-  const { volume, expiresAt, liquidity } = market;
+  const { id, volume, expiresAt, liquidity } = market;
   return (
     <div className="pm-c-market-footer__stats">
+      {id && (
+        <Text
+          as="span"
+          scale="tiny-uppercase"
+          fontWeight="semibold"
+          color="gray"
+        >
+          {`ID: `}
+          <Text
+            as="strong"
+            scale="tiny-uppercase"
+            fontWeight="semibold"
+            color="lighter-gray"
+          >
+            {id}
+          </Text>
+        </Text>
+      )}
       {volume ? (
         <Text
           as="span"
