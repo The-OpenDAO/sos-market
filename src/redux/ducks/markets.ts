@@ -44,7 +44,7 @@ const initialState: MarketsIntialState = {
     favorites: null
   },
   filter: '',
-  filterByVerified: true,
+  filterByVerified: false,
   sorter: {
     value: 'featured',
     sortBy: undefined

@@ -114,6 +114,7 @@ function MarketOutcomesItem({ market, outcome }: MarketOutcomesItemProps) {
             as="span"
             scale="tiny"
             fontWeight="medium"
+            style={{ fontSize: 16 }}
             className="pm-c-market-outcomes__item-value"
           >
             {price.toFixed(3)}

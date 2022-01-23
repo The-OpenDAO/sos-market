@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const fs = require('fs');
+const { default: sslRedirect } = require('heroku-ssl-redirect');
 const path = require('path');
 
 const { getMarket } = require('./api/market');
@@ -21,6 +22,10 @@ const defaultMetadata = {
     'SOSMarket is a DeFi-Powered Prediction Market built for cross-chain information exchange, based on Polkadot.',
   image: '/sosmarket_meta.jpeg'
 };
+
+if (process.env.HEROKU) {
+  app.use(sslRedirect());
+}
 
 const defaultMetadataTemplate = (request, htmlData) => {
   return replaceToMetadataTemplate({
